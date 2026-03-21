@@ -126,7 +126,7 @@ def run_backtest(df: pd.DataFrame, period: str = "test") -> BacktestResult:
 
     # Close any remaining position at last bar
     if position != 0:
-        pnl = (df["Close"].iloc[-1] - entry_price) * position * POINT_VALUE * CONTRACTS
+        pnl = (df["Open"].iloc[-1] - entry_price) * position * POINT_VALUE * CONTRACTS
         pnl -= TOTAL_COST_RT * CONTRACTS
         trades.append(pnl)
 
