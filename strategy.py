@@ -23,14 +23,15 @@ import ta
 
 def generate_signals(df: pd.DataFrame) -> pd.Series:
     """
-    HONEST trend-following: EMA(8/34) + SMA(200) + ADX(20) + RSI(7)>65/<45 + ATR(20)x2.
+    EMA(8/34) crossover + EMA(200) trend + ADX(14)>20 + RSI(7)>65/<45.
+    ATR(20)x2 trailing stop + EMA reversal exit.
 
-    Sweep-optimized: SMA 162->200, RSI 9->7, RSI long 55->65.
+    Change: EMA(200) trend filter instead of SMA(200) — EMA reacts faster.
     """
     ema8 = ta.trend.ema_indicator(df["Close"], window=8)
     ema34 = ta.trend.ema_indicator(df["Close"], window=34)
     rsi9 = ta.momentum.rsi(df["Close"], window=7)
-    sma162 = df["Close"].rolling(window=200).mean()
+    sma162 = ta.trend.ema_indicator(df["Close"], window=200)
     adx = ta.trend.adx(df["High"], df["Low"], df["Close"], window=14)
     atr = ta.volatility.average_true_range(df["High"], df["Low"], df["Close"], window=20)
 
