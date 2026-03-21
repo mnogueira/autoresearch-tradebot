@@ -173,3 +173,6 @@ claude --channels plugin:telegram@claude-plugins-official
   read it for reference but do NOT modify it.
 - The user has an NVIDIA GPU available if you want to try ML approaches.
 - The user has TradingView Pro — you can reference TV indicator ideas.
+- **IB Gateway is running** (paper trading account) — you can use `ib_async` or `ib_insync`
+  to fetch data from Interactive Brokers if needed (US markets, global indices, etc.).
+  IB paper trading port is 4002.
