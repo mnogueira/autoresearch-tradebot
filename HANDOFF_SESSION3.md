@@ -7,131 +7,87 @@ Read this file, then `CLAUDE.md`, then `program.md`, then `strategy.py`, then `b
 ## Current State
 
 - **Branch**: `autoresearch/wdo-honest`
-- **Best honest strategy**: test_sharpe = **2.86**, train_sharpe = **+0.12** (both positive)
-- **Strategy**: EMA(8/34) crossover + EMA(200) trend + ADX(14)>20 + RSI(7)>65/<45 + ATR(20)x2 trailing stop + EMA(8/34) reversal exit + skip 13h PTAX + 36 bars remaining
-- **Results**: PF 2.35, WR 53.8%, 106 trades, R$6,044 net, 0.66% max DD
-- **Data**: M5 bars in `data/wdo_m5.parquet` (95,935 bars, Aug 2022 → Mar 2026)
+- **Best honest strategy**: test_sharpe = **3.31**, train_sharpe = **+0.52** (both positive)
+- **Strategy**: EMA(8/34) crossover + EMA(220) trend + ADX(14)>20 + RSI(7)>65/<40 + Hurst(100)>0.50 + ATR(20)x2 trailing stop + TRIX(12) rolling median exit + skip 12+13h + no entry after 14:55
+- **Results**: PF 3.67, WR 65.7%, 67 trades, R$5,798 net, 0.34% max DD
+- **Walk-forward realistic**: Sharpe ~2.0 average, 50% of 16 windows positive, R$4,294 total net
+- **Audited**: 4 independent Opus audits confirmed no execution bias or lookahead bugs
 
-## Session 3 Improvements (2.38 → 2.86)
+## Session 3 Improvement Chain (8 steps, 2.38 → 3.31)
 
-1. **Parameter sweep** (2.38→2.71): Coordinate descent across 12 parameter dimensions
-   - SMA trend filter: 162 → 200 (longer = more reliable)
-   - RSI window: 9 → 7 (faster momentum detection)
-   - RSI long threshold: 55 → 65 (stricter entry quality)
+| # | Change | test_sharpe |
+|---|--------|-------------|
+| 1 | Parameter sweep (SMA200, RSI7, RSI>65) | 2.71 |
+| 2 | EMA reversal exit | 2.80 |
+| 3 | EMA(200) trend filter | 2.86 |
+| 4 | TRIX(15) exit (comprehensive indicator sweep) | 2.91 |
+| 5 | Skip 12+13h (unlocked by TRIX) | 2.98 |
+| 6 | Hurst(100)>0.50 regime filter | 3.04 |
+| 7 | Audit fix (rolling TRIX median, time-based cutoff) | 3.04 |
+| 8 | Re-sweep (EMA220, RSI<40, TRIX12) | 3.31 |
 
-2. **EMA reversal exit** (2.71→2.80): Exit when EMA(8) crosses back against EMA(34)
-   - Catches trend reversals faster than trailing stop alone
-   - Reduced average loss from -101 to -91
+## Robustness Validation
 
-3. **EMA(200) trend filter** (2.80→2.86): Replaced SMA(200) with EMA(200)
-   - EMA reacts faster to trend changes
-   - 9 more trades (106 vs 97) while maintaining quality
+### Different train/test splits (ALL pass both-positive)
+| Split | test_sharpe | test trades |
+|-------|-------------|-------------|
+| 50/50 | 2.23 | 119 |
+| 60/40 | 2.10 | 101 |
+| 65/35 | 2.66 | 84 |
+| 70/30 | 3.31 | 67 |
+| 75/25 | 3.65 | 58 |
+| 80/20 | 3.88 | 50 |
 
-## Walk-Forward Validation
+### Walk-forward (12mo train, 2mo test, 16 windows)
+- 8/16 positive (50%)
+- Windows 1-9 (2023-2024): mostly negative (ranging WDO)
+- Windows 10-16 (2025-2026): mostly very positive (trending WDO)
+- Total net: +R$4,294
+- **Realistic expected Sharpe: ~2.0**
 
-- 16 windows (12mo train, 2mo test sliding): **8/16 positive** (50%)
-- Recent windows (2025-2026) are strongly positive (Sharpe 2-5)
-- Earlier windows (2023-2024) are mostly negative (Sharpe -1 to -7)
-- Total net across ALL windows: +R$1,729
-- **Conclusion**: Strategy is regime-dependent. Works in trending markets, loses when ranging.
+## What Was Exhaustively Tested (~60+ experiments)
 
-## Ablation Study (every component matters)
+### Comprehensive indicator sweep (ALL 35 ta library indicators x 3 roles)
+Found TRIX as exit signal — the breakthrough. Nothing else beat baseline.
 
-| Component removed | test_sharpe delta | Conclusion |
-|---|---|---|
-| ATR trailing stop | -1.10 | Most critical |
-| RSI filter | -0.75 | Very important |
-| ADX filter | -0.56 | Important |
-| Bars remaining cutoff | -0.47 | Important |
-| RSI strictness (65→55) | -0.20 | Moderate |
-| PTAX skip | -0.12 | Least critical but still helps |
+### Entry filters tested and rejected
++DI/-DI, MACD, volume, StochRSI, Keltner, TSI, CCI, Williams %R, BB squeeze, EMA gap, VWAP, prev-day return, meia perna, asymmetric RSI/ADX, ADX rising, morning-only, close>open, day-of-week, KER regime, Choppiness Index, TTM Squeeze, Connors RSI confirm
 
-## What Was Exhaustively Tested and Rejected (~30 experiments)
+### Alternative entries tested and rejected
+Donchian breakout, SMA108 pullback, Schaff Trend Cycle, DIDI Index, KAMA crossover, HMA crossover, pullback entry, delayed 2-bar
 
-### Entry Filters (all reduce trades below optimal ~100)
-- +DI/-DI, MACD histogram, volume>SMA(20), StochRSI, Keltner, TSI, CCI, Williams %R
-- BB squeeze, EMA gap threshold, VWAP confirm, prev-day return, meia perna
-- Donchian breakout, asymmetric RSI/ADX, ADX rising, morning-only, close>open
-- Day-of-week filters (Mon, Fri, etc.)
+### Exit mechanisms tested
+EMA reversal (used then replaced), close<EMA(8), ratchet stop, re-entry after stop, time stops, breakeven, Chandelier Exit, Parabolic SAR, Supertrend exit
 
-### Exit Modifications (none beat ATR+EMA reversal combo)
-- Close below EMA(8) — exits too early
-- Ratchet stop — marginally worse
-- Re-entry after stop — adds bad trades
-- Time stops (20, 30 bars) — fail train>0
-- Breakeven stop — never triggers (ATR stop fires first)
+### Other approaches
+ML (LightGBM), volume bars (M1), M15 timeframe, DXY/VIX/USDBRL with D-1 lag
 
-### Other
-- M15 timeframe — completely unprofitable (0 trades or negative)
-- EMA(220) trend — test=2.91 but train barely negative (-0.02)
-- Skip 12+13h — test=2.94 but train=-0.06
-- Prev-day momentum — test=2.93 but train=-0.11
+### Custom indicators from web research
+Kaufman Efficiency Ratio, KAMA, TTM Squeeze, Choppiness Index, Supertrend, Hull MA, McGinley Dynamic, Hurst exponent (WINNER), autocorrelation
 
-## Near-Misses (ideas that almost worked)
+## Audit Results (4 independent Opus 4.6 audits)
 
-These were tantalizingly close to beating the baseline:
-1. **Skip 12+13h**: test=2.94, train=-0.06 — if train could be made positive, this would be best
-2. **Prev-day ret momentum**: test=2.93, train=-0.11 — same issue
-3. **EMA(220) trend**: test=2.91, train=-0.02 — barely fails
-
-## What to Try Next
-
-1. **Regime detection**: Use rolling ADX or Hurst exponent to switch between trend and no-trade
-2. **Machine learning**: Use sklearn/lightgbm with feature engineering from discovered indicators
-3. **Ensemble**: Combine trend-following with a separate mean-reversion strategy
-4. **Different entry signals**: Schaff Trend Cycle, DIDI Index (from expert guide, not yet tested)
-5. **Higher timeframe trend**: Use H1 or Daily trend direction as regime filter (but careful of lookahead)
-6. **Expand to new asset**: Apply framework to DI1, IBOV, or other Brazilian futures
-7. **Walk-forward optimization**: Optimize parameters on rolling window, not single split
+1. **Signal generation**: 5 scenarios traced — all clean
+2. **Backtest execution**: Fill prices always Open, no double counting, costs correct
+3. **Indicator computation**: ALL indicators verified causal, no future data
+4. **TRIX median lookahead**: Found and FIXED (rolling + shift(1))
 
 ## CRITICAL RULES — ENFORCE ALWAYS
 
-### Execution Model
-1. **Fill at Open price** — `df["Open"].iloc[i]` for all fills
+1. **Fill at Open price** — `df["Open"].iloc[i]`
 2. **1-bar signal delay per day** — `signals.groupby(df["date"]).shift(1).fillna(0).astype(int)`
-3. **Sharpe uses ddof=1** — sample standard deviation
+3. **Sharpe uses ddof=1**
 4. **BOTH train AND test Sharpe must be positive**
 5. **No external data lookahead** — use PREVIOUS day's close
-
-### Strategy Development Lessons
-6. **Adding entry filters to ~100-trade strategy almost always hurts** — not enough signals
-7. **Exit improvements are more impactful than entry filters**
-8. **EMA better than SMA for trend filter** — faster reaction
-9. **Crossover + trailing stop + reversal exit is the optimal exit combo**
-10. **Walk-forward validation is essential** — single split can be misleading
-
-## Additional Tests (post-initial handoff)
-
-### Correlated Assets (DXY, VIX, USDBRL with D-1 lag)
-- VIX under 25: test=2.84, train=0.24 (close but lower test)
-- DXY trend/momentum: all make train negative
-- USDBRL: same pattern
-- **Conclusion**: External data with honest D-1 constraint adds NO edge
-
-### Volume Bars (López de Prado)
-- Only 8 months of M1 data (Jul 2025 - Mar 2026)
-- Insufficient for proper train/test split with 200-bar indicators
-- Need 2+ years of M1 data from MT5
-
-### Machine Learning (LightGBM)
-- Bar-by-bar prediction: catastrophic failure (Sharpe -3 to -14)
-- Crossover quality filter: also fails (Sharpe -8 to -11)
-- **Conclusion**: Not enough crossover samples (~260 in train) for ML to generalize
-
-### Schaff Trend Cycle / DIDI Index
-- STC entry: 321 noisy signals, train=-1.87
-- STC as filter: over-restricts, train negative
-- DIDI entry: 420 noisy signals, train=-1.71
-- DIDI confirm: test=2.74 but train=-0.27
-
-### SMA 108 Pullback (Expert Strategy)
-- 248 trades, train=-1.79: too many false pullbacks with honest execution
+6. **Rolling statistics must use .shift(1)** to exclude current bar
+7. **Time-based entry cutoff** — use clock time, not bars_remaining
+8. **Test ALL indicators in ALL roles** before concluding
+9. **Re-sweep parameters after structural changes**
+10. **Audit when Sharpe > 3** — spawn independent reviewers
 
 ## How to Resume
 ```
-Read HANDOFF_SESSION3.md, then continue the autoresearch loop from test_sharpe=2.86.
-Strategy is near its ceiling for indicator-based approaches.
-Possible breakthroughs require: more data (10+ years M5, tick data from MT5/IB),
-or fundamentally different market microstructure approach.
-Enforce ALL critical rules. Both train+test must be positive.
+Read HANDOFF_SESSION3.md, then continue from test_sharpe=3.31.
+Walk-forward realistic Sharpe ~2.0. Strategy is regime-dependent.
+Next: regime-adaptive approach, more historical data, or live paper trading.
 ```
