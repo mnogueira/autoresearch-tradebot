@@ -239,6 +239,8 @@ def main():
     else:
         print("train_test_degradation: N/A")
 
+    print("status: ok")
+
 
 if __name__ == "__main__":
     main()

@@ -96,16 +96,30 @@ def download_data(timeframe: str = DEFAULT_TIMEFRAME, years_back: int = DEFAULT_
         mt5.shutdown()
         sys.exit(1)
 
-    date_to = dt.datetime.now()
+    # MT5 API requires timezone-aware UTC datetimes
+    import pytz
+    utc = pytz.utc
+    date_to = dt.datetime.now(tz=utc)
     date_from = date_to - dt.timedelta(days=years_back * 365)
 
     print(f"Downloading {SYMBOL} {timeframe} from {date_from.date()} to {date_to.date()}...")
-    rates = mt5.copy_rates_range(SYMBOL, mt5_tf, date_from, date_to)
-    mt5.shutdown()
+
+    # copy_rates_from_pos is more reliable than copy_rates_range on XP/B3
+    # Get all available bars (up to 500k)
+    rates = mt5.copy_rates_from_pos(SYMBOL, mt5_tf, 0, 500_000)
 
     if rates is None or len(rates) == 0:
-        print("ERROR: No data returned from MT5.")
+        # Fallback: try copy_rates_range with UTC dates
+        print("copy_rates_from_pos returned nothing, trying copy_rates_range...")
+        rates = mt5.copy_rates_range(SYMBOL, mt5_tf, date_from, date_to)
+
+    if rates is None or len(rates) == 0:
+        last_err = mt5.last_error()
+        mt5.shutdown()
+        print(f"ERROR: No data returned from MT5. Last error: {last_err}")
         sys.exit(1)
+
+    mt5.shutdown()
 
     df = pd.DataFrame(rates)
     df["time"] = pd.to_datetime(df["time"], unit="s")

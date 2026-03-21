@@ -32,18 +32,10 @@ You are a quantitative trading researcher. Your job is to find a profitable day-
 ## Experiment Loop (repeat forever)
 
 ### Step 1: Plan experiment
-Think about what to try. Ideas to explore (not exhaustive):
-- Different indicator combinations (MACD, Bollinger, ATR, VWAP, OBV, Stochastic, etc.)
-- Different timeframe analysis (use M1, M15, H1 data alongside M5)
-- Trend-following vs mean-reversion approaches
-- Volatility-based filters (only trade when ATR is in a certain range)
-- Time-of-day filters (which hours are most profitable?)
-- Pattern recognition (inside bars, engulfing, pin bars)
-- Momentum and volume confirmation
-- Adaptive parameters (adjust based on recent volatility)
-- Risk management: stop-loss, take-profit, trailing stops
-- Multiple entry/exit conditions
-- Session-specific strategies (opening range, lunch, afternoon trend)
+Think about what to try. Review `results.tsv` to see what has been tried.
+Form a clear hypothesis: "I expect X to improve because Y."
+Alternate between **exploration** (new ideas) and **exploitation** (refining what works).
+See the "What to Explore" section below for structured ideas.
 
 ### Step 2: Implement
 - Modify `strategy.py` with your experimental idea
@@ -126,6 +118,48 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
          0 = flat / close position
     """
 ```
+
+## What to Explore
+
+### Tier 1: Quick Wins (try these first)
+- EMA crossovers with different period combinations (5/20, 8/21, 13/34, 20/50)
+- RSI extremes (oversold bounce < 30, overbought fade > 70) with different thresholds
+- Bollinger Band mean reversion (enter on band touch, exit at middle band)
+- MACD signal line crossovers with histogram confirmation
+- Opening range breakout (first 15 or 30 minutes high/low)
+
+### Tier 2: Filters & Refinements
+- Time-of-day filters (morning momentum vs afternoon mean reversion)
+- ADX trend strength filter (only trade when ADX > 20 or > 25)
+- Volatility regime filter (ATR-based: only trade in normal vol, skip extremes)
+- Volume confirmation (require above-average volume for entries)
+- Multiple indicator confluence (e.g., EMA trend direction + RSI entry timing)
+- Session-specific strategies (opening range, post-lunch, afternoon trend)
+
+### Tier 3: Risk Management
+- ATR-based stop-loss and take-profit levels
+- Trailing stops (fixed points or ATR-based)
+- Maximum trades per day limit
+- Daily loss limit (stop trading after losing X BRL)
+- R:R ratio requirements (only enter if target > 2x risk)
+- Time-based exits (close position after N bars if not profitable)
+
+### Tier 4: Advanced
+- Mean reversion with Bollinger/Keltner squeeze detection
+- Momentum breakouts with volume profile confirmation
+- Multi-timeframe analysis (resample to 15min/1h for trend, 5min for entry)
+- Adaptive parameters (adjust lookback periods based on recent ATR)
+- Gap analysis (opening price vs previous close)
+- Support/resistance from recent pivots (swing high/low)
+- Ensemble: combine votes from multiple simple strategies
+- Candlestick patterns (engulfing, hammer, doji, inside bar)
+- Pattern recognition (higher highs/lows, double top/bottom)
+
+### Tier 5: Simplification (critical!)
+- After finding something that works, try removing components one by one
+- A simpler strategy with similar performance is ALWAYS preferred
+- Fewer parameters = more robust = less overfitting risk
+- If removing a filter doesn't hurt val_sharpe, remove it
 
 ## Available Indicators (ta library)
 
