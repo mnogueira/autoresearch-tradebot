@@ -42,9 +42,9 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
     """
     EMA(8/34) crossover + EMA(220) trend + ADX(14)>20 + RSI(7)>65/<40.
     ATR(20)x2 trailing stop + TRIX(12) median crossover exit.
-    Skip 12h+13h. Hurst(100) > 0.50 regime filter.
+    Skip 12h+13h. Hurst(100) > 0.50 regime filter. VWAP direction confirm.
 
-    Re-sweep optimized: trend 200->220, RSI short 45->40, TRIX 15->12.
+    Creative: VWAP direction = only long above VWAP, short below VWAP.
     """
     ema8 = ta.trend.ema_indicator(df["Close"], window=8)
     ema34 = ta.trend.ema_indicator(df["Close"], window=34)
@@ -55,6 +55,12 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
     trix = ta.trend.trix(df["Close"], window=12)
     hurst = _rolling_hurst(df["Close"], window=100)
 
+    # Intraday VWAP
+    typical = (df["High"] + df["Low"] + df["Close"]) / 3
+    cum_tp_vol = (typical * df["Volume"]).groupby(df.index.date).cumsum()
+    cum_vol = df["Volume"].groupby(df.index.date).cumsum().replace(0, np.nan)
+    vwap = cum_tp_vol / cum_vol
+
     close = df["Close"].values
     e8 = ema8.values
     e34 = ema34.values
@@ -64,6 +70,7 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
     atr_v = atr.values
     trix_v = trix.values
     hurst_v = hurst.values
+    vwap_v = vwap.values
     is_last = df["is_last_30min"].values
     is_first = df["is_first_bar"].values
     br = df["bars_remaining"].values
@@ -150,11 +157,12 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
             cross_up = e8[i] > e34[i] and e8[i-1] <= e34[i-1]
             cross_dn = e8[i] < e34[i] and e8[i-1] >= e34[i-1]
 
-            if cross_up and close[i] > tv[i] and r > 65:
+            vw = vwap_v[i] if not np.isnan(vwap_v[i]) else close[i]
+            if cross_up and close[i] > tv[i] and r > 65 and close[i] > vw:
                 sig[i] = 1
                 pos = 1
                 peak = close[i]
-            elif cross_dn and close[i] < tv[i] and r < 40:
+            elif cross_dn and close[i] < tv[i] and r < 40 and close[i] < vw:
                 sig[i] = -1
                 pos = -1
                 peak = close[i]
