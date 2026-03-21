@@ -21,13 +21,31 @@ import pandas as pd
 import ta
 
 
+def _rolling_hurst(close, window=100):
+    """Hurst exponent via R/S analysis. >0.5=trending, <0.5=mean-reverting."""
+    def hurst_rs(series):
+        ts = np.array(series)
+        returns = np.diff(ts) / ts[:-1]
+        if len(returns) < 10:
+            return 0.5
+        mean_r = returns.mean()
+        deviate = np.cumsum(returns - mean_r)
+        r = deviate.max() - deviate.min()
+        s = returns.std(ddof=1)
+        if s == 0 or r == 0:
+            return 0.5
+        return np.log(r / s) / np.log(len(returns))
+    return close.rolling(window).apply(hurst_rs, raw=True)
+
+
 def generate_signals(df: pd.DataFrame) -> pd.Series:
     """
     EMA(8/34) crossover + EMA(200) trend + ADX(14)>20 + RSI(7)>65/<45.
     ATR(20)x2 trailing stop + TRIX(15) median crossover exit.
-    Skip 12h+13h (lunch + PTAX window).
+    Skip 12h+13h. Hurst(100) > 0.50 regime filter.
 
-    TRIX exit + skip 12+13h combo unlocked by TRIX making train positive.
+    Hurst exponent filters out ranging/mean-reverting regimes where
+    trend-following generates false signals.
     """
     ema8 = ta.trend.ema_indicator(df["Close"], window=8)
     ema34 = ta.trend.ema_indicator(df["Close"], window=34)
@@ -36,6 +54,7 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
     adx = ta.trend.adx(df["High"], df["Low"], df["Close"], window=14)
     atr = ta.volatility.average_true_range(df["High"], df["Low"], df["Close"], window=20)
     trix = ta.trend.trix(df["Close"], window=15)
+    hurst = _rolling_hurst(df["Close"], window=100)
 
     close = df["Close"].values
     e8 = ema8.values
@@ -45,13 +64,13 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
     adx_v = adx.values
     atr_v = atr.values
     trix_v = trix.values
+    hurst_v = hurst.values
     is_last = df["is_last_30min"].values
     is_first = df["is_first_bar"].values
     br = df["bars_remaining"].values
     dates = df["date"].values
     dates_time = df["time"].values
 
-    # TRIX median for exit threshold
     valid_trix = trix_v[~np.isnan(trix_v)]
     trix_med = float(np.median(valid_trix)) if len(valid_trix) > 0 else 0.0
 
@@ -77,10 +96,9 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
             prev_date = d
             continue
 
-        # Exit: ATR(20) trailing stop (2x ATR) OR TRIX median crossover
+        # Exit: ATR(20) trailing stop OR TRIX median crossover
         if pos != 0:
             cur_atr = atr_v[i] if not np.isnan(atr_v[i]) else 0
-            # TRIX exit: crosses median against position
             trix_exit = False
             fv = trix_v[i] if not np.isnan(trix_v[i]) else trix_med
             fv_prev = trix_v[i-1] if i > 0 and not np.isnan(trix_v[i-1]) else trix_med
@@ -112,6 +130,12 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
             prev_date = d
             continue
         if adx_v[i] < 20 or br[i] <= 36:
+            prev_date = d
+            continue
+
+        # Hurst regime filter: only trade in trending regimes
+        hv = hurst_v[i]
+        if not np.isnan(hv) and hv < 0.50:
             prev_date = d
             continue
 
