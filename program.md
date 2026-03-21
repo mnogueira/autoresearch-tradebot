@@ -121,45 +121,91 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
 
 ## What to Explore
 
-### Tier 1: Quick Wins (try these first)
-- EMA crossovers with different period combinations (5/20, 8/21, 13/34, 20/50)
-- RSI extremes (oversold bounce < 30, overbought fade > 70) with different thresholds
-- Bollinger Band mean reversion (enter on band touch, exit at middle band)
-- MACD signal line crossovers with histogram confirmation
-- Opening range breakout (first 15 or 30 minutes high/low)
+**IMPORTANT: Read `strategies_guide.md` before starting. It contains expert WDO strategies
+with proven logic, optimized MT5 parameters, and 50+ tested indicators.**
 
-### Tier 2: Filters & Refinements
-- Time-of-day filters (morning momentum vs afternoon mean reversion)
-- ADX trend strength filter (only trade when ADX > 20 or > 25)
-- Volatility regime filter (ATR-based: only trade in normal vol, skip extremes)
-- Volume confirmation (require above-average volume for entries)
-- Multiple indicator confluence (e.g., EMA trend direction + RSI entry timing)
-- Session-specific strategies (opening range, post-lunch, afternoon trend)
+### Phase 1: Expert WDO Strategies (HIGHEST PRIORITY — implement these first)
 
-### Tier 3: Risk Management
-- ATR-based stop-loss and take-profit levels
-- Trailing stops (fixed points or ATR-based)
-- Maximum trades per day limit
-- Daily loss limit (stop trading after losing X BRL)
-- R:R ratio requirements (only enter if target > 2x risk)
-- Time-based exits (close position after N bars if not profitable)
+**1a. Stalker — Dynamic Fibonacci Retracement (trend continuation)**
+- Calculate "meia perna" = average daily range of last N days / 2
+- Wait until today's range >= meia perna (filter: market has "chosen direction")
+- Enter on retracement: SELL at (daily_low + range × 0.25) in downtrend, BUY at (daily_high - range × 0.25) in uptrend
+- SL: 1 × ATR(20) on 15-min equivalent. TP: 4 × SL (original) or optimize
+- After stop: no re-entry until new high/low is made
+- Test retracement levels: 0.20, 0.25, 0.30 separately
+- Expert expects 30-40% win rate but 4:1 payoff = profitable long term
+- MT5 optimized: retracement=0.25, SL=0.78×ATR, TP=0.36×ATR (tighter scalp)
 
-### Tier 4: Advanced
-- Mean reversion with Bollinger/Keltner squeeze detection
-- Momentum breakouts with volume profile confirmation
-- Multi-timeframe analysis (resample to 15min/1h for trend, 5min for entry)
-- Adaptive parameters (adjust lookback periods based on recent ATR)
-- Gap analysis (opening price vs previous close)
-- Support/resistance from recent pivots (swing high/low)
-- Ensemble: combine votes from multiple simple strategies
-- Candlestick patterns (engulfing, hammer, doji, inside bar)
-- Pattern recognition (higher highs/lows, double top/bottom)
+**1b. VWAP Tunnel (mean reversion)**
+- Calculate daily VWAP using (H+L+C)/3
+- Bands: upper +0.6% / +1.2%, lower -0.65% / -1.3% (asymmetric!)
+- BUY at lower band 2 (-1.3%), SELL at upper band 2 (+1.2%)
+- SL: 1 × ATR(108) on 5-min. TP: 3 × ATR
+- Alternative exit: price reaches band 1 (first band)
+- Proven parameters from expert's "fundo foda" (solid research)
 
-### Tier 5: Simplification (critical!)
+**1c. SMA 108 Pullback (trend following)**
+- SMA(108) on 5-min (108 bars = 1 full trading day)
+- Candle closes above SMA -> wait for pullback to SMA -> BUY
+- Candle closes below SMA -> wait for pullback to SMA -> SELL
+- Hours: 9:00-13:00 only (morning)
+- SL: 5 points. Trailing: EMA(13). Target: 1% of SMA value
+- Variant: test SMA 180 (MT5 optimized) and SMA 144
+
+**1d. Extreme SMA Channels (mean reversion grid)**
+- SMA(108) or SMA(180) with percentage bands
+- First band at 1% from SMA, then every 0.25%
+- Place limit orders at bands. Max 3 same-direction entries
+- SL: 0.5% of average position price. Exit at 1% band
+- Calculate bands at first bar of day, place orders
+
+### Phase 2: Top-Performing Indicators (from 50+ tested)
+
+**2a. Schaff Trend Cycle (STC)** — 100% win rate in testing
+- MACD + Stochastic cycle detection, try as entry signal
+
+**2b. DIDI Index** — 75% win rate, Brazilian indicator, may suit WDO
+- Based on 3 MAs (3, 8, 20): fast/slow relative to medium
+
+**2c. Tillson T3** — 73% win rate, superior smoothing
+- Try as trend filter or baseline (replace SMA/EMA)
+
+**2d. EMA Distance** — 80% win rate, mean reversion
+- Measure distance from EMA, enter when extended, exit at EMA
+
+**2e. RSI Inverse Fisher Transform** — 72% win rate
+- Normalized RSI with cleaner signals
+
+### Phase 3: Filters & Combinations
+
+**3a. Damiani Volatmeter** — Best volatility filter tested
+- Skip trades when market is ranging (low volatility)
+- Combine with any entry strategy
+
+**3b. Time-of-day optimization**
+- Morning only (9:00-13:00) for trend strategies
+- Full day for mean reversion strategies
+- Test which hours produce best Sharpe per strategy
+
+**3c. HiLo Activator trailing stop** (Robert Krausz)
+- Expert recommended for trailing. Test vs EMA(13) and fixed ATR trailing
+
+**3d. Meia perna filter on all strategies**
+- Apply the "half average daily range" activation filter universally
+
+### Phase 4: Parameter Sweeps
+- Retracement levels: 0.15, 0.20, 0.25, 0.30, 0.35
+- ATR multipliers for SL: 0.5, 0.78, 1.0, 1.5
+- ATR multipliers for TP: 0.36, 1.0, 2.0, 3.0, 4.0
+- SMA lengths: 72, 108, 144, 180, 216
+- VWAP band widths: tighter and wider variants
+- Meia perna threshold: 40%, 50%, 60% of average range
+
+### Phase 5: Simplification (critical!)
 - After finding something that works, try removing components one by one
 - A simpler strategy with similar performance is ALWAYS preferred
 - Fewer parameters = more robust = less overfitting risk
-- If removing a filter doesn't hurt val_sharpe, remove it
+- If removing a filter doesn't hurt test_sharpe, remove it
 
 ## Available Indicators (ta library)
 

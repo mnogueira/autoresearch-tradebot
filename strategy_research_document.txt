@@ -1,0 +1,1121 @@
+================================================================================
+COMPREHENSIVE TRADING STRATEGY RESEARCH DOCUMENT
+Extracted from Academy of Forex YouTube Indicator Testing Playlist (50 Videos)
+================================================================================
+
+METHODOLOGY USED ACROSS ALL TESTS:
+- Timeframe: Daily chart (1D)
+- Test period: 1 year of backtesting per indicator
+- Random pair selection (28 forex pairs, randomly chosen)
+- Take profit: Based on ATR (Average True Range) - varies by pair
+- Stop loss: 1.5x the take profit (e.g., 60 TP / 90 SL, 90 TP / 135 SL, etc.)
+- Winning threshold: 60% win rate required to be classified as "winner"
+- Position management: Half position closed at 1st TP, remainder moved to breakeven
+- TradingView platform used for all testing
+- Replay function used for manual backtesting (anti-bias measure)
+- Default indicator settings used unless otherwise noted
+
+================================================================================
+SECTION 1: INDIVIDUAL INDICATOR RESULTS (ALL 50 VIDEOS)
+================================================================================
+
+--------------------------------------------------------------------------------
+VIDEO 1: ABSOLUTE STRENGTH HISTOGRAM V2
+--------------------------------------------------------------------------------
+Indicator Type: Momentum histogram with oscillating lines
+What It Measures: Momentum/strength of price movement
+Buy/Sell Rules:
+  - Oscillating lines determine trend direction (green above red = uptrend)
+  - Histogram bars signal entry: green spike = long, red spike = short
+  - Both conditions must align: lines + histogram direction
+Parameters: Default; added 0.10 threshold line on histogram for filtering
+Results: 34 trades, 22 winners = 64% win rate
+  - WITH histogram threshold filter (0.10 line): 29 trades, 22 winners = 74% win rate
+Winner: YES
+Notes:
+  - Adding a simple 0.10 threshold line on histogram filtered out losing trades
+  - Did not filter out any winning trades in the sample
+  - Overtrading indicator but still profitable
+  - Suggested combining with Fibonacci levels to identify overextended moves
+  - Could work as continuation indicator
+
+--------------------------------------------------------------------------------
+VIDEO 2: SUPER RANGE INDICATOR
+--------------------------------------------------------------------------------
+Indicator Type: Single line overlay (similar to adaptive moving average)
+What It Measures: Dynamic support/resistance level
+Buy/Sell Rules:
+  - Price breaks above line = buy
+  - Price breaks below line = sell
+Parameters: Default settings
+Results: 100% win rate (small number of trades)
+Winner: YES
+Notes:
+  - Adapts to market environment (unlike static moving averages)
+  - Behavior in ranging markets unknown
+  - Very reminiscent of a moving average but with adaptive characteristics
+  - Discussed price action patterns: Head and Shoulders, Cup and Handle
+
+--------------------------------------------------------------------------------
+VIDEO 3: BUY vs SELL VOLUME INDICATOR (Custom - thinkorswim)
+--------------------------------------------------------------------------------
+Indicator Type: Volume sub-graph showing buy vs sell pressure
+What It Measures: Uptick vs downtick volume on time and sales
+Buy/Sell Rules:
+  - NOT a standalone entry indicator
+  - Confirmation tool: heavy buying into supply zone = absorption = short setup
+  - Heavy selling into demand zone = absorption = long setup
+  - Large abnormal volume bars often signal reversals
+Parameters: Custom indicator for thinkorswim
+Results: No win rate tested (educational/confirmation)
+Winner: N/A (confirmation tool)
+Notes:
+  - Green does NOT mean buying, red does NOT mean selling (uptick/downtick)
+  - High percentage of time: green upticks = buy orders, red downticks = sell orders
+  - Large volume bars at extremes = reversal signals
+  - Best used with supply/demand zones
+  - Day trading specific (5-min chart demonstrated)
+
+--------------------------------------------------------------------------------
+VIDEO 4: STOCHASTIC OSCILLATOR
+--------------------------------------------------------------------------------
+Indicator Type: Overbought/Oversold oscillator (K and D lines)
+What It Measures: Price momentum relative to high-low range
+Buy/Sell Rules:
+  - Both K and D lines go into overbought (>80), wait for both to cross back below 80 = SELL
+  - Both K and D lines go into oversold (<20), wait for both to cross back above 20 = BUY
+  - Signal candle = candle where cross occurs; entry = next candle
+Parameters: Default (K=14, D=3, Smooth=3 typical)
+Results: 17 trades, 12 winners = ~70% win rate
+Winner: YES
+Notes:
+  - Categorized as entry signal, confirmation, AND volatility indicator
+  - Buffer between buy/sell signal lines helps filter choppiness
+  - Does not hover in middle enough - swings quickly between OB/OS
+  - Space between signal lines reduces whipsaw
+
+--------------------------------------------------------------------------------
+VIDEO 5: AROON (Up/Down)
+--------------------------------------------------------------------------------
+Indicator Type: Two-line cross (Aroon Up and Aroon Down)
+What It Measures: Time since highest high and lowest low
+Buy/Sell Rules:
+  - Aroon Up crosses above Aroon Down = BUY
+  - Aroon Down crosses above Aroon Up = SELL
+  - Only looking for crosses going UP (not down)
+Parameters: Default 14 period; suggested testing 18-20 period for improvement
+Results: 15 trades, 9 winners = 60% win rate
+Winner: YES (barely)
+Notes:
+  - Good at catching long trends
+  - When it gives stop-outs, losses are often partial (< full stop)
+  - Suggested as potential EXIT indicator or confirmation
+  - Changing period from 14 to 20 appeared to filter out some losing trades
+  - Could serve as entry, confirmation, or exit
+
+--------------------------------------------------------------------------------
+VIDEO 6: DONCHIAN CHANNEL
+--------------------------------------------------------------------------------
+Indicator Type: Channel with center line (price overlay)
+What It Measures: Highest high and lowest low over period, with midline
+Buy/Sell Rules:
+  - Price breaks above center line = BUY
+  - Price breaks below center line = SELL
+  - Must be a clean break (not right on the line)
+  - Weekend gaps don't count as valid breaks
+Parameters: Default settings
+Results: 17 trades, 13 winners = ~75% win rate
+Winner: YES
+Notes:
+  - Best indicator tested at that point (75%)
+  - Very clear signals - "line in the sand"
+  - Demonstrated TradingView alert setup for center line crosses
+  - Set alerts to "once per bar close" to avoid false triggers
+
+--------------------------------------------------------------------------------
+VIDEO 7: WILLIAMS ALLIGATOR
+--------------------------------------------------------------------------------
+Indicator Type: Three-line cross (Jaw, Teeth, Lips)
+What It Measures: Trend direction and market state (sleeping vs trending)
+Buy/Sell Rules:
+  - Green (fastest) crosses above blue (slowest) = initial signal
+  - Purple (middle) also crosses above blue = confirmation to go LONG
+  - Reverse for SHORT
+  - Leading indicator (lines extend ahead of price)
+Parameters: Default (Jaw=13, Teeth=8, Lips=5, with offsets)
+Results: 9 trades, 6 winners = ~67% win rate
+Winner: YES (barely)
+Notes:
+  - Very few signals per year (undertrading)
+  - Leading indicator characteristic makes backtesting tricky
+  - Most trades likely to get stopped out at breakeven
+  - Not enough signals to grow account meaningfully
+
+--------------------------------------------------------------------------------
+VIDEO 8: COPPOCK CURVE
+--------------------------------------------------------------------------------
+Indicator Type: Single line oscillator with zero line
+What It Measures: Long-term momentum (rate of change)
+Buy/Sell Rules:
+  - Line crosses above zero = BUY
+  - Line crosses below zero = SELL
+Parameters: Default settings; zero line added manually
+Results: 7 trades, 6 winners = ~85% win rate
+Winner: YES
+Notes:
+  - One of the best indicators tested at that point
+  - Low number of signals but very accurate
+  - Estimated ~1,100-1,200 pips per year on single pair with exit indicator
+  - Good for catching large moves
+
+--------------------------------------------------------------------------------
+VIDEO 9: DETRENDED PRICE OSCILLATOR (DPO)
+--------------------------------------------------------------------------------
+Indicator Type: Line oscillator with zero line cross
+What It Measures: Price deviation from trend
+Buy/Sell Rules:
+  - Crosses above zero = BUY
+  - Crosses below zero = SELL
+Parameters: Default settings
+Results: 20 trades, 13 winners = ~65% win rate
+Winner: YES
+Notes:
+  - Reasonable number of trades (20 in a year)
+  - Does not move extremely fast (good - less whipsaw)
+  - Most losses came from zigzag whipsaw areas
+  - Catches trends reasonably well but sometimes late
+
+--------------------------------------------------------------------------------
+VIDEO 10: McGINLEY DYNAMIC
+--------------------------------------------------------------------------------
+Indicator Type: Moving average (tested with SMA crossover)
+What It Measures: Adaptive moving average that adjusts to market speed
+Buy/Sell Rules:
+  - McGinley (14 period) crosses above SMA (10 period) = BUY
+  - McGinley crosses below SMA = SELL
+  - Also tested as simple price break
+Parameters: McGinley on 14, SMA on 10
+Results: 13 trades, 8 winners = ~62% win rate
+Winner: YES
+Notes:
+  - Moving average crosses are too slow - leave money on table
+  - Price break of McGinley alone gives earlier entries (58-100 pips earlier)
+  - Created to be a "better moving average"
+  - Moving average crosses inherently laggy
+
+--------------------------------------------------------------------------------
+VIDEO 11: MONEY FLOW INDICATOR (MFI)
+--------------------------------------------------------------------------------
+Indicator Type: Overbought/Oversold oscillator (like RSI but with volume)
+What It Measures: Buying/selling pressure using price and volume
+Buy/Sell Rules:
+  - Drops into oversold (below 20), crosses back above 20 = BUY
+  - Rises into overbought (above 80), crosses back below 80 = SELL
+  - Could narrow to 70/30 for more signals
+Parameters: Default (80/20 OB/OS levels)
+Results: 3 trades, 3 winners = 100% win rate
+Winner: YES
+Notes:
+  - Too few signals (3 in one year)
+  - Narrowing OB/OS levels to 70/30 could increase trade frequency
+  - Very high accuracy but impractical standalone due to low frequency
+  - Could be excellent as confirmation indicator
+
+--------------------------------------------------------------------------------
+VIDEO 12: TRUE STRENGTH INDICATOR (TSI)
+--------------------------------------------------------------------------------
+Indicator Type: Two-line cross with zero line
+What It Measures: Momentum using double-smoothed price changes
+Buy/Sell Rules:
+  - Light blue line crosses above purple = BUY
+  - Light blue line crosses below purple = SELL
+  - Zero line cross is too laggy - use the two-line cross instead
+Parameters: Default settings
+Results: 21 trades, 14 winners = ~67% win rate
+Winner: YES
+Notes:
+  - Really good at calling trades
+  - Zero line cross method too laggy
+  - Two-line cross gives better entry timing
+
+--------------------------------------------------------------------------------
+VIDEO 13: TRIX WITH MOVING AVERAGE
+--------------------------------------------------------------------------------
+Indicator Type: TRIX oscillator + 20-period SMA cross
+What It Measures: Triple-smoothed exponential moving average rate of change
+Buy/Sell Rules:
+  - TRIX crosses above SMA (20 period) = BUY
+  - TRIX crosses below SMA = SELL
+  - (Zero line cross version also tested previously - also winner)
+Parameters: TRIX default, SMA at 20 period
+Results: 7 trades, 5 winners = ~71% win rate
+Winner: YES
+Notes:
+  - Very smooth indicator (no jerky spikes)
+  - Something about it "feels like it will work well with overall team of indicators"
+  - Gives slightly more trades than zero-line cross version
+  - TRIX zero line cross also a winner but with very few trades
+
+--------------------------------------------------------------------------------
+VIDEO 14: ELDER RAY BULL AND BEAR POWER
+--------------------------------------------------------------------------------
+Indicator Type: Two oscillating lines with signal dots
+What It Measures: Bull power and bear power of price action
+Buy/Sell Rules:
+  - Green dot appears = BUY
+  - Red dot appears = SELL
+Parameters: Default (TradingView member created)
+Results: 3 trades, 2 winners = ~67% win rate
+Winner: YES
+Notes:
+  - Very few signals
+  - Good at keeping you out of choppy markets
+  - No repainting observed
+
+--------------------------------------------------------------------------------
+VIDEO 15: 3 IN 1 INDICATOR
+--------------------------------------------------------------------------------
+Indicator Type: Combined indicator (3 popular indicators merged)
+What It Measures: Confluence of 3 indicators for entry signals
+Buy/Sell Rules:
+  - Blue candle = BUY signal
+  - Gray candle = SELL signal
+Parameters: Default (TradingView member created)
+Results: 4 trades, 3 winners = 75% win rate
+Winner: YES
+Notes:
+  - Very few signals (4 in a year)
+  - Undertrading is better than overtrading for new traders
+
+--------------------------------------------------------------------------------
+VIDEO 16: VOLUME WEIGHTED MOVING AVERAGE (VWMA)
+--------------------------------------------------------------------------------
+Indicator Type: Moving average (price overlay)
+What It Measures: Volume-weighted average price over period
+Buy/Sell Rules:
+  - Price breaks above VWMA = BUY
+  - Price breaks below VWMA = SELL
+Parameters: 30 period
+Results: 25 trades, 14 winners = 56% win rate
+Winner: NO
+Notes:
+  - Failed to meet 60% threshold
+  - Whipsaw problem at the moving average line
+  - Two schools of thought create indecision at the MA line
+  - Different moving averages vary more than expected when compared side by side
+
+--------------------------------------------------------------------------------
+VIDEO 17: 14/30 SMA SPLIT DIVERGENCE
+--------------------------------------------------------------------------------
+Indicator Type: Zero line cross (distance between 14 SMA and 30 SMA)
+What It Measures: Divergence/distance between two moving averages
+Buy/Sell Rules:
+  - Green histogram (above zero) = BUY
+  - Red histogram (below zero) = SELL
+Parameters: 14-period SMA and 30-period SMA
+Results: 9 trades, 7 winners = ~78% win rate
+Winner: YES
+Notes:
+  - Despite being "just another MA cross" it performed much better
+  - One trade captured a 900-pip move
+  - Example of why keeping an open mind is crucial
+  - Even though standard MA cross failed previously, this specific configuration won
+
+--------------------------------------------------------------------------------
+VIDEO 18: 123 TREND CONTINUATION PATTERN
+--------------------------------------------------------------------------------
+Indicator Type: Pattern-based signal indicator with arrows
+What It Measures: Trend continuation patterns
+Buy/Sell Rules:
+  - Green arrow = BUY
+  - Red arrow = SELL
+  - Creator's built-in TP/SL ignored - used standard ATR-based TP/SL instead
+Parameters: Default (TradingView member created)
+Results: 10 trades, 8 winners = 80% win rate
+Winner: YES
+Notes:
+  - A bit slow in catching trends
+  - Creator's TP/SL had poor risk:reward ratio (2:1 negative)
+  - Using standardized ATR money management gives much better results
+  - Warning: creator's stops were ~2x the take profit = dangerous
+
+--------------------------------------------------------------------------------
+VIDEO 19: 2 RSI INDICATOR
+--------------------------------------------------------------------------------
+Indicator Type: Dual RSI with overbought/oversold
+What It Measures: Relative Strength Index on different periods
+Buy/Sell Rules:
+  - RSI goes overbought (>80), crosses back below = SELL
+  - RSI goes oversold (<20), crosses back above = BUY
+Parameters: RSI on 5-period (vs standard 14)
+Results: 14 trades, 9 winners = ~64% win rate
+Winner: YES
+Notes:
+  - Lesser version of standard RSI (which got 70%)
+  - RSI is fundamentally a reversal indicator - caps trading potential
+  - More trades than standard RSI (14 vs 10) but lower accuracy
+  - May get cut in later testing stages
+
+--------------------------------------------------------------------------------
+VIDEO 20: 9/21 EMA CROSS
+--------------------------------------------------------------------------------
+Indicator Type: Two-line moving average cross
+What It Measures: Short-term vs medium-term trend
+Buy/Sell Rules:
+  - 9 EMA crosses above 21 EMA = BUY
+  - 9 EMA crosses below 21 EMA = SELL
+Parameters: 9 EMA and 21 EMA
+Results: 11 trades, 7 winners = ~64% win rate
+Winner: YES (barely)
+Notes:
+  - EMA was the best performing moving average type in head-to-head tests
+  - Choppiness kills the win rate
+  - Standard MA cross previously failed; EMA cross barely passes
+
+--------------------------------------------------------------------------------
+VIDEO 21: EMA DISTANCE INDICATOR
+--------------------------------------------------------------------------------
+Indicator Type: Multiple EMA lines (stacked cross)
+What It Measures: Distance/alignment of multiple EMAs
+Buy/Sell Rules:
+  - Blue (fastest) line breaks above all other lines = BUY
+  - Blue line breaks below all other lines = SELL
+Parameters: Default (TradingView member created, Alligator-like)
+Results: 10 trades, 8 winners = 80% win rate
+Winner: YES
+Notes:
+  - Multiple line cross filters out choppiness better than single MA cross
+  - Moving average testing progression: standard MA failed -> EMA price break (60%) -> EMA 9/21 cross (64%) -> EMA Distance multi-line cross (80%)
+  - Super delayed but very accurate
+  - Under-trading is preferable to over-trading
+
+--------------------------------------------------------------------------------
+VIDEO 22: PEOPLE'S PIVOT INDICATOR
+--------------------------------------------------------------------------------
+Indicator Type: Signal-based pivot indicator
+What It Measures: Pivot points with buy/sell signals
+Buy/Sell Rules:
+  - Indicator says "SELL" = go short
+  - Indicator says "BUY" = go long
+  - Skip signals if already in a trade on same pair
+Parameters: Default (TradingView member created)
+Results: 29 trades, 18 winners = ~62% win rate
+Winner: YES
+Notes:
+  - Higher number of signals (29) - not quite overtrading
+  - Seems to give signals relatively accurately even with higher frequency
+  - Skipped signals when already in existing position
+
+--------------------------------------------------------------------------------
+VIDEO 23: TREND TRACKER INDICATOR
+--------------------------------------------------------------------------------
+Indicator Type: Signal-based trend indicator
+What It Measures: Potential trend entries
+Buy/Sell Rules:
+  - Red "potential entry" label = SELL
+  - Green "potential entry" label = BUY
+Parameters: Default (TradingView member created)
+Results: 8 trades, 7 winners = ~88% win rate
+Winner: YES
+Notes:
+  - Only gave long signals in the test period (no shorts detected)
+  - Missing downtrend signals is a significant limitation
+  - Very high accuracy on the signals it did give
+
+--------------------------------------------------------------------------------
+VIDEO 24: ACTIVE FRAME INDICATOR
+--------------------------------------------------------------------------------
+Indicator Type: Zone-based indicator (reversal zones)
+What It Measures: Potential reversal zones and entry points
+Buy/Sell Rules:
+  - Zone flips from red to green = BUY
+  - Zone flips from green to red = SELL
+Parameters: Default (no user-modifiable inputs)
+Results: 1 trade, 1 winner = 100% win rate
+Winner: YES (technically)
+Notes:
+  - Only 1 signal in entire year - extreme undertrading
+  - Could potentially work as trend continuation indicator
+  - Needs setting tweaks to generate more signals
+
+--------------------------------------------------------------------------------
+VIDEO 25: EXERTION METER
+--------------------------------------------------------------------------------
+Indicator Type: Volatility meter with trend confirmation
+What It Measures: Volatility/momentum strength of price moves
+Buy/Sell Rules:
+  - Red signal line appears + price above 9 EMA = BUY
+  - Red signal line appears + price below 9 EMA = SELL
+  - Indicator only tells "there is a strong move" - EMA determines direction
+Parameters: Default; added 9 EMA for direction
+Results: 12 trades, 8 winners = ~67% win rate
+Winner: YES
+Notes:
+  - Pure volatility indicator - needs trend indicator for direction
+  - Combined with simple 9 EMA for direction
+  - Could be excellent as VOLATILITY FILTER for other systems
+  - Identifies when pair is making a strong move on good volume
+
+--------------------------------------------------------------------------------
+VIDEO 26: RANGE IDENTIFIER INDICATOR
+--------------------------------------------------------------------------------
+Indicator Type: Background color indicator with range filter
+What It Measures: Trending vs ranging market conditions
+Buy/Sell Rules:
+  - Background turns green = BUY
+  - Background turns red = SELL
+  - Gray background = ranging/no-trade zone
+Parameters: Default; increased background opacity to 50%
+Results: 18 trades, 12 winners = ~67% win rate
+Winner: YES
+Notes:
+  - HAS BUILT-IN RANGE FILTER (gray zone = no trading)
+  - Filters out choppy ranging markets
+  - 18 trades in a year = sweet spot for trade frequency
+  - Discussed full position management methodology in detail
+
+--------------------------------------------------------------------------------
+VIDEO 27: ICHIMOKU KINKO HYO (Modified)
+--------------------------------------------------------------------------------
+Indicator Type: Multi-component system (Tenkan-sen, Kijun-sen, signals)
+What It Measures: Trend, momentum, support/resistance
+Buy/Sell Rules:
+  - "IB" label = BUY
+  - "IS" label = SELL
+Parameters: TradingView member created version with signals
+Results: 8 trades, 6 winners = 75% win rate
+Winner: YES
+Notes:
+  - Discussed Tenkan-sen and Kijun-sen as confirmation
+  - Sometimes delayed in entry
+  - Part of larger Ichimoku system
+  - Support/resistance levels from years back still relevant
+
+--------------------------------------------------------------------------------
+VIDEO 28: BULL BEAR POWER TREND
+--------------------------------------------------------------------------------
+Indicator Type: Two oscillating lines with histogram
+What It Measures: Bull and bear power with trend confirmation
+Buy/Sell Rules:
+  - Histogram confirms direction when oscillating line crosses above/below 2 level
+  - Green histogram = BUY confirmation
+  - Red histogram = SELL confirmation
+Parameters: Default (TradingView member created)
+Results: 13 trades, 9 winners = ~69% win rate
+Winner: YES
+Notes:
+  - Also has a signal line that could provide different trading method
+  - A bit slow at reacting sometimes
+  - Good trend confirmation
+
+--------------------------------------------------------------------------------
+VIDEO 29: GANN HIGH LOW
+--------------------------------------------------------------------------------
+Indicator Type: Single line overlay (like enhanced moving average)
+What It Measures: Dynamic support/resistance based on Gann principles
+Buy/Sell Rules:
+  - Price breaks above line = BUY
+  - Price breaks below line = SELL
+Parameters: Default settings
+Results: 15 trades, 10 winners = ~67% win rate
+Winner: YES (conditional)
+Notes:
+  - POSSIBLE REPAINTING detected - line appears to shift slightly after candle close
+  - Needs verification on live chart (1-min timeframe)
+  - If repainting confirmed, would be moved to NO list
+  - "Moving average on steroids" feel
+
+--------------------------------------------------------------------------------
+VIDEO 30: SSL CHANNEL
+--------------------------------------------------------------------------------
+Indicator Type: Two-line cross (channel)
+What It Measures: Trend direction with support/resistance levels
+Buy/Sell Rules:
+  - Green line crosses above red = BUY
+  - Red line crosses above green = SELL
+Parameters: Default settings (heard that 7 might be better but tested on default)
+Results: 21 trades, 14 winners = ~67% win rate
+Winner: YES
+Notes:
+  - Philosophy: test on default first, then dial in later
+  - Could also serve as EXIT INDICATOR
+  - Classified under entry, confirmation, AND exit categories
+  - With tweaking, could potentially reach 76-90% win rate
+  - Combines well with confirmation + range filter indicators
+
+--------------------------------------------------------------------------------
+VIDEO 31: SCHAFF TREND CYCLE (STC)
+--------------------------------------------------------------------------------
+Indicator Type: Oscillator with overbought/oversold and signal dots
+What It Measures: Trend cycle combining MACD and Stochastic
+Buy/Sell Rules:
+  - Green dot appears (leaving oversold) + next candle confirms (green, closes above) = BUY
+  - Red dot appears (leaving overbought) + next candle confirms (red, closes below) = SELL
+  - Confirmation candle is REQUIRED (Schaff's own recommendation)
+Parameters: Default settings
+Results: 9 trades, 9 winners = 100% win rate
+Winner: YES
+Notes:
+  - Perfect win rate with reasonable number of trades (9)
+  - Confirmation candle requirement filters out many bad signals
+  - Missed some good trades but never gave a losing one
+  - Creator (Schaff) recommended the confirmation methodology
+
+--------------------------------------------------------------------------------
+VIDEO 32: MVWAP (Modified VWAP)
+--------------------------------------------------------------------------------
+Indicator Type: VWAP with fast SMA overlay
+What It Measures: Volume-weighted average price
+Buy/Sell Rules:
+  - SMA (2 period) crosses above MVWAP (30 period) = BUY
+  - SMA crosses below MVWAP = SELL
+Parameters: MVWAP on 30 period, SMA on 2 period
+Results: 13 trades, 9 winners = ~69% win rate
+Winner: YES
+Notes:
+  - Coding error placed indicator in separate pane (workaround: added SMA2 to it)
+  - Caught moves at really decent points
+  - Better than standard VWMA price break (which failed)
+
+--------------------------------------------------------------------------------
+VIDEO 33: ELASTIC VOLUME WEIGHTED MOVING AVERAGE (EVWMA)
+--------------------------------------------------------------------------------
+Indicator Type: Moving average with envelope/channel
+What It Measures: Volume-weighted price with adaptive envelope
+Buy/Sell Rules:
+  - Price breaks above upper envelope band = BUY
+  - Price breaks below lower envelope band = SELL
+Parameters: 30 period with envelope enabled
+Results: 18 trades, 13 winners = ~72% win rate
+Winner: YES
+Notes:
+  - Envelope/channel provides buffer against whipsaw
+  - Different calculation from standard VWMA
+  - Channel rides overall trend direction nicely
+  - 18 trades = good frequency
+
+--------------------------------------------------------------------------------
+VIDEO 34: DIRECTIONAL MOVEMENT INDEX (DMI - Member Version)
+--------------------------------------------------------------------------------
+Indicator Type: Background color indicator
+What It Measures: Directional movement/trend strength
+Buy/Sell Rules:
+  - Background turns green = BUY
+  - Background turns red = SELL
+Parameters: Default (TradingView member created version)
+Results: 15 trades, 11 winners = ~73% win rate
+Winner: YES
+Notes:
+  - Has mysterious leading histogram bars (purpose unclear)
+  - Different from default DMI - member-created version
+  - Decent number of trades and good accuracy
+
+--------------------------------------------------------------------------------
+VIDEO 35: DAMIANI VOLATMETER
+--------------------------------------------------------------------------------
+Indicator Type: Multi-component volatility + trend indicator
+What It Measures: Market volatility and trend strength
+Buy/Sell Rules:
+  - White background (both lines above zero) = market is trending
+  - Green oscillating line + above gray line + above zero = BUY
+  - Red oscillating line + above gray line + above zero = SELL
+  - Below zero or colored background = NO TRADE (ranging)
+Components:
+  - Zero line = range identifier (below = ranging, above = trending)
+  - Red/green oscillating line = direction signal
+  - Gray line = additional range filter
+  - Blue/orange trend analyzing line = additional trend confirmation
+Parameters: Default
+Results: 4 trades, 4 winners = 100% win rate
+Winner: YES
+Notes:
+  - EXCELLENT VOLATILITY/RANGE FILTER
+  - Very few signals but extremely accurate
+  - Multiple layers of filtering: zero line, gray line, background color
+  - Could test with reduced filtering for more signals
+
+--------------------------------------------------------------------------------
+VIDEO 36: EHLERS SINEWAVE V2
+--------------------------------------------------------------------------------
+Indicator Type: Two-line cross
+What It Measures: Cycle analysis (sine wave transformation)
+Buy/Sell Rules:
+  - Green line crosses above red = BUY
+  - Red line crosses above green = SELL
+Parameters: Default
+Results: 17 trades, 6 winners = ~35% win rate
+Winner: NO
+Notes:
+  - Started well then got wildly out of sync
+  - Major problem with lagging/desynchronization
+  - Created by "Cheat Country" who has many Ehlers-based indicators
+
+--------------------------------------------------------------------------------
+VIDEO 37: ULTIMATE TRADER OSCILLATOR
+--------------------------------------------------------------------------------
+Indicator Type: Oscillating line (color-shift)
+What It Measures: Market momentum/direction
+Buy/Sell Rules:
+  - Line turns green = BUY
+  - Line turns red = SELL
+  - (Sentiment background tested separately - much worse)
+Parameters: Default; sentiment feature disabled
+Results: 27 trades, 21 winners = ~78% win rate
+Winner: YES
+Notes:
+  - Oscillating line alone vastly outperforms the full indicator
+  - With sentiment = too few signals; without = excellent results
+  - Very smooth, no jerky spikes
+  - High number of trades AND high accuracy = rare combination
+  - Stripping down complex indicators sometimes improves them
+
+--------------------------------------------------------------------------------
+VIDEO 38: JMA + TS (Jurik Moving Average + Trailing Stop)
+--------------------------------------------------------------------------------
+Indicator Type: Color-shifting MA + adaptive trailing stop
+What It Measures: Trend direction + dynamic stop level
+Buy/Sell Rules:
+  - MA turns green = BUY
+  - MA turns red = SELL
+  - Orange trailing stop line = EXIT indicator (flips above/below price)
+Parameters: Default (Based on Jurik MA + Alex Grover A2RTS trailing stop)
+Results: 15 trades, 11 winners = ~73% win rate
+Winner: YES
+Notes:
+  - EXIT INDICATOR BUILT IN (orange trailing stop line)
+  - Trailing stop adapts to market: wide in trends, tight in ranging
+  - Exit indicator also works as confirmation (leading the entry signal)
+  - One trade captured 280 pips using the trailing stop exit
+  - HIGHLY RECOMMENDED for exit indicator component
+
+--------------------------------------------------------------------------------
+VIDEO 39: DEMARK REVERSAL POINTS
+--------------------------------------------------------------------------------
+Indicator Type: Signal-based reversal indicator
+What It Measures: Potential price reversal points (based on Tom DeMark)
+Buy/Sell Rules:
+  - "BUY" label appears = BUY
+  - "SELL" label appears = SELL
+Parameters: Default (TradingView member created)
+Results: 6 trades, 5 winners = ~83% win rate
+Winner: YES
+Notes:
+  - Uses support/resistance points to identify reversals
+  - Based on Tom DeMark Sequential concepts
+  - Signals placed at really decent locations
+  - Went extended period without signals in some conditions
+
+--------------------------------------------------------------------------------
+VIDEO 40: DIDI INDEX
+--------------------------------------------------------------------------------
+Indicator Type: Two-line cross with zero line
+What It Measures: Relationship between moving averages
+Buy/Sell Rules:
+  - Green line crosses above red = BUY
+  - Red line crosses above green = SELL
+  - Zero line proximity discussed but NOT used (too subjective)
+Parameters: Default
+Results: 18 trades, 12 winners = ~67% win rate
+Winner: YES
+Notes:
+  - Zero line could add filter but makes it too subjective
+  - Discussed cup-and-handle price action patterns in detail
+  - Price action should accompany indicator signals for confirmation
+
+--------------------------------------------------------------------------------
+VIDEO 41: KIJUN-SEN ZERO LINE CROSS
+--------------------------------------------------------------------------------
+Indicator Type: Zero line cross (from Ichimoku component)
+What It Measures: Kijun-sen deviation from equilibrium
+Buy/Sell Rules:
+  - Line crosses above zero = BUY
+  - Line crosses below zero = SELL
+Parameters: Default (TradingView member created from Ichimoku)
+Results: 18 trades, 11 winners = ~61% win rate
+Winner: YES (barely)
+Notes:
+  - Possible repainting in background color version
+  - Zero line cross version more reliable than background color version
+  - Part of Ichimoku system stripped out as standalone
+
+--------------------------------------------------------------------------------
+VIDEO 42: CIPHER B (First Test - Dots Only)
+--------------------------------------------------------------------------------
+Indicator Type: Oscillator with signal dots
+What It Measures: Momentum waves with entry signals
+Buy/Sell Rules:
+  - Red dot = SELL
+  - Green dot = BUY
+Parameters: Default
+Results: 36 trades, 18 winners = 50% win rate
+Winner: NO
+Notes:
+  - Failed with simple dot signals
+  - Too many signals, many in wrong spots
+  - Retested with proper methodology in Video 43
+
+--------------------------------------------------------------------------------
+VIDEO 43: CIPHER B (Second Test - Proper Methodology)
+--------------------------------------------------------------------------------
+Indicator Type: Oscillator with sequential signal dots
+What It Measures: Momentum waves with proper entry methodology
+Buy/Sell Rules:
+  - In lower territory: wait for green dot #1, then green dot #2 closer to zero = BUY
+  - In upper territory: wait for red dot #1, then red dot #2 closer to zero = SELL
+  - Sequential dots required (two dots, second closer to zero)
+Parameters: Default
+Results: 6 trades, 5 winners = ~83% win rate
+Winner: YES
+Notes:
+  - Proper methodology dramatically improved results (50% -> 83%)
+  - Community knowledge made the difference
+  - Far fewer but much more accurate signals
+
+--------------------------------------------------------------------------------
+VIDEO 44: RSI INVERSE FISHER TRANSFORM
+--------------------------------------------------------------------------------
+Indicator Type: Oscillator with overbought/oversold (modified RSI)
+What It Measures: RSI transformed with inverse Fisher function for clearer signals
+Buy/Sell Rules:
+  - Line goes above +0.50, crosses back below = SELL
+  - Line goes below -0.50, crosses back above = BUY
+  - When line hits ceiling/floor and goes sideways = extreme overextension
+Parameters: Default
+Results: 19 trades, 14 winners = ~74% win rate
+Winner: YES
+Notes:
+  - Created by John Ehlers
+  - Line has ceiling/floor (unlike standard RSI)
+  - When line goes sideways at extremes = very overextended
+  - Better defined overbought/oversold areas than standard RSI
+
+--------------------------------------------------------------------------------
+VIDEO 45: TOP 4 EXIT INDICATORS (Educational)
+--------------------------------------------------------------------------------
+Not a single indicator test - educational overview of exit strategies.
+
+Exit Indicator Rankings (from a different channel):
+  #4: MA Crossover (20 MA + ATR MA) - exit when they cross
+  #3: Gann High-Low Activator (input changed to 5, on 1H timeframe)
+  #2: Trend Magic Indicator - exit when color/zone shifts
+  #1: Ichimoku combined with HMA Color NRP - exit on color change in 1H
+
+Notes:
+  - 1-hour timeframe recommended for exit monitoring
+  - Large volume bars at end of day = normal liquidation, ignore
+  - Don't use fixed pip take-profits - use indicator-based exits
+
+--------------------------------------------------------------------------------
+VIDEO 46: OPTIMIZED TREND TRACKER (OTT)
+--------------------------------------------------------------------------------
+Indicator Type: Two-line cross with signal labels
+What It Measures: Optimized trend direction
+Buy/Sell Rules:
+  - "BUY" label = BUY
+  - "SELL" label = SELL
+Parameters: Default
+Results: 10 trades, 7 winners = 70% win rate
+Winner: YES
+Notes:
+  - Solid indicator, not too early not too late
+  - Large candle moves often cause stop-outs (rubber band effect)
+
+--------------------------------------------------------------------------------
+VIDEO 47: 9-PERIOD MOVING AVERAGE SYSTEM (Portuguese - Larry Williams)
+--------------------------------------------------------------------------------
+Indicator Type: Single moving average direction system
+What It Measures: 9 EMA direction
+Buy/Sell Rules:
+  - 9 EMA turns upward = BUY
+  - 9 EMA turns downward = SELL
+  - Close position only when MA turns opposite direction
+  - NO stop loss in original system - only exit on MA reversal
+  - Filter: only take signals when 50 MA agrees with direction
+Parameters: 9 EMA (exponential), 50 MA filter
+Results: ~35-40% win rate but large risk:reward ratio (~3:1)
+Winner: DIFFERENT METHODOLOGY (trend following)
+Notes:
+  - Larry Williams system used to win international trading competitions
+  - 15,600% returns cited
+  - Best timeframes: 60-min, 10-min, weekly (for trend following)
+  - 15-min, 5-min, daily = better for mean reversion
+  - Low win rate (~35-40%) but large winners compensate
+  - Adding 50 MA filter dramatically improves results
+  - Works best on trending instruments
+  - Must pre-select assets that trend well
+
+--------------------------------------------------------------------------------
+VIDEO 48: TILLSON T3 MOVING AVERAGE
+--------------------------------------------------------------------------------
+Indicator Type: Color-shifting moving average
+What It Measures: Triple-smoothed exponential moving average
+Buy/Sell Rules:
+  - Line turns green = BUY
+  - Line turns red = SELL
+  - (NOT price break - color shift method specifically)
+Parameters: Default
+Results: 22 trades, 16 winners = ~73% win rate
+Winner: YES
+Notes:
+  - Color shift method far superior to price break method
+  - Color shift prevents whipsaw chop at the MA line
+  - Good number of trades AND high accuracy
+  - One of the best moving average results
+
+--------------------------------------------------------------------------------
+VIDEO 49: MOST INDICATOR (Moving Stop Loss)
+--------------------------------------------------------------------------------
+Indicator Type: Two-line cross (EMA-based with trailing component)
+What It Measures: Trend direction with dynamic stop
+Buy/Sell Rules:
+  - Orange line crosses above red = BUY
+  - Orange line crosses below red = SELL
+Parameters: Default (modified EMA percentage-based)
+Results: 6 trades, 5 winners = ~83% win rate
+Winner: YES
+Notes:
+  - Name stands for "Moving Stop Loss"
+  - Functions more as entry indicator despite name
+  - Very few trades but extremely accurate
+  - From same prolific TradingView creator as several other winners
+
+--------------------------------------------------------------------------------
+VIDEO 50: CLUSTER ALGORITHM 1
+--------------------------------------------------------------------------------
+Indicator Type: Dot/cluster pattern with EMA overlays
+What It Measures: Potential reversal areas using cluster analysis
+Buy/Sell Rules:
+  - Large orange dot surrounded by blue dots = BUY
+  - Large orange dot surrounded by red dots = SELL
+  - Original demo used 15-min timeframe
+Parameters: Default (created by Samuel Leach)
+Results: 6 trades, 5 winners = ~83% win rate
+Winner: YES
+Notes:
+  - Creator recommended 15-min timeframe (tested on daily)
+  - Has Algorithm 2 component on sub-chart for exits
+  - Claims to work well in ranging/choppy markets
+  - Preemptively identifies reversal areas
+
+
+================================================================================
+SECTION 2: RANKED SUMMARY
+================================================================================
+
+--------------------------------------------------------------------------------
+TOP PERFORMERS BY WIN RATE (Highest to Lowest)
+--------------------------------------------------------------------------------
+
+TIER 1: 100% WIN RATE (with caveats - low trade count)
+  1. Schaff Trend Cycle (STC)        - 100% (9 trades) *** BEST - good trade count
+  2. Super Range Indicator            - 100% (few trades)
+  3. Money Flow Indicator (MFI)       - 100% (3 trades - too few)
+  4. Active Frame Indicator           - 100% (1 trade - far too few)
+  5. Damiani Volatmeter               - 100% (4 trades - few but quality)
+
+TIER 2: 80-99% WIN RATE
+  6. Trend Tracker                    - 88% (8 trades, longs only)
+  7. Coppock Curve                    - 85% (7 trades)
+  8. Demark Reversal Points           - 83% (6 trades)
+  9. Cipher B (proper method)         - 83% (6 trades)
+  10. MOST Indicator                  - 83% (6 trades)
+  11. Cluster Algorithm 1             - 83% (6 trades)
+  12. 123 Trend Continuation          - 80% (10 trades)
+  13. EMA Distance Indicator          - 80% (10 trades)
+
+TIER 3: 70-79% WIN RATE
+  14. 14/30 SMA Split Divergence      - 78% (9 trades)
+  15. Ultimate Trader Oscillator      - 78% (27 trades) *** HIGH VOLUME + HIGH ACCURACY
+  16. Donchian Channel                - 75% (17 trades) *** GOOD BALANCE
+  17. 3 in 1 Indicator                - 75% (4 trades)
+  18. Ichimoku Kinko Hyo              - 75% (8 trades)
+  19. Absolute Str. Histogram v2      - 74% (29 trades, with filter)
+  20. RSI Inverse Fisher Transform    - 74% (19 trades)
+  21. JMA + TS                        - 73% (15 trades) *** HAS EXIT INDICATOR
+  22. Tillson T3                      - 73% (22 trades) *** GOOD BALANCE
+  23. DMI (Member Version)            - 73% (15 trades)
+  24. Elastic VWMA                    - 72% (18 trades)
+  25. TRIX w/MA                       - 71% (7 trades)
+  26. Stochastic                      - 70% (17 trades)
+  27. Optimized Trend Tracker         - 70% (10 trades)
+
+TIER 4: 60-69% WIN RATE
+  28. MVWAP                           - 69% (13 trades)
+  29. Bull Bear Power Trend           - 69% (13 trades)
+  30. True Strength Indicator (TSI)   - 67% (21 trades)
+  31. Range Identifier                - 67% (18 trades) *** HAS RANGE FILTER
+  32. Gann High Low                   - 67% (15 trades) ** possible repaint
+  33. SSL Channel                     - 67% (21 trades) *** ALSO EXIT INDICATOR
+  34. Elder Ray Bull Bear             - 67% (3 trades)
+  35. Exertion Meter                  - 67% (12 trades) *** VOLATILITY FILTER
+  36. DIDI Index                      - 67% (18 trades)
+  37. Williams Alligator              - 67% (9 trades)
+  38. DPO                             - 65% (20 trades)
+  39. Absolute Str. Histogram v2      - 64% (34 trades, no filter)
+  40. 2 RSI                           - 64% (14 trades)
+  41. 9/21 EMA Cross                  - 64% (11 trades)
+  42. McGinley Dynamic                - 62% (13 trades)
+  43. People's Pivot                  - 62% (29 trades)
+  44. Kijun-Sen Zero Line             - 61% (18 trades)
+  45. Aroon                           - 60% (15 trades)
+
+FAILED (Below 60%):
+  - Volume Weighted Moving Average   - 56% (25 trades) - whipsaw problem
+  - Ehlers Sinewave V2               - 35% (17 trades) - got out of sync
+  - Cipher B (simple dots)           - 50% (36 trades) - wrong methodology
+
+--------------------------------------------------------------------------------
+BEST COMBINATION IDEAS MENTIONED
+--------------------------------------------------------------------------------
+
+1. ENTRY + CONFIRMATION + RANGE FILTER + EXIT SYSTEM:
+   - Baseline/Entry: Donchian Channel, STC, or Tillson T3
+   - Confirmation: Stochastic, True Strength Indicator, or SSL
+   - Range/Volatility Filter: Damiani Volatmeter, Range Identifier, or Exertion Meter
+   - Exit Indicator: JMA+TS trailing stop, SSL Channel, Gann HL Activator, Trend Magic
+
+2. ABSOLUTE STRENGTH HISTOGRAM V2 ENHANCEMENTS:
+   - Add 0.10 threshold line on histogram (74% vs 64%)
+   - Add Fibonacci levels to identify overextended moves
+   - Add range/volatility filter to avoid ranging markets
+
+3. MOVING AVERAGE OPTIMIZATION:
+   - EMA is the best MA type overall
+   - Multi-line cross (EMA Distance) > single cross > price break
+   - Envelope/channel methods (EVWMA) reduce whipsaw
+   - Color-shift method (Tillson T3) prevents whipsaw entirely
+
+4. GRADING SYSTEM FOR TRADE QUALITY:
+   - Condition 1: Uptrend/downtrend with 3+ cycles? (+1 point)
+   - Condition 2: Price action exhaustion pattern formed? (+1 point)
+   - Condition 3: Indicator confirms trade direction? (+1 point)
+   - Set minimum score threshold for trade entry
+
+5. SSL CHANNEL AS MULTI-PURPOSE:
+   - Entry indicator: two-line cross
+   - Confirmation indicator: agrees with another entry
+   - Exit indicator: when lines cross opposite direction
+   - With settings tweaked from default, could reach 76%+
+
+6. STRIPPING COMPLEX INDICATORS:
+   - Ultimate Trader Oscillator: removing sentiment improved 78% win rate
+   - Cipher B: proper sequential methodology improved 50% -> 83%
+   - Lesson: simpler often beats complex
+
+--------------------------------------------------------------------------------
+INDICATORS SUITABLE FOR DAY TRADING
+--------------------------------------------------------------------------------
+
+1. Buy vs Sell Volume Indicator (Video 3) - specifically designed for day trading
+   - Works on 5-min charts with supply/demand zones
+   - Reads absorption at key levels
+   - Identifies trapped traders
+
+2. Cluster Algorithm 1 (Video 50) - originally demonstrated on 15-min
+   - Creator Samuel Leach showed it on 15-min timeframe
+   - Claims to work in ranging/choppy markets
+
+3. 9 EMA System / Larry Williams (Video 47)
+   - Best on 60-min, 10-min timeframes for trend following
+   - 15-min, 5-min for mean reversion approach
+
+4. Stochastic Oscillator (Video 4) - adaptable to any timeframe
+   - Works well as overbought/oversold on intraday
+
+5. Ichimoku / Gann HL Activator Exit (Video 45)
+   - 1-hour timeframe recommended for exit monitoring
+
+6. Exertion Meter + 9 EMA (Video 25)
+   - Identifies strong momentum moves on any timeframe
+
+NOTE: All other indicators were tested on daily charts. Many could work on
+lower timeframes but would need separate testing. The channel creator
+specifically warns that lower timeframe testing may not maintain the same
+win rates.
+
+--------------------------------------------------------------------------------
+VOLATILITY AND VOLUME FILTERS MENTIONED
+--------------------------------------------------------------------------------
+
+1. DAMIANI VOLATMETER (Video 35) - BEST VOLATILITY FILTER
+   - Zero line separates trending vs ranging
+   - Multiple layers: oscillating line, gray line, background color
+   - 100% win rate when fully filtered (but very few signals)
+   - Could be simplified for more signals
+
+2. EXERTION METER (Video 25) - VOLATILITY/MOMENTUM FILTER
+   - Fires signal when pair makes strong move on good volume
+   - Needs separate trend indicator for direction
+   - 67% win rate when combined with 9 EMA
+
+3. RANGE IDENTIFIER (Video 26) - RANGE FILTER
+   - Gray zone = ranging market (no trade)
+   - Green/Red = trending market (trade)
+   - Built-in ranging market filter
+   - 67% win rate, 18 trades/year
+
+4. ATR (Average True Range) - MONEY MANAGEMENT
+   - Used across all tests for take-profit and stop-loss calculation
+   - TP = 1x ATR, SL = 1.5x ATR (typical)
+   - Adapts stops to pair volatility
+   - Prevents excessive losses in volatile pairs
+
+5. BUY vs SELL VOLUME (Video 3) - VOLUME ANALYSIS
+   - Shows buying/selling pressure per candle
+   - Large abnormal volume = potential reversal
+   - End-of-day large volume = ignore (liquidation)
+
+6. MONEY FLOW INDICATOR (Video 11) - VOLUME + PRICE FILTER
+   - Incorporates volume into strength calculation
+   - Extremely accurate but too few signals
+   - Best as confirmation/filter rather than standalone
+
+7. STOCHASTIC (Video 4) - VOLATILITY CLASSIFICATION
+   - Classified as potential volatility filter
+   - Overbought/oversold zones indicate extreme conditions
+   - Can filter entries by requiring OB/OS condition first
+
+--------------------------------------------------------------------------------
+KEY STRATEGIC INSIGHTS FROM ALL VIDEOS
+--------------------------------------------------------------------------------
+
+1. The 60% win rate with 1:1.5 risk/reward is BREAKEVEN. You need either:
+   - Higher win rate, or
+   - Better exits to capture more pips per win
+
+2. Indicators that "under-trade" with high accuracy are BETTER than indicators
+   that "over-trade" with mediocre accuracy.
+
+3. Every losing trade eliminated is worth more than adding a winning trade
+   (especially when it compounds across all pairs).
+
+4. The EMA is the best-performing moving average type across all tests.
+
+5. Moving average color-shift > moving average cross > price break of MA.
+
+6. Multi-line crosses filter out choppiness better than two-line crosses.
+
+7. Indicators with built-in range/chop filters consistently outperform.
+
+8. Stripping complex indicators down to their best component often improves
+   performance (Ultimate Trader Oscillator, Cipher B).
+
+9. Confirmation candles (Schaff Trend Cycle method) dramatically improve accuracy.
+
+10. Position management: half off at 1st TP, move remainder to breakeven,
+    let ride until exit indicator fires.
+
+11. Weekend gaps can invalidate signals - set orders at Friday's close price
+    rather than Monday's open.
+
+12. Large single-candle moves often "rubber band" back - be cautious entering
+    after extreme candles.
+
+13. Price action patterns (Head & Shoulders, Cup & Handle, Double Top/Bottom)
+    should confirm indicator signals for highest probability trades.
+
+14. The channel tested 263+ indicators total, with ~40% becoming winners (105+).
+
+================================================================================
+END OF DOCUMENT
+================================================================================
