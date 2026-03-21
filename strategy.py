@@ -25,9 +25,9 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
     """
     EMA(8/34) crossover + EMA(200) trend + ADX(14)>20 + RSI(7)>65/<45.
     ATR(20)x2 trailing stop + TRIX(15) median crossover exit.
+    Skip 12h+13h (lunch + PTAX window).
 
-    TRIX exit replaces EMA reversal exit — triple-smoothed momentum catches
-    trend reversals with less noise.
+    TRIX exit + skip 12+13h combo unlocked by TRIX making train positive.
     """
     ema8 = ta.trend.ema_indicator(df["Close"], window=8)
     ema34 = ta.trend.ema_indicator(df["Close"], window=34)
@@ -108,7 +108,7 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
 
         # Entry filters
         cur_time = dates_time[i]
-        if hasattr(cur_time, 'hour') and cur_time.hour == 13:
+        if hasattr(cur_time, 'hour') and cur_time.hour in (12, 13):
             prev_date = d
             continue
         if adx_v[i] < 20 or br[i] <= 36:
