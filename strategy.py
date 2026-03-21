@@ -71,8 +71,8 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
     dates = df["date"].values
     dates_time = df["time"].values
 
-    # Rolling TRIX median — NO lookahead (only past 500 bars)
-    trix_rolling_med = trix.rolling(window=500, min_periods=100).median()
+    # Rolling TRIX median — NO lookahead (past 500 bars, shifted to exclude current)
+    trix_rolling_med = trix.rolling(window=500, min_periods=100).median().shift(1)
     trix_med_v = trix_rolling_med.values
 
     sig = np.zeros(len(df), dtype=np.int64)
@@ -131,7 +131,11 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
         if hasattr(cur_time, 'hour') and cur_time.hour in (12, 13):
             prev_date = d
             continue
-        if adx_v[i] < 20 or br[i] <= 36:
+        # Time-based cutoff: no entries after 14:55 (replaces bars_remaining lookahead)
+        if hasattr(cur_time, 'hour') and (cur_time.hour > 14 or (cur_time.hour == 14 and cur_time.minute >= 55)):
+            prev_date = d
+            continue
+        if adx_v[i] < 20:
             prev_date = d
             continue
 
