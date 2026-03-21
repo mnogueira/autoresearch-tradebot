@@ -40,20 +40,19 @@ def _rolling_hurst(close, window=100):
 
 def generate_signals(df: pd.DataFrame) -> pd.Series:
     """
-    EMA(8/34) crossover + EMA(200) trend + ADX(14)>20 + RSI(7)>65/<45.
-    ATR(20)x2 trailing stop + TRIX(15) median crossover exit.
+    EMA(8/34) crossover + EMA(220) trend + ADX(14)>20 + RSI(7)>65/<40.
+    ATR(20)x2 trailing stop + TRIX(12) median crossover exit.
     Skip 12h+13h. Hurst(100) > 0.50 regime filter.
 
-    Hurst exponent filters out ranging/mean-reverting regimes where
-    trend-following generates false signals.
+    Re-sweep optimized: trend 200->220, RSI short 45->40, TRIX 15->12.
     """
     ema8 = ta.trend.ema_indicator(df["Close"], window=8)
     ema34 = ta.trend.ema_indicator(df["Close"], window=34)
     rsi7 = ta.momentum.rsi(df["Close"], window=7)
-    ema200 = ta.trend.ema_indicator(df["Close"], window=200)
+    ema200 = ta.trend.ema_indicator(df["Close"], window=220)
     adx = ta.trend.adx(df["High"], df["Low"], df["Close"], window=14)
     atr = ta.volatility.average_true_range(df["High"], df["Low"], df["Close"], window=20)
-    trix = ta.trend.trix(df["Close"], window=15)
+    trix = ta.trend.trix(df["Close"], window=12)
     hurst = _rolling_hurst(df["Close"], window=100)
 
     close = df["Close"].values
@@ -155,7 +154,7 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
                 sig[i] = 1
                 pos = 1
                 peak = close[i]
-            elif cross_dn and close[i] < tv[i] and r < 45:
+            elif cross_dn and close[i] < tv[i] and r < 40:
                 sig[i] = -1
                 pos = -1
                 peak = close[i]
