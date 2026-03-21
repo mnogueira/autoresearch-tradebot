@@ -44,7 +44,7 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
     ATR(20)x2 trailing stop + TRIX(12) median crossover exit.
     Skip 12h+13h. Hurst(100) > 0.50 regime filter. VWAP direction confirm.
 
-    Creative: VWAP direction = only long above VWAP, short below VWAP.
+    VWAP direction + VR(3/20)<2.0 vol filter (skip extreme vol spikes).
     """
     ema8 = ta.trend.ema_indicator(df["Close"], window=8)
     ema34 = ta.trend.ema_indicator(df["Close"], window=34)
@@ -61,6 +61,10 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
     cum_vol = df["Volume"].groupby(df.index.date).cumsum().replace(0, np.nan)
     vwap = cum_tp_vol / cum_vol
 
+    # Volatility ratio: short-term vol / long-term vol
+    ret = df["Close"].pct_change()
+    vr = ret.rolling(3).std() / ret.rolling(20).std()
+
     close = df["Close"].values
     e8 = ema8.values
     e34 = ema34.values
@@ -71,6 +75,7 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
     trix_v = trix.values
     hurst_v = hurst.values
     vwap_v = vwap.values
+    vr_v = vr.values
     is_last = df["is_last_30min"].values
     is_first = df["is_first_bar"].values
     br = df["bars_remaining"].values
@@ -148,6 +153,11 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
         # Hurst regime filter: only trade in trending regimes
         hv = hurst_v[i]
         if not np.isnan(hv) and hv < 0.50:
+            prev_date = d
+            continue
+        # Vol ratio filter: skip when short-term vol is extreme (> 2x long-term)
+        vrv = vr_v[i]
+        if not np.isnan(vrv) and vrv > 2.0:
             prev_date = d
             continue
 
