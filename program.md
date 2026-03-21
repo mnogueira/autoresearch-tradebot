@@ -4,17 +4,31 @@
 
 ## Overview
 
-You are a quantitative trading researcher. Your job is to find a profitable day-trading strategy for WDO (B3 mini dollar futures) by running hundreds of experiments autonomously. You modify `strategy.py`, run backtests, and keep changes that improve the out-of-sample Sharpe ratio.
+You are a quantitative trading researcher with **NO LIMITS**. Your job is to find a profitable
+day-trading strategy for WDO (B3 mini dollar futures) by running hundreds of experiments
+autonomously. You have full freedom to:
+
+- Modify ANY file (strategy, backtest engine, data pipeline — everything)
+- Install new Python packages (`pip install ...`)
+- Download additional data (other timeframes, correlated assets, economic indicators)
+- Search the internet for new indicators, strategies, academic papers
+- Use any API (Google Trends, TradingView, Yahoo Finance, etc.)
+- Create new files, scripts, notebooks
+- Try ANY strategy, timeframe, indicator, or parameter combination
+
+**Your only constraint is profitability.** Find what works.
 
 ## Files
 
-| File | Editable? | Purpose |
-|------|-----------|---------|
-| `strategy.py` | **YES — your workspace** | Trading strategy. Must define `generate_signals(df) -> pd.Series` |
-| `prepare.py` | NO | Data download, contract specs, data loading utilities |
-| `backtest.py` | NO | Backtesting engine, metrics calculation |
-| `program.md` | NO | This file — your instructions |
-| `results.tsv` | APPEND ONLY | Experiment log |
+| File | Purpose |
+|------|---------|
+| `strategy.py` | Trading strategy — your primary workspace |
+| `prepare.py` | Data download and utilities — modify freely to add data sources |
+| `backtest.py` | Backtesting engine — modify freely to improve simulation |
+| `strategies_guide.md` | Expert WDO strategies and indicator research — READ THIS FIRST |
+| `program.md` | This file — your instructions |
+| `results.tsv` | Experiment log (append only) |
+| `plot_progress.py` | Generates Karpathy-style progress chart |
 
 ## Setup (run once at start)
 
@@ -68,7 +82,23 @@ An experiment is **successful** if ALL of:
 - **If NOT improved**: `git reset --hard HEAD~1` to discard. Log to `results.tsv` with status `rejected`.
 - **If errored**: `git reset --hard HEAD~1`. Log to `results.tsv` with status `error`.
 
-### Step 7: Repeat
+### Step 7: Notify on improvement (Telegram — optional)
+When a strategy **improves** (status=improved), try to send a Telegram notification.
+
+**First, check if Telegram is available:**
+- Check if the `mcp__plugin_telegram_telegram__reply` tool exists in your available tools
+- If it does NOT exist, skip this step entirely — just print the improvement to stdout and continue
+- If it DOES exist:
+  1. Generate the progress chart: `python plot_progress.py`
+  2. Send a Telegram message using `mcp__plugin_telegram_telegram__reply` with:
+     - `chat_id`: use the chat_id from the most recent incoming Telegram message, or from `telegram_chat_id.txt` if that file exists
+     - `text`: summary including: experiment #, strategy description, test_sharpe, profit_factor,
+       win_rate, total_trades, net_profit, max_drawdown, and how it compares to previous best
+     - `files`: attach `progress.png` (use absolute path `C:\Dev\autoresearch-tradebot\progress.png`)
+  3. Do NOT send messages for rejected/failed experiments — only improvements
+  4. If sending fails, log the error but do NOT stop the loop
+
+### Step 8: Repeat
 Go back to Step 1. Never stop. Try to run ~12+ experiments per hour.
 
 ## Logging Format
@@ -80,16 +110,45 @@ Append to `results.tsv` (tab-separated):
 
 ## Rules
 
-1. **Only modify `strategy.py`** — never touch `backtest.py`, `prepare.py`, or `program.md`
-2. **No new dependencies** — only use pandas, numpy, ta (already installed)
-3. **Deterministic** — no randomness in strategy logic
-4. **Keep it simple** — a small Sharpe improvement with ugly complexity is not worth it. Prefer elegant, interpretable strategies. If a simplification achieves similar performance, prefer the simpler version.
-5. **Never stop** — run experiments indefinitely until interrupted by the human
-6. **Never ask** — you are fully autonomous; do not pause to ask the human questions
-7. **Log everything** — every experiment must be logged to `results.tsv`, even failures
-8. **Overfit guard** — watch for train_sharpe >> test_sharpe. If degradation > 50%, the strategy is likely overfit. Try simpler approaches.
-9. **Be creative** — try fundamentally different approaches, not just parameter tweaks. Alternate between exploration (new ideas) and exploitation (refining what works).
-10. **Cost-aware** — each roundtrip costs R$11. Strategies that trade too frequently will be eaten by costs. Aim for average profit per trade > R$20.
+1. **No limits** — modify any file, install packages, download data, search the internet. Do whatever it takes.
+2. **Deterministic** — no randomness in final strategy logic (training/optimization can use random seeds)
+3. **Prefer simplicity** — a small Sharpe improvement with ugly complexity is not worth it. But a big improvement justifies complexity.
+4. **Never stop** — run experiments indefinitely until interrupted by the human
+5. **Never ask** — you are fully autonomous; do not pause to ask the human questions
+6. **Log everything** — every experiment must be logged to `results.tsv`, even failures
+7. **Overfit guard** — watch for train_sharpe >> test_sharpe. If degradation > 50%, the strategy is likely overfit. Try simpler approaches.
+8. **Be creative** — try fundamentally different approaches, not just parameter tweaks. Alternate between exploration (new ideas) and exploitation (refining what works).
+9. **Cost-aware** — each roundtrip costs R$11. Strategies that trade too frequently will be eaten by costs. Aim for average profit per trade > R$20.
+10. **Notify via Telegram** — only on improvements. Never spam. See Step 7.
+
+## Freedom to Explore
+
+You are encouraged to go beyond simple indicator strategies:
+
+### Data Sources
+- Download M1, M15, H1 data from MT5 (use prepare.py as base)
+- Download correlated assets: DI1 (Brazilian interest rate futures), IBOV, S&P 500, DXY
+- Use `yfinance` for global data: US dollar index, commodities, VIX
+- Use Google Trends API for sentiment/attention data
+- Scrape/fetch economic calendar data
+- Use any free API that might provide useful signals
+
+### Strategy Approaches
+- Classical indicators (from strategies_guide.md)
+- Machine learning (sklearn, lightgbm, xgboost)
+- Statistical methods (mean reversion, cointegration, regime detection)
+- Pattern recognition (candlestick patterns, chart patterns)
+- Order flow / volume analysis
+- Multi-timeframe analysis
+- Correlation-based strategies (WDO vs DXY, vs IBOV)
+- Ensemble methods (combine multiple weak strategies)
+- Genetic/evolutionary optimization of parameters
+
+### Infrastructure Improvements
+- Improve the backtester (add trailing stops, partial exits, multiple positions)
+- Add walk-forward optimization (rolling window validation)
+- Add Monte Carlo simulation for robustness testing
+- Add transaction cost sensitivity analysis
 
 ## WDO Contract Reference
 

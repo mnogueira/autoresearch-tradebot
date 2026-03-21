@@ -210,6 +210,18 @@ def add_session_markers(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+def download_all_timeframes(years_back: int = DEFAULT_YEARS_BACK) -> None:
+    """Download data for all available timeframes."""
+    for tf in TIMEFRAMES:
+        print(f"\n{'='*60}")
+        print(f"Downloading {tf}...")
+        print(f"{'='*60}")
+        try:
+            download_data(timeframe=tf, years_back=years_back)
+        except SystemExit:
+            print(f"WARNING: Failed to download {tf}, continuing...")
+
+
 # ── Main: run to download data ──────────────────────────────────────────────
 if __name__ == "__main__":
     import argparse
@@ -218,6 +230,11 @@ if __name__ == "__main__":
                         choices=list(TIMEFRAMES.keys()), help="Bar timeframe")
     parser.add_argument("--years", type=int, default=DEFAULT_YEARS_BACK,
                         help="Years of history to download")
+    parser.add_argument("--all", action="store_true",
+                        help="Download all timeframes (M1, M5, M15, H1)")
     args = parser.parse_args()
 
-    download_data(timeframe=args.timeframe, years_back=args.years)
+    if args.all:
+        download_all_timeframes(years_back=args.years)
+    else:
+        download_data(timeframe=args.timeframe, years_back=args.years)
