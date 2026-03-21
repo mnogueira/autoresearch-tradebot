@@ -28,8 +28,8 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
     Train: +0.43, Test: +1.71 (both positive!)
     Found via 4000+ combo sweep with train+test positivity constraint.
     """
-    ema9 = ta.trend.ema_indicator(df["Close"], window=9)
-    ema30 = ta.trend.ema_indicator(df["Close"], window=30)
+    ema9 = ta.trend.ema_indicator(df["Close"], window=8)
+    ema30 = ta.trend.ema_indicator(df["Close"], window=34)
     hilo_high = df["High"].rolling(window=13).mean()
     hilo_low = df["Low"].rolling(window=13).mean()
     sma162 = df["Close"].rolling(window=162).mean()
