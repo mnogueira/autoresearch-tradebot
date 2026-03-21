@@ -104,22 +104,31 @@ def download_data(timeframe: str = DEFAULT_TIMEFRAME, years_back: int = DEFAULT_
 
     print(f"Downloading {SYMBOL} {timeframe} from {date_from.date()} to {date_to.date()}...")
 
-    # copy_rates_from_pos is more reliable than copy_rates_range on XP/B3
-    # Get all available bars (up to 500k)
-    rates = mt5.copy_rates_from_pos(SYMBOL, mt5_tf, 0, 500_000)
+    # Download in chunks — MT5 has internal limits on single requests.
+    # For 5-min bars: ~108 bars/day × 252 days × 3 years ≈ 82k bars.
+    # Request in batches of 50k to stay safe.
+    CHUNK_SIZE = 50_000
+    all_rates = []
+    offset = 0
 
-    if rates is None or len(rates) == 0:
-        # Fallback: try copy_rates_range with UTC dates
-        print("copy_rates_from_pos returned nothing, trying copy_rates_range...")
-        rates = mt5.copy_rates_range(SYMBOL, mt5_tf, date_from, date_to)
-
-    if rates is None or len(rates) == 0:
-        last_err = mt5.last_error()
-        mt5.shutdown()
-        print(f"ERROR: No data returned from MT5. Last error: {last_err}")
-        sys.exit(1)
+    while True:
+        chunk = mt5.copy_rates_from_pos(SYMBOL, mt5_tf, offset, CHUNK_SIZE)
+        if chunk is None or len(chunk) == 0:
+            break
+        all_rates.append(chunk)
+        print(f"  Fetched {len(chunk):,} bars (offset={offset:,})")
+        if len(chunk) < CHUNK_SIZE:
+            break  # no more data
+        offset += CHUNK_SIZE
 
     mt5.shutdown()
+
+    if not all_rates:
+        print("ERROR: No data returned from MT5.")
+        sys.exit(1)
+
+    import numpy as np
+    rates = np.concatenate(all_rates)
 
     df = pd.DataFrame(rates)
     df["time"] = pd.to_datetime(df["time"], unit="s")
@@ -133,6 +142,7 @@ def download_data(timeframe: str = DEFAULT_TIMEFRAME, years_back: int = DEFAULT_
         "spread": "Spread",
     }, inplace=True)
     df.drop(columns=["real_volume"], errors="ignore", inplace=True)
+    df.sort_index(inplace=True)
 
     # Filter to trading hours only
     df = filter_session(df)
@@ -141,7 +151,7 @@ def download_data(timeframe: str = DEFAULT_TIMEFRAME, years_back: int = DEFAULT_
     path = DATA_DIR / f"wdo_{timeframe.lower()}.parquet"
     df.to_parquet(path)
     print(f"Saved {len(df):,} bars to {path}")
-    print(f"Date range: {df.index[0]} → {df.index[-1]}")
+    print(f"Date range: {df.index[0]} -> {df.index[-1]}")
     print(f"Trading days: {df.index.normalize().nunique()}")
 
     return df
@@ -163,7 +173,7 @@ def load_data(timeframe: str = DEFAULT_TIMEFRAME) -> pd.DataFrame:
 
     df = pd.read_parquet(path)
     print(f"Loaded {len(df):,} bars from {path}")
-    print(f"Date range: {df.index[0]} → {df.index[-1]}")
+    print(f"Date range: {df.index[0]} -> {df.index[-1]}")
     return df
 
 
@@ -179,8 +189,8 @@ def split_data(df: pd.DataFrame, train_ratio: float = 0.70) -> tuple[pd.DataFram
     train = df[df.index < split_date].copy()
     test = df[df.index >= split_date].copy()
 
-    print(f"Train: {len(train):,} bars ({train.index[0].date()} → {train.index[-1].date()})")
-    print(f"Test:  {len(test):,} bars ({test.index[0].date()} → {test.index[-1].date()})")
+    print(f"Train: {len(train):,} bars ({train.index[0].date()} -> {train.index[-1].date()})")
+    print(f"Test:  {len(test):,} bars ({test.index[0].date()} -> {test.index[-1].date()})")
     return train, test
 
 

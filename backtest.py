@@ -160,14 +160,12 @@ def run_backtest(df: pd.DataFrame, period: str = "test") -> BacktestResult:
     else:
         sharpe = 0.0
 
-    # Max drawdown
-    cumulative = np.cumsum(trades_arr)
-    running_max = np.maximum.accumulate(cumulative)
-    drawdowns = running_max - cumulative
-    max_dd = drawdowns.max()
-    # Express as % of peak equity (starting from 0, so use running_max + initial)
-    initial_equity = 100_000.0  # reference equity for % calculation
-    max_dd_pct = (max_dd / (initial_equity + running_max.max())) * 100 if running_max.max() > 0 else 0.0
+    # Max drawdown (% of peak equity)
+    initial_equity = 100_000.0
+    equity = initial_equity + np.concatenate([[0], np.cumsum(trades_arr)])
+    peak_equity = np.maximum.accumulate(equity)
+    dd_pct = (peak_equity - equity) / peak_equity * 100
+    max_dd_pct = dd_pct.max()
 
     # Max consecutive losses
     max_consec = 0
