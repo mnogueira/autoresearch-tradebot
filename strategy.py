@@ -65,7 +65,7 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
             prev_date = d
             continue
 
-        if np.isnan(e8[i]) or np.isnan(e34[i]) or np.isnan(hh[i]) or np.isnan(s162[i]) or np.isnan(adx_v[i]):
+        if np.isnan(e8[i]) or np.isnan(e34[i]) or np.isnan(s162[i]) or np.isnan(adx_v[i]) or np.isnan(atr_v[i]):
             sig[i] = pos
             prev_date = d
             continue
