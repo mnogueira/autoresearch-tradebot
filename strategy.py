@@ -71,8 +71,9 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
     dates = df["date"].values
     dates_time = df["time"].values
 
-    valid_trix = trix_v[~np.isnan(trix_v)]
-    trix_med = float(np.median(valid_trix)) if len(valid_trix) > 0 else 0.0
+    # Rolling TRIX median — NO lookahead (only past 500 bars)
+    trix_rolling_med = trix.rolling(window=500, min_periods=100).median()
+    trix_med_v = trix_rolling_med.values
 
     sig = np.zeros(len(df), dtype=np.int64)
     pos = 0
@@ -100,11 +101,12 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
         if pos != 0:
             cur_atr = atr_v[i] if not np.isnan(atr_v[i]) else 0
             trix_exit = False
-            fv = trix_v[i] if not np.isnan(trix_v[i]) else trix_med
-            fv_prev = trix_v[i-1] if i > 0 and not np.isnan(trix_v[i-1]) else trix_med
-            if pos == 1 and fv < trix_med and fv_prev >= trix_med:
+            tm = trix_med_v[i] if not np.isnan(trix_med_v[i]) else 0.0
+            fv = trix_v[i] if not np.isnan(trix_v[i]) else tm
+            fv_prev = trix_v[i-1] if i > 0 and not np.isnan(trix_v[i-1]) else tm
+            if pos == 1 and fv < tm and fv_prev >= tm:
                 trix_exit = True
-            elif pos == -1 and fv > trix_med and fv_prev <= trix_med:
+            elif pos == -1 and fv > tm and fv_prev <= tm:
                 trix_exit = True
 
             if trix_exit:
