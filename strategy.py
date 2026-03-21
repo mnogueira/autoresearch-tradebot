@@ -69,10 +69,19 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
             prev_date = d
             continue
 
-        # Exit: ATR(20) trailing stop (2x ATR from peak)
+        # Exit: ATR(20) trailing stop (2x ATR) OR EMA crossover reversal
         if pos != 0:
             cur_atr = atr_v[i] if not np.isnan(atr_v[i]) else 0
-            if pos == 1:
+            # EMA reversal exit: close when fast EMA crosses back
+            ema_exit = False
+            if i > 0 and not np.isnan(e8[i-1]) and not np.isnan(e34[i-1]):
+                if pos == 1 and e8[i] < e34[i] and e8[i-1] >= e34[i-1]:
+                    ema_exit = True
+                elif pos == -1 and e8[i] > e34[i] and e8[i-1] <= e34[i-1]:
+                    ema_exit = True
+            if ema_exit:
+                sig[i] = 0; pos = 0
+            elif pos == 1:
                 peak = max(peak, close[i])
                 if cur_atr > 0 and close[i] < peak - 2 * cur_atr:
                     sig[i] = 0; pos = 0
