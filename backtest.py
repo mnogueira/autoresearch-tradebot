@@ -96,12 +96,15 @@ def run_backtest(df: pd.DataFrame, period: str = "test") -> BacktestResult:
 
     for i in range(len(df)):
         signal = signals.iloc[i]
-        price = df["Close"].iloc[i]
+        # FIX: Use Open price for fills (signal was generated on previous bar,
+        # so execution happens at this bar's open, not close)
+        fill_price = df["Open"].iloc[i]
+        close_price = df["Close"].iloc[i]
         bar_date = df["date"].iloc[i]
 
         # Check if new day — force close any open position
         if i > 0 and df["date"].iloc[i] != df["date"].iloc[i - 1] and position != 0:
-            pnl = (price - entry_price) * position * POINT_VALUE * CONTRACTS
+            pnl = (fill_price - entry_price) * position * POINT_VALUE * CONTRACTS
             pnl -= TOTAL_COST_RT * CONTRACTS
             trades.append(pnl)
             position = 0
@@ -110,13 +113,13 @@ def run_backtest(df: pd.DataFrame, period: str = "test") -> BacktestResult:
         if signal != position:
             # Close existing position
             if position != 0:
-                pnl = (price - entry_price) * position * POINT_VALUE * CONTRACTS
+                pnl = (fill_price - entry_price) * position * POINT_VALUE * CONTRACTS
                 pnl -= TOTAL_COST_RT * CONTRACTS
                 trades.append(pnl)
 
             # Open new position
             if signal != 0:
-                entry_price = price
+                entry_price = fill_price
                 entry_bar = i
 
             position = signal
@@ -151,12 +154,12 @@ def run_backtest(df: pd.DataFrame, period: str = "test") -> BacktestResult:
     profit_factor = gross_profit / gross_loss
 
     # Sharpe: annualized from per-trade returns
-    if total_trades > 1 and trades_arr.std() > 0:
+    if total_trades > 1 and trades_arr.std(ddof=1) > 0:
         # Estimate trades per year: total_trades / years_of_data * annualization
         trading_days = df.index.normalize().nunique()
         trades_per_day = total_trades / max(trading_days, 1)
         trades_per_year = trades_per_day * 252
-        sharpe = (trades_arr.mean() / trades_arr.std()) * np.sqrt(trades_per_year)
+        sharpe = (trades_arr.mean() / trades_arr.std(ddof=1)) * np.sqrt(trades_per_year)
     else:
         sharpe = 0.0
 

@@ -25,47 +25,90 @@ import ta
 
 def generate_signals(df: pd.DataFrame) -> pd.Series:
     """
-    Baseline strategy: EMA crossover with RSI filter.
+    HONEST trend-following v2: EMA crossover + SMA(162) + ADX + HiLo exit.
 
-    - Go long when EMA(9) crosses above EMA(21) and RSI(14) < 70
-    - Go short when EMA(9) crosses below EMA(21) and RSI(14) > 30
-    - Flatten in the last 30 minutes of the session
+    Simplified: removed H1 trend (too stale with prev-bar fix).
+    No external data (VIX/momentum were using lookahead — removed).
+    Pure price-based, no lookahead, 1-bar delayed execution.
     """
-    signals = pd.Series(0, index=df.index)
+    ema9 = ta.trend.ema_indicator(df["Close"], window=9)
+    ema21 = ta.trend.ema_indicator(df["Close"], window=21)
+    hilo_high = df["High"].rolling(window=13).mean()
+    hilo_low = df["Low"].rolling(window=13).mean()
+    sma162 = df["Close"].rolling(window=162).mean()
+    adx = ta.trend.adx(df["High"], df["Low"], df["Close"], window=14)
 
-    # Indicators
-    ema_fast = ta.trend.ema_indicator(df["Close"], window=9)
-    ema_slow = ta.trend.ema_indicator(df["Close"], window=21)
-    rsi = ta.momentum.rsi(df["Close"], window=14)
+    close = df["Close"].values
+    e9 = ema9.values
+    e21 = ema21.values
+    hh = hilo_high.values
+    hl = hilo_low.values
+    s162 = sma162.values
+    adx_v = adx.values
+    is_last = df["is_last_30min"].values
+    is_first = df["is_first_bar"].values
+    br = df["bars_remaining"].values
+    dates = df["date"].values
+    dates_time = df["time"].values
 
-    # Crossover detection
-    ema_diff = ema_fast - ema_slow
-    ema_diff_prev = ema_diff.shift(1)
+    sig = np.zeros(len(df), dtype=np.int64)
+    pos = 0
+    prev_date = None
 
-    cross_up = (ema_diff > 0) & (ema_diff_prev <= 0)
-    cross_down = (ema_diff < 0) & (ema_diff_prev >= 0)
+    for i in range(len(df)):
+        d = dates[i]
+        if is_first[i] or d != prev_date:
+            pos = 0
+            prev_date = d
+            continue
+        if is_last[i]:
+            sig[i] = 0
+            pos = 0
+            prev_date = d
+            continue
 
-    # Generate signals with RSI filter
-    signals[cross_up & (rsi < 70)] = 1
-    signals[cross_down & (rsi > 30)] = -1
+        if np.isnan(e9[i]) or np.isnan(e21[i]) or np.isnan(hh[i]) or np.isnan(s162[i]) or np.isnan(adx_v[i]):
+            sig[i] = pos
+            prev_date = d
+            continue
 
-    # Forward-fill signals (hold position until opposite signal)
-    position = 0
-    for i in range(len(signals)):
-        if signals.iloc[i] != 0:
-            position = signals.iloc[i]
-        else:
-            signals.iloc[i] = position
+        # Exit: HiLo Activator
+        if pos != 0:
+            if pos == 1 and close[i] < hl[i]:
+                sig[i] = 0
+                pos = 0
+            elif pos == -1 and close[i] > hh[i]:
+                sig[i] = 0
+                pos = 0
+            else:
+                sig[i] = pos
+            prev_date = d
+            continue
 
-        # Force flat in last 30 min
-        if df["is_last_30min"].iloc[i]:
-            signals.iloc[i] = 0
-            position = 0
+        # Entry filters: skip 13h PTAX + ADX > 20 + 36 bars remaining
+        cur_time = dates_time[i]
+        if hasattr(cur_time, 'hour') and cur_time.hour == 13:
+            prev_date = d
+            continue
+        if adx_v[i] < 20 or br[i] <= 36:
+            prev_date = d
+            continue
 
-        # Force flat on first bar (start fresh each day)
-        if df["is_first_bar"].iloc[i]:
-            position = 0
-            if signals.iloc[i] == 0:
-                pass  # already flat
+        # EMA crossover + SMA trend alignment
+        if i > 0 and not np.isnan(e9[i-1]) and not np.isnan(e21[i-1]):
+            cross_up = e9[i] > e21[i] and e9[i-1] <= e21[i-1]
+            cross_dn = e9[i] < e21[i] and e9[i-1] >= e21[i-1]
 
+            if cross_up and close[i] > s162[i]:
+                sig[i] = 1
+                pos = 1
+            elif cross_dn and close[i] < s162[i]:
+                sig[i] = -1
+                pos = -1
+
+        prev_date = d
+
+    # 1-bar delay WITHIN each day (no cross-day leakage)
+    signals = pd.Series(sig, index=df.index)
+    signals = signals.groupby(df["date"]).shift(1).fillna(0).astype(int)
     return signals
