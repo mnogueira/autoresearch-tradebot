@@ -31,19 +31,17 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
     ema8 = ta.trend.ema_indicator(df["Close"], window=8)
     ema34 = ta.trend.ema_indicator(df["Close"], window=34)
     rsi9 = ta.momentum.rsi(df["Close"], window=9)
-    hilo_high = df["High"].rolling(window=13).mean()
-    hilo_low = df["Low"].rolling(window=13).mean()
     sma162 = df["Close"].rolling(window=162).mean()
     adx = ta.trend.adx(df["High"], df["Low"], df["Close"], window=14)
+    atr = ta.volatility.average_true_range(df["High"], df["Low"], df["Close"], window=20)
 
     close = df["Close"].values
     e8 = ema8.values
     e34 = ema34.values
     rsi_v = rsi9.values
-    hh = hilo_high.values
-    hl = hilo_low.values
     s162 = sma162.values
     adx_v = adx.values
+    atr_v = atr.values
     is_last = df["is_last_30min"].values
     is_first = df["is_first_bar"].values
     br = df["bars_remaining"].values
@@ -53,6 +51,7 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
     sig = np.zeros(len(df), dtype=np.int64)
     pos = 0
     prev_date = None
+    peak = 0.0  # trailing high/low for ATR stop
 
     for i in range(len(df)):
         d = dates[i]
@@ -71,16 +70,21 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
             prev_date = d
             continue
 
-        # Exit: HiLo Activator
+        # Exit: ATR(20) trailing stop (2x ATR from peak)
         if pos != 0:
-            if pos == 1 and close[i] < hl[i]:
-                sig[i] = 0
-                pos = 0
-            elif pos == -1 and close[i] > hh[i]:
-                sig[i] = 0
-                pos = 0
-            else:
-                sig[i] = pos
+            cur_atr = atr_v[i] if not np.isnan(atr_v[i]) else 0
+            if pos == 1:
+                peak = max(peak, close[i])
+                if cur_atr > 0 and close[i] < peak - 2 * cur_atr:
+                    sig[i] = 0; pos = 0
+                else:
+                    sig[i] = pos
+            elif pos == -1:
+                peak = min(peak, close[i])
+                if cur_atr > 0 and close[i] > peak + 2 * cur_atr:
+                    sig[i] = 0; pos = 0
+                else:
+                    sig[i] = pos
             prev_date = d
             continue
 
@@ -104,9 +108,11 @@ def generate_signals(df: pd.DataFrame) -> pd.Series:
             if cross_up and close[i] > s162[i] and r > 55:
                 sig[i] = 1
                 pos = 1
+                peak = close[i]
             elif cross_dn and close[i] < s162[i] and r < 45:
                 sig[i] = -1
                 pos = -1
+                peak = close[i]
 
         prev_date = d
 
