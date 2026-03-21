@@ -1,0 +1,23 @@
+# Data
+data/
+*.parquet
+
+# Results
+results.tsv
+run.log
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# IDE
+.vscode/
+.idea/
+
+# Claude
+AGENTS.md
+
+# OS
+Thumbs.db
+.DS_Store
