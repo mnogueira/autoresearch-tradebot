@@ -1,23 +1,48 @@
-# Data
-data/
-*.parquet
-
-# Results
-results.tsv
-run.log
-
 # Python
 __pycache__/
 *.pyc
+.pytest_cache/
+.ruff_cache/
 .venv/
 
-# IDE
+# Build / packaging
+build/
+dist/
+*.egg-info/
+
+# Data and generated artifacts
+data/
+artifacts/
+outputs/
+reports/
+run.log
+run_m15.log
+progress.png
+
+# Local secrets / operator files
+telegram_chat_id.txt
+
+# MT5 runtime churn
+runtime/mt5-portable/
+runtime/mt5-portable/Bases/
+runtime/mt5-portable/Tester/
+runtime/mt5-portable/temp/
+runtime/mt5-portable/logs/
+runtime/mt5-portable/MQL5/Logs/
+runtime/mt5-portable/MQL5/Experts/Custom/*.ex5
+runtime/mt5-portable/MQL5/Experts/Custom/*.log
+runtime/mt5-portable/MQL5/Experts/Custom/*.compile.log
+
+# Compiled / generated MT5 assets in source folders
+mt5/experts/custom/*.ex5
+mt5/experts/custom/*.log
+mt5/experts/custom/*.compile.log
+mq5/*.ex5
+mq5/*.log
+mq5/*.compile.log
+
+# IDE / OS
 .vscode/
 .idea/
-
-# Claude
-AGENTS.md
-
-# OS
 Thumbs.db
 .DS_Store

@@ -1,22 +1,49 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "autoresearch-tradebot"
 version = "0.1.0"
-description = "Autonomous AI agent research loop for WDO (mini dollar) day trading strategies"
+description = "WDO strategy research, validation, and MT5 automation toolkit"
+readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "pandas>=2.1",
     "numpy>=1.26",
+    "optuna>=4.8",
+    "pandas>=2.1",
     "pyarrow>=14.0",
+    "python-dateutil>=2.9",
+    "pytz>=2024.1",
     "ta>=0.11",
 ]
 
 [project.optional-dependencies]
-mt5 = ["MetaTrader5>=5.0.45"]
 analysis = ["matplotlib>=3.8", "tabulate>=0.9"]
-all = ["autoresearch-tradebot[mt5,analysis]"]
-
-[project.optional-dependencies]
 dev = ["pytest>=7.4", "ruff>=0.3"]
+ml = ["lightgbm>=4.6", "scikit-learn>=1.6"]
+mt5 = ["MetaTrader5>=5.0.45"]
+
+[project.scripts]
+tradebot-legacy-backtest = "autoresearch_tradebot.legacy.backtest:main"
+tradebot-legacy-prepare = "autoresearch_tradebot.legacy.prepare:main"
+tradebot-ema-wdo = "autoresearch_tradebot.strategies.ema_wdo:main"
+tradebot-stalker-wdo = "autoresearch_tradebot.strategies.stalker_wdo:main"
+tradebot-stalker-v10 = "autoresearch_tradebot.strategies.stalker_v10_python:main"
+tradebot-opening-double-bar = "autoresearch_tradebot.strategies.opening_double_bar:main"
+tradebot-no-wick = "autoresearch_tradebot.strategies.no_wick_bar_momentum_wdo:main"
+tradebot-paper-trade-mt5 = "autoresearch_tradebot.strategies.paper_trade_mt5:main"
+tradebot-mt5-history-export = "autoresearch_tradebot.mt5.run_mt5_history_export:main"
+tradebot-mt5-stalker-test = "autoresearch_tradebot.mt5.run_mt5_stalker_v10_test:main"
+tradebot-mt5-calibrate = "autoresearch_tradebot.mt5.calibrate_stalker_v10_mt5:main"
+tradebot-mt5-real-ticks = "autoresearch_tradebot.mt5.export_mt5_real_ticks:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
 
 [tool.ruff]
 line-length = 100

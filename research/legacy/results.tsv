@@ -1,0 +1,46 @@
+commit	test_sharpe	train_sharpe	profit_factor	win_rate	total_trades	net_profit	max_dd_pct	status	description
+baseline	-1.3665	-3.4174	0.8661	0.3082	1129	-7364.00	8.86	baseline	EMA(9)/EMA(21) crossover with RSI(14) filter — BIASED (same-bar execution)
+9a579db	-0.5012	0.0523	0.9118	0.6044	225	-1560.00	3.17	rejected	BB mean reversion FULLY HONEST — NOT profitable with realistic execution
+f59dc1a	1.7116	-1.1398	2.1701	0.4727	55	2655.00	0.43	improved	HONEST trend: EMA xover+SMA162+H1(prev)+HiLo+VIX(prev)+mom(prev) — only 55 trades
+8fa174b	1.6592	-0.3171	1.6150	0.4104	134	4126.00	1.04	improved	HONEST BEST: Pure price EMA(9/21)+SMA162+ADX20+HiLo13+skip13h — 134 trades
+437beb3	2.6526	-1.3749	2.5949	0.7049	61	2134.00	0.41	improved	HONEST MR: BB(18,2.5)+SMA108+RSI21 mean reversion — 70% WR, PF 2.59
+1247787	1.7083	0.4307	1.6762	0.4370	119	4106.00	1.08	improved	HONEST BALANCED: EMA(9/30)+SMA162+ADX20+HiLo13+skip13h — BOTH train+test positive
+ad573f6	1.9939	0.4212	1.8160	0.4435	124	4826.00	0.90	improved	HONEST: EMA(8/34)+SMA162+ADX20+HiLo13+skip13h — train+0.42, test+1.99, BOTH positive
+70c5a0b	2.1854	0.6303	2.0370	0.4811	106	5154.00	0.80	improved	HONEST: EMA(8/34)+SMA162+ADX20+HiLo13+RSI9>55/<45+skip13h — BOTH positive
+8bc19e0	2.3812	0.7156	2.0333	0.5048	105	5215.00	0.72	improved	HONEST: EMA(8/34)+SMA162+ADX20+ATR20trail+RSI9>55/<45+skip13h — BOTH positive
+5471901	2.7106	0.5323	2.3066	0.5521	96	5694.00	0.57	improved	HONEST: SMA200+RSI(7)>65/<45 sweep-optimized — Train+0.53, Test+2.71
+5471901	2.5174	0.5071	2.2262	0.5444	90	5225.00	0.57	rejected	HONEST: +DI/-DI directional confirmation — hurt performance
+5471901	2.6230	0.1914	2.3720	0.5568	88	5267.00	0.54	rejected	HONEST: MACD histogram confirmation — over-filtered, hurt test_sharpe
+5471901	2.4304	0.3414	2.2595	0.5610	82	4863.00	0.56	rejected	HONEST: Volume>SMA(20) filter — over-filtered to 82 trades
+8bf61b0	2.7966	0.3638	2.4134	0.5361	97	5788.00	0.54	improved	HONEST: EMA reversal exit + ATR trailing — Train+0.36, Test+2.80
+8bf61b0	2.0115	0.6076	0.0000	0.0000	97	2643.00	0.00	rejected	HONEST: Close below EMA(8) exit — exits too early, kills profits
+8bf61b0	0.3878	-1.1145	1.0622	0.4138	348	1327.00	3.21	rejected	Donchian(20) breakout — too many false signals, 1-bar delay kills edge
+8bf61b0	2.78	0.55	3.47	0.604	48	4592.00	0.44	rejected	Meia perna 50% filter — amazing quality but insufficient trades (48)
+8bf61b0	2.7693	0.3048	2.2532	0.5567	97	5123.00	0.55	rejected	Ratchet stop (tighten at profit) — marginally worse than fixed 2x
+8bf61b0	2.2297	-0.0282	1.7587	0.4965	143	5142.00	0.87	rejected	Re-entry after ATR stop — adds bad trades, train negative
+6842680	2.8648	0.1211	2.3539	0.5377	106	6044.00	0.66	improved	HONEST: EMA(200) trend filter — Train+0.12, Test+2.86, net R$6,044
+6842680	0.0000	0.0000	0.0000	0.0000	0	0.00	0.00	rejected	M15 timeframe — completely unprofitable, 0 trades or negative
+6842680	2.93	-0.11	2.65	0.00	75	4915.00	0.00	rejected	prev_day_ret momentum filter — test 2.93 but train negative
+6842680	-1.38	-1.78	0.66	0.0	18	-448.00	0.00	rejected	Volume bars from M1 — insufficient data (8mo), all configs fail
+6842680	1.11	-1.87	1.20	0.0	321	3609.00	0.00	rejected	Schaff Trend Cycle entry — 321 noisy signals, train -1.87
+6842680	0.84	-1.71	1.13	0.0	420	3010.00	0.00	rejected	DIDI Index entry — 420 noisy signals, train -1.71
+6842680	-10.67	0.0	0.0	0.0	867	-12122.00	0.00	rejected	LightGBM ML — raw predictions and crossover filter both fail completely
+6842680	1.09	-1.79	1.24	0.38	248	3312.00	1.38	rejected	SMA108 pullback — 248 trades, train -1.79, too many false pullbacks
+2cf3ee0	2.9086	0.3945	2.3671	0.5524	105	6175.00	0.61	improved	HONEST: TRIX(15) exit replaces EMA reversal — Train+0.39, Test+2.91
+2cf3ee0	0.00	0.00	0.00	0.00	0	0.00	0.00	rejected	Web findings (KER, KAMA, TTM Squeeze, Choppiness, PSAR) — all below baseline
+2cf3ee0	2.41	0.14	3.80	0.0	39	3396.00	0.0	rejected	Hurst>0.55 regime filter — amazing PF 3.80 but only 39 trades
+2cf3ee0	1.78	-0.18	1.58	0.0	148	4197.00	0.0	rejected	HMA(9)/EMA(34) crossover — more noise than EMA, train negative
+2cf3ee0	0.00	0.00	0.00	0.00	0	0.00	0.00	rejected	Custom indicators (McGinley, autocorr, HMA) — none beat baseline
+32316fe	2.9838	0.2253	2.5467	0.5745	94	5916.00	0.52	improved	HONEST: Skip 12+13h + TRIX exit — Train+0.23, Test+2.98, PF 2.55
+c9e3664	3.1506	0.6382	3.1158	0.6351	74	5791.00	0.34	improved	HONEST: Hurst(100)>0.50 regime filter — Train+0.64, Test+3.15 (AUDIT PENDING)
+2a81fac	3.0389	0.6020	2.9848	0.6351	74	5631.00	0.41	improved	fix: Rolling TRIX median (no lookahead) + Hurst(100)>0.50 — Test 3.04, Train 0.60
+27c4c2a	3.3141	0.5154	3.6744	0.6567	67	5798.00	0.34	improved	HONEST: EMA220+RSI40+TRIX12 re-sweep — Test+3.31, Train+0.52
+1c947fe	3.3210	0.6107	3.9272	0.6774	62	5708.00	0.34	improved	HONEST: VWAP direction + creative exploration — Train+0.61, Test+3.32
+c0d79f1	3.5610	0.9840	4.9904	0.6964	56	5834.00	0.20	improved	HONEST: VR(3/20)<2.0 vol filter — Train+0.98, Test+3.56, PF 4.99
+3214825	3.56	0.97	4.99	0.0	56	5834.00	0.20	rejected	Damiani Volatmeter — identical to VR(3/20)<2.0, no improvement
+3214825	0.0	0.0	0.0	0.0	0	0.00	0.00	rejected	Super Smoother V-reversal — mean reversion fails with 1-bar delay
+3214825	3.27	1.23	4.51	0.0	52	4853.00	0.00	rejected	Stalker Fib retracement — standalone fails, confirm has high train but lower test
+3214825	0.23	-0.91	1.06	0.0	118	542.00	0.00	rejected	Opening Range Breakout — ALL 18 configs fail, 1-bar delay kills breakout edge
+3214825	-0.97	-1.56	0.83	0.0	196	-2511.00	0.00	rejected	ORB + gap + calendar + OFI divergence + cum delta — all fail
+3214825	2.79	0.33	2.02	0.0	142	5693.00	0.00	rejected	Regime ensemble (trend+MR) — adds trades but dilutes Sharpe
+3214825	0.0	0.0	0.0	0.0	0	0.00	0.00	rejected	Cross-asset intraday (DXY,Gold,Oil,BTC,SP500 H1) — correlations near zero
