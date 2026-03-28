@@ -26,7 +26,7 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 
 ### New best exact Python refinement
 
-- This is now MT5-ready and should be the first refinement validated after the already-validated base preset:
+- This is now MT5-ready, but it should be validated only after the simpler cooldown-only refinement:
   - session winner + `30-minute cooldown` + hard exit after `120` M1 bars
 - Preset:
   - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m MaxHold120m GPT 5.4.set`

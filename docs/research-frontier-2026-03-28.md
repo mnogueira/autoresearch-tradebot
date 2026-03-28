@@ -488,9 +488,10 @@ But cost sensitivity is real:
 
 1. Validate the session winner approximation in MT5 `Every tick` once the tester is stable again.
    - the latest main-installation attempt still produced no HTML report in either the workspace output folder or the main terminal AppData tree, only the generated config file
-2. Implement and validate the `120`-minute max-hold plus `30-minute cooldown` refinement in MT5 `Every tick`.
-   - this is now the highest-priority exact Python candidate because it improved the current exact leader on net profit, PF, drawdown, and OnTester together
-3. If the max-hold refinement is not yet wired into the EA, validate the plain exact session+cooldown winner before spending more time on ATR multiplier tweaks or substitute entry signals.
+2. Validate the plain exact session+cooldown refinement in MT5 `Every tick`.
+   - it is the preferred next-week upgrade because it keeps almost all of the max-hold edge, matched the max-hold stack in the recent weak tape, and is operationally simpler
+3. Implement and validate the `120`-minute max-hold plus `30-minute cooldown` refinement in MT5 `Every tick`.
+   - this is still the highest exact alpha line, but it should come after the cooldown-only refinement in the host-side rollout order
 4. Validate the Friday-exclusion preset:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 No Friday GPT 5.4.set`
 5. If MT5 remains unstable, prioritize cost-robustness and live-paper safety checks over more entry-family exploration.
@@ -515,10 +516,10 @@ But cost sensitivity is real:
   - MT5 tester instability means the best exact refinements still need one clean host-side validation
 - Next paper-trading step:
   - run the validated MT5 preset first
-  - validate the max-hold leader in MT5 `Every tick` next:
-    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m MaxHold120m GPT 5.4.set`
-  - keep the plain cooldown preset as the fallback if MT5 exposes any discrepancy:
+  - validate the plain cooldown preset in MT5 `Every tick` next:
     - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
+  - validate the max-hold leader only after that:
+    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m MaxHold120m GPT 5.4.set`
   - monitor real slippage/spread conditions closely before promoting the exact refinements
 - Operational guide:
   - `docs/mt5-paper-trading-playbook-2026-03-28.md`

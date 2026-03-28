@@ -106,3 +106,7 @@ Recent context:
    - repeated close-order rejections
    - spread spikes around the allowed sessions
 5. If live-paper performance diverges sharply from the exact baseline, fall back to the fully validated MT5 base preset.
+6. After the tester run or the paper session, export the trade log and daily PnL CSV:
+   - script: `src/autoresearch_tradebot/mt5/export_tester_trade_log.py`
+   - tested Tier 1 example:
+     - `python -m autoresearch_tradebot.mt5.export_tester_trade_log --report artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/mt5_model_0_report.html --trades-out artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/trade_log.csv --daily-out artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/daily_pnl.csv`
