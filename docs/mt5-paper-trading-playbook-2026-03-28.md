@@ -69,6 +69,17 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
   - session winner + `30m` cooldown + `120` M1 max hold
   - use this only after the simpler cooldown-only refinement looks sane in MT5
 
+## Recommended Rollout Cadence
+
+- Monday through the first full paper-trading week:
+  - stay on Tier 1 only
+- After `5` paper sessions, upgrade to Tier 2 only if:
+  - fills look sane
+  - spread behavior stays near the baseline
+  - realized behavior is directionally consistent with the saved artifacts
+- Consider Tier 3 only after another week of clean paper behavior:
+  - the max-hold layer is a real refinement, but it is still the more complex operator choice
+
 ## Monday Setup Steps
 
 1. Open the main MetaTrader 5 terminal and let it sync fully before touching the tester.
@@ -107,6 +118,10 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 - Practical interpretation:
   - one contract is the right Monday size even for larger paper accounts
   - scaling beyond that should wait until live-paper spread and fill quality confirm the base assumptions
+- Account-size examples, assuming you meant `R$50k`, `R$100k`, and `R$500k`:
+  - `R$50k`: conservative scalable max is effectively `0` whole contracts; in paper trading, `1` contract is observation-only and above the strict stress budget
+  - `R$100k`: conservative max `1` contract; stretch upper bound `2`
+  - `R$500k`: conservative max `5` contracts; stretch upper bound `10`
 
 ## Abort Conditions
 
@@ -114,6 +129,14 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 - Live-paper spread regime looks materially worse than the historical baseline.
 - Execution behavior around the allowed session windows differs from the backtest assumptions.
 - Slippage pushes realized behavior toward the exact `3x spread` stress case.
+
+## When To Stop Trading
+
+- Pause immediately if paper trading produces `5` consecutive losing days.
+- Pause if trailing `30` trading-day PF drops below `1.0` on the live-paper log.
+- Pause if live spreads are repeatedly above `1` tick during the core `10:00`, `11:00`, `12:00`, and `14:00` windows.
+- Pause if MT5 logs repeated order-close or order-modify errors.
+- Strongly consider pausing in the last `3` contract days if the tape is also low-ADX and spread-heavy.
 
 ## Risks And Caveats
 
