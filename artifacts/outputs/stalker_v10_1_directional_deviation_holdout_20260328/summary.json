@@ -1,0 +1,135 @@
+{
+  "data_source": "C:\\Dev\\autoresearch-tradebot\\data\\wdo_m1_mt5_2021_2026.parquet",
+  "train_start": "2021-03-23",
+  "train_end": "2024-09-16",
+  "test_start": "2024-09-17",
+  "test_end": "2026-03-20",
+  "robust_baseline_test": {
+    "start_date": "2024-09-17",
+    "end_date": "2026-03-20",
+    "trading_days": 375,
+    "total_trades": 702,
+    "win_rate": 0.7365,
+    "net_profit_brl": 4425.0,
+    "avg_profit_brl": 6.3,
+    "avg_win_brl": 36.99,
+    "avg_loss_brl": -79.46,
+    "profit_factor": 1.301,
+    "max_drawdown_pct": 6.29,
+    "expected_payoff": 6.3,
+    "on_tester_value": 703.395954
+  },
+  "directional_timing_reference_test": {
+    "start_date": "2024-09-17",
+    "end_date": "2026-03-20",
+    "trading_days": 375,
+    "total_trades": 588,
+    "win_rate": 0.7364,
+    "net_profit_brl": 3310.0,
+    "avg_profit_brl": 5.63,
+    "avg_win_brl": 36.79,
+    "avg_loss_brl": -81.42,
+    "profit_factor": 1.2623,
+    "max_drawdown_pct": 6.72,
+    "expected_payoff": 5.63,
+    "on_tester_value": 492.651163
+  },
+  "new_records": [
+    {
+      "name": "robust_skip_short_wednesday_short_hour13_last30m_plus_vwap_sweetspot_holdout",
+      "family": "directional_deviation_holdout",
+      "config": {
+        "min_directional_vwap_dev_pts": 17.336,
+        "max_directional_vwap_dev_pts": 22.117
+      },
+      "metrics": {
+        "start_date": "2024-09-17",
+        "end_date": "2026-03-20",
+        "trading_days": 375,
+        "total_trades": 201,
+        "win_rate": 0.7811,
+        "net_profit_brl": 2260.0,
+        "avg_profit_brl": 11.24,
+        "avg_win_brl": 37.96,
+        "avg_loss_brl": -84.09,
+        "profit_factor": 1.6108,
+        "max_drawdown_pct": 3.84,
+        "expected_payoff": 11.24,
+        "on_tester_value": 588.30625
+      },
+      "notes": "Holdout test of the directional timing winner plus the trade-tape VWAP sweet spot.",
+      "delta_vs_reference_test": {
+        "net_profit_brl": -1050.0,
+        "profit_factor": 0.34850000000000003,
+        "max_drawdown_pct": -2.88,
+        "win_rate": 0.04469999999999996,
+        "on_tester_value": 95.65508699999998
+      }
+    },
+    {
+      "name": "robust_skip_short_wednesday_short_hour13_last30m_plus_ema50_sweetspot_holdout",
+      "family": "directional_deviation_holdout",
+      "config": {
+        "min_directional_ema50_dev_pts": 2.091,
+        "max_directional_ema50_dev_pts": 12.423
+      },
+      "metrics": {
+        "start_date": "2024-09-17",
+        "end_date": "2026-03-20",
+        "trading_days": 375,
+        "total_trades": 179,
+        "win_rate": 0.7598,
+        "net_profit_brl": 1100.0,
+        "avg_profit_brl": 6.15,
+        "avg_win_brl": 31.88,
+        "avg_loss_brl": -75.23,
+        "profit_factor": 1.34,
+        "max_drawdown_pct": 3.44,
+        "expected_payoff": 6.15,
+        "on_tester_value": 319.916667
+      },
+      "notes": "Holdout test of the directional timing winner plus the trade-tape EMA50 sweet spot.",
+      "delta_vs_reference_test": {
+        "net_profit_brl": -2210.0,
+        "profit_factor": 0.0777000000000001,
+        "max_drawdown_pct": -3.28,
+        "win_rate": 0.023399999999999976,
+        "on_tester_value": -172.73449599999998
+      }
+    },
+    {
+      "name": "robust_skip_short_wednesday_short_hour13_last30m_plus_vwap_ema_sweetspots_holdout",
+      "family": "directional_deviation_holdout",
+      "config": {
+        "min_directional_vwap_dev_pts": 17.336,
+        "max_directional_vwap_dev_pts": 22.117,
+        "min_directional_ema50_dev_pts": 2.091,
+        "max_directional_ema50_dev_pts": 12.423
+      },
+      "metrics": {
+        "start_date": "2024-09-17",
+        "end_date": "2026-03-20",
+        "trading_days": 375,
+        "total_trades": 30,
+        "win_rate": 0.7667,
+        "net_profit_brl": 285.0,
+        "avg_profit_brl": 9.5,
+        "avg_win_brl": 37.61,
+        "avg_loss_brl": -82.86,
+        "profit_factor": 1.4914,
+        "max_drawdown_pct": 2.23,
+        "expected_payoff": 9.5,
+        "on_tester_value": 127.582979
+      },
+      "notes": "Holdout test of the directional timing winner plus both tape-derived price-location sweet spots.",
+      "delta_vs_reference_test": {
+        "net_profit_brl": -3025.0,
+        "profit_factor": 0.22910000000000008,
+        "max_drawdown_pct": -4.49,
+        "win_rate": 0.030299999999999994,
+        "on_tester_value": -365.068184
+      }
+    }
+  ],
+  "reference_preset_path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 Robust Skip Short Wednesday Short Hour 13 Last30m GPT 5.4.set"
+}
