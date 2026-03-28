@@ -1,0 +1,38 @@
+{
+  "data_source": "C:\\Dev\\autoresearch-tradebot\\data\\wdo_m1_mt5_2021_2026.parquet",
+  "train_start": "2021-03-23",
+  "train_end": "2024-09-16",
+  "test_start": "2024-09-17",
+  "test_end": "2026-03-20",
+  "adx_threshold": 29.66307136864461,
+  "timing_stack_base_test": {
+    "start_date": "2024-09-17",
+    "end_date": "2026-03-20",
+    "trading_days": 375,
+    "total_trades": 456,
+    "win_rate": 0.7368,
+    "net_profit_brl": 2235.0,
+    "avg_profit_brl": 4.9,
+    "avg_win_brl": 36.43,
+    "avg_loss_brl": -83.38,
+    "profit_factor": 1.2234,
+    "max_drawdown_pct": 9.55,
+    "expected_payoff": 4.9,
+    "on_tester_value": 234.128667
+  },
+  "timing_stack_plus_adx_test": {
+    "start_date": "2024-09-17",
+    "end_date": "2026-03-20",
+    "trading_days": 375,
+    "total_trades": 248,
+    "win_rate": 0.7379,
+    "net_profit_brl": 1400.0,
+    "avg_profit_brl": 5.65,
+    "avg_win_brl": 38.28,
+    "avg_loss_brl": -86.23,
+    "profit_factor": 1.2498,
+    "max_drawdown_pct": 4.42,
+    "expected_payoff": 5.65,
+    "on_tester_value": 317.092784
+  }
+}

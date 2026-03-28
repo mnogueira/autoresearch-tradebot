@@ -43,10 +43,10 @@
     "beats_baseline": false,
     "notes": "Full-period timing sweep. Skip the full 13:00-14:59 lunch window.",
     "analysis_notes": [
-      "Weekday edge: Monday PF 1.327 vs Wednesday PF 1.043",
-      "Hour edge: 12:00 PF 1.291 vs 13:00 PF 1.064",
-      "VWAP sweet spot: (17.336, 22.117] PF 1.420",
-      "EMA50 sweet spot: (2.091, 12.423] PF 1.538"
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
     ],
     "preset_name": "WDO Stalker Strategy v10.1 Robust Skip Hours 13 14 GPT 5.4",
     "preset_path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 Robust Skip Hours 13 14 GPT 5.4.set",
@@ -69,7 +69,13 @@
     "delta_vs_baseline_test_dd": -2.37,
     "notes": "Skip entries from 13:00 through 14:59",
     "preset_name": "WDO Stalker Strategy v10.1 Robust Skip Hours 13 14 GPT 5.4",
-    "rank": 3
+    "rank": 3,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "name": "robust_skip_wed_hours_13_14",
@@ -115,10 +121,10 @@
     "beats_baseline": false,
     "notes": "Full-period timing sweep. Screen-only filter: skip Friday entries from 13:00 onward.",
     "analysis_notes": [
-      "Weekday edge: Monday PF 1.327 vs Wednesday PF 1.043",
-      "Hour edge: 12:00 PF 1.291 vs 13:00 PF 1.064",
-      "VWAP sweet spot: (17.336, 22.117] PF 1.420",
-      "EMA50 sweet spot: (2.091, 12.423] PF 1.538"
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
     ],
     "preset_name": null,
     "preset_path": null,
@@ -143,7 +149,13 @@
     "beats_baseline": false,
     "notes": "Skip Friday entries at 13:00 or later.",
     "preset_path": null,
-    "rank": 6
+    "rank": 6,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "name": "robust_skip_hour_13",
@@ -163,10 +175,10 @@
     "beats_baseline": false,
     "notes": "Full-period timing sweep. Skip the full 13:00-13:59 hour.",
     "analysis_notes": [
-      "Weekday edge: Monday PF 1.327 vs Wednesday PF 1.043",
-      "Hour edge: 12:00 PF 1.291 vs 13:00 PF 1.064",
-      "VWAP sweet spot: (17.336, 22.117] PF 1.420",
-      "EMA50 sweet spot: (2.091, 12.423] PF 1.538"
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
     ],
     "preset_name": "WDO Stalker Strategy v10.1 Robust Skip Hour 13 GPT 5.4",
     "preset_path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 Robust Skip Hour 13 GPT 5.4.set",
@@ -189,7 +201,13 @@
     "delta_vs_baseline_test_dd": -1.43,
     "notes": "Skip the 13:00 hour only",
     "preset_name": "WDO Stalker Strategy v10.1 Robust Skip Hour 13 GPT 5.4",
-    "rank": 8
+    "rank": 8,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "name": "robust_timing_baseline_full",
@@ -208,7 +226,13 @@
     "delta_vs_baseline_test_dd": 0.0,
     "notes": "Full-period robust timing reference",
     "preset_name": null,
-    "rank": 9
+    "rank": 9,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "name": "robust_base_timing_ref",
@@ -228,10 +252,10 @@
     "beats_baseline": true,
     "notes": "Full-period timing sweep. Full-period robust timing reference.",
     "analysis_notes": [
-      "Weekday edge: Monday PF 1.327 vs Wednesday PF 1.043",
-      "Hour edge: 12:00 PF 1.291 vs 13:00 PF 1.064",
-      "VWAP sweet spot: (17.336, 22.117] PF 1.420",
-      "EMA50 sweet spot: (2.091, 12.423] PF 1.538"
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
     ],
     "preset_name": "WDO Stalker Strategy v10.1 EffVol Robust GPT 5.4",
     "preset_path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 EffVol Robust GPT 5.4.set",
@@ -282,7 +306,13 @@
     "beats_baseline": false,
     "notes": "Skip Wednesday plus the 13:00-14:59 window, then add the best short-side relative-volume confirmation.",
     "preset_path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 Robust Timing RelVol 13-14 GPT 5.4.set",
-    "rank": 12
+    "rank": 12,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "name": "robust_skip_friday_afternoon_relvol_short_lb20_ge_0.85_full",
@@ -303,7 +333,13 @@
     "beats_baseline": false,
     "notes": "Skip Friday afternoon, then add the best short-side relative-volume confirmation.",
     "preset_path": null,
-    "rank": 13
+    "rank": 13,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "name": "robust_skip_wednesday_hours_13_14_full",
@@ -324,7 +360,13 @@
     "beats_baseline": false,
     "notes": "Skip Wednesday and the 13:00-14:59 window.",
     "preset_path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 Robust Skip Wednesday 13-14 GPT 5.4.set",
-    "rank": 14
+    "rank": 14,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "name": "robust_skip_tue_wed_hours_13_14",
@@ -371,7 +413,13 @@
     "beats_baseline": false,
     "notes": "Skip Wednesday, skip the 13:00 hour, and stop taking new entries after 14:30.",
     "preset_path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 Robust Timing Stack GPT 5.4.set",
-    "rank": 16
+    "rank": 16,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "name": "robust_skip_wednesday_full",
@@ -390,7 +438,13 @@
     "delta_vs_baseline_test_dd": 0.11,
     "notes": "Skip Wednesday only",
     "preset_name": null,
-    "rank": 17
+    "rank": 17,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "name": "robust_skip_wednesday",
@@ -410,10 +464,10 @@
     "beats_baseline": false,
     "notes": "Full-period timing sweep. Skip Wednesday only.",
     "analysis_notes": [
-      "Weekday edge: Monday PF 1.327 vs Wednesday PF 1.043",
-      "Hour edge: 12:00 PF 1.291 vs 13:00 PF 1.064",
-      "VWAP sweet spot: (17.336, 22.117] PF 1.420",
-      "EMA50 sweet spot: (2.091, 12.423] PF 1.538"
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
     ],
     "preset_name": "WDO Stalker Strategy v10.1 Robust Skip Wednesday GPT 5.4",
     "preset_path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 Robust Skip Wednesday GPT 5.4.set",
@@ -441,7 +495,13 @@
     "delta_vs_timing_stack_pf": 0.1087,
     "delta_vs_timing_stack_dd": -1.73,
     "beats_timing_stack": false,
-    "rank": 19
+    "rank": 19,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "name": "robust_skip_wed_hour_13_relvol_short_lb20_0p85",
@@ -461,10 +521,10 @@
     "beats_baseline": false,
     "notes": "Full-period timing sweep. Timing edge plus short-side relative volume >= 0.85 with 20-day lookback.",
     "analysis_notes": [
-      "Weekday edge: Monday PF 1.327 vs Wednesday PF 1.043",
-      "Hour edge: 12:00 PF 1.291 vs 13:00 PF 1.064",
-      "VWAP sweet spot: (17.336, 22.117] PF 1.420",
-      "EMA50 sweet spot: (2.091, 12.423] PF 1.538"
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
     ],
     "preset_name": "WDO Stalker Strategy v10.1 Robust Timing Edge RelVol Short LB20 0p85 GPT 5.4",
     "preset_path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 Robust Timing Edge RelVol Short LB20 0p85 GPT 5.4.set",
@@ -489,7 +549,13 @@
     "beats_baseline": false,
     "notes": "Skip Wednesday plus 13:00, then add the best short-side relative-volume confirmation.",
     "preset_path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 Robust Timing RelVol Edge GPT 5.4.set",
-    "rank": 21
+    "rank": 21,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "name": "robust_skip_wednesday_hour_13_full",
@@ -508,7 +574,13 @@
     "delta_vs_baseline_test_dd": 0.46,
     "notes": "Skip Wednesday and the 13:00 hour",
     "preset_name": "WDO Stalker Strategy v10.1 Robust Skip Wednesday Hour 13 GPT 5.4",
-    "rank": 22
+    "rank": 22,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "name": "robust_skip_wed_hour_13",
@@ -528,10 +600,10 @@
     "beats_baseline": false,
     "notes": "Full-period timing sweep. Skip Wednesday and the full 13:00-13:59 hour.",
     "analysis_notes": [
-      "Weekday edge: Monday PF 1.327 vs Wednesday PF 1.043",
-      "Hour edge: 12:00 PF 1.291 vs 13:00 PF 1.064",
-      "VWAP sweet spot: (17.336, 22.117] PF 1.420",
-      "EMA50 sweet spot: (2.091, 12.423] PF 1.538"
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
     ],
     "preset_name": "WDO Stalker Strategy v10.1 Robust Timing Edge GPT 5.4",
     "preset_path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 Robust Timing Edge GPT 5.4.set",
@@ -733,7 +805,13 @@
     "delta_vs_baseline_test_dd": 0.49,
     "notes": "Skip Tuesday, Wednesday, and the 13:00 hour",
     "preset_name": "WDO Stalker Strategy v10.1 Robust Skip Tuesday Wednesday Hour 13 GPT 5.4",
-    "rank": 32
+    "rank": 32,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "name": "robust_skip_tue_wed_hour_13",
@@ -753,10 +831,10 @@
     "beats_baseline": false,
     "notes": "Full-period timing sweep. Skip Tuesday, Wednesday, and the full 13:00-13:59 hour.",
     "analysis_notes": [
-      "Weekday edge: Monday PF 1.327 vs Wednesday PF 1.043",
-      "Hour edge: 12:00 PF 1.291 vs 13:00 PF 1.064",
-      "VWAP sweet spot: (17.336, 22.117] PF 1.420",
-      "EMA50 sweet spot: (2.091, 12.423] PF 1.538"
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
     ],
     "preset_name": "WDO Stalker Strategy v10.1 Robust Skip Tuesday Wednesday Hour 13 GPT 5.4",
     "preset_path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 Robust Skip Tuesday Wednesday Hour 13 GPT 5.4.set",
@@ -979,8 +1057,7 @@
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
-    ],
-    "rank": 43
+    ]
   },
   {
     "family": "relative_volume",
@@ -1302,15 +1379,14 @@
     "delta_vs_baseline_test_pf": 0.0,
     "delta_vs_baseline_test_dd": 0.0,
     "mt5_ready": true,
-    "notes": "Current robust combo baseline used for timing experiments",
+    "notes": "Current robust combo baseline used for deltas",
     "beats_baseline": true,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
-    ],
-    "rank": 58
+    ]
   },
   {
     "name": "timing_skip_friday_1300plus",
@@ -1598,8 +1674,7 @@
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
-    ],
-    "rank": 71
+    ]
   },
   {
     "family": "relative_volume",
@@ -1801,8 +1876,7 @@
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
-    ],
-    "rank": 80
+    ]
   },
   {
     "family": "relative_volume",
@@ -1911,8 +1985,7 @@
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
-    ],
-    "rank": 85
+    ]
   },
   {
     "name": "timing_skip_wednesday_core",
@@ -2067,8 +2140,7 @@
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
-    ],
-    "rank": 92
+    ]
   },
   {
     "name": "exclude_wednesday_plus_exclude_hour_13_plus_exclude_last_30m",
@@ -2089,8 +2161,7 @@
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
-    ],
-    "rank": 93
+    ]
   },
   {
     "family": "time_of_day",
@@ -2155,8 +2226,7 @@
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
-    ],
-    "rank": 96
+    ]
   },
   {
     "family": "relative_volume",
@@ -2199,8 +2269,7 @@
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
-    ],
-    "rank": 98
+    ]
   },
   {
     "family": "time_of_day",
@@ -2269,7 +2338,13 @@
     "beats_timing_stack_baseline": false,
     "notes": "Held-out timing-stack plus ADX(14) >= train median (29.6631).",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_timing_stack_adx_20260327\\summary.json",
-    "rank": 101
+    "rank": 101,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "name": "timing_skip_wednesday_hours_13_14_relvol_short_lb20_ge_0p85",
@@ -2546,7 +2621,13 @@
     "test_win_rate": 0.7368,
     "notes": "Held-out timing-stack baseline: skip Wednesday, skip 13:00, stop new entries after 14:30.",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_timing_stack_adx_20260327\\summary.json",
-    "rank": 113
+    "rank": 113,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "name": "timing_skip_wednesday_hours_13_14",
@@ -3360,8 +3441,7 @@
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
-    ],
-    "rank": 148
+    ]
   },
   {
     "family": "rsi_divergence",
