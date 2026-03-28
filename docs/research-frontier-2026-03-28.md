@@ -150,6 +150,17 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - M30 confirmation plus TP scaling: `R$12,315`, `PF 1.4971`, `DD 3.31%`
   - interpretation: M30 confirmation is a credible quality niche because it slightly improves PF and DD, but it gives up too much net profit and OnTester. TP streak-scaling weakens the strategy and should not be promoted.
 
+- The final stress/deployability pass reinforces the same conclusion:
+  - artifact: `artifacts/outputs/stalker_v10_1_session_final_stress_followups_20260328/summary.json`
+  - 30-bar VWAP slope sign filter: `R$13,405`, `PF 1.4628`, `DD 4.26%`
+  - position-sizing grid on the max-hold leader:
+    - `0.5` contract: `R$7,067.5`, `PF 1.4851`, `DD 2.14%`
+    - `1.0` contract: `R$14,135`, `PF 1.4851`, `DD 3.29%`
+    - `2.0` contracts: `R$28,270`, `PF 1.4851`, `DD 5.03%`
+    - `3.0` contracts: `R$42,405`, `PF 1.4851`, `DD 6.32%`
+  - max-hold leader under `3x` spread stress: `R$-3,300`, `PF 0.9198`, `DD 46.44%`
+  - interpretation: the VWAP-slope gate is not worth the net-profit giveback, size scales cleanly in PF terms but predictably amplifies drawdown, and severe execution deterioration still breaks the edge.
+
 - The latest deployment follow-up increased confidence in the cooldown winner:
   - artifact: `artifacts/outputs/stalker_v10_1_session_deployment_followups_20260328/summary.json`
   - exact `70/30` holdout for the cooldown winner:

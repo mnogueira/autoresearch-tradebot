@@ -1,0 +1,133 @@
+{
+  "reference_variant": "session_winner_cooldown_30m_max_hold_120m1bars",
+  "reference_metrics": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247,
+    "total_trades": 1568,
+    "win_rate": 0.8055,
+    "net_profit_brl": 14135.0,
+    "avg_profit_brl": 9.01,
+    "avg_win_brl": 34.26,
+    "avg_loss_brl": -95.54,
+    "profit_factor": 1.4851,
+    "max_drawdown_pct": 3.29,
+    "expected_payoff": 9.01,
+    "on_tester_value": 4290.320082
+  },
+  "vwap_slope_filter_variant": {
+    "rule": "Require the simple 30-bar intraday VWAP slope sign to agree with the entry direction.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1538,
+      "win_rate": 0.8043,
+      "net_profit_brl": 13405.0,
+      "avg_profit_brl": 8.72,
+      "avg_win_brl": 34.25,
+      "avg_loss_brl": -96.23,
+      "profit_factor": 1.4628,
+      "max_drawdown_pct": 4.26,
+      "expected_payoff": 8.72,
+      "on_tester_value": 3144.952273
+    }
+  },
+  "contracts_per_trade_grid": [
+    {
+      "contracts_per_trade": 0.5,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1568,
+        "win_rate": 0.8055,
+        "net_profit_brl": 7067.5,
+        "avg_profit_brl": 4.51,
+        "avg_win_brl": 17.13,
+        "avg_loss_brl": -47.77,
+        "profit_factor": 1.4851,
+        "max_drawdown_pct": 2.14,
+        "expected_payoff": 4.51,
+        "on_tester_value": 3303.766598
+      }
+    },
+    {
+      "contracts_per_trade": 1.0,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1568,
+        "win_rate": 0.8055,
+        "net_profit_brl": 14135.0,
+        "avg_profit_brl": 9.01,
+        "avg_win_brl": 34.26,
+        "avg_loss_brl": -95.54,
+        "profit_factor": 1.4851,
+        "max_drawdown_pct": 3.29,
+        "expected_payoff": 9.01,
+        "on_tester_value": 4290.320082
+      }
+    },
+    {
+      "contracts_per_trade": 2.0,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1568,
+        "win_rate": 0.8055,
+        "net_profit_brl": 28270.0,
+        "avg_profit_brl": 18.03,
+        "avg_win_brl": 68.53,
+        "avg_loss_brl": -191.08,
+        "profit_factor": 1.4851,
+        "max_drawdown_pct": 5.03,
+        "expected_payoff": 18.03,
+        "on_tester_value": 5618.256322
+      }
+    },
+    {
+      "contracts_per_trade": 3.0,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1568,
+        "win_rate": 0.8055,
+        "net_profit_brl": 42405.0,
+        "avg_profit_brl": 27.04,
+        "avg_win_brl": 102.79,
+        "avg_loss_brl": -286.62,
+        "profit_factor": 1.4851,
+        "max_drawdown_pct": 6.32,
+        "expected_payoff": 27.04,
+        "on_tester_value": 6712.966393
+      }
+    }
+  ],
+  "spread_3x_stress": {
+    "rule": "Multiply the exact intrabar spread by 3.0x on the max-hold leader.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1531,
+      "win_rate": 0.7126,
+      "net_profit_brl": -3300.0,
+      "avg_profit_brl": -2.16,
+      "avg_win_brl": 34.68,
+      "avg_loss_brl": -93.49,
+      "profit_factor": 0.9198,
+      "max_drawdown_pct": 46.44,
+      "expected_payoff": -2.16,
+      "on_tester_value": -71.05621
+    }
+  },
+  "notes": [
+    "The VWAP slope uses session-cumulative VWAP and a simple 30-bar slope proxy: (VWAP_t - VWAP_t-30) / 30.",
+    "Contract-size runs reuse the same exact trade logic but vary ContractsPerTrade to expose how fixed transaction costs bend the curve.",
+    "The 3x spread stress is the harsh slippage-style case for the current max-hold leader, not the earlier plain session winner."
+  ]
+}

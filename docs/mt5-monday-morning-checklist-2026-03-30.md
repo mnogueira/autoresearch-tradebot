@@ -2,11 +2,12 @@
 
 ## Before The Open
 
-1. Open the main MetaTrader 5 terminal and let it sync for at least `2` minutes.
-2. Open MetaEditor and compile:
+1. Log into the paper-trading terminal/account you will actually use on Monday.
+2. Open the main MetaTrader 5 terminal and let it sync for at least `2` minutes.
+3. Open MetaEditor and compile:
    - `mt5/experts/custom/WDO Stalker Strategy v10.1 Time Filters GPT 5.4.mq5`
-3. Confirm the compile finished without errors or warnings that affect trading logic.
-4. Open Strategy Tester and set:
+4. Confirm the compile finished without errors or warnings that affect trading logic.
+5. Open Strategy Tester and set:
    - Expert: `WDO Stalker Strategy v10.1 Time Filters GPT 5.4`
    - Symbol: the terminal’s continuous WDO symbol
    - Timeframe: `M1`
@@ -33,6 +34,12 @@
 2. Confirm the spread is realistic for the current session.
 3. Run one clean backtest before turning on any paper automation.
 4. Save the HTML report and compare the headline numbers against the artifact summary.
+5. If the tester output looks sane, move to the paper chart:
+   - open the live paper symbol chart
+   - attach the EA
+   - load the same preset
+   - verify `Algo Trading` is enabled
+   - confirm the smile icon / active EA state on the chart
 
 ## Paper Trading Go / No-Go
 
@@ -52,4 +59,8 @@
 1. Keep size at `1` contract.
 2. Watch the first two sessions closely around `10:00`, `11:00`, `12:00`, and `14:00`.
 3. Record actual spread and fill behavior for each trade.
-4. If live-paper performance diverges sharply from the exact baseline, fall back to the fully validated MT5 base preset.
+4. Keep the `Experts` and `Journal` tabs open and watch for:
+   - unexpected entries outside the intended windows
+   - repeated close-order rejections
+   - spread spikes around the allowed sessions
+5. If live-paper performance diverges sharply from the exact baseline, fall back to the fully validated MT5 base preset.
