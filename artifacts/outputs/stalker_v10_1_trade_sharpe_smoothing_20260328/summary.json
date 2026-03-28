@@ -1,0 +1,71 @@
+{
+  "method": "Rolling 20-trade Sharpe on realized trade PnL, using population std within each 20-trade window.",
+  "ranked_variants": [
+    {
+      "name": "weekly_cap_300",
+      "rolling_20_trade_sharpe": {
+        "window": 20,
+        "median": 0.7457,
+        "p25": 0.115,
+        "minimum": -1.4087,
+        "pct_positive_windows": 0.7885,
+        "num_windows": 1532
+      }
+    },
+    {
+      "name": "session_winner",
+      "rolling_20_trade_sharpe": {
+        "window": 20,
+        "median": 0.745,
+        "p25": 0.0539,
+        "minimum": -1.8374,
+        "pct_positive_windows": 0.7682,
+        "num_windows": 1877
+      }
+    },
+    {
+      "name": "maxhold_v2",
+      "rolling_20_trade_sharpe": {
+        "window": 20,
+        "median": 0.739,
+        "p25": 0.1086,
+        "minimum": -1.4087,
+        "pct_positive_windows": 0.7876,
+        "num_windows": 1549
+      }
+    },
+    {
+      "name": "cooldown_only",
+      "rolling_20_trade_sharpe": {
+        "window": 20,
+        "median": 0.7365,
+        "p25": 0.1026,
+        "minimum": -1.4087,
+        "pct_positive_windows": 0.7857,
+        "num_windows": 1549
+      }
+    },
+    {
+      "name": "time_widened_stop",
+      "rolling_20_trade_sharpe": {
+        "window": 20,
+        "median": 0.724,
+        "p25": 0.073,
+        "minimum": -1.3836,
+        "pct_positive_windows": 0.7715,
+        "num_windows": 1549
+      }
+    },
+    {
+      "name": "tier1_mt5_base",
+      "rolling_20_trade_sharpe": {
+        "window": 20,
+        "median": 0.5254,
+        "p25": -0.1767,
+        "minimum": -2.8567,
+        "pct_positive_windows": 0.6714,
+        "num_windows": 2051
+      }
+    }
+  ]
+}

@@ -4,13 +4,18 @@
 
 | Variant | Net | PF | DD | Win Rate | Trades | Trades/Day | Sortino | Calmar | Omega | Composite | Rank |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Baseline, MT5-validated `sl0p84/tp0p30` | `R$14,330` | `1.36` | `3.94%` | `80.29%` | 2070 | `1.9639` | `1.8158` | `5.3480` | `1.5278` | `2.8179` | 4 |
-| Session winner | `R$15,965` | `1.4438` | `4.04%` | `80.17%` | 1896 | `1.5204` | `2.1977` | `5.2628` | `1.6392` | `3.0055` | 3 |
-| Minimal moderate, session winner + cooldown | `R$14,085` | `1.4825` | `3.30%` | `80.55%` | 1568 | `1.2574` | `1.9306` | `5.8842` | `1.6115` | `3.0529` | 2 |
 | Max-hold v2, session winner + cooldown + `120` M1-bar max hold | `R$14,135` | `1.4851` | `3.29%` | `80.55%` | 1568 | `1.2574` | `1.9392` | `5.9153` | `1.6150` | `3.0672` | 1 |
-| Cooldown-only + skip last 3 contract days | `R$12,855` | `1.5250` | `3.50%` | `81.12%` | 1345 | `1.0786` | `1.7673` | `5.1990` | `1.6791` | `2.7792` | 5 |
-| ADX quality mode, prior-day `ADX > 25` | `R$7,485` | `1.9067` | `3.38%` | `84.29%` | 490 | `0.3929` | `1.0426` | `3.5353` | `2.2131` | `2.0245` | 6 |
-| ADX quality mode, prior-day `ADX > 30` | `R$3,515` | `1.6356` | `4.35%` | `82.37%` | 278 | `0.2230` | `0.4607` | `1.4419` | `1.8573` | `1.0344` | 7 |
+| Time-widened stop, `0.84 -> 1.20` ATR after `30` bars | `R$14,270` | `1.4887` | `3.28%` | `80.87%` | 1568 | `1.2574` | `1.8816` | `5.9908` | `1.6132` | `3.0607` | 2 |
+| Minimal moderate, session winner + cooldown | `R$14,085` | `1.4825` | `3.30%` | `80.55%` | 1568 | `1.2574` | `1.9306` | `5.8842` | `1.6115` | `3.0529` | 3 |
+| Weekly profit cap `R$300`, cooldown + max-hold | `R$14,095` | `1.4937` | `3.32%` | `80.59%` | 1551 | `1.2446` | `1.9354` | `5.8649` | `1.6202` | `3.0512` | 4 |
+| Session winner | `R$15,965` | `1.4438` | `4.04%` | `80.17%` | 1896 | `1.5204` | `2.1977` | `5.2628` | `1.6392` | `3.0055` | 5 |
+| Baseline, MT5-validated `sl0p84/tp0p30` | `R$14,330` | `1.36` | `3.94%` | `80.29%` | 2070 | `1.9639` | `1.8158` | `5.3480` | `1.5278` | `2.8179` | 6 |
+| Cooldown-only + skip last 3 contract days | `R$12,855` | `1.5250` | `3.50%` | `81.12%` | 1345 | `1.0786` | `1.7673` | `5.1990` | `1.6791` | `2.7792` | 7 |
+| Wider stop `SL 1.00 / TP 0.30` | `R$13,930` | `1.4556` | `4.07%` | `82.78%` | 1568 | `1.2574` | `1.6194` | `4.7394` | `1.5593` | `2.5434` | 8 |
+| Wider stop `SL 1.20 / TP 0.30` | `R$14,475` | `1.4626` | `4.43%` | `85.01%` | 1568 | `1.2574` | `1.4260` | `4.4758` | `1.5552` | `2.3668` | 9 |
+| ADX quality mode, prior-day `ADX > 25` | `R$7,485` | `1.9067` | `3.38%` | `84.29%` | 490 | `0.3929` | `1.0426` | `3.5353` | `2.2131` | `2.0245` | 10 |
+| ADX quality mode, prior-day `ADX > 30` | `R$3,515` | `1.6356` | `4.35%` | `82.37%` | 278 | `0.2230` | `0.4607` | `1.4419` | `1.8573` | `1.0344` | 11 |
+| Hot-hand gate, last `10` trades PnL > `0` | `R$630` | `1.9921` | `1.85%` | `84.38%` | 32 | `0.0257` | `0.1002` | `0.6727` | `2.5750` | `0.7669` | 12 |
 
 ## Quality Alternative
 
@@ -38,10 +43,25 @@
   - Tier 3, aggressive: session winner + `30m` cooldown + `120` M1 max hold
 - Risk-adjusted ranking by the Sortino-weighted composite:
   - 1: max-hold v2 at `3.0672`
-  - 2: cooldown-only at `3.0529`
-  - 3: session winner at `3.0055`
-  - 4: MT5-validated base at `2.8179`
-  - 5: cooldown-only + skip last 3 contract days at `2.7792`
+  - 2: time-widened stop at `3.0607`
+  - 3: cooldown-only at `3.0529`
+  - 4: weekly cap `R$300` at `3.0512`
+  - 5: session winner at `3.0055`
+  - 6: MT5-validated base at `2.8179`
+  - 7: cooldown-only + skip last 3 contract days at `2.7792`
+- Final stop-management follow-up:
+  - time-widened stop (`0.84 -> 1.20` ATR after `30` bars) was the only true headline-metric improvement over max-hold:
+    - `R$14,270`, `PF 1.4887`, `DD 3.28%`, `WR 80.87%`
+  - but its Sortino-weighted composite slipped slightly below max-hold, `3.0607` vs `3.0672`
+  - interpretation: it is a credible future MT5 validation candidate, but not strong enough to replace the simpler exact ranking winner
+- Market-close avoidance and weekly caps:
+  - closing `30` minutes before market close was an exact no-op on this setup
+  - a weekly profit cap at `R$300` per contract slightly improved PF and rolling trade smoothness, but it gave up just enough net and Calmar to stay below the main winners
+  - a weekly cap at `R$500` was also a no-op
+- Hot-hand follow-up:
+  - requiring the last `10` closed trades to sum to a positive PnL over-throttled the system badly:
+    - `32` trades, `R$630`, composite `0.7669`
+  - interpretation: this strategy does not want a “trade only when already hot” overlay
 - ADX quality-mode follow-up on the same composite:
   - cooldown-only: `3.0529`
   - MT5 Tier 1 base: `2.8179`
@@ -116,6 +136,14 @@
   - trailing `60`-day PF minimum: `0.8408`
   - share of `60`-day windows below `1.0`: `4.46%`
   - longest underwater stretch: `69` trading days
+- Rolling `20`-trade Sharpe smoothing:
+  - weekly cap `R$300`: median `0.7457`, positive windows `78.85%`
+  - session winner: median `0.7450`, positive windows `76.82%`
+  - max-hold v2: median `0.7390`, positive windows `78.76%`
+  - cooldown-only: median `0.7365`, positive windows `78.57%`
+  - time-widened stop: median `0.7240`, positive windows `77.15%`
+  - MT5 Tier 1 base: median `0.5254`, positive windows `67.14%`
+  - interpretation: the capped and exact-filtered variants are noticeably smoother trade-to-trade than the raw MT5 base, but weekly cap `R$300` is still not enough of a total-package improvement to become the default
 - Pareto check against the broader exact leaderboard:
   - no exact candidate improved `net profit`, `profit factor`, `drawdown`, and `win rate` simultaneously versus the max-hold leader
   - interpretation: there is no true all-metrics winner hiding elsewhere in the research set

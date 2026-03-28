@@ -220,6 +220,32 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - `ATR14 SL 2.00`: `R$16,090`, `PF 1.3671`, `DD 6.86%`
   - interpretation: the session winner already uses ATR-based exits, so the “dynamic ATR” tests are really multiplier changes. The best gross-net change is `TP 0.50`, but the best cost-robust exact refinement is the `30-minute cooldown`.
 
+- Final stop-management and profit-throttle follow-ups:
+  - artifact: `artifacts/outputs/stalker_v10_1_wider_sl_followups_20260328/summary.json`
+  - `SL 1.00 / TP 0.30`: `R$13,930`, `PF 1.4556`, `DD 4.07%`, composite `2.5434`
+  - `SL 1.20 / TP 0.30`: `R$14,475`, `PF 1.4626`, `DD 4.43%`, composite `2.3668`
+  - `SL 0.84`, widen to `1.20` after `30` bars: `R$14,270`, `PF 1.4887`, `DD 3.28%`, composite `3.0607`
+  - interpretation: the time-widened stop is the only real headline-metric improvement over max-hold, but it still loses by a hair on the Sortino-weighted composite and is more complex to ship.
+
+- Final session-end and weekly-cap controls:
+  - artifact: `artifacts/outputs/stalker_v10_1_session_close_weekly_followups_20260328/summary.json`
+  - market-close avoidance (`30` minutes before session end): identical to the reference exact leader
+  - weekly cap `R$300`: `R$14,095`, `PF 1.4937`, `DD 3.32%`, composite `3.0512`
+  - weekly cap `R$500`: identical to the reference exact leader
+  - interpretation: market-close avoidance is a structural no-op under the current session and max-hold settings; the `R$300` weekly cap is smoother trade-to-trade but still not strong enough overall to replace the current main candidates.
+
+- Final trade-momentum overlay:
+  - artifact: `artifacts/outputs/stalker_v10_1_session_hot_hand_followup_20260328/summary.json`
+  - trailing `10`-trade realized PnL must be positive: `32` trades, `R$630`, `PF 1.9921`, `DD 1.85%`, composite `0.7669`
+  - interpretation: this is classic over-throttling. It cleans up the surviving trades but destroys the strategy by starving it of opportunities.
+
+- Rolling `20`-trade Sharpe smoothing:
+  - artifact: `artifacts/outputs/stalker_v10_1_trade_sharpe_smoothing_20260328/summary.json`
+  - smoothest exact trade-to-trade variant: weekly cap `R$300`, median rolling Sharpe `0.7457`
+  - next smoothest: session winner `0.7450`, max-hold v2 `0.7390`, cooldown-only `0.7365`
+  - MT5 Tier 1 base was rougher at `0.5254`
+  - interpretation: the weekly-cap variant is slightly smoother, but not enough to override the stronger total-package candidates.
+
 - Trend-efficiency lookback optimization says the default `15-minute` window is still the right anchor:
   - artifact: `artifacts/outputs/stalker_v10_1_session_trend_window_sweep_20260328/summary.json`
   - `5 minutes`: `R$13,580`, `PF 1.4251`, `DD 3.75%`

@@ -114,6 +114,8 @@ Recent context:
      - `python -m autoresearch_tradebot.mt5.export_tester_trade_log --report artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/mt5_model_0_report.html --trades-out artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/trade_log.csv --daily-out artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/daily_pnl.csv`
 7. Build the compact monitoring JSON after the export:
    - script: `src/autoresearch_tradebot/mt5/build_monitoring_snapshot.py`
+   - installed CLI entry point after `pip install -e .`:
+     - `tradebot-mt5-monitoring-snapshot --trade-log artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/trade_log.csv --session-date 2026-03-19 --out artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/monitoring_snapshot.json`
    - tested Tier 1 example:
      - `python -m autoresearch_tradebot.mt5.build_monitoring_snapshot --report artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/mt5_model_0_report.html --out artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/monitoring_snapshot.json`
    - reusable trade-log workflow:

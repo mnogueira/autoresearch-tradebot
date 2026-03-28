@@ -52,6 +52,8 @@ class ManagementConfig:
     max_daily_profit_brl: float | None = None
     max_weekly_profit_brl: float | None = None
     max_consecutive_losses_per_day: int | None = None
+    recent_trade_pnl_lookback: int | None = None
+    min_recent_trade_pnl_brl: float | None = None
     cooldown_after_win_minutes: int | None = None
     cooldown_after_loss_minutes: int | None = None
     loss_exit_atr_mult: float | None = None
@@ -151,6 +153,20 @@ def has_reached_weekly_profit_cap(
     if max_weekly_profit_brl is None or max_weekly_profit_brl <= 0.0:
         return False
     return float(realized_pnl_brl_week) >= float(max_weekly_profit_brl)
+
+
+def recent_trade_pnl_allows_entry(
+    recent_trade_pnls_brl: list[float],
+    lookback: int | None,
+    min_recent_trade_pnl_brl: float | None,
+) -> bool:
+    if lookback is None or lookback <= 0:
+        return True
+    if len(recent_trade_pnls_brl) < int(lookback):
+        return True
+    threshold = float(min_recent_trade_pnl_brl) if min_recent_trade_pnl_brl is not None else 0.0
+    trailing_total = float(sum(recent_trade_pnls_brl[-int(lookback) :]))
+    return trailing_total > threshold
 
 
 def pending_order_can_fill_at_index(current_index: int, pending_order: dict[str, Any] | None) -> bool:
@@ -350,6 +366,7 @@ def run_backtest_with_management(
     consecutive_wins_total = 0
     realized_pnl_brl_today = 0.0
     realized_pnl_brl_week = 0.0
+    recent_trade_pnls_brl: list[float] = []
     next_entry_allowed_time: pd.Timestamp | None = None
     current_week_key: tuple[int, int] | None = None
 
@@ -405,6 +422,7 @@ def run_backtest_with_management(
         completed_trades_today += 1
         realized_pnl_brl_today += float(pnl_brl)
         realized_pnl_brl_week += float(pnl_brl)
+        recent_trade_pnls_brl.append(float(pnl_brl))
         if float(pnl_brl) < 0.0:
             consecutive_losses_today += 1
             consecutive_wins_total = 0
@@ -705,12 +723,18 @@ def run_backtest_with_management(
             realized_pnl_brl_week=realized_pnl_brl_week,
             max_weekly_profit_brl=management.max_weekly_profit_brl,
         )
+        recent_trade_filter_allows_entry = recent_trade_pnl_allows_entry(
+            recent_trade_pnls_brl=recent_trade_pnls_brl,
+            lookback=management.recent_trade_pnl_lookback,
+            min_recent_trade_pnl_brl=management.min_recent_trade_pnl_brl,
+        )
         can_enter_new_trades = (
             bool(can_enter_flags[index])
             and cooldown_allows_entry
             and loss_stop_allows_entry
             and profit_cap_allows_entry
             and weekly_profit_cap_allows_entry
+            and recent_trade_filter_allows_entry
         )
         if not can_enter_new_trades:
             pending_order = None

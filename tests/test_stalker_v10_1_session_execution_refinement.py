@@ -10,6 +10,7 @@ from autoresearch_tradebot.strategies.stalker_v10_1_session_execution_refinement
     pending_order_can_fill_at_index,
     pending_order_has_expired,
     profit_lock_stop_tick,
+    recent_trade_pnl_allows_entry,
     widened_stop_tick,
 )
 
@@ -42,6 +43,14 @@ class SessionExecutionRefinementTests(unittest.TestCase):
     def test_weekly_profit_cap_triggers_at_boundary(self) -> None:
         self.assertFalse(has_reached_weekly_profit_cap(299.99, 300.0))
         self.assertTrue(has_reached_weekly_profit_cap(300.0, 300.0))
+
+    def test_recent_trade_pnl_gate_allows_until_lookback_is_full(self) -> None:
+        self.assertTrue(recent_trade_pnl_allows_entry([10.0, -5.0], 10, 0.0))
+        self.assertTrue(recent_trade_pnl_allows_entry([10.0, -5.0], None, 0.0))
+
+    def test_recent_trade_pnl_gate_requires_positive_trailing_sum(self) -> None:
+        self.assertTrue(recent_trade_pnl_allows_entry([10.0, -5.0, 4.0], 3, 0.0))
+        self.assertFalse(recent_trade_pnl_allows_entry([10.0, -15.0, 4.0], 3, 0.0))
 
     def test_pending_order_fill_and_expiry_boundaries(self) -> None:
         order = {"min_fill_index": 11, "expiry_index": 13}

@@ -1,0 +1,81 @@
+{
+  "reference_variant": "session_winner_cooldown_30m_maxhold120_sl0p84_tp0p30",
+  "reference_metrics": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247,
+    "total_trades": 1568,
+    "win_rate": 0.8055,
+    "net_profit_brl": 14135.0,
+    "avg_profit_brl": 9.01,
+    "avg_win_brl": 34.26,
+    "avg_loss_brl": -95.54,
+    "profit_factor": 1.4851,
+    "max_drawdown_pct": 3.29,
+    "expected_payoff": 9.01,
+    "on_tester_value": 4290.320082
+  },
+  "wider_sl_variants": [
+    {
+      "sl_atr_multiplier": 1.0,
+      "tp_atr_multiplier": 0.3,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1568,
+        "win_rate": 0.8278,
+        "net_profit_brl": 13930.0,
+        "avg_profit_brl": 8.88,
+        "avg_win_brl": 34.29,
+        "avg_loss_brl": -113.24,
+        "profit_factor": 1.4556,
+        "max_drawdown_pct": 4.07,
+        "expected_payoff": 8.88,
+        "on_tester_value": 3423.712844
+      }
+    },
+    {
+      "sl_atr_multiplier": 1.2,
+      "tp_atr_multiplier": 0.3,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1568,
+        "win_rate": 0.8501,
+        "net_profit_brl": 14475.0,
+        "avg_profit_brl": 9.23,
+        "avg_win_brl": 34.33,
+        "avg_loss_brl": -133.15,
+        "profit_factor": 1.4626,
+        "max_drawdown_pct": 4.43,
+        "expected_payoff": 9.23,
+        "on_tester_value": 3267.597222
+      }
+    }
+  ],
+  "time_weighted_stop_variant": {
+    "rule": "Start at SL 0.84 ATR and widen the stop to 1.20 ATR after 30 M1 bars if the trade is still open.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8087,
+      "net_profit_brl": 14270.0,
+      "avg_profit_brl": 9.1,
+      "avg_win_brl": 34.28,
+      "avg_loss_brl": -97.33,
+      "profit_factor": 1.4887,
+      "max_drawdown_pct": 3.28,
+      "expected_payoff": 9.1,
+      "on_tester_value": 4356.450575
+    }
+  },
+  "notes": [
+    "All variants keep the current exact production structure: session hours 10/11/12/14, 30-minute cooldown, and 120 M1-bar max hold.",
+    "The wider-SL pass only changes the ATR-based stop multiplier while keeping TP fixed at 0.30 ATR.",
+    "The time-weighted stop variant starts with the current 0.84 ATR stop and only widens after 30 bars if the trade survives that long."
+  ]
+}

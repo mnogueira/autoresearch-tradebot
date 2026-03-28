@@ -1,0 +1,40 @@
+{
+  "reference_variant": "session_winner_cooldown_30m_maxhold120_sl0p84_tp0p30",
+  "reference_metrics": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247,
+    "total_trades": 1568,
+    "win_rate": 0.8055,
+    "net_profit_brl": 14135.0,
+    "avg_profit_brl": 9.01,
+    "avg_win_brl": 34.26,
+    "avg_loss_brl": -95.54,
+    "profit_factor": 1.4851,
+    "max_drawdown_pct": 3.29,
+    "expected_payoff": 9.01,
+    "on_tester_value": 4290.320082
+  },
+  "hot_hand_filter": {
+    "rule": "Only allow new entries once the trailing 10 closed trades sum to a strictly positive PnL.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 32,
+      "win_rate": 0.8438,
+      "net_profit_brl": 630.0,
+      "avg_profit_brl": 19.69,
+      "avg_win_brl": 46.85,
+      "avg_loss_brl": -127.0,
+      "profit_factor": 1.9921,
+      "max_drawdown_pct": 1.85,
+      "expected_payoff": 19.69,
+      "on_tester_value": 341.145
+    }
+  },
+  "notes": [
+    "The hot-hand gate is inactive until at least 10 trades have closed.",
+    "The trailing PnL filter is applied on realized closed-trade PnL only, so it never looks ahead."
+  ]
+}
