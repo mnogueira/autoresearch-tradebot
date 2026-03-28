@@ -6850,6 +6850,66 @@
     ]
   },
   {
+    "name": "session_winner_cooldown_30m_maxhold120_patience_0p4_3bars",
+    "family": "session_patience_entry",
+    "screening_method": "session_winner_execution_refinement",
+    "comparison_tier": "exact",
+    "mt5_ready": false,
+    "test_total_trades": 712,
+    "test_net_profit_brl": -12430.0,
+    "test_profit_factor": 0.5443,
+    "test_on_tester_value": -99.390577,
+    "test_max_drawdown_pct": 125.06,
+    "test_win_rate": 0.6025,
+    "notes": "Exact max-hold leader with a patience entry: wait up to 3 bars for a 0.40 signal-bar pullback.",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_session_patience_followups_20260328\\summary.json",
+    "params": {
+      "patience_pullback_fraction": 0.4,
+      "patience_max_wait_bars": 3
+    },
+    "rank": 277
+  },
+  {
+    "name": "session_winner_cooldown_30m_maxhold120_patience_0p5_3bars",
+    "family": "session_patience_entry",
+    "screening_method": "session_winner_execution_refinement",
+    "comparison_tier": "exact",
+    "mt5_ready": false,
+    "test_total_trades": 982,
+    "test_net_profit_brl": -11885.0,
+    "test_profit_factor": 0.6497,
+    "test_on_tester_value": -99.482941,
+    "test_max_drawdown_pct": 119.47,
+    "test_win_rate": 0.6477,
+    "notes": "Exact max-hold leader with a patience entry: wait up to 3 bars for a 0.50 signal-bar pullback.",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_session_patience_followups_20260328\\summary.json",
+    "params": {
+      "patience_pullback_fraction": 0.5,
+      "patience_max_wait_bars": 3
+    },
+    "rank": 278
+  },
+  {
+    "name": "session_winner_cooldown_30m_maxhold120_patience_0p3_3bars",
+    "family": "session_patience_entry",
+    "screening_method": "session_winner_execution_refinement",
+    "comparison_tier": "exact",
+    "mt5_ready": false,
+    "test_total_trades": 476,
+    "test_net_profit_brl": -10050.0,
+    "test_profit_factor": 0.4857,
+    "test_on_tester_value": -99.55936,
+    "test_max_drawdown_pct": 100.94,
+    "test_win_rate": 0.5735,
+    "notes": "Exact max-hold leader with a patience entry: wait up to 3 bars for a 0.30 signal-bar pullback.",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_session_patience_followups_20260328\\summary.json",
+    "params": {
+      "patience_pullback_fraction": 0.3,
+      "patience_max_wait_bars": 3
+    },
+    "rank": 279
+  },
+  {
     "name": "ema_3_13_exact_sl0p84_tp0p42",
     "family": "ema_crossover_exact",
     "screening_method": "exact_every_tick_market_entry",
@@ -6875,7 +6935,7 @@
     "test_win_rate": 0.6309,
     "notes": "Exact every-tick EMA crossover market-entry variant with session filter.",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\wdo_ema_crossover_exact_20260328\\summary.json",
-    "rank": 277
+    "rank": 280
   },
   {
     "name": "session_winner_cooldown_30m_recent_entry_density_sizing_60m",
@@ -6897,7 +6957,7 @@
       "min_size_multiplier": 0.5,
       "max_size_multiplier": 1.0
     },
-    "rank": 278
+    "rank": 281
   },
   {
     "name": "session_winner_cooldown_30m_hourly_open_proxy",
@@ -6924,6 +6984,6 @@
         14
       ]
     },
-    "rank": 279
+    "rank": 282
   }
 ]

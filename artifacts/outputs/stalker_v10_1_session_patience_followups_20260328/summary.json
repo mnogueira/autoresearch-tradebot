@@ -1,0 +1,81 @@
+{
+  "reference_variant": "session_winner_cooldown_30m_max_hold_120m1bars",
+  "reference_metrics": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247,
+    "total_trades": 1568,
+    "win_rate": 0.8055,
+    "net_profit_brl": 14135.0,
+    "avg_profit_brl": 9.01,
+    "avg_win_brl": 34.26,
+    "avg_loss_brl": -95.54,
+    "profit_factor": 1.4851,
+    "max_drawdown_pct": 3.29,
+    "expected_payoff": 9.01,
+    "on_tester_value": 4290.320082
+  },
+  "patience_pullback_grid": [
+    {
+      "pullback_fraction_of_signal_bar": 0.3,
+      "max_wait_bars": 3,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 476,
+        "win_rate": 0.5735,
+        "net_profit_brl": -10050.0,
+        "avg_profit_brl": -21.11,
+        "avg_win_brl": 34.76,
+        "avg_loss_brl": -96.26,
+        "profit_factor": 0.4857,
+        "max_drawdown_pct": 100.94,
+        "expected_payoff": -21.11,
+        "on_tester_value": -99.55936
+      }
+    },
+    {
+      "pullback_fraction_of_signal_bar": 0.4,
+      "max_wait_bars": 3,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 712,
+        "win_rate": 0.6025,
+        "net_profit_brl": -12430.0,
+        "avg_profit_brl": -17.46,
+        "avg_win_brl": 34.6,
+        "avg_loss_brl": -96.38,
+        "profit_factor": 0.5443,
+        "max_drawdown_pct": 125.06,
+        "expected_payoff": -17.46,
+        "on_tester_value": -99.390577
+      }
+    },
+    {
+      "pullback_fraction_of_signal_bar": 0.5,
+      "max_wait_bars": 3,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 982,
+        "win_rate": 0.6477,
+        "net_profit_brl": -11885.0,
+        "avg_profit_brl": -12.1,
+        "avg_win_brl": 34.65,
+        "avg_loss_brl": -98.05,
+        "profit_factor": 0.6497,
+        "max_drawdown_pct": 119.47,
+        "expected_payoff": -12.1,
+        "on_tester_value": -99.482941
+      }
+    }
+  ],
+  "notes": [
+    "This is an exact-engine approximation of a more patient entry: after the signal fires, wait up to 3 bars for a pullback into a fixed fraction of the signal bar range.",
+    "The pullback fraction is measured from the signal bar extreme back toward the opposite side of the signal bar."
+  ]
+}

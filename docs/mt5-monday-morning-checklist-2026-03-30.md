@@ -13,6 +13,19 @@
    - Timeframe: `M1`
    - Model: `Every Tick`
 
+## Exact Paths
+
+1. MT5 main terminal:
+   - `C:\Program Files\MetaTrader 5 Terminal\terminal64.exe`
+2. EA source to compile:
+   - `C:\Dev\autoresearch-tradebot\mt5\experts\custom\WDO Stalker Strategy v10.1 Time Filters GPT 5.4.mq5`
+3. Safest validated preset:
+   - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 GPT 5.4.set`
+4. Best exact refinement preset:
+   - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m MaxHold120m GPT 5.4.set`
+5. Quality-biased preset:
+   - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Maximum Quality v2 Cooldown 30m MaxHold120m GPT 5.4.set`
+
 ## Preset Order
 
 1. Run the safest validated preset first:

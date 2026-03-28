@@ -62,6 +62,8 @@ class ManagementConfig:
     keep_profitable_overnight: bool = False
     win_streak_threshold: int | None = None
     tp_scale_after_win_streak: float | None = None
+    patience_pullback_fraction: float | None = None
+    patience_max_wait_bars: int | None = None
 
 
 def session_winner_params() -> V101Params:
@@ -133,6 +135,24 @@ def has_reached_daily_profit_cap(
     if max_daily_profit_brl is None or max_daily_profit_brl <= 0.0:
         return False
     return float(realized_pnl_brl_today) >= float(max_daily_profit_brl)
+
+
+def pending_order_can_fill_at_index(current_index: int, pending_order: dict[str, Any] | None) -> bool:
+    if pending_order is None:
+        return False
+    min_fill_index = pending_order.get("min_fill_index")
+    if min_fill_index is None:
+        return True
+    return int(current_index) >= int(min_fill_index)
+
+
+def pending_order_has_expired(current_index: int, pending_order: dict[str, Any] | None) -> bool:
+    if pending_order is None:
+        return False
+    expiry_index = pending_order.get("expiry_index")
+    if expiry_index is None:
+        return False
+    return int(current_index) > int(expiry_index)
 
 
 def scaled_tp_multiplier(
@@ -488,12 +508,17 @@ def run_backtest_with_management(
                 append_trade(session_date, timestamp, exit_tick, f"time_exit_{int(management.max_bars_in_trade)}bars")
                 reset_position_state()
 
+        if position == 0 and pending_order_has_expired(index, pending_order):
+            pending_order = None
+
         if position == 0 and pending_order is not None:
-            fill_tick = _fill_pending_order_at_tick(
-                pending_order=pending_order,
-                bid_tick=bid_open_tick,
-                ask_tick=ask_open_tick,
-            )
+            fill_tick = None
+            if pending_order_can_fill_at_index(index, pending_order):
+                fill_tick = _fill_pending_order_at_tick(
+                    pending_order=pending_order,
+                    bid_tick=bid_open_tick,
+                    ask_tick=ask_open_tick,
+                )
             if fill_tick is not None:
                 position = int(pending_order["direction"])
                 entry_tick = int(fill_tick)
@@ -587,7 +612,15 @@ def run_backtest_with_management(
             if current_day_high_tick > previous_high_tick:
                 if pending_order is not None and int(pending_order["direction"]) == -1:
                     pending_order = None
-                base_price = ticks_to_price(upper_retracement_tick, PRICE_TICK_SIZE)
+                entry_limit_tick = upper_retracement_tick
+                if management.patience_pullback_fraction is not None:
+                    signal_bar_range_ticks = max(1, int(high_ticks[index] - low_ticks[index]))
+                    retrace_ticks = max(
+                        1,
+                        int(round(signal_bar_range_ticks * float(management.patience_pullback_fraction))),
+                    )
+                    entry_limit_tick = int(high_ticks[index]) - retrace_ticks
+                base_price = ticks_to_price(entry_limit_tick, PRICE_TICK_SIZE)
                 active_tp_multiplier = scaled_tp_multiplier(
                     float(params.TP_ATRMultiplier),
                     consecutive_wins_total,
@@ -595,14 +628,17 @@ def run_backtest_with_management(
                 )
                 candidate_order = {
                     "direction": 1,
-                    "limit_tick": upper_retracement_tick,
+                    "limit_tick": entry_limit_tick,
                     "stop_tick": price_to_ticks(round_to_tick(base_price - (atr_value * params.SL_ATRMultiplier)), PRICE_TICK_SIZE),
                     "target_tick": price_to_ticks(round_to_tick(base_price + (atr_value * active_tp_multiplier)), PRICE_TICK_SIZE),
                     "signal_time": timestamp,
                 }
+                if management.patience_pullback_fraction is not None and management.patience_max_wait_bars is not None:
+                    candidate_order["min_fill_index"] = int(index + 1)
+                    candidate_order["expiry_index"] = int(index + int(management.patience_max_wait_bars))
                 if allows_entry_direction(timestamp, 1, params) and _is_valid_pending_order(
                     direction=1,
-                    limit_tick=upper_retracement_tick,
+                    limit_tick=entry_limit_tick,
                     bid_tick=bid_open_tick,
                     ask_tick=ask_open_tick,
                 ) and _passes_directional_trend_efficiency(1, trend_efficiency_value, params) and _passes_signal_volume(
@@ -622,7 +658,15 @@ def run_backtest_with_management(
             elif current_day_low_tick < previous_low_tick:
                 if pending_order is not None and int(pending_order["direction"]) == 1:
                     pending_order = None
-                base_price = ticks_to_price(lower_retracement_tick, PRICE_TICK_SIZE)
+                entry_limit_tick = lower_retracement_tick
+                if management.patience_pullback_fraction is not None:
+                    signal_bar_range_ticks = max(1, int(high_ticks[index] - low_ticks[index]))
+                    retrace_ticks = max(
+                        1,
+                        int(round(signal_bar_range_ticks * float(management.patience_pullback_fraction))),
+                    )
+                    entry_limit_tick = int(low_ticks[index]) + retrace_ticks
+                base_price = ticks_to_price(entry_limit_tick, PRICE_TICK_SIZE)
                 active_tp_multiplier = scaled_tp_multiplier(
                     float(params.TP_ATRMultiplier),
                     consecutive_wins_total,
@@ -630,14 +674,17 @@ def run_backtest_with_management(
                 )
                 candidate_order = {
                     "direction": -1,
-                    "limit_tick": lower_retracement_tick,
+                    "limit_tick": entry_limit_tick,
                     "stop_tick": price_to_ticks(round_to_tick(base_price + (atr_value * params.SL_ATRMultiplier)), PRICE_TICK_SIZE),
                     "target_tick": price_to_ticks(round_to_tick(base_price - (atr_value * active_tp_multiplier)), PRICE_TICK_SIZE),
                     "signal_time": timestamp,
                 }
+                if management.patience_pullback_fraction is not None and management.patience_max_wait_bars is not None:
+                    candidate_order["min_fill_index"] = int(index + 1)
+                    candidate_order["expiry_index"] = int(index + int(management.patience_max_wait_bars))
                 if allows_entry_direction(timestamp, -1, params) and _is_valid_pending_order(
                     direction=-1,
-                    limit_tick=lower_retracement_tick,
+                    limit_tick=entry_limit_tick,
                     bid_tick=bid_open_tick,
                     ask_tick=ask_open_tick,
                 ) and _passes_directional_trend_efficiency(-1, trend_efficiency_value, params) and _passes_signal_volume(
@@ -678,12 +725,17 @@ def run_backtest_with_management(
             current_bid_tick = bid_open_tick + int(delta_tick)
             current_ask_tick = current_bid_tick + int(spread_ticks[index])
 
+            if position == 0 and pending_order_has_expired(index, pending_order):
+                pending_order = None
+
             if position == 0 and pending_order is not None:
-                fill_tick = _fill_pending_order_at_tick(
-                    pending_order=pending_order,
-                    bid_tick=current_bid_tick,
-                    ask_tick=current_ask_tick,
-                )
+                fill_tick = None
+                if pending_order_can_fill_at_index(index, pending_order):
+                    fill_tick = _fill_pending_order_at_tick(
+                        pending_order=pending_order,
+                        bid_tick=current_bid_tick,
+                        ask_tick=current_ask_tick,
+                    )
                 if fill_tick is not None:
                     position = int(pending_order["direction"])
                     entry_tick = int(fill_tick)

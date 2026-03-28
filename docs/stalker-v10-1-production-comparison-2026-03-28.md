@@ -35,6 +35,11 @@
   - quarter-adaptive hours were effectively just `10,11,12` all year and came back as a near-tie: `R$14,030`, `PF 1.4889`, `DD 3.41%`
   - month-adaptive hours reached `R$14,355`, `PF 1.5991`, `DD 3.50%`, but that mapping is explicitly in-sample and not safe to promote for Monday
   - a max-daily-profit stop at `2x` active-day mean hurt too much: `R$10,190`, `PF 1.4506`, `DD 3.66%`
+- Final patience-entry probe:
+  - `30%` pullback within `3` bars: `R$-10,050`, `PF 0.4857`, `DD 100.94%`
+  - `40%` pullback within `3` bars: `R$-12,430`, `PF 0.5443`, `DD 125.06%`
+  - `50%` pullback within `3` bars: `R$-11,885`, `PF 0.6497`, `DD 119.47%`
+  - interpretation: the strategy wants fast continuation entries, not patient pullback entries
 - Final innovation pass:
   - M30 confirmation improved quality to `PF 1.5335` and `DD 3.25%`, but net fell to `R$12,460`.
   - TP scaling after three consecutive wins underperformed the max-hold leader.
@@ -51,5 +56,6 @@
 - Exact max-hold artifact: `artifacts/outputs/stalker_v10_1_session_maxhold_followups_20260328/summary.json`
 - Final cost follow-up artifact: `artifacts/outputs/stalker_v10_1_session_cost_followups_20260328/summary.json`
 - Final wrap-up artifact: `artifacts/outputs/stalker_v10_1_session_wrapup_followups_20260328/summary.json`
+- Final patience artifact: `artifacts/outputs/stalker_v10_1_session_patience_followups_20260328/summary.json`
 - Frontier note: `docs/research-frontier-2026-03-28.md`
 - MT5 playbook: `docs/mt5-paper-trading-playbook-2026-03-28.md`

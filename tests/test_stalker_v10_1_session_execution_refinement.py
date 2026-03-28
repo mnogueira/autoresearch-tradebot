@@ -5,6 +5,8 @@ import unittest
 from autoresearch_tradebot.strategies.stalker_v10_1_session_execution_refinement import (
     has_reached_daily_profit_cap,
     has_reached_max_trade_age,
+    pending_order_can_fill_at_index,
+    pending_order_has_expired,
 )
 
 
@@ -28,6 +30,13 @@ class SessionExecutionRefinementTests(unittest.TestCase):
     def test_daily_profit_cap_triggers_at_boundary(self) -> None:
         self.assertFalse(has_reached_daily_profit_cap(99.99, 100.0))
         self.assertTrue(has_reached_daily_profit_cap(100.0, 100.0))
+
+    def test_pending_order_fill_and_expiry_boundaries(self) -> None:
+        order = {"min_fill_index": 11, "expiry_index": 13}
+        self.assertFalse(pending_order_can_fill_at_index(10, order))
+        self.assertTrue(pending_order_can_fill_at_index(11, order))
+        self.assertFalse(pending_order_has_expired(13, order))
+        self.assertTrue(pending_order_has_expired(14, order))
 
 
 if __name__ == "__main__":

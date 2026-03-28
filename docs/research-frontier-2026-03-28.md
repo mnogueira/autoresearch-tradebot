@@ -178,6 +178,13 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - max-daily-profit rule at `R$27.69`: `R$10,190`, `PF 1.4506`, `DD 3.66%`
   - interpretation: the month-adaptive hour map is the strongest exploratory niche left, but it is explicitly in-sample and therefore not production-safe. The daily profit-cap idea clearly hurt. The production recommendation stays with the fixed-hour max-hold leader.
 
+- The final “patience entry” idea was decisively debunked:
+  - artifact: `artifacts/outputs/stalker_v10_1_session_patience_followups_20260328/summary.json`
+  - wait up to `3` bars for a `30%` signal-bar pullback: `R$-10,050`, `PF 0.4857`, `DD 100.94%`
+  - `40%` pullback: `R$-12,430`, `PF 0.5443`, `DD 125.06%`
+  - `50%` pullback: `R$-11,885`, `PF 0.6497`, `DD 119.47%`
+  - interpretation: this strategy’s edge depends on entering close to the original signal, not on waiting for a nicer-looking retracement. The “patience” instinct is directionally wrong for this setup.
+
 - The latest deployment follow-up increased confidence in the cooldown winner:
   - artifact: `artifacts/outputs/stalker_v10_1_session_deployment_followups_20260328/summary.json`
   - exact `70/30` holdout for the cooldown winner:
