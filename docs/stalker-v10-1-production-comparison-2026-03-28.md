@@ -2,12 +2,12 @@
 
 ## Side-By-Side
 
-| Variant | Net | PF | DD | Win Rate | Trades |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Baseline, MT5-validated `sl0p84/tp0p30` | `R$14,330` | `1.36` | `3.94%` | `80.29%` | 2483 |
-| Session winner | `R$15,965` | `1.4438` | `4.04%` | `80.17%` | 1896 |
-| Minimal moderate, session winner + cooldown | `R$14,085` | `1.4825` | `3.30%` | `80.55%` | 1568 |
-| Max-hold v2, session winner + cooldown + `120` M1-bar max hold | `R$14,135` | `1.4851` | `3.29%` | `80.55%` | 1568 |
+| Variant | Net | PF | DD | Win Rate | Trades | Sortino | Calmar | Omega | Composite | Rank |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Baseline, MT5-validated `sl0p84/tp0p30` | `R$14,330` | `1.36` | `3.94%` | `80.29%` | 2070 | `1.8158` | `5.3480` | `1.5278` | `2.8179` | 4 |
+| Session winner | `R$15,965` | `1.4438` | `4.04%` | `80.17%` | 1896 | `2.1977` | `5.2628` | `1.6392` | `3.0055` | 3 |
+| Minimal moderate, session winner + cooldown | `R$14,085` | `1.4825` | `3.30%` | `80.55%` | 1568 | `1.9306` | `5.8842` | `1.6115` | `3.0529` | 2 |
+| Max-hold v2, session winner + cooldown + `120` M1-bar max hold | `R$14,135` | `1.4851` | `3.29%` | `80.55%` | 1568 | `1.9392` | `5.9153` | `1.6150` | `3.0672` | 1 |
 
 ## Quality Alternative
 
@@ -26,6 +26,15 @@
   - Tier 1, safest: MT5-validated `sl0p84 / tp0p30`
   - Tier 2, moderate: session winner + `30m` cooldown only
   - Tier 3, aggressive: session winner + `30m` cooldown + `120` M1 max hold
+- Risk-adjusted ranking by the Sortino-weighted composite:
+  - 1: max-hold v2 at `3.0672`
+  - 2: cooldown-only at `3.0529`
+  - 3: session winner at `3.0055`
+  - 4: MT5-validated base at `2.8179`
+- Requested top-3 professional-metric evaluation:
+  - max-hold v2 beat the session winner and MT5 base on composite score
+  - the session winner still had the best raw Sortino at `2.1977`
+  - the max-hold and cooldown overlays won on composite because their Calmar and Omega stayed stronger while drawdown stayed lower
 - Best quality-biased operator preset: Maximum Quality v2.
 - Main risk across all exact variants: transaction-cost sensitivity. The max-hold leader fails under `3x` spread stress: `R$-3,300`, `PF 0.9198`, `DD 46.44%`.
 - Final cost follow-up on the max-hold leader:
@@ -84,10 +93,34 @@
   - share of `60`-day windows below `1.0`: `4.46%`
   - longest underwater stretch: `69` trading days
 
+## Risk-Adjusted Evaluation
+
+- For this WDO intraday strategy, Calmar matters most operationally, even though the composite is Sortino-weighted.
+  - Reason: Monday deployment risk is dominated by drawdown tolerance and staying alive through soft tapes, not by squeezing the last bit of upside from already-positive days.
+- Sortino is still the best research ranking metric for idea discovery.
+  - It rewards upside while penalizing only harmful downside volatility, which is a better fit than plain Sharpe for this asymmetric intraday payoff profile.
+- Omega is the sanity-check metric.
+  - It confirms whether the overall daily return distribution still has more good mass than bad mass around a `0%` threshold.
+- Practical interpretation:
+  - if you want the safest live-paper default, keep Tier 1 because it is MT5-validated
+  - if you want the strongest exact risk-adjusted refinement, use Tier 2 or Tier 3
+  - if you care more about operational simplicity than a marginal composite edge, Tier 2 is the best balance
+
+## Methodology
+
+- Daily PnL was normalized to a `R$10,000` starting equity to match the repo's drawdown convention.
+- Sortino = annualized mean daily return divided by downside RMS of negative daily returns.
+- Calmar = CAGR divided by maximum drawdown fraction.
+- Omega = sum of positive daily returns divided by absolute sum of negative daily returns, threshold `0%`.
+- Composite = `0.50 * Sortino + 0.30 * Calmar + 0.20 * Omega`.
+- The MT5 base uses the actual Every Tick HTML deals ledger, aggregated to daily PnL.
+- The exact variants use the exact every-tick engine trade ledger, aggregated to daily PnL.
+
 ## Files
 
 - Validated MT5 artifact: `artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/summary.json`
 - Exact max-hold artifact: `artifacts/outputs/stalker_v10_1_session_maxhold_followups_20260328/summary.json`
+- Risk-adjusted evaluation artifact: `artifacts/outputs/stalker_v10_1_risk_adjusted_evaluation_20260328/summary.json`
 - Final cost follow-up artifact: `artifacts/outputs/stalker_v10_1_session_cost_followups_20260328/summary.json`
 - Final wrap-up artifact: `artifacts/outputs/stalker_v10_1_session_wrapup_followups_20260328/summary.json`
 - Final patience artifact: `artifacts/outputs/stalker_v10_1_session_patience_followups_20260328/summary.json`
