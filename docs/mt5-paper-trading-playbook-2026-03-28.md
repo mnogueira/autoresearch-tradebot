@@ -24,6 +24,17 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 - Artifact:
   - `artifacts/outputs/stalker_v10_1_session_robustness_checks_20260328/summary.json`
 
+### New best exact Python refinement
+
+- This is the best exact variant on the research side, but it is not MT5-ready until the EA supports a maximum holding time:
+  - session winner + `30-minute cooldown` + hard exit after `120` M1 bars
+- Exact result:
+  - `R$14,135`, `PF 1.4851`, `DD 3.29%`
+- Artifact:
+  - `artifacts/outputs/stalker_v10_1_session_macro_followups_20260328/summary.json`
+- Operational note:
+  - keep using the plain cooldown preset in MT5 until the max-hold feature is implemented in the EA
+
 ### Maximum-quality preset
 
 - Use this if the desk prefers cleaner tape over raw net profit:
@@ -69,4 +80,5 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 
 - Paper-trading default: the validated MT5 preset `sl0p84 / tp0p3`
 - First upgrade to validate on the host: the `Cooldown 30m` preset
+- First engineering upgrade after that: add the `120`-minute max-hold to the EA and validate the new exact leader
 - Quality-only alternative: the `Maximum Quality Cooldown 30m` preset

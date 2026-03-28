@@ -1,0 +1,111 @@
+{
+  "reference_variant": "session_winner_cooldown_30m",
+  "reference_metrics": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247,
+    "total_trades": 1568,
+    "win_rate": 0.8055,
+    "net_profit_brl": 14085.0,
+    "avg_profit_brl": 8.98,
+    "avg_win_brl": 34.26,
+    "avg_loss_brl": -95.7,
+    "profit_factor": 1.4825,
+    "max_drawdown_pct": 3.3,
+    "expected_payoff": 8.98,
+    "on_tester_value": 4263.59877
+  },
+  "daily_adx_trending_only": {
+    "rule": "Use prior-day ADX(14) on daily WDO; only allow entries when ADX > 25.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 490,
+      "win_rate": 0.8429,
+      "net_profit_brl": 7485.0,
+      "avg_profit_brl": 15.28,
+      "avg_win_brl": 38.11,
+      "avg_loss_brl": -107.21,
+      "profit_factor": 1.9067,
+      "max_drawdown_pct": 3.38,
+      "expected_payoff": 15.28,
+      "on_tester_value": 2213.667241
+    }
+  },
+  "dxy_correlation_filter": {
+    "rule": "Use prior-day rolling 20-session correlation between daily WDO returns and daily DXY returns; only allow entries when correlation > 0.70.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 20,
+      "win_rate": 0.7,
+      "net_profit_brl": -120.0,
+      "avg_profit_brl": -6.0,
+      "avg_win_brl": 28.21,
+      "avg_loss_brl": -85.83,
+      "profit_factor": 0.767,
+      "max_drawdown_pct": 2.42,
+      "expected_payoff": -6.0,
+      "on_tester_value": -49.591837
+    }
+  },
+  "max_position_duration_120_m1_bars": {
+    "rule": "Combine the 30-minute cooldown with a hard exit after 120 M1 bars.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 14135.0,
+      "avg_profit_brl": 9.01,
+      "avg_win_brl": 34.26,
+      "avg_loss_brl": -95.54,
+      "profit_factor": 1.4851,
+      "max_drawdown_pct": 3.29,
+      "expected_payoff": 9.01,
+      "on_tester_value": 4290.320082
+    }
+  },
+  "existing_walkforward_70_30": {
+    "base_variant": "cooldown_30m_with_session_filter",
+    "train_ratio": 0.7,
+    "train_metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2024-09-16",
+      "trading_days": 872,
+      "total_trades": 1098,
+      "win_rate": 0.8106,
+      "net_profit_brl": 10995.0,
+      "avg_profit_brl": 10.01,
+      "avg_win_brl": 35.69,
+      "avg_loss_brl": -99.83,
+      "profit_factor": 1.5295,
+      "max_drawdown_pct": 3.3,
+      "expected_payoff": 10.01,
+      "on_tester_value": 3328.240574
+    },
+    "test_metrics": {
+      "start_date": "2024-09-17",
+      "end_date": "2026-03-20",
+      "trading_days": 375,
+      "total_trades": 470,
+      "win_rate": 0.7936,
+      "net_profit_brl": 3090.0,
+      "avg_profit_brl": 6.57,
+      "avg_win_brl": 30.87,
+      "avg_loss_brl": -86.86,
+      "profit_factor": 1.3668,
+      "max_drawdown_pct": 4.57,
+      "expected_payoff": 6.57,
+      "on_tester_value": 676.224793
+    }
+  },
+  "notes": [
+    "The daily ADX filter uses only information known as of the prior completed daily candle.",
+    "The DXY correlation filter is constrained by DXY daily data availability, which begins later than the WDO sample.",
+    "The walk-forward section is reused from the existing cooldown deployment follow-up artifact because it already tests the exact same reference strategy on a clean 70/30 split."
+  ]
+}

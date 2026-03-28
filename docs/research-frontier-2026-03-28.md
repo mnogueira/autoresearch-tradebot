@@ -106,6 +106,13 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - maximum-quality all-sides timing preset (`full Wednesday skip`, `full 13:00 skip`, `30-minute cooldown`): `R$10,665`, `PF 1.4492`, `DD 3.78%`
   - interpretation: adaptive cooldown raises raw net profit, but it weakens PF, DD, and OnTester relative to the fixed `30-minute` cooldown. The 100-bar strength gate is too restrictive. The all-sides Wednesday version is a cleaner operational preset, but not the best exact strategy.
 
+- The latest macro/context overlays found one genuine new best exact candidate:
+  - artifact: `artifacts/outputs/stalker_v10_1_session_macro_followups_20260328/summary.json`
+  - daily ADX regime (`prior-day ADX(14) > 25`): `R$7,485`, `PF 1.9067`, `DD 3.38%`
+  - DXY correlation (`prior-day 20-session corr > 0.70`): `R$-120`, `PF 0.7670`, `DD 2.42%`
+  - `120` M1-bar max position duration plus `30-minute` cooldown: `R$14,135`, `PF 1.4851`, `DD 3.29%`, `OnTester 4290.320082`
+  - interpretation: the DXY filter is too sparse and should be dropped. The daily ADX regime is an interesting high-quality niche, but it over-prunes too hard. The `120`-minute max hold is the first macro/risk overlay that actually improves the session+cooldown leader on net profit, PF, drawdown, and OnTester all at once.
+
 - The latest deployment follow-up increased confidence in the cooldown winner:
   - artifact: `artifacts/outputs/stalker_v10_1_session_deployment_followups_20260328/summary.json`
   - exact `70/30` holdout for the cooldown winner:
@@ -264,6 +271,8 @@ But cost sensitivity is real:
     - https://www.mql5.com/en/articles/15116
   - PTAX reference prints can matter intraday, which is one plausible reason Friday behaves differently:
     - https://einvestidor.estadao.com.br/ultimas/ibovespa-hoje-ipca-15-leilao-bc-iof/
+  - Current discretionary commentary on WDO still describes the contract as selective and often range-bound intraday, which matches the repo's finding that tighter session selection matters more than broader signal family changes:
+    - https://analisa.genialinvestimentos.com.br/analises-tecnicas/analises-diarias/dolar-futuro/
 
 ## Blocked Tracks
 
@@ -276,9 +285,9 @@ But cost sensitivity is real:
 
 1. Validate the session winner approximation in MT5 `Every tick` once the tester is stable again.
    - the latest main-installation attempt still produced no HTML report in either the workspace output folder or the main terminal AppData tree, only the generated config file
-2. Implement and validate the `30-minute cooldown` refinement in MT5 `Every tick`.
-   - this is now the highest-priority exact Python candidate because it directly targets the strategy's main weakness: transaction-cost sensitivity
-3. If the cooldown is added to the EA, validate the exact session+cooldown winner before spending more time on ATR multiplier tweaks or substitute entry signals.
+2. Implement and validate the `120`-minute max-hold plus `30-minute cooldown` refinement in MT5 `Every tick`.
+   - this is now the highest-priority exact Python candidate because it improved the current exact leader on net profit, PF, drawdown, and OnTester together
+3. If the max-hold refinement is not yet wired into the EA, validate the plain exact session+cooldown winner before spending more time on ATR multiplier tweaks or substitute entry signals.
 4. Validate the Friday-exclusion preset:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 No Friday GPT 5.4.set`
 5. If MT5 remains unstable, prioritize cost-robustness and live-paper safety checks over more entry-family exploration.
@@ -295,14 +304,16 @@ But cost sensitivity is real:
   - keep `SkipShortWednesday=true`
   - keep `SkipShortHour13=true`
   - require at least `30 minutes` between filled entries
+  - close any position older than `120` M1 bars
   - keep `SL 0.84 / TP 0.30`
 - Known risks:
   - the edge weakens sharply under higher transaction costs; `2x` spread is still positive, `3x` spread is not
   - MT5 tester instability means the best exact refinements still need one clean host-side validation
 - Next paper-trading step:
   - run the validated MT5 preset first
-  - validate the new cooldown preset in MT5 `Every tick` next:
+  - validate the new cooldown preset in MT5 `Every tick` next if the EA is still missing the max-hold feature:
     - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
+  - if the EA gains a `120`-minute max-hold control, validate that variant immediately after because it is now the best exact Python candidate
   - monitor real slippage/spread conditions closely before promoting the exact cooldown refinement
 - Operational guide:
   - `docs/mt5-paper-trading-playbook-2026-03-28.md`
