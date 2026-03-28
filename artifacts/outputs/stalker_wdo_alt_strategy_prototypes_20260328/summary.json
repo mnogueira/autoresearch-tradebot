@@ -1,0 +1,49 @@
+{
+  "session_best_reference": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247,
+    "total_trades": 1726,
+    "win_rate": 0.8024,
+    "net_profit_brl": 14765.0,
+    "avg_profit_brl": 8.55,
+    "avg_win_brl": 33.94,
+    "avg_loss_brl": -94.55,
+    "profit_factor": 1.458,
+    "max_drawdown_pct": 4.84,
+    "expected_payoff": 8.55,
+    "on_tester_value": 3053.355859
+  },
+  "auction_mean_reversion_0905_0930": {
+    "total_trades": 615,
+    "win_rate": 0.4796747967479675,
+    "net_profit_brl": -5170.0,
+    "avg_profit_brl": -8.40650406504065,
+    "profit_factor": 0.8301018731514952,
+    "max_drawdown_pct": 56.61291918092789,
+    "on_tester_value": -0.0591259554767052
+  },
+  "consolidation_breakout_volume_confirm": {
+    "total_trades": 6017,
+    "win_rate": 0.3860727937510387,
+    "net_profit_brl": -79387.0,
+    "avg_profit_brl": -13.193784277879342,
+    "profit_factor": 0.8115392924206923,
+    "max_drawdown_pct": 648.0268350434096,
+    "on_tester_value": -0.006379037257412425
+  },
+  "session_best_volatility_scaled_positioning": {
+    "total_trades": 1726,
+    "win_rate": 0.802433371958285,
+    "net_profit_brl": 13991.034937901146,
+    "avg_profit_brl": 8.106045734589308,
+    "profit_factor": 1.4497027104904234,
+    "max_drawdown_pct": 3.9616417692037915,
+    "on_tester_value": 2.3802456523125755
+  },
+  "volatility_position_sizing_notes": {
+    "median_atr_signal": 11.053429500326125,
+    "clip_min": 0.5,
+    "clip_max": 1.5
+  }
+}

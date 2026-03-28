@@ -68,7 +68,10 @@
     "analysis_notes": [
       "Best session window from refinement: trade 10:00, 11:00, 12:00, and 14:00; skip the full 13:00 hour.",
       "Beats the prior Python SL/TP winner on PF, DD, and OnTester while giving up only R$60 of net profit.",
-      "VWAP reversion, RSI divergence, Bollinger squeeze, OFI, and M30 overlays all underperformed this simpler session-only refinement."
+      "VWAP reversion, RSI divergence, Bollinger squeeze, OFI, and M30 overlays all underperformed this simpler session-only refinement.",
+      "Exact Python winner is an entry-hour filter over 10:00, 11:00, 12:00, and 14:00; the MT5 preset using SkipHour13 is the closest practical approximation, not exact parity.",
+      "30m and 60m trend-efficiency variants improved quality in spots but did not beat the 15m core on overall objective.",
+      "Standalone consolidation-breakout and opening-auction mean-reversion prototypes were strongly negative; keep the current strategy family as the main line."
     ],
     "recommend_for_mt5_validation": true,
     "rank": 3

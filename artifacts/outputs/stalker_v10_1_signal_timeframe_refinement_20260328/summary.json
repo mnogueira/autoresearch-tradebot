@@ -1,0 +1,91 @@
+{
+  "reference": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247,
+    "total_trades": 1726,
+    "win_rate": 0.8024,
+    "net_profit_brl": 14765.0,
+    "avg_profit_brl": 8.55,
+    "avg_win_brl": 33.94,
+    "avg_loss_brl": -94.55,
+    "profit_factor": 1.458,
+    "max_drawdown_pct": 4.84,
+    "expected_payoff": 8.55,
+    "on_tester_value": 3053.355859
+  },
+  "ranked_results": [
+    {
+      "name": "reference_te15",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1726,
+        "win_rate": 0.8024,
+        "net_profit_brl": 14765.0,
+        "avg_profit_brl": 8.55,
+        "avg_win_brl": 33.94,
+        "avg_loss_brl": -94.55,
+        "profit_factor": 1.458,
+        "max_drawdown_pct": 4.84,
+        "expected_payoff": 8.55,
+        "on_tester_value": 3053.355859
+      },
+      "delta_vs_reference": {
+        "net_profit_brl": 0.0,
+        "profit_factor": 0.0,
+        "max_drawdown_pct": 0.0,
+        "on_tester_value": 0.0
+      }
+    },
+    {
+      "name": "te30",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1415,
+        "win_rate": 0.7951,
+        "net_profit_brl": 11490.0,
+        "avg_profit_brl": 8.12,
+        "avg_win_brl": 34.39,
+        "avg_loss_brl": -93.78,
+        "profit_factor": 1.4225,
+        "max_drawdown_pct": 3.82,
+        "expected_payoff": 8.12,
+        "on_tester_value": 3004.317791
+      },
+      "delta_vs_reference": {
+        "net_profit_brl": -3275.0,
+        "profit_factor": -0.0355,
+        "max_drawdown_pct": -1.02,
+        "on_tester_value": -49.038068
+      }
+    },
+    {
+      "name": "te60",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1040,
+        "win_rate": 0.8077,
+        "net_profit_brl": 9895.0,
+        "avg_profit_brl": 9.51,
+        "avg_win_brl": 34.37,
+        "avg_loss_brl": -94.88,
+        "profit_factor": 1.5215,
+        "max_drawdown_pct": 3.79,
+        "expected_payoff": 9.51,
+        "on_tester_value": 2609.379741
+      },
+      "delta_vs_reference": {
+        "net_profit_brl": -4870.0,
+        "profit_factor": 0.0635,
+        "max_drawdown_pct": -1.05,
+        "on_tester_value": -443.976118
+      }
+    }
+  ]
+}
