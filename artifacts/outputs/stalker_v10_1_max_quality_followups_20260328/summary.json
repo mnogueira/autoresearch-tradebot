@@ -1,0 +1,323 @@
+{
+  "exact_variants": [
+    {
+      "name": "session_winner_cooldown_30m_maxhold120_sl0p84_tp0p30",
+      "rule": "Reference production candidate.",
+      "comparison_tier": "exact",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1568,
+        "win_rate": 0.8055,
+        "net_profit_brl": 14135.0,
+        "avg_profit_brl": 9.01,
+        "avg_win_brl": 34.26,
+        "avg_loss_brl": -95.54,
+        "profit_factor": 1.4851,
+        "max_drawdown_pct": 3.29,
+        "expected_payoff": 9.01,
+        "on_tester_value": 4290.320082
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.9392,
+        "calmar_ratio": 5.9153,
+        "omega_ratio": 1.615,
+        "annual_return_pct": 19.49,
+        "max_drawdown_frac": 0.032946
+      },
+      "sortino_weighted_composite": 3.0672
+    },
+    {
+      "name": "session_winner_cooldown_30m_maxhold120_timewidened",
+      "rule": "Production candidate plus time-widened stop: 0.84 ATR widening to 1.20 ATR after 30 M1 bars.",
+      "comparison_tier": "exact",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1568,
+        "win_rate": 0.8087,
+        "net_profit_brl": 14270.0,
+        "avg_profit_brl": 9.1,
+        "avg_win_brl": 34.28,
+        "avg_loss_brl": -97.33,
+        "profit_factor": 1.4887,
+        "max_drawdown_pct": 3.28,
+        "expected_payoff": 9.1,
+        "on_tester_value": 4356.450575
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.8816,
+        "calmar_ratio": 5.9908,
+        "omega_ratio": 1.6132,
+        "annual_return_pct": 19.62,
+        "max_drawdown_frac": 0.032756
+      },
+      "sortino_weighted_composite": 3.0607
+    },
+    {
+      "name": "session_winner_cooldown_30m_maxhold120_mon_wed_thu_only",
+      "rule": "Production candidate on Monday, Wednesday, and Thursday only.",
+      "comparison_tier": "exact",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 846,
+        "win_rate": 0.8191,
+        "net_profit_brl": 9200.0,
+        "avg_profit_brl": 10.87,
+        "avg_win_brl": 34.48,
+        "avg_loss_brl": -96.05,
+        "profit_factor": 1.6261,
+        "max_drawdown_pct": 2.97,
+        "expected_payoff": 10.87,
+        "on_tester_value": 3098.0
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.2315,
+        "calmar_ratio": 4.745,
+        "omega_ratio": 1.7843,
+        "annual_return_pct": 14.09,
+        "max_drawdown_frac": 0.029697
+      },
+      "sortino_weighted_composite": 2.3961
+    },
+    {
+      "name": "session_winner_cooldown_30m_maxhold120_mon_wed_thu_timewidened",
+      "rule": "Production candidate on Monday, Wednesday, and Thursday only, plus time-widened stop.",
+      "comparison_tier": "exact",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 846,
+        "win_rate": 0.8239,
+        "net_profit_brl": 9500.0,
+        "avg_profit_brl": 11.23,
+        "avg_win_brl": 34.52,
+        "avg_loss_brl": -97.72,
+        "profit_factor": 1.6525,
+        "max_drawdown_pct": 3.19,
+        "expected_payoff": 11.23,
+        "on_tester_value": 2975.09901
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.2099,
+        "calmar_ratio": 4.5249,
+        "omega_ratio": 1.8037,
+        "annual_return_pct": 14.45,
+        "max_drawdown_frac": 0.031932
+      },
+      "sortino_weighted_composite": 2.3232
+    }
+  ],
+  "analysis_variants": [
+    {
+      "name": "session_winner_cooldown_30m_maxhold120_sl0p84_tp0p30_confidence_overlay",
+      "rule": "Reference production candidate. Research-only confidence-weighted sizing overlay from trend-efficiency strength.",
+      "comparison_tier": "analysis",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1568,
+        "win_rate": 0.8055,
+        "net_profit_brl": 18030.27,
+        "avg_profit_brl": 11.5,
+        "avg_win_brl": 43.43,
+        "avg_loss_brl": -120.72,
+        "profit_factor": 1.4897,
+        "max_drawdown_pct": 3.71,
+        "expected_payoff": 11.5,
+        "on_tester_value": 4855.086188
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.8686,
+        "calmar_ratio": 6.2356,
+        "omega_ratio": 1.6255,
+        "annual_return_pct": 23.16,
+        "max_drawdown_frac": 0.037137
+      },
+      "sortino_weighted_composite": 3.1301,
+      "multiplier_stats": {
+        "mean": 1.2597,
+        "median": 1.4018,
+        "p25": 1.097,
+        "p75": 1.5,
+        "min": 0.5,
+        "max": 1.5
+      }
+    },
+    {
+      "name": "session_winner_cooldown_30m_maxhold120_timewidened_confidence_overlay",
+      "rule": "Production candidate plus time-widened stop: 0.84 ATR widening to 1.20 ATR after 30 M1 bars. Research-only confidence-weighted sizing overlay from trend-efficiency strength.",
+      "comparison_tier": "analysis",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1568,
+        "win_rate": 0.8087,
+        "net_profit_brl": 18359.32,
+        "avg_profit_brl": 11.71,
+        "avg_win_brl": 43.48,
+        "avg_loss_brl": -122.56,
+        "profit_factor": 1.4993,
+        "max_drawdown_pct": 3.72,
+        "expected_payoff": 11.71,
+        "on_tester_value": 4935.22232
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.841,
+        "calmar_ratio": 6.303,
+        "omega_ratio": 1.6315,
+        "annual_return_pct": 23.45,
+        "max_drawdown_frac": 0.037201
+      },
+      "sortino_weighted_composite": 3.1377,
+      "multiplier_stats": {
+        "mean": 1.2597,
+        "median": 1.4018,
+        "p25": 1.097,
+        "p75": 1.5,
+        "min": 0.5,
+        "max": 1.5
+      }
+    },
+    {
+      "name": "session_winner_cooldown_30m_maxhold120_mon_wed_thu_only_confidence_overlay",
+      "rule": "Production candidate on Monday, Wednesday, and Thursday only. Research-only confidence-weighted sizing overlay from trend-efficiency strength.",
+      "comparison_tier": "analysis",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 846,
+        "win_rate": 0.8191,
+        "net_profit_brl": 11573.81,
+        "avg_profit_brl": 13.68,
+        "avg_win_brl": 43.97,
+        "avg_loss_brl": -123.53,
+        "profit_factor": 1.6123,
+        "max_drawdown_pct": 3.9,
+        "expected_payoff": 13.68,
+        "on_tester_value": 2968.780128
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.1815,
+        "calmar_ratio": 4.312,
+        "omega_ratio": 1.7735,
+        "annual_return_pct": 16.81,
+        "max_drawdown_frac": 0.038985
+      },
+      "sortino_weighted_composite": 2.239,
+      "multiplier_stats": {
+        "mean": 1.272,
+        "median": 1.4089,
+        "p25": 1.1143,
+        "p75": 1.5,
+        "min": 0.5,
+        "max": 1.5
+      }
+    },
+    {
+      "name": "session_winner_cooldown_30m_maxhold120_mon_wed_thu_timewidened_confidence_overlay",
+      "rule": "Production candidate on Monday, Wednesday, and Thursday only, plus time-widened stop. Research-only confidence-weighted sizing overlay from trend-efficiency strength.",
+      "comparison_tier": "analysis",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 846,
+        "win_rate": 0.8239,
+        "net_profit_brl": 12056.99,
+        "avg_profit_brl": 14.25,
+        "avg_win_brl": 44.06,
+        "avg_loss_brl": -125.17,
+        "profit_factor": 1.6465,
+        "max_drawdown_pct": 4.16,
+        "expected_payoff": 14.25,
+        "on_tester_value": 2901.49068
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.1797,
+        "calmar_ratio": 4.1715,
+        "omega_ratio": 1.8028,
+        "annual_return_pct": 17.33,
+        "max_drawdown_frac": 0.041554
+      },
+      "sortino_weighted_composite": 2.2019,
+      "multiplier_stats": {
+        "mean": 1.272,
+        "median": 1.4089,
+        "p25": 1.1143,
+        "p75": 1.5,
+        "min": 0.5,
+        "max": 1.5
+      }
+    }
+  ],
+  "best_composite_variant_walkforward_70_30": {
+    "variant_name": "session_winner_cooldown_30m_maxhold120_timewidened_confidence_overlay",
+    "variant_rule": "Production candidate plus time-widened stop: 0.84 ATR widening to 1.20 ATR after 30 M1 bars. Research-only confidence-weighted sizing overlay from trend-efficiency strength.",
+    "comparison_tier": "analysis",
+    "train_metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2024-09-16",
+      "trading_days": 872,
+      "total_trades": 1098,
+      "win_rate": 0.8142,
+      "net_profit_brl": 14407.44,
+      "avg_profit_brl": 13.12,
+      "avg_win_brl": 45.23,
+      "avg_loss_brl": -127.61,
+      "profit_factor": 1.5535,
+      "max_drawdown_pct": 3.72,
+      "expected_payoff": 13.12,
+      "on_tester_value": 3872.905373
+    },
+    "test_metrics": {
+      "start_date": "2024-09-17",
+      "end_date": "2026-03-20",
+      "trading_days": 375,
+      "total_trades": 470,
+      "win_rate": 0.7957,
+      "net_profit_brl": 3951.88,
+      "avg_profit_brl": 8.41,
+      "avg_win_brl": 39.27,
+      "avg_loss_brl": -111.84,
+      "profit_factor": 1.3681,
+      "max_drawdown_pct": 5.66,
+      "expected_payoff": 8.41,
+      "on_tester_value": 698.520774
+    },
+    "train_risk_adjusted": {
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.0053,
+        "calmar_ratio": 7.9076,
+        "omega_ratio": 1.7086,
+        "annual_return_pct": 29.42,
+        "max_drawdown_frac": 0.037201
+      },
+      "sortino_weighted_composite": 3.7167
+    },
+    "test_risk_adjusted": {
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.4132,
+        "calmar_ratio": 4.4333,
+        "omega_ratio": 1.4521,
+        "annual_return_pct": 25.08,
+        "max_drawdown_frac": 0.056575
+      },
+      "sortino_weighted_composite": 2.327
+    }
+  },
+  "notes": [
+    "This batch tries to squeeze the composite score higher by combining the strongest research-only lever, confidence-weighted sizing, with the strongest exact quality variants.",
+    "Confidence overlays remain analysis-only because they assume fractional sizing from a 1-contract baseline.",
+    "The time-widened stop variant uses the previously identified 0.84 ATR stop that relaxes to 1.20 ATR after 30 M1 bars.",
+    "The walk-forward block is run on the single best composite-scoring variant from this batch, whether exact or analysis-only."
+  ]
+}

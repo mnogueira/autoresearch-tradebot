@@ -73,6 +73,7 @@ class ManagementConfig:
     profit_lock_target_fraction: float | None = None
     widen_stop_after_bars: int | None = None
     widened_sl_atr_mult: float | None = None
+    atr_trailing_distance_mult: float | None = None
 
 
 def session_winner_params() -> V101Params:
@@ -238,6 +239,32 @@ def widened_stop_tick(
     if position == 1:
         return min(int(current_stop_tick), desired_stop_tick)
     return max(int(current_stop_tick), desired_stop_tick)
+
+
+def atr_trailing_stop_tick(
+    position: int,
+    current_stop_tick: int,
+    best_bid_tick: int,
+    best_ask_tick: int,
+    entry_atr_value: float,
+    atr_trailing_distance_mult: float | None,
+) -> int | None:
+    if position == 0 or atr_trailing_distance_mult is None or entry_atr_value <= 0.0:
+        return None
+    trailing_offset_ticks = price_to_ticks(
+        round_to_tick(float(entry_atr_value) * float(atr_trailing_distance_mult)),
+        PRICE_TICK_SIZE,
+    )
+    trailing_offset_ticks = max(1, int(trailing_offset_ticks))
+    if position == 1:
+        desired_stop_tick = int(best_bid_tick) - trailing_offset_ticks
+        if desired_stop_tick <= int(current_stop_tick):
+            return None
+        return desired_stop_tick
+    desired_stop_tick = int(best_ask_tick) + trailing_offset_ticks
+    if desired_stop_tick >= int(current_stop_tick):
+        return None
+    return desired_stop_tick
 
 
 def scaled_tp_multiplier(
@@ -589,6 +616,26 @@ def run_backtest_with_management(
         stop_tick = int(desired_stop_tick)
         stop_widened = True
 
+    def update_atr_trailing_stop(current_bid_tick: int, current_ask_tick: int) -> None:
+        nonlocal stop_tick, best_bid_tick, best_ask_tick
+        if position == 0 or management.atr_trailing_distance_mult is None or entry_atr_value <= 0.0:
+            return
+        if position == 1:
+            best_bid_tick = max(best_bid_tick, current_bid_tick)
+        else:
+            best_ask_tick = min(best_ask_tick, current_ask_tick)
+        desired_stop_tick = atr_trailing_stop_tick(
+            position=position,
+            current_stop_tick=stop_tick,
+            best_bid_tick=best_bid_tick,
+            best_ask_tick=best_ask_tick,
+            entry_atr_value=entry_atr_value,
+            atr_trailing_distance_mult=management.atr_trailing_distance_mult,
+        )
+        if desired_stop_tick is None:
+            return
+        stop_tick = int(desired_stop_tick)
+
     def atr_loss_exit_tick(current_bid_tick: int, current_ask_tick: int) -> tuple[int | None, str | None]:
         if position == 0 or management.loss_exit_atr_mult is None or entry_atr_value <= 0.0:
             return None, None
@@ -626,6 +673,7 @@ def run_backtest_with_management(
             update_time_widened_stop(index)
             update_profit_time_stop(index, bid_open_tick, ask_open_tick)
             update_trailing_stop(bid_open_tick, ask_open_tick)
+            update_atr_trailing_stop(bid_open_tick, ask_open_tick)
             update_fractional_target_trail(bid_open_tick, ask_open_tick)
             update_profit_lock_stop(bid_open_tick, ask_open_tick)
             atr_exit_tick, atr_exit_reason = atr_loss_exit_tick(bid_open_tick, ask_open_tick)
@@ -679,6 +727,7 @@ def run_backtest_with_management(
                 arm_position_state(index)
                 maybe_take_partial(bid_open_tick, ask_open_tick)
                 update_trailing_stop(bid_open_tick, ask_open_tick)
+                update_atr_trailing_stop(bid_open_tick, ask_open_tick)
                 same_tick_exit, same_tick_reason = _exit_position_at_tick(
                     direction=position,
                     bid_tick=bid_open_tick,

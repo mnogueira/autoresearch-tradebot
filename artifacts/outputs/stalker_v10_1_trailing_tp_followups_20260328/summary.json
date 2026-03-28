@@ -1,0 +1,206 @@
+{
+  "reference_variant": {
+    "name": "session_winner_cooldown_30m_maxhold120_sl0p84_tp0p30",
+    "rule": "Reference production candidate: session filter 10/11/12/14, 30m cooldown, 120 M1-bar max hold, SL 0.84 ATR, TP 0.30 ATR.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 14135.0,
+      "avg_profit_brl": 9.01,
+      "avg_win_brl": 34.26,
+      "avg_loss_brl": -95.54,
+      "profit_factor": 1.4851,
+      "max_drawdown_pct": 3.29,
+      "expected_payoff": 9.01,
+      "on_tester_value": 4290.320082
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.9392,
+      "calmar_ratio": 5.9153,
+      "omega_ratio": 1.615,
+      "annual_return_pct": 19.49,
+      "max_drawdown_frac": 0.032946
+    },
+    "sortino_weighted_composite": 3.0672
+  },
+  "variants": [
+    {
+      "name": "session_winner_cooldown_30m_maxhold120_atrtrail_1.00",
+      "rule": "Production candidate plus ATR trailing stop at 1.00x entry ATR from best excursion.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1568,
+        "win_rate": 0.8036,
+        "net_profit_brl": 13910.0,
+        "avg_profit_brl": 8.87,
+        "avg_win_brl": 34.26,
+        "avg_loss_brl": -94.98,
+        "profit_factor": 1.4755,
+        "max_drawdown_pct": 3.28,
+        "expected_payoff": 8.87,
+        "on_tester_value": 4236.227273
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.9105,
+        "calmar_ratio": 5.8664,
+        "omega_ratio": 1.6026,
+        "annual_return_pct": 19.26,
+        "max_drawdown_frac": 0.032836
+      },
+      "sortino_weighted_composite": 3.0357
+    },
+    {
+      "name": "session_winner_cooldown_30m_maxhold120_atrtrail_1.50",
+      "rule": "Production candidate plus ATR trailing stop at 1.50x entry ATR from best excursion.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1568,
+        "win_rate": 0.8055,
+        "net_profit_brl": 14135.0,
+        "avg_profit_brl": 9.01,
+        "avg_win_brl": 34.26,
+        "avg_loss_brl": -95.54,
+        "profit_factor": 1.4851,
+        "max_drawdown_pct": 3.29,
+        "expected_payoff": 9.01,
+        "on_tester_value": 4290.320082
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.9392,
+        "calmar_ratio": 5.9153,
+        "omega_ratio": 1.615,
+        "annual_return_pct": 19.49,
+        "max_drawdown_frac": 0.032946
+      },
+      "sortino_weighted_composite": 3.0672
+    },
+    {
+      "name": "session_winner_cooldown_30m_maxhold120_atrtrail_2.00",
+      "rule": "Production candidate plus ATR trailing stop at 2.00x entry ATR from best excursion.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1568,
+        "win_rate": 0.8055,
+        "net_profit_brl": 14135.0,
+        "avg_profit_brl": 9.01,
+        "avg_win_brl": 34.26,
+        "avg_loss_brl": -95.54,
+        "profit_factor": 1.4851,
+        "max_drawdown_pct": 3.29,
+        "expected_payoff": 9.01,
+        "on_tester_value": 4290.320082
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.9392,
+        "calmar_ratio": 5.9153,
+        "omega_ratio": 1.615,
+        "annual_return_pct": 19.49,
+        "max_drawdown_frac": 0.032946
+      },
+      "sortino_weighted_composite": 3.0672
+    },
+    {
+      "name": "session_winner_cooldown_30m_maxhold120_tp1p00",
+      "rule": "Production candidate with dynamic ATR target approximation: TP fixed at 1.00x ATR instead of 0.30x ATR.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1541,
+        "win_rate": 0.5178,
+        "net_profit_brl": 17915.0,
+        "avg_profit_brl": 11.63,
+        "avg_win_brl": 109.84,
+        "avg_loss_brl": -93.99,
+        "profit_factor": 1.2569,
+        "max_drawdown_pct": 6.13,
+        "expected_payoff": 11.63,
+        "on_tester_value": 2921.003938
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.8177,
+        "calmar_ratio": 3.759,
+        "omega_ratio": 1.3818,
+        "annual_return_pct": 23.05,
+        "max_drawdown_frac": 0.061332
+      },
+      "sortino_weighted_composite": 2.3129
+    },
+    {
+      "name": "session_winner_cooldown_30m_maxhold120_mon_wed_thu_only",
+      "rule": "Production candidate on Monday, Wednesday, and Thursday only; skip Tuesday and Friday.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 846,
+        "win_rate": 0.8191,
+        "net_profit_brl": 9200.0,
+        "avg_profit_brl": 10.87,
+        "avg_win_brl": 34.48,
+        "avg_loss_brl": -96.05,
+        "profit_factor": 1.6261,
+        "max_drawdown_pct": 2.97,
+        "expected_payoff": 10.87,
+        "on_tester_value": 3098.0
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.2315,
+        "calmar_ratio": 4.745,
+        "omega_ratio": 1.7843,
+        "annual_return_pct": 14.09,
+        "max_drawdown_frac": 0.029697
+      },
+      "sortino_weighted_composite": 2.3961
+    }
+  ],
+  "best_new_variant_walkforward_70_30": {
+    "variant_name": "session_winner_cooldown_30m_maxhold120_atrtrail_1.50",
+    "variant_rule": "Production candidate plus ATR trailing stop at 1.50x entry ATR from best excursion.",
+    "train_metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2024-09-16",
+      "trading_days": 872,
+      "total_trades": 1098,
+      "win_rate": 0.8106,
+      "net_profit_brl": 11045.0,
+      "avg_profit_brl": 10.06,
+      "avg_win_brl": 35.69,
+      "avg_loss_brl": -99.59,
+      "profit_factor": 1.5332,
+      "max_drawdown_pct": 3.29,
+      "expected_payoff": 10.06,
+      "on_tester_value": 3352.429098
+    },
+    "test_metrics": {
+      "start_date": "2024-09-17",
+      "end_date": "2026-03-20",
+      "trading_days": 375,
+      "total_trades": 470,
+      "win_rate": 0.7936,
+      "net_profit_brl": 3090.0,
+      "avg_profit_brl": 6.57,
+      "avg_win_brl": 30.87,
+      "avg_loss_brl": -86.86,
+      "profit_factor": 1.3668,
+      "max_drawdown_pct": 4.57,
+      "expected_payoff": 6.57,
+      "on_tester_value": 676.224793
+    }
+  },
+  "notes": [
+    "ATR trailing is implemented as a stop that only tightens: for longs it follows best bid minus N x entry ATR; for shorts it follows best ask plus N x entry ATR.",
+    "The dynamic TP experiment uses a fixed 1.00x ATR target on top of the production candidate to approximate a volatility-scaled target.",
+    "The Monday/Wednesday/Thursday variant is included here as a direct rerun of the Tuesday/Friday skip idea so it can be scored on the same composite scale as the trailing-stop batch.",
+    "The walk-forward block below is run on the strongest new exact variant from this batch, not on the research-only confidence-weighted overlay."
+  ]
+}

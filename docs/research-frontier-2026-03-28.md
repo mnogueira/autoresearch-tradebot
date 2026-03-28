@@ -30,6 +30,19 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - Tuesday and Friday were weakest
   - skipping Tuesday and Friday improved PF and DD, but still gave up too much net to become a default rule
   - combining the weekday skip with the top-half signal gate also failed to justify itself: `R$5,460`, composite `1.5104`
+- Final trailing-stop and target follow-up on the production candidate:
+  - ATR trailing `1.0x` slightly hurt: `R$13,910`, `PF 1.4755`, `DD 3.28%`, composite `3.0357`
+  - ATR trailing `1.5x` and `2.0x` were exact ties with the current leader
+  - dynamic `TP 1.00x ATR` raised gross net to `R$17,915`, but quality broke down: `PF 1.2569`, `DD 6.13%`, composite `2.3129`
+  - Monday/Wednesday/Thursday only stayed secondary even with the time-widened stop: `R$9,500`, `PF 1.6525`, `DD 3.19%`, composite `2.3232`
+  - interpretation: plain ATR trailing and a wider ATR target do not improve the deployable frontier enough to justify more tuning right now
+- Final maximum-quality composite pass:
+  - adding the confidence-weighted research overlay on top of the time-widened stop produced the strongest raw composite of the whole sprint:
+    - `R$18,359.32`, `PF 1.4993`, `DD 3.72%`, composite `3.1377`
+  - the `70/30` walk-forward stayed positive:
+    - train `R$14,407.44`, `PF 1.5535`, `Composite 3.7167`
+    - test `R$3,951.88`, `PF 1.3681`, `Composite 2.3270`
+  - interpretation: there is still some research-only upside in graded sizing, but the live deployable frontier is still anchored by the simpler exact tiers
 
 ## Near-Term Caution
 

@@ -29,7 +29,9 @@
 | Weekly profit cap | `R$300` cap: `R$14,095`, `PF 1.4937`, `DD 3.32%` | Slightly smoother trade-to-trade and a touch higher PF, but not enough total-package improvement to replace the leader. |
 | Market-open avoidance analog | practical `10:15` start: `R$12,670`, `PF 1.5198`, `DD 4.34%` | The true `09:00-09:15` skip is already a no-op here because the production setup does not enter before `10:00`; delaying further improved PF but gave up too much net and drawdown. |
 | Confidence-weighted sizing | Research-only fractional sizing by trend-efficiency: `R$18,030.27`, `PF 1.4897`, `DD 3.71%`, composite `3.1301` | This is the clearest sign that stronger signals deserve more size, but it is not deployable until the MQ5 side supports realistic discrete sizing. |
+| Confidence-weighted sizing + time-widened stop | Research-only overlay on the `0.84 -> 1.20` ATR after `30` bars variant: `R$18,359.32`, `PF 1.4993`, `DD 3.72%`, composite `3.1377` | This became the strongest raw composite of the entire sprint, which reinforces the case for future graded sizing research rather than binary filters. |
 | Weekday selectivity | Skip Tuesday and Friday: `R$9,200`, `PF 1.6261`, `DD 2.97%` | Cleaner on PF/DD, but it throws away too much net to become the default. |
+| Weekday selectivity + time-widened stop | Mon/Wed/Thu only plus time-widened stop: `R$9,500`, `PF 1.6525`, `DD 3.19%`, composite `2.3232` | Quality improved, but the net giveback was still too large for promotion. |
 | Alternate ratio on the plain session winner | `SL 0.60 / TP 0.42`: `R$13,025`, `PF 1.2851`, `DD 4.45%`, `Sortino 2.1894` | Better downside-adjusted return than many variants, but too weak on PF and win rate to replace the production line. |
 
 ## What Did Not Work
@@ -52,6 +54,8 @@
 | Hard strong-signal gate | top-quartile executed trend-efficiency only: `R$5,570`, `PF 1.4829`, `DD 4.61%` | The edge appears to want graded sizing, not a binary strong/weak cutoff. |
 | Softer strong-signal gate | top-half executed trend-efficiency only: `R$8,555`, `PF 1.4047`, `DD 4.72%` | Less bad than the top quartile, but still clearly inferior to the baseline production line. |
 | Equal-risk/reward ratio | `SL 0.50 / TP 0.50`: `R$8,480`, `PF 1.1711`, `DD 6.46%` | A neat idea, but it weakened both quality and robustness. |
+| ATR trailing stop | `1.0x` ATR: `R$13,910`, `PF 1.4755`, `DD 3.28%`; `1.5x` and `2.0x` ATR were exact ties with the current leader | There is no real deployable upside here, so more ATR-trailing optimization is not worth the cycle budget. |
+| Dynamic ATR target | `TP 1.00x ATR`: `R$17,915`, `PF 1.2569`, `DD 6.13%` | Higher gross net, but materially worse risk-adjusted quality than the fixed `0.30 ATR` target. |
 
 ## The Real Risks
 

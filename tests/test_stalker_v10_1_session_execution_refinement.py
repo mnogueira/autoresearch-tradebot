@@ -3,6 +3,7 @@ from __future__ import annotations
 import unittest
 
 from autoresearch_tradebot.strategies.stalker_v10_1_session_execution_refinement import (
+    atr_trailing_stop_tick,
     confirmation_candle_passed,
     has_reached_daily_profit_cap,
     has_reached_max_trade_age,
@@ -140,6 +141,52 @@ class SessionExecutionRefinementTests(unittest.TestCase):
                 current_stop_tick=916,
                 entry_atr_value=21.0,
                 widened_sl_atr_mult=1.20,
+            )
+        )
+
+    def test_atr_trailing_stop_only_tightens_after_best_excursion_advances(self) -> None:
+        self.assertEqual(
+            atr_trailing_stop_tick(
+                position=1,
+                current_stop_tick=916,
+                best_bid_tick=1050,
+                best_ask_tick=1051,
+                entry_atr_value=21.0,
+                atr_trailing_distance_mult=1.0,
+            ),
+            1008,
+        )
+        self.assertEqual(
+            atr_trailing_stop_tick(
+                position=-1,
+                current_stop_tick=1084,
+                best_bid_tick=949,
+                best_ask_tick=950,
+                entry_atr_value=21.0,
+                atr_trailing_distance_mult=1.0,
+            ),
+            992,
+        )
+
+    def test_atr_trailing_stop_never_widens_or_acts_without_inputs(self) -> None:
+        self.assertIsNone(
+            atr_trailing_stop_tick(
+                position=1,
+                current_stop_tick=1008,
+                best_bid_tick=1040,
+                best_ask_tick=1041,
+                entry_atr_value=21.0,
+                atr_trailing_distance_mult=1.0,
+            )
+        )
+        self.assertIsNone(
+            atr_trailing_stop_tick(
+                position=0,
+                current_stop_tick=1008,
+                best_bid_tick=1040,
+                best_ask_tick=1041,
+                entry_atr_value=21.0,
+                atr_trailing_distance_mult=1.0,
             )
         )
 

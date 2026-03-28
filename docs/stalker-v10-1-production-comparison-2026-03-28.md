@@ -4,6 +4,7 @@
 
 | Variant | Net | PF | DD | Win Rate | Trades | Trades/Day | Sortino | Calmar | Omega | Composite | Rank |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Confidence-weighted + time-widened stop overlay, research-only fractional sizing | `R$18,359.32` | `1.4993` | `3.72%` | `80.87%` | 1568 | `1.2574` | `1.8410` | `6.3030` | `1.6315` | `3.1377` | research |
 | Confidence-weighted entry overlay, research-only fractional sizing | `R$18,030.27` | `1.4897` | `3.71%` | `80.55%` | 1568 | `1.2574` | `1.8686` | `6.2356` | `1.6255` | `3.1301` | research |
 | Max-hold v2, session winner + cooldown + `120` M1-bar max hold | `R$14,135` | `1.4851` | `3.29%` | `80.55%` | 1568 | `1.2574` | `1.9392` | `5.9153` | `1.6150` | `3.0672` | 1 |
 | Time-widened stop, `0.84 -> 1.20` ATR after `30` bars | `R$14,270` | `1.4887` | `3.28%` | `80.87%` | 1568 | `1.2574` | `1.8816` | `5.9908` | `1.6132` | `3.0607` | 2 |
@@ -16,13 +17,15 @@
 | Wider stop `SL 1.00 / TP 0.30` | `R$13,930` | `1.4556` | `4.07%` | `82.78%` | 1568 | `1.2574` | `1.6194` | `4.7394` | `1.5593` | `2.5434` | 9 |
 | Skip Tuesday and Friday, production candidate | `R$9,200` | `1.6261` | `2.97%` | `81.91%` | 846 | `0.6784` | `1.2315` | `4.7450` | `1.7843` | `2.3961` | 10 |
 | Wider stop `SL 1.20 / TP 0.30` | `R$14,475` | `1.4626` | `4.43%` | `85.01%` | 1568 | `1.2574` | `1.4260` | `4.4758` | `1.5552` | `2.3668` | 11 |
-| ADX quality mode, prior-day `ADX > 25` | `R$7,485` | `1.9067` | `3.38%` | `84.29%` | 490 | `0.3929` | `1.0426` | `3.5353` | `2.2131` | `2.0245` | 12 |
-| Strong-signal gate, top half of executed trend-efficiency | `R$8,555` | `1.4047` | `4.72%` | `79.28%` | 1062 | `0.8516` | `1.1275` | `2.8194` | `1.4699` | `1.7035` | 13 |
-| Session winner `SL 0.50 / TP 0.50` | `R$8,480` | `1.1711` | `6.46%` | `54.05%` | 1887 | `1.5132` | `1.3330` | `2.0449` | `1.2940` | `1.5388` | 14 |
-| Skip Tuesday and Friday + top-half signal gate | `R$5,460` | `1.4979` | `3.28%` | `80.07%` | 577 | `0.4627` | `0.7092` | `2.8060` | `1.5699` | `1.5104` | 15 |
-| Strong-signal gate, top quartile of executed trend-efficiency | `R$5,570` | `1.4829` | `4.61%` | `79.34%` | 605 | `0.4852` | `0.7538` | `2.0293` | `1.5198` | `1.2896` | 16 |
-| ADX quality mode, prior-day `ADX > 30` | `R$3,515` | `1.6356` | `4.35%` | `82.37%` | 278 | `0.2230` | `0.4607` | `1.4419` | `1.8573` | `1.0344` | 17 |
-| Hot-hand gate, last `10` trades PnL > `0` | `R$630` | `1.9921` | `1.85%` | `84.38%` | 32 | `0.0257` | `0.1002` | `0.6727` | `2.5750` | `0.7669` | 18 |
+| Mon/Wed/Thu + time-widened stop | `R$9,500` | `1.6525` | `3.19%` | `82.39%` | 846 | `0.6784` | `1.2099` | `4.5249` | `1.8037` | `2.3232` | 12 |
+| Dynamic target `TP 1.00 ATR`, production candidate | `R$17,915` | `1.2569` | `6.13%` | `51.78%` | 1541 | `1.2358` | `1.8177` | `3.7590` | `1.3818` | `2.3129` | 13 |
+| ADX quality mode, prior-day `ADX > 25` | `R$7,485` | `1.9067` | `3.38%` | `84.29%` | 490 | `0.3929` | `1.0426` | `3.5353` | `2.2131` | `2.0245` | 14 |
+| Strong-signal gate, top half of executed trend-efficiency | `R$8,555` | `1.4047` | `4.72%` | `79.28%` | 1062 | `0.8516` | `1.1275` | `2.8194` | `1.4699` | `1.7035` | 15 |
+| Session winner `SL 0.50 / TP 0.50` | `R$8,480` | `1.1711` | `6.46%` | `54.05%` | 1887 | `1.5132` | `1.3330` | `2.0449` | `1.2940` | `1.5388` | 16 |
+| Skip Tuesday and Friday + top-half signal gate | `R$5,460` | `1.4979` | `3.28%` | `80.07%` | 577 | `0.4627` | `0.7092` | `2.8060` | `1.5699` | `1.5104` | 17 |
+| Strong-signal gate, top quartile of executed trend-efficiency | `R$5,570` | `1.4829` | `4.61%` | `79.34%` | 605 | `0.4852` | `0.7538` | `2.0293` | `1.5198` | `1.2896` | 18 |
+| ADX quality mode, prior-day `ADX > 30` | `R$3,515` | `1.6356` | `4.35%` | `82.37%` | 278 | `0.2230` | `0.4607` | `1.4419` | `1.8573` | `1.0344` | 19 |
+| Hot-hand gate, last `10` trades PnL > `0` | `R$630` | `1.9921` | `1.85%` | `84.38%` | 32 | `0.0257` | `0.1002` | `0.6727` | `2.5750` | `0.7669` | 20 |
 
 ## Quality Alternative
 
@@ -49,6 +52,8 @@
   - Tier 2, moderate: session winner + `30m` cooldown only
   - Tier 3, aggressive: session winner + `30m` cooldown + `120` M1 max hold
 - Risk-adjusted ranking by the Sortino-weighted composite:
+  - research-only leader: confidence overlay + time-widened stop at `3.1377`
+  - next research-only: confidence overlay at `3.1301`
   - 1: max-hold v2 at `3.0672`
   - 2: time-widened stop at `3.0607`
   - 3: cooldown-only at `3.0529`
@@ -68,6 +73,11 @@
     - `R$18,030.27`, `PF 1.4897`, `DD 3.71%`, `Composite 3.1301`
   - interpretation: stronger signals do appear to deserve more size
   - deployment caveat: this is not a real 1-contract MT5 preset, so it is evidence for future discrete sizing research, not a Monday recommendation
+- Confidence-weighted overlay plus time-widened stop:
+  - this became the single best composite-scoring result of the whole sprint:
+    - `R$18,359.32`, `PF 1.4993`, `DD 3.72%`, `Composite 3.1377`
+  - interpretation: the tiny exact quality gain from the time-widened stop survives the confidence-weighted overlay and nudges the research frontier slightly higher
+  - deployment caveat: still research-only because the sizing layer is fractional and not yet mirrored in MQ5
 - Binary strong-signal gate:
   - top-half absolute trend-efficiency gate already hurt badly:
     - `R$8,555`, `PF 1.4047`, `DD 4.72%`, `Composite 1.7035`
@@ -86,11 +96,23 @@
   - interpretation: Tuesday and Friday are watchlist days, not default hard-skip days
   - combining the weekday skip with the top-half signal gate was worse than either idea alone:
     - `R$5,460`, `PF 1.4979`, `DD 3.28%`, `Composite 1.5104`
+  - Monday/Wednesday/Thursday plus the time-widened stop also stayed secondary:
+    - `R$9,500`, `PF 1.6525`, `DD 3.19%`, `Composite 2.3232`
 - Final stop-management follow-up:
   - time-widened stop (`0.84 -> 1.20` ATR after `30` bars) was the only true headline-metric improvement over max-hold:
     - `R$14,270`, `PF 1.4887`, `DD 3.28%`, `WR 80.87%`
   - but its Sortino-weighted composite slipped slightly below max-hold, `3.0607` vs `3.0672`
   - interpretation: it is a credible future MT5 validation candidate, but not strong enough to replace the simpler exact ranking winner
+- ATR trailing-stop follow-up:
+  - `1.0x` ATR trailing was slightly worse than the reference:
+    - `R$13,910`, `PF 1.4755`, `DD 3.28%`, `Composite 3.0357`
+  - `1.5x` and `2.0x` ATR trailing were exact ties with the current leader:
+    - `R$14,135`, `PF 1.4851`, `DD 3.29%`, `Composite 3.0672`
+  - interpretation: there is no reason to spend more optimization budget on plain ATR trailing multiples right now
+- Dynamic ATR target follow-up:
+  - replacing the fixed `0.30 ATR` target with `1.00 ATR` raised gross net but hurt quality too much:
+    - `R$17,915`, `PF 1.2569`, `DD 6.13%`, `Composite 2.3129`
+  - interpretation: wider volatility-scaled targets are not the right risk-adjusted direction for the production candidate
 - Market-close avoidance and weekly caps:
   - closing `30` minutes before market close was an exact no-op on this setup
   - a weekly profit cap at `R$300` per contract slightly improved PF and rolling trade smoothness, but it gave up just enough net and Calmar to stay below the main winners
