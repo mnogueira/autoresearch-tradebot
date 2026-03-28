@@ -49,6 +49,9 @@ class ManagementConfig:
     partial_fraction: float = 0.5
     spread_multiplier: float = 1.0
     min_minutes_between_entries: int | None = None
+    profitable_trail_start_bars: int | None = None
+    profitable_trail_step_bars: int = 1
+    profitable_trail_step_ticks: int = 0
 
 
 def session_winner_params() -> V101Params:
@@ -314,6 +317,28 @@ def run_backtest_with_management(
             best_ask_tick = min(best_ask_tick, current_ask_tick)
             stop_tick = min(stop_tick, entry_tick, best_ask_tick + trail_distance_ticks)
 
+    def update_profit_time_stop(current_index: int, current_bid_tick: int, current_ask_tick: int) -> None:
+        nonlocal stop_tick
+        if position == 0:
+            return
+        if management.profitable_trail_start_bars is None or management.profitable_trail_step_ticks <= 0:
+            return
+        bars_held = int(current_index - entry_bar_index)
+        if bars_held < int(management.profitable_trail_start_bars):
+            return
+        if position == 1 and current_bid_tick <= entry_tick:
+            return
+        if position == -1 and current_ask_tick >= entry_tick:
+            return
+        step_bars = max(1, int(management.profitable_trail_step_bars))
+        advances = ((bars_held - int(management.profitable_trail_start_bars)) // step_bars) + 1
+        desired_offset_ticks = max(1, advances * int(management.profitable_trail_step_ticks))
+        desired_stop_tick = entry_tick + (desired_offset_ticks * position)
+        if position == 1:
+            stop_tick = max(stop_tick, desired_stop_tick)
+        else:
+            stop_tick = min(stop_tick, desired_stop_tick)
+
     for index in range(len(timestamps)):
         timestamp = timestamps[index]
         session_date = session_dates[index]
@@ -331,6 +356,7 @@ def run_backtest_with_management(
             completed_trades_today = 0
 
         if position != 0:
+            update_profit_time_stop(index, bid_open_tick, ask_open_tick)
             update_trailing_stop(bid_open_tick, ask_open_tick)
             open_exit_tick, open_exit_reason = _exit_position_at_tick(
                 direction=position,
@@ -550,6 +576,7 @@ def run_backtest_with_management(
             if position != 0:
                 maybe_take_partial(current_bid_tick, current_ask_tick)
                 update_trailing_stop(current_bid_tick, current_ask_tick)
+                update_profit_time_stop(index, current_bid_tick, current_ask_tick)
                 exit_tick, exit_reason = _exit_position_at_tick(
                     direction=position,
                     bid_tick=current_bid_tick,

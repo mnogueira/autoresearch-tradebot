@@ -1,0 +1,136 @@
+{
+  "reference_session_winner": {
+    "name": "session_winner_hours_10_11_12_14_sl0p84_tp0p30",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1896,
+      "win_rate": 0.8017,
+      "net_profit_brl": 15965.0,
+      "avg_profit_brl": 8.42,
+      "avg_win_brl": 34.17,
+      "avg_loss_brl": -95.68,
+      "profit_factor": 1.4438,
+      "max_drawdown_pct": 4.04,
+      "expected_payoff": 8.42,
+      "on_tester_value": 3950.819156
+    }
+  },
+  "cooldown_comparison": {
+    "cooldown_30m_with_session_filter": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 14085.0,
+      "avg_profit_brl": 8.98,
+      "avg_win_brl": 34.26,
+      "avg_loss_brl": -95.7,
+      "profit_factor": 1.4825,
+      "max_drawdown_pct": 3.3,
+      "expected_payoff": 8.98,
+      "on_tester_value": 4263.59877
+    },
+    "cooldown_30m_without_session_filter": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1630,
+      "win_rate": 0.8025,
+      "net_profit_brl": 13925.0,
+      "avg_profit_brl": 8.54,
+      "avg_win_brl": 34.19,
+      "avg_loss_brl": -95.64,
+      "profit_factor": 1.4522,
+      "max_drawdown_pct": 3.93,
+      "expected_payoff": 8.54,
+      "on_tester_value": 3544.105903
+    }
+  },
+  "recent_signal_density_sizing": {
+    "base_variant": "cooldown_30m_with_session_filter",
+    "sizing_rule": "size = 1 / recent_filled_entries_within_60m",
+    "implementability_note": "Analysis-only overlay at the 1-contract baseline because it assumes fractional scaling.",
+    "stats": {
+      "lookback_minutes": 60,
+      "avg_size_multiplier": 0.949,
+      "min_size_multiplier": 0.5,
+      "max_size_multiplier": 1.0
+    },
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 13800.0,
+      "avg_profit_brl": 8.8,
+      "avg_win_brl": 32.63,
+      "avg_loss_brl": -89.87,
+      "profit_factor": 1.5035,
+      "max_drawdown_pct": 3.18,
+      "expected_payoff": 8.8,
+      "on_tester_value": 4336.689655
+    }
+  },
+  "time_weighted_exit": {
+    "base_variant": "cooldown_30m_with_session_filter",
+    "rule": "After 15 bars, if profitable, trail stop to breakeven plus 0.5 every 10 bars (tick-aligned approximation of 0.05 per bar).",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8246,
+      "net_profit_brl": 12875.0,
+      "avg_profit_brl": 8.21,
+      "avg_win_brl": 30.0,
+      "avg_loss_brl": -94.25,
+      "profit_factor": 1.4967,
+      "max_drawdown_pct": 3.64,
+      "expected_payoff": 8.21,
+      "on_tester_value": 3536.163366
+    }
+  },
+  "walkforward_70_30": {
+    "base_variant": "cooldown_30m_with_session_filter",
+    "train_ratio": 0.7,
+    "train_metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2024-09-16",
+      "trading_days": 872,
+      "total_trades": 1098,
+      "win_rate": 0.8106,
+      "net_profit_brl": 10995.0,
+      "avg_profit_brl": 10.01,
+      "avg_win_brl": 35.69,
+      "avg_loss_brl": -99.83,
+      "profit_factor": 1.5295,
+      "max_drawdown_pct": 3.3,
+      "expected_payoff": 10.01,
+      "on_tester_value": 3328.240574
+    },
+    "test_metrics": {
+      "start_date": "2024-09-17",
+      "end_date": "2026-03-20",
+      "trading_days": 375,
+      "total_trades": 470,
+      "win_rate": 0.7936,
+      "net_profit_brl": 3090.0,
+      "avg_profit_brl": 6.57,
+      "avg_win_brl": 30.87,
+      "avg_loss_brl": -86.86,
+      "profit_factor": 1.3668,
+      "max_drawdown_pct": 4.57,
+      "expected_payoff": 6.57,
+      "on_tester_value": 676.224793
+    }
+  },
+  "notes": [
+    "The cooldown variant already includes the exact 10:00, 11:00, 12:00, and 14:00 session filter.",
+    "Cooldown without the session filter is included here only to show whether the session scheduling still adds value once entries are throttled.",
+    "The time-weighted exit is implemented in the exact every-tick engine with tick-size-aware stop increments."
+  ]
+}

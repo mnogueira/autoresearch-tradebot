@@ -48,6 +48,8 @@ string sTimeCurrentBrazil = "";
 
 ulong OpenLongOrderTicket = 0;
 ulong OpenShortOrderTicket = 0;
+datetime NextEntryAllowedTime = 0;
+bool WasPositionOpenOnLastBar = false;
 
 input group "Position Sizing";
 input double ContractsPerTrade = 1;  // Contracts per Trade
@@ -64,6 +66,7 @@ input int EntryStart_Hour = 10;                               // Earliest entry 
 input int EntryStart_Minute = 0;                              // Earliest entry minute
 input int LastEntry_Hour = 15;                                // Latest entry hour (inclusive, GMT-3)
 input int LastEntry_Minute = 0;                               // Latest entry minute (inclusive)
+input int MinMinutesBetweenEntries = 0;                       // Minimum minutes between filled entries
 input bool SkipWednesday = false;                             // Skip all Wednesday entries
 input bool SkipShortWednesday = false;                        // Skip short entries on Wednesday only
 input bool SkipHour13 = false;                                // Skip entries during the 13:00 hour
@@ -214,10 +217,13 @@ void OnTick()
    bool buy_opened = false;
    bool sell_opened = false;
    const bool HasOpenedPosition = GetPositionState(TradingSymbol, buy_opened, sell_opened);
+   if(HasOpenedPosition && !WasPositionOpenOnLastBar && MinMinutesBetweenEntries > 0)
+      NextEntryAllowedTime = (TimeCurrentBrazil + (MinMinutesBetweenEntries * 60));
    const bool HasReachedDayTimeLimit = HasReachedTradingCutoff(TimeCurrentBrazil);
    const bool IsAllowedEntryDay = IsAllowedTradingDay(TimeCurrentBrazil);
    const bool IsWithinEntryHours = IsWithinEntryWindow(TimeCurrentBrazil);
-   const bool CanEnterNewTrades = (IsAllowedEntryDay && IsWithinEntryHours);
+   const bool CooldownAllowsEntry = (MinMinutesBetweenEntries <= 0 || NextEntryAllowedTime <= 0 || TimeCurrentBrazil >= NextEntryAllowedTime);
+   const bool CanEnterNewTrades = (IsAllowedEntryDay && IsWithinEntryHours && CooldownAllowsEntry);
 
    if(HasReachedDayTimeLimit)
    {
@@ -230,6 +236,7 @@ void OnTick()
       }
 
       DeleteTrackedPendingOrders();
+      WasPositionOpenOnLastBar = false;
       PreviousTickDay = currentDay;
       return;
    }
@@ -308,6 +315,8 @@ void OnTick()
       PreviousHigh = currentDayHigh;
    if(currentDayLow < PreviousLow)
       PreviousLow = currentDayLow;
+
+   WasPositionOpenOnLastBar = HasOpenedPosition;
 }
 
 //+------------------------------------------------------------------+

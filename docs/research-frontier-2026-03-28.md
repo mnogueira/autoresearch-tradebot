@@ -20,6 +20,7 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - artifact: `artifacts/outputs/stalker_v10_1_session_robustness_checks_20260328/summary.json`
   - metrics: `R$14,085`, `PF 1.4825`, `DD 3.30%`, `OnTester 4263.59877`
   - interpretation: lower raw net than the unconstrained session winner, but materially better `PF`, `DD`, and `OnTester` while directly reducing trade frequency and transaction-cost exposure
+  - deployment note: this variant also beat the same cooldown applied without the session filter (`R$13,925`, `PF 1.4522`, `DD 3.93%`), so the exact hour scheduling still matters even after throttling entries
 
 - Best gross-net exact refinement:
   - exact hours: `10:00, 11:00, 12:00, 14:00`
@@ -37,7 +38,9 @@ This remains the safest paper-trading candidate because it is the best strategy 
 
 - Closest current MT5 preset approximation:
   - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides GPT 5.4.set`
-  - note: the exact `30-minute cooldown` winner is not MT5-ready yet because the MQ5 EA still has no equivalent entry-spacing input
+  - exact cooldown preset is now prepared too:
+    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
+  - note: the MQ5 cooldown support is wired in, but it still needs one clean MT5 `Every tick` validation run
 
 ## New Findings From Advanced Follow-ups
 
@@ -62,11 +65,29 @@ This remains the safest paper-trading candidate because it is the best strategy 
 - The new exact cost-robustness pass changed the frontier meaningfully:
   - artifact: `artifacts/outputs/stalker_v10_1_session_robustness_checks_20260328/summary.json`
   - `30-minute cooldown`: `R$14,085`, `PF 1.4825`, `DD 3.30%`, `OnTester 4263.59877`
+  - `30-minute cooldown` without the exact session filter: `R$13,925`, `PF 1.4522`, `DD 3.93%`
   - `ATR14 TP 0.50`: `R$21,170`, `PF 1.3762`, `DD 4.76%`, `OnTester 4445.7`
   - `ATR14 TP 1.00`: `R$19,730`, `PF 1.2350`, `DD 7.14%`
   - `ATR14 SL 1.00`: `R$15,565`, `PF 1.3933`, `DD 5.26%`
   - `ATR14 SL 2.00`: `R$16,090`, `PF 1.3671`, `DD 6.86%`
   - interpretation: the session winner already uses ATR-based exits, so the “dynamic ATR” tests are really multiplier changes. The best gross-net change is `TP 0.50`, but the best cost-robust exact refinement is the `30-minute cooldown`.
+
+- The latest deployment follow-up increased confidence in the cooldown winner:
+  - artifact: `artifacts/outputs/stalker_v10_1_session_deployment_followups_20260328/summary.json`
+  - exact `70/30` holdout for the cooldown winner:
+    - train: `R$10,995`, `PF 1.5295`, `DD 3.30%`
+    - test: `R$3,090`, `PF 1.3668`, `DD 4.57%`
+  - interpretation: weaker than the in-sample train segment, but still comfortably positive on the held-out last 30% of the sample
+
+- The time-weighted exit did not justify itself:
+  - cooldown winner plus profitable-trade stop ratchet after `15` bars, with a tick-aligned `+0.5` every `10` bars
+  - metrics: `R$12,875`, `PF 1.4967`, `DD 3.64%`, `OnTester 3536.163366`
+  - interpretation: slightly cleaner PF, but too much net-profit giveback and weaker overall objective than the plain cooldown winner
+
+- A recent-entry-density sizing overlay is promising, but only as an analysis overlay for now:
+  - size rule: `1 / recent filled entries within 60 minutes`
+  - metrics: `R$13,800`, `PF 1.5035`, `DD 3.18%`, `OnTester 4336.689655`
+  - interpretation: it improves quality a bit on the cooldown tape, but it assumes fractional down-scaling at a `1`-contract baseline, so it is not directly deployable without a higher base size or a discrete contract-sizing redesign
 
 - Rolling intraday retracement windows create cleaner but smaller variants:
   - `8 bars`: `R$4,075`, `PF 1.5348`, `DD 3.68%`
@@ -180,10 +201,11 @@ But cost sensitivity is real:
    - the latest main-installation attempt still produced no HTML report in either the workspace output folder or the main terminal AppData tree, only the generated config file
 2. Implement and validate the `30-minute cooldown` refinement in MT5 `Every tick`.
    - this is now the highest-priority exact Python candidate because it directly targets the strategy's main weakness: transaction-cost sensitivity
-3. Validate the Friday-exclusion preset:
+3. If the cooldown is added to the EA, validate the exact session+cooldown winner before spending more time on ATR multiplier tweaks.
+4. Validate the Friday-exclusion preset:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 No Friday GPT 5.4.set`
-4. If MT5 remains unstable, prioritize cost-robustness and live-paper safety checks over more entry-family exploration.
-5. Do not spend more time on Bollinger mean reversion, inside-bar breakout, or the current EMA crossover family unless the entry/exit mechanics are materially redesigned.
+5. If MT5 remains unstable, prioritize cost-robustness and live-paper safety checks over more entry-family exploration.
+6. Do not spend more time on Bollinger mean reversion, inside-bar breakout, or the current EMA crossover family unless the entry/exit mechanics are materially redesigned.
 
 ## Production Recommendation
 
@@ -200,4 +222,6 @@ But cost sensitivity is real:
   - MT5 tester instability means the best exact refinements still need one clean host-side validation
 - Next paper-trading step:
   - run the validated MT5 preset first
+  - validate the new cooldown preset in MT5 `Every tick` next:
+    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
   - monitor real slippage/spread conditions closely before promoting the exact cooldown refinement
