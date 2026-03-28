@@ -1,0 +1,69 @@
+{
+  "data_source": "C:\\Dev\\autoresearch-tradebot\\data\\wdo_m1_mt5_2021_2026.parquet",
+  "train_start": "2021-03-23",
+  "train_end": "2024-09-16",
+  "test_start": "2024-09-17",
+  "test_end": "2026-03-20",
+  "results": {
+    "baseline": {
+      "start_date": "2024-09-17",
+      "end_date": "2026-03-20",
+      "trading_days": 375,
+      "total_trades": 702,
+      "win_rate": 0.7365,
+      "net_profit_brl": 4425.0,
+      "avg_profit_brl": 6.3,
+      "avg_win_brl": 36.99,
+      "avg_loss_brl": -79.46,
+      "profit_factor": 1.301,
+      "max_drawdown_pct": 6.29,
+      "expected_payoff": 6.3,
+      "on_tester_value": 703.395954
+    },
+    "skip_wednesday": {
+      "start_date": "2024-09-17",
+      "end_date": "2026-03-20",
+      "trading_days": 375,
+      "total_trades": 552,
+      "win_rate": 0.7373,
+      "net_profit_brl": 3175.0,
+      "avg_profit_brl": 5.75,
+      "avg_win_brl": 37.21,
+      "avg_loss_brl": -82.55,
+      "profit_factor": 1.2652,
+      "max_drawdown_pct": 7.72,
+      "expected_payoff": 5.75,
+      "on_tester_value": 411.154523
+    },
+    "skip_hour_13": {
+      "start_date": "2024-09-17",
+      "end_date": "2026-03-20",
+      "trading_days": 375,
+      "total_trades": 592,
+      "win_rate": 0.7365,
+      "net_profit_brl": 3390.0,
+      "avg_profit_brl": 5.73,
+      "avg_win_brl": 36.38,
+      "avg_loss_brl": -79.94,
+      "profit_factor": 1.2719,
+      "max_drawdown_pct": 7.11,
+      "expected_payoff": 5.73,
+      "on_tester_value": 476.911364
+    },
+    "skip_wednesday_hour_13": {
+      "start_date": "2024-09-17",
+      "end_date": "2026-03-20",
+      "trading_days": 375,
+      "total_trades": 465,
+      "win_rate": 0.7355,
+      "net_profit_brl": 2180.0,
+      "avg_profit_brl": 4.69,
+      "avg_win_brl": 36.37,
+      "avg_loss_brl": -83.41,
+      "profit_factor": 1.2125,
+      "max_drawdown_pct": 9.62,
+      "expected_payoff": 4.69,
+      "on_tester_value": 226.72
+    }
+  }
+}
