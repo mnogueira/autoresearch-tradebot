@@ -1,0 +1,162 @@
+{
+  "reference_variant": "session_winner_cooldown_30m",
+  "reference_metrics": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247,
+    "total_trades": 1568,
+    "win_rate": 0.8055,
+    "net_profit_brl": 14085.0,
+    "avg_profit_brl": 8.98,
+    "avg_win_brl": 34.26,
+    "avg_loss_brl": -95.7,
+    "profit_factor": 1.4825,
+    "max_drawdown_pct": 3.3,
+    "expected_payoff": 8.98,
+    "on_tester_value": 4263.59877
+  },
+  "trend_strength_rolling_50bar_percentile": {
+    "rule": "Require long signals to exceed the rolling 50-bar 75th percentile of trend efficiency and short signals to be below the rolling 25th percentile.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1356,
+      "win_rate": 0.7979,
+      "net_profit_brl": 11270.0,
+      "avg_profit_brl": 8.31,
+      "avg_win_brl": 34.56,
+      "avg_loss_brl": -95.35,
+      "profit_factor": 1.4314,
+      "max_drawdown_pct": 3.81,
+      "expected_payoff": 8.31,
+      "on_tester_value": 2959.393373
+    }
+  },
+  "composite_signal_trend_eff_roc10": {
+    "rule": "Directional score = 0.7 * z(trend_eff_15 over rolling 50) + 0.3 * z(ROC10 over rolling 50); require score > 0.5 in trade direction.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1447,
+      "win_rate": 0.803,
+      "net_profit_brl": 12985.0,
+      "avg_profit_brl": 8.97,
+      "avg_win_brl": 34.42,
+      "avg_loss_brl": -94.77,
+      "profit_factor": 1.4807,
+      "max_drawdown_pct": 3.36,
+      "expected_payoff": 8.97,
+      "on_tester_value": 3862.505328
+    }
+  },
+  "weekday_trade_subset_analysis": {
+    "tuesday_through_thursday_trade_subset": {
+      "start_date": "2021-03-30",
+      "end_date": "2026-03-19",
+      "trading_days": 578,
+      "total_trades": 882,
+      "win_rate": 0.8039,
+      "net_profit_brl": 7795.0,
+      "avg_profit_brl": 8.84,
+      "avg_win_brl": 33.74,
+      "avg_loss_brl": -93.24,
+      "profit_factor": 1.4833,
+      "max_drawdown_pct": 4.07,
+      "expected_payoff": 8.84,
+      "on_tester_value": 1913.6725
+    },
+    "monday_and_friday_trade_subset": {
+      "start_date": "2021-04-05",
+      "end_date": "2026-03-20",
+      "trading_days": 443,
+      "total_trades": 686,
+      "win_rate": 0.8076,
+      "net_profit_brl": 6290.0,
+      "avg_profit_brl": 9.17,
+      "avg_win_brl": 34.93,
+      "avg_loss_brl": -98.94,
+      "profit_factor": 1.4816,
+      "max_drawdown_pct": 4.97,
+      "expected_payoff": 9.17,
+      "on_tester_value": 1264.402994
+    },
+    "exact_tuesday_through_thursday_only_variant": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 882,
+      "win_rate": 0.8039,
+      "net_profit_brl": 7795.0,
+      "avg_profit_brl": 8.84,
+      "avg_win_brl": 33.74,
+      "avg_loss_brl": -93.24,
+      "profit_factor": 1.4833,
+      "max_drawdown_pct": 4.07,
+      "expected_payoff": 8.84,
+      "on_tester_value": 1913.6725
+    }
+  },
+  "max_open_time_filters": {
+    "45_m1_bars": {
+      "interpretation": "Literal exact-engine test of 45 bars, which equals 45 minutes because the every-tick parity engine advances on M1 bars.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1568,
+        "win_rate": 0.7934,
+        "net_profit_brl": 13420.0,
+        "avg_profit_brl": 8.56,
+        "avg_win_brl": 34.16,
+        "avg_loss_brl": -90.58,
+        "profit_factor": 1.4616,
+        "max_drawdown_pct": 3.48,
+        "expected_payoff": 8.56,
+        "on_tester_value": 3853.658947
+      }
+    },
+    "660_m1_bars": {
+      "interpretation": "Approximate translation of 11 hours of M15 holding time into the exact M1 execution engine.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1568,
+        "win_rate": 0.8055,
+        "net_profit_brl": 14085.0,
+        "avg_profit_brl": 8.98,
+        "avg_win_brl": 34.26,
+        "avg_loss_brl": -95.7,
+        "profit_factor": 1.4825,
+        "max_drawdown_pct": 3.3,
+        "expected_payoff": 8.98,
+        "on_tester_value": 4263.59877
+      }
+    }
+  },
+  "prior_gap_reference": {
+    "rule": "Practical analog of the requested auction gap: skip entries from 10:00 through 10:14 inside the current allowed session.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1322,
+      "win_rate": 0.8071,
+      "net_profit_brl": 12670.0,
+      "avg_profit_brl": 9.58,
+      "avg_win_brl": 34.72,
+      "avg_loss_brl": -95.59,
+      "profit_factor": 1.5198,
+      "max_drawdown_pct": 4.34,
+      "expected_payoff": 9.58,
+      "on_tester_value": 2921.074312
+    }
+  },
+  "notes": [
+    "The user-requested 09:15 start remains a structural no-op because the current session winner does not allow entries before 10:00; the saved prior gap reference is the 10:15 practical analog inside the allowed session.",
+    "Tuesday-Thursday vs Monday/Friday is reported both as a trade-subset analysis and as a clean exact backtest variant.",
+    "The literal 45-bar max-open-time request is tested exactly as 45 M1 bars, and a separate 660-bar proxy is included to reflect the M15-time intuition."
+  ]
+}

@@ -90,6 +90,15 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - `stop after 2 consecutive daily losses`: identical to the reference cooldown winner
   - interpretation: ROC is a credible simplification, but it still gives up too much edge versus the trend-efficiency reference. The practical session-gap filter improves PF, but loses too much net profit. The daily loss-stop adds nothing on this tape because the current session+cooldown structure already throttles the weakest clusters.
 
+- The latest structural overlays also failed to displace the session+cooldown leader:
+  - artifact: `artifacts/outputs/stalker_v10_1_session_structure_followups_20260328/summary.json`
+  - rolling signal-strength gate (`trend_eff` above its rolling `75th` percentile for longs, below its `25th` percentile for shorts): `R$11,270`, `PF 1.4314`, `DD 3.81%`
+  - weighted composite score (`0.7 * z(trend_eff_15) + 0.3 * z(ROC10)`): `R$12,985`, `PF 1.4807`, `DD 3.36%`
+  - Tuesday-through-Thursday only: `R$7,795`, `PF 1.4833`, `DD 4.07%`
+  - max open time `45` exact M1 bars: `R$13,420`, `PF 1.4616`, `DD 3.48%`
+  - max open time `660` M1 bars, roughly `11` M15 hours: identical to the reference cooldown winner
+  - interpretation: the composite score is the closest challenger, but it still gives up too much net and a little drawdown protection. The rolling-strength gate over-prunes. Weekly seasonality is basically neutral, and the “45 bars” request only helps if interpreted as a much looser, effectively inactive time stop.
+
 - The latest deployment follow-up increased confidence in the cooldown winner:
   - artifact: `artifacts/outputs/stalker_v10_1_session_deployment_followups_20260328/summary.json`
   - exact `70/30` holdout for the cooldown winner:
@@ -216,6 +225,12 @@ Equity concentration is better than it looked by eye:
 - max consecutive winning days: `15`
 - result: the equity curve is not dominated by a handful of outlier trades
 
+Tuesday-through-Thursday is not a hidden magic sub-regime:
+
+- Tuesday-through-Thursday trade subset: `R$7,795`, `PF 1.4833`, `DD 4.07%`
+- Monday-and-Friday trade subset: `R$6,290`, `PF 1.4816`, `DD 4.97%`
+- interpretation: the middle of the week is a little cleaner on drawdown, but not enough to justify throwing away Monday/Friday net profit
+
 But cost sensitivity is real:
 
 - exact `2x spread` stress: `R$4,790`, `PF 1.11`, `DD 12.48%`
@@ -262,6 +277,7 @@ But cost sensitivity is real:
 5. If MT5 remains unstable, prioritize cost-robustness and live-paper safety checks over more entry-family exploration.
 6. Do not spend more time on Bollinger mean reversion, inside-bar breakout, or the current EMA crossover family unless the entry/exit mechanics are materially redesigned.
 7. Do not spend time on `WIN`, `WDO/WIN spread`, or news-filter backtests until the required external datasets are added.
+8. If further experimentation continues inside the current family, prioritize only ideas that reduce transaction-cost sensitivity without materially giving up net profit. The current exact winners already look close to a local optimum.
 
 ## Production Recommendation
 
