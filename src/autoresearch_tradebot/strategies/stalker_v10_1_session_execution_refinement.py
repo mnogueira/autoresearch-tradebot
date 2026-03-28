@@ -64,6 +64,10 @@ class ManagementConfig:
     tp_scale_after_win_streak: float | None = None
     patience_pullback_fraction: float | None = None
     patience_max_wait_bars: int | None = None
+    confirmation_candle_required: bool = False
+    confirmation_wait_bars: int = 1
+    profit_lock_activation_fraction: float | None = None
+    profit_lock_target_fraction: float | None = None
 
 
 def session_winner_params() -> V101Params:
@@ -153,6 +157,39 @@ def pending_order_has_expired(current_index: int, pending_order: dict[str, Any] 
     if expiry_index is None:
         return False
     return int(current_index) > int(expiry_index)
+
+
+def confirmation_candle_passed(direction: int, open_tick: int, close_tick: int) -> bool:
+    if direction == 1:
+        return int(close_tick) > int(open_tick)
+    if direction == -1:
+        return int(close_tick) < int(open_tick)
+    return False
+
+
+def profit_lock_stop_tick(
+    position: int,
+    entry_tick: int,
+    initial_target_tick: int,
+    current_bid_tick: int,
+    current_ask_tick: int,
+    activation_fraction: float | None,
+    lock_fraction: float | None,
+) -> int | None:
+    if position == 0 or activation_fraction is None or lock_fraction is None:
+        return None
+    target_distance_ticks = abs(int(initial_target_tick) - int(entry_tick))
+    if target_distance_ticks <= 0:
+        return None
+    activation_ticks = max(1, int(round(target_distance_ticks * float(activation_fraction))))
+    lock_ticks = max(1, int(round(target_distance_ticks * float(lock_fraction))))
+    if position == 1:
+        if int(current_bid_tick) < int(entry_tick) + activation_ticks:
+            return None
+        return int(entry_tick) + lock_ticks
+    if int(current_ask_tick) > int(entry_tick) - activation_ticks:
+        return None
+    return int(entry_tick) - lock_ticks
 
 
 def scaled_tp_multiplier(
@@ -274,6 +311,7 @@ def run_backtest_with_management(
     entry_atr_value = 0.0
 
     pending_order: dict[str, Any] | None = None
+    confirmation_signal: dict[str, Any] | None = None
     completed_trades_today = 0
     consecutive_losses_today = 0
     consecutive_wins_total = 0
@@ -281,11 +319,12 @@ def run_backtest_with_management(
     next_entry_allowed_time: pd.Timestamp | None = None
 
     def reset_position_state() -> None:
-        nonlocal position, pending_order, partial_taken, partial_exit_tick
+        nonlocal position, pending_order, confirmation_signal, partial_taken, partial_exit_tick
         nonlocal realized_partial_pnl_brl, realized_partial_points, trail_distance_ticks
         nonlocal initial_target_tick, half_target_tick, best_bid_tick, best_ask_tick, entry_atr_value
         position = 0
         pending_order = None
+        confirmation_signal = None
         partial_taken = False
         partial_exit_tick = 0
         realized_partial_pnl_brl = 0.0
@@ -453,6 +492,24 @@ def run_backtest_with_management(
             desired_stop_tick = entry_tick - lock_ticks - (extra_ticks // 2)
             stop_tick = min(stop_tick, desired_stop_tick)
 
+    def update_profit_lock_stop(current_bid_tick: int, current_ask_tick: int) -> None:
+        nonlocal stop_tick
+        desired_stop_tick = profit_lock_stop_tick(
+            position=position,
+            entry_tick=entry_tick,
+            initial_target_tick=initial_target_tick,
+            current_bid_tick=current_bid_tick,
+            current_ask_tick=current_ask_tick,
+            activation_fraction=management.profit_lock_activation_fraction,
+            lock_fraction=management.profit_lock_target_fraction,
+        )
+        if desired_stop_tick is None:
+            return
+        if position == 1:
+            stop_tick = max(stop_tick, desired_stop_tick)
+        else:
+            stop_tick = min(stop_tick, desired_stop_tick)
+
     def atr_loss_exit_tick(current_bid_tick: int, current_ask_tick: int) -> tuple[int | None, str | None]:
         if position == 0 or management.loss_exit_atr_mult is None or entry_atr_value <= 0.0:
             return None, None
@@ -476,6 +533,7 @@ def run_backtest_with_management(
             current_date = session_date
             previous_high_tick = 0
             previous_low_tick = price_to_ticks(BIG_NUMBER, PRICE_TICK_SIZE)
+            confirmation_signal = None
             completed_trades_today = 0
             consecutive_losses_today = 0
             realized_pnl_brl_today = 0.0
@@ -484,6 +542,7 @@ def run_backtest_with_management(
             update_profit_time_stop(index, bid_open_tick, ask_open_tick)
             update_trailing_stop(bid_open_tick, ask_open_tick)
             update_fractional_target_trail(bid_open_tick, ask_open_tick)
+            update_profit_lock_stop(bid_open_tick, ask_open_tick)
             atr_exit_tick, atr_exit_reason = atr_loss_exit_tick(bid_open_tick, ask_open_tick)
             if atr_exit_tick is not None and atr_exit_reason is not None:
                 append_trade(session_date, timestamp, atr_exit_tick, atr_exit_reason)
@@ -556,6 +615,7 @@ def run_backtest_with_management(
                     append_trade(session_date, timestamp, exit_tick, "time_cutoff")
                     reset_position_state()
             pending_order = None
+            confirmation_signal = None
             previous_bias = candle_bias(
                 open_tick=bid_open_tick,
                 close_tick=int(close_ticks[index]),
@@ -582,6 +642,46 @@ def run_backtest_with_management(
         )
         if not can_enter_new_trades:
             pending_order = None
+
+        if position == 0 and confirmation_signal is not None:
+            activate_index = int(confirmation_signal["activate_index"])
+            if index >= activate_index:
+                if index == activate_index and can_enter_new_trades:
+                    confirm_index = int(confirmation_signal["confirm_index"])
+                    if confirmation_candle_passed(
+                        direction=int(confirmation_signal["direction"]),
+                        open_tick=int(open_ticks[confirm_index]),
+                        close_tick=int(close_ticks[confirm_index]),
+                    ):
+                        position = int(confirmation_signal["direction"])
+                        entry_tick = ask_open_tick if position == 1 else bid_open_tick
+                        stop_offset_ticks = int(confirmation_signal["stop_offset_ticks"])
+                        target_offset_ticks = int(confirmation_signal["target_offset_ticks"])
+                        stop_tick = entry_tick - (stop_offset_ticks * position)
+                        target_tick = entry_tick + (target_offset_ticks * position)
+                        entry_time = timestamp
+                        signal_time = confirmation_signal["signal_time"]
+                        fill_reason = "confirmation_candle"
+                        confirmation_signal = None
+                        if management.min_minutes_between_entries is not None:
+                            next_entry_allowed_time = timestamp + pd.Timedelta(
+                                minutes=int(management.min_minutes_between_entries)
+                            )
+                        arm_position_state(index)
+                        same_tick_exit, same_tick_reason = _exit_position_at_tick(
+                            direction=position,
+                            bid_tick=bid_open_tick,
+                            ask_tick=ask_open_tick,
+                            stop_tick=stop_tick,
+                            target_tick=target_tick,
+                            open_tick=True,
+                        )
+                        if same_tick_exit is not None and same_tick_reason is not None:
+                            append_trade(session_date, timestamp, same_tick_exit, same_tick_reason)
+                            reset_position_state()
+                            continue
+                else:
+                    confirmation_signal = None
 
         current_day_high_tick = int(day_high_current_ticks[index])
         current_day_low_tick = int(day_low_current_ticks[index])
@@ -612,6 +712,8 @@ def run_backtest_with_management(
             if current_day_high_tick > previous_high_tick:
                 if pending_order is not None and int(pending_order["direction"]) == -1:
                     pending_order = None
+                if confirmation_signal is not None and int(confirmation_signal["direction"]) == -1:
+                    confirmation_signal = None
                 entry_limit_tick = upper_retracement_tick
                 if management.patience_pullback_fraction is not None:
                     signal_bar_range_ticks = max(1, int(high_ticks[index] - low_ticks[index]))
@@ -632,6 +734,14 @@ def run_backtest_with_management(
                     "stop_tick": price_to_ticks(round_to_tick(base_price - (atr_value * params.SL_ATRMultiplier)), PRICE_TICK_SIZE),
                     "target_tick": price_to_ticks(round_to_tick(base_price + (atr_value * active_tp_multiplier)), PRICE_TICK_SIZE),
                     "signal_time": timestamp,
+                }
+                confirmation_candidate = {
+                    "direction": 1,
+                    "signal_time": timestamp,
+                    "confirm_index": int(index + int(management.confirmation_wait_bars)),
+                    "activate_index": int(index + int(management.confirmation_wait_bars) + 1),
+                    "stop_offset_ticks": max(1, abs(int(candidate_order["stop_tick"]) - entry_limit_tick)),
+                    "target_offset_ticks": max(1, abs(int(candidate_order["target_tick"]) - entry_limit_tick)),
                 }
                 if management.patience_pullback_fraction is not None and management.patience_max_wait_bars is not None:
                     candidate_order["min_fill_index"] = int(index + 1)
@@ -654,10 +764,16 @@ def run_backtest_with_management(
                         "next_trade_number": int(completed_trades_today + 1),
                     }
                     if entry_filter is None or bool(entry_filter(entry_context)):
-                        pending_order = candidate_order
+                        if management.confirmation_candle_required and confirmation_candidate["activate_index"] < len(timestamps):
+                            confirmation_signal = confirmation_candidate
+                            pending_order = None
+                        else:
+                            pending_order = candidate_order
             elif current_day_low_tick < previous_low_tick:
                 if pending_order is not None and int(pending_order["direction"]) == 1:
                     pending_order = None
+                if confirmation_signal is not None and int(confirmation_signal["direction"]) == 1:
+                    confirmation_signal = None
                 entry_limit_tick = lower_retracement_tick
                 if management.patience_pullback_fraction is not None:
                     signal_bar_range_ticks = max(1, int(high_ticks[index] - low_ticks[index]))
@@ -678,6 +794,14 @@ def run_backtest_with_management(
                     "stop_tick": price_to_ticks(round_to_tick(base_price + (atr_value * params.SL_ATRMultiplier)), PRICE_TICK_SIZE),
                     "target_tick": price_to_ticks(round_to_tick(base_price - (atr_value * active_tp_multiplier)), PRICE_TICK_SIZE),
                     "signal_time": timestamp,
+                }
+                confirmation_candidate = {
+                    "direction": -1,
+                    "signal_time": timestamp,
+                    "confirm_index": int(index + int(management.confirmation_wait_bars)),
+                    "activate_index": int(index + int(management.confirmation_wait_bars) + 1),
+                    "stop_offset_ticks": max(1, abs(int(candidate_order["stop_tick"]) - entry_limit_tick)),
+                    "target_offset_ticks": max(1, abs(int(candidate_order["target_tick"]) - entry_limit_tick)),
                 }
                 if management.patience_pullback_fraction is not None and management.patience_max_wait_bars is not None:
                     candidate_order["min_fill_index"] = int(index + 1)
@@ -700,7 +824,11 @@ def run_backtest_with_management(
                         "next_trade_number": int(completed_trades_today + 1),
                     }
                     if entry_filter is None or bool(entry_filter(entry_context)):
-                        pending_order = candidate_order
+                        if management.confirmation_candle_required and confirmation_candidate["activate_index"] < len(timestamps):
+                            confirmation_signal = confirmation_candidate
+                            pending_order = None
+                        else:
+                            pending_order = candidate_order
 
         if current_day_high_tick > previous_high_tick:
             previous_high_tick = current_day_high_tick
@@ -768,6 +896,8 @@ def run_backtest_with_management(
                 maybe_take_partial(current_bid_tick, current_ask_tick)
                 update_trailing_stop(current_bid_tick, current_ask_tick)
                 update_profit_time_stop(index, current_bid_tick, current_ask_tick)
+                update_fractional_target_trail(current_bid_tick, current_ask_tick)
+                update_profit_lock_stop(current_bid_tick, current_ask_tick)
                 exit_tick, exit_reason = _exit_position_at_tick(
                     direction=position,
                     bid_tick=current_bid_tick,

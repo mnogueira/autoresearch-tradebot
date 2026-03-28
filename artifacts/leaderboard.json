@@ -4134,6 +4134,26 @@
     ]
   },
   {
+    "name": "session_winner_cooldown_30m_maxhold120_profit_lock_75_25",
+    "family": "session_profit_lock",
+    "screening_method": "session_winner_execution_refinement",
+    "comparison_tier": "exact",
+    "mt5_ready": false,
+    "test_total_trades": 1568,
+    "test_net_profit_brl": 5480.0,
+    "test_profit_factor": 1.2426,
+    "test_on_tester_value": 567.290966,
+    "test_max_drawdown_pct": 9.66,
+    "test_win_rate": 0.8355,
+    "notes": "Exact production candidate with a 75% activation / 25% TP profit lock stop.",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_session_confirmation_followups_20260328\\summary.json",
+    "params": {
+      "profit_lock_activation_fraction": 0.75,
+      "profit_lock_target_fraction": 0.25
+    },
+    "rank": 172
+  },
+  {
     "family": "atr_volatility",
     "name": "atr_ratio_p20_ge_0.480293",
     "screening_method": "trade_mask_prescreen",
@@ -4147,7 +4167,7 @@
     "test_max_drawdown_pct": 6.0,
     "test_win_rate": 0.7427,
     "notes": "Python-side prescreen on baseline trades; MT5 EA support not added yet",
-    "rank": 172,
+    "rank": 173,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -4175,7 +4195,7 @@
     "preset_name": "WDO Stalker Strategy v10.1 Robust Skip Short Wednesday GPT 5.4",
     "preset_path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 Robust Skip Short Wednesday GPT 5.4.set",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_skip_short_wednesday_holdout_20260327\\summary.json",
-    "rank": 173,
+    "rank": 174,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -4203,7 +4223,7 @@
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
     ],
-    "rank": 174
+    "rank": 175
   },
   {
     "name": "timing_relvol_anchor_last30m_short_relvol_lb40_ge_0.5",
@@ -4259,7 +4279,7 @@
     "delta_vs_robust_test_pf": -0.0368,
     "delta_vs_robust_test_dd": 0.51,
     "beats_robust_baseline": false,
-    "rank": 175,
+    "rank": 176,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -4321,7 +4341,7 @@
     "delta_vs_robust_test_pf": -0.0368,
     "delta_vs_robust_test_dd": 0.51,
     "beats_robust_baseline": false,
-    "rank": 176,
+    "rank": 177,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -4383,7 +4403,7 @@
     "delta_vs_robust_test_pf": -0.0702,
     "delta_vs_robust_test_dd": 0.89,
     "beats_robust_baseline": false,
-    "rank": 177,
+    "rank": 178,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -4405,7 +4425,7 @@
     "test_max_drawdown_pct": 4.09,
     "test_win_rate": 0.7462,
     "notes": "Relative volume variation on top of a fixed core parameter set",
-    "rank": 178,
+    "rank": 179,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -4427,7 +4447,7 @@
     "test_max_drawdown_pct": 3.92,
     "test_win_rate": 0.7424,
     "notes": "Contiguous entry-window optimization on top of the robust combo",
-    "rank": 179,
+    "rank": 180,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -4449,7 +4469,7 @@
     "test_max_drawdown_pct": 6.05,
     "test_win_rate": 0.7358,
     "notes": "Python-side prescreen on baseline trades; MT5 EA support not added yet",
-    "rank": 180,
+    "rank": 181,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -4479,7 +4499,7 @@
     ],
     "screening_method": "integrated_backtest_full_period_anchor_comparison",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_surgical_timing_deviation_20260328\\summary.json",
-    "rank": 181
+    "rank": 182
   },
   {
     "family": "atr_volatility",
@@ -4495,7 +4515,7 @@
     "test_max_drawdown_pct": 6.93,
     "test_win_rate": 0.7433,
     "notes": "Python-side prescreen on baseline trades; MT5 EA support not added yet",
-    "rank": 182,
+    "rank": 183,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -4527,7 +4547,7 @@
     "preset_name": "WDO Stalker Strategy v10.1 Robust Skip Short Wednesday Short Hour 13 Last30m GPT 5.4",
     "preset_path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 Robust Skip Short Wednesday Short Hour 13 Last30m GPT 5.4.set",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_directional_deviation_holdout_20260328\\summary.json",
-    "rank": 183
+    "rank": 184
   },
   {
     "family": "relative_volume",
@@ -4543,7 +4563,7 @@
     "test_max_drawdown_pct": 6.33,
     "test_win_rate": 0.7351,
     "notes": "Relative volume variation on top of a fixed core parameter set",
-    "rank": 184,
+    "rank": 185,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -4606,7 +4626,7 @@
     "delta_vs_robust_test_pf": 0.0298,
     "delta_vs_robust_test_dd": -0.9,
     "beats_robust_baseline": false,
-    "rank": 185,
+    "rank": 186,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -4668,7 +4688,7 @@
     "delta_vs_robust_test_pf": -0.1095,
     "delta_vs_robust_test_dd": 0.27,
     "beats_robust_baseline": false,
-    "rank": 186,
+    "rank": 187,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -4698,7 +4718,7 @@
     ],
     "screening_method": "integrated_backtest_timing_core_20260327",
     "quality_tier": 2,
-    "rank": 187
+    "rank": 188
   },
   {
     "name": "timing_skip_hour_13",
@@ -4723,7 +4743,7 @@
     "screening_method": "integrated_backtest_timing_experiments_20260327",
     "quality_tier": 2,
     "preset_name": null,
-    "rank": 188
+    "rank": 189
   },
   {
     "name": "timing_relvol_anchor_sltp_sl0p66_tp0p36",
@@ -4779,7 +4799,7 @@
     "delta_vs_robust_test_pf": -0.089,
     "delta_vs_robust_test_dd": -0.05,
     "beats_robust_baseline": false,
-    "rank": 189,
+    "rank": 190,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -4801,7 +4821,7 @@
     "test_max_drawdown_pct": 3.63,
     "test_win_rate": 0.7688,
     "notes": "RSI divergence proxy prescreen using RSI-vs-price disagreement",
-    "rank": 190,
+    "rank": 191,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -4829,7 +4849,7 @@
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
     ],
-    "rank": 191
+    "rank": 192
   },
   {
     "family": "relative_volume",
@@ -4845,7 +4865,7 @@
     "test_max_drawdown_pct": 5.83,
     "test_win_rate": 0.728,
     "notes": "Relative volume variation on top of a fixed core parameter set",
-    "rank": 192,
+    "rank": 193,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -4867,7 +4887,7 @@
     "test_max_drawdown_pct": 6.26,
     "test_win_rate": 0.7338,
     "notes": "Relative volume variation on top of a fixed core parameter set",
-    "rank": 193,
+    "rank": 194,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -4889,7 +4909,7 @@
     "test_max_drawdown_pct": 5.95,
     "test_win_rate": 0.7247,
     "notes": "Relative volume variation on top of a fixed core parameter set",
-    "rank": 194,
+    "rank": 195,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -4911,7 +4931,7 @@
     "test_max_drawdown_pct": 3.07,
     "test_win_rate": 0.7381,
     "notes": "Python-side prescreen on baseline trades; MT5 EA support not added yet",
-    "rank": 195,
+    "rank": 196,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -4939,7 +4959,7 @@
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
     ],
-    "rank": 196
+    "rank": 197
   },
   {
     "name": "timing_skip_wednesday_core",
@@ -4963,7 +4983,7 @@
     ],
     "screening_method": "integrated_backtest_timing_core_20260327",
     "quality_tier": 2,
-    "rank": 197
+    "rank": 198
   },
   {
     "family": "time_of_day",
@@ -4979,7 +4999,7 @@
     "test_max_drawdown_pct": 4.74,
     "test_win_rate": 0.7475,
     "notes": "Contiguous entry-window optimization on top of the robust combo",
-    "rank": 198,
+    "rank": 199,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -5001,7 +5021,7 @@
     "test_max_drawdown_pct": 4.77,
     "test_win_rate": 0.7262,
     "notes": "Relative volume variation on top of a fixed core parameter set",
-    "rank": 199,
+    "rank": 200,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -5023,7 +5043,7 @@
     "test_max_drawdown_pct": 5.81,
     "test_win_rate": 0.7377,
     "notes": "Relative volume variation on top of a fixed core parameter set",
-    "rank": 200,
+    "rank": 201,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -5045,7 +5065,7 @@
     "test_max_drawdown_pct": 5.32,
     "test_win_rate": 0.7339,
     "notes": "Contiguous entry-window optimization on top of the robust combo",
-    "rank": 201,
+    "rank": 202,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -5067,7 +5087,7 @@
     "test_max_drawdown_pct": 8.11,
     "test_win_rate": 0.7357,
     "notes": "Contiguous entry-window optimization on top of the robust combo",
-    "rank": 202,
+    "rank": 203,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -5092,7 +5112,7 @@
     "params": {
       "spread_multiplier": 2.0
     },
-    "rank": 203
+    "rank": 204
   },
   {
     "name": "session_winner_spread_2x",
@@ -5111,7 +5131,7 @@
     "params": {
       "spread_multiplier": 2.0
     },
-    "rank": 204
+    "rank": 205
   },
   {
     "name": "baseline_plus_bb_width_20_train_iqr",
@@ -5133,7 +5153,7 @@
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
     ],
-    "rank": 205
+    "rank": 206
   },
   {
     "name": "exclude_wednesday_plus_exclude_hour_13_plus_exclude_last_30m",
@@ -5155,7 +5175,7 @@
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
     ],
-    "rank": 206
+    "rank": 207
   },
   {
     "family": "time_of_day",
@@ -5171,7 +5191,7 @@
     "test_max_drawdown_pct": 8.07,
     "test_win_rate": 0.7263,
     "notes": "Contiguous entry-window optimization on top of the robust combo",
-    "rank": 207,
+    "rank": 208,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -5193,7 +5213,7 @@
     "test_max_drawdown_pct": 2.82,
     "test_win_rate": 0.7664,
     "notes": "RSI divergence proxy prescreen using RSI-vs-price disagreement",
-    "rank": 208,
+    "rank": 209,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -5221,7 +5241,7 @@
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
     ],
-    "rank": 209
+    "rank": 210
   },
   {
     "family": "relative_volume",
@@ -5237,7 +5257,7 @@
     "test_max_drawdown_pct": 5.87,
     "test_win_rate": 0.7326,
     "notes": "Relative volume variation on top of a fixed core parameter set",
-    "rank": 210,
+    "rank": 211,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -5265,7 +5285,7 @@
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
     ],
-    "rank": 211
+    "rank": 212
   },
   {
     "family": "time_of_day",
@@ -5281,7 +5301,7 @@
     "test_max_drawdown_pct": 7.06,
     "test_win_rate": 0.7288,
     "notes": "Contiguous entry-window optimization on top of the robust combo",
-    "rank": 212,
+    "rank": 213,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -5314,7 +5334,7 @@
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
     ],
-    "rank": 213
+    "rank": 214
   },
   {
     "name": "robust_skip_short_wednesday_short_hour13_last30m_plus_ema50_sweetspot_holdout",
@@ -5338,7 +5358,7 @@
     ],
     "screening_method": "integrated_backtest_holdout",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_directional_deviation_holdout_20260328\\summary.json",
-    "rank": 214
+    "rank": 215
   },
   {
     "name": "timing_stack_plus_adx_14_ge_train_median_holdout",
@@ -5358,7 +5378,7 @@
     "beats_timing_stack_baseline": false,
     "notes": "Held-out timing-stack plus ADX(14) >= train median (29.6631).",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_timing_stack_adx_20260327\\summary.json",
-    "rank": 215,
+    "rank": 216,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -5389,7 +5409,7 @@
     "screening_method": "integrated_backtest_timing_experiments_20260327",
     "quality_tier": 2,
     "preset_name": null,
-    "rank": 216
+    "rank": 217
   },
   {
     "name": "timing_skip_wednesday_hour_13_relvol_short_lb20_ge_0p85",
@@ -5414,7 +5434,7 @@
     "screening_method": "integrated_backtest_timing_experiments_20260327",
     "quality_tier": 2,
     "preset_name": null,
-    "rank": 217
+    "rank": 218
   },
   {
     "family": "atr_volatility",
@@ -5430,7 +5450,7 @@
     "test_max_drawdown_pct": 3.45,
     "test_win_rate": 0.7209,
     "notes": "Python-side prescreen on baseline trades; MT5 EA support not added yet",
-    "rank": 218,
+    "rank": 219,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -5452,7 +5472,7 @@
     "test_max_drawdown_pct": 3.62,
     "test_win_rate": 0.7232,
     "notes": "Python-side prescreen on baseline trades; MT5 EA support not added yet",
-    "rank": 219,
+    "rank": 220,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -5474,7 +5494,7 @@
     "test_max_drawdown_pct": 1.34,
     "test_win_rate": 0.8,
     "notes": "Contiguous entry-window optimization on top of the robust combo",
-    "rank": 220,
+    "rank": 221,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -5506,7 +5526,7 @@
     ],
     "slice_start": "2025-09-22",
     "slice_end": "2026-03-20",
-    "rank": 221
+    "rank": 222
   },
   {
     "name": "exclude_entry_hour_13_6m",
@@ -5533,7 +5553,7 @@
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
     ],
-    "rank": 222
+    "rank": 223
   },
   {
     "family": "atr_volatility",
@@ -5549,7 +5569,7 @@
     "test_max_drawdown_pct": 4.05,
     "test_win_rate": 0.7217,
     "notes": "Python-side prescreen on baseline trades; MT5 EA support not added yet",
-    "rank": 223,
+    "rank": 224,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -5571,7 +5591,7 @@
     "test_max_drawdown_pct": 4.46,
     "test_win_rate": 0.7269,
     "notes": "RSI divergence proxy prescreen using RSI-vs-price disagreement",
-    "rank": 224,
+    "rank": 225,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -5593,7 +5613,7 @@
     "test_max_drawdown_pct": 7.18,
     "test_win_rate": 0.727,
     "notes": "Python-side prescreen on baseline trades; MT5 EA support not added yet",
-    "rank": 225,
+    "rank": 226,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -5625,7 +5645,7 @@
     ],
     "slice_start": "2025-09-22",
     "slice_end": "2026-03-20",
-    "rank": 226
+    "rank": 227
   },
   {
     "name": "timing_stack_holdout_baseline",
@@ -5641,7 +5661,7 @@
     "test_win_rate": 0.7368,
     "notes": "Held-out timing-stack baseline: skip Wednesday, skip 13:00, stop new entries after 14:30.",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_timing_stack_adx_20260327\\summary.json",
-    "rank": 227,
+    "rank": 228,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -5672,7 +5692,7 @@
     "screening_method": "integrated_backtest_timing_experiments_20260327",
     "quality_tier": 2,
     "preset_name": null,
-    "rank": 228
+    "rank": 229
   },
   {
     "name": "timing_skip_wednesday_hour_13_core",
@@ -5696,7 +5716,7 @@
     ],
     "screening_method": "integrated_backtest_timing_core_20260327",
     "quality_tier": 2,
-    "rank": 229
+    "rank": 230
   },
   {
     "name": "timing_skip_wednesday_hour_13",
@@ -5721,7 +5741,7 @@
     "screening_method": "integrated_backtest_timing_experiments_20260327",
     "quality_tier": 2,
     "preset_name": null,
-    "rank": 230
+    "rank": 231
   },
   {
     "family": "atr_volatility",
@@ -5737,7 +5757,7 @@
     "test_max_drawdown_pct": 8.32,
     "test_win_rate": 0.7256,
     "notes": "Python-side prescreen on baseline trades; MT5 EA support not added yet",
-    "rank": 231,
+    "rank": 232,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -5759,7 +5779,7 @@
     "test_max_drawdown_pct": 5.59,
     "test_win_rate": 0.725,
     "notes": "Contiguous entry-window optimization on top of the robust combo",
-    "rank": 232,
+    "rank": 233,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -5781,7 +5801,7 @@
     "test_max_drawdown_pct": 4.58,
     "test_win_rate": 0.7632,
     "notes": "Contiguous entry-window optimization on top of the robust combo",
-    "rank": 233,
+    "rank": 234,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -5814,7 +5834,7 @@
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
     ],
-    "rank": 234
+    "rank": 235
   },
   {
     "family": "atr_volatility",
@@ -5830,7 +5850,7 @@
     "test_max_drawdown_pct": 8.49,
     "test_win_rate": 0.7188,
     "notes": "Python-side prescreen on baseline trades; MT5 EA support not added yet",
-    "rank": 235,
+    "rank": 236,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -5852,7 +5872,7 @@
     "test_max_drawdown_pct": 7.84,
     "test_win_rate": 0.7396,
     "notes": "RSI divergence proxy prescreen using RSI-vs-price disagreement",
-    "rank": 236,
+    "rank": 237,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -5883,7 +5903,7 @@
     "screening_method": "integrated_backtest_timing_experiments_20260327",
     "quality_tier": 2,
     "preset_name": null,
-    "rank": 237
+    "rank": 238
   },
   {
     "family": "atr_volatility",
@@ -5899,7 +5919,7 @@
     "test_max_drawdown_pct": 10.36,
     "test_win_rate": 0.7152,
     "notes": "Python-side prescreen on baseline trades; MT5 EA support not added yet",
-    "rank": 238,
+    "rank": 239,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -5921,7 +5941,7 @@
     "test_max_drawdown_pct": 8.31,
     "test_win_rate": 0.7078,
     "notes": "Contiguous entry-window optimization on top of the robust combo",
-    "rank": 239,
+    "rank": 240,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -5953,7 +5973,7 @@
     ],
     "slice_start": "2025-09-22",
     "slice_end": "2026-03-20",
-    "rank": 240
+    "rank": 241
   },
   {
     "name": "robust_combo_baseline_6m",
@@ -5980,7 +6000,7 @@
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
     ],
-    "rank": 241
+    "rank": 242
   },
   {
     "name": "robust_skip_short_wednesday_short_hour13_last30m_plus_vwap_ema_sweetspots_holdout",
@@ -6004,7 +6024,7 @@
     ],
     "screening_method": "integrated_backtest_holdout",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_directional_deviation_holdout_20260328\\summary.json",
-    "rank": 242
+    "rank": 243
   },
   {
     "name": "exclude_last_30m_plus_exclude_wednesday_6m",
@@ -6031,7 +6051,7 @@
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
     ],
-    "rank": 243
+    "rank": 244
   },
   {
     "family": "time_of_day",
@@ -6047,7 +6067,7 @@
     "test_max_drawdown_pct": 6.27,
     "test_win_rate": 0.7021,
     "notes": "Contiguous entry-window optimization on top of the robust combo",
-    "rank": 244,
+    "rank": 245,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -6080,7 +6100,7 @@
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
     ],
-    "rank": 245
+    "rank": 246
   },
   {
     "name": "exclude_wednesday_6m",
@@ -6107,7 +6127,7 @@
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
     ],
-    "rank": 246
+    "rank": 247
   },
   {
     "family": "atr_volatility",
@@ -6123,7 +6143,7 @@
     "test_max_drawdown_pct": 9.67,
     "test_win_rate": 0.7089,
     "notes": "Python-side prescreen on baseline trades; MT5 EA support not added yet",
-    "rank": 247,
+    "rank": 248,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -6145,7 +6165,7 @@
     "test_max_drawdown_pct": 5.59,
     "test_win_rate": 0.7024,
     "notes": "Contiguous entry-window optimization on top of the robust combo",
-    "rank": 248,
+    "rank": 249,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -6178,7 +6198,7 @@
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
     ],
-    "rank": 249
+    "rank": 250
   },
   {
     "family": "atr_volatility",
@@ -6194,7 +6214,7 @@
     "test_max_drawdown_pct": 8.63,
     "test_win_rate": 0.6994,
     "notes": "Python-side prescreen on baseline trades; MT5 EA support not added yet",
-    "rank": 250,
+    "rank": 251,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -6216,7 +6236,7 @@
     "test_max_drawdown_pct": 6.55,
     "test_win_rate": 0.7109,
     "notes": "RSI divergence proxy prescreen using RSI-vs-price disagreement",
-    "rank": 251,
+    "rank": 252,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -6238,7 +6258,7 @@
     "test_max_drawdown_pct": 5.08,
     "test_win_rate": 0.7069,
     "notes": "RSI divergence proxy prescreen using RSI-vs-price disagreement",
-    "rank": 252,
+    "rank": 253,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -6260,7 +6280,7 @@
     "test_max_drawdown_pct": 12.63,
     "test_win_rate": 0.6879,
     "notes": "Python-side prescreen on baseline trades; MT5 EA support not added yet",
-    "rank": 253,
+    "rank": 254,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -6282,7 +6302,7 @@
     "test_max_drawdown_pct": 11.92,
     "test_win_rate": 0.6933,
     "notes": "Python-side prescreen on baseline trades; MT5 EA support not added yet",
-    "rank": 254,
+    "rank": 255,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -6312,7 +6332,7 @@
     ],
     "screening_method": "integrated_backtest_full_period_anchor_comparison",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_surgical_timing_deviation_20260328\\summary.json",
-    "rank": 255
+    "rank": 256
   },
   {
     "family": "time_of_day",
@@ -6328,7 +6348,7 @@
     "test_max_drawdown_pct": 5.91,
     "test_win_rate": 0.7099,
     "notes": "Contiguous entry-window optimization on top of the robust combo",
-    "rank": 256,
+    "rank": 257,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -6350,7 +6370,7 @@
     "test_max_drawdown_pct": 6.3,
     "test_win_rate": 0.712,
     "notes": "RSI divergence proxy prescreen using RSI-vs-price disagreement",
-    "rank": 257,
+    "rank": 258,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -6377,7 +6397,7 @@
     "notes": "Trade-tape estimate only. This removes completed Wednesday shorts from the existing enriched trade history; it is not a fresh backtest.",
     "preset_path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 Robust Skip Short Wednesday GPT 5.4.set",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_skip_short_wednesday_tape_estimate_20260327\\summary.json",
-    "rank": 258,
+    "rank": 259,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -6403,7 +6423,7 @@
       "lookback": 10,
       "min_momentum_delta": 0.0
     },
-    "rank": 259,
+    "rank": 260,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -6425,7 +6445,7 @@
     "test_max_drawdown_pct": 0.0,
     "test_win_rate": 1.0,
     "notes": "Contiguous entry-window optimization on top of the robust combo",
-    "rank": 260,
+    "rank": 261,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -6447,7 +6467,7 @@
     "test_max_drawdown_pct": 0.0,
     "test_win_rate": 0.0,
     "notes": "Contiguous entry-window optimization on top of the robust combo",
-    "rank": 261,
+    "rank": 262,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -6469,7 +6489,7 @@
     "test_max_drawdown_pct": 0.0,
     "test_win_rate": 0.0,
     "notes": "Contiguous entry-window optimization on top of the robust combo",
-    "rank": 262,
+    "rank": 263,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -6491,7 +6511,7 @@
     "test_max_drawdown_pct": 0.0,
     "test_win_rate": 0.0,
     "notes": "Contiguous entry-window optimization on top of the robust combo",
-    "rank": 263,
+    "rank": 264,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -6513,7 +6533,7 @@
     "test_max_drawdown_pct": 0.0,
     "test_win_rate": 0.0,
     "notes": "Contiguous entry-window optimization on top of the robust combo",
-    "rank": 264,
+    "rank": 265,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -6535,7 +6555,7 @@
     "test_max_drawdown_pct": 0.0,
     "test_win_rate": 0.0,
     "notes": "Contiguous entry-window optimization on top of the robust combo",
-    "rank": 265,
+    "rank": 266,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -6563,7 +6583,7 @@
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
     ],
-    "rank": 266
+    "rank": 267
   },
   {
     "name": "timing_relvol_anchor_plus_momdiv_roc10_lb10_delta0",
@@ -6622,7 +6642,7 @@
     "delta_vs_robust_test_pf": -1.301,
     "delta_vs_robust_test_dd": -6.29,
     "beats_robust_baseline": false,
-    "rank": 267,
+    "rank": 268,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -6648,7 +6668,7 @@
     "beats_timing_stack_baseline": false,
     "notes": "Held-out timing-stack plus ROC(10) momentum divergence confirmation. It eliminated every test trade.",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_timing_stack_momdiv_20260327\\summary.json",
-    "rank": 268,
+    "rank": 269,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -6673,7 +6693,7 @@
     "params": {
       "spread_rule": "current_spread_ticks < prior_session_average_spread_ticks"
     },
-    "rank": 269
+    "rank": 270
   },
   {
     "family": "rsi_divergence",
@@ -6689,7 +6709,7 @@
     "test_max_drawdown_pct": 8.51,
     "test_win_rate": 0.7011,
     "notes": "RSI divergence proxy prescreen using RSI-vs-price disagreement",
-    "rank": 270,
+    "rank": 271,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -6711,7 +6731,7 @@
     "test_max_drawdown_pct": 6.91,
     "test_win_rate": 0.6902,
     "notes": "RSI divergence proxy prescreen using RSI-vs-price disagreement",
-    "rank": 271,
+    "rank": 272,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -6745,7 +6765,7 @@
     "test_win_rate": 0.6578,
     "notes": "Exact every-tick EMA crossover market-entry variant with session filter.",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\wdo_ema_crossover_exact_20260328\\summary.json",
-    "rank": 272
+    "rank": 273
   },
   {
     "name": "session_winner_cooldown_30m_dxy_corr_gt_0p7",
@@ -6766,7 +6786,7 @@
       "correlation_threshold": 0.7,
       "min_minutes_between_entries": 30
     },
-    "rank": 273
+    "rank": 274
   },
   {
     "name": "ema_8_34_exact_sl0p84_tp0p42",
@@ -6794,7 +6814,7 @@
     "test_win_rate": 0.6516,
     "notes": "Exact every-tick EMA crossover market-entry variant with session filter.",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\wdo_ema_crossover_exact_20260328\\summary.json",
-    "rank": 274
+    "rank": 275
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_spread_3x",
@@ -6815,7 +6835,7 @@
       "max_bars_in_trade": 120,
       "min_minutes_between_entries": 30
     },
-    "rank": 275
+    "rank": 276
   },
   {
     "name": "session_winner_spread_3x0",
@@ -6834,7 +6854,7 @@
     "params": {
       "spread_multiplier": 3.0
     },
-    "rank": 276
+    "rank": 277
   },
   {
     "name": "session_winner_spread_3x",
@@ -6853,7 +6873,7 @@
     "params": {
       "spread_multiplier": 3.0
     },
-    "rank": 277
+    "rank": 278
   },
   {
     "name": "inside_bar_breakout_exact_sl0p84_tp0p30",
@@ -6879,7 +6899,7 @@
     "test_win_rate": 0.7019,
     "notes": "Exact M15 inside-bar breakout, entered on next M1 open, with session filter.",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\wdo_inside_bar_breakout_exact_20260328\\summary.json",
-    "rank": 278
+    "rank": 279
   },
   {
     "name": "ema_5_21_exact_sl0p84_tp0p30",
@@ -6907,7 +6927,7 @@
     "test_win_rate": 0.7121,
     "notes": "Exact every-tick EMA crossover market-entry variant with session filter.",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\wdo_ema_crossover_exact_20260328\\summary.json",
-    "rank": 279
+    "rank": 280
   },
   {
     "name": "inside_bar_breakout_exact_sl0p84_tp0p48",
@@ -6933,7 +6953,7 @@
     "test_win_rate": 0.5964,
     "notes": "Exact M15 inside-bar breakout, entered on next M1 open, with session filter.",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\wdo_inside_bar_breakout_exact_20260328\\summary.json",
-    "rank": 280
+    "rank": 281
   },
   {
     "family": "time_of_day",
@@ -6949,13 +6969,53 @@
     "test_max_drawdown_pct": 6.4,
     "test_win_rate": 0.5405,
     "notes": "Contiguous entry-window optimization on top of the robust combo",
-    "rank": 281,
+    "rank": 282,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
     ]
+  },
+  {
+    "name": "session_winner_cooldown_30m_maxhold120_confirmation_candle",
+    "family": "session_confirmation_entry",
+    "screening_method": "session_winner_execution_refinement",
+    "comparison_tier": "exact",
+    "mt5_ready": false,
+    "test_total_trades": 992,
+    "test_net_profit_brl": -3515.0,
+    "test_profit_factor": 0.8739,
+    "test_on_tester_value": -91.320223,
+    "test_max_drawdown_pct": 38.49,
+    "test_win_rate": 0.7077,
+    "notes": "Exact production candidate with a one-candle directional confirmation before entry.",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_session_confirmation_followups_20260328\\summary.json",
+    "params": {
+      "confirmation_wait_bars": 1
+    },
+    "rank": 283
+  },
+  {
+    "name": "session_winner_cooldown_30m_maxhold120_confirmation_profit_lock",
+    "family": "session_confirmation_profit_lock",
+    "screening_method": "session_winner_execution_refinement",
+    "comparison_tier": "exact",
+    "mt5_ready": false,
+    "test_total_trades": 992,
+    "test_net_profit_brl": -5920.0,
+    "test_profit_factor": 0.7372,
+    "test_on_tester_value": -96.611433,
+    "test_max_drawdown_pct": 61.28,
+    "test_win_rate": 0.75,
+    "notes": "Exact production candidate with both one-candle confirmation and the 75%/25% profit lock.",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_session_confirmation_followups_20260328\\summary.json",
+    "params": {
+      "confirmation_wait_bars": 1,
+      "profit_lock_activation_fraction": 0.75,
+      "profit_lock_target_fraction": 0.25
+    },
+    "rank": 284
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_patience_0p4_3bars",
@@ -6975,7 +7035,7 @@
       "patience_pullback_fraction": 0.4,
       "patience_max_wait_bars": 3
     },
-    "rank": 282
+    "rank": 285
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_patience_0p5_3bars",
@@ -6995,7 +7055,7 @@
       "patience_pullback_fraction": 0.5,
       "patience_max_wait_bars": 3
     },
-    "rank": 283
+    "rank": 286
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_patience_0p3_3bars",
@@ -7015,7 +7075,7 @@
       "patience_pullback_fraction": 0.3,
       "patience_max_wait_bars": 3
     },
-    "rank": 284
+    "rank": 287
   },
   {
     "name": "ema_3_13_exact_sl0p84_tp0p42",
@@ -7043,7 +7103,7 @@
     "test_win_rate": 0.6309,
     "notes": "Exact every-tick EMA crossover market-entry variant with session filter.",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\wdo_ema_crossover_exact_20260328\\summary.json",
-    "rank": 285
+    "rank": 288
   },
   {
     "name": "session_winner_cooldown_30m_recent_entry_density_sizing_60m",
@@ -7065,7 +7125,7 @@
       "min_size_multiplier": 0.5,
       "max_size_multiplier": 1.0
     },
-    "rank": 286
+    "rank": 289
   },
   {
     "name": "session_winner_cooldown_30m_hourly_open_proxy",
@@ -7092,6 +7152,6 @@
         14
       ]
     },
-    "rank": 287
+    "rank": 290
   }
 ]

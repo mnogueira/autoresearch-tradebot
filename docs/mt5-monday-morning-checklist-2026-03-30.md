@@ -101,6 +101,8 @@ Recent context:
    - stress-budgeted rule of thumb: do not exceed `1` contract per `R$100k` of paper capital on Monday
 2. Watch the first two sessions closely around `10:00`, `11:00`, `12:00`, and `14:00`.
 3. Record actual spread and fill behavior for each trade.
+   - baseline expectation for Tier 1 is about `1.96` trades per day from the validated MT5 report
+   - if you later promote to Tier 2 or Tier 3, the exact-engine expectation is about `1.26` trades per day
 4. Keep the `Experts` and `Journal` tabs open and watch for:
    - unexpected entries outside the intended windows
    - repeated close-order rejections
@@ -110,3 +112,12 @@ Recent context:
    - script: `src/autoresearch_tradebot/mt5/export_tester_trade_log.py`
    - tested Tier 1 example:
      - `python -m autoresearch_tradebot.mt5.export_tester_trade_log --report artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/mt5_model_0_report.html --trades-out artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/trade_log.csv --daily-out artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/daily_pnl.csv`
+7. Build the compact monitoring JSON after the export:
+   - script: `src/autoresearch_tradebot/mt5/build_monitoring_snapshot.py`
+   - tested Tier 1 example:
+     - `python -m autoresearch_tradebot.mt5.build_monitoring_snapshot --report artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/mt5_model_0_report.html --out artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/monitoring_snapshot.json`
+   - the current tested snapshot fields are:
+     - daily PnL
+     - rolling `5d/20d/60d` profit factor
+     - current and max drawdown
+     - expected trades per day

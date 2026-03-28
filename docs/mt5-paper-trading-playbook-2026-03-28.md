@@ -62,13 +62,16 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 - Tier 1, safest:
   - MT5-validated `sl0p84 / tp0p30`
   - use this as the Monday default because it is the best strategy already validated in MT5 `Every Tick`
+  - operational expectation: about `1.96` trades per day on the validated MT5 report
 - Tier 2, moderate:
   - session winner + `30m` cooldown only
   - use this as the first exact refinement to validate because it keeps `99.65%` of the max-hold leader's net and `99.82%` of its PF with less moving logic
   - the risk-adjusted composite gap versus Tier 3 is only `0.0143`, and the recent weak tape was identical, so this is the better Monday follow-on choice
+  - operational expectation: about `1.26` trades per day in the exact engine
 - Tier 3, aggressive:
   - session winner + `30m` cooldown + `120` M1 max hold
   - use this only after the simpler cooldown-only refinement looks sane in MT5
+  - operational expectation: about `1.26` trades per day in the exact engine
 
 ## Recommended Rollout Cadence
 
