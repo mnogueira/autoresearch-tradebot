@@ -4171,6 +4171,26 @@
     "rank": 162
   },
   {
+    "name": "timing_stack_plus_momdiv_roc10_lb10_delta0_holdout",
+    "family": "timing_plus_momentum_divergence",
+    "screening_method": "train_test_holdout_backtest",
+    "quality_tier": 1,
+    "mt5_ready": false,
+    "test_total_trades": 0,
+    "test_net_profit_brl": 0.0,
+    "test_profit_factor": 0.0,
+    "test_on_tester_value": 0.0,
+    "test_max_drawdown_pct": 0.0,
+    "test_win_rate": 0.0,
+    "delta_vs_timing_stack_net": -2235.0,
+    "delta_vs_timing_stack_pf": -1.2234,
+    "delta_vs_timing_stack_dd": -9.55,
+    "beats_timing_stack_baseline": false,
+    "notes": "Held-out timing-stack plus ROC(10) momentum divergence confirmation. It eliminated every test trade.",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_timing_stack_momdiv_20260327\\summary.json",
+    "rank": 163
+  },
+  {
     "family": "rsi_divergence",
     "name": "rsi_div_proxy_lb10_ge_0.405459",
     "screening_method": "trade_mask_prescreen",
@@ -4184,7 +4204,7 @@
     "test_max_drawdown_pct": 8.51,
     "test_win_rate": 0.7011,
     "notes": "RSI divergence proxy prescreen using RSI-vs-price disagreement",
-    "rank": 163,
+    "rank": 164,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -4206,7 +4226,7 @@
     "test_max_drawdown_pct": 6.91,
     "test_win_rate": 0.6902,
     "notes": "RSI divergence proxy prescreen using RSI-vs-price disagreement",
-    "rank": 164,
+    "rank": 165,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -4228,7 +4248,7 @@
     "test_max_drawdown_pct": 6.4,
     "test_win_rate": 0.5405,
     "notes": "Contiguous entry-window optimization on top of the robust combo",
-    "rank": 165,
+    "rank": 166,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
