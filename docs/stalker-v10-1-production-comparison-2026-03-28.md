@@ -31,6 +31,10 @@
 - The strict spread-aware entry idea was a dead end on this tape:
   - historical cached spread only took values `0` or `1` tick
   - strict `current spread < prior session average spread` produced `0` trades
+- Final wrap-up exploration:
+  - quarter-adaptive hours were effectively just `10,11,12` all year and came back as a near-tie: `R$14,030`, `PF 1.4889`, `DD 3.41%`
+  - month-adaptive hours reached `R$14,355`, `PF 1.5991`, `DD 3.50%`, but that mapping is explicitly in-sample and not safe to promote for Monday
+  - a max-daily-profit stop at `2x` active-day mean hurt too much: `R$10,190`, `PF 1.4506`, `DD 3.66%`
 - Final innovation pass:
   - M30 confirmation improved quality to `PF 1.5335` and `DD 3.25%`, but net fell to `R$12,460`.
   - TP scaling after three consecutive wins underperformed the max-hold leader.
@@ -46,5 +50,6 @@
 - Validated MT5 artifact: `artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/summary.json`
 - Exact max-hold artifact: `artifacts/outputs/stalker_v10_1_session_maxhold_followups_20260328/summary.json`
 - Final cost follow-up artifact: `artifacts/outputs/stalker_v10_1_session_cost_followups_20260328/summary.json`
+- Final wrap-up artifact: `artifacts/outputs/stalker_v10_1_session_wrapup_followups_20260328/summary.json`
 - Frontier note: `docs/research-frontier-2026-03-28.md`
 - MT5 playbook: `docs/mt5-paper-trading-playbook-2026-03-28.md`

@@ -1,0 +1,153 @@
+{
+  "reference_variant": "session_winner_cooldown_30m_max_hold_120m1bars",
+  "reference_metrics": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247,
+    "total_trades": 1568,
+    "win_rate": 0.8055,
+    "net_profit_brl": 14135.0,
+    "avg_profit_brl": 9.01,
+    "avg_win_brl": 34.26,
+    "avg_loss_brl": -95.54,
+    "profit_factor": 1.4851,
+    "max_drawdown_pct": 3.29,
+    "expected_payoff": 9.01,
+    "on_tester_value": 4290.320082
+  },
+  "adaptive_session_hours": {
+    "quarter_mapping": {
+      "1": [
+        10,
+        11,
+        12
+      ],
+      "2": [
+        10,
+        11,
+        12
+      ],
+      "3": [
+        10,
+        11,
+        12
+      ],
+      "4": [
+        10,
+        11,
+        12
+      ]
+    },
+    "quarter_metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1549,
+      "win_rate": 0.8063,
+      "net_profit_brl": 14030.0,
+      "avg_profit_brl": 9.06,
+      "avg_win_brl": 34.21,
+      "avg_loss_brl": -95.67,
+      "profit_factor": 1.4889,
+      "max_drawdown_pct": 3.41,
+      "expected_payoff": 9.06,
+      "on_tester_value": 4109.899206
+    },
+    "month_mapping": {
+      "1": [
+        10,
+        11,
+        12
+      ],
+      "2": [
+        10,
+        11,
+        12
+      ],
+      "3": [
+        10,
+        12
+      ],
+      "4": [
+        10,
+        11,
+        12
+      ],
+      "5": [
+        10,
+        11,
+        12
+      ],
+      "6": [
+        10,
+        11
+      ],
+      "7": [
+        10,
+        11
+      ],
+      "8": [
+        10,
+        11,
+        12
+      ],
+      "9": [
+        10,
+        11
+      ],
+      "10": [
+        10,
+        11,
+        12
+      ],
+      "11": [
+        10,
+        11
+      ],
+      "12": [
+        11,
+        12
+      ]
+    },
+    "month_metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1377,
+      "win_rate": 0.8148,
+      "net_profit_brl": 14355.0,
+      "avg_profit_brl": 10.42,
+      "avg_win_brl": 34.15,
+      "avg_loss_brl": -93.96,
+      "profit_factor": 1.5991,
+      "max_drawdown_pct": 3.5,
+      "expected_payoff": 10.42,
+      "on_tester_value": 4105.53
+    },
+    "selection_rule": "For each month or quarter, keep the allowed hours whose reference-tape net profit stayed positive with at least 20 trades."
+  },
+  "max_daily_profit_rule": {
+    "rule": "Stop taking new entries for the day once realized PnL reaches 2x the reference variant's average active-day profit.",
+    "avg_active_daily_profit_brl": 13.84,
+    "max_daily_profit_brl": 27.69,
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1249,
+      "win_rate": 0.8022,
+      "net_profit_brl": 10190.0,
+      "avg_profit_brl": 8.16,
+      "avg_win_brl": 32.74,
+      "avg_loss_brl": -91.56,
+      "profit_factor": 1.4506,
+      "max_drawdown_pct": 3.66,
+      "expected_payoff": 8.16,
+      "on_tester_value": 2780.533607
+    }
+  },
+  "notes": [
+    "The adaptive-hour mappings are derived from the current reference trade tape, so they are exploratory and carry explicit in-sample overfit risk.",
+    "The max-daily-profit rule only blocks new entries after the realized session PnL crosses the threshold; it does not force-close an open position."
+  ]
+}

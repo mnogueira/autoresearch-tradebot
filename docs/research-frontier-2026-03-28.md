@@ -171,6 +171,13 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - bootstrap ending PnL `5th/95th`: `R$10,483.25` / `R$17,686.75`
   - interpretation: the wider targets are viable gross-net variants, but the plain `TP 0.30` max-hold leader still wins on the combined `PF/DD/OnTester` balance. The spread-aware idea is a dead end on this historical tape because the cached spread is almost always `1` tick, so there are no real “wide-spread moments” for the filter to dodge in the backtest data.
 
+- The final wrap-up pass confirmed that the production line is already mature:
+  - artifact: `artifacts/outputs/stalker_v10_1_session_wrapup_followups_20260328/summary.json`
+  - quarter-adaptive hours (derived from the reference tape): `R$14,030`, `PF 1.4889`, `DD 3.41%`
+  - month-adaptive hours (derived from the reference tape): `R$14,355`, `PF 1.5991`, `DD 3.50%`
+  - max-daily-profit rule at `R$27.69`: `R$10,190`, `PF 1.4506`, `DD 3.66%`
+  - interpretation: the month-adaptive hour map is the strongest exploratory niche left, but it is explicitly in-sample and therefore not production-safe. The daily profit-cap idea clearly hurt. The production recommendation stays with the fixed-hour max-hold leader.
+
 - The latest deployment follow-up increased confidence in the cooldown winner:
   - artifact: `artifacts/outputs/stalker_v10_1_session_deployment_followups_20260328/summary.json`
   - exact `70/30` holdout for the cooldown winner:

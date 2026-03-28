@@ -49,6 +49,7 @@ class ManagementConfig:
     partial_fraction: float = 0.5
     spread_multiplier: float = 1.0
     min_minutes_between_entries: int | None = None
+    max_daily_profit_brl: float | None = None
     max_consecutive_losses_per_day: int | None = None
     cooldown_after_win_minutes: int | None = None
     cooldown_after_loss_minutes: int | None = None
@@ -123,6 +124,15 @@ def has_reached_max_trade_age(
     if max_bars_in_trade is None or max_bars_in_trade <= 0:
         return False
     return (current_index - entry_bar_index) >= int(max_bars_in_trade)
+
+
+def has_reached_daily_profit_cap(
+    realized_pnl_brl_today: float,
+    max_daily_profit_brl: float | None,
+) -> bool:
+    if max_daily_profit_brl is None or max_daily_profit_brl <= 0.0:
+        return False
+    return float(realized_pnl_brl_today) >= float(max_daily_profit_brl)
 
 
 def scaled_tp_multiplier(
@@ -247,6 +257,7 @@ def run_backtest_with_management(
     completed_trades_today = 0
     consecutive_losses_today = 0
     consecutive_wins_total = 0
+    realized_pnl_brl_today = 0.0
     next_entry_allowed_time: pd.Timestamp | None = None
 
     def reset_position_state() -> None:
@@ -267,7 +278,8 @@ def run_backtest_with_management(
         entry_atr_value = 0.0
 
     def append_trade(session_date: np.datetime64, exit_time: pd.Timestamp, exit_tick: int, exit_reason: str) -> None:
-        nonlocal completed_trades_today, consecutive_losses_today, consecutive_wins_total, next_entry_allowed_time
+        nonlocal completed_trades_today, consecutive_losses_today, consecutive_wins_total
+        nonlocal next_entry_allowed_time, realized_pnl_brl_today
         entry_price = ticks_to_price(entry_tick, PRICE_TICK_SIZE)
         exit_price = ticks_to_price(exit_tick, PRICE_TICK_SIZE)
         remainder_fraction = 1.0 - (management.partial_fraction if partial_taken else 0.0)
@@ -296,6 +308,7 @@ def run_backtest_with_management(
             )
         )
         completed_trades_today += 1
+        realized_pnl_brl_today += float(pnl_brl)
         if float(pnl_brl) < 0.0:
             consecutive_losses_today += 1
             consecutive_wins_total = 0
@@ -445,6 +458,7 @@ def run_backtest_with_management(
             previous_low_tick = price_to_ticks(BIG_NUMBER, PRICE_TICK_SIZE)
             completed_trades_today = 0
             consecutive_losses_today = 0
+            realized_pnl_brl_today = 0.0
 
         if position != 0:
             update_profit_time_stop(index, bid_open_tick, ask_open_tick)
@@ -531,7 +545,16 @@ def run_backtest_with_management(
             management.max_consecutive_losses_per_day is None
             or consecutive_losses_today < int(management.max_consecutive_losses_per_day)
         )
-        can_enter_new_trades = bool(can_enter_flags[index]) and cooldown_allows_entry and loss_stop_allows_entry
+        profit_cap_allows_entry = not has_reached_daily_profit_cap(
+            realized_pnl_brl_today=realized_pnl_brl_today,
+            max_daily_profit_brl=management.max_daily_profit_brl,
+        )
+        can_enter_new_trades = (
+            bool(can_enter_flags[index])
+            and cooldown_allows_entry
+            and loss_stop_allows_entry
+            and profit_cap_allows_entry
+        )
         if not can_enter_new_trades:
             pending_order = None
 
