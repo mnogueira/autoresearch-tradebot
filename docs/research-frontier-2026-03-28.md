@@ -9,6 +9,24 @@
 
 This remains the safest paper-trading candidate because it is the best strategy validated in MT5 `Every tick` mode.
 
+## Final Ranking Follow-up
+
+- No live-ready exact variant broke the target of `Sortino > 2.5` while keeping `DD < 5%`.
+- The closest exact ratio variant was the plain session winner at `SL 0.60 / TP 0.42`:
+  - `R$13,025`, `PF 1.2851`, `DD 4.45%`, `Sortino 2.1894`
+  - interpretation: better downside-adjusted return than many variants, but too weak on PF and win rate to promote
+- A research-only confidence-weighted sizing overlay was the strongest raw risk-adjusted result of the whole sprint:
+  - `R$18,030.27`, `PF 1.4897`, `DD 3.71%`, `Composite 3.1301`
+  - interpretation: stronger trend-efficiency signals likely deserve more size
+  - caveat: this is not deployable yet because it assumes fractional position scaling rather than a discrete MT5 contract-sizing rule
+- Turning that same idea into a hard binary gate failed:
+  - top-quartile trend-efficiency only: `R$5,570`, `PF 1.4829`, `DD 4.61%`, `Composite 1.2896`
+  - interpretation: the signal seems to want graded sizing, not a strong/weak cutoff
+- Weekday follow-up on the production candidate:
+  - Monday and Wednesday were strongest
+  - Tuesday and Friday were weakest
+  - skipping Tuesday and Friday improved PF and DD, but still gave up too much net to become a default rule
+
 ## Near-Term Caution
 
 - The exact max-hold leader stayed positive over the most recent `30` trading days, but only barely:

@@ -1,0 +1,244 @@
+{
+  "reference_variant": "session_winner_cooldown_30m_maxhold120_sl0p84_tp0p30",
+  "reference_metrics": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247,
+    "total_trades": 1568,
+    "win_rate": 0.8055,
+    "net_profit_brl": 14135.0,
+    "avg_profit_brl": 9.01,
+    "avg_win_brl": 34.26,
+    "avg_loss_brl": -95.54,
+    "profit_factor": 1.4851,
+    "max_drawdown_pct": 3.29,
+    "expected_payoff": 9.01,
+    "on_tester_value": 4290.320082
+  },
+  "reference_risk_adjusted": {
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.9392,
+      "calmar_ratio": 5.9153,
+      "omega_ratio": 1.615,
+      "annual_return_pct": 19.49,
+      "max_drawdown_frac": 0.032946
+    },
+    "sortino_weighted_composite": 3.0672
+  },
+  "confidence_weighted_overlay": {
+    "rule": "Research-only linear sizing overlay: size multiplier = clip(abs(trend_efficiency_raw) / 0.333333, 0.5, 1.5).",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 18030.27,
+      "avg_profit_brl": 11.5,
+      "avg_win_brl": 43.43,
+      "avg_loss_brl": -120.72,
+      "profit_factor": 1.4897,
+      "max_drawdown_pct": 3.71,
+      "expected_payoff": 11.5,
+      "on_tester_value": 4855.086188
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.8686,
+      "calmar_ratio": 6.2356,
+      "omega_ratio": 1.6255,
+      "annual_return_pct": 23.16,
+      "max_drawdown_frac": 0.037137
+    },
+    "sortino_weighted_composite": 3.1301,
+    "multiplier_stats": {
+      "mean": 1.2597,
+      "median": 1.4018,
+      "p25": 1.097,
+      "p75": 1.5,
+      "min": 0.5,
+      "max": 1.5
+    }
+  },
+  "strong_signal_gate_top_quartile": {
+    "rule": "Only enter when absolute trend-efficiency at the signal timestamp is at or above the 75th percentile of executed-signal strengths.",
+    "threshold_abs_trend_efficiency": 0.6,
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 605,
+      "win_rate": 0.7934,
+      "net_profit_brl": 5570.0,
+      "avg_profit_brl": 9.21,
+      "avg_win_brl": 35.64,
+      "avg_loss_brl": -92.28,
+      "profit_factor": 1.4829,
+      "max_drawdown_pct": 4.61,
+      "expected_payoff": 9.21,
+      "on_tester_value": 1207.576
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 0.7538,
+      "calmar_ratio": 2.0293,
+      "omega_ratio": 1.5198,
+      "annual_return_pct": 9.36,
+      "max_drawdown_frac": 0.046125
+    },
+    "sortino_weighted_composite": 1.2896
+  },
+  "skip_tuesday_friday_followup": {
+    "rule": "Production candidate but skip Tuesday and Friday entries entirely; Monday, Wednesday, Thursday only.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 846,
+      "win_rate": 0.8191,
+      "net_profit_brl": 9200.0,
+      "avg_profit_brl": 10.87,
+      "avg_win_brl": 34.48,
+      "avg_loss_brl": -96.05,
+      "profit_factor": 1.6261,
+      "max_drawdown_pct": 2.97,
+      "expected_payoff": 10.87,
+      "on_tester_value": 3098.0
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.2315,
+      "calmar_ratio": 4.745,
+      "omega_ratio": 1.7843,
+      "annual_return_pct": 14.09,
+      "max_drawdown_frac": 0.029697
+    },
+    "sortino_weighted_composite": 2.3961
+  },
+  "session_winner_sltp_followup": {
+    "rule": "Session-winner exact variant with tighter stop / wider target ratio: SL 0.60 ATR, TP 0.42 ATR.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1891,
+      "win_rate": 0.6489,
+      "net_profit_brl": 13025.0,
+      "avg_profit_brl": 6.89,
+      "avg_win_brl": 47.85,
+      "avg_loss_brl": -68.8,
+      "profit_factor": 1.2851,
+      "max_drawdown_pct": 4.45,
+      "expected_payoff": 6.89,
+      "on_tester_value": 2925.147196
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 2.1894,
+      "calmar_ratio": 4.1227,
+      "omega_ratio": 1.4681,
+      "annual_return_pct": 18.36,
+      "max_drawdown_frac": 0.044528
+    },
+    "sortino_weighted_composite": 2.6251
+  },
+  "weekday_breakdown": [
+    {
+      "weekday": 0,
+      "label": "Monday",
+      "metrics": {
+        "start_date": "2021-04-05",
+        "end_date": "2026-03-16",
+        "trading_days": 220,
+        "total_trades": 329,
+        "win_rate": 0.8237,
+        "net_profit_brl": 3835.0,
+        "avg_profit_brl": 11.66,
+        "avg_win_brl": 34.23,
+        "avg_loss_brl": -93.79,
+        "profit_factor": 1.705,
+        "max_drawdown_pct": 2.81,
+        "expected_payoff": 11.66,
+        "on_tester_value": 1364.849107
+      }
+    },
+    {
+      "weekday": 1,
+      "label": "Tuesday",
+      "metrics": {
+        "start_date": "2021-03-30",
+        "end_date": "2026-03-17",
+        "trading_days": 230,
+        "total_trades": 365,
+        "win_rate": 0.7863,
+        "net_profit_brl": 2430.0,
+        "avg_profit_brl": 6.66,
+        "avg_win_brl": 32.42,
+        "avg_loss_brl": -88.14,
+        "profit_factor": 1.3535,
+        "max_drawdown_pct": 4.93,
+        "expected_payoff": 6.66,
+        "on_tester_value": 492.572951
+      }
+    },
+    {
+      "weekday": 2,
+      "label": "Wednesday",
+      "metrics": {
+        "start_date": "2021-04-07",
+        "end_date": "2026-03-18",
+        "trading_days": 131,
+        "total_trades": 173,
+        "win_rate": 0.8324,
+        "net_profit_brl": 2175.0,
+        "avg_profit_brl": 12.57,
+        "avg_win_brl": 32.67,
+        "avg_loss_brl": -87.24,
+        "profit_factor": 1.8597,
+        "max_drawdown_pct": 1.85,
+        "expected_payoff": 12.57,
+        "on_tester_value": 1178.454545
+      }
+    },
+    {
+      "weekday": 3,
+      "label": "Thursday",
+      "metrics": {
+        "start_date": "2021-04-01",
+        "end_date": "2026-03-19",
+        "trading_days": 217,
+        "total_trades": 344,
+        "win_rate": 0.8081,
+        "net_profit_brl": 3190.0,
+        "avg_profit_brl": 9.27,
+        "avg_win_brl": 35.67,
+        "avg_loss_brl": -101.89,
+        "profit_factor": 1.4743,
+        "max_drawdown_pct": 4.02,
+        "expected_payoff": 9.27,
+        "on_tester_value": 793.180208
+      }
+    },
+    {
+      "weekday": 4,
+      "label": "Friday",
+      "metrics": {
+        "start_date": "2021-04-09",
+        "end_date": "2026-03-20",
+        "trading_days": 223,
+        "total_trades": 357,
+        "win_rate": 0.7927,
+        "net_profit_brl": 2505.0,
+        "avg_profit_brl": 7.02,
+        "avg_win_brl": 35.6,
+        "avg_loss_brl": -102.3,
+        "profit_factor": 1.3309,
+        "max_drawdown_pct": 4.99,
+        "expected_payoff": 7.02,
+        "on_tester_value": 502.359302
+      }
+    }
+  ],
+  "notes": [
+    "The confidence-weighted overlay is a research approximation, not a live-ready MT5 implementation. It assumes exact path exits are unchanged and only scales realized trade PnL by signal strength.",
+    "Weekday metrics are computed on the final exact production candidate: session hours 10/11/12/14, 30-minute cooldown, 120 M1-bar max hold, SL 0.84, TP 0.30.",
+    "The strong-signal gate and weekday skip follow-ups are exact entry filters on top of the production candidate.",
+    "The SL 0.60 / TP 0.42 test is run on the plain session-winner family, not on the cooldown/max-hold production overlay, because the request was to test that ratio on the session winner itself."
+  ]
+}

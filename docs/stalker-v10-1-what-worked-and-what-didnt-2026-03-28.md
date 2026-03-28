@@ -28,6 +28,9 @@
 | Time-widened stop | `0.84 -> 1.20` ATR after `30` bars: `R$14,270`, `PF 1.4887`, `DD 3.28%` | Tiny headline-metric improvement, but still slightly worse than max-hold on the Sortino-weighted composite and more complex operationally. |
 | Weekly profit cap | `R$300` cap: `R$14,095`, `PF 1.4937`, `DD 3.32%` | Slightly smoother trade-to-trade and a touch higher PF, but not enough total-package improvement to replace the leader. |
 | Market-open avoidance analog | practical `10:15` start: `R$12,670`, `PF 1.5198`, `DD 4.34%` | The true `09:00-09:15` skip is already a no-op here because the production setup does not enter before `10:00`; delaying further improved PF but gave up too much net and drawdown. |
+| Confidence-weighted sizing | Research-only fractional sizing by trend-efficiency: `R$18,030.27`, `PF 1.4897`, `DD 3.71%`, composite `3.1301` | This is the clearest sign that stronger signals deserve more size, but it is not deployable until the MQ5 side supports realistic discrete sizing. |
+| Weekday selectivity | Skip Tuesday and Friday: `R$9,200`, `PF 1.6261`, `DD 2.97%` | Cleaner on PF/DD, but it throws away too much net to become the default. |
+| Alternate ratio on the plain session winner | `SL 0.60 / TP 0.42`: `R$13,025`, `PF 1.2851`, `DD 4.45%`, `Sortino 2.1894` | Better downside-adjusted return than many variants, but too weak on PF and win rate to replace the production line. |
 
 ## What Did Not Work
 
@@ -46,6 +49,7 @@
 | Static profit-lock `75%/25%` | `R$5,480`, `PF 1.2426`, `DD 9.66%` | Locking profit too early cut the winner distribution and badly weakened the strategy. |
 | Confirmation + profit-lock combined | `R$-5,920`, `PF 0.7372`, `DD 61.28%` | The two ideas compounded each other's damage rather than fixing false breakouts. |
 | Hot-hand filter | trailing `10` closed trades PnL must be positive: `R$630`, `PF 1.9921`, `DD 1.85%` | Looked clean on the tiny surviving sample, but over-throttled the system so badly that it is not viable. |
+| Hard strong-signal gate | top-quartile executed trend-efficiency only: `R$5,570`, `PF 1.4829`, `DD 4.61%` | The edge appears to want graded sizing, not a binary strong/weak cutoff. |
 
 ## The Real Risks
 

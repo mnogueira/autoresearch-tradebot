@@ -4,6 +4,7 @@
 
 | Variant | Net | PF | DD | Win Rate | Trades | Trades/Day | Sortino | Calmar | Omega | Composite | Rank |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Confidence-weighted entry overlay, research-only fractional sizing | `R$18,030.27` | `1.4897` | `3.71%` | `80.55%` | 1568 | `1.2574` | `1.8686` | `6.2356` | `1.6255` | `3.1301` | research |
 | Max-hold v2, session winner + cooldown + `120` M1-bar max hold | `R$14,135` | `1.4851` | `3.29%` | `80.55%` | 1568 | `1.2574` | `1.9392` | `5.9153` | `1.6150` | `3.0672` | 1 |
 | Time-widened stop, `0.84 -> 1.20` ATR after `30` bars | `R$14,270` | `1.4887` | `3.28%` | `80.87%` | 1568 | `1.2574` | `1.8816` | `5.9908` | `1.6132` | `3.0607` | 2 |
 | Minimal moderate, session winner + cooldown | `R$14,085` | `1.4825` | `3.30%` | `80.55%` | 1568 | `1.2574` | `1.9306` | `5.8842` | `1.6115` | `3.0529` | 3 |
@@ -11,11 +12,14 @@
 | Session winner | `R$15,965` | `1.4438` | `4.04%` | `80.17%` | 1896 | `1.5204` | `2.1977` | `5.2628` | `1.6392` | `3.0055` | 5 |
 | Baseline, MT5-validated `sl0p84/tp0p30` | `R$14,330` | `1.36` | `3.94%` | `80.29%` | 2070 | `1.9639` | `1.8158` | `5.3480` | `1.5278` | `2.8179` | 6 |
 | Cooldown-only + skip last 3 contract days | `R$12,855` | `1.5250` | `3.50%` | `81.12%` | 1345 | `1.0786` | `1.7673` | `5.1990` | `1.6791` | `2.7792` | 7 |
-| Wider stop `SL 1.00 / TP 0.30` | `R$13,930` | `1.4556` | `4.07%` | `82.78%` | 1568 | `1.2574` | `1.6194` | `4.7394` | `1.5593` | `2.5434` | 8 |
-| Wider stop `SL 1.20 / TP 0.30` | `R$14,475` | `1.4626` | `4.43%` | `85.01%` | 1568 | `1.2574` | `1.4260` | `4.4758` | `1.5552` | `2.3668` | 9 |
-| ADX quality mode, prior-day `ADX > 25` | `R$7,485` | `1.9067` | `3.38%` | `84.29%` | 490 | `0.3929` | `1.0426` | `3.5353` | `2.2131` | `2.0245` | 10 |
-| ADX quality mode, prior-day `ADX > 30` | `R$3,515` | `1.6356` | `4.35%` | `82.37%` | 278 | `0.2230` | `0.4607` | `1.4419` | `1.8573` | `1.0344` | 11 |
-| Hot-hand gate, last `10` trades PnL > `0` | `R$630` | `1.9921` | `1.85%` | `84.38%` | 32 | `0.0257` | `0.1002` | `0.6727` | `2.5750` | `0.7669` | 12 |
+| Session winner `SL 0.60 / TP 0.42` | `R$13,025` | `1.2851` | `4.45%` | `64.89%` | 1891 | `1.5164` | `2.1894` | `4.1227` | `1.4681` | `2.6251` | 8 |
+| Wider stop `SL 1.00 / TP 0.30` | `R$13,930` | `1.4556` | `4.07%` | `82.78%` | 1568 | `1.2574` | `1.6194` | `4.7394` | `1.5593` | `2.5434` | 9 |
+| Skip Tuesday and Friday, production candidate | `R$9,200` | `1.6261` | `2.97%` | `81.91%` | 846 | `0.6784` | `1.2315` | `4.7450` | `1.7843` | `2.3961` | 10 |
+| Wider stop `SL 1.20 / TP 0.30` | `R$14,475` | `1.4626` | `4.43%` | `85.01%` | 1568 | `1.2574` | `1.4260` | `4.4758` | `1.5552` | `2.3668` | 11 |
+| ADX quality mode, prior-day `ADX > 25` | `R$7,485` | `1.9067` | `3.38%` | `84.29%` | 490 | `0.3929` | `1.0426` | `3.5353` | `2.2131` | `2.0245` | 12 |
+| Strong-signal gate, top quartile of executed trend-efficiency | `R$5,570` | `1.4829` | `4.61%` | `79.34%` | 605 | `0.4852` | `0.7538` | `2.0293` | `1.5198` | `1.2896` | 13 |
+| ADX quality mode, prior-day `ADX > 30` | `R$3,515` | `1.6356` | `4.35%` | `82.37%` | 278 | `0.2230` | `0.4607` | `1.4419` | `1.8573` | `1.0344` | 14 |
+| Hot-hand gate, last `10` trades PnL > `0` | `R$630` | `1.9921` | `1.85%` | `84.38%` | 32 | `0.0257` | `0.1002` | `0.6727` | `2.5750` | `0.7669` | 15 |
 
 ## Quality Alternative
 
@@ -49,6 +53,30 @@
   - 5: session winner at `3.0055`
   - 6: MT5-validated base at `2.8179`
   - 7: cooldown-only + skip last 3 contract days at `2.7792`
+- Sortino target follow-up:
+  - no live-ready exact variant broke `Sortino 2.5` while keeping `DD < 5%`
+  - the closest exact candidate was the plain session winner with `SL 0.60 / TP 0.42`:
+    - `Sortino 2.1894`, `DD 4.45%`, composite `2.6251`
+    - but its `PF 1.2851` and `WR 64.89%` were too weak to promote
+- Confidence-weighted entry sizing:
+  - research-only fractional sizing by absolute trend-efficiency produced the strongest raw composite score in the entire sprint:
+    - `R$18,030.27`, `PF 1.4897`, `DD 3.71%`, `Composite 3.1301`
+  - interpretation: stronger signals do appear to deserve more size
+  - deployment caveat: this is not a real 1-contract MT5 preset, so it is evidence for future discrete sizing research, not a Monday recommendation
+- Binary strong-signal gate:
+  - top-quartile absolute trend-efficiency over-throttled the production candidate:
+    - `R$5,570`, `PF 1.4829`, `DD 4.61%`, `Composite 1.2896`
+  - interpretation: the edge wants graded confidence sizing more than a hard yes/no strength gate
+- Weekday decomposition:
+  - strongest weekdays:
+    - Monday: `R$3,835`, `PF 1.7050`, `DD 2.81%`
+    - Wednesday: `R$2,175`, `PF 1.8597`, `DD 1.85%`
+  - weakest weekdays:
+    - Tuesday: `R$2,430`, `PF 1.3535`, `DD 4.93%`
+    - Friday: `R$2,505`, `PF 1.3309`, `DD 4.99%`
+  - skipping Tuesday and Friday improved PF and DD, but still lost too much net:
+    - `R$9,200`, `PF 1.6261`, `DD 2.97%`, `Composite 2.3961`
+  - interpretation: Tuesday and Friday are watchlist days, not default hard-skip days
 - Final stop-management follow-up:
   - time-widened stop (`0.84 -> 1.20` ATR after `30` bars) was the only true headline-metric improvement over max-hold:
     - `R$14,270`, `PF 1.4887`, `DD 3.28%`, `WR 80.87%`
