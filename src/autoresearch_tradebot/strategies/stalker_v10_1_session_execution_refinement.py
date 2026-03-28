@@ -50,6 +50,7 @@ class ManagementConfig:
     spread_multiplier: float = 1.0
     min_minutes_between_entries: int | None = None
     max_daily_profit_brl: float | None = None
+    max_weekly_profit_brl: float | None = None
     max_consecutive_losses_per_day: int | None = None
     cooldown_after_win_minutes: int | None = None
     cooldown_after_loss_minutes: int | None = None
@@ -68,6 +69,8 @@ class ManagementConfig:
     confirmation_wait_bars: int = 1
     profit_lock_activation_fraction: float | None = None
     profit_lock_target_fraction: float | None = None
+    widen_stop_after_bars: int | None = None
+    widened_sl_atr_mult: float | None = None
 
 
 def session_winner_params() -> V101Params:
@@ -141,6 +144,15 @@ def has_reached_daily_profit_cap(
     return float(realized_pnl_brl_today) >= float(max_daily_profit_brl)
 
 
+def has_reached_weekly_profit_cap(
+    realized_pnl_brl_week: float,
+    max_weekly_profit_brl: float | None,
+) -> bool:
+    if max_weekly_profit_brl is None or max_weekly_profit_brl <= 0.0:
+        return False
+    return float(realized_pnl_brl_week) >= float(max_weekly_profit_brl)
+
+
 def pending_order_can_fill_at_index(current_index: int, pending_order: dict[str, Any] | None) -> bool:
     if pending_order is None:
         return False
@@ -190,6 +202,26 @@ def profit_lock_stop_tick(
     if int(current_ask_tick) > int(entry_tick) - activation_ticks:
         return None
     return int(entry_tick) - lock_ticks
+
+
+def widened_stop_tick(
+    position: int,
+    entry_tick: int,
+    current_stop_tick: int,
+    entry_atr_value: float,
+    widened_sl_atr_mult: float | None,
+) -> int | None:
+    if position == 0 or widened_sl_atr_mult is None or entry_atr_value <= 0.0:
+        return None
+    widened_offset_ticks = price_to_ticks(
+        round_to_tick(float(entry_atr_value) * float(widened_sl_atr_mult)),
+        PRICE_TICK_SIZE,
+    )
+    widened_offset_ticks = max(1, int(widened_offset_ticks))
+    desired_stop_tick = int(entry_tick) - (widened_offset_ticks * int(position))
+    if position == 1:
+        return min(int(current_stop_tick), desired_stop_tick)
+    return max(int(current_stop_tick), desired_stop_tick)
 
 
 def scaled_tp_multiplier(
@@ -309,6 +341,7 @@ def run_backtest_with_management(
     best_bid_tick = 0
     best_ask_tick = BIG_NUMBER
     entry_atr_value = 0.0
+    stop_widened = False
 
     pending_order: dict[str, Any] | None = None
     confirmation_signal: dict[str, Any] | None = None
@@ -316,12 +349,14 @@ def run_backtest_with_management(
     consecutive_losses_today = 0
     consecutive_wins_total = 0
     realized_pnl_brl_today = 0.0
+    realized_pnl_brl_week = 0.0
     next_entry_allowed_time: pd.Timestamp | None = None
+    current_week_key: tuple[int, int] | None = None
 
     def reset_position_state() -> None:
         nonlocal position, pending_order, confirmation_signal, partial_taken, partial_exit_tick
         nonlocal realized_partial_pnl_brl, realized_partial_points, trail_distance_ticks
-        nonlocal initial_target_tick, half_target_tick, best_bid_tick, best_ask_tick, entry_atr_value
+        nonlocal initial_target_tick, half_target_tick, best_bid_tick, best_ask_tick, entry_atr_value, stop_widened
         position = 0
         pending_order = None
         confirmation_signal = None
@@ -335,10 +370,11 @@ def run_backtest_with_management(
         best_bid_tick = 0
         best_ask_tick = BIG_NUMBER
         entry_atr_value = 0.0
+        stop_widened = False
 
     def append_trade(session_date: np.datetime64, exit_time: pd.Timestamp, exit_tick: int, exit_reason: str) -> None:
         nonlocal completed_trades_today, consecutive_losses_today, consecutive_wins_total
-        nonlocal next_entry_allowed_time, realized_pnl_brl_today
+        nonlocal next_entry_allowed_time, realized_pnl_brl_today, realized_pnl_brl_week
         entry_price = ticks_to_price(entry_tick, PRICE_TICK_SIZE)
         exit_price = ticks_to_price(exit_tick, PRICE_TICK_SIZE)
         remainder_fraction = 1.0 - (management.partial_fraction if partial_taken else 0.0)
@@ -368,6 +404,7 @@ def run_backtest_with_management(
         )
         completed_trades_today += 1
         realized_pnl_brl_today += float(pnl_brl)
+        realized_pnl_brl_week += float(pnl_brl)
         if float(pnl_brl) < 0.0:
             consecutive_losses_today += 1
             consecutive_wins_total = 0
@@ -386,7 +423,7 @@ def run_backtest_with_management(
     def arm_position_state(current_index: int) -> None:
         nonlocal entry_bar_index, initial_target_tick, half_target_tick, trail_distance_ticks
         nonlocal partial_taken, partial_exit_tick, realized_partial_pnl_brl, realized_partial_points
-        nonlocal best_bid_tick, best_ask_tick, entry_atr_value
+        nonlocal best_bid_tick, best_ask_tick, entry_atr_value, stop_widened
         entry_bar_index = int(current_index)
         initial_target_tick = int(target_tick)
         partial_taken = False
@@ -404,6 +441,7 @@ def run_backtest_with_management(
         best_bid_tick = entry_tick
         best_ask_tick = entry_tick
         entry_atr_value = float(atr_open_slice[current_index]) if np.isfinite(atr_open_slice[current_index]) else 0.0
+        stop_widened = False
 
     def maybe_take_partial(current_bid_tick: int, current_ask_tick: int) -> None:
         nonlocal partial_taken, partial_exit_tick, realized_partial_pnl_brl, realized_partial_points, stop_tick
@@ -510,6 +548,29 @@ def run_backtest_with_management(
         else:
             stop_tick = min(stop_tick, desired_stop_tick)
 
+    def update_time_widened_stop(current_index: int) -> None:
+        nonlocal stop_tick, stop_widened
+        if position == 0 or stop_widened:
+            return
+        if management.widen_stop_after_bars is None or management.widened_sl_atr_mult is None:
+            return
+        if entry_atr_value <= 0.0:
+            return
+        bars_held = int(current_index - entry_bar_index)
+        if bars_held < int(management.widen_stop_after_bars):
+            return
+        desired_stop_tick = widened_stop_tick(
+            position=position,
+            entry_tick=entry_tick,
+            current_stop_tick=stop_tick,
+            entry_atr_value=entry_atr_value,
+            widened_sl_atr_mult=management.widened_sl_atr_mult,
+        )
+        if desired_stop_tick is None:
+            return
+        stop_tick = int(desired_stop_tick)
+        stop_widened = True
+
     def atr_loss_exit_tick(current_bid_tick: int, current_ask_tick: int) -> tuple[int | None, str | None]:
         if position == 0 or management.loss_exit_atr_mult is None or entry_atr_value <= 0.0:
             return None, None
@@ -531,6 +592,11 @@ def run_backtest_with_management(
                 append_trade(current_date, timestamp, exit_tick, "forced_day_change")
                 reset_position_state()
             current_date = session_date
+            iso_week = pd.Timestamp(session_date).isocalendar()
+            week_key = (int(iso_week.year), int(iso_week.week))
+            if current_week_key != week_key:
+                current_week_key = week_key
+                realized_pnl_brl_week = 0.0
             previous_high_tick = 0
             previous_low_tick = price_to_ticks(BIG_NUMBER, PRICE_TICK_SIZE)
             confirmation_signal = None
@@ -539,6 +605,7 @@ def run_backtest_with_management(
             realized_pnl_brl_today = 0.0
 
         if position != 0:
+            update_time_widened_stop(index)
             update_profit_time_stop(index, bid_open_tick, ask_open_tick)
             update_trailing_stop(bid_open_tick, ask_open_tick)
             update_fractional_target_trail(bid_open_tick, ask_open_tick)
@@ -634,11 +701,16 @@ def run_backtest_with_management(
             realized_pnl_brl_today=realized_pnl_brl_today,
             max_daily_profit_brl=management.max_daily_profit_brl,
         )
+        weekly_profit_cap_allows_entry = not has_reached_weekly_profit_cap(
+            realized_pnl_brl_week=realized_pnl_brl_week,
+            max_weekly_profit_brl=management.max_weekly_profit_brl,
+        )
         can_enter_new_trades = (
             bool(can_enter_flags[index])
             and cooldown_allows_entry
             and loss_stop_allows_entry
             and profit_cap_allows_entry
+            and weekly_profit_cap_allows_entry
         )
         if not can_enter_new_trades:
             pending_order = None

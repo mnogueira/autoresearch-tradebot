@@ -6,9 +6,11 @@ from autoresearch_tradebot.strategies.stalker_v10_1_session_execution_refinement
     confirmation_candle_passed,
     has_reached_daily_profit_cap,
     has_reached_max_trade_age,
+    has_reached_weekly_profit_cap,
     pending_order_can_fill_at_index,
     pending_order_has_expired,
     profit_lock_stop_tick,
+    widened_stop_tick,
 )
 
 
@@ -32,6 +34,14 @@ class SessionExecutionRefinementTests(unittest.TestCase):
     def test_daily_profit_cap_triggers_at_boundary(self) -> None:
         self.assertFalse(has_reached_daily_profit_cap(99.99, 100.0))
         self.assertTrue(has_reached_daily_profit_cap(100.0, 100.0))
+
+    def test_weekly_profit_cap_is_disabled_when_missing_or_non_positive(self) -> None:
+        self.assertFalse(has_reached_weekly_profit_cap(100.0, None))
+        self.assertFalse(has_reached_weekly_profit_cap(100.0, 0.0))
+
+    def test_weekly_profit_cap_triggers_at_boundary(self) -> None:
+        self.assertFalse(has_reached_weekly_profit_cap(299.99, 300.0))
+        self.assertTrue(has_reached_weekly_profit_cap(300.0, 300.0))
 
     def test_pending_order_fill_and_expiry_boundaries(self) -> None:
         order = {"min_fill_index": 11, "expiry_index": 13}
@@ -81,6 +91,47 @@ class SessionExecutionRefinementTests(unittest.TestCase):
                 lock_fraction=0.25,
             ),
             975,
+        )
+
+    def test_widened_stop_tick_relaxes_stop_in_position_direction_only(self) -> None:
+        self.assertEqual(
+            widened_stop_tick(
+                position=1,
+                entry_tick=1000,
+                current_stop_tick=970,
+                entry_atr_value=21.0,
+                widened_sl_atr_mult=1.20,
+            ),
+            950,
+        )
+        self.assertEqual(
+            widened_stop_tick(
+                position=-1,
+                entry_tick=1000,
+                current_stop_tick=1030,
+                entry_atr_value=21.0,
+                widened_sl_atr_mult=1.20,
+            ),
+            1050,
+        )
+        self.assertEqual(
+            widened_stop_tick(
+                position=1,
+                entry_tick=1000,
+                current_stop_tick=916,
+                entry_atr_value=21.0,
+                widened_sl_atr_mult=1.20,
+            ),
+            916,
+        )
+        self.assertIsNone(
+            widened_stop_tick(
+                position=0,
+                entry_tick=1000,
+                current_stop_tick=916,
+                entry_atr_value=21.0,
+                widened_sl_atr_mult=1.20,
+            )
         )
 
 
