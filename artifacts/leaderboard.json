@@ -41,7 +41,13 @@
     "notes": "Skip only Wednesday shorts, skip the 13:00 hour, and stop new entries after 14:30.",
     "preset_name": "WDO Stalker Strategy v10.1 Robust Skip Short Wednesday Hour 13 Last30m GPT 5.4",
     "preset_path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 Robust Skip Short Wednesday Hour 13 Last30m GPT 5.4.set",
-    "rank": 2
+    "rank": 2,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "name": "robust_skip_wed_hour_13_last_30m",
@@ -361,24 +367,27 @@
   {
     "name": "timing_stack_plus_relvol_short_lb20_ge_0.85_full",
     "family": "timing_plus_relvol",
-    "screening_method": "integrated_backtest_full_period",
-    "quality_tier": 1,
-    "mt5_ready": true,
-    "preset_name": "WDO Stalker Strategy v10.1 Robust Timing Stack RelVol Short LB20 0p85 GPT 5.4",
-    "preset_path": "c:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 Robust Timing Stack RelVol Short LB20 0p85 GPT 5.4.set",
-    "source_artifact": "c:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_timing_plus_relvol_20260327\\summary.json",
-    "test_total_trades": 1382,
     "test_net_profit_brl": 10480.0,
     "test_profit_factor": 1.3268,
-    "test_on_tester_value": 1588.439216,
     "test_max_drawdown_pct": 6.6,
     "test_win_rate": 0.7431,
-    "delta_vs_timing_stack_net": -3775.0,
-    "delta_vs_timing_stack_pf": 0.0597,
-    "delta_vs_timing_stack_dd": -0.03,
-    "beats_timing_stack": false,
+    "test_on_tester_value": 1588.439216,
+    "delta_vs_baseline_test_net": -3430.0,
+    "delta_vs_baseline_test_pf": 0.07969999999999988,
+    "delta_vs_baseline_test_dd": -1.9299999999999997,
+    "mt5_ready": true,
     "notes": "Full-period timing stack plus short-side relative volume >= 0.85 with 20-day lookback.",
-    "rank": 15
+    "beats_baseline": false,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ],
+    "screening_method": "integrated_backtest_full_period",
+    "preset_name": "WDO Stalker Strategy v10.1 Robust Timing Stack RelVol Short LB20 0p85 GPT 5.4",
+    "preset_path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 Robust Timing Stack RelVol Short LB20 0p85 GPT 5.4.set",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_timing_plus_relvol_20260327\\summary.json"
   },
   {
     "name": "robust_skip_friday_afternoon_relvol_short_lb20_ge_0.85_full",
@@ -751,7 +760,13 @@
     "delta_vs_robust_test_pf": 0.1297,
     "delta_vs_robust_test_dd": -1.84,
     "beats_robust_baseline": true,
-    "rank": 28
+    "rank": 28,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "family": "atr_volatility",
@@ -829,7 +844,13 @@
     "delta_vs_robust_test_pf": 0.0034,
     "delta_vs_robust_test_dd": -1.13,
     "beats_robust_baseline": true,
-    "rank": 30
+    "rank": 30,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "family": "relative_volume",
@@ -951,7 +972,13 @@
     "delta_vs_robust_test_pf": 0.032,
     "delta_vs_robust_test_dd": -1.45,
     "beats_robust_baseline": true,
-    "rank": 34
+    "rank": 34,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "name": "timing_skip_friday_1300plus_relvol_short_lb20_ge_0p85",
@@ -1348,7 +1375,13 @@
     "delta_vs_robust_test_pf": 0.0611,
     "delta_vs_robust_test_dd": -0.89,
     "beats_robust_baseline": false,
-    "rank": 50
+    "rank": 50,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "family": "relative_volume",
@@ -1935,7 +1968,13 @@
     "delta_vs_robust_test_pf": -0.0536,
     "delta_vs_robust_test_dd": -1.3,
     "beats_robust_baseline": false,
-    "rank": 75
+    "rank": 75,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "family": "atr_volatility",
@@ -2023,7 +2062,13 @@
     "preset_name": "WDO Stalker Strategy v10.1 Robust Skip Short Wednesday GPT 5.4",
     "preset_path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 Robust Skip Short Wednesday GPT 5.4.set",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_skip_short_wednesday_holdout_20260327\\summary.json",
-    "rank": 79
+    "rank": 79,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "name": "exclude_last_30m_plus_relvol_short_lb40_ge_0.5",
@@ -2101,7 +2146,13 @@
     "delta_vs_robust_test_pf": -0.0368,
     "delta_vs_robust_test_dd": 0.51,
     "beats_robust_baseline": false,
-    "rank": 81
+    "rank": 81,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "name": "timing_relvol_anchor_sltp_sl0p78_tp0p36",
@@ -2157,7 +2208,13 @@
     "delta_vs_robust_test_pf": -0.0368,
     "delta_vs_robust_test_dd": 0.51,
     "beats_robust_baseline": false,
-    "rank": 82
+    "rank": 82,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "name": "timing_relvol_anchor_sltp_sl0p78_tp0p45",
@@ -2213,7 +2270,13 @@
     "delta_vs_robust_test_pf": -0.0702,
     "delta_vs_robust_test_dd": 0.89,
     "beats_robust_baseline": false,
-    "rank": 83
+    "rank": 83,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "family": "relative_volume",
@@ -2380,7 +2443,13 @@
     "delta_vs_robust_test_pf": 0.0298,
     "delta_vs_robust_test_dd": -0.9,
     "beats_robust_baseline": false,
-    "rank": 89
+    "rank": 89,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "name": "timing_relvol_anchor_sltp_sl0p66_tp0p45",
@@ -2436,7 +2505,13 @@
     "delta_vs_robust_test_pf": -0.1095,
     "delta_vs_robust_test_dd": 0.27,
     "beats_robust_baseline": false,
-    "rank": 90
+    "rank": 90,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "name": "timing_skip_hour_13_core",
@@ -2541,7 +2616,13 @@
     "delta_vs_robust_test_pf": -0.089,
     "delta_vs_robust_test_dd": -0.05,
     "beats_robust_baseline": false,
-    "rank": 93
+    "rank": 93,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "family": "rsi_divergence",
@@ -2676,6 +2757,29 @@
     ]
   },
   {
+    "name": "timing_relvol_plus_vwap_dev_17p336_22p117_full",
+    "family": "timing_relvol_plus_vwap_deviation",
+    "test_net_profit_brl": 3155.0,
+    "test_profit_factor": 1.2628,
+    "test_max_drawdown_pct": 7.18,
+    "test_win_rate": 0.7459,
+    "test_on_tester_value": 439.339116,
+    "delta_vs_baseline_test_net": -10755.0,
+    "delta_vs_baseline_test_pf": 0.015699999999999825,
+    "delta_vs_baseline_test_dd": -1.3499999999999996,
+    "mt5_ready": false,
+    "notes": "Timing stack + short relvol, keeping only the trade-tape VWAP-deviation sweet spot.",
+    "beats_baseline": false,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ],
+    "screening_method": "integrated_backtest_full_period",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_pattern_followups_20260328\\summary.json"
+  },
+  {
     "name": "exclude_wednesday",
     "family": "timing_filter",
     "test_net_profit_brl": 3175.0,
@@ -2786,6 +2890,29 @@
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
     ]
+  },
+  {
+    "name": "timing_relvol_plus_ema50_dev_2p091_12p423_full",
+    "family": "timing_relvol_plus_ema50_deviation",
+    "test_net_profit_brl": 2020.0,
+    "test_profit_factor": 1.2984,
+    "test_max_drawdown_pct": 5.16,
+    "test_win_rate": 0.7523,
+    "test_on_tester_value": 391.583486,
+    "delta_vs_baseline_test_net": -11890.0,
+    "delta_vs_baseline_test_pf": 0.0512999999999999,
+    "delta_vs_baseline_test_dd": -3.369999999999999,
+    "mt5_ready": false,
+    "notes": "Timing stack + short relvol, keeping only the trade-tape EMA50-deviation sweet spot.",
+    "beats_baseline": false,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ],
+    "screening_method": "integrated_backtest_full_period",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_pattern_followups_20260328\\summary.json"
   },
   {
     "family": "time_of_day",
@@ -4022,7 +4149,13 @@
       "lookback": 10,
       "min_momentum_delta": 0.0
     },
-    "rank": 157
+    "rank": 157,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "family": "time_of_day",
@@ -4065,7 +4198,13 @@
     "notes": "Trade-tape estimate only. This removes completed Wednesday shorts from the existing enriched trade history; it is not a fresh backtest.",
     "preset_path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 Robust Skip Short Wednesday GPT 5.4.set",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_skip_short_wednesday_tape_estimate_20260327\\summary.json",
-    "rank": 159
+    "rank": 159,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "family": "time_of_day",
@@ -4256,7 +4395,13 @@
     "delta_vs_robust_test_pf": -1.301,
     "delta_vs_robust_test_dd": -6.29,
     "beats_robust_baseline": false,
-    "rank": 166
+    "rank": 166,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "name": "timing_stack_plus_momdiv_roc10_lb10_delta0_holdout",
@@ -4276,7 +4421,13 @@
     "beats_timing_stack_baseline": false,
     "notes": "Held-out timing-stack plus ROC(10) momentum divergence confirmation. It eliminated every test trade.",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_timing_stack_momdiv_20260327\\summary.json",
-    "rank": 167
+    "rank": 167,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
   },
   {
     "family": "rsi_divergence",
@@ -4321,6 +4472,29 @@
       "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
       "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
     ]
+  },
+  {
+    "name": "timing_relvol_plus_vwap_ema_sweetspots_full",
+    "family": "timing_relvol_plus_price_location",
+    "test_net_profit_brl": -680.0,
+    "test_profit_factor": 0.7167,
+    "test_max_drawdown_pct": 8.36,
+    "test_win_rate": 0.6406,
+    "test_on_tester_value": -81.357143,
+    "delta_vs_baseline_test_net": -14590.0,
+    "delta_vs_baseline_test_pf": -0.5304000000000001,
+    "delta_vs_baseline_test_dd": -0.16999999999999993,
+    "mt5_ready": false,
+    "notes": "Timing stack + short relvol with both tape-derived price-location sweet spots applied together.",
+    "beats_baseline": false,
+    "analysis_notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ],
+    "screening_method": "integrated_backtest_full_period",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_pattern_followups_20260328\\summary.json"
   },
   {
     "family": "time_of_day",
