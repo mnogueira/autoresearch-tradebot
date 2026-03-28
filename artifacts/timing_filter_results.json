@@ -1,0 +1,25 @@
+{
+  "data_path": "C:\\Dev\\autoresearch-tradebot\\data\\wdo_m1_mt5_2021_2026.parquet",
+  "slice_start": "2025-09-22",
+  "slice_end": "2026-03-20",
+  "results": [
+    {
+      "total_trades": 246,
+      "net_profit_brl": 850.0,
+      "profit_factor": 1.178,
+      "win_rate": 0.7276,
+      "max_drawdown_pct": 6.49,
+      "on_tester_value": 131.056738,
+      "name": "baseline_6m"
+    },
+    {
+      "total_trades": 186,
+      "net_profit_brl": 980.0,
+      "profit_factor": 1.2895,
+      "win_rate": 0.7527,
+      "max_drawdown_pct": 3.99,
+      "on_tester_value": 245.683721,
+      "name": "exclude_wednesday_and_hour_13_6m"
+    }
+  ]
+}
