@@ -94,6 +94,44 @@
       "on_tester_value": 3536.163366
     }
   },
+  "overnight_hold": {
+    "base_variant": "cooldown_30m_with_session_filter",
+    "rule": "Keep the trade overnight only if it is profitable at the session cutoff; otherwise flatten it.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 14085.0,
+      "avg_profit_brl": 8.98,
+      "avg_win_brl": 34.26,
+      "avg_loss_brl": -95.7,
+      "profit_factor": 1.4825,
+      "max_drawdown_pct": 3.3,
+      "expected_payoff": 8.98,
+      "on_tester_value": 4263.59877
+    }
+  },
+  "hourly_open_proxy": {
+    "base_variant": "cooldown_30m_with_session_filter",
+    "rule": "Research proxy for a slower H1-style engine: only allow entries on the first minute of each allowed hour.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 152,
+      "win_rate": 0.8158,
+      "net_profit_brl": 1450.0,
+      "avg_profit_brl": 9.54,
+      "avg_win_brl": 32.58,
+      "avg_loss_brl": -92.5,
+      "profit_factor": 1.5598,
+      "max_drawdown_pct": 4.27,
+      "expected_payoff": 9.54,
+      "on_tester_value": 339.554945
+    }
+  },
   "walkforward_70_30": {
     "base_variant": "cooldown_30m_with_session_filter",
     "train_ratio": 0.7,
@@ -128,9 +166,38 @@
       "on_tester_value": 676.224793
     }
   },
+  "monte_carlo": {
+    "runs": 1000,
+    "shuffle_final_pnl_brl": {
+      "mean": 14085.0,
+      "p05": 14085.0,
+      "p50": 14085.0,
+      "p95": 14085.0
+    },
+    "shuffle_max_drawdown_pct": {
+      "mean": 5.79,
+      "p05": 3.82,
+      "p50": 5.53,
+      "p95": 8.81
+    },
+    "bootstrap_final_pnl_brl": {
+      "mean": 14036.88,
+      "p05": 10453.75,
+      "p50": 14085.0,
+      "p95": 17630.25
+    },
+    "bootstrap_max_drawdown_pct": {
+      "mean": 6.07,
+      "p05": 3.58,
+      "p50": 5.78,
+      "p95": 9.86
+    }
+  },
   "notes": [
     "The cooldown variant already includes the exact 10:00, 11:00, 12:00, and 14:00 session filter.",
     "Cooldown without the session filter is included here only to show whether the session scheduling still adds value once entries are throttled.",
-    "The time-weighted exit is implemented in the exact every-tick engine with tick-size-aware stop increments."
+    "The time-weighted exit is implemented in the exact every-tick engine with tick-size-aware stop increments.",
+    "The hourly-open-only run is a slower-timeframe proxy, not a full exact H1 re-derivation of every indicator and order mechanic.",
+    "Pure trade-order shuffling keeps final net PnL unchanged by construction; bootstrap resampling is included to provide a dispersion view for ending PnL."
   ]
 }

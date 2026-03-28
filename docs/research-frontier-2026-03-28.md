@@ -79,15 +79,43 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - test: `R$3,090`, `PF 1.3668`, `DD 4.57%`
   - interpretation: weaker than the in-sample train segment, but still comfortably positive on the held-out last 30% of the sample
 
+- Longer cooldowns did not beat the `30-minute` winner:
+  - `45 minutes`: `R$13,405`, `PF 1.5009`, `DD 3.46%`, `OnTester 3877.467553`
+  - `60 minutes`: `R$11,930`, `PF 1.4759`, `DD 3.49%`, `OnTester 3420.356383`
+  - interpretation: slower trading can raise PF a bit, but `30 minutes` is still the best overall quality/net balance
+
 - The time-weighted exit did not justify itself:
   - cooldown winner plus profitable-trade stop ratchet after `15` bars, with a tick-aligned `+0.5` every `10` bars
   - metrics: `R$12,875`, `PF 1.4967`, `DD 3.64%`, `OnTester 3536.163366`
   - interpretation: slightly cleaner PF, but too much net-profit giveback and weaker overall objective than the plain cooldown winner
 
+- Overnight continuation did nothing in the current exact implementation:
+  - cooldown winner plus “keep only profitable trades overnight”
+  - metrics were identical to the plain cooldown winner
+  - interpretation: in this strategy, positions that survive to the session cutoff are not a meaningful continuation edge under the current stop/target logic
+
 - A recent-entry-density sizing overlay is promising, but only as an analysis overlay for now:
   - size rule: `1 / recent filled entries within 60 minutes`
   - metrics: `R$13,800`, `PF 1.5035`, `DD 3.18%`, `OnTester 4336.689655`
   - interpretation: it improves quality a bit on the cooldown tape, but it assumes fractional down-scaling at a `1`-contract baseline, so it is not directly deployable without a higher base size or a discrete contract-sizing redesign
+
+- A slower H1-style proxy did not look attractive enough to replace the current engine:
+  - hourly-boundary-only proxy over the cooldown winner
+  - metrics: `R$1,450`, `PF 1.5598`, `DD 4.27%`, `OnTester 339.554945`
+  - interpretation: it over-prunes too hard; fewer trades alone are not enough
+
+- Monte Carlo says the cooldown winner is path-dependent, but not fragile:
+  - permutation of trade order (`1000` runs) keeps final PnL fixed at `R$14,085` by construction
+  - permutation max drawdown:
+    - median `5.53%`
+    - `95th` percentile `8.81%`
+  - bootstrap resampling (`1000` runs) for ending PnL dispersion:
+    - mean `R$14,036.88`
+    - `5th` percentile `R$10,453.75`
+    - `95th` percentile `R$17,630.25`
+  - bootstrap max drawdown:
+    - median `5.78%`
+    - `95th` percentile `9.86%`
 
 - Rolling intraday retracement windows create cleaner but smaller variants:
   - `8 bars`: `R$4,075`, `PF 1.5348`, `DD 3.68%`

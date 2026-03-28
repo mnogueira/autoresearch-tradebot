@@ -52,6 +52,7 @@ class ManagementConfig:
     profitable_trail_start_bars: int | None = None
     profitable_trail_step_bars: int = 1
     profitable_trail_step_ticks: int = 0
+    keep_profitable_overnight: bool = False
 
 
 def session_winner_params() -> V101Params:
@@ -346,7 +347,7 @@ def run_backtest_with_management(
         ask_open_tick = bid_open_tick + int(spread_ticks[index])
 
         if current_date is None or session_date != current_date:
-            if position != 0:
+            if position != 0 and not management.keep_profitable_overnight:
                 exit_tick = bid_open_tick if position == 1 else ask_open_tick
                 append_trade(current_date, timestamp, exit_tick, "forced_day_change")
                 reset_position_state()
@@ -412,8 +413,12 @@ def run_backtest_with_management(
         if minute_of_day[index] >= cutoff_minutes:
             if position != 0:
                 exit_tick = bid_open_tick if position == 1 else ask_open_tick
-                append_trade(session_date, timestamp, exit_tick, "time_cutoff")
-                reset_position_state()
+                entry_price = ticks_to_price(entry_tick, PRICE_TICK_SIZE)
+                exit_price = ticks_to_price(exit_tick, PRICE_TICK_SIZE)
+                unrealized_points = (exit_price - entry_price) * position
+                if not management.keep_profitable_overnight or unrealized_points <= 0.0:
+                    append_trade(session_date, timestamp, exit_tick, "time_cutoff")
+                    reset_position_state()
             pending_order = None
             previous_bias = candle_bias(
                 open_tick=bid_open_tick,

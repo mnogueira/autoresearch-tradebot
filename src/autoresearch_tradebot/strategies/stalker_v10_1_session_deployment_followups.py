@@ -5,6 +5,7 @@ from collections import deque
 from pathlib import Path
 from typing import Any
 
+import numpy as np
 import pandas as pd
 
 from ..common.paths import artifact_output_dir
@@ -74,6 +75,58 @@ def analysis_candidate_row(
     return row
 
 
+def compute_trade_sequence_drawdown_pct(pnl_sequence: np.ndarray) -> float:
+    equity = 10_000.0 + np.cumsum(pnl_sequence.astype(float))
+    if equity.size == 0:
+        return 0.0
+    peaks = np.maximum.accumulate(equity)
+    drawdowns = (peaks - equity) / np.where(peaks == 0.0, np.nan, peaks) * 100.0
+    return float(np.nanmax(drawdowns)) if drawdowns.size else 0.0
+
+
+def monte_carlo_trade_order(trades: pd.DataFrame, runs: int, seed: int) -> dict[str, Any]:
+    pnl = trades["pnl_brl"].astype(float).to_numpy()
+    if pnl.size == 0:
+        return {
+            "runs": int(runs),
+            "shuffle_final_pnl_brl": {"mean": 0.0, "p05": 0.0, "p50": 0.0, "p95": 0.0},
+            "shuffle_max_drawdown_pct": {"mean": 0.0, "p05": 0.0, "p50": 0.0, "p95": 0.0},
+            "bootstrap_final_pnl_brl": {"mean": 0.0, "p05": 0.0, "p50": 0.0, "p95": 0.0},
+            "bootstrap_max_drawdown_pct": {"mean": 0.0, "p05": 0.0, "p50": 0.0, "p95": 0.0},
+        }
+
+    rng = np.random.default_rng(seed)
+    shuffle_final_pnl = np.empty(int(runs), dtype=float)
+    shuffle_dd = np.empty(int(runs), dtype=float)
+    bootstrap_final_pnl = np.empty(int(runs), dtype=float)
+    bootstrap_dd = np.empty(int(runs), dtype=float)
+
+    for run_idx in range(int(runs)):
+        shuffled = rng.permutation(pnl)
+        shuffle_final_pnl[run_idx] = float(shuffled.sum())
+        shuffle_dd[run_idx] = compute_trade_sequence_drawdown_pct(shuffled)
+
+        bootstrapped = rng.choice(pnl, size=len(pnl), replace=True)
+        bootstrap_final_pnl[run_idx] = float(bootstrapped.sum())
+        bootstrap_dd[run_idx] = compute_trade_sequence_drawdown_pct(bootstrapped)
+
+    def summarize(values: np.ndarray) -> dict[str, float]:
+        return {
+            "mean": round(float(np.mean(values)), 2),
+            "p05": round(float(np.percentile(values, 5)), 2),
+            "p50": round(float(np.percentile(values, 50)), 2),
+            "p95": round(float(np.percentile(values, 95)), 2),
+        }
+
+    return {
+        "runs": int(runs),
+        "shuffle_final_pnl_brl": summarize(shuffle_final_pnl),
+        "shuffle_max_drawdown_pct": summarize(shuffle_dd),
+        "bootstrap_final_pnl_brl": summarize(bootstrap_final_pnl),
+        "bootstrap_max_drawdown_pct": summarize(bootstrap_dd),
+    }
+
+
 def main() -> None:
     DEFAULT_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     dataset = V10Dataset.from_disk(locate_data_file(None))
@@ -113,11 +166,33 @@ def main() -> None:
             profitable_trail_step_ticks=1,
         ),
     )
+    overnight_trades, overnight_metrics = run_backtest_with_management(
+        dataset=dataset,
+        params=params,
+        trade_dates=dataset.trade_dates,
+        entry_filter=entry_filter,
+        management=ManagementConfig(
+            min_minutes_between_entries=30,
+            keep_profitable_overnight=True,
+        ),
+    )
+    hourly_open_proxy_filter = (
+        lambda context: int(context["entry_hour"]) in {10, 11, 12, 14}
+        and pd.Timestamp(context["timestamp"]).minute == 0
+    )
+    h1_proxy_trades, h1_proxy_metrics = run_backtest_with_management(
+        dataset=dataset,
+        params=params,
+        trade_dates=dataset.trade_dates,
+        entry_filter=hourly_open_proxy_filter,
+        management=cooldown_management,
+    )
     sized_trades, sized_metrics, sized_stats = apply_recent_entry_density_sizing(
         trades=cooldown_session_trades,
         trade_dates=dataset.trade_dates,
         lookback_minutes=60,
     )
+    monte_carlo = monte_carlo_trade_order(cooldown_session_trades, runs=1000, seed=42)
 
     train_dates, test_dates = split_dates(dataset.trade_dates, 0.7)
     _, cooldown_train_metrics = run_backtest_with_management(
@@ -156,16 +231,29 @@ def main() -> None:
             "rule": "After 15 bars, if profitable, trail stop to breakeven plus 0.5 every 10 bars (tick-aligned approximation of 0.05 per bar).",
             "metrics": timed_exit_metrics,
         },
+        "overnight_hold": {
+            "base_variant": "cooldown_30m_with_session_filter",
+            "rule": "Keep the trade overnight only if it is profitable at the session cutoff; otherwise flatten it.",
+            "metrics": overnight_metrics,
+        },
+        "hourly_open_proxy": {
+            "base_variant": "cooldown_30m_with_session_filter",
+            "rule": "Research proxy for a slower H1-style engine: only allow entries on the first minute of each allowed hour.",
+            "metrics": h1_proxy_metrics,
+        },
         "walkforward_70_30": {
             "base_variant": "cooldown_30m_with_session_filter",
             "train_ratio": 0.7,
             "train_metrics": cooldown_train_metrics,
             "test_metrics": cooldown_test_metrics,
         },
+        "monte_carlo": monte_carlo,
         "notes": [
             "The cooldown variant already includes the exact 10:00, 11:00, 12:00, and 14:00 session filter.",
             "Cooldown without the session filter is included here only to show whether the session scheduling still adds value once entries are throttled.",
             "The time-weighted exit is implemented in the exact every-tick engine with tick-size-aware stop increments.",
+            "The hourly-open-only run is a slower-timeframe proxy, not a full exact H1 re-derivation of every indicator and order mechanic.",
+            "Pure trade-order shuffling keeps final net PnL unchanged by construction; bootstrap resampling is included to provide a dispersion view for ending PnL.",
         ],
     }
 
@@ -173,6 +261,8 @@ def main() -> None:
     summary_path.write_text(json.dumps(summary, indent=2), encoding="utf-8")
     cooldown_session_trades.to_csv(DEFAULT_OUTPUT_DIR / "cooldown_session_trades.csv", index=False)
     timed_exit_trades.to_csv(DEFAULT_OUTPUT_DIR / "timed_exit_trades.csv", index=False)
+    overnight_trades.to_csv(DEFAULT_OUTPUT_DIR / "overnight_hold_trades.csv", index=False)
+    h1_proxy_trades.to_csv(DEFAULT_OUTPUT_DIR / "hourly_open_proxy_trades.csv", index=False)
     sized_trades.to_csv(DEFAULT_OUTPUT_DIR / "cooldown_density_sized_trades.csv", index=False)
 
     leaderboard_rows: list[dict[str, Any]] = [
@@ -196,6 +286,22 @@ def main() -> None:
                 "profitable_trail_step_bars": 10,
                 "profitable_trail_step_ticks": 1,
             },
+        ),
+        candidate_row(
+            name="session_winner_cooldown_30m_keep_profitable_overnight",
+            family="session_overnight_hold",
+            metrics=overnight_metrics,
+            notes="Exact cooldown variant that carries positions overnight only when they are profitable at the session cutoff.",
+            artifact=summary_path,
+            params={"min_minutes_between_entries": 30, "keep_profitable_overnight": True},
+        ),
+        analysis_candidate_row(
+            name="session_winner_cooldown_30m_hourly_open_proxy",
+            family="session_hourly_proxy",
+            metrics=h1_proxy_metrics,
+            notes="Hourly-boundary research proxy for a slower H1-style entry engine over the cooldown winner.",
+            artifact=summary_path,
+            params={"allowed_minutes": [0], "allowed_hours": [10, 11, 12, 14]},
         ),
         analysis_candidate_row(
             name="session_winner_cooldown_30m_recent_entry_density_sizing_60m",
