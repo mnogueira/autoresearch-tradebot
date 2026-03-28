@@ -1,0 +1,109 @@
+{
+  "reference_variant": "session_winner_cooldown_30m_max_hold_120m1bars",
+  "reference_metrics": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247,
+    "total_trades": 1568,
+    "win_rate": 0.8055,
+    "net_profit_brl": 14135.0,
+    "avg_profit_brl": 9.01,
+    "avg_win_brl": 34.26,
+    "avg_loss_brl": -95.54,
+    "profit_factor": 1.4851,
+    "max_drawdown_pct": 3.29,
+    "expected_payoff": 9.01,
+    "on_tester_value": 4290.320082
+  },
+  "walkforward_70_30": {
+    "train_metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2024-09-16",
+      "trading_days": 872,
+      "total_trades": 1098,
+      "win_rate": 0.8106,
+      "net_profit_brl": 11045.0,
+      "avg_profit_brl": 10.06,
+      "avg_win_brl": 35.69,
+      "avg_loss_brl": -99.59,
+      "profit_factor": 1.5332,
+      "max_drawdown_pct": 3.29,
+      "expected_payoff": 10.06,
+      "on_tester_value": 3352.429098
+    },
+    "test_metrics": {
+      "start_date": "2024-09-17",
+      "end_date": "2026-03-20",
+      "trading_days": 375,
+      "total_trades": 470,
+      "win_rate": 0.7936,
+      "net_profit_brl": 3090.0,
+      "avg_profit_brl": 6.57,
+      "avg_win_brl": 30.87,
+      "avg_loss_brl": -86.86,
+      "profit_factor": 1.3668,
+      "max_drawdown_pct": 4.57,
+      "expected_payoff": 6.57,
+      "on_tester_value": 676.224793
+    }
+  },
+  "m30_confirmation_variant": {
+    "rule": "Entry direction must agree with the latest completed M30 candle direction built from aggregated M15 bars.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1290,
+      "win_rate": 0.8093,
+      "net_profit_brl": 12460.0,
+      "avg_profit_brl": 9.66,
+      "avg_win_brl": 34.31,
+      "avg_loss_brl": -94.94,
+      "profit_factor": 1.5335,
+      "max_drawdown_pct": 3.25,
+      "expected_payoff": 9.66,
+      "on_tester_value": 3836.368421
+    }
+  },
+  "tp_scaling_variant": {
+    "rule": "After three consecutive wins, increase TP by 10% for the next eligible trade while keeping SL fixed.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.7908,
+      "net_profit_brl": 12600.0,
+      "avg_profit_brl": 8.04,
+      "avg_win_brl": 35.78,
+      "avg_loss_brl": -96.86,
+      "profit_factor": 1.3966,
+      "max_drawdown_pct": 3.45,
+      "expected_payoff": 8.04,
+      "on_tester_value": 3656.082645
+    }
+  },
+  "combined_m30_and_tp_scaling_variant": {
+    "rule": "Require M30 agreement and apply the 10% TP scale after a three-win streak.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1290,
+      "win_rate": 0.7992,
+      "net_profit_brl": 12315.0,
+      "avg_profit_brl": 9.55,
+      "avg_win_brl": 35.97,
+      "avg_loss_brl": -95.66,
+      "profit_factor": 1.4971,
+      "max_drawdown_pct": 3.31,
+      "expected_payoff": 9.55,
+      "on_tester_value": 3724.747368
+    }
+  },
+  "notes": [
+    "The walk-forward repeats the exact 70/30 split on the current max-hold leader for a final confirmation pass.",
+    "M30 confirmation uses M15 bars aggregated inside the script, then promotes a completed 30-minute candle direction into the M1 exact engine as an entry filter.",
+    "TP scaling is intentionally conservative: SL remains fixed and only the TP multiplier is increased by 10% after a win streak of three or more trades."
+  ]
+}

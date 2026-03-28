@@ -16,6 +16,10 @@
 - Best exact research candidate: session winner + `30m` cooldown + `120` M1-bar max hold.
 - Best quality-biased operator preset: Maximum Quality v2.
 - Main risk across all exact variants: transaction-cost sensitivity. The session family survives a `2x` spread stress, but not a `3x` stress.
+- Final innovation pass:
+  - M30 confirmation improved quality to `PF 1.5335` and `DD 3.25%`, but net fell to `R$12,460`.
+  - TP scaling after three consecutive wins underperformed the max-hold leader.
+  - Recommendation stays unchanged: keep the plain max-hold leader as the main exact target for MT5 validation.
 
 ## Files
 

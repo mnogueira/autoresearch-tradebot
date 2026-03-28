@@ -59,6 +59,8 @@ class ManagementConfig:
     profitable_trail_step_bars: int = 1
     profitable_trail_step_ticks: int = 0
     keep_profitable_overnight: bool = False
+    win_streak_threshold: int | None = None
+    tp_scale_after_win_streak: float | None = None
 
 
 def session_winner_params() -> V101Params:
@@ -121,6 +123,18 @@ def has_reached_max_trade_age(
     if max_bars_in_trade is None or max_bars_in_trade <= 0:
         return False
     return (current_index - entry_bar_index) >= int(max_bars_in_trade)
+
+
+def scaled_tp_multiplier(
+    base_tp_multiplier: float,
+    consecutive_wins_total: int,
+    management: ManagementConfig,
+) -> float:
+    if management.win_streak_threshold is None or management.tp_scale_after_win_streak is None:
+        return base_tp_multiplier
+    if consecutive_wins_total < int(management.win_streak_threshold):
+        return base_tp_multiplier
+    return base_tp_multiplier * (1.0 + float(management.tp_scale_after_win_streak))
 
 
 def run_backtest_with_management(
@@ -232,6 +246,7 @@ def run_backtest_with_management(
     pending_order: dict[str, Any] | None = None
     completed_trades_today = 0
     consecutive_losses_today = 0
+    consecutive_wins_total = 0
     next_entry_allowed_time: pd.Timestamp | None = None
 
     def reset_position_state() -> None:
@@ -252,7 +267,7 @@ def run_backtest_with_management(
         entry_atr_value = 0.0
 
     def append_trade(session_date: np.datetime64, exit_time: pd.Timestamp, exit_tick: int, exit_reason: str) -> None:
-        nonlocal completed_trades_today, consecutive_losses_today, next_entry_allowed_time
+        nonlocal completed_trades_today, consecutive_losses_today, consecutive_wins_total, next_entry_allowed_time
         entry_price = ticks_to_price(entry_tick, PRICE_TICK_SIZE)
         exit_price = ticks_to_price(exit_tick, PRICE_TICK_SIZE)
         remainder_fraction = 1.0 - (management.partial_fraction if partial_taken else 0.0)
@@ -283,12 +298,14 @@ def run_backtest_with_management(
         completed_trades_today += 1
         if float(pnl_brl) < 0.0:
             consecutive_losses_today += 1
+            consecutive_wins_total = 0
             if management.cooldown_after_loss_minutes is not None:
                 next_entry_allowed_time = exit_time + pd.Timedelta(
                     minutes=int(management.cooldown_after_loss_minutes)
                 )
         else:
             consecutive_losses_today = 0
+            consecutive_wins_total += 1
             if management.cooldown_after_win_minutes is not None:
                 next_entry_allowed_time = exit_time + pd.Timedelta(
                     minutes=int(management.cooldown_after_win_minutes)
@@ -548,11 +565,16 @@ def run_backtest_with_management(
                 if pending_order is not None and int(pending_order["direction"]) == -1:
                     pending_order = None
                 base_price = ticks_to_price(upper_retracement_tick, PRICE_TICK_SIZE)
+                active_tp_multiplier = scaled_tp_multiplier(
+                    float(params.TP_ATRMultiplier),
+                    consecutive_wins_total,
+                    management,
+                )
                 candidate_order = {
                     "direction": 1,
                     "limit_tick": upper_retracement_tick,
                     "stop_tick": price_to_ticks(round_to_tick(base_price - (atr_value * params.SL_ATRMultiplier)), PRICE_TICK_SIZE),
-                    "target_tick": price_to_ticks(round_to_tick(base_price + (atr_value * params.TP_ATRMultiplier)), PRICE_TICK_SIZE),
+                    "target_tick": price_to_ticks(round_to_tick(base_price + (atr_value * active_tp_multiplier)), PRICE_TICK_SIZE),
                     "signal_time": timestamp,
                 }
                 if allows_entry_direction(timestamp, 1, params) and _is_valid_pending_order(
@@ -578,11 +600,16 @@ def run_backtest_with_management(
                 if pending_order is not None and int(pending_order["direction"]) == 1:
                     pending_order = None
                 base_price = ticks_to_price(lower_retracement_tick, PRICE_TICK_SIZE)
+                active_tp_multiplier = scaled_tp_multiplier(
+                    float(params.TP_ATRMultiplier),
+                    consecutive_wins_total,
+                    management,
+                )
                 candidate_order = {
                     "direction": -1,
                     "limit_tick": lower_retracement_tick,
                     "stop_tick": price_to_ticks(round_to_tick(base_price + (atr_value * params.SL_ATRMultiplier)), PRICE_TICK_SIZE),
-                    "target_tick": price_to_ticks(round_to_tick(base_price - (atr_value * params.TP_ATRMultiplier)), PRICE_TICK_SIZE),
+                    "target_tick": price_to_ticks(round_to_tick(base_price - (atr_value * active_tp_multiplier)), PRICE_TICK_SIZE),
                     "signal_time": timestamp,
                 }
                 if allows_entry_direction(timestamp, -1, params) and _is_valid_pending_order(

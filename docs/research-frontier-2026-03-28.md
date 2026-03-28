@@ -140,6 +140,16 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - maximum-quality v2 (`full Wednesday skip`, `full 13:00 skip`, `30-minute cooldown`, `120` M1-bar max hold): `R$10,665`, `PF 1.4492`, `DD 3.78%`
   - interpretation: the plain `120`-bar max hold remains the best refinement; the ATR proxy and half-target trail are useful negative controls, and the full Wednesday version stays a quality-biased operator preset rather than the main alpha line
 
+- The final innovation pass did not displace the max-hold leader:
+  - artifact: `artifacts/outputs/stalker_v10_1_session_final_innovations_20260328/summary.json`
+  - repeated exact `70/30` walk-forward for the max-hold leader:
+    - train: `R$11,045`, `PF 1.5332`, `DD 3.29%`
+    - test: `R$3,090`, `PF 1.3668`, `DD 4.57%`
+  - M30 confirmation from aggregated M15 bars: `R$12,460`, `PF 1.5335`, `DD 3.25%`
+  - TP scaling after three consecutive wins: `R$12,600`, `PF 1.3966`, `DD 3.45%`
+  - M30 confirmation plus TP scaling: `R$12,315`, `PF 1.4971`, `DD 3.31%`
+  - interpretation: M30 confirmation is a credible quality niche because it slightly improves PF and DD, but it gives up too much net profit and OnTester. TP streak-scaling weakens the strategy and should not be promoted.
+
 - The latest deployment follow-up increased confidence in the cooldown winner:
   - artifact: `artifacts/outputs/stalker_v10_1_session_deployment_followups_20260328/summary.json`
   - exact `70/30` holdout for the cooldown winner:
