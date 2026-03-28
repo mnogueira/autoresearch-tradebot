@@ -188,7 +188,7 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 
 - Paper-trading default: the validated MT5 preset `sl0p84 / tp0p3`
 - First upgrade to validate on the host: the plain `Cooldown 30m` preset
-  - this remains the preferred Monday follow-on because it is simpler and the composite-score gap versus the max-hold version is trivial
+  - this remains the preferred next-week follow-on because it is simpler, it matched the max-hold stack in the recent weak tape, and its monthly consistency is marginally better
 - Next aggressive upgrade to validate on the host: the `Cooldown 30m + MaxHold120m` preset
 - Fallback refinement if the max-hold variant misbehaves in MT5: stay on the plain `Cooldown 30m` preset
 - Simplest high-fidelity fallback:

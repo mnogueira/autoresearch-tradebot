@@ -41,6 +41,10 @@
   - max-hold v2 beat the session winner and MT5 base on composite score
   - the session winner still had the best raw Sortino at `2.1977`
   - the max-hold and cooldown overlays won on composite because their Calmar and Omega stayed stronger while drawdown stayed lower
+  - the tie-breaker between cooldown-only and max-hold is stability, not composite:
+    - both had the same worst month at `R$-275` in `2022-10`
+    - both had the same max consecutive losing-day streak of `5`
+    - cooldown-only had the slightly lower monthly PnL variance, `78,356.97` vs `78,404.00`
 - Best quality-biased operator preset: Maximum Quality v2.
 - Rollover filter follow-up:
   - cooldown-only + skip last 3 contract days improved PF to `1.5250` and win rate to `81.12%`
@@ -102,6 +106,9 @@
   - trailing `60`-day PF minimum: `0.8408`
   - share of `60`-day windows below `1.0`: `4.46%`
   - longest underwater stretch: `69` trading days
+- Pareto check against the broader exact leaderboard:
+  - no exact candidate improved `net profit`, `profit factor`, `drawdown`, and `win rate` simultaneously versus the max-hold leader
+  - interpretation: there is no true all-metrics winner hiding elsewhere in the research set
 
 ## Risk-Adjusted Evaluation
 
@@ -115,6 +122,17 @@
   - if you want the safest live-paper default, keep Tier 1 because it is MT5-validated
   - if you want the strongest exact risk-adjusted refinement, Tier 3 still wins by a hair
   - if you care about Monday deployment quality, Tier 2 is the better choice because it is simpler and the composite gap is trivial
+
+## Final Recommendation
+
+- Monday:
+  - run Tier 1, the MT5-validated base preset
+- Next week, if the first `5` paper sessions are clean:
+  - upgrade to Tier 2, the cooldown-only refinement
+  - this is the best balance of simplicity, stability, and near-maximum composite score
+- Later, only after another week of clean paper behavior:
+  - test Tier 3, the cooldown + max-hold refinement
+  - save the rollover skip as a discretionary caution rule, not a preset default
 
 ## Methodology
 

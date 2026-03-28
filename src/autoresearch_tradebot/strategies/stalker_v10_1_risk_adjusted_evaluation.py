@@ -23,6 +23,7 @@ from .stalker_v10_python import V10Dataset, locate_data_file
 DEFAULT_OUTPUT_DIR = artifact_output_dir("stalker_v10_1_risk_adjusted_evaluation_20260328")
 INITIAL_EQUITY_BRL = 10_000.0
 TRADING_DAYS_PER_YEAR = 252.0
+LEADERBOARD_PATH = ARTIFACTS_DIR / "leaderboard.json"
 
 
 def _money_to_float(raw: str) -> float:
@@ -120,6 +121,43 @@ def _risk_adjusted_metrics(daily_pnl: pd.Series) -> dict[str, float]:
         "annual_return_pct": round(float(annual_return * 100.0), 2),
         "max_drawdown_frac": round(float(max_drawdown), 6),
     }
+
+
+def _monthly_stability_metrics(daily_pnl: pd.Series) -> dict[str, Any]:
+    monthly_pnl = daily_pnl.groupby(daily_pnl.index.to_period("M")).sum().astype(float)
+    if monthly_pnl.empty:
+        return {
+            "worst_month": None,
+            "worst_month_pnl_brl": 0.0,
+            "best_month": None,
+            "best_month_pnl_brl": 0.0,
+            "monthly_pnl_std_brl": 0.0,
+            "monthly_pnl_variance_brl": 0.0,
+            "positive_months": 0,
+            "negative_months": 0,
+        }
+    return {
+        "worst_month": str(monthly_pnl.idxmin()),
+        "worst_month_pnl_brl": round(float(monthly_pnl.min()), 2),
+        "best_month": str(monthly_pnl.idxmax()),
+        "best_month_pnl_brl": round(float(monthly_pnl.max()), 2),
+        "monthly_pnl_std_brl": round(float(monthly_pnl.std(ddof=0)), 2),
+        "monthly_pnl_variance_brl": round(float(monthly_pnl.var(ddof=0)), 2),
+        "positive_months": int((monthly_pnl > 0.0).sum()),
+        "negative_months": int((monthly_pnl < 0.0).sum()),
+    }
+
+
+def _max_consecutive_losing_days(daily_pnl: pd.Series) -> int:
+    max_streak = 0
+    current_streak = 0
+    for pnl_value in daily_pnl.astype(float):
+        if pnl_value < 0.0:
+            current_streak += 1
+            max_streak = max(max_streak, current_streak)
+        else:
+            current_streak = 0
+    return int(max_streak)
 
 
 def _composite_score(risk_metrics: dict[str, float]) -> float:
@@ -300,6 +338,7 @@ def main() -> None:
     results: list[dict[str, Any]] = []
     for candidate in candidates:
         risk_metrics = _risk_adjusted_metrics(candidate["daily_pnl"])
+        stability_metrics = _monthly_stability_metrics(candidate["daily_pnl"])
         results.append(
             {
                 "name": candidate["name"],
@@ -307,6 +346,8 @@ def main() -> None:
                 "family": candidate["family"],
                 "headline_metrics": candidate["headline_metrics"],
                 "risk_adjusted_metrics": risk_metrics,
+                "stability_metrics": stability_metrics,
+                "max_consecutive_losing_days": _max_consecutive_losing_days(candidate["daily_pnl"]),
                 "sortino_weighted_composite": _composite_score(risk_metrics),
                 "source_artifact": candidate["source_artifact"],
             }
@@ -325,6 +366,67 @@ def main() -> None:
     for index, row in enumerate(ranked, start=1):
         row["composite_rank"] = index
 
+    monthly_consistency_ranking = sorted(
+        ranked,
+        key=lambda row: (
+            float(row["stability_metrics"]["worst_month_pnl_brl"]),
+            -float(row["stability_metrics"]["monthly_pnl_variance_brl"]),
+            -float(row["risk_adjusted_metrics"]["sortino_ratio"]),
+        ),
+        reverse=True,
+    )
+
+    top3_names = {"cooldown_maxhold_exact", "cooldown_only_exact", "session_winner_exact"}
+    top3_rows = [row for row in ranked if row["name"] in top3_names]
+    top3_by_worst_month = sorted(
+        top3_rows,
+        key=lambda row: (
+            float(row["stability_metrics"]["worst_month_pnl_brl"]),
+            -float(row["stability_metrics"]["monthly_pnl_variance_brl"]),
+        ),
+        reverse=True,
+    )
+    top3_by_monthly_variance = sorted(
+        top3_rows,
+        key=lambda row: (
+            float(row["stability_metrics"]["monthly_pnl_variance_brl"]),
+            -float(row["stability_metrics"]["worst_month_pnl_brl"]),
+        )
+    )
+
+    leaderboard_rows = _load_json(LEADERBOARD_PATH)
+    production_reference = next(row for row in ranked if row["name"] == "cooldown_maxhold_exact")
+    reference_metrics = production_reference["headline_metrics"]
+    pareto_dominators: list[dict[str, Any]] = []
+    for candidate in leaderboard_rows:
+        if candidate.get("comparison_tier") != "exact":
+            continue
+        if float(candidate.get("test_net_profit_brl", 0.0)) <= 0.0:
+            continue
+        if candidate.get("name") in {"cooldown_maxhold_exact", "session_winner_cooldown_30m_time_exit_120m1bars"}:
+            continue
+        improves_net = float(candidate.get("test_net_profit_brl", 0.0)) >= float(reference_metrics["net_profit_brl"])
+        improves_pf = float(candidate.get("test_profit_factor", 0.0)) >= float(reference_metrics["profit_factor"])
+        improves_dd = float(candidate.get("test_max_drawdown_pct", 999.0)) <= float(reference_metrics["max_drawdown_pct"])
+        improves_win = float(candidate.get("test_win_rate", 0.0)) * 100.0 >= float(reference_metrics["win_rate_pct"])
+        strict_improvement = (
+            float(candidate.get("test_net_profit_brl", 0.0)) > float(reference_metrics["net_profit_brl"])
+            or float(candidate.get("test_profit_factor", 0.0)) > float(reference_metrics["profit_factor"])
+            or float(candidate.get("test_max_drawdown_pct", 999.0)) < float(reference_metrics["max_drawdown_pct"])
+            or float(candidate.get("test_win_rate", 0.0)) * 100.0 > float(reference_metrics["win_rate_pct"])
+        )
+        if improves_net and improves_pf and improves_dd and improves_win and strict_improvement:
+            pareto_dominators.append(
+                {
+                    "name": candidate["name"],
+                    "net_profit_brl": float(candidate["test_net_profit_brl"]),
+                    "profit_factor": float(candidate["test_profit_factor"]),
+                    "max_drawdown_pct": float(candidate["test_max_drawdown_pct"]),
+                    "win_rate_pct": round(float(candidate["test_win_rate"]) * 100.0, 2),
+                    "source_artifact": candidate.get("source_artifact"),
+                }
+            )
+
     summary = {
         "methodology": {
             "daily_series_basis": "Daily PnL, normalized to a R$10,000 starting equity to match the repo's drawdown convention.",
@@ -339,6 +441,23 @@ def main() -> None:
             ],
         },
         "ranked_candidates": ranked,
+        "monthly_consistency_tiebreakers": {
+            "top3_by_best_worst_month": top3_by_worst_month,
+            "top3_by_lowest_monthly_pnl_variance": top3_by_monthly_variance,
+        },
+        "pareto_analysis_vs_maxhold_leader": {
+            "reference_name": production_reference["name"],
+            "reference_label": production_reference["label"],
+            "reference_metrics": production_reference["headline_metrics"],
+            "tested_metric_set": [
+                "net_profit_brl",
+                "profit_factor",
+                "max_drawdown_pct",
+                "win_rate_pct",
+            ],
+            "dominators_found": pareto_dominators,
+            "result": "none" if not pareto_dominators else "found",
+        },
     }
 
     summary_path = DEFAULT_OUTPUT_DIR / "summary.json"
