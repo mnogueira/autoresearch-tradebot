@@ -41,6 +41,8 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - `R$18,359.32`, `PF 1.4993`, `DD 3.72%`, composite `3.1377`
   - a simpler research-only equal-weight blend of the top two exact strategies also nudged past the best single exact variant:
     - `R$14,202.50`, `PF 1.4885`, `DD 3.27%`, composite `3.0724`
+  - documentation label for that blend:
+    - Tier 4, Research Blend
   - the `70/30` walk-forward stayed positive:
     - train `R$14,407.44`, `PF 1.5535`, `Composite 3.7167`
     - test `R$3,951.88`, `PF 1.3681`, `Composite 2.3270`
@@ -62,6 +64,10 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - period: `2026-02-05` to `2026-03-20`
   - metrics: `R$40`, `PF 1.0357`, `DD 4.67%`, `48` trades
 - Interpretation: the edge has not obviously broken, but the most recent tape is much weaker than the full-sample average. Monday should be treated as a cautious paper-validation start, not an excuse to scale up.
+- Hard cost stress:
+  - artifact: `artifacts/outputs/stalker_v10_1_contract_stress_followups_20260328/summary.json`
+  - fixed `5`-tick spread on every bar: `R$-16,975`, `PF 0.6614`, `DD 168.02%`, composite `-0.9242`
+  - interpretation: severe spread deterioration is a full stop condition, not a scale-down condition
 - Recent-softness diagnosis:
   - artifact: `artifacts/outputs/stalker_v10_1_recent_softness_analysis_20260328/summary.json`
   - trades per day actually rose from `1.2574` full-sample to `1.6000` recently, so this was not a simple signal drought
@@ -151,6 +157,11 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - the strategy still works late in the contract cycle, but quality clearly deteriorates there
   - month-end / rollover-tail sessions should be treated more cautiously than fresh-contract sessions
   - the simple stand-down filter improves PF, but it gives up too much net profit and does not improve drawdown enough to replace the main production candidate
+- Contract-month robustness addendum:
+  - separate contract-month scoring on the production candidate was positive in `47` of `61` monthly contract buckets, or `77.05%`
+  - best contract by net: `2022-05`, `R$1,000`, `PF 2.60`
+  - worst contract by net: `2022-10`, `R$-275`, `PF 0.7511`
+  - recent sequence: `2026-01` and `2026-02` were weak, `2026-03` recovered to `R$225`, `PF 1.4545`
 
 ## Rolling Degradation Profile
 

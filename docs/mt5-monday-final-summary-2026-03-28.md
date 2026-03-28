@@ -22,6 +22,7 @@
 | Tier 1 | MT5 validated base preset | Safest Monday choice because it is already validated in MT5 `Every Tick`. |
 | Tier 2 | Session winner + `30m` cooldown | Keeps almost all of the exact leader’s quality with less moving logic. |
 | Tier 3 | Session winner + `30m` cooldown + `120` M1-bar max hold | Best exact single-strategy composite, but only by a hair. |
+| Tier 4 | Research Blend: equal-weight average of Tier 3 + time-widened stop | Slightly better research composite via smoothing, but not a Monday deployment preset. |
 
 ## Recent Tape
 
@@ -39,6 +40,7 @@
 - Transaction-cost sensitivity remains the number-one risk.
 - Range-bound, low-ADX tape remains the main underperformance regime.
 - The last `3` contract days before rollover are structurally weaker.
+- A true fixed `5`-tick spread tape is fatal to the edge.
 - MT5 tester stability is still imperfect, so live paper monitoring matters more than backtest polish now.
 
 ## What Not To Chase On Monday
@@ -52,4 +54,5 @@
 1. Run Tier 1 for the first paper week.
 2. If the first `5` paper sessions are clean, move to Tier 2.
 3. Only after another clean week, test Tier 3.
-4. Keep the ADX gate and rollover caution as operator context, not default hard filters.
+4. Keep Tier 4 as a research-only blend, not a live preset.
+5. Keep the ADX gate and rollover caution as operator context, not default hard filters.

@@ -48,6 +48,7 @@ class ManagementConfig:
     partial_profit_enabled: bool = False
     partial_fraction: float = 0.5
     spread_multiplier: float = 1.0
+    fixed_spread_ticks: int | None = None
     min_minutes_between_entries: int | None = None
     max_daily_profit_brl: float | None = None
     max_weekly_profit_brl: float | None = None
@@ -98,6 +99,13 @@ def session_winner_params() -> V101Params:
 def session_filter(allowed_hours: set[int]) -> Callable[[dict[str, Any]], bool]:
     allowed = {int(hour) for hour in allowed_hours}
     return lambda context: int(context["entry_hour"]) in allowed
+
+
+def resolve_spread_ticks(raw_spread_ticks: np.ndarray, management: ManagementConfig) -> np.ndarray:
+    if management.fixed_spread_ticks is not None:
+        fixed_value = max(0, int(management.fixed_spread_ticks))
+        return np.full(raw_spread_ticks.shape, fixed_value, dtype=np.int16)
+    return np.rint(raw_spread_ticks.astype(float) * float(management.spread_multiplier)).astype(np.int16)
 
 
 def candidate_row(
@@ -313,7 +321,7 @@ def run_backtest_with_management(
     low_ticks = cache["low_ticks"][start:stop]
     close_ticks = cache["close_ticks"][start:stop]
     volume = cache["volume"][start:stop]
-    spread_ticks = np.rint(cache["spread_ticks"][start:stop].astype(float) * float(management.spread_multiplier)).astype(np.int16)
+    spread_ticks = resolve_spread_ticks(cache["spread_ticks"][start:stop], management)
     day_high_current_ticks = (
         range_high_ticks_override[start:stop]
         if range_high_ticks_override is not None

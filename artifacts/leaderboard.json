@@ -7821,6 +7821,48 @@
     "rank": 305
   },
   {
+    "name": "session_winner_cooldown30_maxhold120_fixed_spread_5ticks",
+    "family": "session_stress_test",
+    "screening_method": "session_winner_execution_refinement",
+    "comparison_tier": "exact",
+    "mt5_ready": false,
+    "test_total_trades": 1482,
+    "test_net_profit_brl": -16975.0,
+    "test_profit_factor": 0.6614,
+    "test_on_tester_value": -101.032284,
+    "test_max_drawdown_pct": 168.02,
+    "test_win_rate": 0.6323,
+    "notes": "Exact production candidate under a literal fixed 5-tick spread stress test on every bar.",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_contract_stress_followups_20260328\\summary.json",
+    "params": {
+      "fixed_spread_ticks": 5,
+      "min_minutes_between_entries": 30,
+      "max_bars_in_trade": 120
+    },
+    "rank": 306
+  },
+  {
+    "name": "session_winner_cooldown30_maxhold120_fixed_spread_5_ticks",
+    "family": "session_stress_test",
+    "screening_method": "session_winner_execution_refinement",
+    "comparison_tier": "exact",
+    "mt5_ready": false,
+    "test_total_trades": 1482,
+    "test_net_profit_brl": -16975.0,
+    "test_profit_factor": 0.6614,
+    "test_on_tester_value": -101.032284,
+    "test_max_drawdown_pct": 168.02,
+    "test_win_rate": 0.6323,
+    "notes": "Exact production candidate with a forced fixed 5-tick spread on every bar. Stress only, not a live candidate.",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_contract_stress_followups_20260328\\summary.json",
+    "params": {
+      "fixed_spread_ticks": 5,
+      "min_minutes_between_entries": 30,
+      "max_bars_in_trade": 120
+    },
+    "rank": 307
+  },
+  {
     "name": "session_winner_cooldown_30m_maxhold120_timewidened_confidence_overlay",
     "family": "stalker_v10_1_session_execution",
     "screening_method": "max_quality_followup",
@@ -7850,7 +7892,7 @@
     "calmar_ratio": 6.303,
     "omega_ratio": 1.6315,
     "sortino_weighted_composite": 3.1377,
-    "rank": 306
+    "rank": 308
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_sl0p84_tp0p30_confidence_overlay",
@@ -7882,7 +7924,7 @@
     "calmar_ratio": 6.2356,
     "omega_ratio": 1.6255,
     "sortino_weighted_composite": 3.1301,
-    "rank": 307
+    "rank": 309
   },
   {
     "name": "session_winner_equal_weight_ensemble_maxhold_timewidened",
@@ -7912,7 +7954,7 @@
     "calmar_ratio": 5.9735,
     "omega_ratio": 1.6178,
     "sortino_weighted_composite": 3.0724,
-    "rank": 308
+    "rank": 310
   },
   {
     "name": "session_winner_cooldown_30m_recent_entry_density_sizing_60m",
@@ -7934,7 +7976,7 @@
       "min_size_multiplier": 0.5,
       "max_size_multiplier": 1.0
     },
-    "rank": 309
+    "rank": 311
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_mon_wed_thu_only_confidence_overlay",
@@ -7966,7 +8008,7 @@
     "calmar_ratio": 4.312,
     "omega_ratio": 1.7735,
     "sortino_weighted_composite": 2.239,
-    "rank": 310
+    "rank": 312
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_mon_wed_thu_timewidened_confidence_overlay",
@@ -7998,7 +8040,7 @@
     "calmar_ratio": 4.1715,
     "omega_ratio": 1.8028,
     "sortino_weighted_composite": 2.2019,
-    "rank": 311
+    "rank": 313
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_logistic_confidence_overlay",
@@ -8022,7 +8064,7 @@
     "calmar_ratio": 3.6733,
     "omega_ratio": 1.5354,
     "sortino_weighted_composite": 2.0685,
-    "rank": 312
+    "rank": 314
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_random_forest_confidence_overlay",
@@ -8046,7 +8088,7 @@
     "calmar_ratio": 3.6515,
     "omega_ratio": 1.5492,
     "sortino_weighted_composite": 2.1265,
-    "rank": 313
+    "rank": 315
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_logistic_core_confidence_overlay",
@@ -8070,7 +8112,7 @@
     "calmar_ratio": 3.6486,
     "omega_ratio": 1.5488,
     "sortino_weighted_composite": 2.1251,
-    "rank": 314
+    "rank": 316
   },
   {
     "name": "session_winner_cooldown_30m_hourly_open_proxy",
@@ -8097,7 +8139,7 @@
         14
       ]
     },
-    "rank": 315
+    "rank": 317
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_random_forest_gate_0p55",
@@ -8121,7 +8163,7 @@
     "calmar_ratio": 0.0,
     "omega_ratio": 0.0,
     "sortino_weighted_composite": 0.0,
-    "rank": 316
+    "rank": 318
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_logistic_gate_0p55",
@@ -8145,6 +8187,6 @@
     "calmar_ratio": -0.078,
     "omega_ratio": 0.7013,
     "sortino_weighted_composite": 0.112,
-    "rank": 317
+    "rank": 319
   }
 ]

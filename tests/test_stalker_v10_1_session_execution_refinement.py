@@ -2,7 +2,10 @@ from __future__ import annotations
 
 import unittest
 
+import numpy as np
+
 from autoresearch_tradebot.strategies.stalker_v10_1_session_execution_refinement import (
+    ManagementConfig,
     atr_trailing_stop_tick,
     confirmation_candle_passed,
     has_reached_daily_profit_cap,
@@ -12,6 +15,7 @@ from autoresearch_tradebot.strategies.stalker_v10_1_session_execution_refinement
     pending_order_has_expired,
     profit_lock_stop_tick,
     recent_trade_pnl_allows_entry,
+    resolve_spread_ticks,
     widened_stop_tick,
 )
 
@@ -189,6 +193,16 @@ class SessionExecutionRefinementTests(unittest.TestCase):
                 atr_trailing_distance_mult=1.0,
             )
         )
+
+    def test_resolve_spread_ticks_uses_fixed_override_when_requested(self) -> None:
+        raw = np.array([0, 1, 1, 0], dtype=np.int16)
+        result = resolve_spread_ticks(raw, ManagementConfig(fixed_spread_ticks=5))
+        np.testing.assert_array_equal(result, np.array([5, 5, 5, 5], dtype=np.int16))
+
+    def test_resolve_spread_ticks_uses_multiplier_when_no_fixed_override(self) -> None:
+        raw = np.array([0, 1, 2], dtype=np.int16)
+        result = resolve_spread_ticks(raw, ManagementConfig(spread_multiplier=2.5))
+        np.testing.assert_array_equal(result, np.array([0, 2, 5], dtype=np.int16))
 
 
 if __name__ == "__main__":

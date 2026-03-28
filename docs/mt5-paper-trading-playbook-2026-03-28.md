@@ -72,6 +72,9 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
   - session winner + `30m` cooldown + `120` M1 max hold
   - use this only after the simpler cooldown-only refinement looks sane in MT5
   - operational expectation: about `1.26` trades per day in the exact engine
+- Tier 4, research-only:
+  - equal-weight blend of Tier 3 and the time-widened stop variant
+  - this slightly improved the research composite through portfolio smoothing, but it is not a Monday live preset
 
 ## Recommended Rollout Cadence
 
@@ -108,6 +111,7 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 - Do not use `Every tick based on real ticks`; stick to `Every Tick`.
 - Watch the first two sessions for actual spread behavior at `10:00`, `11:00`, `12:00`, and `14:00`.
 - If observed spread looks closer to the exact `2x` stress case than the baseline case, stay cautious about scaling.
+- If observed spread ever sits near `5` ticks during the core hours, stand down; the exact `5`-tick stress test was decisively negative.
 
 ## Risk Budget
 
@@ -182,9 +186,11 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 - Cost sensitivity:
   - the exact max-hold leader still fails badly under `3x` spread stress
   - the historical exact tape was effectively a `0-1` tick spread world, so repeated live spreads above `1` tick are a meaningful warning signal
+  - a true fixed `5`-tick spread environment was catastrophic: `R$-16,975`, `PF 0.6614`, `DD 168.02%`
 - MT5 tester instability:
   - MT5 `Every Tick` produced the usable validation runs
   - multiple `real ticks` and main-terminal attempts stalled or produced incomplete artifacts
+  - a final main-install retry from the sandbox also failed because the process could not write under `C:\Program Files\MetaTrader 5 Terminal\MQL5`
   - that is why the Monday plan starts with a fresh `Every Tick` sanity run before any paper activation
 
 ## Current Recommendation
@@ -193,6 +199,9 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 - First upgrade to validate on the host: the plain `Cooldown 30m` preset
   - this remains the preferred next-week follow-on because it is simpler, it matched the max-hold stack in the recent weak tape, and its monthly consistency is marginally better
 - Next aggressive upgrade to validate on the host: the `Cooldown 30m + MaxHold120m` preset
+- Tier 4, research blend for later study only:
+  - equal-weight blend of Tier 3 and the time-widened stop variant
+  - use only if the desk explicitly wants to run two near-identical variants side by side and average the risk
 - Fallback refinement if the max-hold variant misbehaves in MT5: stay on the plain `Cooldown 30m` preset
 - Simplest high-fidelity fallback:
   - the cooldown-only exact variant kept `99.65%` of the max-hold leader's net profit and `99.82%` of its PF

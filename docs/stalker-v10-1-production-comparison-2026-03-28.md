@@ -52,6 +52,7 @@
   - Tier 1, safest: MT5-validated `sl0p84 / tp0p30`
   - Tier 2, moderate: session winner + `30m` cooldown only
   - Tier 3, aggressive: session winner + `30m` cooldown + `120` M1 max hold
+  - Tier 4, research-only: equal-weight blend of Tier 3 and the time-widened stop variant
 - Risk-adjusted ranking by the Sortino-weighted composite:
   - research-only leader: confidence overlay + time-widened stop at `3.1377`
   - next research-only: confidence overlay at `3.1301`
@@ -85,6 +86,7 @@
     - `R$14,202.50`, `PF 1.4885`, `DD 3.27%`, `Composite 3.0724`
   - interpretation: the single-strategy frontier is probably close to its ceiling, but portfolio-level smoothing can still squeeze out a tiny risk-adjusted improvement
   - deployment caveat: this is not Monday’s default because it assumes running two nearly identical exact variants side by side and averaging the risk
+  - documentation label: Tier 4, Research Blend
 - Binary strong-signal gate:
   - top-half absolute trend-efficiency gate already hurt badly:
     - `R$8,555`, `PF 1.4047`, `DD 4.72%`, `Composite 1.7035`
@@ -159,6 +161,16 @@
   - but net fell to `R$12,855` and the composite score dropped to `2.7792`
   - interpretation: rollover caution belongs in the playbook, but the hard skip is not strong enough to become the main production configuration
 - Main risk across all exact variants: transaction-cost sensitivity. The max-hold leader fails under `3x` spread stress: `R$-3,300`, `PF 0.9198`, `DD 46.44%`.
+- Fixed `5`-tick spread stress:
+  - a true fixed `5`-tick spread environment was catastrophic for the exact leader:
+    - `R$-16,975`, `PF 0.6614`, `DD 168.02%`, `Composite -0.9242`
+  - interpretation: if live WDO spread behaves like a persistent `5`-tick tape, the strategy should be considered off rather than merely "degraded"
+- Contract-month robustness:
+  - the exact leader was positive in `47` of `61` contract months, or `77.05%`
+  - best contract by net: `2022-05`, `R$1,000`, `PF 2.60`
+  - worst contract by net: `2022-10`, `R$-275`, `PF 0.7511`
+  - recent path: `2026-01` and `2026-02` were weak, while `2026-03` recovered to `R$225`, `PF 1.4545`
+  - interpretation: robustness across contracts is real, but weak contract months do happen and line up with the same range-bound episodes already flagged by the regime analysis
 - Final cost follow-up on the max-hold leader:
   - `TP 0.42`: `R$15,660`, `PF 1.3951`, `DD 5.16%`
   - `TP 0.48`: `R$18,625`, `PF 1.4356`, `DD 4.92%`
