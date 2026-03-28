@@ -55,7 +55,47 @@
       }
     }
   ],
+  "cooldown_results": [
+    {
+      "min_minutes_between_entries": 30,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1568,
+        "win_rate": 0.8055,
+        "net_profit_brl": 14085.0,
+        "avg_profit_brl": 8.98,
+        "avg_win_brl": 34.26,
+        "avg_loss_brl": -95.7,
+        "profit_factor": 1.4825,
+        "max_drawdown_pct": 3.3,
+        "expected_payoff": 8.98,
+        "on_tester_value": 4263.59877
+      }
+    }
+  ],
   "dynamic_sl_results": [
+    {
+      "atr_length": 14,
+      "sl_atr_mult": 1.0,
+      "tp_atr_mult": 0.3,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1896,
+        "win_rate": 0.8233,
+        "net_profit_brl": 15565.0,
+        "avg_profit_brl": 8.21,
+        "avg_win_brl": 35.33,
+        "avg_loss_brl": -118.15,
+        "profit_factor": 1.3933,
+        "max_drawdown_pct": 5.26,
+        "expected_payoff": 8.21,
+        "on_tester_value": 2958.423448
+      }
+    },
     {
       "atr_length": 14,
       "sl_atr_mult": 1.5,
@@ -74,6 +114,133 @@
         "max_drawdown_pct": 5.78,
         "expected_payoff": 8.94,
         "on_tester_value": 2931.41411
+      }
+    },
+    {
+      "atr_length": 14,
+      "sl_atr_mult": 2.0,
+      "tp_atr_mult": 0.3,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1892,
+        "win_rate": 0.8975,
+        "net_profit_brl": 16090.0,
+        "avg_profit_brl": 8.5,
+        "avg_win_brl": 35.29,
+        "avg_loss_brl": -225.9,
+        "profit_factor": 1.3671,
+        "max_drawdown_pct": 6.86,
+        "expected_payoff": 8.5,
+        "on_tester_value": 2346.731973
+      }
+    }
+  ],
+  "dynamic_tp_results": [
+    {
+      "atr_length": 14,
+      "sl_atr_mult": 0.84,
+      "tp_atr_mult": 0.5,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1884,
+        "win_rate": 0.6985,
+        "net_profit_brl": 21170.0,
+        "avg_profit_brl": 11.24,
+        "avg_win_brl": 58.85,
+        "avg_loss_brl": -99.08,
+        "profit_factor": 1.3762,
+        "max_drawdown_pct": 4.76,
+        "expected_payoff": 11.24,
+        "on_tester_value": 4445.7
+      }
+    },
+    {
+      "atr_length": 14,
+      "sl_atr_mult": 0.84,
+      "tp_atr_mult": 1.0,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1735,
+        "win_rate": 0.5101,
+        "net_profit_brl": 19730.0,
+        "avg_profit_brl": 11.37,
+        "avg_win_brl": 117.18,
+        "avg_loss_brl": -98.79,
+        "profit_factor": 1.235,
+        "max_drawdown_pct": 7.14,
+        "expected_payoff": 11.37,
+        "on_tester_value": 2761.567628
+      }
+    }
+  ],
+  "hybrid_ratio_results": [
+    {
+      "atr_length": 14,
+      "sl_atr_mult": 1.0,
+      "tp_atr_mult": 0.3571,
+      "reward_to_risk_ratio": 0.35714285714285715,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1893,
+        "win_rate": 0.7919,
+        "net_profit_brl": 16585.0,
+        "avg_profit_brl": 8.76,
+        "avg_win_brl": 42.04,
+        "avg_loss_brl": -117.84,
+        "profit_factor": 1.3572,
+        "max_drawdown_pct": 5.13,
+        "expected_payoff": 8.76,
+        "on_tester_value": 3233.422047
+      }
+    },
+    {
+      "atr_length": 14,
+      "sl_atr_mult": 1.5,
+      "tp_atr_mult": 0.5357,
+      "reward_to_risk_ratio": 0.35714285714285715,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1873,
+        "win_rate": 0.779,
+        "net_profit_brl": 21305.0,
+        "avg_profit_brl": 11.37,
+        "avg_win_brl": 63.2,
+        "avg_loss_brl": -171.69,
+        "profit_factor": 1.3005,
+        "max_drawdown_pct": 8.88,
+        "expected_payoff": 11.37,
+        "on_tester_value": 2399.843699
+      }
+    },
+    {
+      "atr_length": 14,
+      "sl_atr_mult": 2.0,
+      "tp_atr_mult": 0.7143,
+      "reward_to_risk_ratio": 0.35714285714285715,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1819,
+        "win_rate": 0.7466,
+        "net_profit_brl": 15610.0,
+        "avg_profit_brl": 8.58,
+        "avg_win_brl": 83.86,
+        "avg_loss_brl": -214.11,
+        "profit_factor": 1.1588,
+        "max_drawdown_pct": 10.67,
+        "expected_payoff": 8.58,
+        "on_tester_value": 1463.054902
       }
     }
   ],
@@ -362,6 +529,8 @@
   "notes": [
     "Spread stress uses the exact every-tick engine with all historical spread ticks multiplied by the stated factor.",
     "Equity-shape concentration is reported from the exact reference session winner, not from a lightweight proxy.",
-    "The dynamic SL follow-up keeps the current session-winner entry logic and TP, and only changes the ATR stop formulation."
+    "The trade-cooldown follow-up enforces the spacing on actual fills, not on raw candidate signals.",
+    "The strategy already uses ATR-based exits; the dynamic SL/TP follow-ups therefore test wider ATR multipliers rather than introducing a new volatility-adaptive exit family.",
+    "The hybrid ATR run preserves the current reward/risk ratio while widening both stop and target together."
   ]
 }

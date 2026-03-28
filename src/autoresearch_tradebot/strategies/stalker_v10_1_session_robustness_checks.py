@@ -103,11 +103,15 @@ def main() -> None:
     dataset = V10Dataset.from_disk(locate_data_file(None))
     params = session_winner_params()
     entry_filter = session_filter({10, 11, 12, 14})
+    current_rr_ratio = float(params.TP_ATRMultiplier) / float(params.SL_ATRMultiplier)
 
     reference_trades, reference_metrics = run_backtest(dataset, params, dataset.trade_dates, entry_filter=entry_filter)
 
     spread_stress_results: list[dict[str, Any]] = []
+    cooldown_results: list[dict[str, Any]] = []
     dynamic_sl_results: list[dict[str, Any]] = []
+    dynamic_tp_results: list[dict[str, Any]] = []
+    hybrid_ratio_results: list[dict[str, Any]] = []
     leaderboard_rows: list[dict[str, Any]] = []
     for multiplier in (2.0, 3.0):
         multiplier_label = f"{int(multiplier)}x" if float(multiplier).is_integer() else str(multiplier).replace(".", "p")
@@ -130,10 +134,43 @@ def main() -> None:
             )
         )
 
-    for atr_length, sl_mult in ((14, 1.50),):
-        dyn_params = params.__class__(**{**params.__dict__, "ATR_Length": int(atr_length), "SL_ATRMultiplier": float(sl_mult)})
+    for cooldown_minutes in (30,):
+        _, metrics = run_backtest_with_management(
+            dataset=dataset,
+            params=params,
+            trade_dates=dataset.trade_dates,
+            entry_filter=entry_filter,
+            management=ManagementConfig(min_minutes_between_entries=int(cooldown_minutes)),
+        )
+        cooldown_results.append({"min_minutes_between_entries": cooldown_minutes, "metrics": metrics})
+        leaderboard_rows.append(
+            candidate_row(
+                name=f"session_winner_cooldown_{int(cooldown_minutes)}m",
+                family="session_trade_cooldown",
+                metrics=metrics,
+                notes=f"Exact session winner requiring at least {int(cooldown_minutes)} minutes between filled entries.",
+                artifact=DEFAULT_OUTPUT_DIR / "summary.json",
+                params={"min_minutes_between_entries": int(cooldown_minutes)},
+            )
+        )
+
+    for atr_length, sl_mult in ((14, 1.00), (14, 1.50), (14, 2.00)):
+        dyn_params = params.__class__(
+            **{
+                **params.__dict__,
+                "ATR_Length": int(atr_length),
+                "SL_ATRMultiplier": float(sl_mult),
+            }
+        )
         _, metrics = run_backtest(dataset, dyn_params, dataset.trade_dates, entry_filter=entry_filter)
-        dynamic_sl_results.append({"atr_length": atr_length, "sl_atr_mult": sl_mult, "tp_atr_mult": dyn_params.TP_ATRMultiplier, "metrics": metrics})
+        dynamic_sl_results.append(
+            {
+                "atr_length": atr_length,
+                "sl_atr_mult": sl_mult,
+                "tp_atr_mult": dyn_params.TP_ATRMultiplier,
+                "metrics": metrics,
+            }
+        )
         leaderboard_rows.append(
             candidate_row(
                 name=f"session_winner_dynamic_sl_atr{atr_length}_{str(sl_mult).replace('.', 'p')}",
@@ -145,6 +182,70 @@ def main() -> None:
             )
         )
 
+    for atr_length, tp_mult in ((14, 0.50), (14, 1.00)):
+        dyn_params = params.__class__(
+            **{
+                **params.__dict__,
+                "ATR_Length": int(atr_length),
+                "TP_ATRMultiplier": float(tp_mult),
+            }
+        )
+        _, metrics = run_backtest(dataset, dyn_params, dataset.trade_dates, entry_filter=entry_filter)
+        dynamic_tp_results.append(
+            {
+                "atr_length": atr_length,
+                "sl_atr_mult": dyn_params.SL_ATRMultiplier,
+                "tp_atr_mult": tp_mult,
+                "metrics": metrics,
+            }
+        )
+        leaderboard_rows.append(
+            candidate_row(
+                name=f"session_winner_dynamic_tp_atr{atr_length}_{str(tp_mult).replace('.', 'p')}",
+                family="session_dynamic_tp",
+                metrics=metrics,
+                notes=f"Exact session winner using ATR{atr_length} with TP {tp_mult:.2f}x ATR and SL unchanged at 0.84 ATR.",
+                artifact=DEFAULT_OUTPUT_DIR / "summary.json",
+                params={"atr_length": atr_length, "sl_atr_mult": dyn_params.SL_ATRMultiplier, "tp_atr_mult": tp_mult},
+            )
+        )
+
+    for atr_length, sl_mult in ((14, 1.00), (14, 1.50), (14, 2.00)):
+        tp_mult = round(float(sl_mult) * current_rr_ratio, 4)
+        dyn_params = params.__class__(
+            **{
+                **params.__dict__,
+                "ATR_Length": int(atr_length),
+                "SL_ATRMultiplier": float(sl_mult),
+                "TP_ATRMultiplier": float(tp_mult),
+            }
+        )
+        _, metrics = run_backtest(dataset, dyn_params, dataset.trade_dates, entry_filter=entry_filter)
+        hybrid_ratio_results.append(
+            {
+                "atr_length": atr_length,
+                "sl_atr_mult": sl_mult,
+                "tp_atr_mult": tp_mult,
+                "reward_to_risk_ratio": current_rr_ratio,
+                "metrics": metrics,
+            }
+        )
+        leaderboard_rows.append(
+            candidate_row(
+                name=f"session_winner_hybrid_ratio_atr{atr_length}_sl{str(sl_mult).replace('.', 'p')}",
+                family="session_dynamic_sltp_ratio",
+                metrics=metrics,
+                notes=f"Exact session winner using ATR{atr_length} stop {sl_mult:.2f}x ATR and TP scaled to preserve the current {current_rr_ratio:.3f} reward/risk ratio.",
+                artifact=DEFAULT_OUTPUT_DIR / "summary.json",
+                params={
+                    "atr_length": atr_length,
+                    "sl_atr_mult": sl_mult,
+                    "tp_atr_mult": tp_mult,
+                    "reward_to_risk_ratio": current_rr_ratio,
+                },
+            )
+        )
+
     concentration = trade_concentration(reference_trades)
     summary = {
         "reference": {
@@ -152,12 +253,17 @@ def main() -> None:
             "metrics": reference_metrics,
         },
         "spread_stress_results": spread_stress_results,
+        "cooldown_results": cooldown_results,
         "dynamic_sl_results": dynamic_sl_results,
+        "dynamic_tp_results": dynamic_tp_results,
+        "hybrid_ratio_results": hybrid_ratio_results,
         "equity_curve_shape": concentration,
         "notes": [
             "Spread stress uses the exact every-tick engine with all historical spread ticks multiplied by the stated factor.",
             "Equity-shape concentration is reported from the exact reference session winner, not from a lightweight proxy.",
-            "The dynamic SL follow-up keeps the current session-winner entry logic and TP, and only changes the ATR stop formulation.",
+            "The trade-cooldown follow-up enforces the spacing on actual fills, not on raw candidate signals.",
+            "The strategy already uses ATR-based exits; the dynamic SL/TP follow-ups therefore test wider ATR multipliers rather than introducing a new volatility-adaptive exit family.",
+            "The hybrid ATR run preserves the current reward/risk ratio while widening both stop and target together.",
         ],
     }
     summary_path = DEFAULT_OUTPUT_DIR / "summary.json"

@@ -9,18 +9,35 @@
 
 This remains the safest paper-trading candidate because it is the best strategy validated in MT5 `Every tick` mode.
 
-## Best Python Candidate Pending MT5
+## Best Python Candidates Pending MT5
 
-- Session winner:
+- Best cost-robust exact refinement:
   - exact hours: `10:00, 11:00, 12:00, 14:00`
   - keep `SkipShortWednesday=true`
   - skip the full `13:00` hour
+  - require at least `30 minutes` between filled entries
+  - `SL 0.84 / TP 0.30`
+  - artifact: `artifacts/outputs/stalker_v10_1_session_robustness_checks_20260328/summary.json`
+  - metrics: `R$14,085`, `PF 1.4825`, `DD 3.30%`, `OnTester 4263.59877`
+  - interpretation: lower raw net than the unconstrained session winner, but materially better `PF`, `DD`, and `OnTester` while directly reducing trade frequency and transaction-cost exposure
+
+- Best gross-net exact refinement:
+  - exact hours: `10:00, 11:00, 12:00, 14:00`
+  - keep `SkipShortWednesday=true`
+  - skip the full `13:00` hour
+  - `SL 0.84 / TP 0.50`
+  - artifact: `artifacts/outputs/stalker_v10_1_session_robustness_checks_20260328/summary.json`
+  - metrics: `R$21,170`, `PF 1.3762`, `DD 4.76%`, `OnTester 4445.7`
+  - interpretation: best raw net and top exact objective from the latest pass, but weaker quality balance than the cooldown variant
+
+- Previous session-winner reference:
   - `SL 0.84 / TP 0.30`
   - artifact: `artifacts/outputs/stalker_v10_1_session_refinement_20260328/summary.json`
   - metrics: `R$15,965`, `PF 1.4438`, `DD 4.04%`, `OnTester 3950.819156`
 
-- Closest MT5 preset approximation:
+- Closest current MT5 preset approximation:
   - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides GPT 5.4.set`
+  - note: the exact `30-minute cooldown` winner is not MT5-ready yet because the MQ5 EA still has no equivalent entry-spacing input
 
 ## New Findings From Advanced Follow-ups
 
@@ -41,6 +58,15 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - artifact: `artifacts/outputs/stalker_v10_1_session_robustness_checks_20260328/summary.json`
   - `ATR14` with `SL 1.50 x ATR`, `TP 0.30`: `R$16,950`, `PF 1.4074`, `DD 5.78%`
   - interpretation: higher gross profit, but weaker `PF/DD/OnTester` than the current `ATR20 x 0.84` reference
+
+- The new exact cost-robustness pass changed the frontier meaningfully:
+  - artifact: `artifacts/outputs/stalker_v10_1_session_robustness_checks_20260328/summary.json`
+  - `30-minute cooldown`: `R$14,085`, `PF 1.4825`, `DD 3.30%`, `OnTester 4263.59877`
+  - `ATR14 TP 0.50`: `R$21,170`, `PF 1.3762`, `DD 4.76%`, `OnTester 4445.7`
+  - `ATR14 TP 1.00`: `R$19,730`, `PF 1.2350`, `DD 7.14%`
+  - `ATR14 SL 1.00`: `R$15,565`, `PF 1.3933`, `DD 5.26%`
+  - `ATR14 SL 2.00`: `R$16,090`, `PF 1.3671`, `DD 6.86%`
+  - interpretation: the session winner already uses ATR-based exits, so the “dynamic ATR” tests are really multiplier changes. The best gross-net change is `TP 0.50`, but the best cost-robust exact refinement is the `30-minute cooldown`.
 
 - Rolling intraday retracement windows create cleaner but smaller variants:
   - `8 bars`: `R$4,075`, `PF 1.5348`, `DD 3.68%`
@@ -151,11 +177,13 @@ But cost sensitivity is real:
 ## Best Next Host-Side Validations
 
 1. Validate the session winner approximation in MT5 `Every tick` once the tester is stable again.
-   - the latest main-installation attempt still produced no HTML report, only the generated config file
-2. Validate the Friday-exclusion preset:
+   - the latest main-installation attempt still produced no HTML report in either the workspace output folder or the main terminal AppData tree, only the generated config file
+2. Implement and validate the `30-minute cooldown` refinement in MT5 `Every tick`.
+   - this is now the highest-priority exact Python candidate because it directly targets the strategy's main weakness: transaction-cost sensitivity
+3. Validate the Friday-exclusion preset:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 No Friday GPT 5.4.set`
-3. If MT5 remains unstable, prioritize cost-robustness and live-paper safety checks over more entry-family exploration.
-4. Do not spend more time on Bollinger mean reversion, inside-bar breakout, or the current EMA crossover family unless the entry/exit mechanics are materially redesigned.
+4. If MT5 remains unstable, prioritize cost-robustness and live-paper safety checks over more entry-family exploration.
+5. Do not spend more time on Bollinger mean reversion, inside-bar breakout, or the current EMA crossover family unless the entry/exit mechanics are materially redesigned.
 
 ## Production Recommendation
 
@@ -165,10 +193,11 @@ But cost sensitivity is real:
   - session winner with hours `10:00, 11:00, 12:00, 14:00`
   - keep `SkipShortWednesday=true`
   - keep `SkipShortHour13=true`
+  - require at least `30 minutes` between filled entries
   - keep `SL 0.84 / TP 0.30`
 - Known risks:
   - the edge weakens sharply under higher transaction costs; `2x` spread is still positive, `3x` spread is not
-  - MT5 tester instability means the exact session-winner approximation still needs one clean host-side validation
+  - MT5 tester instability means the best exact refinements still need one clean host-side validation
 - Next paper-trading step:
   - run the validated MT5 preset first
-  - monitor real slippage/spread conditions closely before promoting the exact session-window refinement
+  - monitor real slippage/spread conditions closely before promoting the exact cooldown refinement

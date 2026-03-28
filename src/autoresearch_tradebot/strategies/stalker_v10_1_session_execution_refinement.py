@@ -48,6 +48,7 @@ class ManagementConfig:
     partial_profit_enabled: bool = False
     partial_fraction: float = 0.5
     spread_multiplier: float = 1.0
+    min_minutes_between_entries: int | None = None
 
 
 def session_winner_params() -> V101Params:
@@ -209,6 +210,7 @@ def run_backtest_with_management(
 
     pending_order: dict[str, Any] | None = None
     completed_trades_today = 0
+    next_entry_allowed_time: pd.Timestamp | None = None
 
     def reset_position_state() -> None:
         nonlocal position, pending_order, partial_taken, partial_exit_tick
@@ -363,6 +365,10 @@ def run_backtest_with_management(
                 signal_time = pending_order["signal_time"]
                 fill_reason = "better_open"
                 pending_order = None
+                if management.min_minutes_between_entries is not None:
+                    next_entry_allowed_time = timestamp + pd.Timedelta(
+                        minutes=int(management.min_minutes_between_entries)
+                    )
                 arm_position_state(index)
                 maybe_take_partial(bid_open_tick, ask_open_tick)
                 update_trailing_stop(bid_open_tick, ask_open_tick)
@@ -390,7 +396,10 @@ def run_backtest_with_management(
             )
             continue
 
-        can_enter_new_trades = bool(can_enter_flags[index])
+        cooldown_allows_entry = (
+            next_entry_allowed_time is None or timestamp >= next_entry_allowed_time
+        )
+        can_enter_new_trades = bool(can_enter_flags[index]) and cooldown_allows_entry
         if not can_enter_new_trades:
             pending_order = None
 
@@ -519,6 +528,10 @@ def run_backtest_with_management(
                     signal_time = pending_order["signal_time"]
                     fill_reason = "limit_touch"
                     pending_order = None
+                    if management.min_minutes_between_entries is not None:
+                        next_entry_allowed_time = timestamp + pd.Timedelta(
+                            minutes=int(management.min_minutes_between_entries)
+                        )
                     arm_position_state(index)
                     maybe_take_partial(current_bid_tick, current_ask_tick)
                     update_trailing_stop(current_bid_tick, current_ask_tick)
