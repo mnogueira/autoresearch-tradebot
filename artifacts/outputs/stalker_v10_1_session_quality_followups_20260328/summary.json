@@ -1,0 +1,92 @@
+{
+  "reference_variant": "session_winner_cooldown_30m",
+  "reference_metrics": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247,
+    "total_trades": 1568,
+    "win_rate": 0.8055,
+    "net_profit_brl": 14085.0,
+    "avg_profit_brl": 8.98,
+    "avg_win_brl": 34.26,
+    "avg_loss_brl": -95.7,
+    "profit_factor": 1.4825,
+    "max_drawdown_pct": 3.3,
+    "expected_payoff": 8.98,
+    "on_tester_value": 4263.59877
+  },
+  "trend_strength_rolling_100bar_percentile": {
+    "rule": "Require long signals to exceed the rolling 100-bar 75th percentile of trend efficiency and short signals to be below the rolling 25th percentile.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1387,
+      "win_rate": 0.7988,
+      "net_profit_brl": 11300.0,
+      "avg_profit_brl": 8.15,
+      "avg_win_brl": 34.4,
+      "avg_loss_brl": -96.13,
+      "profit_factor": 1.4213,
+      "max_drawdown_pct": 3.62,
+      "expected_payoff": 8.15,
+      "on_tester_value": 3125.414634
+    }
+  },
+  "adaptive_cooldown": {
+    "rule": "After a winning trade, wait 15 minutes before the next entry. After a losing trade, wait 30 minutes.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1655,
+      "win_rate": 0.8048,
+      "net_profit_brl": 14575.0,
+      "avg_profit_brl": 8.81,
+      "avg_win_brl": 34.24,
+      "avg_loss_brl": -96.07,
+      "profit_factor": 1.4697,
+      "max_drawdown_pct": 3.83,
+      "expected_payoff": 8.81,
+      "on_tester_value": 3805.342391
+    }
+  },
+  "maximum_quality_all_sides_timing": {
+    "rule": "Session filter 10/11/12/14 + 30-minute cooldown + full Wednesday skip + full 13:00 skip.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1255,
+      "win_rate": 0.8016,
+      "net_profit_brl": 10665.0,
+      "avg_profit_brl": 8.5,
+      "avg_win_brl": 34.2,
+      "avg_loss_brl": -95.34,
+      "profit_factor": 1.4492,
+      "max_drawdown_pct": 3.78,
+      "expected_payoff": 8.5,
+      "on_tester_value": 2824.558594
+    }
+  },
+  "existing_tuesday_through_thursday_exact": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247,
+    "total_trades": 882,
+    "win_rate": 0.8039,
+    "net_profit_brl": 7795.0,
+    "avg_profit_brl": 8.84,
+    "avg_win_brl": 33.74,
+    "avg_loss_brl": -93.24,
+    "profit_factor": 1.4833,
+    "max_drawdown_pct": 4.07,
+    "expected_payoff": 8.84,
+    "on_tester_value": 1913.6725
+  },
+  "notes": [
+    "The maximum-quality configuration keeps the session filter and 30-minute cooldown, then upgrades the Wednesday restriction from short-only to all sides.",
+    "The 13:00 all-sides skip is already structurally enforced by the 10/11/12/14 session filter, but it is still included in the configuration for MT5 preset clarity.",
+    "The adaptive cooldown is exit-based, not entry-based: the waiting clock starts when the prior trade closes."
+  ]
+}

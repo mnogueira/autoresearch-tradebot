@@ -50,6 +50,8 @@ class ManagementConfig:
     spread_multiplier: float = 1.0
     min_minutes_between_entries: int | None = None
     max_consecutive_losses_per_day: int | None = None
+    cooldown_after_win_minutes: int | None = None
+    cooldown_after_loss_minutes: int | None = None
     profitable_trail_start_bars: int | None = None
     profitable_trail_step_bars: int = 1
     profitable_trail_step_ticks: int = 0
@@ -235,7 +237,7 @@ def run_backtest_with_management(
         best_ask_tick = BIG_NUMBER
 
     def append_trade(session_date: np.datetime64, exit_time: pd.Timestamp, exit_tick: int, exit_reason: str) -> None:
-        nonlocal completed_trades_today, consecutive_losses_today
+        nonlocal completed_trades_today, consecutive_losses_today, next_entry_allowed_time
         entry_price = ticks_to_price(entry_tick, PRICE_TICK_SIZE)
         exit_price = ticks_to_price(exit_tick, PRICE_TICK_SIZE)
         remainder_fraction = 1.0 - (management.partial_fraction if partial_taken else 0.0)
@@ -266,8 +268,16 @@ def run_backtest_with_management(
         completed_trades_today += 1
         if float(pnl_brl) < 0.0:
             consecutive_losses_today += 1
+            if management.cooldown_after_loss_minutes is not None:
+                next_entry_allowed_time = exit_time + pd.Timedelta(
+                    minutes=int(management.cooldown_after_loss_minutes)
+                )
         else:
             consecutive_losses_today = 0
+            if management.cooldown_after_win_minutes is not None:
+                next_entry_allowed_time = exit_time + pd.Timedelta(
+                    minutes=int(management.cooldown_after_win_minutes)
+                )
 
     def arm_position_state(current_index: int) -> None:
         nonlocal entry_bar_index, initial_target_tick, half_target_tick, trail_distance_ticks

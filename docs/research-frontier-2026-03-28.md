@@ -99,6 +99,13 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - max open time `660` M1 bars, roughly `11` M15 hours: identical to the reference cooldown winner
   - interpretation: the composite score is the closest challenger, but it still gives up too much net and a little drawdown protection. The rolling-strength gate over-prunes. Weekly seasonality is basically neutral, and the “45 bars” request only helps if interpreted as a much looser, effectively inactive time stop.
 
+- The latest deployment-quality follow-ups still leave the session+cooldown leader on top:
+  - artifact: `artifacts/outputs/stalker_v10_1_session_quality_followups_20260328/summary.json`
+  - rolling signal-strength gate with a `100-bar` history: `R$11,300`, `PF 1.4213`, `DD 3.62%`
+  - adaptive exit-based cooldown (`15` minutes after a win, `30` after a loss): `R$14,575`, `PF 1.4697`, `DD 3.83%`
+  - maximum-quality all-sides timing preset (`full Wednesday skip`, `full 13:00 skip`, `30-minute cooldown`): `R$10,665`, `PF 1.4492`, `DD 3.78%`
+  - interpretation: adaptive cooldown raises raw net profit, but it weakens PF, DD, and OnTester relative to the fixed `30-minute` cooldown. The 100-bar strength gate is too restrictive. The all-sides Wednesday version is a cleaner operational preset, but not the best exact strategy.
+
 - The latest deployment follow-up increased confidence in the cooldown winner:
   - artifact: `artifacts/outputs/stalker_v10_1_session_deployment_followups_20260328/summary.json`
   - exact `70/30` holdout for the cooldown winner:
@@ -297,3 +304,5 @@ But cost sensitivity is real:
   - validate the new cooldown preset in MT5 `Every tick` next:
     - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
   - monitor real slippage/spread conditions closely before promoting the exact cooldown refinement
+- Operational guide:
+  - `docs/mt5-paper-trading-playbook-2026-03-28.md`
