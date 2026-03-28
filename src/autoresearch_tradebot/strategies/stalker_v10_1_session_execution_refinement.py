@@ -49,6 +49,7 @@ class ManagementConfig:
     partial_fraction: float = 0.5
     spread_multiplier: float = 1.0
     min_minutes_between_entries: int | None = None
+    max_consecutive_losses_per_day: int | None = None
     profitable_trail_start_bars: int | None = None
     profitable_trail_step_bars: int = 1
     profitable_trail_step_ticks: int = 0
@@ -214,6 +215,7 @@ def run_backtest_with_management(
 
     pending_order: dict[str, Any] | None = None
     completed_trades_today = 0
+    consecutive_losses_today = 0
     next_entry_allowed_time: pd.Timestamp | None = None
 
     def reset_position_state() -> None:
@@ -233,7 +235,7 @@ def run_backtest_with_management(
         best_ask_tick = BIG_NUMBER
 
     def append_trade(session_date: np.datetime64, exit_time: pd.Timestamp, exit_tick: int, exit_reason: str) -> None:
-        nonlocal completed_trades_today
+        nonlocal completed_trades_today, consecutive_losses_today
         entry_price = ticks_to_price(entry_tick, PRICE_TICK_SIZE)
         exit_price = ticks_to_price(exit_tick, PRICE_TICK_SIZE)
         remainder_fraction = 1.0 - (management.partial_fraction if partial_taken else 0.0)
@@ -262,6 +264,10 @@ def run_backtest_with_management(
             )
         )
         completed_trades_today += 1
+        if float(pnl_brl) < 0.0:
+            consecutive_losses_today += 1
+        else:
+            consecutive_losses_today = 0
 
     def arm_position_state(current_index: int) -> None:
         nonlocal entry_bar_index, initial_target_tick, half_target_tick, trail_distance_ticks
@@ -355,6 +361,7 @@ def run_backtest_with_management(
             previous_high_tick = 0
             previous_low_tick = price_to_ticks(BIG_NUMBER, PRICE_TICK_SIZE)
             completed_trades_today = 0
+            consecutive_losses_today = 0
 
         if position != 0:
             update_profit_time_stop(index, bid_open_tick, ask_open_tick)
@@ -430,7 +437,11 @@ def run_backtest_with_management(
         cooldown_allows_entry = (
             next_entry_allowed_time is None or timestamp >= next_entry_allowed_time
         )
-        can_enter_new_trades = bool(can_enter_flags[index]) and cooldown_allows_entry
+        loss_stop_allows_entry = (
+            management.max_consecutive_losses_per_day is None
+            or consecutive_losses_today < int(management.max_consecutive_losses_per_day)
+        )
+        can_enter_new_trades = bool(can_enter_flags[index]) and cooldown_allows_entry and loss_stop_allows_entry
         if not can_enter_new_trades:
             pending_order = None
 

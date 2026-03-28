@@ -1,0 +1,113 @@
+{
+  "reference_variant": "session_winner_cooldown_30m",
+  "notes": [
+    "The requested 09:15 opening-auction gap filter is a structural no-op for the current session winner because the strategy already starts evaluating entries at 10:00.",
+    "A practical analog is included here: skip the first 15 minutes of the allowed 10:00 hour to reduce opening noise inside the current session window.",
+    "ROC variants replace the trend-efficiency gate with a simpler directional ROC sign check while keeping the proven session, cooldown, timing, and short-side volume structure."
+  ],
+  "reference": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247,
+    "total_trades": 1568,
+    "win_rate": 0.8055,
+    "net_profit_brl": 14085.0,
+    "avg_profit_brl": 8.98,
+    "avg_win_brl": 34.26,
+    "avg_loss_brl": -95.7,
+    "profit_factor": 1.4825,
+    "max_drawdown_pct": 3.3,
+    "expected_payoff": 8.98,
+    "on_tester_value": 4263.59877
+  },
+  "volume_confirmation_1p5x_avg20": {
+    "rule": "Current M1 bar volume must exceed 1.5x the prior 20-bar session rolling average.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1346,
+      "win_rate": 0.8053,
+      "net_profit_brl": 11750.0,
+      "avg_profit_brl": 8.73,
+      "avg_win_brl": 34.17,
+      "avg_loss_brl": -96.53,
+      "profit_factor": 1.4646,
+      "max_drawdown_pct": 6.19,
+      "expected_payoff": 8.73,
+      "on_tester_value": 1898.333333
+    }
+  },
+  "session_open_gap_practical_10h15_start": {
+    "rule": "Practical analog of the requested auction gap: skip entries from 10:00 through 10:14 inside the current allowed session.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1322,
+      "win_rate": 0.8071,
+      "net_profit_brl": 12670.0,
+      "avg_profit_brl": 9.58,
+      "avg_win_brl": 34.72,
+      "avg_loss_brl": -95.59,
+      "profit_factor": 1.5198,
+      "max_drawdown_pct": 4.34,
+      "expected_payoff": 9.58,
+      "on_tester_value": 2921.074312
+    }
+  },
+  "roc10": {
+    "rule": "Replace trend-efficiency confirmation with directional ROC(10) sign while keeping session, cooldown, and short-side volume rules.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1730,
+      "win_rate": 0.7994,
+      "net_profit_brl": 14330.0,
+      "avg_profit_brl": 8.28,
+      "avg_win_brl": 33.97,
+      "avg_loss_brl": -94.11,
+      "profit_factor": 1.4388,
+      "max_drawdown_pct": 3.92,
+      "expected_payoff": 8.28,
+      "on_tester_value": 3657.094521
+    }
+  },
+  "roc20": {
+    "rule": "Replace trend-efficiency confirmation with directional ROC(20) sign while keeping session, cooldown, and short-side volume rules.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1732,
+      "win_rate": 0.7985,
+      "net_profit_brl": 13960.0,
+      "avg_profit_brl": 8.06,
+      "avg_win_brl": 33.96,
+      "avg_loss_brl": -94.58,
+      "profit_factor": 1.4229,
+      "max_drawdown_pct": 3.93,
+      "expected_payoff": 8.06,
+      "on_tester_value": 3552.150685
+    }
+  },
+  "max_consecutive_losses_per_day_2": {
+    "rule": "Stop opening new trades for the session after two consecutive realized losses.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 14085.0,
+      "avg_profit_brl": 8.98,
+      "avg_win_brl": 34.26,
+      "avg_loss_brl": -95.7,
+      "profit_factor": 1.4825,
+      "max_drawdown_pct": 3.3,
+      "expected_payoff": 8.98,
+      "on_tester_value": 4263.59877
+    }
+  }
+}

@@ -72,6 +72,24 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - `ATR14 SL 2.00`: `R$16,090`, `PF 1.3671`, `DD 6.86%`
   - interpretation: the session winner already uses ATR-based exits, so the “dynamic ATR” tests are really multiplier changes. The best gross-net change is `TP 0.50`, but the best cost-robust exact refinement is the `30-minute cooldown`.
 
+- Trend-efficiency lookback optimization says the default `15-minute` window is still the right anchor:
+  - artifact: `artifacts/outputs/stalker_v10_1_session_trend_window_sweep_20260328/summary.json`
+  - `5 minutes`: `R$13,580`, `PF 1.4251`, `DD 3.75%`
+  - `10 minutes`: `R$13,385`, `PF 1.4323`, `DD 3.47%`
+  - `15 minutes`: `R$14,085`, `PF 1.4825`, `DD 3.30%`
+  - `20 minutes`: `R$12,795`, `PF 1.4443`, `DD 3.39%`
+  - `25 minutes`: `R$12,255`, `PF 1.4544`, `DD 3.74%`
+  - interpretation: shortening the lookback can clean up some noise, but `15 minutes` still wins on net profit, PF, drawdown, and OnTester together.
+
+- The latest exact signal overlays did not beat the session+cooldown leader:
+  - artifact: `artifacts/outputs/stalker_v10_1_session_signal_followups_20260328/summary.json`
+  - `ROC(10)` replacing trend-efficiency: `R$14,330`, `PF 1.4388`, `DD 3.92%`
+  - `ROC(20)` replacing trend-efficiency: `R$13,960`, `PF 1.4229`, `DD 3.93%`
+  - `current volume > 1.5x prior 20-bar mean`: `R$11,750`, `PF 1.4646`, `DD 6.19%`
+  - `skip first 15 minutes of the 10:00 hour`: `R$12,670`, `PF 1.5198`, `DD 4.34%`
+  - `stop after 2 consecutive daily losses`: identical to the reference cooldown winner
+  - interpretation: ROC is a credible simplification, but it still gives up too much edge versus the trend-efficiency reference. The practical session-gap filter improves PF, but loses too much net profit. The daily loss-stop adds nothing on this tape because the current session+cooldown structure already throttles the weakest clusters.
+
 - The latest deployment follow-up increased confidence in the cooldown winner:
   - artifact: `artifacts/outputs/stalker_v10_1_session_deployment_followups_20260328/summary.json`
   - exact `70/30` holdout for the cooldown winner:
@@ -220,8 +238,17 @@ But cost sensitivity is real:
 - The few recurring public motifs were still consistent with the local research:
   - VWAP and DI context are common in Brazilian mini-dollar discretionary/robot discussions:
     - https://www.mql5.com/en/job/186179
+  - MQL5 optimization guidance still points to the same robustness workflow we are already using: optimization followed by forward checks and Monte Carlo rather than trusting raw in-sample tops:
+    - https://www.mql5.com/en/articles/15116
   - PTAX reference prints can matter intraday, which is one plausible reason Friday behaves differently:
     - https://einvestidor.estadao.com.br/ultimas/ibovespa-hoje-ipca-15-leilao-bc-iof/
+
+## Blocked Tracks
+
+- `WIN` cross-asset validation is currently blocked because the repo has no local `WIN` dataset.
+- `WDO/WIN` pairs or spread research is blocked for the same reason; there is no second leg to build a ratio or z-score series.
+- There is also no existing IB Gateway or brokerage data-ingestion code in the repo, so fetching `WIN` from the current workspace would be a separate integration project rather than a quick extension of the backtest loop.
+- A historical news filter for CPI, NFP, and FOMC is still conceptually interesting, but it needs a timestamped macro calendar dataset first. Without that dataset, an exact backtest would be guesswork rather than research.
 
 ## Best Next Host-Side Validations
 
@@ -229,11 +256,12 @@ But cost sensitivity is real:
    - the latest main-installation attempt still produced no HTML report in either the workspace output folder or the main terminal AppData tree, only the generated config file
 2. Implement and validate the `30-minute cooldown` refinement in MT5 `Every tick`.
    - this is now the highest-priority exact Python candidate because it directly targets the strategy's main weakness: transaction-cost sensitivity
-3. If the cooldown is added to the EA, validate the exact session+cooldown winner before spending more time on ATR multiplier tweaks.
+3. If the cooldown is added to the EA, validate the exact session+cooldown winner before spending more time on ATR multiplier tweaks or substitute entry signals.
 4. Validate the Friday-exclusion preset:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 No Friday GPT 5.4.set`
 5. If MT5 remains unstable, prioritize cost-robustness and live-paper safety checks over more entry-family exploration.
 6. Do not spend more time on Bollinger mean reversion, inside-bar breakout, or the current EMA crossover family unless the entry/exit mechanics are materially redesigned.
+7. Do not spend time on `WIN`, `WDO/WIN spread`, or news-filter backtests until the required external datasets are added.
 
 ## Production Recommendation
 

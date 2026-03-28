@@ -1,0 +1,189 @@
+{
+  "reference_variant": "session_winner_cooldown_30m",
+  "results": {
+    "trend_window_5m": {
+      "window_minutes": 5,
+      "params": {
+        "TrendEfficiencyWindowMinutes": 5,
+        "min_minutes_between_entries": 30,
+        "allowed_hours": [
+          10,
+          11,
+          12,
+          14
+        ],
+        "SkipShortWednesday": true,
+        "SkipShortHour13": true,
+        "SL_ATRMultiplier": 0.84,
+        "TP_ATRMultiplier": 0.3
+      },
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1678,
+        "win_rate": 0.7956,
+        "net_profit_brl": 13580.0,
+        "avg_profit_brl": 8.09,
+        "avg_win_brl": 34.1,
+        "avg_loss_brl": -93.13,
+        "profit_factor": 1.4251,
+        "max_drawdown_pct": 3.75,
+        "expected_payoff": 8.09,
+        "on_tester_value": 3620.885149
+      }
+    },
+    "trend_window_10m": {
+      "window_minutes": 10,
+      "params": {
+        "TrendEfficiencyWindowMinutes": 10,
+        "min_minutes_between_entries": 30,
+        "allowed_hours": [
+          10,
+          11,
+          12,
+          14
+        ],
+        "SkipShortWednesday": true,
+        "SkipShortHour13": true,
+        "SL_ATRMultiplier": 0.84,
+        "TP_ATRMultiplier": 0.3
+      },
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1627,
+        "win_rate": 0.7972,
+        "net_profit_brl": 13385.0,
+        "avg_profit_brl": 8.23,
+        "avg_win_brl": 34.19,
+        "avg_loss_brl": -93.83,
+        "profit_factor": 1.4323,
+        "max_drawdown_pct": 3.47,
+        "expected_payoff": 8.23,
+        "on_tester_value": 3859.624051
+      }
+    },
+    "trend_window_15m": {
+      "window_minutes": 15,
+      "params": {
+        "TrendEfficiencyWindowMinutes": 15,
+        "min_minutes_between_entries": 30,
+        "allowed_hours": [
+          10,
+          11,
+          12,
+          14
+        ],
+        "SkipShortWednesday": true,
+        "SkipShortHour13": true,
+        "SL_ATRMultiplier": 0.84,
+        "TP_ATRMultiplier": 0.3
+      },
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1568,
+        "win_rate": 0.8055,
+        "net_profit_brl": 14085.0,
+        "avg_profit_brl": 8.98,
+        "avg_win_brl": 34.26,
+        "avg_loss_brl": -95.7,
+        "profit_factor": 1.4825,
+        "max_drawdown_pct": 3.3,
+        "expected_payoff": 8.98,
+        "on_tester_value": 4263.59877
+      }
+    },
+    "trend_window_20m": {
+      "window_minutes": 20,
+      "params": {
+        "TrendEfficiencyWindowMinutes": 20,
+        "min_minutes_between_entries": 30,
+        "allowed_hours": [
+          10,
+          11,
+          12,
+          14
+        ],
+        "SkipShortWednesday": true,
+        "SkipShortHour13": true,
+        "SL_ATRMultiplier": 0.84,
+        "TP_ATRMultiplier": 0.3
+      },
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1510,
+        "win_rate": 0.802,
+        "net_profit_brl": 12795.0,
+        "avg_profit_brl": 8.47,
+        "avg_win_brl": 34.34,
+        "avg_loss_brl": -96.3,
+        "profit_factor": 1.4443,
+        "max_drawdown_pct": 3.39,
+        "expected_payoff": 8.47,
+        "on_tester_value": 3770.930899
+      }
+    },
+    "trend_window_25m": {
+      "window_minutes": 25,
+      "params": {
+        "TrendEfficiencyWindowMinutes": 25,
+        "min_minutes_between_entries": 30,
+        "allowed_hours": [
+          10,
+          11,
+          12,
+          14
+        ],
+        "SkipShortWednesday": true,
+        "SkipShortHour13": true,
+        "SL_ATRMultiplier": 0.84,
+        "TP_ATRMultiplier": 0.3
+      },
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1413,
+        "win_rate": 0.7997,
+        "net_profit_brl": 12255.0,
+        "avg_profit_brl": 8.67,
+        "avg_win_brl": 34.71,
+        "avg_loss_brl": -95.3,
+        "profit_factor": 1.4544,
+        "max_drawdown_pct": 3.74,
+        "expected_payoff": 8.67,
+        "on_tester_value": 3279.849618
+      }
+    }
+  },
+  "best_variant": {
+    "name": "trend_window_15m",
+    "window_minutes": 15,
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 14085.0,
+      "avg_profit_brl": 8.98,
+      "avg_win_brl": 34.26,
+      "avg_loss_brl": -95.7,
+      "profit_factor": 1.4825,
+      "max_drawdown_pct": 3.3,
+      "expected_payoff": 8.98,
+      "on_tester_value": 4263.59877
+    }
+  },
+  "notes": [
+    "This sweep keeps the current exact session winner intact and only changes TrendEfficiencyWindowMinutes.",
+    "All variants use the same session filter, cooldown, short-Wednesday filter, short-hour-13 filter, and SL/TP.",
+    "Ranking is based on the exact on_tester_value from the every-tick parity engine."
+  ]
+}
