@@ -15,17 +15,21 @@ This remains the safest paper-trading candidate because it is the best strategy 
 - The closest exact ratio variant was the plain session winner at `SL 0.60 / TP 0.42`:
   - `R$13,025`, `PF 1.2851`, `DD 4.45%`, `Sortino 2.1894`
   - interpretation: better downside-adjusted return than many variants, but too weak on PF and win rate to promote
+- The stricter 1:1 ratio variant was worse:
+  - session winner `SL 0.50 / TP 0.50`: `R$8,480`, `PF 1.1711`, `DD 6.46%`, `Sortino 1.3330`
 - A research-only confidence-weighted sizing overlay was the strongest raw risk-adjusted result of the whole sprint:
   - `R$18,030.27`, `PF 1.4897`, `DD 3.71%`, `Composite 3.1301`
   - interpretation: stronger trend-efficiency signals likely deserve more size
   - caveat: this is not deployable yet because it assumes fractional position scaling rather than a discrete MT5 contract-sizing rule
 - Turning that same idea into a hard binary gate failed:
+  - top-half executed trend-efficiency gate: `R$8,555`, `PF 1.4047`, `DD 4.72%`, composite `1.7035`
   - top-quartile trend-efficiency only: `R$5,570`, `PF 1.4829`, `DD 4.61%`, `Composite 1.2896`
   - interpretation: the signal seems to want graded sizing, not a strong/weak cutoff
 - Weekday follow-up on the production candidate:
   - Monday and Wednesday were strongest
   - Tuesday and Friday were weakest
   - skipping Tuesday and Friday improved PF and DD, but still gave up too much net to become a default rule
+  - combining the weekday skip with the top-half signal gate also failed to justify itself: `R$5,460`, composite `1.5104`
 
 ## Near-Term Caution
 

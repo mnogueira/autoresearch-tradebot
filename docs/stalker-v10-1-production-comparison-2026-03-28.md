@@ -17,9 +17,12 @@
 | Skip Tuesday and Friday, production candidate | `R$9,200` | `1.6261` | `2.97%` | `81.91%` | 846 | `0.6784` | `1.2315` | `4.7450` | `1.7843` | `2.3961` | 10 |
 | Wider stop `SL 1.20 / TP 0.30` | `R$14,475` | `1.4626` | `4.43%` | `85.01%` | 1568 | `1.2574` | `1.4260` | `4.4758` | `1.5552` | `2.3668` | 11 |
 | ADX quality mode, prior-day `ADX > 25` | `R$7,485` | `1.9067` | `3.38%` | `84.29%` | 490 | `0.3929` | `1.0426` | `3.5353` | `2.2131` | `2.0245` | 12 |
-| Strong-signal gate, top quartile of executed trend-efficiency | `R$5,570` | `1.4829` | `4.61%` | `79.34%` | 605 | `0.4852` | `0.7538` | `2.0293` | `1.5198` | `1.2896` | 13 |
-| ADX quality mode, prior-day `ADX > 30` | `R$3,515` | `1.6356` | `4.35%` | `82.37%` | 278 | `0.2230` | `0.4607` | `1.4419` | `1.8573` | `1.0344` | 14 |
-| Hot-hand gate, last `10` trades PnL > `0` | `R$630` | `1.9921` | `1.85%` | `84.38%` | 32 | `0.0257` | `0.1002` | `0.6727` | `2.5750` | `0.7669` | 15 |
+| Strong-signal gate, top half of executed trend-efficiency | `R$8,555` | `1.4047` | `4.72%` | `79.28%` | 1062 | `0.8516` | `1.1275` | `2.8194` | `1.4699` | `1.7035` | 13 |
+| Session winner `SL 0.50 / TP 0.50` | `R$8,480` | `1.1711` | `6.46%` | `54.05%` | 1887 | `1.5132` | `1.3330` | `2.0449` | `1.2940` | `1.5388` | 14 |
+| Skip Tuesday and Friday + top-half signal gate | `R$5,460` | `1.4979` | `3.28%` | `80.07%` | 577 | `0.4627` | `0.7092` | `2.8060` | `1.5699` | `1.5104` | 15 |
+| Strong-signal gate, top quartile of executed trend-efficiency | `R$5,570` | `1.4829` | `4.61%` | `79.34%` | 605 | `0.4852` | `0.7538` | `2.0293` | `1.5198` | `1.2896` | 16 |
+| ADX quality mode, prior-day `ADX > 30` | `R$3,515` | `1.6356` | `4.35%` | `82.37%` | 278 | `0.2230` | `0.4607` | `1.4419` | `1.8573` | `1.0344` | 17 |
+| Hot-hand gate, last `10` trades PnL > `0` | `R$630` | `1.9921` | `1.85%` | `84.38%` | 32 | `0.0257` | `0.1002` | `0.6727` | `2.5750` | `0.7669` | 18 |
 
 ## Quality Alternative
 
@@ -58,12 +61,16 @@
   - the closest exact candidate was the plain session winner with `SL 0.60 / TP 0.42`:
     - `Sortino 2.1894`, `DD 4.45%`, composite `2.6251`
     - but its `PF 1.2851` and `WR 64.89%` were too weak to promote
+  - the alternate `SL 0.50 / TP 0.50` ratio was clearly worse:
+    - `R$8,480`, `PF 1.1711`, `DD 6.46%`, `Sortino 1.3330`
 - Confidence-weighted entry sizing:
   - research-only fractional sizing by absolute trend-efficiency produced the strongest raw composite score in the entire sprint:
     - `R$18,030.27`, `PF 1.4897`, `DD 3.71%`, `Composite 3.1301`
   - interpretation: stronger signals do appear to deserve more size
   - deployment caveat: this is not a real 1-contract MT5 preset, so it is evidence for future discrete sizing research, not a Monday recommendation
 - Binary strong-signal gate:
+  - top-half absolute trend-efficiency gate already hurt badly:
+    - `R$8,555`, `PF 1.4047`, `DD 4.72%`, `Composite 1.7035`
   - top-quartile absolute trend-efficiency over-throttled the production candidate:
     - `R$5,570`, `PF 1.4829`, `DD 4.61%`, `Composite 1.2896`
   - interpretation: the edge wants graded confidence sizing more than a hard yes/no strength gate
@@ -77,6 +84,8 @@
   - skipping Tuesday and Friday improved PF and DD, but still lost too much net:
     - `R$9,200`, `PF 1.6261`, `DD 2.97%`, `Composite 2.3961`
   - interpretation: Tuesday and Friday are watchlist days, not default hard-skip days
+  - combining the weekday skip with the top-half signal gate was worse than either idea alone:
+    - `R$5,460`, `PF 1.4979`, `DD 3.28%`, `Composite 1.5104`
 - Final stop-management follow-up:
   - time-widened stop (`0.84 -> 1.20` ATR after `30` bars) was the only true headline-metric improvement over max-hold:
     - `R$14,270`, `PF 1.4887`, `DD 3.28%`, `WR 80.87%`

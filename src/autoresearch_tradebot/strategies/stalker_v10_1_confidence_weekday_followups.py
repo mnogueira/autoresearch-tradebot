@@ -126,7 +126,19 @@ def main() -> None:
     confidence_trades["pnl_brl"] = confidence_trades["pnl_brl"].astype(float) * confidence_trades["size_multiplier"]
     confidence_trades["pnl_points"] = confidence_trades["pnl_points"].astype(float) * confidence_trades["size_multiplier"]
     confidence_metrics = calculate_metrics(confidence_trades, dataset.trade_dates)
+    strong_signal_threshold_50 = float(np.quantile(signal_strength, 0.50))
     strong_signal_threshold = float(np.quantile(signal_strength, 0.75))
+
+    strong_signal_half_trades, strong_signal_half_metrics = run_backtest_with_management(
+        dataset=dataset,
+        params=params,
+        trade_dates=dataset.trade_dates,
+        entry_filter=_combine_filters(
+            entry_filter,
+            _strong_signal_filter(trend_eff_raw=trend_eff_raw, min_abs_strength=strong_signal_threshold_50),
+        ),
+        management=ManagementConfig(min_minutes_between_entries=30, max_bars_in_trade=120),
+    )
 
     strong_signal_trades, strong_signal_metrics = run_backtest_with_management(
         dataset=dataset,
@@ -139,11 +151,24 @@ def main() -> None:
         management=ManagementConfig(min_minutes_between_entries=30, max_bars_in_trade=120),
     )
 
+    skip_weekdays_filter = _allowed_weekdays_filter({0, 2, 3})
     strong_days_trades, strong_days_metrics = run_backtest_with_management(
         dataset=dataset,
         params=params,
         trade_dates=dataset.trade_dates,
-        entry_filter=_combine_filters(entry_filter, _allowed_weekdays_filter({0, 2, 3})),
+        entry_filter=_combine_filters(entry_filter, skip_weekdays_filter),
+        management=ManagementConfig(min_minutes_between_entries=30, max_bars_in_trade=120),
+    )
+
+    combined_trades, combined_metrics = run_backtest_with_management(
+        dataset=dataset,
+        params=params,
+        trade_dates=dataset.trade_dates,
+        entry_filter=_combine_filters(
+            entry_filter,
+            skip_weekdays_filter,
+            _strong_signal_filter(trend_eff_raw=trend_eff_raw, min_abs_strength=strong_signal_threshold_50),
+        ),
         management=ManagementConfig(min_minutes_between_entries=30, max_bars_in_trade=120),
     )
 
@@ -157,6 +182,20 @@ def main() -> None:
     session_ratio_trades, session_ratio_metrics = run_backtest(
         dataset=dataset,
         params=session_ratio_params,
+        trade_dates=dataset.trade_dates,
+        entry_filter=entry_filter,
+    )
+
+    equal_ratio_params = V101Params(
+        **{
+            **asdict(params),
+            "SL_ATRMultiplier": 0.50,
+            "TP_ATRMultiplier": 0.50,
+        }
+    )
+    equal_ratio_trades, equal_ratio_metrics = run_backtest(
+        dataset=dataset,
+        params=equal_ratio_params,
         trade_dates=dataset.trade_dates,
         entry_filter=entry_filter,
     )
@@ -178,6 +217,12 @@ def main() -> None:
                 "max": round(float(confidence_trades["size_multiplier"].max()), 4),
             },
         },
+        "strong_signal_gate_top_half": {
+            "rule": "Only enter when absolute trend-efficiency at the signal timestamp is at or above the 50th percentile of executed-signal strengths.",
+            "threshold_abs_trend_efficiency": round(strong_signal_threshold_50, 6),
+            "metrics": strong_signal_half_metrics,
+            **_risk_block(strong_signal_half_trades, dataset.trade_dates),
+        },
         "strong_signal_gate_top_quartile": {
             "rule": "Only enter when absolute trend-efficiency at the signal timestamp is at or above the 75th percentile of executed-signal strengths.",
             "threshold_abs_trend_efficiency": round(strong_signal_threshold, 6),
@@ -189,17 +234,27 @@ def main() -> None:
             "metrics": strong_days_metrics,
             **_risk_block(strong_days_trades, dataset.trade_dates),
         },
+        "combined_skip_tuesday_friday_and_top_half_signal_gate": {
+            "rule": "Production candidate with both weekday filtering (Mon/Wed/Thu only) and the top-half strong-signal gate.",
+            "metrics": combined_metrics,
+            **_risk_block(combined_trades, dataset.trade_dates),
+        },
         "session_winner_sltp_followup": {
             "rule": "Session-winner exact variant with tighter stop / wider target ratio: SL 0.60 ATR, TP 0.42 ATR.",
             "metrics": session_ratio_metrics,
             **_risk_block(session_ratio_trades, dataset.trade_dates),
+        },
+        "session_winner_equal_rr_followup": {
+            "rule": "Session-winner exact variant with a 1:1 ATR ratio: SL 0.50 ATR, TP 0.50 ATR.",
+            "metrics": equal_ratio_metrics,
+            **_risk_block(equal_ratio_trades, dataset.trade_dates),
         },
         "weekday_breakdown": _weekday_metrics(trades, dataset.trade_dates),
         "notes": [
             "The confidence-weighted overlay is a research approximation, not a live-ready MT5 implementation. It assumes exact path exits are unchanged and only scales realized trade PnL by signal strength.",
             "Weekday metrics are computed on the final exact production candidate: session hours 10/11/12/14, 30-minute cooldown, 120 M1-bar max hold, SL 0.84, TP 0.30.",
             "The strong-signal gate and weekday skip follow-ups are exact entry filters on top of the production candidate.",
-            "The SL 0.60 / TP 0.42 test is run on the plain session-winner family, not on the cooldown/max-hold production overlay, because the request was to test that ratio on the session winner itself.",
+            "The SL/TP ratio tests are run on the plain session-winner family, not on the cooldown/max-hold production overlay, because the request was to test those ratios on the session winner itself.",
         ],
     }
     output_path = DEFAULT_OUTPUT_DIR / "summary.json"

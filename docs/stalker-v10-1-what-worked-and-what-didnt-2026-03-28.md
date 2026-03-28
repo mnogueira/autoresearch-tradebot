@@ -50,6 +50,8 @@
 | Confirmation + profit-lock combined | `R$-5,920`, `PF 0.7372`, `DD 61.28%` | The two ideas compounded each other's damage rather than fixing false breakouts. |
 | Hot-hand filter | trailing `10` closed trades PnL must be positive: `R$630`, `PF 1.9921`, `DD 1.85%` | Looked clean on the tiny surviving sample, but over-throttled the system so badly that it is not viable. |
 | Hard strong-signal gate | top-quartile executed trend-efficiency only: `R$5,570`, `PF 1.4829`, `DD 4.61%` | The edge appears to want graded sizing, not a binary strong/weak cutoff. |
+| Softer strong-signal gate | top-half executed trend-efficiency only: `R$8,555`, `PF 1.4047`, `DD 4.72%` | Less bad than the top quartile, but still clearly inferior to the baseline production line. |
+| Equal-risk/reward ratio | `SL 0.50 / TP 0.50`: `R$8,480`, `PF 1.1711`, `DD 6.46%` | A neat idea, but it weakened both quality and robustness. |
 
 ## The Real Risks
 
