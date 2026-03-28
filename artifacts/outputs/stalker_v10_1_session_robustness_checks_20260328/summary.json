@@ -55,6 +55,28 @@
       }
     }
   ],
+  "dynamic_sl_results": [
+    {
+      "atr_length": 14,
+      "sl_atr_mult": 1.5,
+      "tp_atr_mult": 0.3,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1896,
+        "win_rate": 0.8739,
+        "net_profit_brl": 16950.0,
+        "avg_profit_brl": 8.94,
+        "avg_win_brl": 35.34,
+        "avg_loss_brl": -174.08,
+        "profit_factor": 1.4074,
+        "max_drawdown_pct": 5.78,
+        "expected_payoff": 8.94,
+        "on_tester_value": 2931.41411
+      }
+    }
+  ],
   "equity_curve_shape": {
     "top_10_trade_share_pct": 4.82,
     "top_20_trade_share_pct": 9.11,
@@ -62,6 +84,8 @@
     "positive_months": 50,
     "negative_months": 11,
     "flat_months": 0,
+    "max_consecutive_losing_days": 5,
+    "max_consecutive_winning_days": 15,
     "monthly_pnl": [
       {
         "year_month": "2021-03",
@@ -337,6 +361,7 @@
   },
   "notes": [
     "Spread stress uses the exact every-tick engine with all historical spread ticks multiplied by the stated factor.",
-    "Equity-shape concentration is reported from the exact reference session winner, not from a lightweight proxy."
+    "Equity-shape concentration is reported from the exact reference session winner, not from a lightweight proxy.",
+    "The dynamic SL follow-up keeps the current session-winner entry logic and TP, and only changes the ATR stop formulation."
   ]
 }

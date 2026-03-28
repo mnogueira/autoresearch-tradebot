@@ -31,6 +31,8 @@ def trade_concentration(trades: pd.DataFrame) -> dict[str, Any]:
             "positive_months": 0,
             "negative_months": 0,
             "flat_months": 0,
+            "max_consecutive_losing_days": 0,
+            "max_consecutive_winning_days": 0,
             "monthly_pnl": [],
             "yearly_pnl": [],
         }
@@ -49,6 +51,24 @@ def trade_concentration(trades: pd.DataFrame) -> dict[str, Any]:
 
     daily = frame.groupby("session_date")["pnl_brl"].sum().sort_values(ascending=False)
     top_10_day_share = float(daily.head(min(10, len(daily))).sum() / net * 100.0) if net != 0.0 else 0.0
+
+    ordered_daily = frame.groupby("session_date")["pnl_brl"].sum().sort_index()
+    max_losing_streak = 0
+    max_winning_streak = 0
+    losing_streak = 0
+    winning_streak = 0
+    for pnl_value in ordered_daily.astype(float):
+        if pnl_value < 0.0:
+            losing_streak += 1
+            winning_streak = 0
+        elif pnl_value > 0.0:
+            winning_streak += 1
+            losing_streak = 0
+        else:
+            winning_streak = 0
+            losing_streak = 0
+        max_losing_streak = max(max_losing_streak, losing_streak)
+        max_winning_streak = max(max_winning_streak, winning_streak)
 
     monthly = (
         frame.assign(year_month=frame["session_date"].dt.to_period("M").astype(str))
@@ -71,6 +91,8 @@ def trade_concentration(trades: pd.DataFrame) -> dict[str, Any]:
         "positive_months": int((monthly["net_profit_brl"] > 0.0).sum()),
         "negative_months": int((monthly["net_profit_brl"] < 0.0).sum()),
         "flat_months": int((monthly["net_profit_brl"] == 0.0).sum()),
+        "max_consecutive_losing_days": int(max_losing_streak),
+        "max_consecutive_winning_days": int(max_winning_streak),
         "monthly_pnl": monthly.to_dict(orient="records"),
         "yearly_pnl": yearly.to_dict(orient="records"),
     }
@@ -85,6 +107,7 @@ def main() -> None:
     reference_trades, reference_metrics = run_backtest(dataset, params, dataset.trade_dates, entry_filter=entry_filter)
 
     spread_stress_results: list[dict[str, Any]] = []
+    dynamic_sl_results: list[dict[str, Any]] = []
     leaderboard_rows: list[dict[str, Any]] = []
     for multiplier in (2.0, 3.0):
         multiplier_label = f"{int(multiplier)}x" if float(multiplier).is_integer() else str(multiplier).replace(".", "p")
@@ -107,6 +130,21 @@ def main() -> None:
             )
         )
 
+    for atr_length, sl_mult in ((14, 1.50),):
+        dyn_params = params.__class__(**{**params.__dict__, "ATR_Length": int(atr_length), "SL_ATRMultiplier": float(sl_mult)})
+        _, metrics = run_backtest(dataset, dyn_params, dataset.trade_dates, entry_filter=entry_filter)
+        dynamic_sl_results.append({"atr_length": atr_length, "sl_atr_mult": sl_mult, "tp_atr_mult": dyn_params.TP_ATRMultiplier, "metrics": metrics})
+        leaderboard_rows.append(
+            candidate_row(
+                name=f"session_winner_dynamic_sl_atr{atr_length}_{str(sl_mult).replace('.', 'p')}",
+                family="session_dynamic_sl",
+                metrics=metrics,
+                notes=f"Exact session winner using ATR{atr_length} with SL {sl_mult:.2f}x ATR and TP unchanged at 0.30 ATR.",
+                artifact=DEFAULT_OUTPUT_DIR / "summary.json",
+                params={"atr_length": atr_length, "sl_atr_mult": sl_mult, "tp_atr_mult": dyn_params.TP_ATRMultiplier},
+            )
+        )
+
     concentration = trade_concentration(reference_trades)
     summary = {
         "reference": {
@@ -114,10 +152,12 @@ def main() -> None:
             "metrics": reference_metrics,
         },
         "spread_stress_results": spread_stress_results,
+        "dynamic_sl_results": dynamic_sl_results,
         "equity_curve_shape": concentration,
         "notes": [
             "Spread stress uses the exact every-tick engine with all historical spread ticks multiplied by the stated factor.",
             "Equity-shape concentration is reported from the exact reference session winner, not from a lightweight proxy.",
+            "The dynamic SL follow-up keeps the current session-winner entry logic and TP, and only changes the ATR stop formulation.",
         ],
     }
     summary_path = DEFAULT_OUTPUT_DIR / "summary.json"

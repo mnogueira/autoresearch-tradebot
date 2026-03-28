@@ -37,6 +37,11 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - `TP 0.54`: `R$20,320`, `PF 1.3505`, `DD 5.52%`
   - interpretation: wider TPs raise gross PnL, but the current `TP 0.30` session winner still has the best combined `PF/DD/OnTester`
 
+- A wider ATR-based stop also improved raw net, but not enough to displace the reference:
+  - artifact: `artifacts/outputs/stalker_v10_1_session_robustness_checks_20260328/summary.json`
+  - `ATR14` with `SL 1.50 x ATR`, `TP 0.30`: `R$16,950`, `PF 1.4074`, `DD 5.78%`
+  - interpretation: higher gross profit, but weaker `PF/DD/OnTester` than the current `ATR20 x 0.84` reference
+
 - Rolling intraday retracement windows create cleaner but smaller variants:
   - `8 bars`: `R$4,075`, `PF 1.5348`, `DD 3.68%`
   - `12 bars`: `R$8,260`, `PF 1.5091`, `DD 3.38%`
@@ -114,6 +119,8 @@ Equity concentration is better than it looked by eye:
 - top 10 trades account for only `4.82%` of total net profit
 - top 20 trades account for `9.11%`
 - top 10 days account for `12.03%`
+- max consecutive losing days: `5`
+- max consecutive winning days: `15`
 - result: the equity curve is not dominated by a handful of outlier trades
 
 But cost sensitivity is real:
@@ -144,7 +151,24 @@ But cost sensitivity is real:
 ## Best Next Host-Side Validations
 
 1. Validate the session winner approximation in MT5 `Every tick` once the tester is stable again.
+   - the latest main-installation attempt still produced no HTML report, only the generated config file
 2. Validate the Friday-exclusion preset:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 No Friday GPT 5.4.set`
 3. If MT5 remains unstable, prioritize cost-robustness and live-paper safety checks over more entry-family exploration.
 4. Do not spend more time on Bollinger mean reversion, inside-bar breakout, or the current EMA crossover family unless the entry/exit mechanics are materially redesigned.
+
+## Production Recommendation
+
+- Paper-trading default:
+  - validated MT5 preset `WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 GPT 5.4`
+- Best exact Python candidate:
+  - session winner with hours `10:00, 11:00, 12:00, 14:00`
+  - keep `SkipShortWednesday=true`
+  - keep `SkipShortHour13=true`
+  - keep `SL 0.84 / TP 0.30`
+- Known risks:
+  - the edge weakens sharply under higher transaction costs; `2x` spread is still positive, `3x` spread is not
+  - MT5 tester instability means the exact session-winner approximation still needs one clean host-side validation
+- Next paper-trading step:
+  - run the validated MT5 preset first
+  - monitor real slippage/spread conditions closely before promoting the exact session-window refinement
