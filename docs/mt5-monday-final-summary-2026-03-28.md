@@ -38,6 +38,7 @@
 ## Main Risks
 
 - Transaction-cost sensitivity remains the number-one risk.
+- Exact spread break-even for the main deployable tiers is `2` ticks. Do not trade when spread is above `2` ticks.
 - Range-bound, low-ADX tape remains the main underperformance regime.
 - The last `3` contract days before rollover are structurally weaker.
 - A true fixed `5`-tick spread tape is fatal to the edge.

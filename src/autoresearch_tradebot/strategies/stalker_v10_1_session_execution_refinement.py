@@ -49,6 +49,7 @@ class ManagementConfig:
     partial_fraction: float = 0.5
     spread_multiplier: float = 1.0
     fixed_spread_ticks: int | None = None
+    max_entry_spread_ticks: int | None = None
     min_minutes_between_entries: int | None = None
     max_daily_profit_brl: float | None = None
     max_weekly_profit_brl: float | None = None
@@ -106,6 +107,12 @@ def resolve_spread_ticks(raw_spread_ticks: np.ndarray, management: ManagementCon
         fixed_value = max(0, int(management.fixed_spread_ticks))
         return np.full(raw_spread_ticks.shape, fixed_value, dtype=np.int16)
     return np.rint(raw_spread_ticks.astype(float) * float(management.spread_multiplier)).astype(np.int16)
+
+
+def entry_spread_allows_trade(current_spread_ticks: int, management: ManagementConfig) -> bool:
+    if management.max_entry_spread_ticks is None or int(management.max_entry_spread_ticks) < 0:
+        return True
+    return int(current_spread_ticks) <= int(management.max_entry_spread_ticks)
 
 
 def candidate_row(
@@ -657,7 +664,8 @@ def run_backtest_with_management(
         timestamp = timestamps[index]
         session_date = session_dates[index]
         bid_open_tick = int(open_ticks[index])
-        ask_open_tick = bid_open_tick + int(spread_ticks[index])
+        current_spread_ticks = int(spread_ticks[index])
+        ask_open_tick = bid_open_tick + current_spread_ticks
 
         if current_date is None or session_date != current_date:
             if position != 0 and not management.keep_profitable_overnight:
@@ -713,7 +721,9 @@ def run_backtest_with_management(
 
         if position == 0 and pending_order is not None:
             fill_tick = None
-            if pending_order_can_fill_at_index(index, pending_order):
+            if pending_order_can_fill_at_index(index, pending_order) and entry_spread_allows_trade(
+                current_spread_ticks, management
+            ):
                 fill_tick = _fill_pending_order_at_tick(
                     pending_order=pending_order,
                     bid_tick=bid_open_tick,
@@ -792,6 +802,7 @@ def run_backtest_with_management(
             and profit_cap_allows_entry
             and weekly_profit_cap_allows_entry
             and recent_trade_filter_allows_entry
+            and entry_spread_allows_trade(current_spread_ticks, management)
         )
         if not can_enter_new_trades:
             pending_order = None
@@ -1004,14 +1015,16 @@ def run_backtest_with_management(
 
         for delta_tick in bid_path[1:]:
             current_bid_tick = bid_open_tick + int(delta_tick)
-            current_ask_tick = current_bid_tick + int(spread_ticks[index])
+            current_ask_tick = current_bid_tick + current_spread_ticks
 
             if position == 0 and pending_order_has_expired(index, pending_order):
                 pending_order = None
 
             if position == 0 and pending_order is not None:
                 fill_tick = None
-                if pending_order_can_fill_at_index(index, pending_order):
+                if pending_order_can_fill_at_index(index, pending_order) and entry_spread_allows_trade(
+                    current_spread_ticks, management
+                ):
                     fill_tick = _fill_pending_order_at_tick(
                         pending_order=pending_order,
                         bid_tick=current_bid_tick,

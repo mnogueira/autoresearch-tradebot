@@ -8,6 +8,7 @@ from autoresearch_tradebot.strategies.stalker_v10_1_session_execution_refinement
     ManagementConfig,
     atr_trailing_stop_tick,
     confirmation_candle_passed,
+    entry_spread_allows_trade,
     has_reached_daily_profit_cap,
     has_reached_max_trade_age,
     has_reached_weekly_profit_cap,
@@ -203,6 +204,14 @@ class SessionExecutionRefinementTests(unittest.TestCase):
         raw = np.array([0, 1, 2], dtype=np.int16)
         result = resolve_spread_ticks(raw, ManagementConfig(spread_multiplier=2.5))
         np.testing.assert_array_equal(result, np.array([0, 2, 5], dtype=np.int16))
+
+    def test_entry_spread_gate_defaults_to_allowing_trades(self) -> None:
+        self.assertTrue(entry_spread_allows_trade(3, ManagementConfig()))
+        self.assertTrue(entry_spread_allows_trade(3, ManagementConfig(max_entry_spread_ticks=-1)))
+
+    def test_entry_spread_gate_blocks_when_current_spread_exceeds_limit(self) -> None:
+        self.assertTrue(entry_spread_allows_trade(1, ManagementConfig(max_entry_spread_ticks=1)))
+        self.assertFalse(entry_spread_allows_trade(2, ManagementConfig(max_entry_spread_ticks=1)))
 
 
 if __name__ == "__main__":

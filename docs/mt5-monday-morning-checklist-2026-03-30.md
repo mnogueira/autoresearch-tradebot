@@ -29,6 +29,8 @@
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Maximum Quality v2 Cooldown 30m MaxHold120m GPT 5.4.set`
 7. Optional trend-day quality preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Trend Day ADX25 Cooldown 30m MaxHold120m GPT 5.4.set`
+8. Optional live spread-guard preset:
+   - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m SpreadGuard1t GPT 5.4.set`
 
 ## Preset Order
 
@@ -55,6 +57,11 @@
    - if using the trend-day preset, confirm `UsePriorDayADXFilter=true`, `PriorDayADXPeriod=14`, `MinPriorDayADX=25`
 2. Confirm the spread is realistic for the current session.
    - The historical exact tape was effectively a `0-1` tick spread world, so repeated live spreads above `1` tick are a real warning sign, not noise.
+   - Hard rule for Monday: do **not** trade when spread is above `2` ticks.
+   - Operational interpretation:
+     - `0-1` tick is the safe zone
+     - `2` ticks is already degraded but still historically survivable
+     - `3+` ticks turned the main exact tiers negative
 3. Run one clean backtest before turning on any paper automation.
 4. Save the HTML report and compare the headline numbers against the artifact summary.
 5. If the tester output looks sane, move to the paper chart:
@@ -76,6 +83,7 @@
   - MT5 fails to produce a report
   - `Every tick based on real ticks` is selected by mistake
   - spread behavior looks closer to the exact `3x` stress case
+  - live spread is repeatedly above `2` ticks during the core hours
   - the EA opens positions outside the intended `10,11,12,14` session structure
 
 Recent context:
@@ -107,6 +115,7 @@ Recent context:
    - unexpected entries outside the intended windows
    - repeated close-order rejections
    - spread spikes around the allowed sessions
+   - if you want the EA itself to refuse wide-spread entries, load the optional SpreadGuard `1t` preset after the baseline sanity run
 5. If live-paper performance diverges sharply from the exact baseline, fall back to the fully validated MT5 base preset.
 6. After the tester run or the paper session, export the trade log and daily PnL CSV:
    - script: `src/autoresearch_tradebot/mt5/export_tester_trade_log.py`

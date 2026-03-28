@@ -69,6 +69,7 @@ input int EntryStart_Minute = 0;                              // Earliest entry 
 input int LastEntry_Hour = 15;                                // Latest entry hour (inclusive, GMT-3)
 input int LastEntry_Minute = 0;                               // Latest entry minute (inclusive)
 input int MinMinutesBetweenEntries = 0;                       // Minimum minutes between filled entries
+input int MaxAllowedEntrySpreadTicks = 0;                     // Maximum spread in ticks allowed for new entries (0 disables)
 input bool SkipWednesday = false;                             // Skip all Wednesday entries
 input bool SkipShortWednesday = false;                        // Skip short entries on Wednesday only
 input bool SkipHour13 = false;                                // Skip entries during the 13:00 hour
@@ -276,7 +277,8 @@ void OnTick()
 
    double priorDayADXValue = 0.0;
    const bool PassesPriorDayADXGate = PassesPriorDayADXFilter(priorDayADXValue);
-   const bool CanEnterNewTrades = (IsAllowedEntryDay && IsWithinEntryHours && CooldownAllowsEntry && PassesPriorDayADXGate);
+   const bool PassesSpreadGate = PassesEntrySpreadFilter(TradingSymbol);
+   const bool CanEnterNewTrades = (IsAllowedEntryDay && IsWithinEntryHours && CooldownAllowsEntry && PassesPriorDayADXGate && PassesSpreadGate);
 
    const double atrValue = ATR[0];
    const double contractRangeFilterValue = ContractPercDailyAvgRange[0];
@@ -470,6 +472,22 @@ bool PassesPriorDayADXFilter(double &priorDayADXValue)
       return(false);
 
    return(priorDayADXValue > MinPriorDayADX);
+}
+
+bool PassesEntrySpreadFilter(const string symbol)
+{
+   if(MaxAllowedEntrySpreadTicks <= 0)
+      return(true);
+
+   MqlTick tick;
+   if(!SymbolInfoTick(symbol, tick))
+      return(false);
+
+   if(tick_size <= 0.0)
+      return(false);
+
+   const int spreadTicks = (int)MathRound((tick.ask - tick.bid) / tick_size);
+   return(spreadTicks <= MaxAllowedEntrySpreadTicks);
 }
 
 bool TryGetDirectionalTrendEfficiencyRaw(const int windowMinutes, double &rawValue)

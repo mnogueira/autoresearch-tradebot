@@ -68,6 +68,16 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - artifact: `artifacts/outputs/stalker_v10_1_contract_stress_followups_20260328/summary.json`
   - fixed `5`-tick spread on every bar: `R$-16,975`, `PF 0.6614`, `DD 168.02%`, composite `-0.9242`
   - interpretation: severe spread deterioration is a full stop condition, not a scale-down condition
+ - Exact spread-tolerance sweep:
+   - artifact: `artifacts/outputs/stalker_v10_1_spread_tolerance_followups_20260328/summary.json`
+   - Tier 2 cooldown-only: profitable at `2` ticks, negative at `3`
+   - Tier 3 cooldown+max-hold: profitable at `2` ticks, negative at `3`
+   - wider `TP 0.48` cooldown variant: barely profitable at `3` ticks (`R$215`, `PF 1.0040`)
+   - interpretation: the operational break-even spread for the main deployable strategy is `2` ticks, and anything above that should be treated as a stand-down regime
+ - Entry-spread diagnostic:
+   - artifact: `artifacts/outputs/stalker_v10_1_spread_entry_diagnostics_20260328/summary.json`
+   - the cached historical tape only used `0` or `1` tick spreads at entry
+   - interpretation: a `1`-tick spread guard is a live execution safeguard, not a historical alpha feature
 - Recent-softness diagnosis:
   - artifact: `artifacts/outputs/stalker_v10_1_recent_softness_analysis_20260328/summary.json`
   - trades per day actually rose from `1.2574` full-sample to `1.6000` recently, so this was not a simple signal drought

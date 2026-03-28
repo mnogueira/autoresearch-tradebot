@@ -64,6 +64,14 @@
   - 5: session winner at `3.0055`
   - 6: MT5-validated base at `2.8179`
   - 7: cooldown-only + skip last 3 contract days at `2.7792`
+- Spread-tolerance ranking:
+  - main deployable break-even integer spread is `2` ticks for both Tier 2 and Tier 3
+  - Tier 2 at `2` ticks: `R$4,700`, `PF 1.1320`, `DD 9.87%`
+  - Tier 3 at `2` ticks: `R$4,795`, `PF 1.1351`, `DD 9.54%`
+  - both are negative at `3` ticks
+  - only the wider `TP 0.48` cooldown variant stayed barely positive at `3` ticks:
+    - `R$215`, `PF 1.0040`, `DD 25.14%`
+  - interpretation: `TP 0.48` is a spread-resilient research tier, not a production promotion
 - Sortino target follow-up:
   - no live-ready exact variant broke `Sortino 2.5` while keeping `DD < 5%`
   - the closest exact candidate was the plain session winner with `SL 0.60 / TP 0.42`:
@@ -181,6 +189,12 @@
 - The strict spread-aware entry idea was a dead end on this tape:
   - historical cached spread only took values `0` or `1` tick
   - strict `current spread < prior session average spread` produced `0` trades
+- Live spread-guard follow-up:
+  - the new optional `1`-tick spread guard does not change historical results because the cached entry spread distribution was:
+    - `0` tick: `5` trades
+    - `1` tick: `1563` trades
+  - all `305` historical losing trades also entered at `1` tick simply because the tape never exceeded `1`
+  - interpretation: the spread guard is still worth having, but as a live risk-control rail rather than a backtest enhancer
 - Recent degradation check on the exact max-hold leader:
   - last `30` trading days (`2026-02-05` to `2026-03-20`): `R$40`, `PF 1.0357`, `DD 4.67%`, `48` trades
   - interpretation: still positive, but clearly softer than the full-sample profile, so Monday should be treated as validation-first.

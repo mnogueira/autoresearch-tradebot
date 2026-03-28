@@ -24,6 +24,18 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 - Artifact:
   - `artifacts/outputs/stalker_v10_1_session_robustness_checks_20260328/summary.json`
 
+### Spread-resilient research tier
+
+- This is not the Monday default, but it is the only tested variant that stayed barely profitable at a literal fixed `3`-tick spread:
+  - `session winner + 30m cooldown + TP 0.48`
+- Exact baseline result:
+  - `R$18,475`, `PF 1.43`, `DD 4.92%`
+- Fixed `3`-tick stress result:
+  - `R$215`, `PF 1.0040`, `DD 25.14%`
+- Interpretation:
+  - this is a research fallback for very hostile cost regimes, not a production promotion
+  - it survives `3` ticks, but only by a hair and with much worse drawdown than the main tiers
+
 ### New best exact Python refinement
 
 - This is now MT5-ready, but it should be validated only after the simpler cooldown-only refinement:
@@ -112,6 +124,11 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 - Watch the first two sessions for actual spread behavior at `10:00`, `11:00`, `12:00`, and `14:00`.
 - If observed spread looks closer to the exact `2x` stress case than the baseline case, stay cautious about scaling.
 - If observed spread ever sits near `5` ticks during the core hours, stand down; the exact `5`-tick stress test was decisively negative.
+- Operational spread guardrail:
+  - `0-1` tick: normal operating zone
+  - `2` ticks: last tolerable integer spread for the main strategy, but already badly degraded
+  - `>2` ticks: do not trade
+  - only the wider-TP `0.48` research tier stayed barely positive at `3` ticks, and it is not strong enough to replace the main tiers
 
 ## Risk Budget
 
@@ -186,7 +203,15 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 - Cost sensitivity:
   - the exact max-hold leader still fails badly under `3x` spread stress
   - the historical exact tape was effectively a `0-1` tick spread world, so repeated live spreads above `1` tick are a meaningful warning signal
+  - exact fixed-spread break-even for the main deployable tiers is `2` ticks:
+    - Tier 2 cooldown-only at `2` ticks: `R$4,700`, `PF 1.1320`, `DD 9.87%`
+    - Tier 3 cooldown+max-hold at `2` ticks: `R$4,795`, `PF 1.1351`, `DD 9.54%`
+    - both turn negative at `3` ticks
   - a true fixed `5`-tick spread environment was catastrophic: `R$-16,975`, `PF 0.6614`, `DD 168.02%`
+  - spread-diagnostic artifact:
+    - `artifacts/outputs/stalker_v10_1_spread_entry_diagnostics_20260328/summary.json`
+  - interpretation:
+    - the cached historical spread only ever reached `1` tick at entry, so the new `1`-tick entry guard is a live safety rail, not a historical alpha improvement
 - MT5 tester instability:
   - MT5 `Every Tick` produced the usable validation runs
   - multiple `real ticks` and main-terminal attempts stalled or produced incomplete artifacts

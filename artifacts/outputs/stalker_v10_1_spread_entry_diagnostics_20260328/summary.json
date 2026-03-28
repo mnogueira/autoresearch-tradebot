@@ -1,0 +1,21 @@
+{
+  "total_trades": 1568,
+  "losing_trades": 305,
+  "winning_trades": 1263,
+  "entry_spread_distribution": {
+    "0": 5,
+    "1": 1563
+  },
+  "losing_entry_spread_distribution": {
+    "1": 305
+  },
+  "winning_entry_spread_distribution": {
+    "0": 5,
+    "1": 1258
+  },
+  "notes": [
+    "The cached exact-engine spread only takes values 0 or 1 tick in this dataset.",
+    "This means the 1-tick spread guard is a live execution safeguard, not a historical alpha lever.",
+    "Losing trades are not clustered in a wider-spread bucket because the historical tape never exceeds 1 tick at entry."
+  ]
+}
