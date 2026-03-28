@@ -49,6 +49,7 @@ class V101Params:
     LastEntry_Hour: int = 15
     LastEntry_Minute: int = 0
     SkipWednesday: bool = False
+    SkipShortWednesday: bool = False
     SkipHour13: bool = False
     SkipHour14: bool = False
     AllowMonday: bool = True
@@ -108,6 +109,12 @@ def is_within_entry_window(timestamp: pd.Timestamp, params: V101Params) -> bool:
     current_minutes = (timestamp.hour * 60) + timestamp.minute
     start_minutes, end_minutes = entry_window_minutes(params)
     return start_minutes <= current_minutes <= end_minutes
+
+
+def allows_entry_direction(timestamp: pd.Timestamp, direction: int, params: V101Params) -> bool:
+    if int(direction) == -1 and timestamp.dayofweek == 2 and bool(params.SkipShortWednesday):
+        return False
+    return True
 
 
 def slot_to_hour_minute(slot_minutes: int) -> tuple[int, int]:
@@ -627,7 +634,7 @@ def run_backtest(
                     ),
                     "signal_time": timestamp,
                 }
-                if _is_valid_pending_order(
+                if allows_entry_direction(timestamp, 1, params) and _is_valid_pending_order(
                     direction=1,
                     limit_tick=upper_retracement_tick,
                     bid_tick=bid_open_tick,
@@ -687,7 +694,7 @@ def run_backtest(
                     ),
                     "signal_time": timestamp,
                 }
-                if _is_valid_pending_order(
+                if allows_entry_direction(timestamp, -1, params) and _is_valid_pending_order(
                     direction=-1,
                     limit_tick=lower_retracement_tick,
                     bid_tick=bid_open_tick,

@@ -65,6 +65,7 @@ input int EntryStart_Minute = 0;                              // Earliest entry 
 input int LastEntry_Hour = 15;                                // Latest entry hour (inclusive, GMT-3)
 input int LastEntry_Minute = 0;                               // Latest entry minute (inclusive)
 input bool SkipWednesday = false;                             // Skip all Wednesday entries
+input bool SkipShortWednesday = false;                        // Skip short entries on Wednesday only
 input bool SkipHour13 = false;                                // Skip entries during the 13:00 hour
 input bool SkipHour14 = false;                                // Skip entries during the 14:00 hour
 input bool AllowMonday = true;                                // Allow Monday entries
@@ -287,7 +288,8 @@ void OnTick()
          const double stopLoss = Round2Ticksize(basePrice + (atrValue * SL_ATRMultiplier));
          const double takeProfit = Round2Ticksize(basePrice - (atrValue * TP_ATRMultiplier));
 
-         if(PassesDirectionalTrendEfficiency(-1, hasTrendEfficiencyRaw, trendEfficiencyRaw)
+         if(IsDirectionAllowed(-1, TimeCurrentBrazil)
+         && PassesDirectionalTrendEfficiency(-1, hasTrendEfficiencyRaw, trendEfficiencyRaw)
          && PassesSignalVolume(-1, hasSignalVolumeSum, signalVolumeSum)
          && PassesRelativeVolume(-1, hasRelativeVolumeAtTime, relativeVolumeAtTime))
          {
@@ -344,6 +346,16 @@ bool IsWithinEntryWindow(const datetime current_time_brazil)
    const int end_minutes = (LastEntry_Hour * 60) + LastEntry_Minute;
 
    return (current_minutes >= start_minutes && current_minutes <= end_minutes);
+}
+
+bool IsDirectionAllowed(const int direction, const datetime current_time_brazil)
+{
+   if(direction != -1 || !SkipShortWednesday)
+      return(true);
+
+   MqlDateTime time_parts;
+   TimeToStruct(current_time_brazil, time_parts);
+   return(time_parts.day_of_week != 3);
 }
 
 bool PassesDirectionalTrendEfficiency(const int direction, const bool hasValue, const double rawValue)
