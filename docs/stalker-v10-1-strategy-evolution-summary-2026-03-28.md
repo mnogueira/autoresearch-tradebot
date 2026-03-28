@@ -38,6 +38,16 @@ That is why the Monday recommendation stays conservative:
   - `R$14,355`, `PF 1.5991`, `DD 3.50%`
   - I am not promoting it because the month mapping was derived from the same historical tape, so the overfit risk is too obvious for Monday deployment.
 
+## Current Caveat
+
+- The most recent `30` trading days were much softer than the full-sample average:
+  - `R$40`, `PF 1.0357`, `DD 4.67%`
+- The softness does not look like a lack of signals. It looks more like weaker signal quality in a less-trending tape:
+  - trades per day rose from `1.26` to `1.60`
+  - prior-day daily `ADX(14) > 25` fell from `31.57%` full-sample to `16.67%` recently
+- Operational implication:
+  - Monday should be treated as a cautious paper-validation start, not a scale-up day.
+
 ## Source Artifacts
 
 - Surgical baseline and SL/TP grid: `artifacts/outputs/stalker_v10_1_surgical_sltp_grid_20260328/summary.json`

@@ -1,0 +1,214 @@
+{
+  "period": [
+    "2026-02-05",
+    "2026-03-20"
+  ],
+  "production_reference_full_sample": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247,
+    "total_trades": 1568,
+    "win_rate": 0.8055,
+    "net_profit_brl": 14135.0,
+    "avg_profit_brl": 9.01,
+    "avg_win_brl": 34.26,
+    "avg_loss_brl": -95.54,
+    "profit_factor": 1.4851,
+    "max_drawdown_pct": 3.29,
+    "expected_payoff": 9.01,
+    "on_tester_value": 4290.320082
+  },
+  "recent_30d_variant_comparison": {
+    "session_only_no_cooldown_no_maxhold": {
+      "start_date": "2026-02-05",
+      "end_date": "2026-03-20",
+      "trading_days": 30,
+      "total_trades": 60,
+      "win_rate": 0.7667,
+      "net_profit_brl": 145.0,
+      "avg_profit_brl": 2.42,
+      "avg_win_brl": 31.52,
+      "avg_loss_brl": -93.21,
+      "profit_factor": 1.1111,
+      "max_drawdown_pct": 3.37,
+      "expected_payoff": 2.42,
+      "on_tester_value": 42.988235
+    },
+    "session_plus_cooldown_30m": {
+      "start_date": "2026-02-05",
+      "end_date": "2026-03-20",
+      "trading_days": 30,
+      "total_trades": 48,
+      "win_rate": 0.75,
+      "net_profit_brl": 40.0,
+      "avg_profit_brl": 0.83,
+      "avg_win_brl": 32.22,
+      "avg_loss_brl": -93.33,
+      "profit_factor": 1.0357,
+      "max_drawdown_pct": 4.67,
+      "expected_payoff": 0.83,
+      "on_tester_value": 8.557447
+    },
+    "session_plus_maxhold_120m1bars": {
+      "start_date": "2026-02-05",
+      "end_date": "2026-03-20",
+      "trading_days": 30,
+      "total_trades": 60,
+      "win_rate": 0.7667,
+      "net_profit_brl": 145.0,
+      "avg_profit_brl": 2.42,
+      "avg_win_brl": 31.52,
+      "avg_loss_brl": -93.21,
+      "profit_factor": 1.1111,
+      "max_drawdown_pct": 3.37,
+      "expected_payoff": 2.42,
+      "on_tester_value": 42.988235
+    },
+    "session_plus_cooldown_30m_plus_maxhold_120m1bars": {
+      "start_date": "2026-02-05",
+      "end_date": "2026-03-20",
+      "trading_days": 30,
+      "total_trades": 48,
+      "win_rate": 0.75,
+      "net_profit_brl": 40.0,
+      "avg_profit_brl": 0.83,
+      "avg_win_brl": 32.22,
+      "avg_loss_brl": -93.33,
+      "profit_factor": 1.0357,
+      "max_drawdown_pct": 4.67,
+      "expected_payoff": 0.83,
+      "on_tester_value": 8.557447
+    }
+  },
+  "recent_vs_full_quality": {
+    "trades_per_day_full": 1.2574,
+    "trades_per_day_recent": 1.6,
+    "win_rate_delta": -0.0555,
+    "avg_profit_brl_delta": -8.18,
+    "profit_factor_delta": -0.4494
+  },
+  "recent_trade_tape": {
+    "exit_reason_counts": {
+      "take_profit": 36,
+      "stop_loss": 12
+    },
+    "daily_pnl_brl": {
+      "2026-02-05": 55.0,
+      "2026-02-06": -175.0,
+      "2026-02-09": 55.0,
+      "2026-02-10": -20.0,
+      "2026-02-11": 20.0,
+      "2026-02-12": -20.0,
+      "2026-02-13": -95.0,
+      "2026-02-19": 30.0,
+      "2026-02-20": 50.0,
+      "2026-02-23": 45.0,
+      "2026-02-24": 25.0,
+      "2026-02-25": -145.0,
+      "2026-02-26": 45.0,
+      "2026-02-27": -55.0,
+      "2026-03-02": 30.0,
+      "2026-03-03": 50.0,
+      "2026-03-05": -215.0,
+      "2026-03-06": -95.0,
+      "2026-03-09": 80.0,
+      "2026-03-10": 35.0,
+      "2026-03-12": 105.0,
+      "2026-03-13": 125.0,
+      "2026-03-16": 45.0,
+      "2026-03-17": 30.0,
+      "2026-03-18": 30.0,
+      "2026-03-19": -85.0,
+      "2026-03-20": 90.0
+    },
+    "worst_trades": [
+      {
+        "session_date": "2026-03-06",
+        "entry_time": "2026-03-06 11:12:00",
+        "direction": "long",
+        "pnl_brl": "-140.0",
+        "exit_reason": "stop_loss"
+      },
+      {
+        "session_date": "2026-03-19",
+        "entry_time": "2026-03-19 10:16:00",
+        "direction": "long",
+        "pnl_brl": "-140.0",
+        "exit_reason": "stop_loss"
+      },
+      {
+        "session_date": "2026-03-05",
+        "entry_time": "2026-03-05 12:08:00",
+        "direction": "short",
+        "pnl_brl": "-110.0",
+        "exit_reason": "stop_loss"
+      },
+      {
+        "session_date": "2026-03-05",
+        "entry_time": "2026-03-05 11:30:00",
+        "direction": "long",
+        "pnl_brl": "-105.0",
+        "exit_reason": "stop_loss"
+      },
+      {
+        "session_date": "2026-02-13",
+        "entry_time": "2026-02-13 11:44:00",
+        "direction": "long",
+        "pnl_brl": "-95.0",
+        "exit_reason": "stop_loss"
+      }
+    ],
+    "best_trades": [
+      {
+        "session_date": "2026-03-19",
+        "entry_time": "2026-03-19 12:27:00",
+        "direction": "short",
+        "pnl_brl": "55.0",
+        "exit_reason": "take_profit"
+      },
+      {
+        "session_date": "2026-03-03",
+        "entry_time": "2026-03-03 12:31:00",
+        "direction": "long",
+        "pnl_brl": "50.0",
+        "exit_reason": "take_profit"
+      },
+      {
+        "session_date": "2026-03-06",
+        "entry_time": "2026-03-06 10:22:00",
+        "direction": "short",
+        "pnl_brl": "45.0",
+        "exit_reason": "take_profit"
+      },
+      {
+        "session_date": "2026-03-13",
+        "entry_time": "2026-03-13 12:47:00",
+        "direction": "long",
+        "pnl_brl": "45.0",
+        "exit_reason": "take_profit"
+      },
+      {
+        "session_date": "2026-03-16",
+        "entry_time": "2026-03-16 11:04:00",
+        "direction": "short",
+        "pnl_brl": "45.0",
+        "exit_reason": "take_profit"
+      }
+    ]
+  },
+  "recent_regime_summary": {
+    "recent_mean_daily_adx14": 22.85,
+    "full_mean_daily_adx14": 23.12,
+    "recent_trending_share_gt25": 0.1667,
+    "full_trending_share_gt25": 0.3157,
+    "recent_mean_daily_range": 67.3833,
+    "full_mean_daily_range": 68.5381,
+    "recent_mean_daily_atr14": 63.3572,
+    "full_mean_daily_atr14": 71.671
+  },
+  "interpretation_hints": [
+    "If trades per day are not lower but PF and average profit collapse, that points to weaker signal quality rather than a simple signal drought.",
+    "If recent ADX and recent daily range/ATR are below the full-sample average, that supports the range-bound / low-volatility explanation for softness.",
+    "The feature comparison shows whether cooldown and max-hold still helped inside the weak recent tape, not just over the full sample."
+  ]
+}

@@ -34,6 +34,13 @@
 - Recent degradation check on the exact max-hold leader:
   - last `30` trading days (`2026-02-05` to `2026-03-20`): `R$40`, `PF 1.0357`, `DD 4.67%`, `48` trades
   - interpretation: still positive, but clearly softer than the full-sample profile, so Monday should be treated as validation-first.
+- Recent-softness diagnosis:
+  - trades per day increased from `1.26` to `1.60`, so this was not caused by a lack of signals
+  - the recent issue was weaker signal quality: win rate dropped from `80.55%` to `75.00%`, and average profit per trade dropped from `R$9.01` to `R$0.83`
+  - prior-day daily `ADX(14) > 25` only `16.67%` of the time recently versus `31.57%` over the full sample
+  - session-only recent run: `R$145`, `PF 1.1111`, `DD 3.37%`
+  - session + cooldown + max-hold recent run: `R$40`, `PF 1.0357`, `DD 4.67%`
+  - interpretation: the recent month looked more range-bound, and the cooldown hurt in that short weak window while max-hold was effectively neutral
 - Final wrap-up exploration:
   - quarter-adaptive hours were effectively just `10,11,12` all year and came back as a near-tie: `R$14,030`, `PF 1.4889`, `DD 3.41%`
   - month-adaptive hours reached `R$14,355`, `PF 1.5991`, `DD 3.50%`, but that mapping is explicitly in-sample and not safe to promote for Monday
@@ -61,5 +68,6 @@
 - Final wrap-up artifact: `artifacts/outputs/stalker_v10_1_session_wrapup_followups_20260328/summary.json`
 - Final patience artifact: `artifacts/outputs/stalker_v10_1_session_patience_followups_20260328/summary.json`
 - Recent 30-day check: `artifacts/outputs/stalker_v10_1_recent_30d_check_20260328/summary.json`
+- Recent softness analysis: `artifacts/outputs/stalker_v10_1_recent_softness_analysis_20260328/summary.json`
 - Frontier note: `docs/research-frontier-2026-03-28.md`
 - MT5 playbook: `docs/mt5-paper-trading-playbook-2026-03-28.md`

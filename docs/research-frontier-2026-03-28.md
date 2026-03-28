@@ -16,6 +16,16 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - period: `2026-02-05` to `2026-03-20`
   - metrics: `R$40`, `PF 1.0357`, `DD 4.67%`, `48` trades
 - Interpretation: the edge has not obviously broken, but the most recent tape is much weaker than the full-sample average. Monday should be treated as a cautious paper-validation start, not an excuse to scale up.
+- Recent-softness diagnosis:
+  - artifact: `artifacts/outputs/stalker_v10_1_recent_softness_analysis_20260328/summary.json`
+  - trades per day actually rose from `1.2574` full-sample to `1.6000` recently, so this was not a simple signal drought
+  - win rate fell by `5.55` points and average profit per trade fell by `R$8.18`, which points to worse signal quality
+  - prior-day daily `ADX(14) > 25` only `16.67%` of the time recently versus `31.57%` over the full sample
+  - recent daily ATR14 and daily range were both below the full-sample average
+  - feature check inside the recent window:
+    - session only: `R$145`, `PF 1.1111`, `DD 3.37%`
+    - session + cooldown + max-hold: `R$40`, `PF 1.0357`, `DD 4.67%`
+  - interpretation: the recent softness looks much more like a weaker, less-trending tape than a lack of opportunities, and the cooldown specifically over-throttled the recent month.
 
 ## Best Python Candidates Pending MT5
 

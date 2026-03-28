@@ -78,6 +78,28 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 - Execution behavior around the allowed session windows differs from the backtest assumptions.
 - Slippage pushes realized behavior toward the exact `3x spread` stress case.
 
+## Risks And Caveats
+
+- Recent softness:
+  - over the most recent `30` trading days (`2026-02-05` to `2026-03-20`), the exact max-hold leader was only marginally positive at `R$40`, `PF 1.0357`, `DD 4.67%`
+  - artifact: `artifacts/outputs/stalker_v10_1_recent_30d_check_20260328/summary.json`
+- Why the recent tape softened:
+  - it was not a signal drought; trades per day actually rose from `1.26` full-sample to `1.60` in the recent window
+  - signal quality degraded instead: win rate fell from `80.55%` to `75.00%`, and average profit per trade fell from `R$9.01` to `R$0.83`
+  - the recent daily regime looked less trending: prior-day daily `ADX(14) > 25` only `16.67%` of the time recently versus `31.57%` over the full sample
+  - recent daily ATR and daily range were both below the full-sample average
+- Feature sensitivity inside the recent weak tape:
+  - session-only, without cooldown or max-hold: `R$145`, `PF 1.1111`, `DD 3.37%`
+  - session + cooldown + max-hold: `R$40`, `PF 1.0357`, `DD 4.67%`
+  - interpretation: the cooldown helped over the full sample, but it hurt inside the most recent weak month; max-hold was roughly neutral there
+- Cost sensitivity:
+  - the exact max-hold leader still fails badly under `3x` spread stress
+  - the historical exact tape was effectively a `0-1` tick spread world, so repeated live spreads above `1` tick are a meaningful warning signal
+- MT5 tester instability:
+  - MT5 `Every Tick` produced the usable validation runs
+  - multiple `real ticks` and main-terminal attempts stalled or produced incomplete artifacts
+  - that is why the Monday plan starts with a fresh `Every Tick` sanity run before any paper activation
+
 ## Current Recommendation
 
 - Paper-trading default: the validated MT5 preset `sl0p84 / tp0p3`
