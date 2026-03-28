@@ -24,6 +24,26 @@ This remains the safest paper-trading candidate because it is the best strategy 
 
 ## New Findings From Advanced Follow-ups
 
+- Exact execution refinement says the current session winner is already near a local optimum:
+  - artifact: `artifacts/outputs/stalker_v10_1_session_execution_refinement_20260328/summary.json`
+  - reference still best overall: `R$15,965`, `PF 1.4438`, `DD 4.04%`
+  - tighter stops `0.60`, `0.66`, `0.72` all underperformed the reference
+  - time exits `30`, `60`, `90` bars did not beat the reference in a meaningful way
+  - partial-profit plus trail was a clear miss: `R$5,472.5`, `PF 1.31`, `DD 6.09%`
+
+- Wider take-profits improved raw net profit, but not the overall quality balance:
+  - `TP 0.42`: `R$17,505`, `PF 1.3591`, `DD 4.99%`
+  - `TP 0.48`: `R$20,475`, `PF 1.3882`, `DD 5.21%`
+  - `TP 0.54`: `R$20,320`, `PF 1.3505`, `DD 5.52%`
+  - interpretation: wider TPs raise gross PnL, but the current `TP 0.30` session winner still has the best combined `PF/DD/OnTester`
+
+- Rolling intraday retracement windows create cleaner but smaller variants:
+  - `8 bars`: `R$4,075`, `PF 1.5348`, `DD 3.68%`
+  - `12 bars`: `R$8,260`, `PF 1.5091`, `DD 3.38%`
+  - `20 bars`: `R$11,880`, `PF 1.3650`, `DD 5.64%`
+  - `30 bars`: `R$12,770`, `PF 1.2954`, `DD 8.58%`
+  - interpretation: the shorter windows improve selectivity, but none beat the full session-range winner overall
+
 - Friday exclusion is the best exact quality variant from the latest pass:
   - artifact: `artifacts/outputs/stalker_v10_1_session_advanced_followups_20260328/summary.json`
   - metrics: `R$13,100`, `PF 1.4902`, `DD 3.57%`
@@ -69,6 +89,12 @@ This remains the safest paper-trading candidate because it is the best strategy 
 - The Bollinger mean-reversion family was negative and should not be pursued as-is:
   - `R$-13,586`, `PF 0.8837`, `DD 138.39%`
 
+- A fresh exact inside-bar breakout family also failed:
+  - artifact: `artifacts/outputs/wdo_inside_bar_breakout_exact_20260328/summary.json`
+  - `SL 0.84 / TP 0.30`: `R$-4,775`, `PF 0.86`, `DD 58.41%`
+  - `SL 0.84 / TP 0.48`: `R$-6,675`, `PF 0.8557`, `DD 76.68%`
+  - interpretation: do not pursue the current inside-bar breakout implementation
+
 ## Month Robustness
 
 The session winner is positive in every calendar month of the continuous WDO sample, but it is not equally strong:
@@ -82,6 +108,19 @@ Yearly stability is still acceptable, but 2025 was weaker than 2024:
 
 - 2024: `R$2,995`, `PF 1.6175`, `DD 3.09%`
 - 2025: `R$2,445`, `PF 1.3802`, `DD 4.32%`
+
+Equity concentration is better than it looked by eye:
+
+- top 10 trades account for only `4.82%` of total net profit
+- top 20 trades account for `9.11%`
+- top 10 days account for `12.03%`
+- result: the equity curve is not dominated by a handful of outlier trades
+
+But cost sensitivity is real:
+
+- exact `2x spread` stress: `R$4,790`, `PF 1.11`, `DD 12.48%`
+- exact `3x spread` stress: `R$-4,570`, `PF 0.9081`, `DD 57.15%`
+- interpretation: the edge survives moderate deterioration, but not severe execution slippage
 
 ## What To Stop Spending Time On
 
@@ -107,5 +146,5 @@ Yearly stability is still acceptable, but 2025 was weaker than 2024:
 1. Validate the session winner approximation in MT5 `Every tick` once the tester is stable again.
 2. Validate the Friday-exclusion preset:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 No Friday GPT 5.4.set`
-3. If MT5 remains unstable, prioritize exact validation of the strongest existing session and SL/TP refinements rather than new prototype families.
-4. Do not spend more time on Bollinger mean reversion, momentum divergence, or the current EMA crossover family unless the entry/exit mechanics are materially redesigned.
+3. If MT5 remains unstable, prioritize cost-robustness and live-paper safety checks over more entry-family exploration.
+4. Do not spend more time on Bollinger mean reversion, inside-bar breakout, or the current EMA crossover family unless the entry/exit mechanics are materially redesigned.

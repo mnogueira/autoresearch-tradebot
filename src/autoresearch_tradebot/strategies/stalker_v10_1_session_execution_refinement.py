@@ -47,6 +47,7 @@ class ManagementConfig:
     max_bars_in_trade: int | None = None
     partial_profit_enabled: bool = False
     partial_fraction: float = 0.5
+    spread_multiplier: float = 1.0
 
 
 def session_winner_params() -> V101Params:
@@ -135,7 +136,7 @@ def run_backtest_with_management(
     low_ticks = cache["low_ticks"][start:stop]
     close_ticks = cache["close_ticks"][start:stop]
     volume = cache["volume"][start:stop]
-    spread_ticks = cache["spread_ticks"][start:stop]
+    spread_ticks = np.rint(cache["spread_ticks"][start:stop].astype(float) * float(management.spread_multiplier)).astype(np.int16)
     day_high_current_ticks = (
         range_high_ticks_override[start:stop]
         if range_high_ticks_override is not None

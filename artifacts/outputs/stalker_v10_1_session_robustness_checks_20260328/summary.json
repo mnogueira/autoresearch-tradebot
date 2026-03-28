@@ -1,0 +1,342 @@
+{
+  "reference": {
+    "name": "session_winner_hours_10_11_12_14_sl0p84_tp0p30",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1896,
+      "win_rate": 0.8017,
+      "net_profit_brl": 15965.0,
+      "avg_profit_brl": 8.42,
+      "avg_win_brl": 34.17,
+      "avg_loss_brl": -95.68,
+      "profit_factor": 1.4438,
+      "max_drawdown_pct": 4.04,
+      "expected_payoff": 8.42,
+      "on_tester_value": 3950.819156
+    }
+  },
+  "spread_stress_results": [
+    {
+      "spread_multiplier": 2.0,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1867,
+        "win_rate": 0.7525,
+        "net_profit_brl": 4790.0,
+        "avg_profit_brl": 2.57,
+        "avg_win_brl": 34.39,
+        "avg_loss_brl": -94.22,
+        "profit_factor": 1.11,
+        "max_drawdown_pct": 12.48,
+        "expected_payoff": 2.57,
+        "on_tester_value": 383.686294
+      }
+    },
+    {
+      "spread_multiplier": 3.0,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1837,
+        "win_rate": 0.7093,
+        "net_profit_brl": -4570.0,
+        "avg_profit_brl": -2.49,
+        "avg_win_brl": 34.65,
+        "avg_loss_brl": -93.12,
+        "profit_factor": 0.9081,
+        "max_drawdown_pct": 57.15,
+        "expected_payoff": -2.49,
+        "on_tester_value": -79.966667
+      }
+    }
+  ],
+  "equity_curve_shape": {
+    "top_10_trade_share_pct": 4.82,
+    "top_20_trade_share_pct": 9.11,
+    "top_10_day_share_pct": 12.03,
+    "positive_months": 50,
+    "negative_months": 11,
+    "flat_months": 0,
+    "monthly_pnl": [
+      {
+        "year_month": "2021-03",
+        "net_profit_brl": 105.0
+      },
+      {
+        "year_month": "2021-04",
+        "net_profit_brl": 810.0
+      },
+      {
+        "year_month": "2021-05",
+        "net_profit_brl": 850.0
+      },
+      {
+        "year_month": "2021-06",
+        "net_profit_brl": 430.0
+      },
+      {
+        "year_month": "2021-07",
+        "net_profit_brl": 540.0
+      },
+      {
+        "year_month": "2021-08",
+        "net_profit_brl": 585.0
+      },
+      {
+        "year_month": "2021-09",
+        "net_profit_brl": 35.0
+      },
+      {
+        "year_month": "2021-10",
+        "net_profit_brl": 330.0
+      },
+      {
+        "year_month": "2021-11",
+        "net_profit_brl": 195.0
+      },
+      {
+        "year_month": "2021-12",
+        "net_profit_brl": 200.0
+      },
+      {
+        "year_month": "2022-01",
+        "net_profit_brl": 360.0
+      },
+      {
+        "year_month": "2022-02",
+        "net_profit_brl": 165.0
+      },
+      {
+        "year_month": "2022-03",
+        "net_profit_brl": 605.0
+      },
+      {
+        "year_month": "2022-04",
+        "net_profit_brl": 205.0
+      },
+      {
+        "year_month": "2022-05",
+        "net_profit_brl": 1050.0
+      },
+      {
+        "year_month": "2022-06",
+        "net_profit_brl": 440.0
+      },
+      {
+        "year_month": "2022-07",
+        "net_profit_brl": 820.0
+      },
+      {
+        "year_month": "2022-08",
+        "net_profit_brl": 955.0
+      },
+      {
+        "year_month": "2022-09",
+        "net_profit_brl": 305.0
+      },
+      {
+        "year_month": "2022-10",
+        "net_profit_brl": -435.0
+      },
+      {
+        "year_month": "2022-11",
+        "net_profit_brl": 490.0
+      },
+      {
+        "year_month": "2022-12",
+        "net_profit_brl": 145.0
+      },
+      {
+        "year_month": "2023-01",
+        "net_profit_brl": 240.0
+      },
+      {
+        "year_month": "2023-02",
+        "net_profit_brl": -80.0
+      },
+      {
+        "year_month": "2023-03",
+        "net_profit_brl": 35.0
+      },
+      {
+        "year_month": "2023-04",
+        "net_profit_brl": -155.0
+      },
+      {
+        "year_month": "2023-05",
+        "net_profit_brl": 560.0
+      },
+      {
+        "year_month": "2023-06",
+        "net_profit_brl": 325.0
+      },
+      {
+        "year_month": "2023-07",
+        "net_profit_brl": -275.0
+      },
+      {
+        "year_month": "2023-08",
+        "net_profit_brl": 480.0
+      },
+      {
+        "year_month": "2023-09",
+        "net_profit_brl": -275.0
+      },
+      {
+        "year_month": "2023-10",
+        "net_profit_brl": 275.0
+      },
+      {
+        "year_month": "2023-11",
+        "net_profit_brl": -50.0
+      },
+      {
+        "year_month": "2023-12",
+        "net_profit_brl": 85.0
+      },
+      {
+        "year_month": "2024-01",
+        "net_profit_brl": 425.0
+      },
+      {
+        "year_month": "2024-02",
+        "net_profit_brl": 45.0
+      },
+      {
+        "year_month": "2024-03",
+        "net_profit_brl": 460.0
+      },
+      {
+        "year_month": "2024-04",
+        "net_profit_brl": 110.0
+      },
+      {
+        "year_month": "2024-05",
+        "net_profit_brl": 60.0
+      },
+      {
+        "year_month": "2024-06",
+        "net_profit_brl": 255.0
+      },
+      {
+        "year_month": "2024-07",
+        "net_profit_brl": 260.0
+      },
+      {
+        "year_month": "2024-08",
+        "net_profit_brl": -85.0
+      },
+      {
+        "year_month": "2024-09",
+        "net_profit_brl": 520.0
+      },
+      {
+        "year_month": "2024-10",
+        "net_profit_brl": 385.0
+      },
+      {
+        "year_month": "2024-11",
+        "net_profit_brl": 465.0
+      },
+      {
+        "year_month": "2024-12",
+        "net_profit_brl": 95.0
+      },
+      {
+        "year_month": "2025-01",
+        "net_profit_brl": 965.0
+      },
+      {
+        "year_month": "2025-02",
+        "net_profit_brl": 350.0
+      },
+      {
+        "year_month": "2025-03",
+        "net_profit_brl": 410.0
+      },
+      {
+        "year_month": "2025-04",
+        "net_profit_brl": 75.0
+      },
+      {
+        "year_month": "2025-05",
+        "net_profit_brl": 15.0
+      },
+      {
+        "year_month": "2025-06",
+        "net_profit_brl": -295.0
+      },
+      {
+        "year_month": "2025-07",
+        "net_profit_brl": 380.0
+      },
+      {
+        "year_month": "2025-08",
+        "net_profit_brl": 60.0
+      },
+      {
+        "year_month": "2025-09",
+        "net_profit_brl": -70.0
+      },
+      {
+        "year_month": "2025-10",
+        "net_profit_brl": 90.0
+      },
+      {
+        "year_month": "2025-11",
+        "net_profit_brl": 230.0
+      },
+      {
+        "year_month": "2025-12",
+        "net_profit_brl": 235.0
+      },
+      {
+        "year_month": "2026-01",
+        "net_profit_brl": -25.0
+      },
+      {
+        "year_month": "2026-02",
+        "net_profit_brl": -55.0
+      },
+      {
+        "year_month": "2026-03",
+        "net_profit_brl": 255.0
+      }
+    ],
+    "yearly_pnl": [
+      {
+        "year": 2021,
+        "net_profit_brl": 4080.0
+      },
+      {
+        "year": 2022,
+        "net_profit_brl": 5105.0
+      },
+      {
+        "year": 2023,
+        "net_profit_brl": 1165.0
+      },
+      {
+        "year": 2024,
+        "net_profit_brl": 2995.0
+      },
+      {
+        "year": 2025,
+        "net_profit_brl": 2445.0
+      },
+      {
+        "year": 2026,
+        "net_profit_brl": 175.0
+      }
+    ]
+  },
+  "notes": [
+    "Spread stress uses the exact every-tick engine with all historical spread ticks multiplied by the stated factor.",
+    "Equity-shape concentration is reported from the exact reference session winner, not from a lightweight proxy."
+  ]
+}

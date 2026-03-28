@@ -1,0 +1,72 @@
+{
+  "notes": [
+    "Exact M15 inside-bar breakout entered at the next M1 open after a confirmed breakout close.",
+    "Session filter kept to 10:00, 11:00, 12:00, and 14:00 to stay comparable with the session winner."
+  ],
+  "results": [
+    {
+      "name": "inside_bar_breakout_exact_sl0p84_tp0p30",
+      "params": {
+        "sl_atr_mult": 0.84,
+        "tp_atr_mult": 0.3,
+        "atr_length": 20,
+        "entry_hours": [
+          10,
+          11,
+          12,
+          14
+        ],
+        "market_close_hour": 18,
+        "market_close_minute": 0,
+        "minutes_before_close": 5
+      },
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1241,
+        "win_rate": 0.7019,
+        "net_profit_brl": -4775.0,
+        "avg_profit_brl": -3.85,
+        "avg_win_brl": 33.67,
+        "avg_loss_brl": -92.16,
+        "profit_factor": 0.86,
+        "max_drawdown_pct": 58.41,
+        "expected_payoff": -3.85,
+        "on_tester_value": -81.747708
+      }
+    },
+    {
+      "name": "inside_bar_breakout_exact_sl0p84_tp0p48",
+      "params": {
+        "sl_atr_mult": 0.84,
+        "tp_atr_mult": 0.48,
+        "atr_length": 20,
+        "entry_hours": [
+          10,
+          11,
+          12,
+          14
+        ],
+        "market_close_hour": 18,
+        "market_close_minute": 0,
+        "minutes_before_close": 5
+      },
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1234,
+        "win_rate": 0.5964,
+        "net_profit_brl": -6675.0,
+        "avg_profit_brl": -5.41,
+        "avg_win_brl": 53.8,
+        "avg_loss_brl": -92.91,
+        "profit_factor": 0.8557,
+        "max_drawdown_pct": 76.68,
+        "expected_payoff": -5.41,
+        "on_tester_value": -87.050452
+      }
+    }
+  ]
+}
