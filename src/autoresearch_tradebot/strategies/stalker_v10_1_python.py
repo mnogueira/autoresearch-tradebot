@@ -48,6 +48,9 @@ class V101Params:
     EntryStart_Minute: int = 0
     LastEntry_Hour: int = 15
     LastEntry_Minute: int = 0
+    SkipWednesday: bool = False
+    SkipHour13: bool = False
+    SkipHour14: bool = False
     AllowMonday: bool = True
     AllowTuesday: bool = True
     AllowWednesday: bool = True
@@ -82,6 +85,8 @@ def entry_window_minutes(params: V101Params) -> tuple[int, int]:
 
 def is_allowed_trading_day(timestamp: pd.Timestamp, params: V101Params) -> bool:
     weekday = timestamp.dayofweek
+    if weekday == 2 and bool(params.SkipWednesday):
+        return False
     if weekday == 0:
         return bool(params.AllowMonday)
     if weekday == 1:
@@ -96,6 +101,10 @@ def is_allowed_trading_day(timestamp: pd.Timestamp, params: V101Params) -> bool:
 
 
 def is_within_entry_window(timestamp: pd.Timestamp, params: V101Params) -> bool:
+    if timestamp.hour == 13 and bool(params.SkipHour13):
+        return False
+    if timestamp.hour == 14 and bool(params.SkipHour14):
+        return False
     current_minutes = (timestamp.hour * 60) + timestamp.minute
     start_minutes, end_minutes = entry_window_minutes(params)
     return start_minutes <= current_minutes <= end_minutes
@@ -391,7 +400,7 @@ def run_backtest(
         [
             bool(params.AllowMonday),
             bool(params.AllowTuesday),
-            bool(params.AllowWednesday),
+            bool(params.AllowWednesday) and not bool(params.SkipWednesday),
             bool(params.AllowThursday),
             bool(params.AllowFriday),
             False,
@@ -399,10 +408,15 @@ def run_backtest(
         ],
         dtype=bool,
     )
+    blocked_hours = (
+        ((timestamps.hour == 13) & bool(params.SkipHour13))
+        | ((timestamps.hour == 14) & bool(params.SkipHour14))
+    )
     can_enter_flags = (
         allowed_weekdays[timestamps.dayofweek]
         & (minute_of_day >= start_minutes)
         & (minute_of_day <= end_minutes)
+        & ~blocked_hours
     )
     cutoff_minutes = (
         (params.MarketClose_Hour * 60)

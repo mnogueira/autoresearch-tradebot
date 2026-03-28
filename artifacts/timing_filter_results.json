@@ -6,39 +6,35 @@
   "results": [
     {
       "name": "baseline_6m",
+      "start_date": "2025-09-22",
+      "end_date": "2026-03-20",
+      "trading_days": 123,
       "total_trades": 246,
+      "win_rate": 0.7276,
       "net_profit_brl": 850.0,
+      "avg_profit_brl": 3.46,
+      "avg_win_brl": 31.42,
+      "avg_loss_brl": -71.27,
       "profit_factor": 1.178,
       "max_drawdown_pct": 6.49,
-      "win_rate": 0.7276,
+      "expected_payoff": 3.46,
       "on_tester_value": 131.056738
     },
     {
-      "name": "exclude_wednesday_6m",
-      "total_trades": 195,
-      "net_profit_brl": 600.0,
-      "profit_factor": 1.1554,
-      "max_drawdown_pct": 5.89,
-      "win_rate": 0.7333,
-      "on_tester_value": 101.904
-    },
-    {
-      "name": "exclude_hour_13_6m",
-      "total_trades": 234,
-      "net_profit_brl": 1220.0,
-      "profit_factor": 1.2877,
-      "max_drawdown_pct": 4.6,
-      "win_rate": 0.7436,
-      "on_tester_value": 265.05098
-    },
-    {
-      "name": "exclude_wednesday_and_hour_13_6m",
-      "total_trades": 186,
-      "net_profit_brl": 980.0,
-      "profit_factor": 1.2895,
-      "max_drawdown_pct": 3.99,
-      "win_rate": 0.7527,
-      "on_tester_value": 245.683721
+      "name": "robust_skip_wednesday_hour_13_6m",
+      "start_date": "2025-09-22",
+      "end_date": "2026-03-20",
+      "trading_days": 123,
+      "total_trades": 171,
+      "win_rate": 0.7661,
+      "net_profit_brl": 1055.0,
+      "avg_profit_brl": 6.17,
+      "avg_win_brl": 30.73,
+      "avg_loss_brl": -74.25,
+      "profit_factor": 1.3552,
+      "max_drawdown_pct": 3.07,
+      "expected_payoff": 6.17,
+      "on_tester_value": 343.514394
     }
   ]
 }

@@ -66,6 +66,7 @@ input int LastEntry_Hour = 15;                                // Latest entry ho
 input int LastEntry_Minute = 0;                               // Latest entry minute (inclusive)
 input bool SkipWednesday = false;                             // Skip all Wednesday entries
 input bool SkipHour13 = false;                                // Skip entries during the 13:00 hour
+input bool SkipHour14 = false;                                // Skip entries during the 14:00 hour
 input bool AllowMonday = true;                                // Allow Monday entries
 input bool AllowTuesday = true;                               // Allow Tuesday entries
 input bool AllowWednesday = true;                             // Allow Wednesday entries
@@ -334,6 +335,8 @@ bool IsWithinEntryWindow(const datetime current_time_brazil)
    TimeToStruct(current_time_brazil, time_parts);
 
    if(SkipHour13 && time_parts.hour == 13)
+      return(false);
+   if(SkipHour14 && time_parts.hour == 14)
       return(false);
 
    const int current_minutes = (time_parts.hour * 60) + time_parts.min;
