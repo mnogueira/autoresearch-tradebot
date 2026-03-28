@@ -1,0 +1,153 @@
+{
+  "data_source": "C:\\Dev\\autoresearch-tradebot\\data\\wdo_m1_mt5_2021_2026.parquet",
+  "reference": {
+    "name": "timing_stack_plus_relvol_short_lb20_ge_0.85_full",
+    "family": "timing_plus_relvol",
+    "screening_method": "integrated_backtest_full_period",
+    "config": {
+      "lookback_days": 20,
+      "side": "short",
+      "threshold": 0.85
+    },
+    "params": {
+      "ContractsPerTrade": 1.0,
+      "FilterAsPercOfContractMARange": 0.3,
+      "NumDaysToConsiderPreviousContractMARange": 5,
+      "RetracementLevel": 0.25,
+      "EntryStart_Hour": 10,
+      "EntryStart_Minute": 0,
+      "LastEntry_Hour": 14,
+      "LastEntry_Minute": 30,
+      "SkipWednesday": true,
+      "SkipShortWednesday": false,
+      "SkipHour13": true,
+      "SkipHour14": false,
+      "AllowMonday": true,
+      "AllowTuesday": true,
+      "AllowWednesday": true,
+      "AllowThursday": true,
+      "AllowFriday": true,
+      "TrendEfficiencyWindowMinutes": 15,
+      "ApplyTrendEfficiencyFilterToLongs": true,
+      "ApplyTrendEfficiencyFilterToShorts": false,
+      "MinDirectionalTrendEfficiency15m": 0.333333,
+      "VolumeWindowMinutes": 30,
+      "ApplyVolumeFilterToLongs": false,
+      "ApplyVolumeFilterToShorts": true,
+      "MinSignalVolumeWindowSum": 30000.0,
+      "RelativeVolumeLookbackDays": 20,
+      "ApplyRelativeVolumeFilterToLongs": false,
+      "ApplyRelativeVolumeFilterToShorts": true,
+      "MinRelativeVolumeAtTime": 0.85,
+      "SL_ATRMultiplier": 0.78,
+      "TP_ATRMultiplier": 0.36,
+      "ATRTimeFrame": 15,
+      "ATR_Length": 20,
+      "MarketClose_Hour": 18,
+      "MarketClose_Minute": 0,
+      "MinutesBeforeMarketCloseToClosePositions": 5
+    },
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1382,
+      "win_rate": 0.7431,
+      "net_profit_brl": 10480.0,
+      "avg_profit_brl": 7.58,
+      "avg_win_brl": 41.43,
+      "avg_loss_brl": -90.32,
+      "profit_factor": 1.3268,
+      "max_drawdown_pct": 6.6,
+      "expected_payoff": 7.58,
+      "on_tester_value": 1588.439216
+    },
+    "mt5_ready": true,
+    "notes": "Full-period timing stack plus short-side relative volume >= 0.85 with 20-day lookback."
+  },
+  "new_records": [
+    {
+      "name": "timing_relvol_plus_vwap_dev_17p336_22p117_full",
+      "family": "timing_relvol_plus_vwap_deviation",
+      "config": {
+        "min_directional_vwap_dev_pts": 17.336,
+        "max_directional_vwap_dev_pts": 22.117
+      },
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 484,
+        "win_rate": 0.7459,
+        "net_profit_brl": 3155.0,
+        "avg_profit_brl": 6.52,
+        "avg_win_brl": 41.99,
+        "avg_loss_brl": -97.6,
+        "profit_factor": 1.2628,
+        "max_drawdown_pct": 7.18,
+        "expected_payoff": 6.52,
+        "on_tester_value": 439.339116
+      },
+      "notes": "Timing stack + short relvol, keeping only the trade-tape VWAP-deviation sweet spot.",
+      "trades": 484
+    },
+    {
+      "name": "timing_relvol_plus_ema50_dev_2p091_12p423_full",
+      "family": "timing_relvol_plus_ema50_deviation",
+      "config": {
+        "min_directional_ema50_dev_pts": 2.091,
+        "max_directional_ema50_dev_pts": 12.423
+      },
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 327,
+        "win_rate": 0.7523,
+        "net_profit_brl": 2020.0,
+        "avg_profit_brl": 6.18,
+        "avg_win_brl": 35.73,
+        "avg_loss_brl": -83.58,
+        "profit_factor": 1.2984,
+        "max_drawdown_pct": 5.16,
+        "expected_payoff": 6.18,
+        "on_tester_value": 391.583486
+      },
+      "notes": "Timing stack + short relvol, keeping only the trade-tape EMA50-deviation sweet spot.",
+      "trades": 327
+    },
+    {
+      "name": "timing_relvol_plus_vwap_ema_sweetspots_full",
+      "family": "timing_relvol_plus_price_location",
+      "config": {
+        "min_directional_vwap_dev_pts": 17.336,
+        "max_directional_vwap_dev_pts": 22.117,
+        "min_directional_ema50_dev_pts": 2.091,
+        "max_directional_ema50_dev_pts": 12.423
+      },
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 64,
+        "win_rate": 0.6406,
+        "net_profit_brl": -680.0,
+        "avg_profit_brl": -10.62,
+        "avg_win_brl": 41.95,
+        "avg_loss_brl": -104.35,
+        "profit_factor": 0.7167,
+        "max_drawdown_pct": 8.36,
+        "expected_payoff": -10.62,
+        "on_tester_value": -81.357143
+      },
+      "notes": "Timing stack + short relvol with both tape-derived price-location sweet spots applied together.",
+      "trades": 64
+    }
+  ],
+  "pattern_analysis_notes": [
+    "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+    "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+    "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+    "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+  ]
+}
