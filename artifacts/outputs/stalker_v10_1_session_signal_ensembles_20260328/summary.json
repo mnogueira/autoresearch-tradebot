@@ -1,0 +1,177 @@
+{
+  "reference_name": "session_best_reference",
+  "reference_metrics": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247,
+    "total_trades": 1896,
+    "win_rate": 0.8017,
+    "net_profit_brl": 15965.0,
+    "avg_profit_brl": 8.42,
+    "avg_win_brl": 34.17,
+    "avg_loss_brl": -95.68,
+    "profit_factor": 1.4438,
+    "max_drawdown_pct": 4.04,
+    "expected_payoff": 8.42,
+    "on_tester_value": 3950.819156
+  },
+  "bb_width_q25": 0.23245212622613703,
+  "ranked_results": [
+    {
+      "name": "session_best_reference",
+      "notes": "Best session-only window from refinement: 10,11,12,14.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1896,
+        "win_rate": 0.8017,
+        "net_profit_brl": 15965.0,
+        "avg_profit_brl": 8.42,
+        "avg_win_brl": 34.17,
+        "avg_loss_brl": -95.68,
+        "profit_factor": 1.4438,
+        "max_drawdown_pct": 4.04,
+        "expected_payoff": 8.42,
+        "on_tester_value": 3950.819156
+      },
+      "delta_vs_session_best": {
+        "net_profit_brl": 0.0,
+        "profit_factor": 0.0,
+        "max_drawdown_pct": 0.0,
+        "win_rate": 0.0,
+        "on_tester_value": 0.0
+      }
+    },
+    {
+      "name": "session_best_plus_bb_squeeze_q25_plus_ofi",
+      "notes": "Best session window plus squeeze regime plus directional OFI proxy.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 575,
+        "win_rate": 0.7809,
+        "net_profit_brl": 2505.0,
+        "avg_profit_brl": 4.36,
+        "avg_win_brl": 27.84,
+        "avg_loss_brl": -79.33,
+        "profit_factor": 1.2506,
+        "max_drawdown_pct": 4.36,
+        "expected_payoff": 4.36,
+        "on_tester_value": 574.584375
+      },
+      "delta_vs_session_best": {
+        "net_profit_brl": -13460.0,
+        "profit_factor": -0.1932,
+        "max_drawdown_pct": 0.32,
+        "win_rate": -0.0208,
+        "on_tester_value": -3376.234781
+      }
+    },
+    {
+      "name": "session_best_plus_bb_squeeze_q25",
+      "notes": "Best session window plus Bollinger squeeze regime (bottom quartile width).",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 703,
+        "win_rate": 0.7809,
+        "net_profit_brl": 2890.0,
+        "avg_profit_brl": 4.11,
+        "avg_win_brl": 28.25,
+        "avg_loss_brl": -81.95,
+        "profit_factor": 1.229,
+        "max_drawdown_pct": 7.0,
+        "expected_payoff": 4.11,
+        "on_tester_value": 412.857143
+      },
+      "delta_vs_session_best": {
+        "net_profit_brl": -13075.0,
+        "profit_factor": -0.2148,
+        "max_drawdown_pct": 2.96,
+        "win_rate": -0.0208,
+        "on_tester_value": -3537.962013
+      }
+    },
+    {
+      "name": "session_10_12_plus_vwap_reversion",
+      "notes": "Opening window plus VWAP reversion sign filter.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 0,
+        "win_rate": 0.0,
+        "net_profit_brl": 0.0,
+        "avg_profit_brl": 0.0,
+        "avg_win_brl": 0.0,
+        "avg_loss_brl": 0.0,
+        "profit_factor": 0.0,
+        "max_drawdown_pct": 0.0,
+        "expected_payoff": 0.0,
+        "on_tester_value": 0.0
+      },
+      "delta_vs_session_best": {
+        "net_profit_brl": -15965.0,
+        "profit_factor": -1.4438,
+        "max_drawdown_pct": -4.04,
+        "win_rate": -0.8017,
+        "on_tester_value": -3950.819156
+      }
+    },
+    {
+      "name": "session_best_plus_vwap_reversion",
+      "notes": "Best session window plus VWAP reversion sign filter.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 0,
+        "win_rate": 0.0,
+        "net_profit_brl": 0.0,
+        "avg_profit_brl": 0.0,
+        "avg_win_brl": 0.0,
+        "avg_loss_brl": 0.0,
+        "profit_factor": 0.0,
+        "max_drawdown_pct": 0.0,
+        "expected_payoff": 0.0,
+        "on_tester_value": 0.0
+      },
+      "delta_vs_session_best": {
+        "net_profit_brl": -15965.0,
+        "profit_factor": -1.4438,
+        "max_drawdown_pct": -4.04,
+        "win_rate": -0.8017,
+        "on_tester_value": -3950.819156
+      }
+    },
+    {
+      "name": "session_10_12_plus_rsi_div_lb3",
+      "notes": "Opening window plus loose 3-bar RSI divergence.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 0,
+        "win_rate": 0.0,
+        "net_profit_brl": 0.0,
+        "avg_profit_brl": 0.0,
+        "avg_win_brl": 0.0,
+        "avg_loss_brl": 0.0,
+        "profit_factor": 0.0,
+        "max_drawdown_pct": 0.0,
+        "expected_payoff": 0.0,
+        "on_tester_value": 0.0
+      },
+      "delta_vs_session_best": {
+        "net_profit_brl": -15965.0,
+        "profit_factor": -1.4438,
+        "max_drawdown_pct": -4.04,
+        "win_rate": -0.8017,
+        "on_tester_value": -3950.819156
+      }
+    }
+  ]
+}

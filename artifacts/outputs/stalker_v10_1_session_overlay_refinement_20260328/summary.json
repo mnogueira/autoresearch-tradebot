@@ -1,0 +1,115 @@
+{
+  "reference": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247,
+    "total_trades": 1896,
+    "win_rate": 0.8017,
+    "net_profit_brl": 15965.0,
+    "avg_profit_brl": 8.42,
+    "avg_win_brl": 34.17,
+    "avg_loss_brl": -95.68,
+    "profit_factor": 1.4438,
+    "max_drawdown_pct": 4.04,
+    "expected_payoff": 8.42,
+    "on_tester_value": 3950.819156
+  },
+  "ranked_results": [
+    {
+      "name": "session_best_reference",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1896,
+        "win_rate": 0.8017,
+        "net_profit_brl": 15965.0,
+        "avg_profit_brl": 8.42,
+        "avg_win_brl": 34.17,
+        "avg_loss_brl": -95.68,
+        "profit_factor": 1.4438,
+        "max_drawdown_pct": 4.04,
+        "expected_payoff": 8.42,
+        "on_tester_value": 3950.819156
+      },
+      "delta_vs_reference": {
+        "net_profit_brl": 0.0,
+        "profit_factor": 0.0,
+        "max_drawdown_pct": 0.0,
+        "on_tester_value": 0.0
+      }
+    },
+    {
+      "name": "session_best_plus_m30",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1866,
+        "win_rate": 0.8017,
+        "net_profit_brl": 15615.0,
+        "avg_profit_brl": 8.37,
+        "avg_win_brl": 34.15,
+        "avg_loss_brl": -95.88,
+        "profit_factor": 1.4402,
+        "max_drawdown_pct": 4.39,
+        "expected_payoff": 8.37,
+        "on_tester_value": 3559.187603
+      },
+      "delta_vs_reference": {
+        "net_profit_brl": -350.0,
+        "profit_factor": -0.0036,
+        "max_drawdown_pct": 0.35,
+        "on_tester_value": -391.631553
+      }
+    },
+    {
+      "name": "session_best_plus_ofi",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1778,
+        "win_rate": 0.797,
+        "net_profit_brl": 14105.0,
+        "avg_profit_brl": 7.93,
+        "avg_win_brl": 34.42,
+        "avg_loss_brl": -96.02,
+        "profit_factor": 1.4069,
+        "max_drawdown_pct": 4.17,
+        "expected_payoff": 7.93,
+        "on_tester_value": 3381.536364
+      },
+      "delta_vs_reference": {
+        "net_profit_brl": -1860.0,
+        "profit_factor": -0.0369,
+        "max_drawdown_pct": 0.13,
+        "on_tester_value": -569.282792
+      }
+    },
+    {
+      "name": "session_best_plus_m30_plus_ofi",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1754,
+        "win_rate": 0.797,
+        "net_profit_brl": 13845.0,
+        "avg_profit_brl": 7.89,
+        "avg_win_brl": 34.4,
+        "avg_loss_brl": -96.21,
+        "profit_factor": 1.4042,
+        "max_drawdown_pct": 4.22,
+        "expected_payoff": 7.89,
+        "on_tester_value": 3278.747727
+      },
+      "delta_vs_reference": {
+        "net_profit_brl": -2120.0,
+        "profit_factor": -0.0396,
+        "max_drawdown_pct": 0.18,
+        "on_tester_value": -672.071429
+      }
+    }
+  ]
+}

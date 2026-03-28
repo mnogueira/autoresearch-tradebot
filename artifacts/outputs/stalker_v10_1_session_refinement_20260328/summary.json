@@ -1,0 +1,139 @@
+{
+  "reference": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247,
+    "total_trades": 1960,
+    "win_rate": 0.8,
+    "net_profit_brl": 16025.0,
+    "avg_profit_brl": 8.18,
+    "avg_win_brl": 34.1,
+    "avg_loss_brl": -95.52,
+    "profit_factor": 1.428,
+    "max_drawdown_pct": 4.62,
+    "expected_payoff": 8.18,
+    "on_tester_value": 3469.048295
+  },
+  "ranked_results": [
+    {
+      "name": "hours_10_12_14",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1896,
+        "win_rate": 0.8017,
+        "net_profit_brl": 15965.0,
+        "avg_profit_brl": 8.42,
+        "avg_win_brl": 34.17,
+        "avg_loss_brl": -95.68,
+        "profit_factor": 1.4438,
+        "max_drawdown_pct": 4.04,
+        "expected_payoff": 8.42,
+        "on_tester_value": 3950.819156
+      },
+      "delta_vs_reference": {
+        "net_profit_brl": -60.0,
+        "profit_factor": 0.0158,
+        "max_drawdown_pct": -0.58,
+        "on_tester_value": 481.770861
+      }
+    },
+    {
+      "name": "hours_10_12",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1877,
+        "win_rate": 0.8023,
+        "net_profit_brl": 15860.0,
+        "avg_profit_brl": 8.45,
+        "avg_win_brl": 34.13,
+        "avg_loss_brl": -95.78,
+        "profit_factor": 1.4463,
+        "max_drawdown_pct": 4.16,
+        "expected_payoff": 8.45,
+        "on_tester_value": 3813.426582
+      },
+      "delta_vs_reference": {
+        "net_profit_brl": -165.0,
+        "profit_factor": 0.0183,
+        "max_drawdown_pct": -0.46,
+        "on_tester_value": 344.378287
+      }
+    },
+    {
+      "name": "reference",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1960,
+        "win_rate": 0.8,
+        "net_profit_brl": 16025.0,
+        "avg_profit_brl": 8.18,
+        "avg_win_brl": 34.1,
+        "avg_loss_brl": -95.52,
+        "profit_factor": 1.428,
+        "max_drawdown_pct": 4.62,
+        "expected_payoff": 8.18,
+        "on_tester_value": 3469.048295
+      },
+      "delta_vs_reference": {
+        "net_profit_brl": 0.0,
+        "profit_factor": 0.0,
+        "max_drawdown_pct": 0.0,
+        "on_tester_value": 0.0
+      }
+    },
+    {
+      "name": "hours_10_14_all",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1960,
+        "win_rate": 0.8,
+        "net_profit_brl": 16025.0,
+        "avg_profit_brl": 8.18,
+        "avg_win_brl": 34.1,
+        "avg_loss_brl": -95.52,
+        "profit_factor": 1.428,
+        "max_drawdown_pct": 4.62,
+        "expected_payoff": 8.18,
+        "on_tester_value": 3469.048295
+      },
+      "delta_vs_reference": {
+        "net_profit_brl": 0.0,
+        "profit_factor": 0.0,
+        "max_drawdown_pct": 0.0,
+        "on_tester_value": 0.0
+      }
+    },
+    {
+      "name": "hours_10_11",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1590,
+        "win_rate": 0.805,
+        "net_profit_brl": 13340.0,
+        "avg_profit_brl": 8.39,
+        "avg_win_brl": 33.71,
+        "avg_loss_brl": -96.16,
+        "profit_factor": 1.4475,
+        "max_drawdown_pct": 5.15,
+        "expected_payoff": 8.39,
+        "on_tester_value": 2592.204545
+      },
+      "delta_vs_reference": {
+        "net_profit_brl": -2685.0,
+        "profit_factor": 0.0195,
+        "max_drawdown_pct": 0.53,
+        "on_tester_value": -876.84375
+      }
+    }
+  ]
+}
