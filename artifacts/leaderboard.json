@@ -1,0 +1,99 @@
+{
+  "generated_on": "2026-03-27",
+  "generation_mode": "manual_fallback_from_existing_artifacts",
+  "notes": [
+    "This leaderboard was written directly from existing summary.json result files under artifacts/outputs.",
+    "No new backtest or screening execution was performed for this fallback file.",
+    "Rows are ordered for practical Stalker v10.1 MT5 follow-up: MT5 real-ticks Stalker candidates first, then supporting MT5 benchmarks."
+  ],
+  "combos": [
+    {
+      "rank": 1,
+      "name": "robust_effvol_real_ticks",
+      "strategy": "stalker_v10_1_effvol_robust",
+      "description": "trend longs >= 0.333333 over 15m + short volume >= 30000 over 30m",
+      "pnl": 12330.0,
+      "pf": 1.24,
+      "dd": 9.06,
+      "trades": 2483,
+      "win_rate": 73.3,
+      "source": "mt5_real_ticks",
+      "history_quality": "13% real ticks",
+      "source_file": "artifacts/outputs/mt5_stalker_v10_1_effvol_robust_real_ticks_20260327/summary.json"
+    },
+    {
+      "rank": 2,
+      "name": "relvolbest_real_ticks",
+      "strategy": "stalker_v10_1_effvol_relvolbest",
+      "description": "trend both >= 0.333333 over 15m + long volume >= 50000 over 15m + short relative volume >= 0.85 over 40 days",
+      "pnl": 8430.0,
+      "pf": 1.26,
+      "dd": 8.95,
+      "trades": 1407,
+      "win_rate": 75.48,
+      "source": "mt5_real_ticks",
+      "history_quality": "13% real ticks",
+      "source_file": "artifacts/outputs/mt5_stalker_v10_1_effvol_relvolbest_real_ticks_20260327/summary.json",
+      "comparison_note": "Higher PF and slightly lower DD than robust, but materially lower net profit."
+    },
+    {
+      "rank": 3,
+      "name": "rawbest_real_ticks",
+      "strategy": "stalker_v10_1_effvol_rawbest",
+      "description": "trend both >= 0.333333 over 15m + long volume >= 50000 over 15m",
+      "pnl": 8445.0,
+      "pf": 1.25,
+      "dd": 9.82,
+      "trades": 1534,
+      "win_rate": 74.51,
+      "source": "mt5_real_ticks",
+      "history_quality": "13% real ticks",
+      "source_file": "artifacts/outputs/mt5_stalker_v10_1_effvol_rawbest_real_ticks_20260327/summary.json",
+      "comparison_note": "Slight PF improvement over robust, but worse DD and much lower net profit."
+    },
+    {
+      "rank": 4,
+      "name": "robust_effvol_every_tick",
+      "strategy": "stalker_v10_1_effvol_robust",
+      "description": "trend longs >= 0.333333 over 15m + short volume >= 30000 over 30m",
+      "pnl": 13125.0,
+      "pf": 1.23,
+      "dd": 8.71,
+      "trades": 2459,
+      "win_rate": 74.18,
+      "source": "mt5_every_tick",
+      "history_quality": "96%",
+      "source_file": "artifacts/outputs/mt5_stalker_v10_1_effvol_robust_every_tick_20260327/summary.json"
+    },
+    {
+      "rank": 5,
+      "name": "ema_35610_real_ticks_full",
+      "strategy": "WDO_EMA_Historical_35610",
+      "description": "EMA champion full-history MT5 rerun",
+      "pnl": 8155.0,
+      "pf": 1.58,
+      "dd": 15.07,
+      "trades": 257,
+      "win_rate": 48.64,
+      "source": "mt5_real_ticks",
+      "history_quality": "13% real ticks",
+      "source_file": "artifacts/outputs/mt5_ema_35610_tick_full_rerun_20260327/summary.json",
+      "comparison_note": "Best PF in this fallback set, but different strategy and higher drawdown."
+    },
+    {
+      "rank": 6,
+      "name": "ema_35610_liveish_real_ticks",
+      "strategy": "WDO_EMA_Historical_35610",
+      "description": "EMA champion liveish-window MT5 rerun",
+      "pnl": 6765.0,
+      "pf": 1.77,
+      "dd": 16.7,
+      "trades": 185,
+      "win_rate": 46.49,
+      "source": "mt5_real_ticks_liveish",
+      "history_quality": "19% real ticks",
+      "source_file": "artifacts/outputs/mt5_ema_35610_tick_liveish/summary.json",
+      "comparison_note": "Highest PF of the listed MT5 runs, but on a shorter window with much higher drawdown."
+    }
+  ]
+}

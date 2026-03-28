@@ -70,6 +70,20 @@ input bool AllowWednesday = true;                             // Allow Wednesday
 input bool AllowThursday = true;                              // Allow Thursday entries
 input bool AllowFriday = true;                                // Allow Friday entries
 
+input group "Signal Strength Filters";
+input int TrendEfficiencyWindowMinutes = 15;                  // Trend efficiency lookback in minutes
+input bool ApplyTrendEfficiencyFilterToLongs = false;         // Apply directional trend efficiency filter to longs
+input bool ApplyTrendEfficiencyFilterToShorts = false;        // Apply directional trend efficiency filter to shorts
+input double MinDirectionalTrendEfficiency15m = 0.0;          // Minimum directional trend efficiency
+input int VolumeWindowMinutes = 15;                           // Rolling signal-volume lookback in minutes
+input bool ApplyVolumeFilterToLongs = false;                  // Apply signal-volume filter to longs
+input bool ApplyVolumeFilterToShorts = false;                 // Apply signal-volume filter to shorts
+input double MinSignalVolumeWindowSum = 0.0;                  // Minimum rolling signal-volume sum
+input int RelativeVolumeLookbackDays = 20;                    // Same-minute relative-volume lookback in sessions
+input bool ApplyRelativeVolumeFilterToLongs = false;          // Apply relative-volume filter to longs
+input bool ApplyRelativeVolumeFilterToShorts = false;         // Apply relative-volume filter to shorts
+input double MinRelativeVolumeAtTime = 0.0;                   // Minimum same-minute relative volume
+
 input group "Risk Management";
 input double SL_ATRMultiplier = 0.78;                         // Stop Loss (ATR Multiplier)
 input double TP_ATRMultiplier = 0.36;                         // Take Profit (ATR Multiplier)
@@ -226,6 +240,16 @@ void OnTick()
    const double currentDayHigh = DayHigh[0];
    const double currentDayLow = DayLow[0];
    const double currentDayRange = currentDayHigh - currentDayLow;
+   double trendEfficiencyRaw = 0.0;
+   double signalVolumeSum = 0.0;
+   double relativeVolumeAtTime = 0.0;
+   const bool hasTrendEfficiencyRaw = TryGetDirectionalTrendEfficiencyRaw(TrendEfficiencyWindowMinutes, trendEfficiencyRaw);
+   const bool hasSignalVolumeSum = TryGetSignalVolumeSum(VolumeWindowMinutes, signalVolumeSum);
+   const bool hasRelativeVolumeAtTime = TryGetRelativeVolumeAtTime(
+      VolumeWindowMinutes,
+      RelativeVolumeLookbackDays,
+      relativeVolumeAtTime
+   );
 
    const bool IsDailyRangeBiggerThanContractRange =
       (currentDayRange > 0.0 && contractRangeFilterValue > 0.0 && currentDayRange >= contractRangeFilterValue);
@@ -241,10 +265,15 @@ void OnTick()
          const double stopLoss = Round2Ticksize(basePrice - (atrValue * SL_ATRMultiplier));
          const double takeProfit = Round2Ticksize(basePrice + (atrValue * TP_ATRMultiplier));
 
-         if(OpenLongOrderTicket == 0)
-            PlaceBuyLimitOrder(basePrice, stopLoss, takeProfit);
-         else
-            ModifyPendingOrder(OpenLongOrderTicket, basePrice, stopLoss, takeProfit);
+         if(PassesDirectionalTrendEfficiency(1, hasTrendEfficiencyRaw, trendEfficiencyRaw)
+         && PassesSignalVolume(1, hasSignalVolumeSum, signalVolumeSum)
+         && PassesRelativeVolume(1, hasRelativeVolumeAtTime, relativeVolumeAtTime))
+         {
+            if(OpenLongOrderTicket == 0)
+               PlaceBuyLimitOrder(basePrice, stopLoss, takeProfit);
+            else
+               ModifyPendingOrder(OpenLongOrderTicket, basePrice, stopLoss, takeProfit);
+         }
       }
       else if(currentDayLow < PreviousLow)
       {
@@ -255,10 +284,15 @@ void OnTick()
          const double stopLoss = Round2Ticksize(basePrice + (atrValue * SL_ATRMultiplier));
          const double takeProfit = Round2Ticksize(basePrice - (atrValue * TP_ATRMultiplier));
 
-         if(OpenShortOrderTicket == 0)
-            PlaceSellLimitOrder(basePrice, stopLoss, takeProfit);
-         else
-            ModifyPendingOrder(OpenShortOrderTicket, basePrice, stopLoss, takeProfit);
+         if(PassesDirectionalTrendEfficiency(-1, hasTrendEfficiencyRaw, trendEfficiencyRaw)
+         && PassesSignalVolume(-1, hasSignalVolumeSum, signalVolumeSum)
+         && PassesRelativeVolume(-1, hasRelativeVolumeAtTime, relativeVolumeAtTime))
+         {
+            if(OpenShortOrderTicket == 0)
+               PlaceSellLimitOrder(basePrice, stopLoss, takeProfit);
+            else
+               ModifyPendingOrder(OpenShortOrderTicket, basePrice, stopLoss, takeProfit);
+         }
       }
    }
 
@@ -299,6 +333,182 @@ bool IsWithinEntryWindow(const datetime current_time_brazil)
    const int end_minutes = (LastEntry_Hour * 60) + LastEntry_Minute;
 
    return (current_minutes >= start_minutes && current_minutes <= end_minutes);
+}
+
+bool PassesDirectionalTrendEfficiency(const int direction, const bool hasValue, const double rawValue)
+{
+   if(direction == 1 && !ApplyTrendEfficiencyFilterToLongs)
+      return(true);
+
+   if(direction == -1 && !ApplyTrendEfficiencyFilterToShorts)
+      return(true);
+
+   if(!hasValue || !MathIsValidNumber(rawValue))
+      return(false);
+
+   const double directionalValue = (direction == 1) ? rawValue : -rawValue;
+   return(directionalValue >= MinDirectionalTrendEfficiency15m);
+}
+
+bool PassesSignalVolume(const int direction, const bool hasValue, const double rawValue)
+{
+   if(direction == 1 && !ApplyVolumeFilterToLongs)
+      return(true);
+
+   if(direction == -1 && !ApplyVolumeFilterToShorts)
+      return(true);
+
+   if(!hasValue || !MathIsValidNumber(rawValue))
+      return(false);
+
+   return(rawValue >= MinSignalVolumeWindowSum);
+}
+
+bool PassesRelativeVolume(const int direction, const bool hasValue, const double rawValue)
+{
+   if(direction == 1 && !ApplyRelativeVolumeFilterToLongs)
+      return(true);
+
+   if(direction == -1 && !ApplyRelativeVolumeFilterToShorts)
+      return(true);
+
+   if(!hasValue || !MathIsValidNumber(rawValue))
+      return(false);
+
+   return(rawValue >= MinRelativeVolumeAtTime);
+}
+
+bool TryGetDirectionalTrendEfficiencyRaw(const int windowMinutes, double &rawValue)
+{
+   rawValue = 0.0;
+   if(windowMinutes <= 0)
+      return(false);
+
+   const datetime currentBarTime = iTime(ContinuousSeriesSymbol, PERIOD_M1, 0);
+   if(currentBarTime <= 0)
+      return(false);
+
+   const datetime sessionDate = DateOnly(currentBarTime);
+   const int oldestShift = windowMinutes + 1;
+   const datetime oldestBarTime = iTime(ContinuousSeriesSymbol, PERIOD_M1, oldestShift);
+   if(oldestBarTime <= 0 || DateOnly(oldestBarTime) != sessionDate)
+      return(false);
+
+   const double previousClose = iClose(ContinuousSeriesSymbol, PERIOD_M1, 1);
+   const double closeNBarsAgo = iClose(ContinuousSeriesSymbol, PERIOD_M1, oldestShift);
+
+   double realizedAbs = 0.0;
+   for(int shift = 1; shift <= windowMinutes; shift++)
+   {
+      const datetime newerBarTime = iTime(ContinuousSeriesSymbol, PERIOD_M1, shift);
+      const datetime olderBarTime = iTime(ContinuousSeriesSymbol, PERIOD_M1, shift + 1);
+      if(newerBarTime <= 0 || olderBarTime <= 0)
+         return(false);
+
+      if(DateOnly(newerBarTime) != sessionDate || DateOnly(olderBarTime) != sessionDate)
+         return(false);
+
+      const double newerClose = iClose(ContinuousSeriesSymbol, PERIOD_M1, shift);
+      const double olderClose = iClose(ContinuousSeriesSymbol, PERIOD_M1, shift + 1);
+      realizedAbs += MathAbs(newerClose - olderClose);
+   }
+
+   if(realizedAbs <= 0.0)
+      return(false);
+
+   rawValue = (previousClose - closeNBarsAgo) / realizedAbs;
+   return(MathIsValidNumber(rawValue));
+}
+
+bool TryGetSignalVolumeSumAtShift(const int referenceShift, const int windowMinutes, double &rawValue)
+{
+   rawValue = 0.0;
+   if(windowMinutes <= 0)
+      return(false);
+
+   const datetime currentBarTime = iTime(ContinuousSeriesSymbol, PERIOD_M1, referenceShift);
+   if(currentBarTime <= 0)
+      return(false);
+
+   const datetime sessionDate = DateOnly(currentBarTime);
+   for(int shiftOffset = 1; shiftOffset <= windowMinutes; shiftOffset++)
+   {
+      const int shift = referenceShift + shiftOffset;
+      const datetime barTime = iTime(ContinuousSeriesSymbol, PERIOD_M1, shift);
+      if(barTime <= 0 || DateOnly(barTime) != sessionDate)
+         return(false);
+
+      const long barVolume = iVolume(ContinuousSeriesSymbol, PERIOD_M1, shift);
+      if(barVolume < 0)
+         return(false);
+
+      rawValue += (double)barVolume;
+   }
+
+   return(MathIsValidNumber(rawValue));
+}
+
+bool TryGetSignalVolumeSum(const int windowMinutes, double &rawValue)
+{
+   return(TryGetSignalVolumeSumAtShift(0, windowMinutes, rawValue));
+}
+
+int MinuteOfDay(const datetime value)
+{
+   MqlDateTime dt;
+   TimeToStruct(value, dt);
+   return((dt.hour * 60) + dt.min);
+}
+
+bool TryGetRelativeVolumeAtTime(const int volumeWindowMinutes, const int lookbackDays, double &rawValue)
+{
+   rawValue = 0.0;
+   if(lookbackDays <= 0)
+      return(false);
+
+   double currentSignalVolume = 0.0;
+   if(!TryGetSignalVolumeSum(volumeWindowMinutes, currentSignalVolume))
+      return(false);
+
+   const datetime currentBarTime = iTime(ContinuousSeriesSymbol, PERIOD_M1, 0);
+   if(currentBarTime <= 0)
+      return(false);
+
+   const datetime sessionDate = DateOnly(currentBarTime);
+   const int minuteOfDay = MinuteOfDay(currentBarTime);
+   const int minPeriods = MathMax(3, MathMin(lookbackDays, 10));
+   const int maxCalendarDays = MathMax(lookbackDays * 6, minPeriods * 3);
+
+   double sampleSum = 0.0;
+   int samples = 0;
+   for(int dayOffset = 1; dayOffset <= maxCalendarDays && samples < lookbackDays; dayOffset++)
+   {
+      const datetime candidateSession = sessionDate - (dayOffset * 86400);
+      const datetime candidateTime = candidateSession + (minuteOfDay * 60);
+      const int candidateShift = iBarShift(ContinuousSeriesSymbol, PERIOD_M1, candidateTime, true);
+      if(candidateShift < 0)
+         continue;
+
+      if(iTime(ContinuousSeriesSymbol, PERIOD_M1, candidateShift) != candidateTime)
+         continue;
+
+      double historicalSignalVolume = 0.0;
+      if(!TryGetSignalVolumeSumAtShift(candidateShift, volumeWindowMinutes, historicalSignalVolume))
+         continue;
+
+      sampleSum += historicalSignalVolume;
+      samples++;
+   }
+
+   if(samples < minPeriods)
+      return(false);
+
+   const double expectedVolume = sampleSum / samples;
+   if(expectedVolume <= 0.0)
+      return(false);
+
+   rawValue = currentSignalVolume / expectedVolume;
+   return(MathIsValidNumber(rawValue));
 }
 
 void UpdateCurrentBrazilTime()

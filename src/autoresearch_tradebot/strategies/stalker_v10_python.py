@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import math
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
@@ -60,7 +61,10 @@ class TradeRecord:
 
 
 def round_to_tick(value: float) -> float:
-    return round(value / TICK_SIZE) * TICK_SIZE
+    scaled = float(value) / TICK_SIZE
+    if scaled >= 0.0:
+        return math.floor(scaled + 0.5) * TICK_SIZE
+    return math.ceil(scaled - 0.5) * TICK_SIZE
 
 
 def locate_data_file(path_override: Path | None = None) -> Path:
@@ -118,7 +122,8 @@ def load_m1_data(path_override: Path | None = None) -> pd.DataFrame:
 
     frame = frame.sort_index()
     frame.attrs["source_path"] = str(path)
-    return frame[required].copy()
+    optional = [column for column in ("Spread", "RealVolume") if column in frame.columns]
+    return frame[required + optional].copy()
 
 
 def date_only(value: pd.Timestamp) -> pd.Timestamp:
@@ -141,7 +146,7 @@ class V10Dataset:
         self._build_open_state()
         self._build_m15_reference()
         self._signal_range_cache: dict[tuple[float, int], np.ndarray] = {}
-        self._atr_cache: dict[int, np.ndarray] = {}
+        self._atr_cache: dict[tuple[str, int], np.ndarray] = {}
 
     @classmethod
     def from_disk(cls, path_override: Path | None = None) -> "V10Dataset":
@@ -167,7 +172,10 @@ class V10Dataset:
     def _build_open_state(self) -> None:
         day_high_open: list[float] = []
         day_low_open: list[float] = []
+        day_high_current: list[float] = []
+        day_low_current: list[float] = []
         partial_tr_open: list[float] = []
+        partial_tr_current: list[float] = []
 
         current_day: pd.Timestamp | None = None
         session_high_close = 0.0
@@ -240,6 +248,19 @@ class V10Dataset:
             bucket_high_close = max(partial_high, bar_high)
             bucket_low_close = min(partial_low, bar_low)
 
+            day_high_current.append(float(session_high_close))
+            day_low_current.append(float(session_low_close))
+
+            if pd.isna(prev_bucket_close):
+                current_tr_full = bucket_high_close - bucket_low_close
+            else:
+                current_tr_full = max(
+                    bucket_high_close - bucket_low_close,
+                    abs(bucket_high_close - prev_bucket_close),
+                    abs(bucket_low_close - prev_bucket_close),
+                )
+            partial_tr_current.append(float(current_tr_full))
+
             last_bucket_start = bucket_start
             last_bucket_open = current_bucket_open
             last_bucket_high = bucket_high_close
@@ -259,7 +280,10 @@ class V10Dataset:
 
         self.bars_m1["day_high_open"] = day_high_open
         self.bars_m1["day_low_open"] = day_low_open
+        self.bars_m1["day_high_current"] = day_high_current
+        self.bars_m1["day_low_current"] = day_low_current
         self.bars_m1["partial_tr_open"] = partial_tr_open
+        self.bars_m1["partial_tr_current"] = partial_tr_current
 
         self.m15_complete = pd.DataFrame(complete_buckets).set_index("bucket_start")
         prev_close = self.m15_complete["Close"].shift(1)
@@ -299,8 +323,9 @@ class V10Dataset:
 
     def get_atr_open(self, period: int) -> np.ndarray:
         period = int(period)
-        if period in self._atr_cache:
-            return self._atr_cache[period]
+        key = ("open", period)
+        if key in self._atr_cache:
+            return self._atr_cache[key]
 
         atr_complete = wilder_atr_from_tr(self.m15_complete["tr"], period)
         prev_atr = self.bars_m1["previous_m15_bucket"].map(atr_complete).to_numpy(dtype=float)
@@ -308,8 +333,23 @@ class V10Dataset:
         alpha = 1.0 / period
         atr_open = alpha * partial_tr + (1.0 - alpha) * prev_atr
         atr_open[np.isnan(prev_atr)] = np.nan
-        self._atr_cache[period] = atr_open
+        self._atr_cache[key] = atr_open
         return atr_open
+
+    def get_atr_current(self, period: int) -> np.ndarray:
+        period = int(period)
+        key = ("current", period)
+        if key in self._atr_cache:
+            return self._atr_cache[key]
+
+        atr_complete = wilder_atr_from_tr(self.m15_complete["tr"], period)
+        prev_atr = self.bars_m1["previous_m15_bucket"].map(atr_complete).to_numpy(dtype=float)
+        partial_tr = self.bars_m1["partial_tr_current"].to_numpy(dtype=float)
+        alpha = 1.0 / period
+        atr_current = alpha * partial_tr + (1.0 - alpha) * prev_atr
+        atr_current[np.isnan(prev_atr)] = np.nan
+        self._atr_cache[key] = atr_current
+        return atr_current
 
 
 def resolve_open_gap_exit(

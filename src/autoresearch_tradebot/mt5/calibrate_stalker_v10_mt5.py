@@ -60,12 +60,42 @@ def parse_trade_ratio(value: str) -> tuple[int, float]:
 
 def read_set_inputs(set_file: Path) -> str:
     raw = set_file.read_bytes()
-    for encoding in ("utf-16", "utf-8-sig", "utf-8", "latin-1"):
+    if raw.startswith((b"\xff\xfe", b"\xfe\xff")):
+        text = raw.decode("utf-16")
+        return sanitize_set_inputs(text)
+    for encoding in ("utf-8-sig", "utf-8", "latin-1"):
         try:
-            return raw.decode(encoding)
+            text = raw.decode(encoding)
+            return sanitize_set_inputs(text)
         except UnicodeDecodeError:
             continue
     raise UnicodeDecodeError("unknown", b"", 0, 1, f"Could not decode {set_file}")
+
+
+def sanitize_set_inputs(text: str) -> str:
+    cleaned_lines: list[str] = []
+    for line in text.splitlines():
+        stripped = line.strip()
+        if not stripped or stripped.startswith(";") or "=" not in stripped:
+            cleaned_lines.append(line)
+            continue
+
+        name, value = line.split("=", 1)
+        if "||" not in value:
+            cleaned_lines.append(line)
+            continue
+
+        head = value.split("||", 1)[0].strip()
+        numeric_like = re.fullmatch(r"[-+]?\d+(?:\.\d+)?", head) is not None
+        bool_like = head.lower() in {"true", "false"}
+        datetime_like = re.fullmatch(r"D'.*'", head) is not None
+        if numeric_like or bool_like or datetime_like:
+            cleaned_lines.append(line)
+            continue
+
+        cleaned_lines.append(f"{name}={head}")
+
+    return "\n".join(cleaned_lines) + ("\n" if text.endswith(("\n", "\r")) else "")
 
 
 def build_tester_ini(
