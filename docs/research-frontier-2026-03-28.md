@@ -58,6 +58,14 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - metrics: `R$70,557`, `PF 2.2923`, `DD 1.10%`
   - interpretation: too good to trust yet; this is a bar-based prototype screen, not an exact every-tick or MT5-parity backtest
 
+- Exact every-tick EMA crossover validation failed and should not be promoted:
+  - artifact: `artifacts/outputs/wdo_ema_crossover_exact_20260328/summary.json`
+  - `EMA 5/21`, `SL 0.84 / TP 0.42`: `R$-1,805`, `PF 0.9554`, `DD 39.89%`
+  - `EMA 5/21`, `SL 0.84 / TP 0.30`: `R$-3,880`, `PF 0.8857`, `DD 44.60%`
+  - `EMA 8/34`, `SL 0.84 / TP 0.42`: `R$-2,030`, `PF 0.9322`, `DD 29.31%`
+  - `EMA 3/13`, `SL 0.84 / TP 0.42`: `R$-9,300`, `PF 0.8552`, `DD 93.10%`
+  - interpretation: the huge EMA prototype edge does not survive exact every-tick execution; keep this family on hold unless the entry/exit mechanics are redesigned
+
 - The Bollinger mean-reversion family was negative and should not be pursued as-is:
   - `R$-13,586`, `PF 0.8837`, `DD 138.39%`
 
@@ -99,5 +107,5 @@ Yearly stability is still acceptable, but 2025 was weaker than 2024:
 1. Validate the session winner approximation in MT5 `Every tick` once the tester is stable again.
 2. Validate the Friday-exclusion preset:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 No Friday GPT 5.4.set`
-3. If MT5 remains unstable, implement the EMA crossover family in the exact every-tick engine before trusting its huge prototype numbers.
-4. Do not spend more time on Bollinger mean reversion, momentum divergence, or additional breakeven tuning unless the exact EMA family fails.
+3. If MT5 remains unstable, prioritize exact validation of the strongest existing session and SL/TP refinements rather than new prototype families.
+4. Do not spend more time on Bollinger mean reversion, momentum divergence, or the current EMA crossover family unless the entry/exit mechanics are materially redesigned.

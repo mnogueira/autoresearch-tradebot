@@ -1,0 +1,280 @@
+{
+  "notes": [
+    "Exact every-tick engine using market entries at the next M1 open after an M15 EMA crossover event.",
+    "This is a different strategy family from the v10.1 retracement system."
+  ],
+  "results": [
+    {
+      "name": "ema_5_21_exact_sl0p84_tp0p42",
+      "params": {
+        "fast_span": 5,
+        "slow_span": 21,
+        "sl_atr_mult": 0.84,
+        "tp_atr_mult": 0.42,
+        "entry_hours": [
+          10,
+          11,
+          12,
+          14
+        ]
+      },
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1280,
+        "win_rate": 0.6578,
+        "net_profit_brl": -1805.0,
+        "avg_profit_brl": -1.41,
+        "avg_win_brl": 45.88,
+        "avg_loss_brl": -92.32,
+        "profit_factor": 0.9554,
+        "max_drawdown_pct": 39.89,
+        "expected_payoff": -1.41,
+        "on_tester_value": -45.253014
+      },
+      "year_robustness": [
+        {
+          "year": 2024,
+          "metrics": {
+            "start_date": "2024-01-02",
+            "end_date": "2024-12-30",
+            "trading_days": 251,
+            "total_trades": 278,
+            "win_rate": 0.6259,
+            "net_profit_brl": -1130.0,
+            "avg_profit_brl": -4.06,
+            "avg_win_brl": 40.6,
+            "avg_loss_brl": -78.8,
+            "profit_factor": 0.8621,
+            "max_drawdown_pct": 15.58,
+            "expected_payoff": -4.06,
+            "on_tester_value": -72.537578
+          }
+        },
+        {
+          "year": 2025,
+          "metrics": {
+            "start_date": "2025-01-02",
+            "end_date": "2025-12-30",
+            "trading_days": 250,
+            "total_trades": 252,
+            "win_rate": 0.7103,
+            "net_profit_brl": 1200.0,
+            "avg_profit_brl": 4.76,
+            "avg_win_brl": 38.77,
+            "avg_loss_brl": -78.63,
+            "profit_factor": 1.2091,
+            "max_drawdown_pct": 4.75,
+            "expected_payoff": 4.76,
+            "on_tester_value": 252.831683
+          }
+        }
+      ]
+    },
+    {
+      "name": "ema_5_21_exact_sl0p84_tp0p30",
+      "params": {
+        "fast_span": 5,
+        "slow_span": 21,
+        "sl_atr_mult": 0.84,
+        "tp_atr_mult": 0.3,
+        "entry_hours": [
+          10,
+          11,
+          12,
+          14
+        ]
+      },
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1285,
+        "win_rate": 0.7121,
+        "net_profit_brl": -3880.0,
+        "avg_profit_brl": -3.02,
+        "avg_win_brl": 32.85,
+        "avg_loss_brl": -91.72,
+        "profit_factor": 0.8857,
+        "max_drawdown_pct": 44.6,
+        "expected_payoff": -3.02,
+        "on_tester_value": -86.987097
+      },
+      "year_robustness": [
+        {
+          "year": 2024,
+          "metrics": {
+            "start_date": "2024-01-02",
+            "end_date": "2024-12-30",
+            "trading_days": 251,
+            "total_trades": 279,
+            "win_rate": 0.6774,
+            "net_profit_brl": -1715.0,
+            "avg_profit_brl": -6.15,
+            "avg_win_brl": 28.76,
+            "avg_loss_brl": -79.44,
+            "profit_factor": 0.7601,
+            "max_drawdown_pct": 19.17,
+            "expected_payoff": -6.15,
+            "on_tester_value": -89.472481
+          }
+        },
+        {
+          "year": 2025,
+          "metrics": {
+            "start_date": "2025-01-02",
+            "end_date": "2025-12-30",
+            "trading_days": 250,
+            "total_trades": 252,
+            "win_rate": 0.7421,
+            "net_profit_brl": 215.0,
+            "avg_profit_brl": 0.85,
+            "avg_win_brl": 27.89,
+            "avg_loss_brl": -76.92,
+            "profit_factor": 1.043,
+            "max_drawdown_pct": 5.76,
+            "expected_payoff": 0.85,
+            "on_tester_value": 37.331818
+          }
+        }
+      ]
+    },
+    {
+      "name": "ema_8_34_exact_sl0p84_tp0p42",
+      "params": {
+        "fast_span": 8,
+        "slow_span": 34,
+        "sl_atr_mult": 0.84,
+        "tp_atr_mult": 0.42,
+        "entry_hours": [
+          10,
+          11,
+          12,
+          14
+        ]
+      },
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 930,
+        "win_rate": 0.6516,
+        "net_profit_brl": -2030.0,
+        "avg_profit_brl": -2.18,
+        "avg_win_brl": 46.09,
+        "avg_loss_brl": -92.47,
+        "profit_factor": 0.9322,
+        "max_drawdown_pct": 29.31,
+        "expected_payoff": -2.18,
+        "on_tester_value": -69.262481
+      },
+      "year_robustness": [
+        {
+          "year": 2024,
+          "metrics": {
+            "start_date": "2024-01-02",
+            "end_date": "2024-12-30",
+            "trading_days": 251,
+            "total_trades": 189,
+            "win_rate": 0.6508,
+            "net_profit_brl": 245.0,
+            "avg_profit_brl": 1.3,
+            "avg_win_brl": 41.79,
+            "avg_loss_brl": -74.17,
+            "profit_factor": 1.0501,
+            "max_drawdown_pct": 4.43,
+            "expected_payoff": 1.3,
+            "on_tester_value": 55.3
+          }
+        },
+        {
+          "year": 2025,
+          "metrics": {
+            "start_date": "2025-01-02",
+            "end_date": "2025-12-30",
+            "trading_days": 250,
+            "total_trades": 188,
+            "win_rate": 0.6755,
+            "net_profit_brl": -175.0,
+            "avg_profit_brl": -0.93,
+            "avg_win_brl": 39.02,
+            "avg_loss_brl": -84.1,
+            "profit_factor": 0.9659,
+            "max_drawdown_pct": 8.3,
+            "expected_payoff": -0.93,
+            "on_tester_value": -21.084337
+          }
+        }
+      ]
+    },
+    {
+      "name": "ema_3_13_exact_sl0p84_tp0p42",
+      "params": {
+        "fast_span": 3,
+        "slow_span": 13,
+        "sl_atr_mult": 0.84,
+        "tp_atr_mult": 0.42,
+        "entry_hours": [
+          10,
+          11,
+          12,
+          14
+        ]
+      },
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1894,
+        "win_rate": 0.6309,
+        "net_profit_brl": -9300.0,
+        "avg_profit_brl": -4.91,
+        "avg_win_brl": 45.98,
+        "avg_loss_brl": -91.91,
+        "profit_factor": 0.8552,
+        "max_drawdown_pct": 93.1,
+        "expected_payoff": -4.91,
+        "on_tester_value": -99.892536
+      },
+      "year_robustness": [
+        {
+          "year": 2024,
+          "metrics": {
+            "start_date": "2024-01-02",
+            "end_date": "2024-12-30",
+            "trading_days": 251,
+            "total_trades": 376,
+            "win_rate": 0.609,
+            "net_profit_brl": -2585.0,
+            "avg_profit_brl": -6.88,
+            "avg_win_brl": 40.5,
+            "avg_loss_brl": -80.68,
+            "profit_factor": 0.782,
+            "max_drawdown_pct": 27.25,
+            "expected_payoff": -6.88,
+            "on_tester_value": -94.862385
+          }
+        },
+        {
+          "year": 2025,
+          "metrics": {
+            "start_date": "2025-01-02",
+            "end_date": "2025-12-30",
+            "trading_days": 250,
+            "total_trades": 388,
+            "win_rate": 0.634,
+            "net_profit_brl": -1320.0,
+            "avg_profit_brl": -3.4,
+            "avg_win_brl": 39.61,
+            "avg_loss_brl": -77.92,
+            "profit_factor": 0.8807,
+            "max_drawdown_pct": 14.19,
+            "expected_payoff": -3.4,
+            "on_tester_value": -93.043902
+          }
+        }
+      ]
+    }
+  ]
+}
