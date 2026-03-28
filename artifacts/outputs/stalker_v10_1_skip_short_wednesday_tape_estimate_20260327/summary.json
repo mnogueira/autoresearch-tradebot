@@ -1,0 +1,21 @@
+{
+  "source": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_mt5_loss_analysis\\trades_enriched.csv",
+  "baseline": {
+    "trades": 2756,
+    "net_profit_brl": 14310.0,
+    "profit_factor": 1.220850374257273,
+    "win_rate": 0.7380261248185777,
+    "max_drawdown_pct": 8.914728682170542
+  },
+  "skip_short_wednesday_estimate": {
+    "trades": 2483,
+    "net_profit_brl": 14620.0,
+    "profit_factor": 1.2544821583986074,
+    "win_rate": 0.7410390656463954,
+    "max_drawdown_pct": 8.544391873086557
+  },
+  "delta_net_profit_brl": 310.0,
+  "delta_trades": -273,
+  "preset_path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 Robust Skip Short Wednesday GPT 5.4.set",
+  "notes": "Trade-tape estimate only. This removes completed Wednesday shorts from the existing enriched trade history; it is not a fresh backtest."
+}
