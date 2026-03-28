@@ -1,0 +1,84 @@
+{
+  "last_trade_time": "2026-03-19 12:56:01",
+  "total_trades": 2070,
+  "trading_days": 1054,
+  "expected_trades_per_day": 1.9639,
+  "latest_daily_pnl_brl": -85.0,
+  "rolling_pnl_brl": {
+    "5d": 215.0,
+    "20d": 385.0
+  },
+  "rolling_profit_factor": {
+    "5d": 3.5294,
+    "20d": 1.6063,
+    "60d": 1.2062
+  },
+  "drawdown": {
+    "current_brl": 395.0,
+    "current_pct": 1.6,
+    "max_brl": 910.0,
+    "max_pct": 3.68
+  },
+  "last_10_daily_rows": [
+    {
+      "session_date": "2026-03-05",
+      "trades": 3,
+      "pnl_brl": -340.0,
+      "equity_brl": 23860.0
+    },
+    {
+      "session_date": "2026-03-06",
+      "trades": 3,
+      "pnl_brl": -45.0,
+      "equity_brl": 23815.0
+    },
+    {
+      "session_date": "2026-03-09",
+      "trades": 2,
+      "pnl_brl": 75.0,
+      "equity_brl": 23890.0
+    },
+    {
+      "session_date": "2026-03-10",
+      "trades": 2,
+      "pnl_brl": 80.0,
+      "equity_brl": 23970.0
+    },
+    {
+      "session_date": "2026-03-12",
+      "trades": 4,
+      "pnl_brl": 145.0,
+      "equity_brl": 24115.0
+    },
+    {
+      "session_date": "2026-03-13",
+      "trades": 4,
+      "pnl_brl": 175.0,
+      "equity_brl": 24290.0
+    },
+    {
+      "session_date": "2026-03-16",
+      "trades": 1,
+      "pnl_brl": 40.0,
+      "equity_brl": 24330.0
+    },
+    {
+      "session_date": "2026-03-17",
+      "trades": 2,
+      "pnl_brl": 50.0,
+      "equity_brl": 24380.0
+    },
+    {
+      "session_date": "2026-03-18",
+      "trades": 1,
+      "pnl_brl": 35.0,
+      "equity_brl": 24415.0
+    },
+    {
+      "session_date": "2026-03-19",
+      "trades": 2,
+      "pnl_brl": -85.0,
+      "equity_brl": 24330.0
+    }
+  ]
+}

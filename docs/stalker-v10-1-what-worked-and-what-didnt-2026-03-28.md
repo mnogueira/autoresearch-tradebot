@@ -19,6 +19,7 @@
 | --- | --- | --- |
 | Wider TPs | `TP 0.48` on the max-hold leader: `R$18,625`, `PF 1.4356`, `DD 4.92%` | Higher net, but weaker quality balance than the production leader. |
 | Daily ADX gate | Trend-day-only preset: `PF 1.9183`, `DD 3.38%` | Extremely clean, but it over-pruned too hard for default deployment. |
+| Stricter daily ADX gate | Cooldown-only with prior-day `ADX > 30`: `R$3,515`, `PF 1.6356`, `DD 4.35%` | Still positive, but it threw away too much net and was actually worse than the simpler `ADX > 25` quality niche. |
 | Adaptive cooldown | `30m` on trend days, `15m` on range days: `R$14,770`, `PF 1.4670`, `DD 3.75%` | Better gross net, but worse balanced quality than the fixed `30m` cooldown. |
 | Regime switch | Session-only on range days, full production stack on trend days: `R$15,020`, `PF 1.4482`, `DD 4.13%` | Similar story: more net, less quality. |
 | M30 confirmation | `R$12,460`, `PF 1.5335`, `DD 3.25%` | Nice quality niche, but too much net-profit giveback. |
@@ -37,6 +38,9 @@
 | Strict spread-aware entry | `0` trades | Historical spread tape was too coarse for this to add value. |
 | Volume confirmation `>1.5x` average | `R$11,750`, `PF 1.4646`, `DD 6.19%` | Cleaner story, worse actual balance. |
 | Breakeven stop | Best trigger still weaker than baseline | The edge did not want early stop tightening. |
+| Confirmation-candle entry | `R$-3,515`, `PF 0.8739`, `DD 38.49%` | Waiting one bar for confirmation destroyed the fast-continuation edge this setup depends on. |
+| Static profit-lock `75%/25%` | `R$5,480`, `PF 1.2426`, `DD 9.66%` | Locking profit too early cut the winner distribution and badly weakened the strategy. |
+| Confirmation + profit-lock combined | `R$-5,920`, `PF 0.7372`, `DD 61.28%` | The two ideas compounded each other's damage rather than fixing false breakouts. |
 
 ## The Real Risks
 

@@ -1,0 +1,83 @@
+{
+  "reference_variant": {
+    "name": "session_winner_cooldown_30m_maxhold120",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 14135.0,
+      "avg_profit_brl": 9.01,
+      "avg_win_brl": 34.26,
+      "avg_loss_brl": -95.54,
+      "profit_factor": 1.4851,
+      "max_drawdown_pct": 3.29,
+      "expected_payoff": 9.01,
+      "on_tester_value": 4290.320082
+    },
+    "expected_trades_per_day": 1.2574
+  },
+  "confirmation_candle_variant": {
+    "rule": "After a valid signal, wait for the next candle to close in the same direction and then enter at the following bar open.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 992,
+      "win_rate": 0.7077,
+      "net_profit_brl": -3515.0,
+      "avg_profit_brl": -3.54,
+      "avg_win_brl": 34.7,
+      "avg_loss_brl": -96.12,
+      "profit_factor": 0.8739,
+      "max_drawdown_pct": 38.49,
+      "expected_payoff": -3.54,
+      "on_tester_value": -91.320223
+    },
+    "expected_trades_per_day": 0.7955
+  },
+  "profit_lock_variant": {
+    "rule": "Once price reaches 75% of TP, move the stop to lock 25% of TP and leave the original TP in place.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8355,
+      "net_profit_brl": 5480.0,
+      "avg_profit_brl": 3.49,
+      "avg_win_brl": 21.43,
+      "avg_loss_brl": -95.32,
+      "profit_factor": 1.2426,
+      "max_drawdown_pct": 9.66,
+      "expected_payoff": 3.49,
+      "on_tester_value": 567.290966
+    },
+    "expected_trades_per_day": 1.2574
+  },
+  "combined_confirmation_and_profit_lock": {
+    "rule": "Require the confirmation candle and apply the 75%/25% profit-lock rule.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 992,
+      "win_rate": 0.75,
+      "net_profit_brl": -5920.0,
+      "avg_profit_brl": -5.97,
+      "avg_win_brl": 22.32,
+      "avg_loss_brl": -96.26,
+      "profit_factor": 0.7372,
+      "max_drawdown_pct": 61.28,
+      "expected_payoff": -5.97,
+      "on_tester_value": -96.611433
+    },
+    "expected_trades_per_day": 0.7955
+  },
+  "notes": [
+    "The confirmation candle variant is an exact-engine experiment, not a bar-prototype proxy.",
+    "The profit-lock rule is intentionally static: once activated, it raises the stop to a fixed profit lock instead of turning into a continuously trailing stop.",
+    "Expected trades per day are computed directly from total trades divided by trading days for each exact variant."
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "reference_variant": {
+    "name": "session_winner_cooldown_30m",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 14085.0,
+      "avg_profit_brl": 8.98,
+      "avg_win_brl": 34.26,
+      "avg_loss_brl": -95.7,
+      "profit_factor": 1.4825,
+      "max_drawdown_pct": 3.3,
+      "expected_payoff": 8.98,
+      "on_tester_value": 4263.59877
+    }
+  },
+  "adx_gt_25_variant": {
+    "rule": "Prior-day daily ADX(14) must be above 25.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 490,
+      "win_rate": 0.8429,
+      "net_profit_brl": 7485.0,
+      "avg_profit_brl": 15.28,
+      "avg_win_brl": 38.11,
+      "avg_loss_brl": -107.21,
+      "profit_factor": 1.9067,
+      "max_drawdown_pct": 3.38,
+      "expected_payoff": 15.28,
+      "on_tester_value": 2213.667241
+    }
+  },
+  "adx_gt_30_variant": {
+    "rule": "Prior-day daily ADX(14) must be above 30.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 278,
+      "win_rate": 0.8237,
+      "net_profit_brl": 3515.0,
+      "avg_profit_brl": 12.64,
+      "avg_win_brl": 39.5,
+      "avg_loss_brl": -112.86,
+      "profit_factor": 1.6356,
+      "max_drawdown_pct": 4.35,
+      "expected_payoff": 12.64,
+      "on_tester_value": 807.563866
+    }
+  },
+  "notes": [
+    "This isolates the regime-strength idea on the simpler cooldown-only tier instead of the max-hold variant.",
+    "The filter uses only prior-day daily information, so it is feasible for live deployment if it proves worth the trade loss."
+  ]
+}

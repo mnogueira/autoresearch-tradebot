@@ -316,6 +316,20 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - `50%` pullback: `R$-11,885`, `PF 0.6497`, `DD 119.47%`
   - interpretation: this strategy’s edge depends on entering close to the original signal, not on waiting for a nicer-looking retracement. The “patience” instinct is directionally wrong for this setup.
 
+- The last entry-management ideas were also decisively rejected:
+  - artifact: `artifacts/outputs/stalker_v10_1_session_confirmation_followups_20260328/summary.json`
+  - one-candle confirmation before entry: `R$-3,515`, `PF 0.8739`, `DD 38.49%`
+  - static profit-lock at `75%`/`25%` of target: `R$5,480`, `PF 1.2426`, `DD 9.66%`
+  - confirmation plus profit-lock: `R$-5,920`, `PF 0.7372`, `DD 61.28%`
+  - interpretation: this signal wants immediate participation and a clean fixed target; both delayed confirmation and early profit-locking damage the edge badly.
+
+- A stricter trend-day gate (`prior-day ADX > 30`) was too narrow even on the simpler cooldown tier:
+  - artifact: `artifacts/outputs/stalker_v10_1_high_adx_followups_20260328/summary.json`
+  - cooldown-only reference: `R$14,085`, `PF 1.4825`, `DD 3.30%`
+  - `ADX > 25`: `R$7,485`, `PF 1.9067`, `DD 3.38%`
+  - `ADX > 30`: `R$3,515`, `PF 1.6356`, `DD 4.35%`
+  - interpretation: the regime idea is real, but `ADX > 30` over-prunes too hard. If the desk wants a quality-only niche, `ADX > 25` is the upper bound worth considering.
+
 - The latest deployment follow-up increased confidence in the cooldown winner:
   - artifact: `artifacts/outputs/stalker_v10_1_session_deployment_followups_20260328/summary.json`
   - exact `70/30` holdout for the cooldown winner:
