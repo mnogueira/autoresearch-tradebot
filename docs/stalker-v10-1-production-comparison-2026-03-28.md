@@ -6,6 +6,7 @@
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Confidence-weighted + time-widened stop overlay, research-only fractional sizing | `R$18,359.32` | `1.4993` | `3.72%` | `80.87%` | 1568 | `1.2574` | `1.8410` | `6.3030` | `1.6315` | `3.1377` | research |
 | Confidence-weighted entry overlay, research-only fractional sizing | `R$18,030.27` | `1.4897` | `3.71%` | `80.55%` | 1568 | `1.2574` | `1.8686` | `6.2356` | `1.6255` | `3.1301` | research |
+| Equal-weight blend of max-hold + time-widened stop, research-only | `R$14,202.50` | `1.4885` | `3.27%` | `80.55%` | 1568 | `1.2574` | `1.9136` | `5.9735` | `1.6178` | `3.0724` | research |
 | Max-hold v2, session winner + cooldown + `120` M1-bar max hold | `R$14,135` | `1.4851` | `3.29%` | `80.55%` | 1568 | `1.2574` | `1.9392` | `5.9153` | `1.6150` | `3.0672` | 1 |
 | Time-widened stop, `0.84 -> 1.20` ATR after `30` bars | `R$14,270` | `1.4887` | `3.28%` | `80.87%` | 1568 | `1.2574` | `1.8816` | `5.9908` | `1.6132` | `3.0607` | 2 |
 | Minimal moderate, session winner + cooldown | `R$14,085` | `1.4825` | `3.30%` | `80.55%` | 1568 | `1.2574` | `1.9306` | `5.8842` | `1.6115` | `3.0529` | 3 |
@@ -54,6 +55,7 @@
 - Risk-adjusted ranking by the Sortino-weighted composite:
   - research-only leader: confidence overlay + time-widened stop at `3.1377`
   - next research-only: confidence overlay at `3.1301`
+  - next research-only: equal-weight blend of max-hold + time-widened stop at `3.0724`
   - 1: max-hold v2 at `3.0672`
   - 2: time-widened stop at `3.0607`
   - 3: cooldown-only at `3.0529`
@@ -78,6 +80,11 @@
     - `R$18,359.32`, `PF 1.4993`, `DD 3.72%`, `Composite 3.1377`
   - interpretation: the tiny exact quality gain from the time-widened stop survives the confidence-weighted overlay and nudges the research frontier slightly higher
   - deployment caveat: still research-only because the sizing layer is fractional and not yet mirrored in MQ5
+- Simple equal-weight ensemble of the top two exact strategies:
+  - blending the max-hold leader and the time-widened stop `50/50` slightly beat the best single exact strategy:
+    - `R$14,202.50`, `PF 1.4885`, `DD 3.27%`, `Composite 3.0724`
+  - interpretation: the single-strategy frontier is probably close to its ceiling, but portfolio-level smoothing can still squeeze out a tiny risk-adjusted improvement
+  - deployment caveat: this is not Monday’s default because it assumes running two nearly identical exact variants side by side and averaging the risk
 - Binary strong-signal gate:
   - top-half absolute trend-efficiency gate already hurt badly:
     - `R$8,555`, `PF 1.4047`, `DD 4.72%`, `Composite 1.7035`
@@ -113,6 +120,18 @@
   - replacing the fixed `0.30 ATR` target with `1.00 ATR` raised gross net but hurt quality too much:
     - `R$17,915`, `PF 1.2569`, `DD 6.13%`, `Composite 2.3129`
   - interpretation: wider volatility-scaled targets are not the right risk-adjusted direction for the production candidate
+- ML signal-overlay follow-up:
+  - logistic next-bar model had mild directional skill (`AUC 0.5987`) and the random forest was weaker (`AUC 0.5607`)
+  - but none of the ML trade overlays helped the strategy:
+    - logistic gate `0.55`: `R$-115`, `Composite 0.1120`
+    - logistic overlay: `R$5,364.21`, `Composite 2.0685`
+    - simple-core logistic overlay: `R$5,270.14`, `Composite 2.1251`
+    - random-forest overlay: `R$5,273.39`, `Composite 2.1265`
+  - interpretation: there is a little predictive signal in the features, but not enough to improve the current strategy once it is translated into a tradable overlay
+- Latest live-tape check:
+  - last `10` trading days (`2026-03-09` to `2026-03-20`) were strong for the production candidate:
+    - `R$455`, `PF 4.25`, `DD 0.81%`, `16` trades
+  - interpretation: the soft `30`-day window was real, but the most recent `10` days recovered sharply
 - Market-close avoidance and weekly caps:
   - closing `30` minutes before market close was an exact no-op on this setup
   - a weekly profit cap at `R$300` per contract slightly improved PF and rolling trade smoothness, but it gave up just enough net and Calmar to stay below the main winners

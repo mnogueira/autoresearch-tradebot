@@ -7885,6 +7885,36 @@
     "rank": 307
   },
   {
+    "name": "session_winner_equal_weight_ensemble_maxhold_timewidened",
+    "family": "stalker_v10_1_ml_signal",
+    "screening_method": "ml_signal_followup",
+    "comparison_tier": "analysis",
+    "mt5_ready": false,
+    "test_total_trades": 1568,
+    "test_net_profit_brl": 14202.5,
+    "test_profit_factor": 1.4885,
+    "test_on_tester_value": 4338.165266,
+    "test_max_drawdown_pct": 3.27,
+    "test_win_rate": 0.8055,
+    "notes": "Research-only equal-weight blend of the max-hold and time-widened exact strategies.",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_ml_recent_followups_20260328\\summary.json",
+    "params": {
+      "blend": [
+        "session_winner_cooldown_30m_maxhold120_sl0p84_tp0p30",
+        "session_winner_cooldown_30m_maxhold120_timewidened"
+      ],
+      "weights": [
+        0.5,
+        0.5
+      ]
+    },
+    "sortino_ratio": 1.9136,
+    "calmar_ratio": 5.9735,
+    "omega_ratio": 1.6178,
+    "sortino_weighted_composite": 3.0724,
+    "rank": 308
+  },
+  {
     "name": "session_winner_cooldown_30m_recent_entry_density_sizing_60m",
     "family": "session_position_sizing_overlay",
     "screening_method": "session_deployment_followup",
@@ -7904,7 +7934,7 @@
       "min_size_multiplier": 0.5,
       "max_size_multiplier": 1.0
     },
-    "rank": 308
+    "rank": 309
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_mon_wed_thu_only_confidence_overlay",
@@ -7936,7 +7966,7 @@
     "calmar_ratio": 4.312,
     "omega_ratio": 1.7735,
     "sortino_weighted_composite": 2.239,
-    "rank": 309
+    "rank": 310
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_mon_wed_thu_timewidened_confidence_overlay",
@@ -7968,7 +7998,79 @@
     "calmar_ratio": 4.1715,
     "omega_ratio": 1.8028,
     "sortino_weighted_composite": 2.2019,
-    "rank": 310
+    "rank": 311
+  },
+  {
+    "name": "session_winner_cooldown_30m_maxhold120_logistic_confidence_overlay",
+    "family": "stalker_v10_1_ml_signal",
+    "screening_method": "ml_signal_followup",
+    "comparison_tier": "analysis",
+    "mt5_ready": false,
+    "test_total_trades": 1562,
+    "test_net_profit_brl": 5364.21,
+    "test_profit_factor": 1.4371,
+    "test_on_tester_value": 2173.318173,
+    "test_max_drawdown_pct": 2.47,
+    "test_win_rate": 0.6677,
+    "notes": "Research-only out-of-fold logistic confidence-weighted sizing overlay on the production candidate.",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_ml_recent_followups_20260328\\summary.json",
+    "params": {
+      "model": "logistic_regression",
+      "overlay": "probability_weighted"
+    },
+    "sortino_ratio": 1.3188,
+    "calmar_ratio": 3.6733,
+    "omega_ratio": 1.5354,
+    "sortino_weighted_composite": 2.0685,
+    "rank": 312
+  },
+  {
+    "name": "session_winner_cooldown_30m_maxhold120_random_forest_confidence_overlay",
+    "family": "stalker_v10_1_ml_signal",
+    "screening_method": "ml_signal_followup",
+    "comparison_tier": "analysis",
+    "mt5_ready": false,
+    "test_total_trades": 1562,
+    "test_net_profit_brl": 5273.39,
+    "test_profit_factor": 1.4457,
+    "test_on_tester_value": 2154.894153,
+    "test_max_drawdown_pct": 2.45,
+    "test_win_rate": 0.6677,
+    "notes": "Research-only out-of-fold random-forest confidence-weighted sizing overlay on the production candidate.",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_ml_recent_followups_20260328\\summary.json",
+    "params": {
+      "model": "random_forest",
+      "overlay": "probability_weighted"
+    },
+    "sortino_ratio": 1.4425,
+    "calmar_ratio": 3.6515,
+    "omega_ratio": 1.5492,
+    "sortino_weighted_composite": 2.1265,
+    "rank": 313
+  },
+  {
+    "name": "session_winner_cooldown_30m_maxhold120_logistic_core_confidence_overlay",
+    "family": "stalker_v10_1_ml_signal",
+    "screening_method": "ml_signal_followup",
+    "comparison_tier": "analysis",
+    "mt5_ready": false,
+    "test_total_trades": 1562,
+    "test_net_profit_brl": 5270.14,
+    "test_profit_factor": 1.4454,
+    "test_on_tester_value": 2152.980167,
+    "test_max_drawdown_pct": 2.45,
+    "test_win_rate": 0.6677,
+    "notes": "Research-only out-of-fold logistic confidence-weighted sizing overlay on the production candidate using a simpler core feature set.",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_ml_recent_followups_20260328\\summary.json",
+    "params": {
+      "model": "logistic_regression_core",
+      "overlay": "probability_weighted"
+    },
+    "sortino_ratio": 1.4416,
+    "calmar_ratio": 3.6486,
+    "omega_ratio": 1.5488,
+    "sortino_weighted_composite": 2.1251,
+    "rank": 314
   },
   {
     "name": "session_winner_cooldown_30m_hourly_open_proxy",
@@ -7995,6 +8097,54 @@
         14
       ]
     },
-    "rank": 311
+    "rank": 315
+  },
+  {
+    "name": "session_winner_cooldown_30m_maxhold120_random_forest_gate_0p55",
+    "family": "stalker_v10_1_ml_signal",
+    "screening_method": "ml_signal_followup",
+    "comparison_tier": "analysis",
+    "mt5_ready": false,
+    "test_total_trades": 0,
+    "test_net_profit_brl": 0.0,
+    "test_profit_factor": 0.0,
+    "test_on_tester_value": 0.0,
+    "test_max_drawdown_pct": 0.0,
+    "test_win_rate": 0.0,
+    "notes": "Research-only out-of-fold random-forest gate on the production candidate.",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_ml_recent_followups_20260328\\summary.json",
+    "params": {
+      "model": "random_forest",
+      "threshold": 0.55
+    },
+    "sortino_ratio": 0.0,
+    "calmar_ratio": 0.0,
+    "omega_ratio": 0.0,
+    "sortino_weighted_composite": 0.0,
+    "rank": 316
+  },
+  {
+    "name": "session_winner_cooldown_30m_maxhold120_logistic_gate_0p55",
+    "family": "stalker_v10_1_ml_signal",
+    "screening_method": "ml_signal_followup",
+    "comparison_tier": "analysis",
+    "mt5_ready": false,
+    "test_total_trades": 10,
+    "test_net_profit_brl": -115.0,
+    "test_profit_factor": 0.7013,
+    "test_on_tester_value": -38.421311,
+    "test_max_drawdown_pct": 2.99,
+    "test_win_rate": 0.7,
+    "notes": "Research-only out-of-fold logistic gate on the production candidate.",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_ml_recent_followups_20260328\\summary.json",
+    "params": {
+      "model": "logistic_regression",
+      "threshold": 0.55
+    },
+    "sortino_ratio": -0.0097,
+    "calmar_ratio": -0.078,
+    "omega_ratio": 0.7013,
+    "sortino_weighted_composite": 0.112,
+    "rank": 317
   }
 ]

@@ -39,10 +39,21 @@ This remains the safest paper-trading candidate because it is the best strategy 
 - Final maximum-quality composite pass:
   - adding the confidence-weighted research overlay on top of the time-widened stop produced the strongest raw composite of the whole sprint:
     - `R$18,359.32`, `PF 1.4993`, `DD 3.72%`, composite `3.1377`
+  - a simpler research-only equal-weight blend of the top two exact strategies also nudged past the best single exact variant:
+    - `R$14,202.50`, `PF 1.4885`, `DD 3.27%`, composite `3.0724`
   - the `70/30` walk-forward stayed positive:
     - train `R$14,407.44`, `PF 1.5535`, `Composite 3.7167`
     - test `R$3,951.88`, `PF 1.3681`, `Composite 2.3270`
-  - interpretation: there is still some research-only upside in graded sizing, but the live deployable frontier is still anchored by the simpler exact tiers
+  - interpretation: there is still some research-only upside in graded sizing and portfolio smoothing, but the live deployable frontier is still anchored by the simpler exact tiers
+- ML signal-overlay follow-up:
+  - out-of-fold logistic next-bar classifier: `AUC 0.5987`, accuracy `0.8177`
+  - out-of-fold random forest: `AUC 0.5607`, accuracy `0.8238`
+  - strategy translation failed:
+    - logistic gate `0.55`: `R$-115`, composite `0.1120`
+    - logistic overlay: `R$5,364.21`, composite `2.0685`
+    - core-feature logistic overlay: `R$5,270.14`, composite `2.1251`
+    - random-forest overlay: `R$5,273.39`, composite `2.1265`
+  - interpretation: the current signal family is probably close to its ceiling on this data; there is some directional information in the features, but not enough to improve the existing strategy once costs and path dependence are respected
 
 ## Near-Term Caution
 

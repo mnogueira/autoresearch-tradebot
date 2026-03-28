@@ -1,0 +1,260 @@
+{
+  "reference_variant": {
+    "name": "session_winner_cooldown_30m_maxhold120_sl0p84_tp0p30",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 14135.0,
+      "avg_profit_brl": 9.01,
+      "avg_win_brl": 34.26,
+      "avg_loss_brl": -95.54,
+      "profit_factor": 1.4851,
+      "max_drawdown_pct": 3.29,
+      "expected_payoff": 9.01,
+      "on_tester_value": 4290.320082
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.9392,
+      "calmar_ratio": 5.9153,
+      "omega_ratio": 1.615,
+      "annual_return_pct": 19.49,
+      "max_drawdown_frac": 0.032946
+    },
+    "sortino_weighted_composite": 3.0672
+  },
+  "ml_signal_models": {
+    "logistic_regression_next_bar_direction": {
+      "coverage": 1300,
+      "coverage_pct": 83.23,
+      "auc": 0.5987,
+      "accuracy": 0.8177
+    },
+    "logistic_regression_core_feature_set": {
+      "coverage": 1300,
+      "coverage_pct": 83.23,
+      "auc": 0.5176,
+      "accuracy": 0.8238
+    },
+    "random_forest_next_bar_direction": {
+      "coverage": 1300,
+      "coverage_pct": 83.23,
+      "auc": 0.5607,
+      "accuracy": 0.8238
+    }
+  },
+  "logistic_gate_0p55": {
+    "rule": "Only keep production-candidate trades whose out-of-fold logistic probability of next-bar support is at least 0.55.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 10,
+      "win_rate": 0.7,
+      "net_profit_brl": -115.0,
+      "avg_profit_brl": -11.5,
+      "avg_win_brl": 38.57,
+      "avg_loss_brl": -128.33,
+      "profit_factor": 0.7013,
+      "max_drawdown_pct": 2.99,
+      "expected_payoff": -11.5,
+      "on_tester_value": -38.421311
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": -0.0097,
+      "calmar_ratio": -0.078,
+      "omega_ratio": 0.7013,
+      "annual_return_pct": -0.23,
+      "max_drawdown_frac": 0.029931
+    },
+    "sortino_weighted_composite": 0.112
+  },
+  "logistic_confidence_overlay": {
+    "rule": "Research-only probability-weighted sizing overlay from out-of-fold logistic regression predictions.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1562,
+      "win_rate": 0.6677,
+      "net_profit_brl": 5364.21,
+      "avg_profit_brl": 4.13,
+      "avg_win_brl": 16.91,
+      "avg_loss_brl": -47.75,
+      "profit_factor": 1.4371,
+      "max_drawdown_pct": 2.47,
+      "expected_payoff": 4.13,
+      "on_tester_value": 2173.318173
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.3188,
+      "calmar_ratio": 3.6733,
+      "omega_ratio": 1.5354,
+      "annual_return_pct": 9.07,
+      "max_drawdown_frac": 0.024682
+    },
+    "sortino_weighted_composite": 2.0685,
+    "multiplier_stats": {
+      "mean": 0.515,
+      "median": 0.5,
+      "p25": 0.5,
+      "p75": 0.5,
+      "min": 0.5,
+      "max": 1.5
+    }
+  },
+  "logistic_core_feature_overlay": {
+    "rule": "Research-only probability-weighted sizing overlay from a simpler out-of-fold logistic model using only core trend/ATR/volume/calendar features.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1562,
+      "win_rate": 0.6677,
+      "net_profit_brl": 5270.14,
+      "avg_profit_brl": 4.05,
+      "avg_win_brl": 16.4,
+      "avg_loss_brl": -46.04,
+      "profit_factor": 1.4454,
+      "max_drawdown_pct": 2.45,
+      "expected_payoff": 4.05,
+      "on_tester_value": 2152.980167
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.4416,
+      "calmar_ratio": 3.6486,
+      "omega_ratio": 1.5488,
+      "annual_return_pct": 8.93,
+      "max_drawdown_frac": 0.024478
+    },
+    "sortino_weighted_composite": 2.1251,
+    "multiplier_stats": {
+      "mean": 0.5,
+      "median": 0.5,
+      "p25": 0.5,
+      "p75": 0.5,
+      "min": 0.5,
+      "max": 0.5068
+    }
+  },
+  "random_forest_gate_0p55": {
+    "rule": "Only keep production-candidate trades whose out-of-fold random-forest probability of next-bar support is at least 0.55.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 0,
+      "win_rate": 0.0,
+      "net_profit_brl": 0.0,
+      "avg_profit_brl": 0.0,
+      "avg_win_brl": 0.0,
+      "avg_loss_brl": 0.0,
+      "profit_factor": 0.0,
+      "max_drawdown_pct": 0.0,
+      "expected_payoff": 0.0,
+      "on_tester_value": 0.0
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 0.0,
+      "calmar_ratio": 0.0,
+      "omega_ratio": 0.0,
+      "annual_return_pct": 0.0,
+      "max_drawdown_frac": 0.0
+    },
+    "sortino_weighted_composite": 0.0
+  },
+  "random_forest_confidence_overlay": {
+    "rule": "Research-only probability-weighted sizing overlay from out-of-fold random-forest predictions.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1562,
+      "win_rate": 0.6677,
+      "net_profit_brl": 5273.39,
+      "avg_profit_brl": 4.06,
+      "avg_win_brl": 16.4,
+      "avg_loss_brl": -46.04,
+      "profit_factor": 1.4457,
+      "max_drawdown_pct": 2.45,
+      "expected_payoff": 4.06,
+      "on_tester_value": 2154.894153
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.4425,
+      "calmar_ratio": 3.6515,
+      "omega_ratio": 1.5492,
+      "annual_return_pct": 8.94,
+      "max_drawdown_frac": 0.024472
+    },
+    "sortino_weighted_composite": 2.1265,
+    "multiplier_stats": {
+      "mean": 0.5001,
+      "median": 0.5,
+      "p25": 0.5,
+      "p75": 0.5,
+      "min": 0.5,
+      "max": 0.5968
+    }
+  },
+  "equal_weight_ensemble_reference_and_timewidened": {
+    "rule": "Research-only equal-weight blend of the two strongest exact strategies: max-hold v2 and time-widened stop.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 14202.5,
+      "avg_profit_brl": 9.06,
+      "avg_win_brl": 34.26,
+      "avg_loss_brl": -95.32,
+      "profit_factor": 1.4885,
+      "max_drawdown_pct": 3.27,
+      "expected_payoff": 9.06,
+      "on_tester_value": 4338.165266
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.9136,
+      "calmar_ratio": 5.9735,
+      "omega_ratio": 1.6178,
+      "annual_return_pct": 19.56,
+      "max_drawdown_frac": 0.032738
+    },
+    "sortino_weighted_composite": 3.0724
+  },
+  "recent_10_trading_days_check": {
+    "start_date": "2026-03-09",
+    "end_date": "2026-03-20",
+    "metrics": {
+      "start_date": "2026-03-09",
+      "end_date": "2026-03-20",
+      "trading_days": 10,
+      "total_trades": 16,
+      "win_rate": 0.9375,
+      "net_profit_brl": 455.0,
+      "avg_profit_brl": 28.44,
+      "avg_win_brl": 39.67,
+      "avg_loss_brl": -140.0,
+      "profit_factor": 4.25,
+      "max_drawdown_pct": 0.81,
+      "expected_payoff": 28.44,
+      "on_tester_value": 559.382353
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 8.4975,
+      "calmar_ratio": 254.3382,
+      "omega_ratio": 6.3529,
+      "annual_return_pct": 206.88,
+      "max_drawdown_frac": 0.008134
+    },
+    "sortino_weighted_composite": 81.8208
+  },
+  "notes": [
+    "The ML overlay is intentionally research-only: it scores executed production-candidate trades with out-of-fold time-series predictions and then applies either a hard gate or a probability-weighted sizing multiplier.",
+    "Labels are defined as whether the next M1 bar closes in the trade direction immediately after the signal timestamp.",
+    "This is a directional confirmation experiment, not a full replacement for the exact entry engine."
+  ]
+}
