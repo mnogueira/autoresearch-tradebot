@@ -1,0 +1,575 @@
+{
+  "source": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_mt5_loss_analysis\\trades_enriched.csv",
+  "weekday_by_direction": [
+    {
+      "direction": "short",
+      "weekday": "Friday",
+      "trades": 280,
+      "net": 2640.0,
+      "avg": 9.428571428571429,
+      "win_rate": 0.7857142857142857,
+      "gross_win": 8385.0,
+      "gross_loss": 5745.0,
+      "profit_factor": 1.4595300261096606
+    },
+    {
+      "direction": "short",
+      "weekday": "Tuesday",
+      "trades": 289,
+      "net": 2075.0,
+      "avg": 7.179930795847751,
+      "win_rate": 0.7681660899653979,
+      "gross_win": 7775.0,
+      "gross_loss": 5700.0,
+      "profit_factor": 1.3640350877192982
+    },
+    {
+      "direction": "short",
+      "weekday": "Monday",
+      "trades": 276,
+      "net": 1910.0,
+      "avg": 6.920289855072464,
+      "win_rate": 0.7753623188405797,
+      "gross_win": 7620.0,
+      "gross_loss": 5710.0,
+      "profit_factor": 1.3345008756567425
+    },
+    {
+      "direction": "long",
+      "weekday": "Monday",
+      "trades": 222,
+      "net": 1575.0,
+      "avg": 7.094594594594595,
+      "win_rate": 0.7477477477477478,
+      "gross_win": 6520.0,
+      "gross_loss": 4945.0,
+      "profit_factor": 1.3185035389282103
+    },
+    {
+      "direction": "long",
+      "weekday": "Thursday",
+      "trades": 303,
+      "net": 1555.0,
+      "avg": 5.132013201320132,
+      "win_rate": 0.7227722772277227,
+      "gross_win": 9245.0,
+      "gross_loss": 7690.0,
+      "profit_factor": 1.2022106631989598
+    },
+    {
+      "direction": "short",
+      "weekday": "Thursday",
+      "trades": 272,
+      "net": 1545.0,
+      "avg": 5.680147058823529,
+      "win_rate": 0.7426470588235294,
+      "gross_win": 8565.0,
+      "gross_loss": 7020.0,
+      "profit_factor": 1.2200854700854702
+    },
+    {
+      "direction": "long",
+      "weekday": "Tuesday",
+      "trades": 264,
+      "net": 1455.0,
+      "avg": 5.511363636363637,
+      "win_rate": 0.7348484848484849,
+      "gross_win": 7415.0,
+      "gross_loss": 5960.0,
+      "profit_factor": 1.2441275167785235
+    },
+    {
+      "direction": "long",
+      "weekday": "Wednesday",
+      "trades": 304,
+      "net": 945.0,
+      "avg": 3.1085526315789473,
+      "win_rate": 0.7006578947368421,
+      "gross_win": 8215.0,
+      "gross_loss": 7270.0,
+      "profit_factor": 1.1299862448418156
+    },
+    {
+      "direction": "long",
+      "weekday": "Friday",
+      "trades": 273,
+      "net": 920.0,
+      "avg": 3.36996336996337,
+      "win_rate": 0.6959706959706959,
+      "gross_win": 8330.0,
+      "gross_loss": 7410.0,
+      "profit_factor": 1.1241565452091768
+    },
+    {
+      "direction": "short",
+      "weekday": "Wednesday",
+      "trades": 273,
+      "net": -310.0,
+      "avg": -1.1355311355311355,
+      "win_rate": 0.7106227106227107,
+      "gross_win": 7035.0,
+      "gross_loss": 7345.0,
+      "profit_factor": 0.9577944179714091
+    }
+  ],
+  "entry_hour_by_direction": [
+    {
+      "direction": "long",
+      "entry_hour": 10,
+      "trades": 576,
+      "net": 3925.0,
+      "avg": 6.814236111111111,
+      "win_rate": 0.734375,
+      "gross_win": 16145.0,
+      "gross_loss": 12220.0,
+      "profit_factor": 1.3211947626841243
+    },
+    {
+      "direction": "short",
+      "entry_hour": 11,
+      "trades": 342,
+      "net": 3035.0,
+      "avg": 8.874269005847953,
+      "win_rate": 0.7865497076023392,
+      "gross_win": 10010.0,
+      "gross_loss": 6975.0,
+      "profit_factor": 1.435125448028674
+    },
+    {
+      "direction": "short",
+      "entry_hour": 12,
+      "trades": 192,
+      "net": 1955.0,
+      "avg": 10.182291666666666,
+      "win_rate": 0.78125,
+      "gross_win": 5935.0,
+      "gross_loss": 3980.0,
+      "profit_factor": 1.4912060301507537
+    },
+    {
+      "direction": "short",
+      "entry_hour": 10,
+      "trades": 606,
+      "net": 1795.0,
+      "avg": 2.962046204620462,
+      "win_rate": 0.740924092409241,
+      "gross_win": 15300.0,
+      "gross_loss": 13505.0,
+      "profit_factor": 1.1329137356534618
+    },
+    {
+      "direction": "long",
+      "entry_hour": 11,
+      "trades": 368,
+      "net": 1080.0,
+      "avg": 2.9347826086956523,
+      "win_rate": 0.7065217391304348,
+      "gross_win": 10400.0,
+      "gross_loss": 9320.0,
+      "profit_factor": 1.1158798283261802
+    },
+    {
+      "direction": "long",
+      "entry_hour": 12,
+      "trades": 196,
+      "net": 760.0,
+      "avg": 3.877551020408163,
+      "win_rate": 0.7040816326530612,
+      "gross_win": 6120.0,
+      "gross_loss": 5360.0,
+      "profit_factor": 1.1417910447761195
+    },
+    {
+      "direction": "short",
+      "entry_hour": 14,
+      "trades": 112,
+      "net": 720.0,
+      "avg": 6.428571428571429,
+      "win_rate": 0.7321428571428571,
+      "gross_win": 3725.0,
+      "gross_loss": 3005.0,
+      "profit_factor": 1.2396006655574043
+    },
+    {
+      "direction": "long",
+      "entry_hour": 14,
+      "trades": 106,
+      "net": 715.0,
+      "avg": 6.745283018867925,
+      "win_rate": 0.7358490566037735,
+      "gross_win": 3465.0,
+      "gross_loss": 2750.0,
+      "profit_factor": 1.26
+    },
+    {
+      "direction": "short",
+      "entry_hour": 13,
+      "trades": 136,
+      "net": 245.0,
+      "avg": 1.8014705882352942,
+      "win_rate": 0.7352941176470589,
+      "gross_win": 4300.0,
+      "gross_loss": 4055.0,
+      "profit_factor": 1.060419235511714
+    },
+    {
+      "direction": "long",
+      "entry_hour": 13,
+      "trades": 112,
+      "net": 220.0,
+      "avg": 1.9642857142857142,
+      "win_rate": 0.7053571428571429,
+      "gross_win": 3400.0,
+      "gross_loss": 3180.0,
+      "profit_factor": 1.069182389937107
+    },
+    {
+      "direction": "short",
+      "entry_hour": 15,
+      "trades": 2,
+      "net": 110.0,
+      "avg": 55.0,
+      "win_rate": 1.0,
+      "gross_win": 110.0,
+      "gross_loss": -0.0,
+      "profit_factor": Infinity
+    },
+    {
+      "direction": "long",
+      "entry_hour": 15,
+      "trades": 8,
+      "net": -250.0,
+      "avg": -31.25,
+      "win_rate": 0.5,
+      "gross_win": 195.0,
+      "gross_loss": 445.0,
+      "profit_factor": 0.43820224719101125
+    }
+  ],
+  "wait_minutes_buckets": [
+    {
+      "bucket": "(40.267, 299.533]",
+      "trades": 551,
+      "net": 4370.0,
+      "avg": 7.931034482758621,
+      "win_rate": 0.764065335753176,
+      "gross_win": 17350.0,
+      "gross_loss": 12980.0,
+      "profit_factor": 1.3366718027734976
+    },
+    {
+      "bucket": "(19.683, 40.267]",
+      "trades": 549,
+      "net": 4030.0,
+      "avg": 7.340619307832423,
+      "win_rate": 0.75591985428051,
+      "gross_win": 16850.0,
+      "gross_loss": 12820.0,
+      "profit_factor": 1.314352574102964
+    },
+    {
+      "bucket": "(9.667, 19.683]",
+      "trades": 552,
+      "net": 2905.0,
+      "avg": 5.26268115942029,
+      "win_rate": 0.7246376811594203,
+      "gross_win": 15580.0,
+      "gross_loss": 12675.0,
+      "profit_factor": 1.2291913214990138
+    },
+    {
+      "bucket": "(-0.001, 4.233]",
+      "trades": 555,
+      "net": 2470.0,
+      "avg": 4.45045045045045,
+      "win_rate": 0.7243243243243244,
+      "gross_win": 14440.0,
+      "gross_loss": 11970.0,
+      "profit_factor": 1.2063492063492063
+    },
+    {
+      "bucket": "(4.233, 9.667]",
+      "trades": 549,
+      "net": 535.0,
+      "avg": 0.9744990892531876,
+      "win_rate": 0.7213114754098361,
+      "gross_win": 14885.0,
+      "gross_loss": 14350.0,
+      "profit_factor": 1.0372822299651567
+    }
+  ],
+  "stop_dist_buckets": [
+    {
+      "bucket": "(9.0, 11.0]",
+      "trades": 541,
+      "net": 5630.0,
+      "avg": 10.406654343807764,
+      "win_rate": 0.7652495378927912,
+      "gross_win": 19065.0,
+      "gross_loss": 13435.0,
+      "profit_factor": 1.4190547078526237
+    },
+    {
+      "bucket": "(7.5, 9.0]",
+      "trades": 543,
+      "net": 2860.0,
+      "avg": 5.267034990791897,
+      "win_rate": 0.7403314917127072,
+      "gross_win": 15365.0,
+      "gross_loss": 12505.0,
+      "profit_factor": 1.2287085165933627
+    },
+    {
+      "bucket": "(11.0, 28.0]",
+      "trades": 497,
+      "net": 2850.0,
+      "avg": 5.73440643863179,
+      "win_rate": 0.7203219315895373,
+      "gross_win": 22105.0,
+      "gross_loss": 19255.0,
+      "profit_factor": 1.1480135029862373
+    },
+    {
+      "bucket": "(6.0, 7.5]",
+      "trades": 539,
+      "net": 2200.0,
+      "avg": 4.081632653061225,
+      "win_rate": 0.7421150278293135,
+      "gross_win": 12415.0,
+      "gross_loss": 10215.0,
+      "profit_factor": 1.215369554576603
+    },
+    {
+      "bucket": "(-0.001, 6.0]",
+      "trades": 636,
+      "net": 770.0,
+      "avg": 1.2106918238993711,
+      "win_rate": 0.7232704402515723,
+      "gross_win": 10155.0,
+      "gross_loss": 9385.0,
+      "profit_factor": 1.0820458177943526
+    }
+  ],
+  "signal_atr_buckets": [
+    {
+      "bucket": "(11.79, 13.812]",
+      "trades": 551,
+      "net": 4330.0,
+      "avg": 7.8584392014519056,
+      "win_rate": 0.7495462794918331,
+      "gross_win": 18585.0,
+      "gross_loss": 14255.0,
+      "profit_factor": 1.303753069098562
+    },
+    {
+      "bucket": "(13.812, 29.728]",
+      "trades": 551,
+      "net": 4080.0,
+      "avg": 7.404718693284936,
+      "win_rate": 0.7332123411978222,
+      "gross_win": 24010.0,
+      "gross_loss": 19930.0,
+      "profit_factor": 1.2047165077772202
+    },
+    {
+      "bucket": "(9.908, 11.79]",
+      "trades": 550,
+      "net": 3580.0,
+      "avg": 6.509090909090909,
+      "win_rate": 0.7490909090909091,
+      "gross_win": 15485.0,
+      "gross_loss": 11905.0,
+      "profit_factor": 1.3007139857202856
+    },
+    {
+      "bucket": "(7.946, 9.908]",
+      "trades": 551,
+      "net": 2515.0,
+      "avg": 4.56442831215971,
+      "win_rate": 0.7495462794918331,
+      "gross_win": 12530.0,
+      "gross_loss": 10015.0,
+      "profit_factor": 1.2511233150274588
+    },
+    {
+      "bucket": "(3.8930000000000002, 7.946]",
+      "trades": 551,
+      "net": -140.0,
+      "avg": -0.2540834845735027,
+      "win_rate": 0.7096188747731398,
+      "gross_win": 8435.0,
+      "gross_loss": 8575.0,
+      "profit_factor": 0.9836734693877551
+    }
+  ],
+  "signal_range_vs_filter_buckets": [
+    {
+      "bucket": "(1.955, 2.388]",
+      "trades": 551,
+      "net": 4085.0,
+      "avg": 7.413793103448276,
+      "win_rate": 0.7531760435571688,
+      "gross_win": 16995.0,
+      "gross_loss": 12910.0,
+      "profit_factor": 1.3164213787761425
+    },
+    {
+      "bucket": "(1.66, 1.955]",
+      "trades": 550,
+      "net": 3390.0,
+      "avg": 6.163636363636364,
+      "win_rate": 0.7418181818181818,
+      "gross_win": 15475.0,
+      "gross_loss": 12085.0,
+      "profit_factor": 1.2805130326851468
+    },
+    {
+      "bucket": "(2.388, 10.576]",
+      "trades": 551,
+      "net": 3245.0,
+      "avg": 5.8892921960072595,
+      "win_rate": 0.7332123411978222,
+      "gross_win": 18965.0,
+      "gross_loss": 15720.0,
+      "profit_factor": 1.2064249363867685
+    },
+    {
+      "bucket": "(1.384, 1.66]",
+      "trades": 551,
+      "net": 2165.0,
+      "avg": 3.9292196007259528,
+      "win_rate": 0.7368421052631579,
+      "gross_win": 14505.0,
+      "gross_loss": 12340.0,
+      "profit_factor": 1.1754457050243112
+    },
+    {
+      "bucket": "(0.999, 1.384]",
+      "trades": 551,
+      "net": 1480.0,
+      "avg": 2.686025408348457,
+      "win_rate": 0.7259528130671506,
+      "gross_win": 13105.0,
+      "gross_loss": 11625.0,
+      "profit_factor": 1.1273118279569891
+    }
+  ],
+  "signal_vwap_dev_buckets": [
+    {
+      "bucket": "(17.336, 22.117]",
+      "trades": 551,
+      "net": 5415.0,
+      "avg": 9.827586206896552,
+      "win_rate": 0.7731397459165155,
+      "gross_win": 18320.0,
+      "gross_loss": 12905.0,
+      "profit_factor": 1.4196048043394034
+    },
+    {
+      "bucket": "(22.117, 71.162]",
+      "trades": 551,
+      "net": 4420.0,
+      "avg": 8.021778584392015,
+      "win_rate": 0.7459165154264973,
+      "gross_win": 22110.0,
+      "gross_loss": 17690.0,
+      "profit_factor": 1.2498586772187676
+    },
+    {
+      "bucket": "(14.035, 17.336]",
+      "trades": 550,
+      "net": 2865.0,
+      "avg": 5.209090909090909,
+      "win_rate": 0.7381818181818182,
+      "gross_win": 15560.0,
+      "gross_loss": 12695.0,
+      "profit_factor": 1.22567940133911
+    },
+    {
+      "bucket": "(-13.436, 10.798]",
+      "trades": 551,
+      "net": 1235.0,
+      "avg": 2.2413793103448274,
+      "win_rate": 0.7168784029038112,
+      "gross_win": 9985.0,
+      "gross_loss": 8750.0,
+      "profit_factor": 1.1411428571428572
+    },
+    {
+      "bucket": "(10.798, 14.035]",
+      "trades": 551,
+      "net": 430.0,
+      "avg": 0.7803992740471869,
+      "win_rate": 0.7168784029038112,
+      "gross_win": 13070.0,
+      "gross_loss": 12640.0,
+      "profit_factor": 1.0340189873417722
+    }
+  ],
+  "signal_ema50_dev_buckets": [
+    {
+      "bucket": "(2.091, 12.423]",
+      "trades": 551,
+      "net": 5125.0,
+      "avg": 9.301270417422867,
+      "win_rate": 0.7604355716878403,
+      "gross_win": 14650.0,
+      "gross_loss": 9525.0,
+      "profit_factor": 1.5380577427821522
+    },
+    {
+      "bucket": "(35.353, 138.26]",
+      "trades": 551,
+      "net": 3500.0,
+      "avg": 6.352087114337568,
+      "win_rate": 0.7422867513611615,
+      "gross_win": 18940.0,
+      "gross_loss": 15440.0,
+      "profit_factor": 1.2266839378238341
+    },
+    {
+      "bucket": "(22.749, 35.353]",
+      "trades": 551,
+      "net": 1970.0,
+      "avg": 3.5753176043557167,
+      "win_rate": 0.73502722323049,
+      "gross_win": 15375.0,
+      "gross_loss": 13405.0,
+      "profit_factor": 1.1469600895188363
+    },
+    {
+      "bucket": "(12.423, 22.749]",
+      "trades": 550,
+      "net": 1915.0,
+      "avg": 3.481818181818182,
+      "win_rate": 0.7363636363636363,
+      "gross_win": 13885.0,
+      "gross_loss": 11970.0,
+      "profit_factor": 1.159983291562239
+    },
+    {
+      "bucket": "(-76.71600000000001, 2.091]",
+      "trades": 551,
+      "net": 1855.0,
+      "avg": 3.366606170598911,
+      "win_rate": 0.7168784029038112,
+      "gross_win": 16195.0,
+      "gross_loss": 14340.0,
+      "profit_factor": 1.129358437935844
+    }
+  ],
+  "findings": [
+    "Worst direction/weekday: short on Wednesday PF 0.958, net -310.0",
+    "Best direction/weekday: short on Friday PF 1.460, net 2640.0",
+    "Worst liquid direction/hour: short at 13:00 PF 1.060, net 245.0",
+    "Best liquid direction/hour: short at 12:00 PF 1.491, net 1955.0",
+    "Best wait time bucket: (40.267, 299.533] PF 1.337, net 4370.0",
+    "Worst wait time bucket: (4.233, 9.667] PF 1.037, net 535.0",
+    "Best stop distance bucket: (9.0, 11.0] PF 1.419, net 5630.0",
+    "Worst stop distance bucket: (-0.001, 6.0] PF 1.082, net 770.0",
+    "Best VWAP deviation bucket: (17.336, 22.117] PF 1.420, net 5415.0",
+    "Worst VWAP deviation bucket: (10.798, 14.035] PF 1.034, net 430.0",
+    "Best EMA50 deviation bucket: (2.091, 12.423] PF 1.538, net 5125.0",
+    "Worst EMA50 deviation bucket: (-76.71600000000001, 2.091] PF 1.129, net 1855.0"
+  ]
+}
