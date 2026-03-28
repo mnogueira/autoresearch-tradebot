@@ -25,6 +25,8 @@
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m MaxHold120m GPT 5.4.set`
 5. Quality-biased preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Maximum Quality v2 Cooldown 30m MaxHold120m GPT 5.4.set`
+6. Optional trend-day quality preset:
+   - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Trend Day ADX25 Cooldown 30m MaxHold120m GPT 5.4.set`
 
 ## Preset Order
 
@@ -34,6 +36,8 @@
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m MaxHold120m GPT 5.4.set`
 3. If the desk prefers the cleaner operator profile, validate the quality preset:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Maximum Quality v2 Cooldown 30m MaxHold120m GPT 5.4.set`
+4. If the desk wants the EA itself to stand down in weaker daily regimes, validate the optional ADX-gated preset:
+   - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Trend Day ADX25 Cooldown 30m MaxHold120m GPT 5.4.set`
 
 ## Sanity Checks
 
@@ -44,6 +48,7 @@
    - `MaxMinutesInTrade 120` for the new refinement presets
    - `SL 0.84`
    - `TP 0.30`
+   - if using the trend-day preset, confirm `UsePriorDayADXFilter=true`, `PriorDayADXPeriod=14`, `MinPriorDayADX=25`
 2. Confirm the spread is realistic for the current session.
    - The historical exact tape was effectively a `0-1` tick spread world, so repeated live spreads above `1` tick are a real warning sign, not noise.
 3. Run one clean backtest before turning on any paper automation.
@@ -72,6 +77,10 @@
 Recent context:
 - The exact max-hold leader was still positive over the last `30` trading days, but only marginally: `R$40`, `PF 1.0357`, `DD 4.67%`.
 - That is a yellow light, not a red light: keep the first live-paper sessions observational and disciplined.
+- The regime readout says trend days are the quality engine:
+  - trend-day production slice: `PF 1.9183`, `DD 3.38%`
+  - range-day production slice: `PF 1.3153`, `DD 4.95%`
+- The second half of 2025 was also weaker than the first half, and it coincided with a much lower share of prior-day `ADX > 25` days.
 
 ## Live Monitoring
 

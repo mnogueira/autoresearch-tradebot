@@ -1,0 +1,47 @@
+{
+  "variant": "session_winner_cooldown_30m_maxhold_120m1bars",
+  "first_half_2025": {
+    "start_date": "2025-01-01",
+    "end_date": "2025-06-30",
+    "prior_day_adx_gt_25_share": 0.1393,
+    "metrics": {
+      "start_date": "2025-01-02",
+      "end_date": "2025-06-30",
+      "trading_days": 122,
+      "total_trades": 157,
+      "win_rate": 0.8217,
+      "net_profit_brl": 1555.0,
+      "avg_profit_brl": 9.9,
+      "avg_win_brl": 33.57,
+      "avg_loss_brl": -99.11,
+      "profit_factor": 1.5604,
+      "max_drawdown_pct": 2.96,
+      "expected_payoff": 9.9,
+      "on_tester_value": 524.479286
+    }
+  },
+  "second_half_2025": {
+    "start_date": "2025-07-01",
+    "end_date": "2025-12-31",
+    "prior_day_adx_gt_25_share": 0.0391,
+    "metrics": {
+      "start_date": "2025-07-01",
+      "end_date": "2025-12-30",
+      "trading_days": 128,
+      "total_trades": 159,
+      "win_rate": 0.7799,
+      "net_profit_brl": 655.0,
+      "avg_profit_brl": 4.12,
+      "avg_win_brl": 25.2,
+      "avg_loss_brl": -70.57,
+      "profit_factor": 1.2652,
+      "max_drawdown_pct": 3.02,
+      "expected_payoff": 4.12,
+      "on_tester_value": 217.085714
+    }
+  },
+  "notes": [
+    "This split keeps the exact production candidate fixed and only changes the calendar slice.",
+    "The ADX share is based on prior-day daily ADX(14) > 25 and is reported to show whether the weaker half coincides with a less-trending tape."
+  ]
+}

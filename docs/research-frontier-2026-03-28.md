@@ -27,6 +27,40 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - session + cooldown + max-hold: `R$40`, `PF 1.0357`, `DD 4.67%`
   - interpretation: the recent softness looks much more like a weaker, less-trending tape than a lack of opportunities, and the cooldown specifically over-throttled the recent month.
 
+## Regime Readout
+
+- Regime split artifact:
+  - `artifacts/outputs/stalker_v10_1_regime_followups_20260328/summary.json`
+- Trend days, defined as prior-day daily `ADX(14) > 25`, are where most of the strategy's quality comes from:
+  - trend-day session only: `R$8,480`, `PF 1.7948`, `DD 4.31%`
+  - trend-day session + cooldown + max-hold: `R$7,535`, `PF 1.9183`, `DD 3.38%`
+- Range days, defined as prior-day daily `ADX(14) <= 25` or unavailable, are still positive but materially weaker:
+  - range-day session only: `R$7,485`, `PF 1.2958`, `DD 5.96%`
+  - range-day session + cooldown + max-hold: `R$6,600`, `PF 1.3153`, `DD 4.95%`
+- Interpretation:
+  - the strategy does not require trend days to stay profitable
+  - but trend days are clearly the engine of the best `PF`, average trade quality, and drawdown control
+  - weak, low-ADX tape should be expected to feel softer even when the model stays nominally positive
+- Full-sample adaptive regime overlays did not clearly beat the main leader:
+  - adaptive cooldown (`30m` on trend days, `15m` on range days): `R$14,770`, `PF 1.4670`, `DD 3.75%`
+  - regime switch (`session only` on range days, `session + cooldown + max-hold` on trend days): `R$15,020`, `PF 1.4482`, `DD 4.13%`
+  - both improved gross net versus the current exact leader, but neither improved the balanced `PF/DD/OnTester` profile enough to replace it as the main recommendation
+
+## 2025 Stability Split
+
+- Stability split artifact:
+  - `artifacts/outputs/stalker_v10_1_2025_half_split_20260328/summary.json`
+- First half of `2025`:
+  - `R$1,555`, `PF 1.5604`, `DD 2.96%`
+  - prior-day `ADX > 25` share: `13.93%`
+- Second half of `2025`:
+  - `R$655`, `PF 1.2652`, `DD 3.02%`
+  - prior-day `ADX > 25` share: `3.91%`
+- Interpretation:
+  - the production candidate stayed positive in both halves
+  - but the second half was clearly weaker, and it coincided with an even less-trending tape
+  - that reinforces the regime story rather than contradicting it
+
 ## Best Python Candidates Pending MT5
 
 - Best exact Python candidate waiting on MT5 validation:
@@ -42,6 +76,16 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - MT5 preset now prepared:
     - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m MaxHold120m GPT 5.4.set`
   - interpretation: this is the first exact overlay that improves the cooldown winner on net profit, PF, drawdown, and OnTester together while staying positive on the held-out last 30%
+
+- Optional trend-day quality preset:
+  - session winner + `30-minute cooldown` + `120` M1-bar max hold + prior-day daily `ADX(14) > 25`
+  - MT5 preset:
+    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Trend Day ADX25 Cooldown 30m MaxHold120m GPT 5.4.set`
+  - exact regime-slice metrics:
+    - `R$7,535`, `PF 1.9183`, `DD 3.38%`
+  - interpretation:
+    - this is not the new main preset because it over-prunes too hard for full-sample deployment
+    - but it is a valid quality-focused option if the desk explicitly wants trend-day selectivity
 
 - Best cost-robust exact refinement:
   - exact hours: `10:00, 11:00, 12:00, 14:00`
@@ -398,6 +442,7 @@ But cost sensitivity is real:
   - keep `SL 0.84 / TP 0.30`
 - Known risks:
   - the edge weakens sharply under higher transaction costs; `2x` spread is still positive, `3x` spread is not
+  - the edge is materially weaker in low-ADX, range-bound tape; the recent softness and the second half of 2025 both support that read
   - MT5 tester instability means the best exact refinements still need one clean host-side validation
 - Next paper-trading step:
   - run the validated MT5 preset first

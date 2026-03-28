@@ -46,6 +46,16 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 - Interpretation:
   - all-sides Wednesday skip plus full 13:00 skip is cleaner operationally, but it gives up too much net to replace the main candidate
 
+### Trend-day quality preset
+
+- Use this only if the desk explicitly wants a regime-gated, lower-frequency quality mode:
+  - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Trend Day ADX25 Cooldown 30m MaxHold120m GPT 5.4.set`
+- Exact regime-slice result:
+  - `R$7,535`, `PF 1.9183`, `DD 3.38%`
+- Interpretation:
+  - this is a quality-biased trend-day niche, not the default Monday preset
+  - it is useful if the desk wants the EA itself to stand down in obviously range-bound daily regimes
+
 ## Monday Setup Steps
 
 1. Open the main MetaTrader 5 terminal and let it sync fully before touching the tester.
@@ -92,6 +102,16 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
   - session-only, without cooldown or max-hold: `R$145`, `PF 1.1111`, `DD 3.37%`
   - session + cooldown + max-hold: `R$40`, `PF 1.0357`, `DD 4.67%`
   - interpretation: the cooldown helped over the full sample, but it hurt inside the most recent weak month; max-hold was roughly neutral there
+- Regime dependence:
+  - trend days, defined as prior-day daily `ADX(14) > 25`, are the quality engine
+  - trend-day session + cooldown + max-hold: `PF 1.9183`, `DD 3.38%`
+  - range-day session + cooldown + max-hold: `PF 1.3153`, `DD 4.95%`
+  - interpretation: the strategy remains positive in range days, but it should be expected to underperform in weaker, low-ADX tape
+- 2025 stability split:
+  - first half of `2025`: `R$1,555`, `PF 1.5604`, `DD 2.96%`
+  - second half of `2025`: `R$655`, `PF 1.2652`, `DD 3.02%`
+  - prior-day `ADX > 25` share dropped from `13.93%` in the first half to `3.91%` in the second half
+  - interpretation: the strategy stayed positive, but the weaker half-year also looked less trending
 - Cost sensitivity:
   - the exact max-hold leader still fails badly under `3x` spread stress
   - the historical exact tape was effectively a `0-1` tick spread world, so repeated live spreads above `1` tick are a meaningful warning signal
@@ -106,5 +126,6 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 - First upgrade to validate on the host: the `Cooldown 30m + MaxHold120m` preset
 - Fallback refinement if the max-hold variant misbehaves in MT5: the plain `Cooldown 30m` preset
 - Quality-only alternative: the `Maximum Quality v2 Cooldown 30m MaxHold120m` preset
+- Optional regime-gated alternative: the `Trend Day ADX25 Cooldown 30m MaxHold120m` preset
 - Monday runbook:
   - `docs/mt5-monday-morning-checklist-2026-03-30.md`

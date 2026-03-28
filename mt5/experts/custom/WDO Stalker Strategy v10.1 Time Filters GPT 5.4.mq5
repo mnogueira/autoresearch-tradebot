@@ -29,6 +29,7 @@ string TradingSymbol = "";
 int hATR = INVALID_HANDLE;
 int hDynamicRetracements = INVALID_HANDLE;
 int hContractRangeFilter = INVALID_HANDLE;
+int hDailyADX = INVALID_HANDLE;
 
 double ATR[];
 double UpperRetracementLevel[];
@@ -36,6 +37,7 @@ double LowerRetracementLevel[];
 double DayHigh[];
 double DayLow[];
 double ContractPercDailyAvgRange[];
+double DailyADX[];
 
 double PreviousHigh = 0.0;
 double PreviousLow = BIG_DOUBLE_NUMBER;
@@ -92,6 +94,11 @@ input bool ApplyRelativeVolumeFilterToLongs = false;          // Apply relative-
 input bool ApplyRelativeVolumeFilterToShorts = false;         // Apply relative-volume filter to shorts
 input double MinRelativeVolumeAtTime = 0.0;                   // Minimum same-minute relative volume
 
+input group "Daily Regime Filter";
+input bool UsePriorDayADXFilter = false;                      // Only trade when prior-day ADX is above the threshold
+input int PriorDayADXPeriod = 14;                             // Daily ADX period
+input double MinPriorDayADX = 25.0;                           // Minimum prior-day ADX required to allow entries
+
 input group "Risk Management";
 input double SL_ATRMultiplier = 0.78;                         // Stop Loss (ATR Multiplier)
 input double TP_ATRMultiplier = 0.36;                         // Take Profit (ATR Multiplier)
@@ -124,8 +131,11 @@ int OnInit()
    ArraySetAsSeries(DayHigh, true);
    ArraySetAsSeries(DayLow, true);
    ArraySetAsSeries(ContractPercDailyAvgRange, true);
+   ArraySetAsSeries(DailyADX, true);
 
    hATR = iATR(ContinuousSeriesSymbol, ATRTimeFrame, ATR_Length);
+   if(UsePriorDayADXFilter)
+      hDailyADX = iADX(ContinuousSeriesSymbol, PERIOD_D1, PriorDayADXPeriod);
 
    hDynamicRetracements = iCustom(
                              ContinuousSeriesSymbol,
@@ -142,7 +152,10 @@ int OnInit()
                              NumDaysToConsiderPreviousContractMARange
                           );
 
-   if(hATR == INVALID_HANDLE || hDynamicRetracements == INVALID_HANDLE || hContractRangeFilter == INVALID_HANDLE)
+   if(hATR == INVALID_HANDLE
+      || hDynamicRetracements == INVALID_HANDLE
+      || hContractRangeFilter == INVALID_HANDLE
+      || (UsePriorDayADXFilter && hDailyADX == INVALID_HANDLE))
    {
       Print(sTimeCurrentBrazil, " Error creating indicator handles. Error: ", GetLastError());
       return(INIT_FAILED);
@@ -167,6 +180,8 @@ void OnDeinit(const int reason)
       IndicatorRelease(hDynamicRetracements);
    if(hContractRangeFilter != INVALID_HANDLE)
       IndicatorRelease(hContractRangeFilter);
+   if(hDailyADX != INVALID_HANDLE)
+      IndicatorRelease(hDailyADX);
 
    UpdateCurrentBrazilTime();
    Print(EA_Name, " ", EA_Version, " deinitialized at: ", sTimeCurrentBrazil);
@@ -238,7 +253,6 @@ void OnTick()
    const bool IsAllowedEntryDay = IsAllowedTradingDay(TimeCurrentBrazil);
    const bool IsWithinEntryHours = IsWithinEntryWindow(TimeCurrentBrazil);
    const bool CooldownAllowsEntry = (MinMinutesBetweenEntries <= 0 || NextEntryAllowedTime <= 0 || TimeCurrentBrazil >= NextEntryAllowedTime);
-   const bool CanEnterNewTrades = (IsAllowedEntryDay && IsWithinEntryHours && CooldownAllowsEntry);
 
    if(HasReachedDayTimeLimit)
    {
@@ -259,6 +273,10 @@ void OnTick()
 
    if(!LoadLatestIndicatorValues())
       return;
+
+   double priorDayADXValue = 0.0;
+   const bool PassesPriorDayADXGate = PassesPriorDayADXFilter(priorDayADXValue);
+   const bool CanEnterNewTrades = (IsAllowedEntryDay && IsWithinEntryHours && CooldownAllowsEntry && PassesPriorDayADXGate);
 
    const double atrValue = ATR[0];
    const double contractRangeFilterValue = ContractPercDailyAvgRange[0];
@@ -429,6 +447,29 @@ bool PassesRelativeVolume(const int direction, const bool hasValue, const double
       return(false);
 
    return(rawValue >= MinRelativeVolumeAtTime);
+}
+
+bool PassesPriorDayADXFilter(double &priorDayADXValue)
+{
+   priorDayADXValue = 0.0;
+
+   if(!UsePriorDayADXFilter)
+      return(true);
+
+   if(hDailyADX == INVALID_HANDLE)
+      return(false);
+
+   if(CopyBuffer(hDailyADX, 0, 1, 1, DailyADX) != 1)
+   {
+      Print(sTimeCurrentBrazil, " CopyBuffer Daily ADX error: ", GetLastError());
+      return(false);
+   }
+
+   priorDayADXValue = DailyADX[0];
+   if(!MathIsValidNumber(priorDayADXValue))
+      return(false);
+
+   return(priorDayADXValue > MinPriorDayADX);
 }
 
 bool TryGetDirectionalTrendEfficiencyRaw(const int windowMinutes, double &rawValue)

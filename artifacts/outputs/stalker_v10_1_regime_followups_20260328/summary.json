@@ -1,0 +1,111 @@
+{
+  "reference_variant": "session_winner_cooldown_30m_max_hold_120m1bars",
+  "regime_split_counts": {
+    "trend_days_adx_gt_25": 393,
+    "range_days_adx_lte_25_or_nan": 854
+  },
+  "trend_days_comparison": {
+    "session_only": {
+      "start_date": "2021-03-25",
+      "end_date": "2026-03-04",
+      "trading_days": 393,
+      "total_trades": 602,
+      "win_rate": 0.8339,
+      "net_profit_brl": 8480.0,
+      "avg_profit_brl": 14.09,
+      "avg_win_brl": 38.15,
+      "avg_loss_brl": -106.7,
+      "profit_factor": 1.7948,
+      "max_drawdown_pct": 4.31,
+      "expected_payoff": 14.09,
+      "on_tester_value": 1966.3
+    },
+    "session_plus_cooldown_30m_plus_maxhold_120m1bars": {
+      "start_date": "2021-03-25",
+      "end_date": "2026-03-04",
+      "trading_days": 393,
+      "total_trades": 490,
+      "win_rate": 0.8429,
+      "net_profit_brl": 7535.0,
+      "avg_profit_brl": 15.38,
+      "avg_win_brl": 38.11,
+      "avg_loss_brl": -106.56,
+      "profit_factor": 1.9183,
+      "max_drawdown_pct": 3.38,
+      "expected_payoff": 15.38,
+      "on_tester_value": 2228.454598
+    }
+  },
+  "range_days_comparison": {
+    "session_only": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 854,
+      "total_trades": 1294,
+      "win_rate": 0.7867,
+      "net_profit_brl": 7485.0,
+      "avg_profit_brl": 5.78,
+      "avg_win_brl": 32.21,
+      "avg_loss_brl": -91.68,
+      "profit_factor": 1.2958,
+      "max_drawdown_pct": 5.96,
+      "expected_payoff": 5.78,
+      "on_tester_value": 1254.952597
+    },
+    "session_plus_cooldown_30m_plus_maxhold_120m1bars": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 854,
+      "total_trades": 1078,
+      "win_rate": 0.7885,
+      "net_profit_brl": 6600.0,
+      "avg_profit_brl": 6.12,
+      "avg_win_brl": 32.39,
+      "avg_loss_brl": -91.82,
+      "profit_factor": 1.3153,
+      "max_drawdown_pct": 4.95,
+      "expected_payoff": 6.12,
+      "on_tester_value": 1333.8
+    }
+  },
+  "adaptive_cooldown_full_sample": {
+    "rule": "Use 30-minute cooldown on ADX>25 days and 15-minute cooldown on ADX<=25 days, always keeping the 120-bar max hold.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1692,
+      "win_rate": 0.805,
+      "net_profit_brl": 14770.0,
+      "avg_profit_brl": 8.73,
+      "avg_win_brl": 34.06,
+      "avg_loss_brl": -95.83,
+      "profit_factor": 1.467,
+      "max_drawdown_pct": 3.75,
+      "expected_payoff": 8.73,
+      "on_tester_value": 3942.947826
+    }
+  },
+  "regime_switch_full_sample": {
+    "rule": "Use session-only on ADX<=25 days, and session + 30-minute cooldown + 120-bar max hold on ADX>25 days.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1784,
+      "win_rate": 0.8021,
+      "net_profit_brl": 15020.0,
+      "avg_profit_brl": 8.42,
+      "avg_win_brl": 33.91,
+      "avg_loss_brl": -94.93,
+      "profit_factor": 1.4482,
+      "max_drawdown_pct": 4.13,
+      "expected_payoff": 8.42,
+      "on_tester_value": 3639.911688
+    }
+  },
+  "notes": [
+    "ADX is computed on daily WDO and shifted by one day, so the regime decision only uses information known before the session opens.",
+    "The range bucket includes the early warm-up days where daily ADX is not yet available; these are treated conservatively as non-trending days."
+  ]
+}

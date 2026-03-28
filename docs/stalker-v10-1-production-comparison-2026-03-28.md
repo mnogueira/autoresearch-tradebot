@@ -41,6 +41,15 @@
   - session-only recent run: `R$145`, `PF 1.1111`, `DD 3.37%`
   - session + cooldown + max-hold recent run: `R$40`, `PF 1.0357`, `DD 4.67%`
   - interpretation: the recent month looked more range-bound, and the cooldown hurt in that short weak window while max-hold was effectively neutral
+- Regime breakdown for the production candidate:
+  - trend days (`prior-day ADX > 25`): session + cooldown + max-hold = `R$7,535`, `PF 1.9183`, `DD 3.38%`
+  - range days (`prior-day ADX <= 25`): session + cooldown + max-hold = `R$6,600`, `PF 1.3153`, `DD 4.95%`
+  - interpretation: the strategy stays positive in both tapes, but trend days clearly drive the cleaner edge
+- 2025 half-split stability:
+  - first half of `2025`: `R$1,555`, `PF 1.5604`, `DD 2.96%`
+  - second half of `2025`: `R$655`, `PF 1.2652`, `DD 3.02%`
+  - prior-day `ADX > 25` share fell from `13.93%` to `3.91%`
+  - interpretation: the weaker half-year also looked less trending, which fits the regime analysis
 - Final wrap-up exploration:
   - quarter-adaptive hours were effectively just `10,11,12` all year and came back as a near-tie: `R$14,030`, `PF 1.4889`, `DD 3.41%`
   - month-adaptive hours reached `R$14,355`, `PF 1.5991`, `DD 3.50%`, but that mapping is explicitly in-sample and not safe to promote for Monday
