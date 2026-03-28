@@ -21,6 +21,16 @@
 - Best exact research candidate: session winner + `30m` cooldown + `120` M1-bar max hold.
 - Best quality-biased operator preset: Maximum Quality v2.
 - Main risk across all exact variants: transaction-cost sensitivity. The max-hold leader fails under `3x` spread stress: `R$-3,300`, `PF 0.9198`, `DD 46.44%`.
+- Final cost follow-up on the max-hold leader:
+  - `TP 0.42`: `R$15,660`, `PF 1.3951`, `DD 5.16%`
+  - `TP 0.48`: `R$18,625`, `PF 1.4356`, `DD 4.92%`
+  - interpretation: wider targets improve gross net, but the plain `TP 0.30` leader still has the best overall `PF/DD/OnTester` balance.
+- Monte Carlo on the max-hold leader is supportive, not magical:
+  - shuffled trade-order `95th` percentile drawdown: `8.79%`
+  - bootstrap ending PnL `5th/95th`: `R$10,483.25` / `R$17,686.75`
+- The strict spread-aware entry idea was a dead end on this tape:
+  - historical cached spread only took values `0` or `1` tick
+  - strict `current spread < prior session average spread` produced `0` trades
 - Final innovation pass:
   - M30 confirmation improved quality to `PF 1.5335` and `DD 3.25%`, but net fell to `R$12,460`.
   - TP scaling after three consecutive wins underperformed the max-hold leader.
@@ -35,5 +45,6 @@
 
 - Validated MT5 artifact: `artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/summary.json`
 - Exact max-hold artifact: `artifacts/outputs/stalker_v10_1_session_maxhold_followups_20260328/summary.json`
+- Final cost follow-up artifact: `artifacts/outputs/stalker_v10_1_session_cost_followups_20260328/summary.json`
 - Frontier note: `docs/research-frontier-2026-03-28.md`
 - MT5 playbook: `docs/mt5-paper-trading-playbook-2026-03-28.md`

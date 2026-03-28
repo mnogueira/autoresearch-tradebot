@@ -1,0 +1,111 @@
+{
+  "reference_variant": "session_winner_cooldown_30m_max_hold_120m1bars",
+  "reference_metrics": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247,
+    "total_trades": 1568,
+    "win_rate": 0.8055,
+    "net_profit_brl": 14135.0,
+    "avg_profit_brl": 9.01,
+    "avg_win_brl": 34.26,
+    "avg_loss_brl": -95.54,
+    "profit_factor": 1.4851,
+    "max_drawdown_pct": 3.29,
+    "expected_payoff": 9.01,
+    "on_tester_value": 4290.320082
+  },
+  "wider_tp_variants": [
+    {
+      "tp_atr_multiplier": 0.42,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1568,
+        "win_rate": 0.7385,
+        "net_profit_brl": 15660.0,
+        "avg_profit_brl": 9.99,
+        "avg_win_brl": 47.75,
+        "avg_loss_brl": -96.67,
+        "profit_factor": 1.3951,
+        "max_drawdown_pct": 5.16,
+        "expected_payoff": 9.99,
+        "on_tester_value": 3037.774576
+      }
+    },
+    {
+      "tp_atr_multiplier": 0.48,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1568,
+        "win_rate": 0.7156,
+        "net_profit_brl": 18625.0,
+        "avg_profit_brl": 11.88,
+        "avg_win_brl": 54.71,
+        "avg_loss_brl": -95.87,
+        "profit_factor": 1.4356,
+        "max_drawdown_pct": 4.92,
+        "expected_payoff": 11.88,
+        "on_tester_value": 3785.491453
+      }
+    }
+  ],
+  "spread_aware_entry": {
+    "rule": "Only allow entries when the current spread tick count is strictly below the average spread observed earlier in the same session.",
+    "historical_spread_ticks_unique_values": [
+      0,
+      1
+    ],
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 0,
+      "win_rate": 0.0,
+      "net_profit_brl": 0.0,
+      "avg_profit_brl": 0.0,
+      "avg_win_brl": 0.0,
+      "avg_loss_brl": 0.0,
+      "profit_factor": 0.0,
+      "max_drawdown_pct": 0.0,
+      "expected_payoff": 0.0,
+      "on_tester_value": 0.0
+    }
+  },
+  "monte_carlo": {
+    "runs": 1000,
+    "shuffle_final_pnl_brl": {
+      "mean": 14135.0,
+      "p05": 14135.0,
+      "p50": 14135.0,
+      "p95": 14135.0
+    },
+    "shuffle_max_drawdown_pct": {
+      "mean": 5.77,
+      "p05": 3.77,
+      "p50": 5.5,
+      "p95": 8.79
+    },
+    "bootstrap_final_pnl_brl": {
+      "mean": 14088.23,
+      "p05": 10483.25,
+      "p50": 14107.5,
+      "p95": 17686.75
+    },
+    "bootstrap_max_drawdown_pct": {
+      "mean": 6.05,
+      "p05": 3.58,
+      "p50": 5.76,
+      "p95": 9.82
+    }
+  },
+  "notes": [
+    "The production candidate for this pass is the exact session winner with a 30-minute cooldown and a 120 M1-bar max hold.",
+    "The wider take-profit variants keep the same entry logic, cooldown, and max-hold logic and only change the ATR-based TP multiplier.",
+    "The spread-aware gate uses a strict prior-session average, so it never looks ahead within the day.",
+    "Pure trade-order shuffling keeps final PnL fixed by construction; bootstrap resampling is included to provide an ending-PnL dispersion view."
+  ]
+}

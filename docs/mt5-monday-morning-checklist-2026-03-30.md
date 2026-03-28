@@ -32,6 +32,7 @@
    - `SL 0.84`
    - `TP 0.30`
 2. Confirm the spread is realistic for the current session.
+   - The historical exact tape was effectively a `0-1` tick spread world, so repeated live spreads above `1` tick are a real warning sign, not noise.
 3. Run one clean backtest before turning on any paper automation.
 4. Save the HTML report and compare the headline numbers against the artifact summary.
 5. If the tester output looks sane, move to the paper chart:

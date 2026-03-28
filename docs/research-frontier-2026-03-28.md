@@ -161,6 +161,16 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - max-hold leader under `3x` spread stress: `R$-3,300`, `PF 0.9198`, `DD 46.44%`
   - interpretation: the VWAP-slope gate is not worth the net-profit giveback, size scales cleanly in PF terms but predictably amplifies drawdown, and severe execution deterioration still breaks the edge.
 
+- The final cost-focused pass did not change the recommendation:
+  - artifact: `artifacts/outputs/stalker_v10_1_session_cost_followups_20260328/summary.json`
+  - max-hold leader plus `TP 0.42`: `R$15,660`, `PF 1.3951`, `DD 5.16%`
+  - max-hold leader plus `TP 0.48`: `R$18,625`, `PF 1.4356`, `DD 4.92%`
+  - strict spread-aware entry (`current spread < prior session average spread`): `0` trades
+  - max-hold leader Monte Carlo:
+    - shuffled trade-order drawdown `95th` percentile: `8.79%`
+    - bootstrap ending PnL `5th/95th`: `R$10,483.25` / `R$17,686.75`
+  - interpretation: the wider targets are viable gross-net variants, but the plain `TP 0.30` max-hold leader still wins on the combined `PF/DD/OnTester` balance. The spread-aware idea is a dead end on this historical tape because the cached spread is almost always `1` tick, so there are no real “wide-spread moments” for the filter to dodge in the backtest data.
+
 - The latest deployment follow-up increased confidence in the cooldown winner:
   - artifact: `artifacts/outputs/stalker_v10_1_session_deployment_followups_20260328/summary.json`
   - exact `70/30` holdout for the cooldown winner:
