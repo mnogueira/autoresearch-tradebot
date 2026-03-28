@@ -110,6 +110,43 @@
       },
       "composite_score": 2.0245,
       "rank": 3
+    },
+    {
+      "name": "tier2_quality_adx_gt_30",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 278,
+        "win_rate": 0.8237,
+        "net_profit_brl": 3515.0,
+        "avg_profit_brl": 12.64,
+        "avg_win_brl": 39.5,
+        "avg_loss_brl": -112.86,
+        "profit_factor": 1.6356,
+        "max_drawdown_pct": 4.35,
+        "expected_payoff": 12.64,
+        "on_tester_value": 807.563866
+      },
+      "risk_adjusted": {
+        "sortino_ratio": 0.4607,
+        "calmar_ratio": 1.4419,
+        "omega_ratio": 1.8573,
+        "annual_return_pct": 6.28,
+        "max_drawdown_frac": 0.043526
+      },
+      "monthly_stability": {
+        "worst_month": "2024-08",
+        "worst_month_pnl_brl": -235.0,
+        "best_month": "2021-04",
+        "best_month_pnl_brl": 690.0,
+        "monthly_pnl_std_brl": 159.25,
+        "monthly_pnl_variance_brl": 25361.97,
+        "positive_months": 16,
+        "negative_months": 6
+      },
+      "composite_score": 1.0344,
+      "rank": 4
     }
   ],
   "interpretation": [

@@ -116,6 +116,8 @@ Recent context:
    - script: `src/autoresearch_tradebot/mt5/build_monitoring_snapshot.py`
    - tested Tier 1 example:
      - `python -m autoresearch_tradebot.mt5.build_monitoring_snapshot --report artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/mt5_model_0_report.html --out artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/monitoring_snapshot.json`
+   - reusable trade-log workflow:
+     - `python -m autoresearch_tradebot.mt5.build_monitoring_snapshot --trade-log artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/trade_log.csv --session-date 2026-03-19 --out artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/monitoring_snapshot.json`
    - the current tested snapshot fields are:
      - daily PnL
      - rolling `5d/20d/60d` profit factor

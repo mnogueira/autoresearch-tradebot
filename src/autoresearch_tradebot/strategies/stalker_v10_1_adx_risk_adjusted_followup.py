@@ -45,6 +45,11 @@ def main() -> None:
         value = float(daily_adx.get(session, float("nan")))
         return value > 25.0
 
+    def adx30_filter(context: dict[str, object]) -> bool:
+        session = pd.Timestamp(context["session_date"]).normalize()
+        value = float(daily_adx.get(session, float("nan")))
+        return value > 30.0
+
     cooldown_management = ManagementConfig(min_minutes_between_entries=30)
 
     cooldown_trades, cooldown_metrics = run_backtest_with_management(
@@ -61,6 +66,13 @@ def main() -> None:
         entry_filter=combine_filters(base_filter, adx25_filter),
         management=cooldown_management,
     )
+    adx30_trades, adx30_metrics = run_backtest_with_management(
+        dataset=dataset,
+        params=params,
+        trade_dates=trade_dates,
+        entry_filter=combine_filters(base_filter, adx30_filter),
+        management=cooldown_management,
+    )
 
     mt5_summary_path = Path(
         "artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/summary.json"
@@ -71,6 +83,7 @@ def main() -> None:
     mt5_daily_pnl = _daily_pnl_from_mt5_report(mt5_report_path, trade_dates)
     cooldown_daily_pnl = _daily_pnl_from_trades(cooldown_trades, trade_dates)
     adx_daily_pnl = _daily_pnl_from_trades(adx_trades, trade_dates)
+    adx30_daily_pnl = _daily_pnl_from_trades(adx30_trades, trade_dates)
 
     candidates = [
         {
@@ -90,6 +103,12 @@ def main() -> None:
             "metrics": adx_metrics,
             "risk_adjusted": _risk_adjusted_metrics(adx_daily_pnl),
             "monthly_stability": _monthly_stability_metrics(adx_daily_pnl),
+        },
+        {
+            "name": "tier2_quality_adx_gt_30",
+            "metrics": adx30_metrics,
+            "risk_adjusted": _risk_adjusted_metrics(adx30_daily_pnl),
+            "monthly_stability": _monthly_stability_metrics(adx30_daily_pnl),
         },
     ]
 

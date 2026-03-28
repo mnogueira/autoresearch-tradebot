@@ -337,6 +337,13 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - `ADX > 25` quality composite: `2.0245`
   - interpretation: the ADX gate is useful as a discretionary quality mode, but once trade scarcity is priced in, it is clearly inferior to both Tier 1 and Tier 2 for default deployment.
 
+- ATR percentile regimes show the edge is not concentrated in extreme high-volatility days:
+  - artifact: `artifacts/outputs/stalker_v10_1_atr_regime_followups_20260328/summary.json`
+  - low ATR regime: `R$6,400`, `PF 1.5305`, `DD 3.31%`
+  - medium ATR regime: `R$3,475`, `PF 1.5711`, `DD 4.34%`
+  - high ATR regime: `R$3,605`, `PF 1.3346`, `DD 5.08%`
+  - interpretation: the strategy is actually cleaner in low-to-medium ATR tapes than in the most volatile third of days, so “more volatility” is not automatically better for this setup.
+
 - The latest deployment follow-up increased confidence in the cooldown winner:
   - artifact: `artifacts/outputs/stalker_v10_1_session_deployment_followups_20260328/summary.json`
   - exact `70/30` holdout for the cooldown winner:

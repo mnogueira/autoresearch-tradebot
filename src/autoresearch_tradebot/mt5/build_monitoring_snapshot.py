@@ -19,13 +19,23 @@ def _profit_factor_from_pnl(values: pd.Series) -> float:
     return 0.0
 
 
-def build_snapshot(trades: pd.DataFrame, initial_balance_brl: float) -> dict[str, object]:
+def build_snapshot(
+    trades: pd.DataFrame,
+    initial_balance_brl: float,
+    session_date: str | None = None,
+) -> dict[str, object]:
     trades = trades.copy()
     trades["entry_time"] = pd.to_datetime(trades["entry_time"])
     trades["exit_time"] = pd.to_datetime(trades["exit_time"])
     trades["session_date"] = pd.to_datetime(trades["session_date"])
     daily = daily_pnl_from_trades(trades, initial_balance_brl=initial_balance_brl)
     daily["session_date"] = pd.to_datetime(daily["session_date"])
+    asof_session = (
+        pd.Timestamp(session_date).normalize()
+        if session_date is not None
+        else pd.Timestamp(daily["session_date"].max()).normalize()
+    )
+    today_trades = trades.loc[trades["session_date"].dt.normalize().eq(asof_session)].copy()
 
     equity = daily["equity_brl"].astype(float)
     peaks = equity.cummax()
@@ -47,11 +57,17 @@ def build_snapshot(trades: pd.DataFrame, initial_balance_brl: float) -> dict[str
     }
 
     return {
+        "asof_session_date": asof_session.date().isoformat(),
         "last_trade_time": str(trades["exit_time"].max()),
         "total_trades": total_trades,
         "trading_days": trading_days,
         "expected_trades_per_day": round(total_trades / trading_days, 4) if trading_days else 0.0,
         "latest_daily_pnl_brl": round(float(daily["pnl_brl"].iloc[-1]), 2) if not daily.empty else 0.0,
+        "today": {
+            "pnl_brl": round(float(today_trades["pnl_brl"].sum()), 2) if not today_trades.empty else 0.0,
+            "trades": int(len(today_trades)),
+            "win_rate": round(float((today_trades["pnl_brl"].astype(float) > 0.0).mean()), 4) if not today_trades.empty else 0.0,
+        },
         "rolling_pnl_brl": {
             "5d": round(float(recent_5["pnl_brl"].sum()), 2),
             "20d": round(float(recent_20["pnl_brl"].sum()), 2),
@@ -88,6 +104,7 @@ def main() -> None:
     parser.add_argument("--trade-log", type=Path, help="Path to a previously exported trade_log.csv.")
     parser.add_argument("--out", required=True, type=Path, help="Output path for the monitoring JSON snapshot.")
     parser.add_argument("--initial-balance", type=float, default=10_000.0, help="Initial balance used to reconstruct equity.")
+    parser.add_argument("--session-date", type=str, help="Session date to treat as 'today' in YYYY-MM-DD format. Defaults to the latest session in the trade log.")
     args = parser.parse_args()
 
     if args.trade_log is not None:
@@ -97,7 +114,11 @@ def main() -> None:
     else:
         raise SystemExit("Provide either --trade-log or --report.")
 
-    snapshot = build_snapshot(trades, initial_balance_brl=float(args.initial_balance))
+    snapshot = build_snapshot(
+        trades,
+        initial_balance_brl=float(args.initial_balance),
+        session_date=args.session_date,
+    )
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(snapshot, indent=2), encoding="utf-8")
     print(json.dumps(snapshot, indent=2))

@@ -11,6 +11,7 @@ Provide one lightweight JSON snapshot that can be checked remotely during paper 
 - Inputs:
   - MT5 tester HTML report, or
   - previously exported `trade_log.csv`
+  - optional `--session-date YYYY-MM-DD` to anchor the “today” panel
 
 ## Recommended Panels
 
@@ -41,11 +42,13 @@ Provide one lightweight JSON snapshot that can be checked remotely during paper 
 
 The monitoring snapshot currently emits:
 
+- `asof_session_date`
 - `last_trade_time`
 - `total_trades`
 - `trading_days`
 - `expected_trades_per_day`
 - `latest_daily_pnl_brl`
+- `today`
 - `rolling_pnl_brl`
 - `rolling_profit_factor`
 - `drawdown`

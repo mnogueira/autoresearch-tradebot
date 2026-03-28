@@ -1,0 +1,81 @@
+{
+  "reference_variant": {
+    "name": "session_winner_cooldown_30m",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 14085.0,
+      "avg_profit_brl": 8.98,
+      "avg_win_brl": 34.26,
+      "avg_loss_brl": -95.7,
+      "profit_factor": 1.4825,
+      "max_drawdown_pct": 3.3,
+      "expected_payoff": 8.98,
+      "on_tester_value": 4263.59877
+    }
+  },
+  "atr_regime_definition": {
+    "atr_length": 14,
+    "lookback_days": 60,
+    "percentile_buckets": {
+      "low": "bottom 33%",
+      "medium": "middle 33%",
+      "high": "top 33%"
+    },
+    "rule": "Use prior-day ATR14 percentile rank inside the trailing 60-day ATR14 distribution."
+  },
+  "low_atr_regime": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 752,
+      "win_rate": 0.8112,
+      "net_profit_brl": 6400.0,
+      "avg_profit_brl": 8.51,
+      "avg_win_brl": 30.27,
+      "avg_loss_brl": -84.96,
+      "profit_factor": 1.5305,
+      "max_drawdown_pct": 3.31,
+      "expected_payoff": 8.51,
+      "on_tester_value": 1932.659341
+    }
+  },
+  "medium_atr_regime": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 336,
+      "win_rate": 0.8065,
+      "net_profit_brl": 3475.0,
+      "avg_profit_brl": 10.34,
+      "avg_win_brl": 35.28,
+      "avg_loss_brl": -93.62,
+      "profit_factor": 1.5711,
+      "max_drawdown_pct": 4.34,
+      "expected_payoff": 10.34,
+      "on_tester_value": 799.876126
+    }
+  },
+  "high_atr_regime": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 460,
+      "win_rate": 0.7913,
+      "net_profit_brl": 3605.0,
+      "avg_profit_brl": 7.84,
+      "avg_win_brl": 39.51,
+      "avg_loss_brl": -112.24,
+      "profit_factor": 1.3346,
+      "max_drawdown_pct": 5.08,
+      "expected_payoff": 7.84,
+      "on_tester_value": 709.180328
+    }
+  }
+}

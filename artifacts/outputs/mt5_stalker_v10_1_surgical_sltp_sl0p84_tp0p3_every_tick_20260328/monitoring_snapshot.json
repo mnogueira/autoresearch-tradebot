@@ -1,9 +1,15 @@
 {
+  "asof_session_date": "2026-03-19",
   "last_trade_time": "2026-03-19 12:56:01",
   "total_trades": 2070,
   "trading_days": 1054,
   "expected_trades_per_day": 1.9639,
   "latest_daily_pnl_brl": -85.0,
+  "today": {
+    "pnl_brl": -85.0,
+    "trades": 2,
+    "win_rate": 0.5
+  },
   "rolling_pnl_brl": {
     "5d": 215.0,
     "20d": 385.0,
