@@ -3920,7 +3920,7 @@
     "name": "timing_stack_plus_momdiv_roc10_lb10_delta0_full",
     "family": "timing_plus_momentum_divergence",
     "screening_method": "integrated_backtest_full_period",
-    "quality_tier": 1,
+    "quality_tier": 2,
     "mt5_ready": false,
     "test_total_trades": 2,
     "test_net_profit_brl": 95.0,
@@ -3928,7 +3928,7 @@
     "test_on_tester_value": 0.0,
     "test_max_drawdown_pct": 0.0,
     "test_win_rate": 1.0,
-    "notes": "Full-period timing stack plus price-vs-ROC divergence confirmation.",
+    "notes": "Full-period timing stack plus price-vs-ROC divergence confirmation. Tiny sample: only 2 trades, so this is not decision-grade yet.",
     "config": {
       "roc_window": 10,
       "lookback": 10,
