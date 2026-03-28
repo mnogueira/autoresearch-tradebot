@@ -8,6 +8,7 @@
 | Session winner | `R$15,965` | `1.4438` | `4.04%` | `80.17%` | 1896 | `2.1977` | `5.2628` | `1.6392` | `3.0055` | 3 |
 | Minimal moderate, session winner + cooldown | `R$14,085` | `1.4825` | `3.30%` | `80.55%` | 1568 | `1.9306` | `5.8842` | `1.6115` | `3.0529` | 2 |
 | Max-hold v2, session winner + cooldown + `120` M1-bar max hold | `R$14,135` | `1.4851` | `3.29%` | `80.55%` | 1568 | `1.9392` | `5.9153` | `1.6150` | `3.0672` | 1 |
+| Cooldown-only + skip last 3 contract days | `R$12,855` | `1.5250` | `3.50%` | `81.12%` | 1345 | `1.7673` | `5.1990` | `1.6791` | `2.7792` | 5 |
 
 ## Quality Alternative
 
@@ -22,6 +23,10 @@
 - Simplest high-fidelity fallback: session winner + `30m` cooldown only.
   - `R$14,085`, `PF 1.4825`, `DD 3.30%`
   - that retains `99.65%` of the max-hold leader's net profit and `99.82%` of its PF
+  - for Monday, this is the better exact refinement than Tier 3:
+    - the composite gap vs max-hold is only `0.0143`
+    - it matched the max-hold stack exactly in the recent weak 30-day tape
+    - it is operationally simpler
 - Recommended configuration tiers:
   - Tier 1, safest: MT5-validated `sl0p84 / tp0p30`
   - Tier 2, moderate: session winner + `30m` cooldown only
@@ -31,11 +36,16 @@
   - 2: cooldown-only at `3.0529`
   - 3: session winner at `3.0055`
   - 4: MT5-validated base at `2.8179`
+  - 5: cooldown-only + skip last 3 contract days at `2.7792`
 - Requested top-3 professional-metric evaluation:
   - max-hold v2 beat the session winner and MT5 base on composite score
   - the session winner still had the best raw Sortino at `2.1977`
   - the max-hold and cooldown overlays won on composite because their Calmar and Omega stayed stronger while drawdown stayed lower
 - Best quality-biased operator preset: Maximum Quality v2.
+- Rollover filter follow-up:
+  - cooldown-only + skip last 3 contract days improved PF to `1.5250` and win rate to `81.12%`
+  - but net fell to `R$12,855` and the composite score dropped to `2.7792`
+  - interpretation: rollover caution belongs in the playbook, but the hard skip is not strong enough to become the main production configuration
 - Main risk across all exact variants: transaction-cost sensitivity. The max-hold leader fails under `3x` spread stress: `R$-3,300`, `PF 0.9198`, `DD 46.44%`.
 - Final cost follow-up on the max-hold leader:
   - `TP 0.42`: `R$15,660`, `PF 1.3951`, `DD 5.16%`
@@ -103,8 +113,8 @@
   - It confirms whether the overall daily return distribution still has more good mass than bad mass around a `0%` threshold.
 - Practical interpretation:
   - if you want the safest live-paper default, keep Tier 1 because it is MT5-validated
-  - if you want the strongest exact risk-adjusted refinement, use Tier 2 or Tier 3
-  - if you care more about operational simplicity than a marginal composite edge, Tier 2 is the best balance
+  - if you want the strongest exact risk-adjusted refinement, Tier 3 still wins by a hair
+  - if you care about Monday deployment quality, Tier 2 is the better choice because it is simpler and the composite gap is trivial
 
 ## Methodology
 

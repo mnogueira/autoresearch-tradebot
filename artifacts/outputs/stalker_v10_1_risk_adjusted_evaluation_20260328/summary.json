@@ -99,6 +99,28 @@
       "sortino_weighted_composite": 2.8179,
       "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328\\summary.json",
       "composite_rank": 4
+    },
+    {
+      "name": "cooldown_rollover_skip_exact",
+      "label": "Cooldown-only + skip last 3 contract days",
+      "family": "exact_python",
+      "headline_metrics": {
+        "net_profit_brl": 12855.0,
+        "profit_factor": 1.525,
+        "max_drawdown_pct": 3.5,
+        "win_rate_pct": 81.12,
+        "total_trades": 1345
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.7673,
+        "calmar_ratio": 5.199,
+        "omega_ratio": 1.6791,
+        "annual_return_pct": 18.18,
+        "max_drawdown_frac": 0.034969
+      },
+      "sortino_weighted_composite": 2.7792,
+      "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_risk_adjusted_evaluation_20260328\\summary.json",
+      "composite_rank": 5
     }
   ]
 }

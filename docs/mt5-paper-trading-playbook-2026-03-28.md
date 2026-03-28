@@ -65,6 +65,7 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 - Tier 2, moderate:
   - session winner + `30m` cooldown only
   - use this as the first exact refinement to validate because it keeps `99.65%` of the max-hold leader's net and `99.82%` of its PF with less moving logic
+  - the risk-adjusted composite gap versus Tier 3 is only `0.0143`, and the recent weak tape was identical, so this is the better Monday follow-on choice
 - Tier 3, aggressive:
   - session winner + `30m` cooldown + `120` M1 max hold
   - use this only after the simpler cooldown-only refinement looks sane in MT5
@@ -187,6 +188,7 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 
 - Paper-trading default: the validated MT5 preset `sl0p84 / tp0p3`
 - First upgrade to validate on the host: the plain `Cooldown 30m` preset
+  - this remains the preferred Monday follow-on because it is simpler and the composite-score gap versus the max-hold version is trivial
 - Next aggressive upgrade to validate on the host: the `Cooldown 30m + MaxHold120m` preset
 - Fallback refinement if the max-hold variant misbehaves in MT5: stay on the plain `Cooldown 30m` preset
 - Simplest high-fidelity fallback:

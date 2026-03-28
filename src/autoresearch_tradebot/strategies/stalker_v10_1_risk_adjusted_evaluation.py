@@ -17,6 +17,7 @@ from .stalker_v10_1_session_execution_refinement import (
     session_filter,
     session_winner_params,
 )
+from .stalker_v10_1_structural_ablation_rollover import contract_rollover_buckets
 from .stalker_v10_python import V10Dataset, locate_data_file
 
 DEFAULT_OUTPUT_DIR = artifact_output_dir("stalker_v10_1_risk_adjusted_evaluation_20260328")
@@ -132,6 +133,25 @@ def _load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _combine_filters(*filters: Any) -> Any:
+    active_filters = [entry_filter for entry_filter in filters if entry_filter is not None]
+    if not active_filters:
+        return None
+
+    def _combined(context: dict[str, Any]) -> bool:
+        return all(bool(entry_filter(context)) for entry_filter in active_filters)
+
+    return _combined
+
+
+def _allowed_session_date_filter(allowed_dates: set[str]) -> Any:
+    def _date_filter(context: dict[str, Any]) -> bool:
+        session_date = pd.Timestamp(context["session_date"]).date().isoformat()
+        return session_date in allowed_dates
+
+    return _date_filter
+
+
 def main() -> None:
     DEFAULT_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -149,6 +169,25 @@ def main() -> None:
         entry_filter=base_filter,
         management=maxhold_management,
     )
+    cooldown_trades, cooldown_metrics = run_backtest_with_management(
+        dataset=dataset,
+        params=base_params,
+        trade_dates=trade_dates,
+        entry_filter=base_filter,
+        management=ManagementConfig(min_minutes_between_entries=30),
+    )
+    rollover_daily = contract_rollover_buckets(dataset)
+    non_rollover_dates = {
+        pd.Timestamp(value).date().isoformat()
+        for value in rollover_daily.index[rollover_daily["rollover_bucket"] != "last_3_contract_days"]
+    }
+    cooldown_rollover_trades, cooldown_rollover_metrics = run_backtest_with_management(
+        dataset=dataset,
+        params=base_params,
+        trade_dates=trade_dates,
+        entry_filter=_combine_filters(base_filter, _allowed_session_date_filter(non_rollover_dates)),
+        management=ManagementConfig(min_minutes_between_entries=30),
+    )
 
     cooldown_trades_path = (
         ARTIFACTS_DIR
@@ -156,7 +195,8 @@ def main() -> None:
         / "stalker_v10_1_session_deployment_followups_20260328"
         / "cooldown_session_trades.csv"
     )
-    cooldown_trades = pd.read_csv(cooldown_trades_path)
+    if cooldown_trades_path.exists():
+        cooldown_trades = pd.read_csv(cooldown_trades_path)
 
     mt5_summary_path = (
         ARTIFACTS_DIR
@@ -212,15 +252,31 @@ def main() -> None:
             "label": "Minimal moderate, session winner + cooldown",
             "family": "exact_python",
             "headline_metrics": {
-                "net_profit_brl": 14085.0,
-                "profit_factor": 1.4825,
-                "max_drawdown_pct": 3.30,
-                "win_rate_pct": 80.55,
-                "total_trades": 1568,
+                "net_profit_brl": float(cooldown_metrics["net_profit_brl"]),
+                "profit_factor": float(cooldown_metrics["profit_factor"]),
+                "max_drawdown_pct": float(cooldown_metrics["max_drawdown_pct"]),
+                "win_rate_pct": round(float(cooldown_metrics["win_rate"]) * 100.0, 2),
+                "total_trades": int(cooldown_metrics["total_trades"]),
             },
-            "daily_pnl": _daily_pnl_from_trades(cooldown_trades, trade_dates),
+            "daily_pnl": _daily_pnl_from_trades(cooldown_trades if cooldown_trades_path.exists() else cooldown_trades, trade_dates),
             "source_artifact": str(
                 (ARTIFACTS_DIR / "outputs" / "stalker_v10_1_session_deployment_followups_20260328" / "summary.json").resolve()
+            ),
+        },
+        {
+            "name": "cooldown_rollover_skip_exact",
+            "label": "Cooldown-only + skip last 3 contract days",
+            "family": "exact_python",
+            "headline_metrics": {
+                "net_profit_brl": float(cooldown_rollover_metrics["net_profit_brl"]),
+                "profit_factor": float(cooldown_rollover_metrics["profit_factor"]),
+                "max_drawdown_pct": float(cooldown_rollover_metrics["max_drawdown_pct"]),
+                "win_rate_pct": round(float(cooldown_rollover_metrics["win_rate"]) * 100.0, 2),
+                "total_trades": int(cooldown_rollover_metrics["total_trades"]),
+            },
+            "daily_pnl": _daily_pnl_from_trades(cooldown_rollover_trades, trade_dates),
+            "source_artifact": str(
+                (ARTIFACTS_DIR / "outputs" / "stalker_v10_1_risk_adjusted_evaluation_20260328" / "summary.json").resolve()
             ),
         },
         {
