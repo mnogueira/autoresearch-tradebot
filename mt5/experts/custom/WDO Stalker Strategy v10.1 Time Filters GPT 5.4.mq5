@@ -64,6 +64,8 @@ input int EntryStart_Hour = 10;                               // Earliest entry 
 input int EntryStart_Minute = 0;                              // Earliest entry minute
 input int LastEntry_Hour = 15;                                // Latest entry hour (inclusive, GMT-3)
 input int LastEntry_Minute = 0;                               // Latest entry minute (inclusive)
+input bool SkipWednesday = false;                             // Skip all Wednesday entries
+input bool SkipHour13 = false;                                // Skip entries during the 13:00 hour
 input bool AllowMonday = true;                                // Allow Monday entries
 input bool AllowTuesday = true;                               // Allow Tuesday entries
 input bool AllowWednesday = true;                             // Allow Wednesday entries
@@ -312,6 +314,9 @@ bool IsAllowedTradingDay(const datetime current_time_brazil)
    MqlDateTime time_parts;
    TimeToStruct(current_time_brazil, time_parts);
 
+   if(SkipWednesday && time_parts.day_of_week == 3)
+      return(false);
+
    switch(time_parts.day_of_week)
    {
       case 1: return AllowMonday;
@@ -327,6 +332,9 @@ bool IsWithinEntryWindow(const datetime current_time_brazil)
 {
    MqlDateTime time_parts;
    TimeToStruct(current_time_brazil, time_parts);
+
+   if(SkipHour13 && time_parts.hour == 13)
+      return(false);
 
    const int current_minutes = (time_parts.hour * 60) + time_parts.min;
    const int start_minutes = (EntryStart_Hour * 60) + EntryStart_Minute;

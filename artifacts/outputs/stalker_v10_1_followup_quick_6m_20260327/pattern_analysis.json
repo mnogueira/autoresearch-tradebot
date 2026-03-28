@@ -1,0 +1,40 @@
+{
+  "best_weekday": {
+    "weekday": "Monday",
+    "trades": 498,
+    "win_rate": 0.7630522088353414,
+    "net": 3485.0,
+    "avg": 6.997991967871486,
+    "pf": 1.32707648991084
+  },
+  "worst_weekday": {
+    "weekday": "Wednesday",
+    "trades": 577,
+    "win_rate": 0.7053726169844021,
+    "net": 635.0,
+    "avg": 1.10051993067591,
+    "pf": 1.0434485118029422
+  },
+  "best_entry_hour": {
+    "entry_hour": 12.0,
+    "trades": 388.0,
+    "win_rate": 0.7422680412371134,
+    "net": 2715.0,
+    "avg": 6.997422680412371,
+    "pf": 1.2906852248394003
+  },
+  "worst_entry_hour": {
+    "entry_hour": 13.0,
+    "trades": 248.0,
+    "win_rate": 0.7217741935483871,
+    "net": 465.0,
+    "avg": 1.875,
+    "pf": 1.0642709053213546
+  },
+  "notes": [
+    "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+    "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+    "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+    "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+  ]
+}
