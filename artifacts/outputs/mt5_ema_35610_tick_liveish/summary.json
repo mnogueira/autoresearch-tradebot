@@ -1,0 +1,15 @@
+{
+  "symbol": "WDO$N",
+  "period": "M5 (2022.08.24 - 2026.03.20)",
+  "history_quality": "19% real ticks",
+  "bars": 99980,
+  "ticks": 613860337,
+  "total_trades": 185,
+  "net_profit_brl": 6765.0,
+  "profit_factor": 1.77,
+  "expected_payoff": 36.57,
+  "on_tester_value": 1.145736938958734,
+  "max_drawdown_pct": 16.7,
+  "win_rate_pct": 46.49,
+  "profit_trades": 86
+}

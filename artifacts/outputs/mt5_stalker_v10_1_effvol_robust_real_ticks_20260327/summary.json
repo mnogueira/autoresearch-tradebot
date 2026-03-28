@@ -1,0 +1,67 @@
+{
+  "strategy": "stalker_v10_1_effvol_robust",
+  "description": "trend longs >= 0.333333 over 15m + short volume >= 30000 over 30m",
+  "expert_source": "C:\\Dev\\autoresearch-tradebot\\mt5\\experts\\custom\\WDO Stalker Strategy v10.1 Time Filters GPT 5.4.mq5",
+  "set_file": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 EffVol Robust GPT 5.4.set",
+  "config_path": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\mt5_stalker_v10_1_effvol_robust_real_ticks_20260327\\mt5_model_4.ini",
+  "report_path": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\mt5_stalker_v10_1_effvol_robust_real_ticks_20260327\\mt5_model_4_report.html",
+  "tester": {
+    "model": 4,
+    "model_name": "Every tick based on real ticks",
+    "period": "M1",
+    "from_date": "2021.03.22",
+    "to_date": "2026.03.20"
+  },
+  "mt5_report": {
+    "symbol": "WDO$N",
+    "period": "M1 (2021.03.22 - 2026.03.20)",
+    "history_quality": "13% real ticks",
+    "bars": 691448,
+    "ticks": 917509095,
+    "total_trades": 2483,
+    "net_profit_brl": 12330.0,
+    "profit_factor": 1.24,
+    "expected_payoff": 4.97,
+    "on_tester_value": 1360.733258426966,
+    "max_drawdown_pct": 9.06,
+    "win_rate_pct": 73.3,
+    "profit_trades": 1820
+  },
+  "comparison_vs_every_tick": {
+    "total_trades": {
+      "every_tick": 2459,
+      "real_ticks": 2483,
+      "delta_real_minus_every_tick": 24.0
+    },
+    "net_profit_brl": {
+      "every_tick": 13125.0,
+      "real_ticks": 12330.0,
+      "delta_real_minus_every_tick": -795.0
+    },
+    "profit_factor": {
+      "every_tick": 1.23,
+      "real_ticks": 1.24,
+      "delta_real_minus_every_tick": 0.01
+    },
+    "expected_payoff": {
+      "every_tick": 5.34,
+      "real_ticks": 4.97,
+      "delta_real_minus_every_tick": -0.37
+    },
+    "on_tester_value": {
+      "every_tick": 1506.352796052632,
+      "real_ticks": 1360.733258426966,
+      "delta_real_minus_every_tick": -145.619538
+    },
+    "max_drawdown_pct": {
+      "every_tick": 8.71,
+      "real_ticks": 9.06,
+      "delta_real_minus_every_tick": 0.35
+    },
+    "win_rate_pct": {
+      "every_tick": 74.18,
+      "real_ticks": 73.3,
+      "delta_real_minus_every_tick": -0.88
+    }
+  }
+}

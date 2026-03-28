@@ -1,0 +1,26 @@
+{
+  "expert": "WDO_EMA_Historical_35610",
+  "model": 4,
+  "period": "M5 (2021.03.22 - 2026.03.20)",
+  "from_date": "2021.03.22",
+  "to_date": "2026.03.20",
+  "overrides": {
+    "InpMirrorRealOrders": "true",
+    "InpUseExternalParityCsv": "false",
+    "InpUseDataWindow": "false"
+  },
+  "symbol": "WDO$N",
+  "history_quality": "13% real ticks",
+  "bars": 138338,
+  "ticks": 917509095,
+  "total_trades": 257,
+  "net_profit_brl": 8155.0,
+  "profit_factor": 1.58,
+  "expected_payoff": 31.73,
+  "on_tester_value": 0.9425900001189627,
+  "max_drawdown_pct": 15.07,
+  "win_rate_pct": 48.64,
+  "profit_trades": 125,
+  "config_path": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\mt5_ema_35610_tick_full_rerun_20260327\\mt5_model_4.ini",
+  "report_path": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\mt5_ema_35610_tick_full_rerun_20260327\\mt5_model_4_report.html"
+}

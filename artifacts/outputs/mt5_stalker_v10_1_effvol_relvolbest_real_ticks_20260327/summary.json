@@ -1,0 +1,67 @@
+{
+  "strategy": "stalker_v10_1_effvol_relvolbest",
+  "description": "trend both >= 0.333333 over 15m + long volume >= 50000 over 15m + short relative volume >= 0.85 over 40 days",
+  "expert_source": "C:\\Dev\\autoresearch-tradebot\\mt5\\experts\\custom\\WDO Stalker Strategy v10.1 Time Filters GPT 5.4.mq5",
+  "set_file": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 EffVol RelVol Best GPT 5.4.set",
+  "config_path": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\mt5_stalker_v10_1_effvol_relvolbest_real_ticks_20260327\\mt5_model_4.ini",
+  "report_path": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\mt5_stalker_v10_1_effvol_relvolbest_real_ticks_20260327\\mt5_model_4_report.html",
+  "tester": {
+    "model": 4,
+    "model_name": "Every tick based on real ticks",
+    "period": "M1",
+    "from_date": "2021.03.22",
+    "to_date": "2026.03.20"
+  },
+  "mt5_report": {
+    "symbol": "WDO$N",
+    "period": "M1 (2021.03.22 - 2026.03.20)",
+    "history_quality": "13% real ticks",
+    "bars": 691448,
+    "ticks": 917509095,
+    "total_trades": 1407,
+    "net_profit_brl": 8430.0,
+    "profit_factor": 1.26,
+    "expected_payoff": 5.99,
+    "on_tester_value": 941.497894736842,
+    "max_drawdown_pct": 8.95,
+    "win_rate_pct": 75.48,
+    "profit_trades": 1062
+  },
+  "comparison_vs_robust_real_ticks": {
+    "total_trades": {
+      "robust_real_ticks": 2483,
+      "relvolbest_real_ticks": 1407,
+      "delta_relvolbest_minus_robust": -1076.0
+    },
+    "net_profit_brl": {
+      "robust_real_ticks": 12330.0,
+      "relvolbest_real_ticks": 8430.0,
+      "delta_relvolbest_minus_robust": -3900.0
+    },
+    "profit_factor": {
+      "robust_real_ticks": 1.24,
+      "relvolbest_real_ticks": 1.26,
+      "delta_relvolbest_minus_robust": 0.02
+    },
+    "expected_payoff": {
+      "robust_real_ticks": 4.97,
+      "relvolbest_real_ticks": 5.99,
+      "delta_relvolbest_minus_robust": 1.02
+    },
+    "on_tester_value": {
+      "robust_real_ticks": 1360.733258426966,
+      "relvolbest_real_ticks": 941.497894736842,
+      "delta_relvolbest_minus_robust": -419.235364
+    },
+    "max_drawdown_pct": {
+      "robust_real_ticks": 9.06,
+      "relvolbest_real_ticks": 8.95,
+      "delta_relvolbest_minus_robust": -0.11
+    },
+    "win_rate_pct": {
+      "robust_real_ticks": 73.3,
+      "relvolbest_real_ticks": 75.48,
+      "delta_relvolbest_minus_robust": 2.18
+    }
+  }
+}

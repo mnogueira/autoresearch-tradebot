@@ -1,0 +1,13 @@
+symbol=WDO$N
+timeframe=PERIOD_M5
+sharpe=1.726766
+profit_factor=2.076778
+max_drawdown_pct=1.417789
+win_rate=0.484211
+total_trades=190
+net_profit_brl=9705.00
+avg_profit_per_trade=51.08
+avg_win_brl=203.46
+avg_loss_brl=-91.97
+max_consec_losses=9
+exposure_pct=4.525981

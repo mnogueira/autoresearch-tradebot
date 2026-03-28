@@ -1,0 +1,82 @@
+{
+  "symbol": "WDO$N",
+  "data_source": "C:\\Dev\\autoresearch-tradebot\\data\\wdo_m1_mt5_2021_2026.parquet",
+  "dataset": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247
+  },
+  "baseline_params": {
+    "ContractsPerTrade": 1.0,
+    "FilterAsPercOfContractMARange": 0.3,
+    "NumDaysToConsiderPreviousContractMARange": 5,
+    "RetracementLevel": 0.25,
+    "SL_ATRMultiplier": 0.78,
+    "TP_ATRMultiplier": 0.36,
+    "ATR_Length": 20,
+    "MarketClose_Hour": 18,
+    "MarketClose_Minute": 0,
+    "MinutesBeforeMarketCloseToClosePositions": 5
+  },
+  "baseline_metrics": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247,
+    "total_trades": 5404,
+    "win_rate": 0.8203,
+    "net_profit_brl": 95685.0,
+    "avg_profit_brl": 17.71,
+    "avg_win_brl": 39.24,
+    "avg_loss_brl": -84.96,
+    "profit_factor": 2.2229,
+    "max_drawdown_pct": 1.98,
+    "expected_payoff": 17.71,
+    "on_tester_value": 48362.892105
+  },
+  "optimized_holdout": {
+    "best_params": {
+      "ContractsPerTrade": 1.0,
+      "FilterAsPercOfContractMARange": 0.30000000000000004,
+      "NumDaysToConsiderPreviousContractMARange": 6,
+      "RetracementLevel": 0.17,
+      "SL_ATRMultiplier": 0.9,
+      "TP_ATRMultiplier": 0.2,
+      "ATR_Length": 32,
+      "MarketClose_Hour": 18,
+      "MarketClose_Minute": 0,
+      "MinutesBeforeMarketCloseToClosePositions": 5
+    },
+    "best_objective": 121493.3125,
+    "optuna_trials": 40,
+    "train_metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2024-09-16",
+      "trading_days": 872,
+      "total_trades": 5564,
+      "win_rate": 0.9375,
+      "net_profit_brl": 95900.0,
+      "avg_profit_brl": 17.24,
+      "avg_win_brl": 23.12,
+      "avg_loss_brl": -84.03,
+      "profit_factor": 4.8818,
+      "max_drawdown_pct": 0.79,
+      "expected_payoff": 17.24,
+      "on_tester_value": 121493.3125
+    },
+    "test_metrics": {
+      "start_date": "2024-09-17",
+      "end_date": "2026-03-20",
+      "trading_days": 375,
+      "total_trades": 2443,
+      "win_rate": 0.9382,
+      "net_profit_brl": 36010.0,
+      "avg_profit_brl": 14.74,
+      "avg_win_brl": 20.15,
+      "avg_loss_brl": -75.37,
+      "profit_factor": 4.5391,
+      "max_drawdown_pct": 0.41,
+      "expected_payoff": 14.74,
+      "on_tester_value": 87921.257895
+    }
+  }
+}

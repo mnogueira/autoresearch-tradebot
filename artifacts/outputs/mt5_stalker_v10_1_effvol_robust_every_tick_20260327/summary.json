@@ -1,0 +1,30 @@
+{
+  "strategy": "stalker_v10_1_effvol_robust",
+  "description": "trend longs >= 0.333333 over 15m + short volume >= 30000 over 30m",
+  "expert_source": "C:\\Dev\\autoresearch-tradebot\\mt5\\experts\\custom\\WDO Stalker Strategy v10.1 Time Filters GPT 5.4.mq5",
+  "set_file": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 EffVol Robust GPT 5.4.set",
+  "config_path": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\mt5_stalker_v10_1_effvol_robust_every_tick_20260327\\mt5_model_0.ini",
+  "report_path": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\mt5_stalker_v10_1_effvol_robust_every_tick_20260327\\mt5_model_0_report.html",
+  "tester": {
+    "model": 0,
+    "model_name": "Every tick",
+    "period": "M1",
+    "from_date": "2021.03.22",
+    "to_date": "2026.03.20"
+  },
+  "mt5_report": {
+    "symbol": "WDO$N",
+    "period": "M1 (2021.03.22 - 2026.03.20)",
+    "history_quality": "96%",
+    "bars": 691443,
+    "ticks": 921357351,
+    "total_trades": 2459,
+    "net_profit_brl": 13125.0,
+    "profit_factor": 1.23,
+    "expected_payoff": 5.34,
+    "on_tester_value": 1506.352796052632,
+    "max_drawdown_pct": 8.71,
+    "win_rate_pct": 74.18,
+    "profit_trades": 1824
+  }
+}

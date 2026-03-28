@@ -1,0 +1,52 @@
+{
+  "strategy": "WDO Stalker Strategy v10.1 Time Filters GPT 5.4",
+  "execution_model": "MT5 Every tick (documented support-point generator)",
+  "symbol": "WDO$N",
+  "data_source": "C:\\Dev\\autoresearch-tradebot\\data\\wdo_m1_mt5_2021_2026.parquet",
+  "dataset": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247
+  },
+  "baseline_params": {
+    "ContractsPerTrade": 1.0,
+    "FilterAsPercOfContractMARange": 0.3,
+    "NumDaysToConsiderPreviousContractMARange": 5,
+    "RetracementLevel": 0.25,
+    "EntryStart_Hour": 10,
+    "EntryStart_Minute": 0,
+    "LastEntry_Hour": 15,
+    "LastEntry_Minute": 0,
+    "AllowMonday": true,
+    "AllowTuesday": true,
+    "AllowWednesday": true,
+    "AllowThursday": true,
+    "AllowFriday": true,
+    "SL_ATRMultiplier": 0.78,
+    "TP_ATRMultiplier": 0.36,
+    "ATRTimeFrame": 15,
+    "ATR_Length": 20,
+    "MarketClose_Hour": 18,
+    "MarketClose_Minute": 0,
+    "MinutesBeforeMarketCloseToClosePositions": 5
+  },
+  "baseline_metrics": {
+    "start_date": "2026-01-02",
+    "end_date": "2026-03-20",
+    "trading_days": 54,
+    "total_trades": 153,
+    "win_rate": 0.6732,
+    "net_profit_brl": -135.0,
+    "avg_profit_brl": -0.88,
+    "avg_win_brl": 34.51,
+    "avg_loss_brl": -73.8,
+    "profit_factor": 0.9634,
+    "max_drawdown_pct": 9.67,
+    "expected_payoff": -0.88,
+    "on_tester_value": -13.956818
+  },
+  "optimization_config": {
+    "train_ratio": 0.7,
+    "time_slot_step_minutes": 5
+  }
+}
