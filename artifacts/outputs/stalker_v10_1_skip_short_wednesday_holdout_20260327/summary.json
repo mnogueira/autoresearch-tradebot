@@ -1,0 +1,38 @@
+{
+  "data_source": "C:\\Dev\\autoresearch-tradebot\\data\\wdo_m1_mt5_2021_2026.parquet",
+  "train_start": "2021-03-23",
+  "train_end": "2024-09-16",
+  "test_start": "2024-09-17",
+  "test_end": "2026-03-20",
+  "robust_baseline_test": {
+    "start_date": "2024-09-17",
+    "end_date": "2026-03-20",
+    "trading_days": 375,
+    "total_trades": 702,
+    "win_rate": 0.7365,
+    "net_profit_brl": 4425.0,
+    "avg_profit_brl": 6.3,
+    "avg_win_brl": 36.99,
+    "avg_loss_brl": -79.46,
+    "profit_factor": 1.301,
+    "max_drawdown_pct": 6.29,
+    "expected_payoff": 6.3,
+    "on_tester_value": 703.395954
+  },
+  "skip_short_wednesday_test": {
+    "start_date": "2024-09-17",
+    "end_date": "2026-03-20",
+    "trading_days": 375,
+    "total_trades": 626,
+    "win_rate": 0.7396,
+    "net_profit_brl": 3820.0,
+    "avg_profit_brl": 6.1,
+    "avg_win_brl": 36.85,
+    "avg_loss_brl": -81.23,
+    "profit_factor": 1.2885,
+    "max_drawdown_pct": 6.82,
+    "expected_payoff": 6.1,
+    "on_tester_value": 560.054444
+  },
+  "preset_path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 Robust Skip Short Wednesday GPT 5.4.set"
+}

@@ -51,6 +51,7 @@ class V101Params:
     SkipWednesday: bool = False
     SkipShortWednesday: bool = False
     SkipHour13: bool = False
+    SkipShortHour13: bool = False
     SkipHour14: bool = False
     AllowMonday: bool = True
     AllowTuesday: bool = True
@@ -112,8 +113,11 @@ def is_within_entry_window(timestamp: pd.Timestamp, params: V101Params) -> bool:
 
 
 def allows_entry_direction(timestamp: pd.Timestamp, direction: int, params: V101Params) -> bool:
-    if int(direction) == -1 and timestamp.dayofweek == 2 and bool(params.SkipShortWednesday):
-        return False
+    if int(direction) == -1:
+        if timestamp.dayofweek == 2 and bool(params.SkipShortWednesday):
+            return False
+        if timestamp.hour == 13 and bool(params.SkipShortHour13):
+            return False
     return True
 
 

@@ -67,6 +67,7 @@ input int LastEntry_Minute = 0;                               // Latest entry mi
 input bool SkipWednesday = false;                             // Skip all Wednesday entries
 input bool SkipShortWednesday = false;                        // Skip short entries on Wednesday only
 input bool SkipHour13 = false;                                // Skip entries during the 13:00 hour
+input bool SkipShortHour13 = false;                           // Skip short entries during the 13:00 hour only
 input bool SkipHour14 = false;                                // Skip entries during the 14:00 hour
 input bool AllowMonday = true;                                // Allow Monday entries
 input bool AllowTuesday = true;                               // Allow Tuesday entries
@@ -350,12 +351,19 @@ bool IsWithinEntryWindow(const datetime current_time_brazil)
 
 bool IsDirectionAllowed(const int direction, const datetime current_time_brazil)
 {
-   if(direction != -1 || !SkipShortWednesday)
+   if(direction != -1)
       return(true);
 
    MqlDateTime time_parts;
    TimeToStruct(current_time_brazil, time_parts);
-   return(time_parts.day_of_week != 3);
+
+   if(SkipShortWednesday && time_parts.day_of_week == 3)
+      return(false);
+
+   if(SkipShortHour13 && time_parts.hour == 13)
+      return(false);
+
+   return(true);
 }
 
 bool PassesDirectionalTrendEfficiency(const int direction, const bool hasValue, const double rawValue)

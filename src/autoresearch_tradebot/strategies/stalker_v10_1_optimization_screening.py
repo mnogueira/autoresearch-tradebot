@@ -275,6 +275,7 @@ def render_preset(params: dict[str, Any]) -> str:
         set_line("SkipWednesday", params["SkipWednesday"]),
         set_line("SkipShortWednesday", params.get("SkipShortWednesday", False)),
         set_line("SkipHour13", params["SkipHour13"]),
+        set_line("SkipShortHour13", params.get("SkipShortHour13", False)),
         set_line("SkipHour14", params.get("SkipHour14", False)),
         set_line("AllowMonday", params["AllowMonday"]),
         set_line("AllowTuesday", params["AllowTuesday"]),
