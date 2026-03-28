@@ -8,6 +8,7 @@
 | Session filter | `10:00, 11:00, 12:00, 14:00` produced `R$15,965`, `PF 1.4438`, `DD 4.04%` | Narrowing to the best hours improved quality without killing the edge. |
 | Trade cooldown | `30m` cooldown produced `R$14,085`, `PF 1.4825`, `DD 3.30%` | This was the key cost-control breakthrough. |
 | Max hold | `120` M1 bars on top of cooldown produced `R$14,135`, `PF 1.4851`, `DD 3.29%` | Small but real improvement on all major exact metrics. |
+| Simplification test | Cooldown-only variant kept `99.65%` of net and `99.82%` of PF versus the max-hold leader | This tells us the strategy is not over-dependent on the max-hold timer. |
 | Walk-forward validation | `70/30` holdout on the max-hold leader: train `PF 1.5332`, test `PF 1.3668` | The core strategy held up out of sample. |
 | Regime awareness | Trend-day production slice: `R$7,535`, `PF 1.9183`, `DD 3.38%` | Most of the quality edge comes from trend days. |
 | Component discipline | Ablation showed session filter, cooldown, and `SkipShortWednesday` are the true load-bearing pieces | This separates real edge from convenient but mostly cosmetic parameters. |

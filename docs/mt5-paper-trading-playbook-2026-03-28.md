@@ -81,6 +81,20 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 - Watch the first two sessions for actual spread behavior at `10:00`, `11:00`, `12:00`, and `14:00`.
 - If observed spread looks closer to the exact `2x` stress case than the baseline case, stay cautious about scaling.
 
+## Risk Budget
+
+- Recommended maximum size for Monday:
+  - `1` contract per `R$100k` of paper capital
+- Stretch upper bound after stable paper fills:
+  - `2` contracts per `R$100k`, and only if observed spread stays close to the historical `0-1` tick baseline
+- Why this is the budget:
+  - exact max-hold leader baseline drawdown at `1` contract was about `R$329` on the synthetic `R$10k` book
+  - harsh `3x` spread stress drawdown at `1` contract was about `R$4,644`
+  - that implies roughly `R$92,880` of capital per contract to keep the harsh stress case near a `5%` drawdown budget
+- Practical interpretation:
+  - one contract is the right Monday size even for larger paper accounts
+  - scaling beyond that should wait until live-paper spread and fill quality confirm the base assumptions
+
 ## Abort Conditions
 
 - MT5 tester fails to produce a clean report.
@@ -113,6 +127,12 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
   - interpretation: late-contract sessions are still tradable, but they are materially weaker than fresh-contract sessions
   - exact full-sample stand-down variant, skipping the last `3` contract days entirely: `R$12,905`, `PF 1.5281`, `DD 3.49%`
   - operational takeaway: for Monday paper trading, treat the last `3` contract days as a caution zone where reducing size or standing down is reasonable if spreads or trend quality look poor, but this is not the new default preset because the stand-down filter gave up too much net profit
+- Rolling degradation profile:
+  - trailing `60`-day PF median: `1.4119`
+  - trailing `60`-day PF minimum: `0.8408`
+  - share of trailing `60`-day windows below `1.0`: `4.46%`
+  - longest underwater stretch in the full exact equity curve: `69` trading days
+  - interpretation: the strategy can stay soft for a couple of months without being structurally dead, so operator patience matters
 - 2025 stability split:
   - first half of `2025`: `R$1,555`, `PF 1.5604`, `DD 2.96%`
   - second half of `2025`: `R$655`, `PF 1.2652`, `DD 3.02%`
@@ -131,6 +151,8 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 - Paper-trading default: the validated MT5 preset `sl0p84 / tp0p3`
 - First upgrade to validate on the host: the `Cooldown 30m + MaxHold120m` preset
 - Fallback refinement if the max-hold variant misbehaves in MT5: the plain `Cooldown 30m` preset
+- Simplest high-fidelity fallback:
+  - the cooldown-only exact variant kept `99.65%` of the max-hold leader's net profit and `99.82%` of its PF
 - Quality-only alternative: the `Maximum Quality v2 Cooldown 30m MaxHold120m` preset
 - Optional regime-gated alternative: the `Trend Day ADX25 Cooldown 30m MaxHold120m` preset
 - Optional operator rule around rollover tail days:

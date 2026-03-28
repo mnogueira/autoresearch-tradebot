@@ -1,0 +1,131 @@
+{
+  "reference_variant": {
+    "name": "session_winner_cooldown_30m_maxhold_120m1bars",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 14135.0,
+      "avg_profit_brl": 9.01,
+      "avg_win_brl": 34.26,
+      "avg_loss_brl": -95.54,
+      "profit_factor": 1.4851,
+      "max_drawdown_pct": 3.29,
+      "expected_payoff": 9.01,
+      "on_tester_value": 4290.320082
+    }
+  },
+  "minimal_variants": {
+    "session_plus_cooldown_only": {
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1568,
+        "win_rate": 0.8055,
+        "net_profit_brl": 14085.0,
+        "avg_profit_brl": 8.98,
+        "avg_win_brl": 34.26,
+        "avg_loss_brl": -95.7,
+        "profit_factor": 1.4825,
+        "max_drawdown_pct": 3.3,
+        "expected_payoff": 8.98,
+        "on_tester_value": 4263.59877
+      },
+      "capture_vs_reference": {
+        "net_profit_capture": 0.9965,
+        "profit_factor_capture": 0.9982,
+        "on_tester_capture": 0.9938,
+        "drawdown_capture": 1.003,
+        "trade_count_capture": 1.0
+      },
+      "interpretation": "Simplest high-fidelity variant: drops the max hold but keeps the session filter, best SL/TP, and cooldown."
+    },
+    "session_only_core": {
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1896,
+        "win_rate": 0.8017,
+        "net_profit_brl": 15965.0,
+        "avg_profit_brl": 8.42,
+        "avg_win_brl": 34.17,
+        "avg_loss_brl": -95.68,
+        "profit_factor": 1.4438,
+        "max_drawdown_pct": 4.04,
+        "expected_payoff": 8.42,
+        "on_tester_value": 3950.819156
+      },
+      "capture_vs_reference": {
+        "net_profit_capture": 1.1295,
+        "profit_factor_capture": 0.9722,
+        "on_tester_capture": 0.9209,
+        "drawdown_capture": 1.228,
+        "trade_count_capture": 1.2092
+      },
+      "interpretation": "Strict minimal session winner: session filter plus best SL/TP and the core signal stack, without cooldown or max hold."
+    }
+  },
+  "portfolio_thought_experiment": {
+    "note": "True WDO/WIN allocation cannot be optimized without WIN history. This is only a 70% WDO / 30% reserve-cash scaling proxy using the production candidate's own trade tape.",
+    "wdo_70_cash_30_metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 9894.5,
+      "avg_profit_brl": 6.31,
+      "avg_win_brl": 23.98,
+      "avg_loss_brl": -66.88,
+      "profit_factor": 1.4851,
+      "max_drawdown_pct": 2.68,
+      "expected_payoff": 6.31,
+      "on_tester_value": 3698.387992
+    }
+  },
+  "rolling_60d_profit_factor": {
+    "window_days": 60,
+    "num_windows": 1188,
+    "min_profit_factor": 0.8408,
+    "median_profit_factor": 1.4119,
+    "share_windows_below_1": 0.0446,
+    "worst_window": {
+      "window_start": "2025-12-05",
+      "window_end": "2026-03-06",
+      "profit_factor": 0.8408
+    },
+    "longest_below_1_stretch": {
+      "length_windows": 9,
+      "start": "2025-12-04",
+      "end": "2026-03-17",
+      "min_profit_factor": 0.8408
+    }
+  },
+  "underwater_profile": {
+    "longest_underwater_period": {
+      "trading_days": 69,
+      "start": "2025-04-07",
+      "end": "2025-07-16"
+    },
+    "current_underwater": true
+  },
+  "risk_budget": {
+    "synthetic_starting_equity_brl": 10000.0,
+    "baseline_drawdown_brl_per_contract": 329.0,
+    "stress_drawdown_brl_per_contract_3x_spread": 4644.0,
+    "capital_needed_for_5pct_stress_budget_per_contract_brl": 92880.0,
+    "capital_needed_for_3pct_stress_budget_per_contract_brl": 154800.0,
+    "recommended_max_contracts_per_100k_brl": 1,
+    "stretch_upper_bound_contracts_per_100k_brl": 2,
+    "rationale": "One contract per R$100k keeps even the harsh 3x-spread stress case near a 5% capital drawdown. More than that should wait for live-paper spread confirmation."
+  },
+  "notes": [
+    "The cooldown-only minimal variant is the cleanest simplification test because the max hold was already shown to be only a marginal refinement.",
+    "The 70/30 allocation is not a true WDO/WIN optimizer; it is just a scaled-sleeve thought experiment using WDO-only data.",
+    "Rolling 60-day PF is computed over trailing 60-trading-day windows to expose soft patches, while the underwater profile uses the full exact daily equity curve."
+  ]
+}

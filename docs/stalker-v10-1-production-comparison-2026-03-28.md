@@ -19,6 +19,9 @@
 
 - Safest paper-trading choice today: the MT5-validated base preset.
 - Best exact research candidate: session winner + `30m` cooldown + `120` M1-bar max hold.
+- Simplest high-fidelity fallback: session winner + `30m` cooldown only.
+  - `R$14,085`, `PF 1.4825`, `DD 3.30%`
+  - that retains `99.65%` of the max-hold leader's net profit and `99.82%` of its PF
 - Best quality-biased operator preset: Maximum Quality v2.
 - Main risk across all exact variants: transaction-cost sensitivity. The max-hold leader fails under `3x` spread stress: `R$-3,300`, `PF 0.9198`, `DD 46.44%`.
 - Final cost follow-up on the max-hold leader:
@@ -68,6 +71,13 @@
   - `1.0` contract: `R$14,135`, `DD 3.29%`
   - `2.0` contracts: `R$28,270`, `DD 5.03%`
   - `3.0` contracts: `R$42,405`, `DD 6.32%`
+- Risk-budget takeaway:
+  - `1` contract per `R$100k` is the right Monday maximum if you want the harsh `3x` spread stress case to stay near a `5%` capital drawdown budget
+- Rolling degradation profile:
+  - trailing `60`-day PF median: `1.4119`
+  - trailing `60`-day PF minimum: `0.8408`
+  - share of `60`-day windows below `1.0`: `4.46%`
+  - longest underwater stretch: `69` trading days
 
 ## Files
 

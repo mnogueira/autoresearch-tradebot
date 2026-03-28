@@ -91,6 +91,7 @@ Recent context:
 ## Live Monitoring
 
 1. Keep size at `1` contract.
+   - stress-budgeted rule of thumb: do not exceed `1` contract per `R$100k` of paper capital on Monday
 2. Watch the first two sessions closely around `10:00`, `11:00`, `12:00`, and `14:00`.
 3. Record actual spread and fill behavior for each trade.
 4. Keep the `Experts` and `Journal` tabs open and watch for:

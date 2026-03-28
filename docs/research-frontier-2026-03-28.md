@@ -83,6 +83,10 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - identical result to the reference
   - interpretation: that is because the explicit session gate already excludes the entire `13:00` hour in the exact research harness
   - deployment caveat: this does not mean the MT5 `13:00` skip should be deleted, because the live preset uses the hour skip to reproduce the same practical behavior
+- Minimal fallback readout:
+  - cooldown-only variant, dropping the max hold: `R$14,085`, `PF 1.4825`, `DD 3.30%`
+  - capture versus the full production candidate: `99.65%` net, `99.82%` PF, `99.38%` OnTester
+  - interpretation: the cooldown-only version is the cleanest simplified fallback if the max-hold logic ever misbehaves in MT5
 
 ## Contract Rollovers
 
@@ -100,6 +104,23 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - the strategy still works late in the contract cycle, but quality clearly deteriorates there
   - month-end / rollover-tail sessions should be treated more cautiously than fresh-contract sessions
   - the simple stand-down filter improves PF, but it gives up too much net profit and does not improve drawdown enough to replace the main production candidate
+
+## Rolling Degradation Profile
+
+- Rolling-risk artifact:
+  - `artifacts/outputs/stalker_v10_1_minimal_risk_followups_20260328/summary.json`
+- Trailing `60`-trading-day profit factor:
+  - median: `1.4119`
+  - minimum: `0.8408`
+  - share of windows below `1.0`: `4.46%`
+  - worst window: `2025-12-05` through `2026-03-06`
+  - longest consecutive stretch of sub-`1.0` windows: `9`
+- Underwater profile:
+  - longest underwater stretch: `69` trading days, `2025-04-07` through `2025-07-16`
+  - current state at the end of the sample: still underwater versus the prior peak
+- Interpretation:
+  - this is not a constantly smooth equity curve
+  - the strategy can go soft for multiple months without being structurally broken, so operator expectations and sizing discipline matter
 
 ## Best Python Candidates Pending MT5
 
