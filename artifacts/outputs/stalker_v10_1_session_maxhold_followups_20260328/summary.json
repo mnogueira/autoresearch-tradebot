@@ -1,0 +1,111 @@
+{
+  "reference_variant": "session_winner_cooldown_30m_max_hold_120m1bars",
+  "reference_metrics": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247,
+    "total_trades": 1568,
+    "win_rate": 0.8055,
+    "net_profit_brl": 14135.0,
+    "avg_profit_brl": 9.01,
+    "avg_win_brl": 34.26,
+    "avg_loss_brl": -95.54,
+    "profit_factor": 1.4851,
+    "max_drawdown_pct": 3.29,
+    "expected_payoff": 9.01,
+    "on_tester_value": 4290.320082
+  },
+  "walkforward_70_30": {
+    "base_variant": "session_winner_cooldown_30m_max_hold_120m1bars",
+    "train_ratio": 0.7,
+    "train_metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2024-09-16",
+      "trading_days": 872,
+      "total_trades": 1098,
+      "win_rate": 0.8106,
+      "net_profit_brl": 11045.0,
+      "avg_profit_brl": 10.06,
+      "avg_win_brl": 35.69,
+      "avg_loss_brl": -99.59,
+      "profit_factor": 1.5332,
+      "max_drawdown_pct": 3.29,
+      "expected_payoff": 10.06,
+      "on_tester_value": 3352.429098
+    },
+    "test_metrics": {
+      "start_date": "2024-09-17",
+      "end_date": "2026-03-20",
+      "trading_days": 375,
+      "total_trades": 470,
+      "win_rate": 0.7936,
+      "net_profit_brl": 3090.0,
+      "avg_profit_brl": 6.57,
+      "avg_win_brl": 30.87,
+      "avg_loss_brl": -86.86,
+      "profit_factor": 1.3668,
+      "max_drawdown_pct": 4.57,
+      "expected_payoff": 6.57,
+      "on_tester_value": 676.224793
+    }
+  },
+  "volatility_based_max_hold_proxy": {
+    "rule": "Approximate volatility-based holding logic: hard exit after 600 M1 bars or earlier if unrealized loss exceeds 0.5 ATR at entry.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.743,
+      "net_profit_brl": 11510.0,
+      "avg_profit_brl": 7.34,
+      "avg_win_brl": 34.23,
+      "avg_loss_brl": -70.4,
+      "profit_factor": 1.4057,
+      "max_drawdown_pct": 3.53,
+      "expected_payoff": 7.34,
+      "on_tester_value": 3260.857258
+    }
+  },
+  "half_target_trailing_variant": {
+    "rule": "With the 120-bar max hold, once price reaches 50% of TP, ratchet the stop from the 50% TP floor and trail half of any additional gains.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8304,
+      "net_profit_brl": 9775.0,
+      "avg_profit_brl": 6.23,
+      "avg_win_brl": 26.89,
+      "avg_loss_brl": -94.85,
+      "profit_factor": 1.3874,
+      "max_drawdown_pct": 4.42,
+      "expected_payoff": 6.23,
+      "on_tester_value": 2213.244932
+    }
+  },
+  "maximum_quality_v2": {
+    "rule": "Session filter 10/11/12/14 + 30-minute cooldown + 120 M1 max hold + full Wednesday skip + full 13:00 skip.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1255,
+      "win_rate": 0.8016,
+      "net_profit_brl": 10665.0,
+      "avg_profit_brl": 8.5,
+      "avg_win_brl": 34.2,
+      "avg_loss_brl": -95.34,
+      "profit_factor": 1.4492,
+      "max_drawdown_pct": 3.78,
+      "expected_payoff": 8.5,
+      "on_tester_value": 2824.558594
+    }
+  },
+  "notes": [
+    "The walk-forward uses the same exact 70/30 split style as the earlier cooldown deployment follow-up, but on the new 120-bar max-hold leader.",
+    "The volatility-based hold is a pragmatic proxy, not a fully new theory of exits: it combines an ATR-normalized loss exit with a much looser age limit.",
+    "The half-target trailing variant is a ratcheting stop approximation designed to test whether the max-hold winner benefits from letting profits breathe after mid-target confirmation."
+  ]
+}

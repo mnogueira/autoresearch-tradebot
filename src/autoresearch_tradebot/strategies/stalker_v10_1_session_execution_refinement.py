@@ -52,6 +52,9 @@ class ManagementConfig:
     max_consecutive_losses_per_day: int | None = None
     cooldown_after_win_minutes: int | None = None
     cooldown_after_loss_minutes: int | None = None
+    loss_exit_atr_mult: float | None = None
+    trail_after_target_fraction: float | None = None
+    trail_lock_target_fraction: float | None = None
     profitable_trail_start_bars: int | None = None
     profitable_trail_step_bars: int = 1
     profitable_trail_step_ticks: int = 0
@@ -108,6 +111,16 @@ def candidate_row(
     if params is not None:
         row["params"] = params
     return row
+
+
+def has_reached_max_trade_age(
+    current_index: int,
+    entry_bar_index: int,
+    max_bars_in_trade: int | None,
+) -> bool:
+    if max_bars_in_trade is None or max_bars_in_trade <= 0:
+        return False
+    return (current_index - entry_bar_index) >= int(max_bars_in_trade)
 
 
 def run_backtest_with_management(
@@ -214,6 +227,7 @@ def run_backtest_with_management(
     realized_partial_points = 0.0
     best_bid_tick = 0
     best_ask_tick = BIG_NUMBER
+    entry_atr_value = 0.0
 
     pending_order: dict[str, Any] | None = None
     completed_trades_today = 0
@@ -223,7 +237,7 @@ def run_backtest_with_management(
     def reset_position_state() -> None:
         nonlocal position, pending_order, partial_taken, partial_exit_tick
         nonlocal realized_partial_pnl_brl, realized_partial_points, trail_distance_ticks
-        nonlocal initial_target_tick, half_target_tick, best_bid_tick, best_ask_tick
+        nonlocal initial_target_tick, half_target_tick, best_bid_tick, best_ask_tick, entry_atr_value
         position = 0
         pending_order = None
         partial_taken = False
@@ -235,6 +249,7 @@ def run_backtest_with_management(
         half_target_tick = 0
         best_bid_tick = 0
         best_ask_tick = BIG_NUMBER
+        entry_atr_value = 0.0
 
     def append_trade(session_date: np.datetime64, exit_time: pd.Timestamp, exit_tick: int, exit_reason: str) -> None:
         nonlocal completed_trades_today, consecutive_losses_today, next_entry_allowed_time
@@ -282,7 +297,7 @@ def run_backtest_with_management(
     def arm_position_state(current_index: int) -> None:
         nonlocal entry_bar_index, initial_target_tick, half_target_tick, trail_distance_ticks
         nonlocal partial_taken, partial_exit_tick, realized_partial_pnl_brl, realized_partial_points
-        nonlocal best_bid_tick, best_ask_tick
+        nonlocal best_bid_tick, best_ask_tick, entry_atr_value
         entry_bar_index = int(current_index)
         initial_target_tick = int(target_tick)
         partial_taken = False
@@ -299,6 +314,7 @@ def run_backtest_with_management(
             trail_distance_ticks = 0
         best_bid_tick = entry_tick
         best_ask_tick = entry_tick
+        entry_atr_value = float(atr_open_slice[current_index]) if np.isfinite(atr_open_slice[current_index]) else 0.0
 
     def maybe_take_partial(current_bid_tick: int, current_ask_tick: int) -> None:
         nonlocal partial_taken, partial_exit_tick, realized_partial_pnl_brl, realized_partial_points, stop_tick
@@ -356,6 +372,46 @@ def run_backtest_with_management(
         else:
             stop_tick = min(stop_tick, desired_stop_tick)
 
+    def update_fractional_target_trail(current_bid_tick: int, current_ask_tick: int) -> None:
+        nonlocal stop_tick, best_bid_tick, best_ask_tick
+        if position == 0:
+            return
+        if management.trail_after_target_fraction is None or management.trail_lock_target_fraction is None:
+            return
+
+        target_distance_ticks = abs(int(initial_target_tick - entry_tick))
+        if target_distance_ticks <= 0:
+            return
+
+        activation_ticks = max(1, int(round(target_distance_ticks * float(management.trail_after_target_fraction))))
+        lock_ticks = max(1, int(round(target_distance_ticks * float(management.trail_lock_target_fraction))))
+
+        if position == 1:
+            best_bid_tick = max(best_bid_tick, current_bid_tick)
+            activation_tick = entry_tick + activation_ticks
+            if best_bid_tick < activation_tick:
+                return
+            extra_ticks = max(0, best_bid_tick - activation_tick)
+            desired_stop_tick = entry_tick + lock_ticks + (extra_ticks // 2)
+            stop_tick = max(stop_tick, desired_stop_tick)
+        else:
+            best_ask_tick = min(best_ask_tick, current_ask_tick)
+            activation_tick = entry_tick - activation_ticks
+            if best_ask_tick > activation_tick:
+                return
+            extra_ticks = max(0, activation_tick - best_ask_tick)
+            desired_stop_tick = entry_tick - lock_ticks - (extra_ticks // 2)
+            stop_tick = min(stop_tick, desired_stop_tick)
+
+    def atr_loss_exit_tick(current_bid_tick: int, current_ask_tick: int) -> tuple[int | None, str | None]:
+        if position == 0 or management.loss_exit_atr_mult is None or entry_atr_value <= 0.0:
+            return None, None
+        current_exit_tick = current_bid_tick if position == 1 else current_ask_tick
+        unrealized_points = (ticks_to_price(current_exit_tick, PRICE_TICK_SIZE) - ticks_to_price(entry_tick, PRICE_TICK_SIZE)) * position
+        if unrealized_points <= -(float(management.loss_exit_atr_mult) * entry_atr_value):
+            return current_exit_tick, f"atr_loss_exit_{float(management.loss_exit_atr_mult):.2f}"
+        return None, None
+
     for index in range(len(timestamps)):
         timestamp = timestamps[index]
         session_date = session_dates[index]
@@ -376,6 +432,12 @@ def run_backtest_with_management(
         if position != 0:
             update_profit_time_stop(index, bid_open_tick, ask_open_tick)
             update_trailing_stop(bid_open_tick, ask_open_tick)
+            update_fractional_target_trail(bid_open_tick, ask_open_tick)
+            atr_exit_tick, atr_exit_reason = atr_loss_exit_tick(bid_open_tick, ask_open_tick)
+            if atr_exit_tick is not None and atr_exit_reason is not None:
+                append_trade(session_date, timestamp, atr_exit_tick, atr_exit_reason)
+                reset_position_state()
+                continue
             open_exit_tick, open_exit_reason = _exit_position_at_tick(
                 direction=position,
                 bid_tick=bid_open_tick,
@@ -387,9 +449,10 @@ def run_backtest_with_management(
             if open_exit_tick is not None and open_exit_reason is not None:
                 maybe_take_partial(bid_open_tick, ask_open_tick)
                 update_trailing_stop(bid_open_tick, ask_open_tick)
+                update_fractional_target_trail(bid_open_tick, ask_open_tick)
                 append_trade(session_date, timestamp, open_exit_tick, open_exit_reason)
                 reset_position_state()
-            elif management.max_bars_in_trade is not None and (index - entry_bar_index) >= int(management.max_bars_in_trade):
+            elif has_reached_max_trade_age(index, entry_bar_index, management.max_bars_in_trade):
                 exit_tick = bid_open_tick if position == 1 else ask_open_tick
                 append_trade(session_date, timestamp, exit_tick, f"time_exit_{int(management.max_bars_in_trade)}bars")
                 reset_position_state()

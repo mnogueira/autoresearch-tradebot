@@ -11,6 +11,20 @@ This remains the safest paper-trading candidate because it is the best strategy 
 
 ## Best Python Candidates Pending MT5
 
+- Best exact Python candidate waiting on MT5 validation:
+  - exact hours: `10:00, 11:00, 12:00, 14:00`
+  - keep `SkipShortWednesday=true`
+  - skip the full `13:00` hour
+  - require at least `30 minutes` between filled entries
+  - close any position older than `120` M1 bars
+  - `SL 0.84 / TP 0.30`
+  - artifact: `artifacts/outputs/stalker_v10_1_session_maxhold_followups_20260328/summary.json`
+  - metrics: `R$14,135`, `PF 1.4851`, `DD 3.29%`, `OnTester 4290.320082`
+  - walk-forward `70/30`: train `R$11,045`, `PF 1.5332`, `DD 3.29%`; test `R$3,090`, `PF 1.3668`, `DD 4.57%`
+  - MT5 preset now prepared:
+    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m MaxHold120m GPT 5.4.set`
+  - interpretation: this is the first exact overlay that improves the cooldown winner on net profit, PF, drawdown, and OnTester together while staying positive on the held-out last 30%
+
 - Best cost-robust exact refinement:
   - exact hours: `10:00, 11:00, 12:00, 14:00`
   - keep `SkipShortWednesday=true`
@@ -36,11 +50,14 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - artifact: `artifacts/outputs/stalker_v10_1_session_refinement_20260328/summary.json`
   - metrics: `R$15,965`, `PF 1.4438`, `DD 4.04%`, `OnTester 3950.819156`
 
-- Closest current MT5 preset approximation:
-  - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides GPT 5.4.set`
-  - exact cooldown preset is now prepared too:
+- MT5 presets now prepared for the leading exact refinements:
+  - cooldown leader:
     - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
-  - note: the MQ5 cooldown support is wired in, but it still needs one clean MT5 `Every tick` validation run
+  - max-hold leader:
+    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m MaxHold120m GPT 5.4.set`
+  - maximum-quality v2:
+    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Maximum Quality v2 Cooldown 30m MaxHold120m GPT 5.4.set`
+  - note: the MQ5 EA now exposes both cooldown and max-hold controls, so the next blocker is only a clean MT5 `Every tick` validation run
 
 ## New Findings From Advanced Follow-ups
 
@@ -112,6 +129,16 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - DXY correlation (`prior-day 20-session corr > 0.70`): `R$-120`, `PF 0.7670`, `DD 2.42%`
   - `120` M1-bar max position duration plus `30-minute` cooldown: `R$14,135`, `PF 1.4851`, `DD 3.29%`, `OnTester 4290.320082`
   - interpretation: the DXY filter is too sparse and should be dropped. The daily ADX regime is an interesting high-quality niche, but it over-prunes too hard. The `120`-minute max hold is the first macro/risk overlay that actually improves the session+cooldown leader on net profit, PF, drawdown, and OnTester all at once.
+
+- The latest max-hold follow-up closed the loop on deployment confidence:
+  - artifact: `artifacts/outputs/stalker_v10_1_session_maxhold_followups_20260328/summary.json`
+  - exact `70/30` holdout for the max-hold leader:
+    - train: `R$11,045`, `PF 1.5332`, `DD 3.29%`
+    - test: `R$3,090`, `PF 1.3668`, `DD 4.57%`
+  - volatility-based loss/age proxy (`0.5 ATR` loss exit, `600` M1 bars): `R$11,510`, `PF 1.4057`, `DD 3.53%`
+  - half-target ratchet/trail on top of max-hold: `R$9,775`, `PF 1.3874`, `DD 4.42%`
+  - maximum-quality v2 (`full Wednesday skip`, `full 13:00 skip`, `30-minute cooldown`, `120` M1-bar max hold): `R$10,665`, `PF 1.4492`, `DD 3.78%`
+  - interpretation: the plain `120`-bar max hold remains the best refinement; the ATR proxy and half-target trail are useful negative controls, and the full Wednesday version stays a quality-biased operator preset rather than the main alpha line
 
 - The latest deployment follow-up increased confidence in the cooldown winner:
   - artifact: `artifacts/outputs/stalker_v10_1_session_deployment_followups_20260328/summary.json`
@@ -311,9 +338,12 @@ But cost sensitivity is real:
   - MT5 tester instability means the best exact refinements still need one clean host-side validation
 - Next paper-trading step:
   - run the validated MT5 preset first
-  - validate the new cooldown preset in MT5 `Every tick` next if the EA is still missing the max-hold feature:
+  - validate the max-hold leader in MT5 `Every tick` next:
+    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m MaxHold120m GPT 5.4.set`
+  - keep the plain cooldown preset as the fallback if MT5 exposes any discrepancy:
     - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
-  - if the EA gains a `120`-minute max-hold control, validate that variant immediately after because it is now the best exact Python candidate
-  - monitor real slippage/spread conditions closely before promoting the exact cooldown refinement
+  - monitor real slippage/spread conditions closely before promoting the exact refinements
 - Operational guide:
   - `docs/mt5-paper-trading-playbook-2026-03-28.md`
+  - `docs/mt5-monday-morning-checklist-2026-03-30.md`
+  - `docs/stalker-v10-1-production-comparison-2026-03-28.md`

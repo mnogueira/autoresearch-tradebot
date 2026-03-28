@@ -26,23 +26,25 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 
 ### New best exact Python refinement
 
-- This is the best exact variant on the research side, but it is not MT5-ready until the EA supports a maximum holding time:
+- This is now MT5-ready and should be the first refinement validated after the already-validated base preset:
   - session winner + `30-minute cooldown` + hard exit after `120` M1 bars
+- Preset:
+  - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m MaxHold120m GPT 5.4.set`
 - Exact result:
   - `R$14,135`, `PF 1.4851`, `DD 3.29%`
 - Artifact:
-  - `artifacts/outputs/stalker_v10_1_session_macro_followups_20260328/summary.json`
+  - `artifacts/outputs/stalker_v10_1_session_maxhold_followups_20260328/summary.json`
 - Operational note:
-  - keep using the plain cooldown preset in MT5 until the max-hold feature is implemented in the EA
+  - the EA now exposes `MaxMinutesInTrade`, so the remaining work is just one clean MT5 `Every tick` validation run
 
 ### Maximum-quality preset
 
 - Use this if the desk prefers cleaner tape over raw net profit:
-  - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Maximum Quality Cooldown 30m GPT 5.4.set`
+  - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Maximum Quality v2 Cooldown 30m MaxHold120m GPT 5.4.set`
 - Exact result:
   - `R$10,665`, `PF 1.4492`, `DD 3.78%`
 - Interpretation:
-  - all-sides Wednesday skip is cleaner operationally, but it gives up too much net to replace the main candidate
+  - all-sides Wednesday skip plus full 13:00 skip is cleaner operationally, but it gives up too much net to replace the main candidate
 
 ## Monday Setup Steps
 
@@ -79,6 +81,8 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 ## Current Recommendation
 
 - Paper-trading default: the validated MT5 preset `sl0p84 / tp0p3`
-- First upgrade to validate on the host: the `Cooldown 30m` preset
-- First engineering upgrade after that: add the `120`-minute max-hold to the EA and validate the new exact leader
-- Quality-only alternative: the `Maximum Quality Cooldown 30m` preset
+- First upgrade to validate on the host: the `Cooldown 30m + MaxHold120m` preset
+- Fallback refinement if the max-hold variant misbehaves in MT5: the plain `Cooldown 30m` preset
+- Quality-only alternative: the `Maximum Quality v2 Cooldown 30m MaxHold120m` preset
+- Monday runbook:
+  - `docs/mt5-monday-morning-checklist-2026-03-30.md`

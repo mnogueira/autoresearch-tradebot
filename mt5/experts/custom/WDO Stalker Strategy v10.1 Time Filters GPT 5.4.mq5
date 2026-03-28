@@ -97,6 +97,7 @@ input double SL_ATRMultiplier = 0.78;                         // Stop Loss (ATR 
 input double TP_ATRMultiplier = 0.36;                         // Take Profit (ATR Multiplier)
 input ENUM_TIMEFRAMES ATRTimeFrame = PERIOD_M15;              // Timeframe to calculate the ATR
 input uint ATR_Length = 20;                                   // ATR Length
+input int MaxMinutesInTrade = 0;                              // Hard exit after N minutes in an open trade (0 disables)
 
 input group "Market Info";
 input int MarketClose_Hour = 18;                              // Market Close Hour (GMT-3)
@@ -177,6 +178,7 @@ void OnDeinit(const int reason)
 void OnTick()
 {
    UpdateCurrentBrazilTime();
+   const datetime currentServerTime = TimeCurrent();
    const datetime currentDay = DateOnly(TimeCurrentBrazil);
 
    if(IsFirstTickAfterInit || currentDay != PreviousTickDay)
@@ -219,6 +221,19 @@ void OnTick()
    const bool HasOpenedPosition = GetPositionState(TradingSymbol, buy_opened, sell_opened);
    if(HasOpenedPosition && !WasPositionOpenOnLastBar && MinMinutesBetweenEntries > 0)
       NextEntryAllowedTime = (TimeCurrentBrazil + (MinMinutesBetweenEntries * 60));
+
+   if(HasOpenedPosition && HasExceededMaxMinutesInTrade(TradingSymbol, currentServerTime))
+   {
+      if(CloseOpenPosition(TradingSymbol, "due to MaxMinutesInTrade"))
+      {
+         RefreshPendingOrderTickets(TradingSymbol);
+         DeleteTrackedPendingOrders();
+         WasPositionOpenOnLastBar = false;
+         PreviousTickDay = currentDay;
+         return;
+      }
+   }
+
    const bool HasReachedDayTimeLimit = HasReachedTradingCutoff(TimeCurrentBrazil);
    const bool IsAllowedEntryDay = IsAllowedTradingDay(TimeCurrentBrazil);
    const bool IsWithinEntryHours = IsWithinEntryWindow(TimeCurrentBrazil);
@@ -227,16 +242,14 @@ void OnTick()
 
    if(HasReachedDayTimeLimit)
    {
+      bool stillHasOpenPosition = HasOpenedPosition;
       if(HasOpenedPosition)
       {
-         if(Trade.PositionClose(TradingSymbol))
-            Print(sTimeCurrentBrazil, " Position closed for ", TradingSymbol);
-         else
-            Print(sTimeCurrentBrazil, " Error closing position for ", TradingSymbol, ": ", Trade.ResultRetcodeDescription());
+         stillHasOpenPosition = !CloseOpenPosition(TradingSymbol, "at trading cutoff");
       }
 
       DeleteTrackedPendingOrders();
-      WasPositionOpenOnLastBar = false;
+      WasPositionOpenOnLastBar = stillHasOpenPosition;
       PreviousTickDay = currentDay;
       return;
    }
@@ -642,6 +655,21 @@ bool GetPositionState(const string symbol, bool &buy_opened, bool &sell_opened)
    return(buy_opened || sell_opened);
 }
 
+bool HasExceededMaxMinutesInTrade(const string symbol, const datetime currentServerTime)
+{
+   if(MaxMinutesInTrade <= 0)
+      return(false);
+
+   if(!PositionSelect(symbol))
+      return(false);
+
+   const datetime positionOpenTime = (datetime)PositionGetInteger(POSITION_TIME);
+   if(positionOpenTime <= 0 || currentServerTime <= positionOpenTime)
+      return(false);
+
+   return((currentServerTime - positionOpenTime) >= (MaxMinutesInTrade * 60));
+}
+
 bool HasReachedTradingCutoff(const datetime currentTime)
 {
    const datetime dayStart = DateOnly(currentTime);
@@ -725,6 +753,24 @@ bool IsSuccessfulTradeRetcode()
 {
    const uint retcode = Trade.ResultRetcode();
    return(retcode == TRADE_RETCODE_PLACED || retcode == TRADE_RETCODE_DONE || retcode == TRADE_RETCODE_DONE_PARTIAL);
+}
+
+bool CloseOpenPosition(const string symbol, const string reason)
+{
+   if(!Trade.PositionClose(symbol))
+   {
+      Print(sTimeCurrentBrazil, " Error closing position for ", symbol, " ", reason, ": ", Trade.ResultRetcodeDescription());
+      return(false);
+   }
+
+   if(!IsSuccessfulTradeRetcode())
+   {
+      Print(sTimeCurrentBrazil, " Position close rejected for ", symbol, " ", reason, ": ", Trade.ResultRetcodeDescription());
+      return(false);
+   }
+
+   Print(sTimeCurrentBrazil, " Position closed for ", symbol, " ", reason);
+   return(true);
 }
 
 bool PlaceBuyLimitOrder(const double basePrice, const double stopLoss, const double takeProfit)
