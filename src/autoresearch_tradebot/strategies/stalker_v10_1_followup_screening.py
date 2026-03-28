@@ -180,6 +180,41 @@ def build_adx_array(dataset: V10Dataset, window: int = 14) -> np.ndarray:
     return indicator.adx().shift(1).to_numpy(dtype=float)
 
 
+def build_session_vwap_prev_array(dataset: V10Dataset) -> np.ndarray:
+    bars = dataset.bars_m1
+    prev_close = bars.groupby("session_date")["Close"].shift(1)
+    prev_volume = bars.groupby("session_date")["Volume"].shift(1)
+    numerator = (prev_close * prev_volume).groupby(bars["session_date"]).cumsum()
+    denominator = prev_volume.groupby(bars["session_date"]).cumsum()
+    return (numerator / denominator.replace(0.0, np.nan)).to_numpy(dtype=float)
+
+
+def build_prev_m15_ema50_array(dataset: V10Dataset) -> np.ndarray:
+    m15_close = dataset.bars_m1["Close"].resample("15min").last()
+    ema50_prev = m15_close.ewm(span=50, adjust=False).mean().shift(1)
+    return ema50_prev.reindex(dataset.bars_m1.index, method="ffill").to_numpy(dtype=float)
+
+
+def build_directional_deviation_array(dataset: V10Dataset, reference_values: np.ndarray) -> np.ndarray:
+    prev_close = dataset.bars_m1.groupby("session_date")["Close"].shift(1).to_numpy(dtype=float)
+    return prev_close - np.asarray(reference_values, dtype=float)
+
+
+def make_directional_value_range_filter(
+    values: np.ndarray,
+    min_value: float,
+    max_value: float,
+) -> Callable[[dict[str, Any]], bool]:
+    def allow(context: dict[str, Any]) -> bool:
+        idx = int(context["dataset_index"])
+        direction = int(context["direction"])
+        value = float(values[idx])
+        directional_value = float(direction) * value
+        return bool(np.isfinite(directional_value) and float(min_value) <= directional_value <= float(max_value))
+
+    return allow
+
+
 def build_rsi_divergence_arrays(dataset: V10Dataset) -> dict[int, dict[str, np.ndarray]]:
     bars = dataset.bars_m1
     rsi14 = RSIIndicator(close=bars["Close"], window=14).rsi()
@@ -370,6 +405,15 @@ def params_for_mt5_candidate(name: str) -> V101Params | None:
     if name == "robust_combo_baseline":
         return V101Params(**payload)
     if name == "robust_relvol_short_lb20_ge_0.85":
+        payload["RelativeVolumeLookbackDays"] = 20
+        payload["ApplyRelativeVolumeFilterToShorts"] = True
+        payload["MinRelativeVolumeAtTime"] = 0.85
+        return V101Params(**payload)
+    if name == "timing_stack_plus_relvol_short_lb20_ge_0.85_full":
+        payload["LastEntry_Hour"] = 14
+        payload["LastEntry_Minute"] = 30
+        payload["SkipWednesday"] = True
+        payload["SkipHour13"] = True
         payload["RelativeVolumeLookbackDays"] = 20
         payload["ApplyRelativeVolumeFilterToShorts"] = True
         payload["MinRelativeVolumeAtTime"] = 0.85
