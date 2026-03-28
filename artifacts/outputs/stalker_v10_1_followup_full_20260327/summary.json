@@ -1,0 +1,1094 @@
+{
+  "data_source": "C:\\Dev\\autoresearch-tradebot\\data\\wdo_m1_mt5_2021_2026.parquet",
+  "train_start": "2021-03-23",
+  "train_end": "2024-09-16",
+  "test_start": "2024-09-17",
+  "test_end": "2026-03-20",
+  "baseline_test_metrics": {
+    "start_date": "2024-09-17",
+    "end_date": "2026-03-20",
+    "trading_days": 375,
+    "total_trades": 702,
+    "win_rate": 0.7365,
+    "net_profit_brl": 4425.0,
+    "avg_profit_brl": 6.3,
+    "avg_win_brl": 36.99,
+    "avg_loss_brl": -79.46,
+    "profit_factor": 1.301,
+    "max_drawdown_pct": 6.29,
+    "expected_payoff": 6.3,
+    "on_tester_value": 703.395954
+  },
+  "new_records": [
+    {
+      "name": "exclude_wednesday",
+      "family": "timing_filter",
+      "config": {
+        "exclude_weekdays": [
+          "Wednesday"
+        ]
+      },
+      "metrics": {
+        "all": {
+          "start_date": "2021-03-23",
+          "end_date": "2026-03-20",
+          "trading_days": 1247,
+          "total_trades": 1868,
+          "win_rate": 0.7345,
+          "net_profit_brl": 12155.0,
+          "avg_profit_brl": 6.51,
+          "avg_win_brl": 41.29,
+          "avg_loss_brl": -89.72,
+          "profit_factor": 1.2731,
+          "max_drawdown_pct": 8.64,
+          "expected_payoff": 6.51,
+          "on_tester_value": 1407.175
+        },
+        "train": {
+          "start_date": "2021-03-23",
+          "end_date": "2024-09-16",
+          "trading_days": 872,
+          "total_trades": 1316,
+          "win_rate": 0.7333,
+          "net_profit_brl": 8980.0,
+          "avg_profit_brl": 6.82,
+          "avg_win_brl": 43.02,
+          "avg_loss_brl": -92.68,
+          "profit_factor": 1.2761,
+          "max_drawdown_pct": 8.64,
+          "expected_payoff": 6.82,
+          "on_tester_value": 1039.607692
+        },
+        "test": {
+          "start_date": "2024-09-17",
+          "end_date": "2026-03-20",
+          "trading_days": 375,
+          "total_trades": 552,
+          "win_rate": 0.7373,
+          "net_profit_brl": 3175.0,
+          "avg_profit_brl": 5.75,
+          "avg_win_brl": 37.21,
+          "avg_loss_brl": -82.55,
+          "profit_factor": 1.2652,
+          "max_drawdown_pct": 7.72,
+          "expected_payoff": 5.75,
+          "on_tester_value": 411.154523
+        }
+      },
+      "mt5_ready": true,
+      "notes": "Direct weekday filter based on MT5 loss analysis showing Wednesday as the weakest day"
+    },
+    {
+      "name": "exclude_entry_hour_13",
+      "family": "timing_filter",
+      "config": {
+        "exclude_entry_hours": [
+          13
+        ]
+      },
+      "metrics": {
+        "all": {
+          "start_date": "2021-03-23",
+          "end_date": "2026-03-20",
+          "trading_days": 1247,
+          "total_trades": 2210,
+          "win_rate": 0.733,
+          "net_profit_brl": 14620.0,
+          "avg_profit_brl": 6.62,
+          "avg_win_brl": 41.11,
+          "avg_loss_brl": -88.11,
+          "profit_factor": 1.2812,
+          "max_drawdown_pct": 6.29,
+          "expected_payoff": 6.62,
+          "on_tester_value": 2324.829915
+        },
+        "train": {
+          "start_date": "2021-03-23",
+          "end_date": "2024-09-16",
+          "trading_days": 872,
+          "total_trades": 1554,
+          "win_rate": 0.7304,
+          "net_profit_brl": 10365.0,
+          "avg_profit_brl": 6.67,
+          "avg_win_brl": 42.91,
+          "avg_loss_brl": -91.49,
+          "profit_factor": 1.2704,
+          "max_drawdown_pct": 6.29,
+          "expected_payoff": 6.67,
+          "on_tester_value": 1648.212179
+        },
+        "test": {
+          "start_date": "2024-09-17",
+          "end_date": "2026-03-20",
+          "trading_days": 375,
+          "total_trades": 656,
+          "win_rate": 0.7393,
+          "net_profit_brl": 4255.0,
+          "avg_profit_brl": 6.49,
+          "avg_win_brl": 36.92,
+          "avg_loss_brl": -79.82,
+          "profit_factor": 1.3117,
+          "max_drawdown_pct": 5.39,
+          "expected_payoff": 6.49,
+          "on_tester_value": 789.272535
+        }
+      },
+      "mt5_ready": false,
+      "notes": "Screen-only filter from the MT5 analysis, which showed 13:00 as the weakest hour"
+    },
+    {
+      "name": "exclude_last_30m_plus_exclude_wednesday",
+      "family": "combo",
+      "config": {
+        "exclude_weekdays": [
+          "Wednesday"
+        ],
+        "time_filter": "exclude_last_30m"
+      },
+      "metrics": {
+        "all": {
+          "start_date": "2021-03-23",
+          "end_date": "2026-03-20",
+          "trading_days": 1247,
+          "total_trades": 1791,
+          "win_rate": 0.7398,
+          "net_profit_brl": 12955.0,
+          "avg_profit_brl": 7.23,
+          "avg_win_brl": 41.31,
+          "avg_loss_brl": -89.66,
+          "profit_factor": 1.3101,
+          "max_drawdown_pct": 7.6,
+          "expected_payoff": 7.23,
+          "on_tester_value": 1704.080769
+        },
+        "train": {
+          "start_date": "2021-03-23",
+          "end_date": "2024-09-16",
+          "trading_days": 872,
+          "total_trades": 1261,
+          "win_rate": 0.7415,
+          "net_profit_brl": 10105.0,
+          "avg_profit_brl": 8.01,
+          "avg_win_brl": 43.09,
+          "avg_loss_brl": -92.58,
+          "profit_factor": 1.3348,
+          "max_drawdown_pct": 7.6,
+          "expected_payoff": 8.01,
+          "on_tester_value": 1329.196154
+        },
+        "test": {
+          "start_date": "2024-09-17",
+          "end_date": "2026-03-20",
+          "trading_days": 375,
+          "total_trades": 530,
+          "win_rate": 0.7358,
+          "net_profit_brl": 2850.0,
+          "avg_profit_brl": 5.38,
+          "avg_win_brl": 37.05,
+          "avg_loss_brl": -82.86,
+          "profit_factor": 1.2457,
+          "max_drawdown_pct": 7.88,
+          "expected_payoff": 5.38,
+          "on_tester_value": 361.477387
+        }
+      },
+      "mt5_ready": true,
+      "notes": "MT5-ready combination of the earlier late-session trim and the weak-Wednesday filter"
+    },
+    {
+      "name": "exclude_wednesday_plus_exclude_hour_13_plus_exclude_last_30m",
+      "family": "combo",
+      "config": {
+        "exclude_weekdays": [
+          "Wednesday"
+        ],
+        "exclude_entry_hours": [
+          13
+        ],
+        "time_filter": "exclude_last_30m"
+      },
+      "metrics": {
+        "all": {
+          "start_date": "2021-03-23",
+          "end_date": "2026-03-20",
+          "trading_days": 1247,
+          "total_trades": 1698,
+          "win_rate": 0.742,
+          "net_profit_brl": 12960.0,
+          "avg_profit_brl": 7.63,
+          "avg_win_brl": 41.33,
+          "avg_loss_brl": -89.3,
+          "profit_factor": 1.3313,
+          "max_drawdown_pct": 5.36,
+          "expected_payoff": 7.63,
+          "on_tester_value": 2419.645361
+        },
+        "train": {
+          "start_date": "2021-03-23",
+          "end_date": "2024-09-16",
+          "trading_days": 872,
+          "total_trades": 1200,
+          "win_rate": 0.7433,
+          "net_profit_brl": 10140.0,
+          "avg_profit_brl": 8.45,
+          "avg_win_brl": 43.11,
+          "avg_loss_brl": -91.92,
+          "profit_factor": 1.3582,
+          "max_drawdown_pct": 5.36,
+          "expected_payoff": 8.45,
+          "on_tester_value": 1893.148454
+        },
+        "test": {
+          "start_date": "2024-09-17",
+          "end_date": "2026-03-20",
+          "trading_days": 375,
+          "total_trades": 498,
+          "win_rate": 0.739,
+          "net_profit_brl": 2820.0,
+          "avg_profit_brl": 5.66,
+          "avg_win_brl": 37.02,
+          "avg_loss_brl": -83.12,
+          "profit_factor": 1.261,
+          "max_drawdown_pct": 7.52,
+          "expected_payoff": 5.66,
+          "on_tester_value": 375.07541
+        }
+      },
+      "mt5_ready": false,
+      "notes": "Full timing stack using the two weak pockets plus the earlier last-30m trim"
+    },
+    {
+      "name": "exclude_last_30m_plus_relvol_short_lb40_ge_0.5",
+      "family": "combo",
+      "config": {
+        "time_filter": "exclude_last_30m",
+        "relative_volume": {
+          "apply_side": "short",
+          "lookback_days": 40,
+          "threshold": 0.5
+        }
+      },
+      "metrics": {
+        "all": {
+          "start_date": "2021-03-23",
+          "end_date": "2026-03-20",
+          "trading_days": 1247,
+          "total_trades": 2237,
+          "win_rate": 0.7327,
+          "net_profit_brl": 14435.0,
+          "avg_profit_brl": 6.45,
+          "avg_win_brl": 41.1,
+          "avg_loss_brl": -88.5,
+          "profit_factor": 1.2727,
+          "max_drawdown_pct": 6.58,
+          "expected_payoff": 6.45,
+          "on_tester_value": 2194.84477
+        },
+        "train": {
+          "start_date": "2021-03-23",
+          "end_date": "2024-09-16",
+          "trading_days": 872,
+          "total_trades": 1567,
+          "win_rate": 0.7326,
+          "net_profit_brl": 10660.0,
+          "avg_profit_brl": 6.8,
+          "avg_win_brl": 42.94,
+          "avg_loss_brl": -92.21,
+          "profit_factor": 1.2759,
+          "max_drawdown_pct": 6.58,
+          "expected_payoff": 6.8,
+          "on_tester_value": 1620.85523
+        },
+        "test": {
+          "start_date": "2024-09-17",
+          "end_date": "2026-03-20",
+          "trading_days": 375,
+          "total_trades": 670,
+          "win_rate": 0.7328,
+          "net_profit_brl": 3775.0,
+          "avg_profit_brl": 5.63,
+          "avg_win_brl": 36.79,
+          "avg_loss_brl": -79.83,
+          "profit_factor": 1.2642,
+          "max_drawdown_pct": 6.8,
+          "expected_payoff": 5.63,
+          "on_tester_value": 554.987569
+        }
+      },
+      "mt5_ready": true,
+      "notes": "Robust baseline plus the best single time filter and the best single relative-volume filter"
+    },
+    {
+      "name": "exclude_last_30m_plus_atr_20_iqr",
+      "family": "combo",
+      "config": {
+        "time_filter": "exclude_last_30m",
+        "atr_filter": {
+          "period": 20,
+          "mode": "train_iqr_range",
+          "min_atr": 9.293546155396438,
+          "max_atr": 14.05655140411247
+        }
+      },
+      "metrics": {
+        "all": {
+          "start_date": "2021-03-23",
+          "end_date": "2026-03-20",
+          "trading_days": 1247,
+          "total_trades": 1100,
+          "win_rate": 0.7327,
+          "net_profit_brl": 6875.0,
+          "avg_profit_brl": 6.25,
+          "avg_win_brl": 42.08,
+          "avg_loss_brl": -91.97,
+          "profit_factor": 1.2543,
+          "max_drawdown_pct": 5.69,
+          "expected_payoff": 6.25,
+          "on_tester_value": 1207.876016
+        },
+        "train": {
+          "start_date": "2021-03-23",
+          "end_date": "2024-09-16",
+          "trading_days": 872,
+          "total_trades": 809,
+          "win_rate": 0.7281,
+          "net_profit_brl": 4615.0,
+          "avg_profit_brl": 5.7,
+          "avg_win_brl": 42.84,
+          "avg_loss_brl": -93.73,
+          "profit_factor": 1.2238,
+          "max_drawdown_pct": 5.69,
+          "expected_payoff": 5.7,
+          "on_tester_value": 810.814228
+        },
+        "test": {
+          "start_date": "2024-09-17",
+          "end_date": "2026-03-20",
+          "trading_days": 375,
+          "total_trades": 291,
+          "win_rate": 0.7457,
+          "net_profit_brl": 2260.0,
+          "avg_profit_brl": 7.77,
+          "avg_win_brl": 40.0,
+          "avg_loss_brl": -86.76,
+          "profit_factor": 1.352,
+          "max_drawdown_pct": 6.5,
+          "expected_payoff": 7.77,
+          "on_tester_value": 347.957317
+        }
+      },
+      "mt5_ready": false,
+      "notes": "Requires MT5 EA ATR-filter support before host-side validation"
+    },
+    {
+      "name": "baseline_plus_bb_width_20_train_iqr",
+      "family": "bollinger_band_width",
+      "config": {
+        "window": 20,
+        "window_dev": 2.0,
+        "mode": "train_iqr_range",
+        "min_width": 0.24192132787283543,
+        "max_width": 0.48520626938975253
+      },
+      "metrics": {
+        "all": {
+          "start_date": "2021-03-23",
+          "end_date": "2026-03-20",
+          "trading_days": 1247,
+          "total_trades": 1517,
+          "win_rate": 0.7179,
+          "net_profit_brl": 6750.0,
+          "avg_profit_brl": 4.45,
+          "avg_win_brl": 41.78,
+          "avg_loss_brl": -90.54,
+          "profit_factor": 1.1742,
+          "max_drawdown_pct": 10.15,
+          "expected_payoff": 4.45,
+          "on_tester_value": 665.116071
+        },
+        "train": {
+          "start_date": "2021-03-23",
+          "end_date": "2024-09-16",
+          "trading_days": 872,
+          "total_trades": 1086,
+          "win_rate": 0.7145,
+          "net_profit_brl": 4505.0,
+          "avg_profit_brl": 4.15,
+          "avg_win_brl": 43.34,
+          "avg_loss_brl": -93.97,
+          "profit_factor": 1.1547,
+          "max_drawdown_pct": 10.15,
+          "expected_payoff": 4.15,
+          "on_tester_value": 443.903393
+        },
+        "test": {
+          "start_date": "2024-09-17",
+          "end_date": "2026-03-20",
+          "trading_days": 375,
+          "total_trades": 431,
+          "win_rate": 0.7262,
+          "net_profit_brl": 2245.0,
+          "avg_profit_brl": 5.21,
+          "avg_win_brl": 37.91,
+          "avg_loss_brl": -81.53,
+          "profit_factor": 1.2334,
+          "max_drawdown_pct": 5.96,
+          "expected_payoff": 5.21,
+          "on_tester_value": 376.795946
+        }
+      },
+      "mt5_ready": false,
+      "notes": "Bollinger-band width filter to keep entries in the baseline volatility regime"
+    },
+    {
+      "name": "baseline_plus_adx_14_ge_train_median",
+      "family": "adx_trend_strength",
+      "config": {
+        "window": 14,
+        "mode": "train_median_min",
+        "min_adx": 30.85945304483586
+      },
+      "metrics": {
+        "all": {
+          "start_date": "2021-03-23",
+          "end_date": "2026-03-20",
+          "trading_days": 1247,
+          "total_trades": 1235,
+          "win_rate": 0.7328,
+          "net_profit_brl": 8550.0,
+          "avg_profit_brl": 6.92,
+          "avg_win_brl": 41.86,
+          "avg_loss_brl": -88.89,
+          "profit_factor": 1.2915,
+          "max_drawdown_pct": 6.99,
+          "expected_payoff": 6.92,
+          "on_tester_value": 1222.909091
+        },
+        "train": {
+          "start_date": "2021-03-23",
+          "end_date": "2024-09-16",
+          "trading_days": 872,
+          "total_trades": 857,
+          "win_rate": 0.7293,
+          "net_profit_brl": 5770.0,
+          "avg_profit_brl": 6.73,
+          "avg_win_brl": 43.12,
+          "avg_loss_brl": -91.29,
+          "profit_factor": 1.2724,
+          "max_drawdown_pct": 6.99,
+          "expected_payoff": 6.73,
+          "on_tester_value": 825.284848
+        },
+        "test": {
+          "start_date": "2024-09-17",
+          "end_date": "2026-03-20",
+          "trading_days": 375,
+          "total_trades": 378,
+          "win_rate": 0.7407,
+          "net_profit_brl": 2780.0,
+          "avg_profit_brl": 7.35,
+          "avg_win_brl": 39.05,
+          "avg_loss_brl": -83.21,
+          "profit_factor": 1.3409,
+          "max_drawdown_pct": 5.96,
+          "expected_payoff": 7.35,
+          "on_tester_value": 466.462338
+        }
+      },
+      "mt5_ready": false,
+      "notes": "ADX trend-strength confirmation using the train-set median as the minimum threshold"
+    },
+    {
+      "name": "baseline_plus_momdiv_roc10_lb10_delta0",
+      "family": "momentum_divergence",
+      "config": {
+        "roc_window": 10,
+        "lookback": 10,
+        "min_momentum_delta": 0.0
+      },
+      "metrics": {
+        "all": {
+          "start_date": "2021-03-23",
+          "end_date": "2026-03-20",
+          "trading_days": 1247,
+          "total_trades": 3,
+          "win_rate": 1.0,
+          "net_profit_brl": 135.0,
+          "avg_profit_brl": 45.0,
+          "avg_win_brl": 45.0,
+          "avg_loss_brl": 0.0,
+          "profit_factor": Infinity,
+          "max_drawdown_pct": 0.0,
+          "expected_payoff": 45.0,
+          "on_tester_value": 0.0
+        },
+        "train": {
+          "start_date": "2021-03-23",
+          "end_date": "2024-09-16",
+          "trading_days": 872,
+          "total_trades": 3,
+          "win_rate": 1.0,
+          "net_profit_brl": 135.0,
+          "avg_profit_brl": 45.0,
+          "avg_win_brl": 45.0,
+          "avg_loss_brl": 0.0,
+          "profit_factor": Infinity,
+          "max_drawdown_pct": 0.0,
+          "expected_payoff": 45.0,
+          "on_tester_value": 0.0
+        },
+        "test": {
+          "start_date": "2024-09-17",
+          "end_date": "2026-03-20",
+          "trading_days": 375,
+          "total_trades": 0,
+          "win_rate": 0.0,
+          "net_profit_brl": 0.0,
+          "avg_profit_brl": 0.0,
+          "avg_win_brl": 0.0,
+          "avg_loss_brl": 0.0,
+          "profit_factor": 0.0,
+          "max_drawdown_pct": 0.0,
+          "expected_payoff": 0.0,
+          "on_tester_value": 0.0
+        }
+      },
+      "mt5_ready": false,
+      "notes": "Price-vs-ROC divergence confirmation on the signal bar"
+    }
+  ],
+  "pattern_analysis": {
+    "best_weekday": {
+      "weekday": "Monday",
+      "trades": 498,
+      "win_rate": 0.7630522088353414,
+      "net": 3485.0,
+      "avg": 6.997991967871486,
+      "pf": 1.32707648991084
+    },
+    "worst_weekday": {
+      "weekday": "Wednesday",
+      "trades": 577,
+      "win_rate": 0.7053726169844021,
+      "net": 635.0,
+      "avg": 1.10051993067591,
+      "pf": 1.0434485118029422
+    },
+    "best_entry_hour": {
+      "entry_hour": 12.0,
+      "trades": 388.0,
+      "win_rate": 0.7422680412371134,
+      "net": 2715.0,
+      "avg": 6.997422680412371,
+      "pf": 1.2906852248394003
+    },
+    "worst_entry_hour": {
+      "entry_hour": 13.0,
+      "trades": 248.0,
+      "win_rate": 0.7217741935483871,
+      "net": 465.0,
+      "avg": 1.875,
+      "pf": 1.0642709053213546
+    },
+    "notes": [
+      "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+      "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+      "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+      "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+    ]
+  },
+  "top_overall": [
+    {
+      "family": "atr_volatility",
+      "name": "atr_ratio_p10_le_0.654625",
+      "screening_method": "trade_mask_prescreen",
+      "quality_tier": 1,
+      "mt5_ready": false,
+      "preset_name": null,
+      "test_total_trades": 539,
+      "test_net_profit_brl": 4045.0,
+      "test_profit_factor": 1.4153,
+      "test_on_tester_value": 1148.567105,
+      "test_max_drawdown_pct": 3.52,
+      "test_win_rate": 0.7495,
+      "notes": "Python-side prescreen on baseline trades; MT5 EA support not added yet",
+      "rank": 60,
+      "analysis_notes": [
+        "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+        "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+        "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+        "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+      ]
+    },
+    {
+      "family": "atr_volatility",
+      "name": "atr_ratio_p14_le_0.546807",
+      "screening_method": "trade_mask_prescreen",
+      "quality_tier": 1,
+      "mt5_ready": false,
+      "preset_name": null,
+      "test_total_trades": 386,
+      "test_net_profit_brl": 2970.0,
+      "test_profit_factor": 1.4521,
+      "test_on_tester_value": 1039.95,
+      "test_max_drawdown_pct": 2.86,
+      "test_win_rate": 0.7539,
+      "notes": "Python-side prescreen on baseline trades; MT5 EA support not added yet",
+      "rank": 61,
+      "analysis_notes": [
+        "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+        "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+        "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+        "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+      ]
+    },
+    {
+      "family": "relative_volume",
+      "name": "rawbest_relvol_short_lb20_ge_0.75",
+      "screening_method": "integrated_backtest",
+      "quality_tier": 2,
+      "mt5_ready": true,
+      "preset_name": null,
+      "test_total_trades": 352,
+      "test_net_profit_brl": 3445.0,
+      "test_profit_factor": 1.4921,
+      "test_on_tester_value": 988.480114,
+      "test_max_drawdown_pct": 3.49,
+      "test_win_rate": 0.7614,
+      "notes": "Relative volume variation on top of a fixed core parameter set",
+      "rank": 1,
+      "analysis_notes": [
+        "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+        "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+        "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+        "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+      ]
+    },
+    {
+      "family": "relative_volume",
+      "name": "robust_relvol_short_lb20_ge_0.85",
+      "screening_method": "integrated_backtest",
+      "quality_tier": 2,
+      "mt5_ready": true,
+      "preset_name": null,
+      "test_total_trades": 621,
+      "test_net_profit_brl": 4610.0,
+      "test_profit_factor": 1.3592,
+      "test_on_tester_value": 987.908594,
+      "test_max_drawdown_pct": 4.67,
+      "test_win_rate": 0.7488,
+      "notes": "Relative volume variation on top of a fixed core parameter set",
+      "rank": 2,
+      "analysis_notes": [
+        "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+        "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+        "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+        "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+      ]
+    },
+    {
+      "family": "atr_volatility",
+      "name": "atr_ratio_p14_le_0.626545",
+      "screening_method": "trade_mask_prescreen",
+      "quality_tier": 1,
+      "mt5_ready": false,
+      "preset_name": null,
+      "test_total_trades": 545,
+      "test_net_profit_brl": 3975.0,
+      "test_profit_factor": 1.404,
+      "test_on_tester_value": 983.360795,
+      "test_max_drawdown_pct": 4.04,
+      "test_win_rate": 0.7505,
+      "notes": "Python-side prescreen on baseline trades; MT5 EA support not added yet",
+      "rank": 62,
+      "analysis_notes": [
+        "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+        "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+        "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+        "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+      ]
+    },
+    {
+      "family": "atr_volatility",
+      "name": "atr_ratio_p30_le_0.586191",
+      "screening_method": "trade_mask_prescreen",
+      "quality_tier": 1,
+      "mt5_ready": false,
+      "preset_name": null,
+      "test_total_trades": 539,
+      "test_net_profit_brl": 3835.0,
+      "test_profit_factor": 1.3956,
+      "test_on_tester_value": 956.402041,
+      "test_max_drawdown_pct": 4.01,
+      "test_win_rate": 0.7477,
+      "notes": "Python-side prescreen on baseline trades; MT5 EA support not added yet",
+      "rank": 63,
+      "analysis_notes": [
+        "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+        "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+        "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+        "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+      ]
+    },
+    {
+      "family": "relative_volume",
+      "name": "robust_relvol_short_lb40_ge_0.95",
+      "screening_method": "integrated_backtest",
+      "quality_tier": 2,
+      "mt5_ready": true,
+      "preset_name": null,
+      "test_total_trades": 572,
+      "test_net_profit_brl": 4150.0,
+      "test_profit_factor": 1.3433,
+      "test_on_tester_value": 893.193182,
+      "test_max_drawdown_pct": 4.65,
+      "test_win_rate": 0.7465,
+      "notes": "Relative volume variation on top of a fixed core parameter set",
+      "rank": 3,
+      "analysis_notes": [
+        "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+        "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+        "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+        "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+      ]
+    },
+    {
+      "family": "relative_volume",
+      "name": "rawbest_relvol_short_lb60_ge_0.75",
+      "screening_method": "integrated_backtest",
+      "quality_tier": 2,
+      "mt5_ready": true,
+      "preset_name": null,
+      "test_total_trades": 348,
+      "test_net_profit_brl": 3340.0,
+      "test_profit_factor": 1.4765,
+      "test_on_tester_value": 889.008511,
+      "test_max_drawdown_pct": 3.76,
+      "test_win_rate": 0.7586,
+      "notes": "Relative volume variation on top of a fixed core parameter set",
+      "rank": 4,
+      "analysis_notes": [
+        "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+        "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+        "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+        "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+      ]
+    },
+    {
+      "family": "relative_volume",
+      "name": "robust_relvol_both_lb20_ge_0.85",
+      "screening_method": "integrated_backtest",
+      "quality_tier": 2,
+      "mt5_ready": true,
+      "preset_name": null,
+      "test_total_trades": 565,
+      "test_net_profit_brl": 4130.0,
+      "test_profit_factor": 1.3468,
+      "test_on_tester_value": 865.348819,
+      "test_max_drawdown_pct": 4.77,
+      "test_win_rate": 0.7487,
+      "notes": "Relative volume variation on top of a fixed core parameter set",
+      "rank": 5,
+      "analysis_notes": [
+        "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+        "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+        "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+        "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+      ]
+    },
+    {
+      "family": "relative_volume",
+      "name": "robust_relvol_short_lb60_ge_0.85",
+      "screening_method": "integrated_backtest",
+      "quality_tier": 2,
+      "mt5_ready": true,
+      "preset_name": null,
+      "test_total_trades": 618,
+      "test_net_profit_brl": 4370.0,
+      "test_profit_factor": 1.3358,
+      "test_on_tester_value": 853.380986,
+      "test_max_drawdown_pct": 5.12,
+      "test_win_rate": 0.7427,
+      "notes": "Relative volume variation on top of a fixed core parameter set",
+      "rank": 6,
+      "analysis_notes": [
+        "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+        "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+        "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+        "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+      ]
+    },
+    {
+      "family": "relative_volume",
+      "name": "rawbest_relvol_short_lb40_ge_0.75",
+      "screening_method": "integrated_backtest",
+      "quality_tier": 2,
+      "mt5_ready": true,
+      "preset_name": null,
+      "test_total_trades": 352,
+      "test_net_profit_brl": 3140.0,
+      "test_profit_factor": 1.434,
+      "test_on_tester_value": 832.434043,
+      "test_max_drawdown_pct": 3.77,
+      "test_win_rate": 0.7528,
+      "notes": "Relative volume variation on top of a fixed core parameter set",
+      "rank": 7,
+      "analysis_notes": [
+        "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+        "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+        "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+        "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+      ]
+    },
+    {
+      "family": "relative_volume",
+      "name": "rawbest_relvol_short_lb20_ge_0.85",
+      "screening_method": "integrated_backtest",
+      "quality_tier": 2,
+      "mt5_ready": true,
+      "preset_name": null,
+      "test_total_trades": 320,
+      "test_net_profit_brl": 3105.0,
+      "test_profit_factor": 1.4788,
+      "test_on_tester_value": 826.128191,
+      "test_max_drawdown_pct": 3.76,
+      "test_win_rate": 0.7594,
+      "notes": "Relative volume variation on top of a fixed core parameter set",
+      "rank": 8,
+      "analysis_notes": [
+        "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+        "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+        "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+        "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+      ]
+    },
+    {
+      "family": "relative_volume",
+      "name": "rawbest_relvol_short_lb40_ge_0.85",
+      "screening_method": "integrated_backtest",
+      "quality_tier": 2,
+      "mt5_ready": true,
+      "preset_name": null,
+      "test_total_trades": 321,
+      "test_net_profit_brl": 3300.0,
+      "test_profit_factor": 1.5148,
+      "test_on_tester_value": 817.558824,
+      "test_max_drawdown_pct": 4.04,
+      "test_win_rate": 0.7632,
+      "notes": "Relative volume variation on top of a fixed core parameter set",
+      "rank": 9,
+      "analysis_notes": [
+        "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+        "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+        "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+        "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+      ]
+    },
+    {
+      "family": "relative_volume",
+      "name": "robust_relvol_short_lb40_ge_0.75",
+      "screening_method": "integrated_backtest",
+      "quality_tier": 2,
+      "mt5_ready": true,
+      "preset_name": null,
+      "test_total_trades": 669,
+      "test_net_profit_brl": 4565.0,
+      "test_profit_factor": 1.327,
+      "test_on_tester_value": 805.126433,
+      "test_max_drawdown_pct": 5.67,
+      "test_win_rate": 0.7414,
+      "notes": "Relative volume variation on top of a fixed core parameter set",
+      "rank": 10,
+      "analysis_notes": [
+        "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+        "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+        "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+        "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+      ]
+    },
+    {
+      "family": "relative_volume",
+      "name": "robust_relvol_short_lb20_ge_0.75",
+      "screening_method": "integrated_backtest",
+      "quality_tier": 2,
+      "mt5_ready": true,
+      "preset_name": null,
+      "test_total_trades": 671,
+      "test_net_profit_brl": 4550.0,
+      "test_profit_factor": 1.3253,
+      "test_on_tester_value": 800.742038,
+      "test_max_drawdown_pct": 5.68,
+      "test_win_rate": 0.7422,
+      "notes": "Relative volume variation on top of a fixed core parameter set",
+      "rank": 11,
+      "analysis_notes": [
+        "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+        "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+        "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+        "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+      ]
+    }
+  ],
+  "mt5_winners": [
+    {
+      "family": "relative_volume",
+      "name": "robust_relvol_short_lb20_ge_0.85",
+      "screening_method": "integrated_backtest",
+      "quality_tier": 2,
+      "mt5_ready": true,
+      "preset_name": null,
+      "test_total_trades": 621,
+      "test_net_profit_brl": 4610.0,
+      "test_profit_factor": 1.3592,
+      "test_on_tester_value": 987.908594,
+      "test_max_drawdown_pct": 4.67,
+      "test_win_rate": 0.7488,
+      "notes": "Relative volume variation on top of a fixed core parameter set",
+      "rank": 2,
+      "analysis_notes": [
+        "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+        "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+        "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+        "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+      ]
+    },
+    {
+      "family": "relative_volume",
+      "name": "robust_relvol_short_lb40_ge_0.75",
+      "screening_method": "integrated_backtest",
+      "quality_tier": 2,
+      "mt5_ready": true,
+      "preset_name": null,
+      "test_total_trades": 669,
+      "test_net_profit_brl": 4565.0,
+      "test_profit_factor": 1.327,
+      "test_on_tester_value": 805.126433,
+      "test_max_drawdown_pct": 5.67,
+      "test_win_rate": 0.7414,
+      "notes": "Relative volume variation on top of a fixed core parameter set",
+      "rank": 10,
+      "analysis_notes": [
+        "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+        "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+        "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+        "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+      ]
+    },
+    {
+      "family": "relative_volume",
+      "name": "robust_relvol_short_lb20_ge_0.75",
+      "screening_method": "integrated_backtest",
+      "quality_tier": 2,
+      "mt5_ready": true,
+      "preset_name": null,
+      "test_total_trades": 671,
+      "test_net_profit_brl": 4550.0,
+      "test_profit_factor": 1.3253,
+      "test_on_tester_value": 800.742038,
+      "test_max_drawdown_pct": 5.68,
+      "test_win_rate": 0.7422,
+      "notes": "Relative volume variation on top of a fixed core parameter set",
+      "rank": 11,
+      "analysis_notes": [
+        "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+        "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+        "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+        "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+      ]
+    },
+    {
+      "family": "relative_volume",
+      "name": "robust_relvol_short_lb60_ge_0.75",
+      "screening_method": "integrated_backtest",
+      "quality_tier": 2,
+      "mt5_ready": true,
+      "preset_name": null,
+      "test_total_trades": 664,
+      "test_net_profit_brl": 4510.0,
+      "test_profit_factor": 1.3245,
+      "test_on_tester_value": 794.564331,
+      "test_max_drawdown_pct": 5.68,
+      "test_win_rate": 0.741,
+      "notes": "Relative volume variation on top of a fixed core parameter set",
+      "rank": 12,
+      "analysis_notes": [
+        "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+        "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+        "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+        "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+      ]
+    },
+    {
+      "family": "baseline",
+      "name": "robust_base",
+      "screening_method": "integrated_backtest",
+      "quality_tier": 2,
+      "mt5_ready": true,
+      "preset_name": "WDO Stalker Strategy v10.1 EffVol Robust GPT 5.4",
+      "test_total_trades": 702,
+      "test_net_profit_brl": 4425.0,
+      "test_profit_factor": 1.301,
+      "test_on_tester_value": 703.395954,
+      "test_max_drawdown_pct": 6.29,
+      "test_win_rate": 0.7365,
+      "notes": "Current robust Stalker v10.1 leader",
+      "rank": 22,
+      "analysis_notes": [
+        "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+        "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+        "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+        "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+      ]
+    },
+    {
+      "family": "relative_volume",
+      "name": "baseline_robust",
+      "screening_method": "integrated_backtest",
+      "quality_tier": 2,
+      "mt5_ready": true,
+      "preset_name": "WDO Stalker Strategy v10.1 EffVol Robust GPT 5.4",
+      "test_total_trades": 702,
+      "test_net_profit_brl": 4425.0,
+      "test_profit_factor": 1.301,
+      "test_on_tester_value": 703.395954,
+      "test_max_drawdown_pct": 6.29,
+      "test_win_rate": 0.7365,
+      "notes": "Current best MT5-facing robust combo baseline",
+      "rank": 23,
+      "analysis_notes": [
+        "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+        "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+        "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+        "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+      ]
+    },
+    {
+      "family": "time_of_day",
+      "name": "time_window_1000_1500",
+      "screening_method": "integrated_backtest",
+      "quality_tier": 2,
+      "mt5_ready": true,
+      "preset_name": null,
+      "test_total_trades": 702,
+      "test_net_profit_brl": 4425.0,
+      "test_profit_factor": 1.301,
+      "test_on_tester_value": 703.395954,
+      "test_max_drawdown_pct": 6.29,
+      "test_win_rate": 0.7365,
+      "notes": "Contiguous entry-window optimization on top of the robust combo",
+      "rank": 24,
+      "analysis_notes": [
+        "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
+        "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
+        "VWAP deviation sweet spot: (17.336, 22.117] with PF 1.420",
+        "EMA50 deviation sweet spot: (2.091, 12.423] with PF 1.538"
+      ]
+    }
+  ],
+  "written_presets": [
+    {
+      "name": "robust_relvol_short_lb20_ge_0.85",
+      "path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 robust_relvol_short_lb20_ge_0p85 GPT 5.4.set"
+    }
+  ]
+}

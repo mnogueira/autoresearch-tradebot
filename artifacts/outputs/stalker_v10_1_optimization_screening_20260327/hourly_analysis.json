@@ -1,0 +1,56 @@
+[
+  {
+    "entry_hour": 10,
+    "trades": 1118,
+    "net_profit_brl": 6400.0,
+    "avg_profit_brl": 5.724508050089446,
+    "profit_factor": 1.2454929037207518,
+    "win_rate": 0.7280858676207513,
+    "max_drawdown_pct": 6.748466257668712
+  },
+  {
+    "entry_hour": 11,
+    "trades": 620,
+    "net_profit_brl": 5105.0,
+    "avg_profit_brl": 8.233870967741936,
+    "profit_factor": 1.3600141043723555,
+    "win_rate": 0.7451612903225806,
+    "max_drawdown_pct": 5.106571936056838
+  },
+  {
+    "entry_hour": 12,
+    "trades": 343,
+    "net_profit_brl": 3075.0,
+    "avg_profit_brl": 8.965014577259476,
+    "profit_factor": 1.3929712460063899,
+    "win_rate": 0.749271137026239,
+    "max_drawdown_pct": 5.824330671676844
+  },
+  {
+    "entry_hour": 13,
+    "trades": 182,
+    "net_profit_brl": -320.0,
+    "avg_profit_brl": -1.7582417582417582,
+    "profit_factor": 0.9430097951914514,
+    "win_rate": 0.6703296703296703,
+    "max_drawdown_pct": 12.374245472837023
+  },
+  {
+    "entry_hour": 14,
+    "trades": 80,
+    "net_profit_brl": -385.0,
+    "avg_profit_brl": -4.8125,
+    "profit_factor": 0.8522072936660269,
+    "win_rate": 0.65,
+    "max_drawdown_pct": 10.453648915187378
+  },
+  {
+    "entry_hour": 15,
+    "trades": 1,
+    "net_profit_brl": 35.0,
+    "avg_profit_brl": 35.0,
+    "profit_factor": Infinity,
+    "win_rate": 1.0,
+    "max_drawdown_pct": -0.0
+  }
+]
