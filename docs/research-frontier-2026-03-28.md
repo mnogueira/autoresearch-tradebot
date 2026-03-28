@@ -24,8 +24,9 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - recent daily ATR14 and daily range were both below the full-sample average
   - feature check inside the recent window:
     - session only: `R$145`, `PF 1.1111`, `DD 3.37%`
+    - session + cooldown only: `R$40`, `PF 1.0357`, `DD 4.67%`
     - session + cooldown + max-hold: `R$40`, `PF 1.0357`, `DD 4.67%`
-  - interpretation: the recent softness looks much more like a weaker, less-trending tape than a lack of opportunities, and the cooldown specifically over-throttled the recent month.
+  - interpretation: the recent softness looks much more like a weaker, less-trending tape than a lack of opportunities, and the cooldown specifically over-throttled the recent month; the max-hold layer added nothing on top of it there.
 
 ## Regime Readout
 
@@ -137,6 +138,13 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - MT5 preset now prepared:
     - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m MaxHold120m GPT 5.4.set`
   - interpretation: this is the first exact overlay that improves the cooldown winner on net profit, PF, drawdown, and OnTester together while staying positive on the held-out last 30%
+- Operationally preferred exact refinement for Monday:
+  - validate the plain cooldown-only variant before the max-hold variant
+  - artifact: `artifacts/outputs/stalker_v10_1_recent_tiers_followup_20260328/summary.json`
+  - recent weak-tape tie:
+    - cooldown only: `R$40`, `PF 1.0357`, `DD 4.67%`
+    - cooldown + max-hold: `R$40`, `PF 1.0357`, `DD 4.67%`
+  - interpretation: the max-hold leader is still the best exact alpha line by a hair, but the cooldown-only variant is the cleaner first deployment step because it keeps `99.65%` of the net and `99.82%` of the PF with less moving logic
 
 - Optional trend-day quality preset:
   - session winner + `30-minute cooldown` + `120` M1-bar max hold + prior-day daily `ADX(14) > 25`

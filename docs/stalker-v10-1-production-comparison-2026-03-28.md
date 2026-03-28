@@ -6,7 +6,7 @@
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Baseline, MT5-validated `sl0p84/tp0p30` | `R$14,330` | `1.36` | `3.94%` | `80.29%` | 2483 |
 | Session winner | `R$15,965` | `1.4438` | `4.04%` | `80.17%` | 1896 |
-| Session winner + cooldown | `R$14,085` | `1.4825` | `3.30%` | `80.55%` | 1568 |
+| Minimal moderate, session winner + cooldown | `R$14,085` | `1.4825` | `3.30%` | `80.55%` | 1568 |
 | Max-hold v2, session winner + cooldown + `120` M1-bar max hold | `R$14,135` | `1.4851` | `3.29%` | `80.55%` | 1568 |
 
 ## Quality Alternative
@@ -22,6 +22,10 @@
 - Simplest high-fidelity fallback: session winner + `30m` cooldown only.
   - `R$14,085`, `PF 1.4825`, `DD 3.30%`
   - that retains `99.65%` of the max-hold leader's net profit and `99.82%` of its PF
+- Recommended configuration tiers:
+  - Tier 1, safest: MT5-validated `sl0p84 / tp0p30`
+  - Tier 2, moderate: session winner + `30m` cooldown only
+  - Tier 3, aggressive: session winner + `30m` cooldown + `120` M1 max hold
 - Best quality-biased operator preset: Maximum Quality v2.
 - Main risk across all exact variants: transaction-cost sensitivity. The max-hold leader fails under `3x` spread stress: `R$-3,300`, `PF 0.9198`, `DD 46.44%`.
 - Final cost follow-up on the max-hold leader:
@@ -42,8 +46,9 @@
   - the recent issue was weaker signal quality: win rate dropped from `80.55%` to `75.00%`, and average profit per trade dropped from `R$9.01` to `R$0.83`
   - prior-day daily `ADX(14) > 25` only `16.67%` of the time recently versus `31.57%` over the full sample
   - session-only recent run: `R$145`, `PF 1.1111`, `DD 3.37%`
+  - session + cooldown only recent run: `R$40`, `PF 1.0357`, `DD 4.67%`
   - session + cooldown + max-hold recent run: `R$40`, `PF 1.0357`, `DD 4.67%`
-  - interpretation: the recent month looked more range-bound, and the cooldown hurt in that short weak window while max-hold was effectively neutral
+  - interpretation: the recent month looked more range-bound, and the max-hold layer added nothing on top of the cooldown in that weak tape
 - Regime breakdown for the production candidate:
   - trend days (`prior-day ADX > 25`): session + cooldown + max-hold = `R$7,535`, `PF 1.9183`, `DD 3.38%`
   - range days (`prior-day ADX <= 25`): session + cooldown + max-hold = `R$6,600`, `PF 1.3153`, `DD 4.95%`
@@ -90,3 +95,4 @@
 - Recent softness analysis: `artifacts/outputs/stalker_v10_1_recent_softness_analysis_20260328/summary.json`
 - Frontier note: `docs/research-frontier-2026-03-28.md`
 - MT5 playbook: `docs/mt5-paper-trading-playbook-2026-03-28.md`
+- Recent tiers follow-up: `artifacts/outputs/stalker_v10_1_recent_tiers_followup_20260328/summary.json`

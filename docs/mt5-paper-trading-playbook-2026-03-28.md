@@ -17,7 +17,7 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 
 ### Best exact Python candidate waiting on MT5 validation
 
-- Use this next if host-side MT5 is stable enough to validate:
+- Use this next if host-side MT5 is stable enough to validate and you want the simplest exact refinement:
   - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
 - Exact every-tick parity result:
   - `R$14,085`, `PF 1.4825`, `DD 3.30%`
@@ -36,6 +36,7 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
   - `artifacts/outputs/stalker_v10_1_session_maxhold_followups_20260328/summary.json`
 - Operational note:
   - the EA now exposes `MaxMinutesInTrade`, so the remaining work is just one clean MT5 `Every tick` validation run
+  - recent weak-tape check says this extra max-hold layer added nothing over the cooldown-only version in the last `30` trading days
 
 ### Maximum-quality preset
 
@@ -55,6 +56,18 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 - Interpretation:
   - this is a quality-biased trend-day niche, not the default Monday preset
   - it is useful if the desk wants the EA itself to stand down in obviously range-bound daily regimes
+
+## Recommended Configuration Tiers
+
+- Tier 1, safest:
+  - MT5-validated `sl0p84 / tp0p30`
+  - use this as the Monday default because it is the best strategy already validated in MT5 `Every Tick`
+- Tier 2, moderate:
+  - session winner + `30m` cooldown only
+  - use this as the first exact refinement to validate because it keeps `99.65%` of the max-hold leader's net and `99.82%` of its PF with less moving logic
+- Tier 3, aggressive:
+  - session winner + `30m` cooldown + `120` M1 max hold
+  - use this only after the simpler cooldown-only refinement looks sane in MT5
 
 ## Monday Setup Steps
 
@@ -114,8 +127,9 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
   - recent daily ATR and daily range were both below the full-sample average
 - Feature sensitivity inside the recent weak tape:
   - session-only, without cooldown or max-hold: `R$145`, `PF 1.1111`, `DD 3.37%`
+  - session + cooldown only: `R$40`, `PF 1.0357`, `DD 4.67%`
   - session + cooldown + max-hold: `R$40`, `PF 1.0357`, `DD 4.67%`
-  - interpretation: the cooldown helped over the full sample, but it hurt inside the most recent weak month; max-hold was roughly neutral there
+  - interpretation: the cooldown helped over the full sample, but it hurt inside the most recent weak month; the max-hold layer added nothing on top of the cooldown there
 - Regime dependence:
   - trend days, defined as prior-day daily `ADX(14) > 25`, are the quality engine
   - trend-day session + cooldown + max-hold: `PF 1.9183`, `DD 3.38%`
@@ -149,8 +163,9 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 ## Current Recommendation
 
 - Paper-trading default: the validated MT5 preset `sl0p84 / tp0p3`
-- First upgrade to validate on the host: the `Cooldown 30m + MaxHold120m` preset
-- Fallback refinement if the max-hold variant misbehaves in MT5: the plain `Cooldown 30m` preset
+- First upgrade to validate on the host: the plain `Cooldown 30m` preset
+- Next aggressive upgrade to validate on the host: the `Cooldown 30m + MaxHold120m` preset
+- Fallback refinement if the max-hold variant misbehaves in MT5: stay on the plain `Cooldown 30m` preset
 - Simplest high-fidelity fallback:
   - the cooldown-only exact variant kept `99.65%` of the max-hold leader's net profit and `99.82%` of its PF
 - Quality-only alternative: the `Maximum Quality v2 Cooldown 30m MaxHold120m` preset

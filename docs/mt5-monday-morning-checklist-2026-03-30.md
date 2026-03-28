@@ -21,22 +21,26 @@
    - `C:\Dev\autoresearch-tradebot\mt5\experts\custom\WDO Stalker Strategy v10.1 Time Filters GPT 5.4.mq5`
 3. Safest validated preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 GPT 5.4.set`
-4. Best exact refinement preset:
+4. Moderate exact refinement preset:
+   - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
+5. Aggressive exact refinement preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m MaxHold120m GPT 5.4.set`
-5. Quality-biased preset:
+6. Quality-biased preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Maximum Quality v2 Cooldown 30m MaxHold120m GPT 5.4.set`
-6. Optional trend-day quality preset:
+7. Optional trend-day quality preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Trend Day ADX25 Cooldown 30m MaxHold120m GPT 5.4.set`
 
 ## Preset Order
 
 1. Run the safest validated preset first:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 GPT 5.4.set`
-2. If that report looks sane, validate the best exact refinement next:
+2. If that report looks sane, validate the simpler exact refinement next:
+   - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
+3. If that also looks sane, validate the aggressive max-hold refinement next:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m MaxHold120m GPT 5.4.set`
-3. If the desk prefers the cleaner operator profile, validate the quality preset:
+4. If the desk prefers the cleaner operator profile, validate the quality preset:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Maximum Quality v2 Cooldown 30m MaxHold120m GPT 5.4.set`
-4. If the desk wants the EA itself to stand down in weaker daily regimes, validate the optional ADX-gated preset:
+5. If the desk wants the EA itself to stand down in weaker daily regimes, validate the optional ADX-gated preset:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Trend Day ADX25 Cooldown 30m MaxHold120m GPT 5.4.set`
 
 ## Sanity Checks
@@ -77,6 +81,9 @@
 Recent context:
 - The exact max-hold leader was still positive over the last `30` trading days, but only marginally: `R$40`, `PF 1.0357`, `DD 4.67%`.
 - That is a yellow light, not a red light: keep the first live-paper sessions observational and disciplined.
+- The simpler cooldown-only refinement behaved identically in that same weak tape:
+  - `R$40`, `PF 1.0357`, `DD 4.67%`
+  - practical takeaway: use the simpler cooldown-only preset as the first exact refinement to validate before adding the max-hold timer
 - The regime readout says trend days are the quality engine:
   - trend-day production slice: `PF 1.9183`, `DD 3.38%`
   - range-day production slice: `PF 1.3153`, `DD 4.95%`

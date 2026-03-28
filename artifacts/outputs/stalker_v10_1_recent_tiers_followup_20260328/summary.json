@@ -1,0 +1,58 @@
+{
+  "period": {
+    "start_date": "2026-02-05",
+    "end_date": "2026-03-20",
+    "trading_days": 30
+  },
+  "recent_30d_comparison": {
+    "session_only": {
+      "start_date": "2026-02-05",
+      "end_date": "2026-03-20",
+      "trading_days": 30,
+      "total_trades": 60,
+      "win_rate": 0.7667,
+      "net_profit_brl": 145.0,
+      "avg_profit_brl": 2.42,
+      "avg_win_brl": 31.52,
+      "avg_loss_brl": -93.21,
+      "profit_factor": 1.1111,
+      "max_drawdown_pct": 3.37,
+      "expected_payoff": 2.42,
+      "on_tester_value": 42.988235
+    },
+    "session_plus_cooldown_only": {
+      "start_date": "2026-02-05",
+      "end_date": "2026-03-20",
+      "trading_days": 30,
+      "total_trades": 48,
+      "win_rate": 0.75,
+      "net_profit_brl": 40.0,
+      "avg_profit_brl": 0.83,
+      "avg_win_brl": 32.22,
+      "avg_loss_brl": -93.33,
+      "profit_factor": 1.0357,
+      "max_drawdown_pct": 4.67,
+      "expected_payoff": 0.83,
+      "on_tester_value": 8.557447
+    },
+    "session_plus_cooldown_plus_maxhold120": {
+      "start_date": "2026-02-05",
+      "end_date": "2026-03-20",
+      "trading_days": 30,
+      "total_trades": 48,
+      "win_rate": 0.75,
+      "net_profit_brl": 40.0,
+      "avg_profit_brl": 0.83,
+      "avg_win_brl": 32.22,
+      "avg_loss_brl": -93.33,
+      "profit_factor": 1.0357,
+      "max_drawdown_pct": 4.67,
+      "expected_payoff": 0.83,
+      "on_tester_value": 8.557447
+    }
+  },
+  "notes": [
+    "This is the operator-focused recent-tape comparison for deciding whether the simpler cooldown-only refinement should be preferred over the max-hold refinement for Monday.",
+    "All three variants use the same exact session winner parameters and only differ in the management overlay."
+  ]
+}
