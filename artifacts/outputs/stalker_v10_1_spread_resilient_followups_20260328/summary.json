@@ -1,0 +1,28 @@
+{
+  "variant": "session winner + 30m cooldown + 120 M1 max-hold + TP 0.48 under fixed 3-tick spread",
+  "metrics": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247,
+    "total_trades": 1531,
+    "win_rate": 0.6329,
+    "net_profit_brl": 415.0,
+    "avg_profit_brl": 0.27,
+    "avg_win_brl": 55.27,
+    "avg_loss_brl": -94.56,
+    "profit_factor": 1.0078,
+    "max_drawdown_pct": 24.72,
+    "expected_payoff": 0.27,
+    "on_tester_value": 16.788636
+  },
+  "risk_adjusted_metrics": {
+    "sortino_ratio": 0.0514,
+    "calmar_ratio": 0.0334,
+    "omega_ratio": 1.0104,
+    "sortino_weighted_composite": 0.2378
+  },
+  "notes": [
+    "This is a research-only hostile-spread follow-up.",
+    "It slightly improves on the cooldown-only TP 0.48 variant at fixed 3 ticks, but the edge is still too thin for production promotion."
+  ]
+}

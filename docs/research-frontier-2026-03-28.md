@@ -73,6 +73,7 @@ This remains the safest paper-trading candidate because it is the best strategy 
    - Tier 2 cooldown-only: profitable at `2` ticks, negative at `3`
    - Tier 3 cooldown+max-hold: profitable at `2` ticks, negative at `3`
    - wider `TP 0.48` cooldown variant: barely profitable at `3` ticks (`R$215`, `PF 1.0040`)
+   - wider `TP 0.48` + max-hold variant: still only barely profitable at `3` ticks (`R$415`, `PF 1.0078`)
    - interpretation: the operational break-even spread for the main deployable strategy is `2` ticks, and anything above that should be treated as a stand-down regime
  - Entry-spread diagnostic:
    - artifact: `artifacts/outputs/stalker_v10_1_spread_entry_diagnostics_20260328/summary.json`

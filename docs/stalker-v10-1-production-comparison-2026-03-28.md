@@ -71,6 +71,8 @@
   - both are negative at `3` ticks
   - only the wider `TP 0.48` cooldown variant stayed barely positive at `3` ticks:
     - `R$215`, `PF 1.0040`, `DD 25.14%`
+  - adding max-hold to that same `TP 0.48` hostile-spread fallback helped only slightly:
+    - `R$415`, `PF 1.0078`, `DD 24.72%`, composite `0.2378`
   - interpretation: `TP 0.48` is a spread-resilient research tier, not a production promotion
 - Sortino target follow-up:
   - no live-ready exact variant broke `Sortino 2.5` while keeping `DD < 5%`
