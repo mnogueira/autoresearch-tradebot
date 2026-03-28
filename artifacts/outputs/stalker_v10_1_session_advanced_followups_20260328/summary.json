@@ -209,6 +209,51 @@
     "expected_payoff": 8.94,
     "on_tester_value": 3665.937008
   },
+  "monday_filter_result": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247,
+    "total_trades": 1491,
+    "win_rate": 0.8001,
+    "net_profit_brl": 12120.0,
+    "avg_profit_brl": 8.13,
+    "avg_win_brl": 34.26,
+    "avg_loss_brl": -96.48,
+    "profit_factor": 1.4216,
+    "max_drawdown_pct": 4.83,
+    "expected_payoff": 8.13,
+    "on_tester_value": 2509.772308
+  },
+  "thursday_filter_result": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247,
+    "total_trades": 1473,
+    "win_rate": 0.799,
+    "net_profit_brl": 11850.0,
+    "avg_profit_brl": 8.04,
+    "avg_win_brl": 33.77,
+    "avg_loss_brl": -94.26,
+    "profit_factor": 1.4247,
+    "max_drawdown_pct": 3.74,
+    "expected_payoff": 8.04,
+    "on_tester_value": 3169.186047
+  },
+  "rolling_atr14_60day_regime_result": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247,
+    "total_trades": 704,
+    "win_rate": 0.8082,
+    "net_profit_brl": 6735.0,
+    "avg_profit_brl": 9.57,
+    "avg_win_brl": 33.5,
+    "avg_loss_brl": -91.3,
+    "profit_factor": 1.5465,
+    "max_drawdown_pct": 3.52,
+    "expected_payoff": 9.57,
+    "on_tester_value": 1910.7195
+  },
   "ema_crossover_result": {
     "params": {
       "ContractsPerTrade": 1.0,
@@ -349,6 +394,44 @@
       "net_profit_brl": 760.0,
       "profit_factor": 1.2272,
       "win_rate": 0.7852
+    }
+  ],
+  "year_robustness": [
+    {
+      "year": 2024,
+      "metrics": {
+        "start_date": "2024-01-02",
+        "end_date": "2024-12-30",
+        "trading_days": 251,
+        "total_trades": 332,
+        "win_rate": 0.8193,
+        "net_profit_brl": 2995.0,
+        "avg_profit_brl": 9.02,
+        "avg_win_brl": 28.84,
+        "avg_loss_brl": -80.83,
+        "profit_factor": 1.6175,
+        "max_drawdown_pct": 3.09,
+        "expected_payoff": 9.02,
+        "on_tester_value": 968.799306
+      }
+    },
+    {
+      "year": 2025,
+      "metrics": {
+        "start_date": "2025-01-02",
+        "end_date": "2025-12-30",
+        "trading_days": 250,
+        "total_trades": 381,
+        "win_rate": 0.7979,
+        "net_profit_brl": 2445.0,
+        "avg_profit_brl": 6.42,
+        "avg_win_brl": 29.19,
+        "avg_loss_brl": -83.51,
+        "profit_factor": 1.3802,
+        "max_drawdown_pct": 4.32,
+        "expected_payoff": 6.42,
+        "on_tester_value": 566.111538
+      }
     }
   ],
   "notes": [

@@ -637,6 +637,51 @@ def build_daily_atr_by_session(dataset: V10Dataset, window: int = 20) -> dict[pd
     return {pd.Timestamp(index).normalize(): float(value) for index, value in atr.items() if pd.notna(value)}
 
 
+def build_daily_atr_rolling_band_by_session(
+    dataset: V10Dataset,
+    atr_window: int = 14,
+    lookback_days: int = 60,
+    lower_q: float = 0.25,
+    upper_q: float = 0.75,
+) -> dict[pd.Timestamp, tuple[float, float, float]]:
+    bars = dataset.bars_m1
+    daily = bars.groupby("session_date").agg(High=("High", "max"), Low=("Low", "min"), Close=("Close", "last"))
+    prev_close = daily["Close"].shift(1)
+    tr = pd.concat(
+        [
+            daily["High"] - daily["Low"],
+            (daily["High"] - prev_close).abs(),
+            (daily["Low"] - prev_close).abs(),
+        ],
+        axis=1,
+    ).max(axis=1)
+    atr = tr.rolling(int(atr_window), min_periods=max(3, int(atr_window) // 2)).mean().shift(1)
+    lower = atr.rolling(int(lookback_days), min_periods=max(20, int(lookback_days) // 2)).quantile(lower_q).shift(1)
+    upper = atr.rolling(int(lookback_days), min_periods=max(20, int(lookback_days) // 2)).quantile(upper_q).shift(1)
+    band: dict[pd.Timestamp, tuple[float, float, float]] = {}
+    for index in daily.index:
+        atr_value = atr.get(index, np.nan)
+        lower_value = lower.get(index, np.nan)
+        upper_value = upper.get(index, np.nan)
+        if pd.notna(atr_value) and pd.notna(lower_value) and pd.notna(upper_value):
+            band[pd.Timestamp(index).normalize()] = (float(atr_value), float(lower_value), float(upper_value))
+    return band
+
+
+def make_daily_atr_rolling_band_filter(
+    rolling_band_by_session: dict[pd.Timestamp, tuple[float, float, float]]
+) -> Callable[[dict[str, Any]], bool]:
+    def allow(context: dict[str, Any]) -> bool:
+        session = pd.Timestamp(context["session_date"]).normalize()
+        values = rolling_band_by_session.get(session)
+        if values is None:
+            return False
+        atr_value, lower_value, upper_value = values
+        return bool(lower_value <= atr_value <= upper_value)
+
+    return allow
+
+
 def month_robustness(trades: pd.DataFrame) -> list[dict[str, Any]]:
     frame = trades.copy()
     frame["month"] = pd.to_datetime(frame["entry_time"]).dt.month
@@ -656,6 +701,20 @@ def month_robustness(trades: pd.DataFrame) -> list[dict[str, Any]]:
             }
         )
     return sorted(rows, key=lambda row: row["month"])
+
+
+def year_robustness(trades: pd.DataFrame, trade_dates: pd.Index) -> list[dict[str, Any]]:
+    frame = trades.copy()
+    frame["session_date"] = pd.to_datetime(frame["session_date"]).dt.normalize()
+    rows: list[dict[str, Any]] = []
+    for year in (2024, 2025):
+        year_df = frame[frame["session_date"].dt.year.eq(year)].copy()
+        year_dates = pd.Index(pd.to_datetime([date for date in trade_dates if pd.Timestamp(date).year == year]))
+        if len(year_dates) == 0:
+            continue
+        metrics = calculate_metrics(year_df, year_dates)
+        rows.append({"year": int(year), "metrics": metrics})
+    return rows
 
 
 def candidate_row(
@@ -700,6 +759,7 @@ def main() -> None:
         ("daily_atr_20_80", float(atr_values.quantile(0.20)), float(atr_values.quantile(0.80))),
         ("daily_atr_25_75", float(atr_values.quantile(0.25)), float(atr_values.quantile(0.75))),
     ]
+    rolling_band = build_daily_atr_rolling_band_by_session(dataset, atr_window=14, lookback_days=60, lower_q=0.25, upper_q=0.75)
 
     regime_results: list[dict[str, Any]] = []
     leaderboard_rows: list[dict[str, Any]] = []
@@ -758,6 +818,45 @@ def main() -> None:
         )
     )
 
+    monday_filter = combine_filters(base_filter, make_weekday_exclusion_filter({0}))
+    monday_trades, _ = run_backtest(dataset, params, dataset.trade_dates, entry_filter=monday_filter)
+    monday_metrics = calculate_metrics(monday_trades, dataset.trade_dates)
+    leaderboard_rows.append(
+        candidate_row(
+            name="session_winner_skip_monday",
+            family="weekday_filter",
+            metrics=monday_metrics,
+            notes="Exact session-winner backtest excluding all Monday entries.",
+            artifact=DEFAULT_OUTPUT_DIR / "summary.json",
+        )
+    )
+
+    thursday_filter = combine_filters(base_filter, make_weekday_exclusion_filter({3}))
+    thursday_trades, _ = run_backtest(dataset, params, dataset.trade_dates, entry_filter=thursday_filter)
+    thursday_metrics = calculate_metrics(thursday_trades, dataset.trade_dates)
+    leaderboard_rows.append(
+        candidate_row(
+            name="session_winner_skip_thursday",
+            family="weekday_filter",
+            metrics=thursday_metrics,
+            notes="Exact session-winner backtest excluding all Thursday entries.",
+            artifact=DEFAULT_OUTPUT_DIR / "summary.json",
+        )
+    )
+
+    rolling_atr_filter = combine_filters(base_filter, make_daily_atr_rolling_band_filter(rolling_band))
+    rolling_atr_trades, _ = run_backtest(dataset, params, dataset.trade_dates, entry_filter=rolling_atr_filter)
+    rolling_atr_metrics = calculate_metrics(rolling_atr_trades, dataset.trade_dates)
+    leaderboard_rows.append(
+        candidate_row(
+            name="session_winner_daily_atr14_rolling60_q25_q75",
+            family="daily_atr_regime",
+            metrics=rolling_atr_metrics,
+            notes="Exact session-winner backtest requiring ATR14 to sit within the 25th-75th percentile of its trailing 60-session range.",
+            artifact=DEFAULT_OUTPUT_DIR / "summary.json",
+        )
+    )
+
     ema_fast, ema_slow = build_m15_ema_arrays(dataset)
     ema_params = V101Params(
         **{
@@ -794,11 +893,15 @@ def main() -> None:
             "metrics": pyramiding_metrics,
         },
         "friday_filter_result": friday_metrics,
+        "monday_filter_result": monday_metrics,
+        "thursday_filter_result": thursday_metrics,
+        "rolling_atr14_60day_regime_result": rolling_atr_metrics,
         "ema_crossover_result": {
             "params": asdict(ema_params),
             "metrics": ema_metrics,
         },
         "calendar_month_robustness": month_robustness(base_trades),
+        "year_robustness": year_robustness(base_trades, dataset.trade_dates),
         "notes": [
             "The local parquet is a continuous WDO series without contract identifiers, so robustness is reported by calendar month rather than contract code.",
             "Breakeven is exact every-tick in this pass; pyramiding remains a conservative trade-tape proxy.",

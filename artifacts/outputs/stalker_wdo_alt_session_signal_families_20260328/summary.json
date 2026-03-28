@@ -1,0 +1,134 @@
+{
+  "notes": [
+    "These are lightweight bar-based prototype screens, not MT5 parity backtests.",
+    "They are meant to answer whether alternate signal families deserve more engineering time."
+  ],
+  "results": [
+    {
+      "name": "ema_5_21_crossover_session_entry_sl0p6_tp0p24",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 4921,
+        "win_rate": 0.8275,
+        "net_profit_brl": 52389.25,
+        "avg_profit_brl": 10.65,
+        "avg_win_brl": 26.81,
+        "avg_loss_brl": -66.86,
+        "profit_factor": 1.9229,
+        "max_drawdown_pct": 1.15,
+        "expected_payoff": 10.65,
+        "on_tester_value": 45375.167183
+      }
+    },
+    {
+      "name": "ema_5_21_crossover_session_entry_sl0p84_tp0p3",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 3961,
+        "win_rate": 0.8614,
+        "net_profit_brl": 62668.25,
+        "avg_profit_brl": 15.82,
+        "avg_win_brl": 33.46,
+        "avg_loss_brl": -93.83,
+        "profit_factor": 2.2165,
+        "max_drawdown_pct": 1.2,
+        "expected_payoff": 15.82,
+        "on_tester_value": 52014.184647
+      }
+    },
+    {
+      "name": "ema_5_21_crossover_session_entry_sl1p08_tp0p42",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 3092,
+        "win_rate": 0.8512,
+        "net_profit_brl": 67867.69,
+        "avg_profit_brl": 21.95,
+        "avg_win_brl": 47.02,
+        "avg_loss_brl": -121.52,
+        "profit_factor": 2.2142,
+        "max_drawdown_pct": 2.26,
+        "expected_payoff": 21.95,
+        "on_tester_value": 30000.26884
+      }
+    },
+    {
+      "name": "ema_5_21_crossover_session_entry_sl0p84_tp0p42",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 3253,
+        "win_rate": 0.822,
+        "net_profit_brl": 70557.21,
+        "avg_profit_brl": 21.69,
+        "avg_win_brl": 46.8,
+        "avg_loss_brl": -94.3,
+        "profit_factor": 2.2923,
+        "max_drawdown_pct": 1.1,
+        "expected_payoff": 21.69,
+        "on_tester_value": 64187.923822
+      }
+    },
+    {
+      "name": "ema_5_21_crossover_session_entry_sl0p6_tp0p3",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 4408,
+        "win_rate": 0.8004,
+        "net_profit_brl": 59174.86,
+        "avg_profit_brl": 13.42,
+        "avg_win_brl": 33.49,
+        "avg_loss_brl": -67.0,
+        "profit_factor": 2.0036,
+        "max_drawdown_pct": 1.14,
+        "expected_payoff": 13.42,
+        "on_tester_value": 51800.859516
+      }
+    },
+    {
+      "name": "bollinger_mean_reversion_with_trend_session_entry",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 4328,
+        "win_rate": 0.7112,
+        "net_profit_brl": -13586.74,
+        "avg_profit_brl": -3.14,
+        "avg_win_brl": 33.55,
+        "avg_loss_brl": -93.48,
+        "profit_factor": 0.8837,
+        "max_drawdown_pct": 138.39,
+        "expected_payoff": -3.14,
+        "on_tester_value": -98.175131
+      }
+    }
+  ],
+  "best_ema_variant": {
+    "name": "ema_5_21_crossover_session_entry_sl0p84_tp0p42",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 3253,
+      "win_rate": 0.822,
+      "net_profit_brl": 70557.21,
+      "avg_profit_brl": 21.69,
+      "avg_win_brl": 46.8,
+      "avg_loss_brl": -94.3,
+      "profit_factor": 2.2923,
+      "max_drawdown_pct": 1.1,
+      "expected_payoff": 21.69,
+      "on_tester_value": 64187.923822
+    }
+  }
+}

@@ -29,9 +29,17 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - metrics: `R$13,100`, `PF 1.4902`, `DD 3.57%`
   - interpretation: better quality than the session winner, but lower net profit
 
+- Monday and Thursday exclusions did not beat the session winner:
+  - Monday off: `R$12,120`, `PF 1.4216`, `DD 4.83%`
+  - Thursday off: `R$11,850`, `PF 1.4247`, `DD 3.74%`
+
 - Daily ATR normal-range filter helped quality but not enough to beat the session winner:
   - best exact regime: ATR20 daily `10-90` percentile band
   - metrics: `R$12,890`, `PF 1.4552`, `DD 4.28%`
+
+- Tighter rolling volatility regime also improved quality but over-pruned too hard:
+  - ATR14 inside the `25th-75th` percentile of its own trailing `60-day` range
+  - metrics: `R$6,735`, `PF 1.5465`, `DD 3.52%`
 
 - Exact breakeven did not help:
   - best trigger tested: `0.20 ATR`
@@ -44,6 +52,15 @@ This remains the safest paper-trading candidate because it is the best strategy 
 - Pyramiding is only a proxy result right now:
   - the proxy looks attractive, but it is not decision-grade until implemented in the exact engine
 
+- The lightweight alternate-family prototype that looks most promising is a session-filtered EMA crossover entry family:
+  - artifact: `artifacts/outputs/stalker_wdo_alt_session_signal_families_20260328/summary.json`
+  - best lightweight variant: `EMA 5/21` crossover with `SL 0.84 / TP 0.42`
+  - metrics: `R$70,557`, `PF 2.2923`, `DD 1.10%`
+  - interpretation: too good to trust yet; this is a bar-based prototype screen, not an exact every-tick or MT5-parity backtest
+
+- The Bollinger mean-reversion family was negative and should not be pursued as-is:
+  - `R$-13,586`, `PF 0.8837`, `DD 138.39%`
+
 ## Month Robustness
 
 The session winner is positive in every calendar month of the continuous WDO sample, but it is not equally strong:
@@ -52,6 +69,11 @@ The session winner is positive in every calendar month of the continuous WDO sam
 - weakest months: `February`, `September`, `October`
 
 Because the parquet is a continuous series, this is calendar-month robustness, not true contract-by-contract robustness.
+
+Yearly stability is still acceptable, but 2025 was weaker than 2024:
+
+- 2024: `R$2,995`, `PF 1.6175`, `DD 3.09%`
+- 2025: `R$2,445`, `PF 1.3802`, `DD 4.32%`
 
 ## What To Stop Spending Time On
 
@@ -77,4 +99,5 @@ Because the parquet is a continuous series, this is calendar-month robustness, n
 1. Validate the session winner approximation in MT5 `Every tick` once the tester is stable again.
 2. Validate the Friday-exclusion preset:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 No Friday GPT 5.4.set`
-3. If MT5 remains unstable, implement exact pyramiding before spending more time on new indicator overlays.
+3. If MT5 remains unstable, implement the EMA crossover family in the exact every-tick engine before trusting its huge prototype numbers.
+4. Do not spend more time on Bollinger mean reversion, momentum divergence, or additional breakeven tuning unless the exact EMA family fails.
