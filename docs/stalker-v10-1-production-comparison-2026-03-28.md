@@ -31,6 +31,9 @@
 - The strict spread-aware entry idea was a dead end on this tape:
   - historical cached spread only took values `0` or `1` tick
   - strict `current spread < prior session average spread` produced `0` trades
+- Recent degradation check on the exact max-hold leader:
+  - last `30` trading days (`2026-02-05` to `2026-03-20`): `R$40`, `PF 1.0357`, `DD 4.67%`, `48` trades
+  - interpretation: still positive, but clearly softer than the full-sample profile, so Monday should be treated as validation-first.
 - Final wrap-up exploration:
   - quarter-adaptive hours were effectively just `10,11,12` all year and came back as a near-tie: `R$14,030`, `PF 1.4889`, `DD 3.41%`
   - month-adaptive hours reached `R$14,355`, `PF 1.5991`, `DD 3.50%`, but that mapping is explicitly in-sample and not safe to promote for Monday
@@ -57,5 +60,6 @@
 - Final cost follow-up artifact: `artifacts/outputs/stalker_v10_1_session_cost_followups_20260328/summary.json`
 - Final wrap-up artifact: `artifacts/outputs/stalker_v10_1_session_wrapup_followups_20260328/summary.json`
 - Final patience artifact: `artifacts/outputs/stalker_v10_1_session_patience_followups_20260328/summary.json`
+- Recent 30-day check: `artifacts/outputs/stalker_v10_1_recent_30d_check_20260328/summary.json`
 - Frontier note: `docs/research-frontier-2026-03-28.md`
 - MT5 playbook: `docs/mt5-paper-trading-playbook-2026-03-28.md`

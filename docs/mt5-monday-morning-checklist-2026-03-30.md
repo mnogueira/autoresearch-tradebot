@@ -61,12 +61,17 @@
   - the MT5 report is directionally consistent with the saved artifact
   - spreads are not dramatically worse than the baseline assumption
   - entry hours match the intended session windows
+  - the desk is treating Monday as a paper-validation session, not a scale-up day
 
 - Stop and investigate if:
   - MT5 fails to produce a report
   - `Every tick based on real ticks` is selected by mistake
   - spread behavior looks closer to the exact `3x` stress case
   - the EA opens positions outside the intended `10,11,12,14` session structure
+
+Recent context:
+- The exact max-hold leader was still positive over the last `30` trading days, but only marginally: `R$40`, `PF 1.0357`, `DD 4.67%`.
+- That is a yellow light, not a red light: keep the first live-paper sessions observational and disciplined.
 
 ## Live Monitoring
 

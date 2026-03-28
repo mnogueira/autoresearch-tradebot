@@ -9,6 +9,14 @@
 
 This remains the safest paper-trading candidate because it is the best strategy validated in MT5 `Every tick` mode.
 
+## Near-Term Caution
+
+- The exact max-hold leader stayed positive over the most recent `30` trading days, but only barely:
+  - artifact: `artifacts/outputs/stalker_v10_1_recent_30d_check_20260328/summary.json`
+  - period: `2026-02-05` to `2026-03-20`
+  - metrics: `R$40`, `PF 1.0357`, `DD 4.67%`, `48` trades
+- Interpretation: the edge has not obviously broken, but the most recent tape is much weaker than the full-sample average. Monday should be treated as a cautious paper-validation start, not an excuse to scale up.
+
 ## Best Python Candidates Pending MT5
 
 - Best exact Python candidate waiting on MT5 validation:

@@ -1,0 +1,22 @@
+{
+  "variant": "session_winner_cooldown_30m_max_hold_120m1bars",
+  "recent_trade_dates": [
+    "2026-02-05",
+    "2026-03-20"
+  ],
+  "metrics": {
+    "start_date": "2026-02-05",
+    "end_date": "2026-03-20",
+    "trading_days": 30,
+    "total_trades": 48,
+    "win_rate": 0.75,
+    "net_profit_brl": 40.0,
+    "avg_profit_brl": 0.83,
+    "avg_win_brl": 32.22,
+    "avg_loss_brl": -93.33,
+    "profit_factor": 1.0357,
+    "max_drawdown_pct": 4.67,
+    "expected_payoff": 0.83,
+    "on_tester_value": 8.557447
+  }
+}
