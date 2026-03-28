@@ -27,6 +27,9 @@
     - the composite gap vs max-hold is only `0.0143`
     - it matched the max-hold stack exactly in the recent weak 30-day tape
     - it is operationally simpler
+  - the exact `70/30` walk-forward also passed:
+    - train `PF 1.5295`
+    - test `PF 1.3668`
 - Recommended configuration tiers:
   - Tier 1, safest: MT5-validated `sl0p84 / tp0p30`
   - Tier 2, moderate: session winner + `30m` cooldown only
@@ -37,6 +40,11 @@
   - 3: session winner at `3.0055`
   - 4: MT5-validated base at `2.8179`
   - 5: cooldown-only + skip last 3 contract days at `2.7792`
+- ADX quality-mode follow-up on the same composite:
+  - cooldown-only: `3.0529`
+  - MT5 Tier 1 base: `2.8179`
+  - prior-day daily `ADX > 25` quality mode: `2.0245`
+  - interpretation: `ADX > 25` is a quality niche, not a better default than the base or Tier 2 once the trade loss is priced in.
 - Requested top-3 professional-metric evaluation:
   - max-hold v2 beat the session winner and MT5 base on composite score
   - the session winner still had the best raw Sortino at `2.1977`

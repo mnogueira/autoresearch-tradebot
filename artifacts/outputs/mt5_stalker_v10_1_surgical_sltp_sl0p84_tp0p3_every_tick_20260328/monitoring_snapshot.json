@@ -6,17 +6,25 @@
   "latest_daily_pnl_brl": -85.0,
   "rolling_pnl_brl": {
     "5d": 215.0,
-    "20d": 385.0
+    "20d": 385.0,
+    "30d": 235.0
   },
   "rolling_profit_factor": {
     "5d": 3.5294,
     "20d": 1.6063,
+    "30d": 1.2398,
     "60d": 1.2062
   },
   "drawdown": {
     "current_brl": 395.0,
     "current_pct": 1.6,
     "max_brl": 910.0,
+    "max_pct": 3.68
+  },
+  "historical_drawdown_distribution_pct": {
+    "p50_pct": 0.68,
+    "p90_pct": 2.32,
+    "p95_pct": 2.67,
     "max_pct": 3.68
   },
   "last_10_daily_rows": [

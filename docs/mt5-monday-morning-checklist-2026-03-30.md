@@ -119,5 +119,9 @@ Recent context:
    - the current tested snapshot fields are:
      - daily PnL
      - rolling `5d/20d/60d` profit factor
+     - rolling `30d` profit factor
      - current and max drawdown
+     - historical drawdown distribution (`p50/p90/p95/max`)
      - expected trades per day
+   - dashboard concept reference:
+     - `docs/stalker-v10-1-strategy-health-dashboard-2026-03-28.md`

@@ -34,8 +34,17 @@ def build_snapshot(trades: pd.DataFrame, initial_balance_brl: float) -> dict[str
 
     recent_5 = daily.tail(5)
     recent_20 = daily.tail(20)
+    recent_30 = daily.tail(30)
     total_trades = int(len(trades))
     trading_days = int(daily["session_date"].nunique())
+
+    dd_distribution = drawdown_pct.fillna(0.0)
+    dd_summary = {
+        "p50_pct": round(float(dd_distribution.quantile(0.50)), 2) if not dd_distribution.empty else 0.0,
+        "p90_pct": round(float(dd_distribution.quantile(0.90)), 2) if not dd_distribution.empty else 0.0,
+        "p95_pct": round(float(dd_distribution.quantile(0.95)), 2) if not dd_distribution.empty else 0.0,
+        "max_pct": round(float(dd_distribution.max()), 2) if not dd_distribution.empty else 0.0,
+    }
 
     return {
         "last_trade_time": str(trades["exit_time"].max()),
@@ -46,10 +55,12 @@ def build_snapshot(trades: pd.DataFrame, initial_balance_brl: float) -> dict[str
         "rolling_pnl_brl": {
             "5d": round(float(recent_5["pnl_brl"].sum()), 2),
             "20d": round(float(recent_20["pnl_brl"].sum()), 2),
+            "30d": round(float(recent_30["pnl_brl"].sum()), 2),
         },
         "rolling_profit_factor": {
             "5d": round(float(_profit_factor_from_pnl(recent_5["pnl_brl"])), 4),
             "20d": round(float(_profit_factor_from_pnl(recent_20["pnl_brl"])), 4),
+            "30d": round(float(_profit_factor_from_pnl(recent_30["pnl_brl"])), 4),
             "60d": round(float(_profit_factor_from_pnl(daily.tail(60)["pnl_brl"])), 4),
         },
         "drawdown": {
@@ -58,6 +69,7 @@ def build_snapshot(trades: pd.DataFrame, initial_balance_brl: float) -> dict[str
             "max_brl": round(float(drawdown_brl.max()), 2) if not drawdown_brl.empty else 0.0,
             "max_pct": round(float(drawdown_pct.max()), 2) if not drawdown_pct.empty else 0.0,
         },
+        "historical_drawdown_distribution_pct": dd_summary,
         "last_10_daily_rows": [
             {
                 "session_date": pd.Timestamp(row.session_date).date().isoformat(),

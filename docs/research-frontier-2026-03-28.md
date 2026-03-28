@@ -330,6 +330,13 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - `ADX > 30`: `R$3,515`, `PF 1.6356`, `DD 4.35%`
   - interpretation: the regime idea is real, but `ADX > 30` over-prunes too hard. If the desk wants a quality-only niche, `ADX > 25` is the upper bound worth considering.
 
+- Risk-adjusted scoring confirms that the ADX quality mode is not a better production default:
+  - artifact: `artifacts/outputs/stalker_v10_1_adx_risk_adjusted_followup_20260328/summary.json`
+  - cooldown-only composite: `3.0529`
+  - MT5 Tier 1 base composite: `2.8179`
+  - `ADX > 25` quality composite: `2.0245`
+  - interpretation: the ADX gate is useful as a discretionary quality mode, but once trade scarcity is priced in, it is clearly inferior to both Tier 1 and Tier 2 for default deployment.
+
 - The latest deployment follow-up increased confidence in the cooldown winner:
   - artifact: `artifacts/outputs/stalker_v10_1_session_deployment_followups_20260328/summary.json`
   - exact `70/30` holdout for the cooldown winner:

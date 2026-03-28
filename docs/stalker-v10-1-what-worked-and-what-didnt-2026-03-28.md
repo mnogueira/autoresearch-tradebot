@@ -25,6 +25,7 @@
 | M30 confirmation | `R$12,460`, `PF 1.5335`, `DD 3.25%` | Nice quality niche, but too much net-profit giveback. |
 | Month-adaptive hours | `R$14,355`, `PF 1.5991`, `DD 3.50%` | Strong in-sample result, but too obviously overfit for Monday promotion. |
 | Skip last 3 contract days | `R$12,905`, `PF 1.5281`, `DD 3.49%` | Useful as a caution rule, but not strong enough to replace the production default. |
+| Market-open avoidance analog | practical `10:15` start: `R$12,670`, `PF 1.5198`, `DD 4.34%` | The true `09:00-09:15` skip is already a no-op here because the production setup does not enter before `10:00`; delaying further improved PF but gave up too much net and drawdown. |
 
 ## What Did Not Work
 

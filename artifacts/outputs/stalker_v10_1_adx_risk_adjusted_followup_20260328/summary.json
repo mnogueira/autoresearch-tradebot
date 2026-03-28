@@ -1,0 +1,119 @@
+{
+  "candidates": [
+    {
+      "name": "tier2_cooldown_only",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1568,
+        "win_rate": 0.8055,
+        "net_profit_brl": 14085.0,
+        "avg_profit_brl": 8.98,
+        "avg_win_brl": 34.26,
+        "avg_loss_brl": -95.7,
+        "profit_factor": 1.4825,
+        "max_drawdown_pct": 3.3,
+        "expected_payoff": 8.98,
+        "on_tester_value": 4263.59877
+      },
+      "risk_adjusted": {
+        "sortino_ratio": 1.9306,
+        "calmar_ratio": 5.8842,
+        "omega_ratio": 1.6115,
+        "annual_return_pct": 19.44,
+        "max_drawdown_frac": 0.033035
+      },
+      "monthly_stability": {
+        "worst_month": "2022-10",
+        "worst_month_pnl_brl": -275.0,
+        "best_month": "2022-05",
+        "best_month_pnl_brl": 1000.0,
+        "monthly_pnl_std_brl": 279.92,
+        "monthly_pnl_variance_brl": 78356.97,
+        "positive_months": 47,
+        "negative_months": 14
+      },
+      "composite_score": 3.0529,
+      "rank": 1
+    },
+    {
+      "name": "tier1_mt5_base",
+      "metrics": {
+        "symbol": "WDO$N",
+        "period": "M1 (2021.03.22 - 2026.03.20)",
+        "history_quality": "96%",
+        "bars": 691443,
+        "ticks": 921357351,
+        "total_trades": 2070,
+        "net_profit_brl": 14330.0,
+        "profit_factor": 1.36,
+        "expected_payoff": 6.92,
+        "on_tester_value": 3637.615384615385,
+        "max_drawdown_pct": 3.94,
+        "win_rate_pct": 80.29,
+        "profit_trades": 1662
+      },
+      "risk_adjusted": {
+        "sortino_ratio": 1.8158,
+        "calmar_ratio": 5.348,
+        "omega_ratio": 1.5278,
+        "annual_return_pct": 19.68,
+        "max_drawdown_frac": 0.036805
+      },
+      "monthly_stability": {
+        "worst_month": "2023-09",
+        "worst_month_pnl_brl": -325.0,
+        "best_month": "2025-01",
+        "best_month_pnl_brl": 1145.0,
+        "monthly_pnl_std_brl": 337.16,
+        "monthly_pnl_variance_brl": 113675.81,
+        "positive_months": 47,
+        "negative_months": 13
+      },
+      "composite_score": 2.8179,
+      "rank": 2
+    },
+    {
+      "name": "tier2_quality_adx_gt_25",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 490,
+        "win_rate": 0.8429,
+        "net_profit_brl": 7485.0,
+        "avg_profit_brl": 15.28,
+        "avg_win_brl": 38.11,
+        "avg_loss_brl": -107.21,
+        "profit_factor": 1.9067,
+        "max_drawdown_pct": 3.38,
+        "expected_payoff": 15.28,
+        "on_tester_value": 2213.667241
+      },
+      "risk_adjusted": {
+        "sortino_ratio": 1.0426,
+        "calmar_ratio": 3.5353,
+        "omega_ratio": 2.2131,
+        "annual_return_pct": 11.95,
+        "max_drawdown_frac": 0.033813
+      },
+      "monthly_stability": {
+        "worst_month": "2024-08",
+        "worst_month_pnl_brl": -255.0,
+        "best_month": "2022-05",
+        "best_month_pnl_brl": 880.0,
+        "monthly_pnl_std_brl": 215.23,
+        "monthly_pnl_variance_brl": 46324.24,
+        "positive_months": 28,
+        "negative_months": 5
+      },
+      "composite_score": 2.0245,
+      "rank": 3
+    }
+  ],
+  "interpretation": [
+    "Use the exact same Sortino-weighted composite as the main production comparison.",
+    "This isolates whether the ADX quality mode is superior to the validated MT5 base and the simpler cooldown tier on a risk-adjusted basis."
+  ]
+}
