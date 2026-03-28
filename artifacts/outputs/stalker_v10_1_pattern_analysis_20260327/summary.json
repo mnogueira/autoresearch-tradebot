@@ -1,0 +1,61 @@
+{
+  "source": "artifacts/outputs/stalker_v10_1_mt5_loss_analysis",
+  "best_weekday": {
+    "weekday": "Monday",
+    "trades": 498,
+    "win_rate": 0.7630522088353414,
+    "net": 3485.0,
+    "avg": 6.997991967871486,
+    "pf": 1.32707648991084
+  },
+  "worst_weekday": {
+    "weekday": "Wednesday",
+    "trades": 577,
+    "win_rate": 0.7053726169844021,
+    "net": 635.0,
+    "avg": 1.10051993067591,
+    "pf": 1.0434485118029422
+  },
+  "best_entry_hour_min_50_trades": {
+    "entry_hour": 12.0,
+    "trades": 388.0,
+    "win_rate": 0.7422680412371134,
+    "net": 2715.0,
+    "avg": 6.997422680412371,
+    "pf": 1.2906852248394003
+  },
+  "worst_entry_hour_min_50_trades": {
+    "entry_hour": 13.0,
+    "trades": 248.0,
+    "win_rate": 0.7217741935483871,
+    "net": 465.0,
+    "avg": 1.875,
+    "pf": 1.0642709053213546
+  },
+  "best_signal_dir_vwap_dev_bin": {
+    "bin": "(17.336, 22.117]",
+    "trades": 551,
+    "win_rate": 0.7731397459165155,
+    "net": 5415.0,
+    "avg": 9.827586206896552,
+    "pf": 1.4196048043394034,
+    "min": 17.336188937771112,
+    "max": 22.11088461314921
+  },
+  "best_signal_dir_ema50_dev_bin": {
+    "bin": "(2.091, 12.423]",
+    "trades": 551,
+    "win_rate": 0.7604355716878403,
+    "net": 5125.0,
+    "avg": 9.301270417422868,
+    "pf": 1.5380577427821522,
+    "min": 2.0905282328858448,
+    "max": 12.415651351577251
+  },
+  "notes": [
+    "Weekday edge: Monday PF 1.327 vs Wednesday PF 1.043",
+    "Hour edge: 12:00 PF 1.291 vs 13:00 PF 1.064",
+    "VWAP sweet spot: (17.336, 22.117] PF 1.420",
+    "EMA50 sweet spot: (2.091, 12.423] PF 1.538"
+  ]
+}

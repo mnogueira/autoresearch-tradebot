@@ -1,0 +1,139 @@
+{
+  "data_path": "C:\\Dev\\autoresearch-tradebot\\data\\wdo_m1_mt5_2021_2026.parquet",
+  "slice_start": "2025-09-22",
+  "slice_end": "2026-03-20",
+  "results": [
+    {
+      "name": "robust_combo_baseline_6m",
+      "notes": "Current robust combo baseline on the trailing six-month slice",
+      "metrics": {
+        "start_date": "2025-09-22",
+        "end_date": "2026-03-20",
+        "trading_days": 123,
+        "total_trades": 246,
+        "net_profit_brl": 850.0,
+        "profit_factor": 1.178,
+        "max_drawdown_pct": 6.49,
+        "win_rate": 0.7276,
+        "on_tester_value": 131.056738
+      }
+    },
+    {
+      "name": "exclude_wednesday_6m",
+      "notes": "Disable Wednesday entries only",
+      "metrics": {
+        "start_date": "2025-09-22",
+        "end_date": "2026-03-20",
+        "trading_days": 123,
+        "total_trades": 195,
+        "net_profit_brl": 600.0,
+        "profit_factor": 1.1554,
+        "max_drawdown_pct": 5.89,
+        "win_rate": 0.7333,
+        "on_tester_value": 101.904
+      }
+    },
+    {
+      "name": "exclude_entry_hour_13_6m",
+      "notes": "Screen-only exclusion of 13:00 entries",
+      "metrics": {
+        "start_date": "2025-09-22",
+        "end_date": "2026-03-20",
+        "trading_days": 123,
+        "total_trades": 234,
+        "net_profit_brl": 1220.0,
+        "profit_factor": 1.2877,
+        "max_drawdown_pct": 4.6,
+        "win_rate": 0.7436,
+        "on_tester_value": 265.05098
+      }
+    },
+    {
+      "name": "exclude_wednesday_plus_exclude_hour_13_plus_exclude_last_30m_6m",
+      "notes": "Wednesday off + 13:00 off + last 30m off",
+      "metrics": {
+        "start_date": "2025-09-22",
+        "end_date": "2026-03-20",
+        "trading_days": 123,
+        "total_trades": 181,
+        "net_profit_brl": 1010.0,
+        "profit_factor": 1.3098,
+        "max_drawdown_pct": 3.02,
+        "win_rate": 0.7569,
+        "on_tester_value": 333.921538
+      }
+    },
+    {
+      "name": "baseline_plus_bb_width_20_train_iqr_6m",
+      "notes": "Bollinger-width regime filter using six-month signal-bar IQR [0.001840, 0.003661]",
+      "metrics": {
+        "start_date": "2025-09-22",
+        "end_date": "2026-03-20",
+        "trading_days": 123,
+        "total_trades": 164,
+        "net_profit_brl": 810.0,
+        "profit_factor": 1.2718,
+        "max_drawdown_pct": 4.07,
+        "win_rate": 0.7378,
+        "on_tester_value": 198.962069
+      }
+    },
+    {
+      "name": "baseline_plus_adx_14_ge_train_median_6m",
+      "notes": "ADX>=median threshold on the six-month signal bars (31.6079)",
+      "metrics": {
+        "start_date": "2025-09-22",
+        "end_date": "2026-03-20",
+        "trading_days": 123,
+        "total_trades": 128,
+        "net_profit_brl": 395.0,
+        "profit_factor": 1.1496,
+        "max_drawdown_pct": 5.73,
+        "win_rate": 0.7188,
+        "on_tester_value": 68.960417
+      }
+    },
+    {
+      "name": "exclude_last_30m_6m",
+      "notes": "MT5-ready timing-only variant on the six-month slice",
+      "metrics": {
+        "start_date": "2025-09-22",
+        "end_date": "2026-03-20",
+        "trading_days": 123,
+        "total_trades": 237,
+        "net_profit_brl": 735.0,
+        "profit_factor": 1.1581,
+        "max_drawdown_pct": 6.55,
+        "win_rate": 0.7257,
+        "on_tester_value": 112.165141
+      }
+    },
+    {
+      "name": "exclude_last_30m_plus_exclude_wednesday_6m",
+      "notes": "MT5-ready timing-only variant on the six-month slice",
+      "metrics": {
+        "start_date": "2025-09-22",
+        "end_date": "2026-03-20",
+        "trading_days": 123,
+        "total_trades": 189,
+        "net_profit_brl": 575.0,
+        "profit_factor": 1.1539,
+        "max_drawdown_pct": 4.97,
+        "win_rate": 0.7354,
+        "on_tester_value": 115.711905
+      }
+    }
+  ],
+  "baseline_name": "robust_combo_baseline_6m",
+  "baseline_metrics": {
+    "start_date": "2025-09-22",
+    "end_date": "2026-03-20",
+    "trading_days": 123,
+    "total_trades": 246,
+    "net_profit_brl": 850.0,
+    "profit_factor": 1.178,
+    "max_drawdown_pct": 6.49,
+    "win_rate": 0.7276,
+    "on_tester_value": 131.056738
+  }
+}
