@@ -1,0 +1,359 @@
+{
+  "reference": {
+    "name": "session_winner_hours_10_12_14_sl0p84_tp0p3",
+    "params": {
+      "ContractsPerTrade": 1.0,
+      "FilterAsPercOfContractMARange": 0.3,
+      "NumDaysToConsiderPreviousContractMARange": 5,
+      "RetracementLevel": 0.25,
+      "EntryStart_Hour": 10,
+      "EntryStart_Minute": 0,
+      "LastEntry_Hour": 14,
+      "LastEntry_Minute": 30,
+      "SkipWednesday": false,
+      "SkipShortWednesday": true,
+      "SkipHour13": false,
+      "SkipShortHour13": true,
+      "SkipHour14": false,
+      "AllowMonday": true,
+      "AllowTuesday": true,
+      "AllowWednesday": true,
+      "AllowThursday": true,
+      "AllowFriday": true,
+      "TrendEfficiencyWindowMinutes": 15,
+      "ApplyTrendEfficiencyFilterToLongs": true,
+      "ApplyTrendEfficiencyFilterToShorts": false,
+      "MinDirectionalTrendEfficiency15m": 0.333333,
+      "VolumeWindowMinutes": 30,
+      "ApplyVolumeFilterToLongs": false,
+      "ApplyVolumeFilterToShorts": true,
+      "MinSignalVolumeWindowSum": 30000.0,
+      "RelativeVolumeLookbackDays": 20,
+      "ApplyRelativeVolumeFilterToLongs": false,
+      "ApplyRelativeVolumeFilterToShorts": false,
+      "MinRelativeVolumeAtTime": 0.0,
+      "SL_ATRMultiplier": 0.84,
+      "TP_ATRMultiplier": 0.3,
+      "ATRTimeFrame": 15,
+      "ATR_Length": 20,
+      "MarketClose_Hour": 18,
+      "MarketClose_Minute": 0,
+      "MinutesBeforeMarketCloseToClosePositions": 5
+    },
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1896,
+      "win_rate": 0.8017,
+      "net_profit_brl": 15965.0,
+      "avg_profit_brl": 8.42,
+      "avg_win_brl": 34.17,
+      "avg_loss_brl": -95.68,
+      "profit_factor": 1.4438,
+      "max_drawdown_pct": 4.04,
+      "expected_payoff": 8.42,
+      "on_tester_value": 3950.819156
+    }
+  },
+  "daily_atr_regime_results": [
+    {
+      "name": "daily_atr_10_90",
+      "min_atr": 48.43,
+      "max_atr": 94.29500000000002,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1506,
+        "win_rate": 0.8035,
+        "net_profit_brl": 12890.0,
+        "avg_profit_brl": 8.56,
+        "avg_win_brl": 34.05,
+        "avg_loss_brl": -95.66,
+        "profit_factor": 1.4552,
+        "max_drawdown_pct": 4.28,
+        "expected_payoff": 8.56,
+        "on_tester_value": 3009.584821
+      }
+    },
+    {
+      "name": "daily_atr_20_80",
+      "min_atr": 54.330000000000005,
+      "max_atr": 86.62,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1121,
+        "win_rate": 0.7966,
+        "net_profit_brl": 8535.0,
+        "avg_profit_brl": 7.61,
+        "avg_win_brl": 33.95,
+        "avg_loss_brl": -95.53,
+        "profit_factor": 1.3919,
+        "max_drawdown_pct": 5.62,
+        "expected_payoff": 7.61,
+        "on_tester_value": 1519.721223
+      }
+    },
+    {
+      "name": "daily_atr_25_75",
+      "min_atr": 57.075,
+      "max_atr": 83.675,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 924,
+        "win_rate": 0.7922,
+        "net_profit_brl": 6695.0,
+        "avg_profit_brl": 7.25,
+        "avg_win_brl": 34.14,
+        "avg_loss_brl": -95.29,
+        "profit_factor": 1.3659,
+        "max_drawdown_pct": 5.13,
+        "expected_payoff": 7.25,
+        "on_tester_value": 1304.164228
+      }
+    }
+  ],
+  "breakeven_exact_results": [
+    {
+      "trigger_atr_mult": 0.1,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1897,
+        "win_rate": 0.2119,
+        "net_profit_brl": 790.0,
+        "avg_profit_brl": 0.42,
+        "avg_win_brl": 38.35,
+        "avg_loss_brl": -95.59,
+        "profit_factor": 1.054,
+        "max_drawdown_pct": 20.14,
+        "expected_payoff": 0.42,
+        "on_tester_value": 39.219963
+      }
+    },
+    {
+      "trigger_atr_mult": 0.15,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1897,
+        "win_rate": 0.4106,
+        "net_profit_brl": 5730.0,
+        "avg_profit_brl": 3.02,
+        "avg_win_brl": 36.36,
+        "avg_loss_brl": -94.15,
+        "profit_factor": 1.2536,
+        "max_drawdown_pct": 13.49,
+        "expected_payoff": 3.02,
+        "on_tester_value": 424.840347
+      }
+    },
+    {
+      "trigger_atr_mult": 0.2,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1896,
+        "win_rate": 0.5823,
+        "net_profit_brl": 10605.0,
+        "avg_profit_brl": 5.59,
+        "avg_win_brl": 34.9,
+        "avg_loss_brl": -94.34,
+        "profit_factor": 1.3798,
+        "max_drawdown_pct": 4.83,
+        "expected_payoff": 5.59,
+        "on_tester_value": 2194.617233
+      }
+    }
+  ],
+  "pyramiding_proxy_result": {
+    "trigger_atr_mult": 0.2,
+    "min_trend_efficiency": 0.45,
+    "add_fraction": 0.25,
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1896,
+      "win_rate": 0.8017,
+      "net_profit_brl": 19847.5,
+      "avg_profit_brl": 10.47,
+      "avg_win_brl": 36.73,
+      "avg_loss_brl": -95.68,
+      "profit_factor": 1.5517,
+      "max_drawdown_pct": 3.68,
+      "expected_payoff": 10.47,
+      "on_tester_value": 5400.633391
+    }
+  },
+  "friday_filter_result": {
+    "start_date": "2021-03-23",
+    "end_date": "2026-03-20",
+    "trading_days": 1247,
+    "total_trades": 1465,
+    "win_rate": 0.8055,
+    "net_profit_brl": 13100.0,
+    "avg_profit_brl": 8.94,
+    "avg_win_brl": 33.75,
+    "avg_loss_brl": -93.77,
+    "profit_factor": 1.4902,
+    "max_drawdown_pct": 3.57,
+    "expected_payoff": 8.94,
+    "on_tester_value": 3665.937008
+  },
+  "ema_crossover_result": {
+    "params": {
+      "ContractsPerTrade": 1.0,
+      "FilterAsPercOfContractMARange": 0.3,
+      "NumDaysToConsiderPreviousContractMARange": 5,
+      "RetracementLevel": 0.25,
+      "EntryStart_Hour": 10,
+      "EntryStart_Minute": 0,
+      "LastEntry_Hour": 14,
+      "LastEntry_Minute": 30,
+      "SkipWednesday": false,
+      "SkipShortWednesday": true,
+      "SkipHour13": false,
+      "SkipShortHour13": true,
+      "SkipHour14": false,
+      "AllowMonday": true,
+      "AllowTuesday": true,
+      "AllowWednesday": true,
+      "AllowThursday": true,
+      "AllowFriday": true,
+      "TrendEfficiencyWindowMinutes": 15,
+      "ApplyTrendEfficiencyFilterToLongs": false,
+      "ApplyTrendEfficiencyFilterToShorts": false,
+      "MinDirectionalTrendEfficiency15m": 0.333333,
+      "VolumeWindowMinutes": 30,
+      "ApplyVolumeFilterToLongs": false,
+      "ApplyVolumeFilterToShorts": true,
+      "MinSignalVolumeWindowSum": 30000.0,
+      "RelativeVolumeLookbackDays": 20,
+      "ApplyRelativeVolumeFilterToLongs": false,
+      "ApplyRelativeVolumeFilterToShorts": false,
+      "MinRelativeVolumeAtTime": 0.0,
+      "SL_ATRMultiplier": 0.84,
+      "TP_ATRMultiplier": 0.3,
+      "ATRTimeFrame": 15,
+      "ATR_Length": 20,
+      "MarketClose_Hour": 18,
+      "MarketClose_Minute": 0,
+      "MinutesBeforeMarketCloseToClosePositions": 5
+    },
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1950,
+      "win_rate": 0.7949,
+      "net_profit_brl": 14480.0,
+      "avg_profit_brl": 7.43,
+      "avg_win_brl": 33.63,
+      "avg_loss_brl": -94.1,
+      "profit_factor": 1.3847,
+      "max_drawdown_pct": 4.28,
+      "expected_payoff": 7.43,
+      "on_tester_value": 3383.892994
+    }
+  },
+  "calendar_month_robustness": [
+    {
+      "month": 1,
+      "trades": 175,
+      "net_profit_brl": 1965.0,
+      "profit_factor": 1.7429,
+      "win_rate": 0.8286
+    },
+    {
+      "month": 2,
+      "trades": 174,
+      "net_profit_brl": 425.0,
+      "profit_factor": 1.1206,
+      "win_rate": 0.7644
+    },
+    {
+      "month": 3,
+      "trades": 153,
+      "net_profit_brl": 1870.0,
+      "profit_factor": 1.8404,
+      "win_rate": 0.8562
+    },
+    {
+      "month": 4,
+      "trades": 140,
+      "net_profit_brl": 1045.0,
+      "profit_factor": 1.3443,
+      "win_rate": 0.7786
+    },
+    {
+      "month": 5,
+      "trades": 189,
+      "net_profit_brl": 2535.0,
+      "profit_factor": 1.8478,
+      "win_rate": 0.836
+    },
+    {
+      "month": 6,
+      "trades": 151,
+      "net_profit_brl": 1155.0,
+      "profit_factor": 1.4046,
+      "win_rate": 0.7947
+    },
+    {
+      "month": 7,
+      "trades": 161,
+      "net_profit_brl": 1725.0,
+      "profit_factor": 1.5702,
+      "win_rate": 0.8075
+    },
+    {
+      "month": 8,
+      "trades": 175,
+      "net_profit_brl": 1995.0,
+      "profit_factor": 1.6425,
+      "win_rate": 0.8229
+    },
+    {
+      "month": 9,
+      "trades": 143,
+      "net_profit_brl": 515.0,
+      "profit_factor": 1.159,
+      "win_rate": 0.7483
+    },
+    {
+      "month": 10,
+      "trades": 156,
+      "net_profit_brl": 645.0,
+      "profit_factor": 1.1817,
+      "win_rate": 0.7756
+    },
+    {
+      "month": 11,
+      "trades": 130,
+      "net_profit_brl": 1330.0,
+      "profit_factor": 1.5462,
+      "win_rate": 0.8077
+    },
+    {
+      "month": 12,
+      "trades": 149,
+      "net_profit_brl": 760.0,
+      "profit_factor": 1.2272,
+      "win_rate": 0.7852
+    }
+  ],
+  "notes": [
+    "The local parquet is a continuous WDO series without contract identifiers, so robustness is reported by calendar month rather than contract code.",
+    "Breakeven is exact every-tick in this pass; pyramiding remains a conservative trade-tape proxy.",
+    "The EMA 5/21 test swaps out trend efficiency and keeps the session winner timing and SL/TP scaffold intact."
+  ]
+}
