@@ -81,6 +81,12 @@ Recent context:
   - trend-day production slice: `PF 1.9183`, `DD 3.38%`
   - range-day production slice: `PF 1.3153`, `DD 4.95%`
 - The second half of 2025 was also weaker than the first half, and it coincided with a much lower share of prior-day `ADX > 25` days.
+- Rollover context matters too:
+  - first `3` contract days were historically strong at `PF 1.7455`, `DD 3.83%`
+  - last `3` contract days were historically weaker at `PF 1.2614`, `DD 6.50%`
+  - a full-sample stand-down rule for those last `3` days improved PF to `1.5281`, but still gave up too much net and did not improve drawdown enough to become the default preset
+  - because Monday is `2026-03-30`, treat it as a month-end / rollover-tail validation session and stay conservative on interpretation
+  - practical rule: keep size small and be willing to skip the session if spread or trend quality looks poor
 
 ## Live Monitoring
 

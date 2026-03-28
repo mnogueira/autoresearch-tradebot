@@ -1,0 +1,294 @@
+{
+  "reference_variant": {
+    "name": "session_winner_cooldown_30m_maxhold_120m1bars",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 14135.0,
+      "avg_profit_brl": 9.01,
+      "avg_win_brl": 34.26,
+      "avg_loss_brl": -95.54,
+      "profit_factor": 1.4851,
+      "max_drawdown_pct": 3.29,
+      "expected_payoff": 9.01,
+      "on_tester_value": 4290.320082
+    }
+  },
+  "trend_day_regime_variants_full_sample": {
+    "trend_day_definition": "prior-day daily ADX(14) > 25",
+    "session_plus_cooldown_30m_no_maxhold": {
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 490,
+        "win_rate": 0.8429,
+        "net_profit_brl": 7485.0,
+        "avg_profit_brl": 15.28,
+        "avg_win_brl": 38.11,
+        "avg_loss_brl": -107.21,
+        "profit_factor": 1.9067,
+        "max_drawdown_pct": 3.38,
+        "expected_payoff": 15.28,
+        "on_tester_value": 2213.667241
+      },
+      "impact_vs_reference": {
+        "net_profit_brl_delta": -6650.0,
+        "profit_factor_delta": 0.4216,
+        "max_drawdown_pct_delta": 0.09,
+        "win_rate_delta": 0.0374,
+        "total_trades_delta": -1078,
+        "on_tester_value_delta": -2076.652841
+      }
+    },
+    "session_plus_cooldown_30m_plus_maxhold_120m1bars": {
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 490,
+        "win_rate": 0.8429,
+        "net_profit_brl": 7535.0,
+        "avg_profit_brl": 15.38,
+        "avg_win_brl": 38.11,
+        "avg_loss_brl": -106.56,
+        "profit_factor": 1.9183,
+        "max_drawdown_pct": 3.38,
+        "expected_payoff": 15.38,
+        "on_tester_value": 2228.454598
+      },
+      "impact_vs_reference": {
+        "net_profit_brl_delta": -6600.0,
+        "profit_factor_delta": 0.4332,
+        "max_drawdown_pct_delta": 0.09,
+        "win_rate_delta": 0.0374,
+        "total_trades_delta": -1078,
+        "on_tester_value_delta": -2061.865484
+      }
+    }
+  },
+  "ablation_study": {
+    "remove_session_filter": {
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1630,
+        "win_rate": 0.8025,
+        "net_profit_brl": 13975.0,
+        "avg_profit_brl": 8.57,
+        "avg_win_brl": 34.19,
+        "avg_loss_brl": -95.48,
+        "profit_factor": 1.4545,
+        "max_drawdown_pct": 3.92,
+        "expected_payoff": 8.57,
+        "on_tester_value": 3566.536458
+      },
+      "impact_vs_reference": {
+        "net_profit_brl_delta": -160.0,
+        "profit_factor_delta": -0.0306,
+        "max_drawdown_pct_delta": 0.63,
+        "win_rate_delta": -0.003,
+        "total_trades_delta": 62,
+        "on_tester_value_delta": -723.783624
+      }
+    },
+    "remove_cooldown": {
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1896,
+        "win_rate": 0.8017,
+        "net_profit_brl": 16015.0,
+        "avg_profit_brl": 8.45,
+        "avg_win_brl": 34.17,
+        "avg_loss_brl": -95.55,
+        "profit_factor": 1.4458,
+        "max_drawdown_pct": 4.03,
+        "expected_payoff": 8.45,
+        "on_tester_value": 3973.591883
+      },
+      "impact_vs_reference": {
+        "net_profit_brl_delta": 1880.0,
+        "profit_factor_delta": -0.0393,
+        "max_drawdown_pct_delta": 0.74,
+        "win_rate_delta": -0.0038,
+        "total_trades_delta": 328,
+        "on_tester_value_delta": -316.728199
+      }
+    },
+    "remove_max_hold": {
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1568,
+        "win_rate": 0.8055,
+        "net_profit_brl": 14085.0,
+        "avg_profit_brl": 8.98,
+        "avg_win_brl": 34.26,
+        "avg_loss_brl": -95.7,
+        "profit_factor": 1.4825,
+        "max_drawdown_pct": 3.3,
+        "expected_payoff": 8.98,
+        "on_tester_value": 4263.59877
+      },
+      "impact_vs_reference": {
+        "net_profit_brl_delta": -50.0,
+        "profit_factor_delta": -0.0026,
+        "max_drawdown_pct_delta": 0.01,
+        "win_rate_delta": 0.0,
+        "total_trades_delta": 0,
+        "on_tester_value_delta": -26.721312
+      }
+    },
+    "remove_skip_short_wednesday": {
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1749,
+        "win_rate": 0.7987,
+        "net_profit_brl": 14105.0,
+        "avg_profit_brl": 8.06,
+        "avg_win_brl": 34.19,
+        "avg_loss_brl": -95.61,
+        "profit_factor": 1.4191,
+        "max_drawdown_pct": 3.88,
+        "expected_payoff": 8.06,
+        "on_tester_value": 3632.386634
+      },
+      "impact_vs_reference": {
+        "net_profit_brl_delta": -30.0,
+        "profit_factor_delta": -0.066,
+        "max_drawdown_pct_delta": 0.59,
+        "win_rate_delta": -0.0068,
+        "total_trades_delta": 181,
+        "on_tester_value_delta": -657.933448
+      }
+    },
+    "remove_skip_short_hour13": {
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1568,
+        "win_rate": 0.8055,
+        "net_profit_brl": 14135.0,
+        "avg_profit_brl": 9.01,
+        "avg_win_brl": 34.26,
+        "avg_loss_brl": -95.54,
+        "profit_factor": 1.4851,
+        "max_drawdown_pct": 3.29,
+        "expected_payoff": 9.01,
+        "on_tester_value": 4290.320082
+      },
+      "impact_vs_reference": {
+        "net_profit_brl_delta": 0.0,
+        "profit_factor_delta": 0.0,
+        "max_drawdown_pct_delta": 0.0,
+        "win_rate_delta": 0.0,
+        "total_trades_delta": 0,
+        "on_tester_value_delta": 0.0
+      }
+    }
+  },
+  "rollover_period_analysis": {
+    "bucket_definition": "Contract month proxy using the first 3 trading days, last 3 trading days, and the middle of each monthly contract bucket.",
+    "contract_summary": {
+      "num_contract_months": 61,
+      "avg_contract_length_days": 20.7
+    },
+    "skip_last_3_contract_days_variant": {
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1345,
+        "win_rate": 0.8112,
+        "net_profit_brl": 12905.0,
+        "avg_profit_brl": 9.59,
+        "avg_win_brl": 34.23,
+        "avg_loss_brl": -96.2,
+        "profit_factor": 1.5281,
+        "max_drawdown_pct": 3.49,
+        "expected_payoff": 9.59,
+        "on_tester_value": 3700.820968
+      },
+      "impact_vs_reference": {
+        "net_profit_brl_delta": -1230.0,
+        "profit_factor_delta": 0.043,
+        "max_drawdown_pct_delta": 0.2,
+        "win_rate_delta": 0.0057,
+        "total_trades_delta": -223,
+        "on_tester_value_delta": -589.499114
+      }
+    },
+    "bucket_metrics": {
+      "first_3_contract_days": {
+        "trade_dates_count": 183,
+        "metrics": {
+          "start_date": "2021-03-23",
+          "end_date": "2026-03-04",
+          "trading_days": 183,
+          "total_trades": 227,
+          "win_rate": 0.8282,
+          "net_profit_brl": 2885.0,
+          "avg_profit_brl": 12.71,
+          "avg_win_brl": 35.93,
+          "avg_loss_brl": -99.23,
+          "profit_factor": 1.7455,
+          "max_drawdown_pct": 3.83,
+          "expected_payoff": 12.71,
+          "on_tester_value": 753.476064
+        }
+      },
+      "mid_contract_days": {
+        "trade_dates_count": 881,
+        "metrics": {
+          "start_date": "2021-03-26",
+          "end_date": "2026-03-17",
+          "trading_days": 881,
+          "total_trades": 1118,
+          "win_rate": 0.8077,
+          "net_profit_brl": 10020.0,
+          "avg_profit_brl": 8.96,
+          "avg_win_brl": 33.87,
+          "avg_loss_brl": -95.65,
+          "profit_factor": 1.4872,
+          "max_drawdown_pct": 5.15,
+          "expected_payoff": 8.96,
+          "on_tester_value": 1945.648235
+        }
+      },
+      "last_3_contract_days": {
+        "trade_dates_count": 183,
+        "metrics": {
+          "start_date": "2021-03-29",
+          "end_date": "2026-03-20",
+          "trading_days": 183,
+          "total_trades": 223,
+          "win_rate": 0.7713,
+          "net_profit_brl": 1230.0,
+          "avg_profit_brl": 5.52,
+          "avg_win_brl": 34.51,
+          "avg_loss_brl": -92.25,
+          "profit_factor": 1.2614,
+          "max_drawdown_pct": 6.5,
+          "expected_payoff": 5.52,
+          "on_tester_value": 189.102581
+        }
+      }
+    }
+  },
+  "notes": [
+    "The ablation study removes one component at a time from the current exact production candidate while leaving the rest of the stack unchanged.",
+    "The skip-short-13h ablation is expected to be close to a no-op in the exact harness because the explicit session-hour gate already excludes the full 13:00 hour.",
+    "The ADX regime variants are run over the full sample and simply stand aside on non-trend days, so they are directly comparable to the main exact candidate.",
+    "The rollover analysis uses the dataset's monthly contract proxy and evaluates the reference trade tape by first, middle, and last contract-day buckets."
+  ]
+}

@@ -107,6 +107,12 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
   - trend-day session + cooldown + max-hold: `PF 1.9183`, `DD 3.38%`
   - range-day session + cooldown + max-hold: `PF 1.3153`, `DD 4.95%`
   - interpretation: the strategy remains positive in range days, but it should be expected to underperform in weaker, low-ADX tape
+- Contract-rollover sensitivity:
+  - first `3` contract days: `R$2,885`, `PF 1.7455`, `DD 3.83%`
+  - last `3` contract days: `R$1,230`, `PF 1.2614`, `DD 6.50%`
+  - interpretation: late-contract sessions are still tradable, but they are materially weaker than fresh-contract sessions
+  - exact full-sample stand-down variant, skipping the last `3` contract days entirely: `R$12,905`, `PF 1.5281`, `DD 3.49%`
+  - operational takeaway: for Monday paper trading, treat the last `3` contract days as a caution zone where reducing size or standing down is reasonable if spreads or trend quality look poor, but this is not the new default preset because the stand-down filter gave up too much net profit
 - 2025 stability split:
   - first half of `2025`: `R$1,555`, `PF 1.5604`, `DD 2.96%`
   - second half of `2025`: `R$655`, `PF 1.2652`, `DD 3.02%`
@@ -127,5 +133,7 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 - Fallback refinement if the max-hold variant misbehaves in MT5: the plain `Cooldown 30m` preset
 - Quality-only alternative: the `Maximum Quality v2 Cooldown 30m MaxHold120m` preset
 - Optional regime-gated alternative: the `Trend Day ADX25 Cooldown 30m MaxHold120m` preset
+- Optional operator rule around rollover tail days:
+  - reduce size or skip trading in the last `3` trading days before the monthly WDO contract rollover if the tape also looks low-ADX or spread-heavy
 - Monday runbook:
   - `docs/mt5-monday-morning-checklist-2026-03-30.md`

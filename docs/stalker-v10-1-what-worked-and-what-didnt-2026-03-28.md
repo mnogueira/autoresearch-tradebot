@@ -10,6 +10,7 @@
 | Max hold | `120` M1 bars on top of cooldown produced `R$14,135`, `PF 1.4851`, `DD 3.29%` | Small but real improvement on all major exact metrics. |
 | Walk-forward validation | `70/30` holdout on the max-hold leader: train `PF 1.5332`, test `PF 1.3668` | The core strategy held up out of sample. |
 | Regime awareness | Trend-day production slice: `R$7,535`, `PF 1.9183`, `DD 3.38%` | Most of the quality edge comes from trend days. |
+| Component discipline | Ablation showed session filter, cooldown, and `SkipShortWednesday` are the true load-bearing pieces | This separates real edge from convenient but mostly cosmetic parameters. |
 
 ## What Worked, But Not Enough To Promote
 
@@ -21,6 +22,7 @@
 | Regime switch | Session-only on range days, full production stack on trend days: `R$15,020`, `PF 1.4482`, `DD 4.13%` | Similar story: more net, less quality. |
 | M30 confirmation | `R$12,460`, `PF 1.5335`, `DD 3.25%` | Nice quality niche, but too much net-profit giveback. |
 | Month-adaptive hours | `R$14,355`, `PF 1.5991`, `DD 3.50%` | Strong in-sample result, but too obviously overfit for Monday promotion. |
+| Skip last 3 contract days | `R$12,905`, `PF 1.5281`, `DD 3.49%` | Useful as a caution rule, but not strong enough to replace the production default. |
 
 ## What Did Not Work
 
@@ -46,6 +48,10 @@
   - prior-day daily `ADX > 25` share fell from `31.57%` full sample to `16.67%` in the recent weak window
   - first half of `2025`: `R$1,555`, `PF 1.5604`
   - second half of `2025`: `R$655`, `PF 1.2652`
+- Late contract-cycle days are weaker:
+  - first `3` contract days: `PF 1.7455`, `DD 3.83%`
+  - last `3` contract days: `PF 1.2614`, `DD 6.50%`
+  - Monday `2026-03-30` should be treated as a cautious month-end validation session, not as a clean fresh-contract tape
 
 ## Production Answer Today
 

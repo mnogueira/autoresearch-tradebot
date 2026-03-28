@@ -61,6 +61,46 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - but the second half was clearly weaker, and it coincided with an even less-trending tape
   - that reinforces the regime story rather than contradicting it
 
+## Load-Bearing Components
+
+- Structural ablation artifact:
+  - `artifacts/outputs/stalker_v10_1_structural_ablation_rollover_20260328/summary.json`
+- Reference exact production candidate:
+  - `R$14,135`, `PF 1.4851`, `DD 3.29%`
+- Removing the explicit session-hour gate hurt quality:
+  - no session filter: `R$13,975`, `PF 1.4545`, `DD 3.92%`
+  - interpretation: the session-hour structure is one of the true load-bearing pieces, even though it does not change net profit dramatically by itself
+- Removing the cooldown raised gross net, but weakened the quality balance:
+  - no cooldown: `R$16,015`, `PF 1.4458`, `DD 4.03%`
+  - interpretation: cooldown is primarily a cost-control and drawdown-control feature, not a raw-net booster
+- Removing the max hold barely changed the result:
+  - no max hold: `R$14,085`, `PF 1.4825`, `DD 3.30%`
+  - interpretation: the 120 M1-bar max hold is a small but real refinement, not the main source of the edge
+- Removing `SkipShortWednesday` clearly damaged quality:
+  - `R$14,105`, `PF 1.4191`, `DD 3.88%`
+  - interpretation: short-side Wednesday selectivity is a real contributor
+- Removing `SkipShortHour13` did nothing in the exact harness:
+  - identical result to the reference
+  - interpretation: that is because the explicit session gate already excludes the entire `13:00` hour in the exact research harness
+  - deployment caveat: this does not mean the MT5 `13:00` skip should be deleted, because the live preset uses the hour skip to reproduce the same practical behavior
+
+## Contract Rollovers
+
+- Rollover-period artifact:
+  - `artifacts/outputs/stalker_v10_1_structural_ablation_rollover_20260328/summary.json`
+- Using the dataset's monthly contract proxy, the first `3` trading days of each contract month were the cleanest part of the tape:
+  - `R$2,885`, `PF 1.7455`, `DD 3.83%`
+- Mid-contract days stayed strong:
+  - `R$10,020`, `PF 1.4872`, `DD 5.15%`
+- The last `3` contract days were the weakest:
+  - `R$1,230`, `PF 1.2614`, `DD 6.50%`
+- Full-sample stand-down variant, skipping the last `3` contract days entirely:
+  - `R$12,905`, `PF 1.5281`, `DD 3.49%`
+- Interpretation:
+  - the strategy still works late in the contract cycle, but quality clearly deteriorates there
+  - month-end / rollover-tail sessions should be treated more cautiously than fresh-contract sessions
+  - the simple stand-down filter improves PF, but it gives up too much net profit and does not improve drawdown enough to replace the main production candidate
+
 ## Best Python Candidates Pending MT5
 
 - Best exact Python candidate waiting on MT5 validation:
