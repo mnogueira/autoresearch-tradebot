@@ -13,6 +13,7 @@ LastEntry_Hour=15||15||1||1000||N
 LastEntry_Minute=0||0||1||1000||N
 SkipWednesday=true||false||0||true||N
 SkipHour13=true||false||0||true||N
+SkipHour14=true||false||0||true||N
 AllowMonday=true||false||0||true||N
 AllowTuesday=true||false||0||true||N
 AllowWednesday=true||false||0||true||N
