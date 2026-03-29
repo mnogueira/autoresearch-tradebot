@@ -769,6 +769,8 @@ But cost sensitivity is real:
 8. If further experimentation continues inside the current family, prioritize only ideas that reduce transaction-cost sensitivity without materially giving up net profit. The current exact winners already look close to a local optimum.
 9. Do not spend more time on hard VWAP-distance gates. They can lift PF slightly, but they over-prune and lose too much composite. If VWAP distance is revisited, it should only be as a research sizing overlay.
 10. ATR high-volatility exclusion is a quality-mode idea, not a new default. Excluding the top 33% ATR days improved PF and drawdown on Tier 2A, but it still lost too much net and composite to replace the plain ROC(5) cooldown line.
+11. Session high/low breakout is not a promising replacement family for this tape. It lost money badly with the same session hours and cooldown, so the current retracement/trend family still dominates the simple breakout alternative.
+12. Trend-strength sizing remains the one meaningful research-only upside. It lifts gross net on Tier 2A and Tier 3, but not enough to beat the best exact deployable variant on composite once the extra drawdown is counted.
 
 ## Production Recommendation
 

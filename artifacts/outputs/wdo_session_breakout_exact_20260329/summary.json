@@ -1,0 +1,74 @@
+{
+  "notes": [
+    "Exact session breakout entered at the next M1 open after an M15 close makes a new session high or low.",
+    "Session filter kept to 10:00, 11:00, 12:00, and 14:00 and cooldown fixed at 25 minutes to stay comparable with the production ladder."
+  ],
+  "results": [
+    {
+      "name": "session_breakout_exact_sl0p84_tp0p30_cd25",
+      "params": {
+        "sl_atr_mult": 0.84,
+        "tp_atr_mult": 0.3,
+        "atr_length": 20,
+        "cooldown_minutes": 25,
+        "entry_hours": [
+          10,
+          11,
+          12,
+          14
+        ],
+        "market_close_hour": 18,
+        "market_close_minute": 0,
+        "minutes_before_close": 5
+      },
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 2063,
+        "win_rate": 0.7077,
+        "net_profit_brl": -7790.0,
+        "avg_profit_brl": -3.78,
+        "avg_win_brl": 32.98,
+        "avg_loss_brl": -92.76,
+        "profit_factor": 0.8607,
+        "max_drawdown_pct": 79.63,
+        "expected_payoff": -3.78,
+        "on_tester_value": -97.821351
+      }
+    },
+    {
+      "name": "session_breakout_exact_sl0p84_tp0p42_cd25",
+      "params": {
+        "sl_atr_mult": 0.84,
+        "tp_atr_mult": 0.42,
+        "atr_length": 20,
+        "cooldown_minutes": 25,
+        "entry_hours": [
+          10,
+          11,
+          12,
+          14
+        ],
+        "market_close_hour": 18,
+        "market_close_minute": 0,
+        "minutes_before_close": 5
+      },
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 2008,
+        "win_rate": 0.6429,
+        "net_profit_brl": -7270.0,
+        "avg_profit_brl": -3.62,
+        "avg_win_brl": 46.12,
+        "avg_loss_brl": -93.18,
+        "profit_factor": 0.8912,
+        "max_drawdown_pct": 78.21,
+        "expected_payoff": -3.62,
+        "on_tester_value": -92.952768
+      }
+    }
+  ]
+}
