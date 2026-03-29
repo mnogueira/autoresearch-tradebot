@@ -146,6 +146,20 @@ Corrected rerun:
   - `45m` improves gross net and even the holdout net
   - but `60m` is still the more balanced corrected-cost setting because it keeps drawdown materially lower and preserves the stronger composite
 
+## Corrected-Cost Static Regime Pruning Checks
+
+- Cutting both Thursday and Friday from the balanced branch was a recent-tape near-miss, but not robust:
+  - full sample: `R$711`, `PF 1.0311`, `DD 11.70%`, composite `0.2797`
+  - `70/30` test: `R$-618`, `PF 0.9076`, `DD 13.20%`
+  - recent `30d`: `R$364`, `PF 2.8958`
+- Excluding the top ATR tercile cleaned up PF and drawdown, but still lost to the balanced baseline:
+  - full sample: `R$2,030`, `PF 1.1014`, `DD 8.60%`, composite `0.4634`
+  - `70/30` test: `R$590`, `PF 1.1186`, `DD 7.13%`
+  - recent `10d`: `0` trades
+- Interpretation:
+  - static regime pruning can improve certain windows
+  - but neither late-week exclusion nor hard ATR exclusion beat the balanced `SL 1.00 / TP 0.48 / 60m / Friday off / skip last1` branch on total score
+
 ## Current Best Static Corrected-Cost Survivor
 
 - The stronger local refinement is:

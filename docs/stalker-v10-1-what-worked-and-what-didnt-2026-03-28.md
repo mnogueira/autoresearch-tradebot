@@ -72,6 +72,12 @@ Corrected rerun:
 - shortening the simplified corrected-cost cooldown to `45m`:
   - raised full-sample and holdout net
   - but gave back too much drawdown, so `60m` stays the balanced setting
+- cutting the balanced branch to `Mon/Tue/Wed` only:
+  - looked great in the recent tape
+  - but failed the holdout badly, so it is not robust
+- excluding the top ATR tercile on the balanced branch:
+  - improved PF and drawdown
+  - but over-pruned enough to lose the total score and even produced `0` trades in the recent `10d`
 - overly wide profit targets on the corrected-cost survivor:
   - `TP 0.54` weakened the full sample and flipped the recent `60d` and `10d` windows negative
   - `TP 0.60` was worse again and nearly flatlined the full-sample edge
