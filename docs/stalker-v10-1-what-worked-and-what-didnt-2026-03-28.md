@@ -70,7 +70,8 @@ Corrected rerun:
   - `SL 1.2` gives back too much holdout quality
   - so stop-width interacts with branch complexity
 - overly wide profit targets on the corrected-cost survivor:
-  - `TP 0.54` weakened the full sample and flipped the recent `10d` window negative
+  - `TP 0.54` weakened the full sample and flipped the recent `60d` and `10d` windows negative
+  - `TP 0.60` was worse again and nearly flatlined the full-sample edge
 
 ## What Clearly Did Not Work
 

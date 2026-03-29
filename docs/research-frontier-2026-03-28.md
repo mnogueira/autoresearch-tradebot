@@ -84,14 +84,20 @@ Corrected rerun:
 
 ## Corrected-Cost TP Ceiling
 
-- Pushing the corrected-cost survivor from `TP 0.48` to `TP 0.54` hurt:
-  - full sample: `R$1,378`, `PF 1.0407`, `DD 13.81%`, composite `0.3459`
-  - `70/30` test: `R$624`, `PF 1.0712`, `DD 7.14%`
-  - recent `60d`: `R$7`, `PF 1.0046`
-  - recent `10d`: `R$-124`, `PF 0.7322`
+- Pushing the simplified corrected-cost branch from `TP 0.48` to `TP 0.54` hurt:
+  - full sample: `R$1,494`, `PF 1.0414`, `DD 11.09%`, composite `0.3595`
+  - `70/30` test: `R$647`, `PF 1.0695`, `DD 7.64%`
+  - recent `60d`: `R$-124`, `PF 0.9268`
+  - recent `10d`: `R$-209`, `PF 0.6186`
+- Pushing again to `TP 0.60` hurt more:
+  - full sample: `R$214`, `PF 1.0053`, `DD 18.69%`, composite `0.2186`
+  - `70/30` test: `R$177`, `PF 1.0168`, `DD 7.89%`
+  - recent `60d`: `R$-179`, `PF 0.9046`
+  - recent `10d`: `R$-319`, `PF 0.5122`
 - Interpretation:
-  - the corrected-cost survivor still wants `TP 0.48`
-  - wider reward targets quickly give back too much realized edge, even if the holdout does not fully collapse
+  - the simplified corrected-cost survivor still wants `TP 0.48`
+  - wider reward targets quickly give back too much realized edge
+  - the corrected-cost reward ceiling is now mapped cleanly through `TP 0.60`, and the local peak remains `0.48`
 
 ## Corrected-Cost ROC Simplification Check
 
