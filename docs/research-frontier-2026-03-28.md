@@ -60,6 +60,16 @@ Corrected rerun:
   - this is the first corrected-cost branch that is clearly positive full sample and clearly positive on the 70/30 holdout
   - it still does not change the Monday plan because it lacks host-side MT5 validation and remains a materially different operating profile
 
+## Corrected-Cost Cooldown Ceiling
+
+- Pushing the improved survivor from `60m` to `75m` cooldown hurt:
+  - `R$1,909`, `PF 1.0670`, `DD 11.71%`, composite `0.4145`
+  - `70/30` test: `R$503`, `PF 1.0654`, `DD 9.57%`
+  - artifact: [summary.json](/c:/Dev/autoresearch-tradebot/artifacts/outputs/stalker_v10_1_corrected_cost_survivor_cd75_20260329/summary.json)
+- Interpretation:
+  - around the corrected-cost survivor branch, `60m` is still the local cooldown peak
+  - further trade suppression gave back too much net and holdout quality
+
 ## Current Best Static Corrected-Cost Survivor
 
 - The stronger local refinement is:

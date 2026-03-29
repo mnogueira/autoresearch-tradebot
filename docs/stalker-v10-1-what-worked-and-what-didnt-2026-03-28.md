@@ -20,14 +20,17 @@ Corrected rerun:
   - still the strongest remaining upside
   - especially ATR-based de-risking on hot-volatility days
 - Wider TP plus fewer trades:
-  - the first corrected-cost robust survivor is:
+  - the corrected-cost survivor branch is:
     - strengthened Tier 2A geometry
     - `TP 0.48`
     - `60m` cooldown
     - `AllowFriday=false`
-    - `R$2,143`, `PF 1.0674`, `DD 11.61%`
+  - the best local refinement is:
+    - skip last `1` contract day
+    - `150m` max-hold
+    - `R$2,553`, `PF 1.0858`, `DD 9.65%`
   - it also stayed positive on the holdout:
-    - `70/30` test `R$623`, `PF 1.0754`, `DD 9.53%`
+    - `70/30` test `R$879`, `PF 1.1142`, `DD 8.77%`
   - and on the recent windows:
     - recent `60d` `R$312`, `PF 1.2708`
     - recent `30d` `R$363`, `PF 1.6722`
@@ -46,6 +49,8 @@ Corrected rerun:
   - negative
 - automatic promotion path beyond Tier 1:
   - no longer justified for Monday
+- over-throttling the corrected-cost survivor:
+  - pushing the improved branch to `75m` cooldown hurt both full-sample net and holdout quality
 
 ## What Clearly Did Not Work
 
@@ -74,5 +79,5 @@ Corrected rerun:
   - wider reward structures
   - or truly different signal families
 - Current best cost-aware lead:
-  - `TP 0.48` + `60m` cooldown on Tier 2A geometry
+  - `TP 0.48` + `60m` cooldown + Friday off + skip last `1` contract day + `150m` max-hold on Tier 2A geometry
   - promising, but not robust enough yet to promote
