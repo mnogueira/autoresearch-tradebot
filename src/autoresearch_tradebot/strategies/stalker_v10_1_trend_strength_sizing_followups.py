@@ -135,7 +135,7 @@ def main() -> None:
 
     session_hours = {10, 11, 12, 14}
     tier2a_filter = _combine_filters(session_filter(session_hours), _make_roc_filter(dataset, 5))
-    tier3_filter = tier2a_filter
+    tier3_filter = session_filter(session_hours)
     tier2a_mgmt = ManagementConfig(min_minutes_between_entries=25)
     tier3_mgmt = ManagementConfig(min_minutes_between_entries=25, max_bars_in_trade=150)
 

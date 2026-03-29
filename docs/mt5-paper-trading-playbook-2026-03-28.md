@@ -4,6 +4,10 @@
 
 Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading for Monday, `2026-03-30`.
 
+Ceiling note:
+- the current signal family now looks close to its local ceiling on the available WDO tape
+- the remaining practical upside appears to be execution quality, not another small hard filter
+
 ## Recommended Presets
 
 ### Safest validated preset

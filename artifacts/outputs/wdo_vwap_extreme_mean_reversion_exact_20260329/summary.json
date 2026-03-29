@@ -1,0 +1,76 @@
+{
+  "notes": [
+    "Exact mean-reversion entry against 2x ATR session-VWAP overextensions on M15 closes.",
+    "Session filter kept to 10:00, 11:00, 12:00, and 14:00 and cooldown fixed at 25 minutes to stay comparable with the production ladder."
+  ],
+  "results": [
+    {
+      "name": "vwap_extreme_mean_reversion_sl0p84_tp0p30_cd25",
+      "params": {
+        "sl_atr_mult": 0.84,
+        "tp_atr_mult": 0.3,
+        "atr_length": 20,
+        "extreme_atr_mult": 2.0,
+        "cooldown_minutes": 25,
+        "entry_hours": [
+          10,
+          11,
+          12,
+          14
+        ],
+        "market_close_hour": 18,
+        "market_close_minute": 0,
+        "minutes_before_close": 5
+      },
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1745,
+        "win_rate": 0.6963,
+        "net_profit_brl": -8215.0,
+        "avg_profit_brl": -4.71,
+        "avg_win_brl": 32.62,
+        "avg_loss_brl": -90.28,
+        "profit_factor": 0.8283,
+        "max_drawdown_pct": 83.81,
+        "expected_payoff": -4.71,
+        "on_tester_value": -98.015072
+      }
+    },
+    {
+      "name": "vwap_extreme_mean_reversion_sl0p84_tp0p42_cd25",
+      "params": {
+        "sl_atr_mult": 0.84,
+        "tp_atr_mult": 0.42,
+        "atr_length": 20,
+        "extreme_atr_mult": 2.0,
+        "cooldown_minutes": 25,
+        "entry_hours": [
+          10,
+          11,
+          12,
+          14
+        ],
+        "market_close_hour": 18,
+        "market_close_minute": 0,
+        "minutes_before_close": 5
+      },
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1657,
+        "win_rate": 0.6234,
+        "net_profit_brl": -8175.0,
+        "avg_profit_brl": -4.93,
+        "avg_win_brl": 46.14,
+        "avg_loss_brl": -89.48,
+        "profit_factor": 0.8536,
+        "max_drawdown_pct": 83.42,
+        "expected_payoff": -4.93,
+        "on_tester_value": -98.00354
+      }
+    }
+  ]
+}

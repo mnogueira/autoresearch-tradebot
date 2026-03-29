@@ -24,6 +24,9 @@
 - Best simpler ROC follow-up, also packaged:
   - Tier 2 + `ROC(5)` agreement
   - `R$14,560`, `PF 1.4900`, `DD 3.30%`, composite `3.1493`
+- Ceiling assessment:
+  - the current signal family appears to top out around composite `3.15` to `3.17`
+  - remaining upside is more likely to come from execution quality than from another simple hard filter
 
 ## Key Risks
 
