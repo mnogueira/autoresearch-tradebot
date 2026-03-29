@@ -263,16 +263,16 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - keep `SkipShortWednesday=true`
   - skip the full `13:00` hour
   - require at least `25 minutes` between filled entries
-  - close any position older than `120` M1 bars
+  - close any position older than `150` M1 bars
   - `SL 0.84 / TP 0.30`
-  - artifact: `artifacts/outputs/stalker_v10_1_momentum_maxhold_followups_20260328/summary.json`
-  - metrics: `R$14,400`, `PF 1.4774`, `DD 3.29%`, `OnTester 4379.016393`, composite `3.1303`
+  - artifact: `artifacts/outputs/stalker_v10_1_maxhold_sweep_followups_20260328/summary.json`
+  - metrics: `R$14,420`, `PF 1.4784`, `DD 3.28%`, `OnTester 4389.82623`, composite `3.1340`
   - fixed-parameter `70/30` walk-forward:
-    - train `R$11,225`, `PF 1.5222`, `DD 3.29%`, composite `3.6406`
+    - train `R$11,245`, `PF 1.5236`, `DD 3.28%`, composite `3.6458`
     - test `R$3,175`, `PF 1.3662`, `DD 4.29%`, composite `2.5061`
   - MT5 preset now prepared:
-    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold120m GPT 5.4.set`
-  - interpretation: this is now the best deployable exact composite score in the sprint, slightly ahead of both the `25m` cooldown-only line and the older `30m + max-hold` line
+    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold150m GPT 5.4.set`
+  - interpretation: this is now the best deployable exact composite score in the sprint, slightly ahead of the `120m` line, the `25m` cooldown-only line, and the older `30m + max-hold` line
   - recent weak-tape caveat:
     - in the last `30` trading days, it was identical to the older `30m + max-hold` line at `R$40`, `PF 1.0357`, `DD 4.67%`
 - Operationally preferred exact refinement for Monday:
@@ -324,7 +324,7 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - cooldown leader:
     - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
   - max-hold leader:
-    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m MaxHold120m GPT 5.4.set`
+    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold150m GPT 5.4.set`
   - maximum-quality v2:
     - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Maximum Quality v2 Cooldown 30m MaxHold120m GPT 5.4.set`
   - note: the MQ5 EA now exposes both cooldown and max-hold controls, so the next blocker is only a clean MT5 `Every tick` validation run

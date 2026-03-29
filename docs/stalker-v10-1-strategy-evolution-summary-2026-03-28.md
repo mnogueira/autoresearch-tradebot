@@ -8,7 +8,8 @@
 | 2 | SL/TP-optimized core (`SL 0.84 / TP 0.30`) | `R$16,025` | `1.4280` | `4.62%` | `80.00%` | 1960 |
 | 3 | Session filter (`10,11,12,14`) | `R$15,965` | `1.4438` | `4.04%` | `80.17%` | 1896 |
 | 4 | Session filter + `30m` cooldown | `R$14,085` | `1.4825` | `3.30%` | `80.55%` | 1568 |
-| 5 | Session filter + `30m` cooldown + `120` M1 max hold | `R$14,135` | `1.4851` | `3.29%` | `80.55%` | 1568 |
+| 5 | Session filter + `25m` cooldown | `R$14,350` | `1.4749` | `3.30%` | `80.50%` | 1615 |
+| 6 | Session filter + `25m` cooldown + `150` M1 max hold | `R$14,420` | `1.4784` | `3.28%` | `80.50%` | 1615 |
 
 ## What Each Step Added
 
@@ -16,7 +17,8 @@
 - Stage `2` was the biggest single jump in quality: the `0.84 / 0.30` exit pair materially improved net, PF, and drawdown together.
 - Stage `3` showed that narrowing the strategy to the strongest hours improved PF and drawdown without killing the edge.
 - Stage `4` was the key cost-control breakthrough. The `30`-minute cooldown reduced trade count and lifted PF while cutting drawdown hard.
-- Stage `5` was the final exact refinement. The `120` M1-bar max hold improved net, PF, DD, and `OnTester` at the same time.
+- Stage `5` was the fine cooldown refinement. Tightening the lockout to `25` minutes slightly improved the deployable composite without changing the strategy's character.
+- Stage `6` was the final exact refinement. The `150` M1-bar max hold improved net, PF, DD, and composite score together, even if only by a narrow margin over `120`.
 
 ## Validation Anchor
 
@@ -28,11 +30,11 @@ The safest live-paper anchor is still the MT5 `Every Tick` validation, not the e
 
 That is why the Monday recommendation stays conservative:
 - Safest deployment preset: the MT5-validated base preset.
-- Best next MT5 validation target: the exact max-hold leader.
+- Best next MT5 validation target: the exact `25m + 150m` max-hold leader.
 
 ## Final Frontier Readout
 
-- Best exact research candidate: session filter + `30m` cooldown + `120` M1 max hold.
+- Best exact research candidate: session filter + `25m` cooldown + `150` M1 max hold.
 - Biggest remaining risk: transaction-cost sensitivity. Under `3x` spread stress the max-hold leader breaks.
 - Best exploratory but unpromoted niche: month-adaptive session hours.
   - `R$14,355`, `PF 1.5991`, `DD 3.50%`
@@ -53,5 +55,5 @@ That is why the Monday recommendation stays conservative:
 - Surgical baseline and SL/TP grid: `artifacts/outputs/stalker_v10_1_surgical_sltp_grid_20260328/summary.json`
 - Session filter refinement: `artifacts/outputs/stalker_v10_1_session_refinement_20260328/summary.json`
 - Cooldown refinement: `artifacts/outputs/stalker_v10_1_session_robustness_checks_20260328/summary.json`
-- Max-hold refinement: `artifacts/outputs/stalker_v10_1_session_maxhold_followups_20260328/summary.json`
+- Max-hold refinement: `artifacts/outputs/stalker_v10_1_maxhold_sweep_followups_20260328/summary.json`
 - Final wrap-up experiments: `artifacts/outputs/stalker_v10_1_session_wrapup_followups_20260328/summary.json`

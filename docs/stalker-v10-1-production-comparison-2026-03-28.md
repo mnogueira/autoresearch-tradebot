@@ -5,31 +5,32 @@
 | Variant | Net | PF | DD | Win Rate | Trades | Trades/Day | Sortino | Calmar | Omega | Composite | Rank |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Confidence-weighted + time-widened stop overlay, research-only fractional sizing | `R$18,359.32` | `1.4993` | `3.72%` | `80.87%` | 1568 | `1.2574` | `1.8410` | `6.3030` | `1.6315` | `3.1377` | research |
-| Cooldown `25m` + max-hold `120m` | `R$14,400` | `1.4774` | `3.29%` | `80.50%` | 1615 | `1.2951` | `2.0072` | `6.0068` | `1.6231` | `3.1303` | 1 |
+| Cooldown `25m` + max-hold `150m` | `R$14,420` | `1.4784` | `3.28%` | `80.50%` | 1615 | `1.2951` | `2.0067` | `6.0193` | `1.6245` | `3.1340` | 1 |
+| Cooldown `25m` + max-hold `120m` | `R$14,400` | `1.4774` | `3.29%` | `80.50%` | 1615 | `1.2951` | `2.0072` | `6.0068` | `1.6231` | `3.1303` | 2 |
 | Confidence-weighted entry overlay, research-only fractional sizing | `R$18,030.27` | `1.4897` | `3.71%` | `80.55%` | 1568 | `1.2574` | `1.8686` | `6.2356` | `1.6255` | `3.1301` | research |
-| Cooldown-only, `25m` sweep winner | `R$14,350` | `1.4749` | `3.30%` | `80.50%` | 1615 | `1.2951` | `1.9984` | `5.9756` | `1.6196` | `3.1158` | 2 |
+| Cooldown-only, `25m` sweep winner | `R$14,350` | `1.4749` | `3.30%` | `80.50%` | 1615 | `1.2951` | `1.9984` | `5.9756` | `1.6196` | `3.1158` | 3 |
 | Equal-weight blend of max-hold + time-widened stop, research-only | `R$14,202.50` | `1.4885` | `3.27%` | `80.55%` | 1568 | `1.2574` | `1.9136` | `5.9735` | `1.6178` | `3.0724` | research |
-| Max-hold v2, session winner + cooldown + `120` M1-bar max hold | `R$14,135` | `1.4851` | `3.29%` | `80.55%` | 1568 | `1.2574` | `1.9392` | `5.9153` | `1.6150` | `3.0672` | 3 |
-| Time-widened stop, `0.84 -> 1.20` ATR after `30` bars | `R$14,270` | `1.4887` | `3.28%` | `80.87%` | 1568 | `1.2574` | `1.8816` | `5.9908` | `1.6132` | `3.0607` | 4 |
-| Cooldown-only, `40m` runner-up | `R$13,945` | `1.5116` | `3.25%` | `80.85%` | 1483 | `1.1893` | `1.9115` | `5.9292` | `1.6279` | `3.0601` | 5 |
-| Minimal moderate, cooldown-only `30m` baseline | `R$14,085` | `1.4825` | `3.30%` | `80.55%` | 1568 | `1.2574` | `1.9306` | `5.8842` | `1.6115` | `3.0529` | 6 |
-| Weekly profit cap `R$300`, cooldown + max-hold | `R$14,095` | `1.4937` | `3.32%` | `80.59%` | 1551 | `1.2446` | `1.9354` | `5.8649` | `1.6202` | `3.0512` | 7 |
-| Session winner | `R$15,965` | `1.4438` | `4.04%` | `80.17%` | 1896 | `1.5204` | `2.1977` | `5.2628` | `1.6392` | `3.0055` | 7 |
-| Baseline, MT5-validated `sl0p84/tp0p30` | `R$14,330` | `1.36` | `3.94%` | `80.29%` | 2070 | `1.9639` | `1.8158` | `5.3480` | `1.5278` | `2.8179` | 8 |
-| Cooldown-only + skip last 3 contract days | `R$12,855` | `1.5250` | `3.50%` | `81.12%` | 1345 | `1.0786` | `1.7673` | `5.1990` | `1.6791` | `2.7792` | 9 |
-| Session winner `SL 0.60 / TP 0.42` | `R$13,025` | `1.2851` | `4.45%` | `64.89%` | 1891 | `1.5164` | `2.1894` | `4.1227` | `1.4681` | `2.6251` | 8 |
-| Wider stop `SL 1.00 / TP 0.30` | `R$13,930` | `1.4556` | `4.07%` | `82.78%` | 1568 | `1.2574` | `1.6194` | `4.7394` | `1.5593` | `2.5434` | 9 |
-| Skip Tuesday and Friday, production candidate | `R$9,200` | `1.6261` | `2.97%` | `81.91%` | 846 | `0.6784` | `1.2315` | `4.7450` | `1.7843` | `2.3961` | 10 |
-| Wider stop `SL 1.20 / TP 0.30` | `R$14,475` | `1.4626` | `4.43%` | `85.01%` | 1568 | `1.2574` | `1.4260` | `4.4758` | `1.5552` | `2.3668` | 11 |
-| Mon/Wed/Thu + time-widened stop | `R$9,500` | `1.6525` | `3.19%` | `82.39%` | 846 | `0.6784` | `1.2099` | `4.5249` | `1.8037` | `2.3232` | 12 |
-| Dynamic target `TP 1.00 ATR`, production candidate | `R$17,915` | `1.2569` | `6.13%` | `51.78%` | 1541 | `1.2358` | `1.8177` | `3.7590` | `1.3818` | `2.3129` | 13 |
-| ADX quality mode, prior-day `ADX > 25` | `R$7,485` | `1.9067` | `3.38%` | `84.29%` | 490 | `0.3929` | `1.0426` | `3.5353` | `2.2131` | `2.0245` | 14 |
-| Strong-signal gate, top half of executed trend-efficiency | `R$8,555` | `1.4047` | `4.72%` | `79.28%` | 1062 | `0.8516` | `1.1275` | `2.8194` | `1.4699` | `1.7035` | 15 |
-| Session winner `SL 0.50 / TP 0.50` | `R$8,480` | `1.1711` | `6.46%` | `54.05%` | 1887 | `1.5132` | `1.3330` | `2.0449` | `1.2940` | `1.5388` | 16 |
-| Skip Tuesday and Friday + top-half signal gate | `R$5,460` | `1.4979` | `3.28%` | `80.07%` | 577 | `0.4627` | `0.7092` | `2.8060` | `1.5699` | `1.5104` | 17 |
-| Strong-signal gate, top quartile of executed trend-efficiency | `R$5,570` | `1.4829` | `4.61%` | `79.34%` | 605 | `0.4852` | `0.7538` | `2.0293` | `1.5198` | `1.2896` | 18 |
-| ADX quality mode, prior-day `ADX > 30` | `R$3,515` | `1.6356` | `4.35%` | `82.37%` | 278 | `0.2230` | `0.4607` | `1.4419` | `1.8573` | `1.0344` | 19 |
-| Hot-hand gate, last `10` trades PnL > `0` | `R$630` | `1.9921` | `1.85%` | `84.38%` | 32 | `0.0257` | `0.1002` | `0.6727` | `2.5750` | `0.7669` | 20 |
+| Max-hold v2, session winner + `30m` cooldown + `120` M1-bar max hold | `R$14,135` | `1.4851` | `3.29%` | `80.55%` | 1568 | `1.2574` | `1.9392` | `5.9153` | `1.6150` | `3.0672` | 4 |
+| Time-widened stop, `0.84 -> 1.20` ATR after `30` bars | `R$14,270` | `1.4887` | `3.28%` | `80.87%` | 1568 | `1.2574` | `1.8816` | `5.9908` | `1.6132` | `3.0607` | 5 |
+| Cooldown-only, `40m` runner-up | `R$13,945` | `1.5116` | `3.25%` | `80.85%` | 1483 | `1.1893` | `1.9115` | `5.9292` | `1.6279` | `3.0601` | 6 |
+| Minimal moderate, cooldown-only `30m` baseline | `R$14,085` | `1.4825` | `3.30%` | `80.55%` | 1568 | `1.2574` | `1.9306` | `5.8842` | `1.6115` | `3.0529` | 7 |
+| Weekly profit cap `R$300`, cooldown + max-hold | `R$14,095` | `1.4937` | `3.32%` | `80.59%` | 1551 | `1.2446` | `1.9354` | `5.8649` | `1.6202` | `3.0512` | 8 |
+| Session winner | `R$15,965` | `1.4438` | `4.04%` | `80.17%` | 1896 | `1.5204` | `2.1977` | `5.2628` | `1.6392` | `3.0055` | 9 |
+| Baseline, MT5-validated `sl0p84/tp0p30` | `R$14,330` | `1.36` | `3.94%` | `80.29%` | 2070 | `1.9639` | `1.8158` | `5.3480` | `1.5278` | `2.8179` | 10 |
+| Cooldown-only + skip last 3 contract days | `R$12,855` | `1.5250` | `3.50%` | `81.12%` | 1345 | `1.0786` | `1.7673` | `5.1990` | `1.6791` | `2.7792` | 11 |
+| Session winner `SL 0.60 / TP 0.42` | `R$13,025` | `1.2851` | `4.45%` | `64.89%` | 1891 | `1.5164` | `2.1894` | `4.1227` | `1.4681` | `2.6251` | 12 |
+| Wider stop `SL 1.00 / TP 0.30` | `R$13,930` | `1.4556` | `4.07%` | `82.78%` | 1568 | `1.2574` | `1.6194` | `4.7394` | `1.5593` | `2.5434` | 13 |
+| Skip Tuesday and Friday, production candidate | `R$9,200` | `1.6261` | `2.97%` | `81.91%` | 846 | `0.6784` | `1.2315` | `4.7450` | `1.7843` | `2.3961` | 14 |
+| Wider stop `SL 1.20 / TP 0.30` | `R$14,475` | `1.4626` | `4.43%` | `85.01%` | 1568 | `1.2574` | `1.4260` | `4.4758` | `1.5552` | `2.3668` | 15 |
+| Mon/Wed/Thu + time-widened stop | `R$9,500` | `1.6525` | `3.19%` | `82.39%` | 846 | `0.6784` | `1.2099` | `4.5249` | `1.8037` | `2.3232` | 16 |
+| Dynamic target `TP 1.00 ATR`, production candidate | `R$17,915` | `1.2569` | `6.13%` | `51.78%` | 1541 | `1.2358` | `1.8177` | `3.7590` | `1.3818` | `2.3129` | 17 |
+| ADX quality mode, prior-day `ADX > 25` | `R$7,485` | `1.9067` | `3.38%` | `84.29%` | 490 | `0.3929` | `1.0426` | `3.5353` | `2.2131` | `2.0245` | 18 |
+| Strong-signal gate, top half of executed trend-efficiency | `R$8,555` | `1.4047` | `4.72%` | `79.28%` | 1062 | `0.8516` | `1.1275` | `2.8194` | `1.4699` | `1.7035` | 19 |
+| Session winner `SL 0.50 / TP 0.50` | `R$8,480` | `1.1711` | `6.46%` | `54.05%` | 1887 | `1.5132` | `1.3330` | `2.0449` | `1.2940` | `1.5388` | 20 |
+| Skip Tuesday and Friday + top-half signal gate | `R$5,460` | `1.4979` | `3.28%` | `80.07%` | 577 | `0.4627` | `0.7092` | `2.8060` | `1.5699` | `1.5104` | 21 |
+| Strong-signal gate, top quartile of executed trend-efficiency | `R$5,570` | `1.4829` | `4.61%` | `79.34%` | 605 | `0.4852` | `0.7538` | `2.0293` | `1.5198` | `1.2896` | 22 |
+| ADX quality mode, prior-day `ADX > 30` | `R$3,515` | `1.6356` | `4.35%` | `82.37%` | 278 | `0.2230` | `0.4607` | `1.4419` | `1.8573` | `1.0344` | 23 |
+| Hot-hand gate, last `10` trades PnL > `0` | `R$630` | `1.9921` | `1.85%` | `84.38%` | 32 | `0.0257` | `0.1002` | `0.6727` | `2.5750` | `0.7669` | 24 |
 
 ## Quality Alternative
 
@@ -40,14 +41,14 @@
 ## Readout
 
 - Safest paper-trading choice today: the MT5-validated base preset.
-- Best exact research candidate: session winner + `30m` cooldown + `120` M1-bar max hold.
+- Best exact research candidate: session winner + `25m` cooldown + `150` M1-bar max hold.
 - Best exact cooldown sweep winner: session winner + `25m` cooldown only.
   - `R$14,350`, `PF 1.4749`, `DD 3.30%`, composite `3.1158`
-  - this is now the best deployable exact composite score in the full-sample cooldown sweep
-  - it slightly beats both max-hold and the old `30m` cooldown line on the Sortino-weighted composite
+  - this is now the best deployable exact cooldown-only composite score in the full-sample sweep
+  - it slightly beats the old `30m` cooldown line, but not the new `25m + 150m` max-hold leader
 - Simplest holdout-validated fallback: session winner + `30m` cooldown only.
   - `R$14,085`, `PF 1.4825`, `DD 3.30%`
-  - that retains `99.65%` of the max-hold leader's net profit and `99.82%` of its PF
+  - that retains `97.68%` of the new `150m` max-hold leader's net profit and `100.28%` of its PF
   - it matched the max-hold stack exactly in the recent weak 30-day tape
   - the exact `70/30` walk-forward also passed:
     - train `PF 1.5295`
@@ -55,26 +56,27 @@
 - Recommended configuration tiers:
   - Tier 1, safest: MT5-validated `sl0p84 / tp0p30`
   - Tier 2, moderate: session winner + `25m` cooldown only
-  - Tier 3, aggressive: session winner + `25m` cooldown + `120` M1 max hold
+  - Tier 3, aggressive: session winner + `25m` cooldown + `150` M1 max hold
   - Tier 4, research-only: equal-weight blend of Tier 3 and the time-widened stop variant
 - Risk-adjusted ranking by the Sortino-weighted composite:
   - research-only leader: confidence overlay + time-widened stop at `3.1377`
-  - 1: cooldown `25m` + max-hold `120m` at `3.1303`
+  - 1: cooldown `25m` + max-hold `150m` at `3.1340`
+  - 2: cooldown `25m` + max-hold `120m` at `3.1303`
   - next research-only: confidence overlay at `3.1301`
-  - 2: cooldown-only `25m` at `3.1158`
+  - 3: cooldown-only `25m` at `3.1158`
   - next research-only: equal-weight blend of max-hold + time-widened stop at `3.0724`
-  - 3: max-hold v2 at `3.0672`
-  - 4: time-widened stop at `3.0607`
-  - 5: cooldown-only `40m` at `3.0601`
-  - 6: cooldown-only `30m` at `3.0529`
-  - 7: weekly cap `R$300` at `3.0512`
-  - 8: session winner at `3.0055`
-  - 9: MT5-validated base at `2.8179`
-  - 10: cooldown-only + skip last 3 contract days at `2.7792`
+  - 4: max-hold v2 at `3.0672`
+  - 5: time-widened stop at `3.0607`
+  - 6: cooldown-only `40m` at `3.0601`
+  - 7: cooldown-only `30m` at `3.0529`
+  - 8: weekly cap `R$300` at `3.0512`
+  - 9: session winner at `3.0055`
+  - 10: MT5-validated base at `2.8179`
+  - 11: cooldown-only + skip last 3 contract days at `2.7792`
 - Spread-tolerance ranking:
   - main deployable break-even integer spread is `2` ticks for both Tier 2 and Tier 3
   - Tier 2 at `2` ticks: `R$4,700`, `PF 1.1320`, `DD 9.87%`
-  - Tier 3 at `2` ticks: `R$4,795`, `PF 1.1351`, `DD 9.54%`
+- Tier 3 at `2` ticks: `R$4,735`, `PF 1.1287`, `DD 9.78%`
   - both are negative at `3` ticks
   - only the wider `TP 0.48` cooldown variant stayed barely positive at `3` ticks:
     - `R$215`, `PF 1.0040`, `DD 25.14%`
@@ -280,7 +282,7 @@
   - It confirms whether the overall daily return distribution still has more good mass than bad mass around a `0%` threshold.
 - Practical interpretation:
   - if you want the safest live-paper default, keep Tier 1 because it is MT5-validated
-  - if you want the strongest exact risk-adjusted refinement, Tier 3 still wins by a hair
+- if you want the strongest exact risk-adjusted refinement, Tier 3 still wins by a hair, and `150m` is now the best max-hold duration
   - if you care about Monday deployment quality, Tier 2 is the better choice because it is simpler and the composite gap is trivial
 
 ## Final Recommendation

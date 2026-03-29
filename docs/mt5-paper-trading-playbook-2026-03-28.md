@@ -50,18 +50,18 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 ### New best exact Python refinement
 
 - This is now MT5-ready, but it should be validated only after the simpler cooldown-only refinement:
-  - session winner + `25-minute cooldown` + hard exit after `120` M1 bars
+  - session winner + `25-minute cooldown` + hard exit after `150` M1 bars
 - Preset:
-  - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold120m GPT 5.4.set`
+  - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold150m GPT 5.4.set`
 - Exact result:
-  - `R$14,400`, `PF 1.4774`, `DD 3.29%`, composite `3.1303`
+  - `R$14,420`, `PF 1.4784`, `DD 3.28%`, composite `3.1340`
 - Artifact:
-  - `artifacts/outputs/stalker_v10_1_momentum_maxhold_followups_20260328/summary.json`
+  - `artifacts/outputs/stalker_v10_1_maxhold_sweep_followups_20260328/summary.json`
 - Operational note:
   - the EA now exposes `MaxMinutesInTrade`, so the remaining work is just one clean MT5 `Every tick` validation run
   - recent weak-tape check says this extra max-hold layer added nothing over the cooldown-only version in the last `30` trading days
   - fixed-parameter `70/30` walk-forward still passed:
-    - train `R$11,225`, `PF 1.5222`, `DD 3.29%`
+    - train `R$11,245`, `PF 1.5236`, `DD 3.28%`
     - test `R$3,175`, `PF 1.3662`, `DD 4.29%`
 
 ### Maximum-quality preset
@@ -94,7 +94,7 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
   - use this as the first new exact refinement to validate because it is now the best deployable full-sample exact composite score
   - operational expectation: about `1.30` trades per day in the exact engine
 - Tier 3, aggressive:
-  - session winner + `25m` cooldown + `120` M1 max hold
+  - session winner + `25m` cooldown + `150` M1 max hold
   - use this only after the simpler cooldown-only refinement looks sane in MT5
   - operational expectation: about `1.30` trades per day in the exact engine
 - Tier 4, research-only:
@@ -224,7 +224,7 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
   - the historical exact tape was effectively a `0-1` tick spread world, so repeated live spreads above `1` tick are a meaningful warning signal
   - exact fixed-spread break-even for the main deployable tiers is `2` ticks:
     - Tier 2 cooldown-only at `2` ticks: `R$4,700`, `PF 1.1320`, `DD 9.87%`
-    - Tier 3 cooldown+max-hold at `2` ticks: `R$4,795`, `PF 1.1351`, `DD 9.54%`
+- Tier 3 cooldown+max-hold at `2` ticks: `R$4,735`, `PF 1.1287`, `DD 9.78%`
     - both turn negative at `3` ticks
   - a true fixed `5`-tick spread environment was catastrophic: `R$-16,975`, `PF 0.6614`, `DD 168.02%`
   - the exact Python harness still uses `ROUND_TRIP_COST_BRL = 0.0`, so flat commission doubling inside the research harness had no effect
@@ -253,7 +253,7 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
   - this is now the best deployable exact composite score from the cooldown sweep
 - More validated fallback if the desk wants the safer exact step first: the plain `Cooldown 30m` preset
   - this remains attractive because it already passed the exact `70/30` walk-forward and matched the max-hold stack in the recent weak tape
-- Next aggressive upgrade to validate on the host: the `Cooldown 25m + MaxHold120m` preset
+- Next aggressive upgrade to validate on the host: the `Cooldown 25m + MaxHold150m` preset
 - Tier 4, research blend for later study only:
   - equal-weight blend of Tier 3 and the time-widened stop variant
   - use only if the desk explicitly wants to run two near-identical variants side by side and average the risk

@@ -100,7 +100,9 @@
 - Safest live-paper anchor:
   - MT5 `Every Tick` validated `SL 0.84 / TP 0.30`
 - Best exact refinement waiting on MT5 validation:
-  - session filter + `30m` cooldown + `120` M1-bar max hold
+  - session filter + `25m` cooldown + `150` M1-bar max hold
+- Cleaner first upgrade before that:
+  - session filter + `25m` cooldown only
 - Optional quality-focused niche:
   - prior-day daily `ADX(14) > 25` gate on top of the production stack
 

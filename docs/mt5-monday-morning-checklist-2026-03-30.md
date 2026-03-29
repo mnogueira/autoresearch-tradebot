@@ -26,7 +26,7 @@
 5. Walk-forward-validated cooldown fallback preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
 6. Aggressive exact refinement preset:
-   - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold120m GPT 5.4.set`
+   - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold150m GPT 5.4.set`
 7. Quality-biased preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Maximum Quality v2 Cooldown 30m MaxHold120m GPT 5.4.set`
 8. Optional trend-day quality preset:
@@ -43,7 +43,7 @@
 3. If the desk wants the more validated cooldown setting first, use this instead:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
 4. If that also looks sane, validate the aggressive max-hold refinement next:
-   - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold120m GPT 5.4.set`
+   - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold150m GPT 5.4.set`
 5. If the desk prefers the cleaner operator profile, validate the quality preset:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Maximum Quality v2 Cooldown 30m MaxHold120m GPT 5.4.set`
 6. If the desk wants the EA itself to stand down in weaker daily regimes, validate the optional ADX-gated preset:
@@ -55,7 +55,7 @@
    - `EntryStart 10:00`
    - `LastEntry 14:30`
    - `MinMinutesBetweenEntries 25` for the new cooldown-sweep winner and the new max-hold refinement, or `30` for the older validated cooldown fallback
-   - `MaxMinutesInTrade 120` for the new refinement presets
+   - `MaxMinutesInTrade 150` for the aggressive refinement preset
    - `SL 0.84`
    - `TP 0.30`
    - if using the trend-day preset, confirm `UsePriorDayADXFilter=true`, `PriorDayADXPeriod=14`, `MinPriorDayADX=25`
@@ -99,6 +99,11 @@ Recent context:
 - The latest cooldown sweep found a slightly better full-sample setting at `25` minutes:
   - `R$14,350`, `PF 1.4749`, `DD 3.30%`, composite `3.1158`
   - use that as the first new exact candidate after Tier 1, while keeping the older `30m` line as the safer fallback because it already passed the exact `70/30` walk-forward
+- The latest max-hold sweep found a tiny but real improvement at `150` M1 bars:
+  - `R$14,420`, `PF 1.4784`, `DD 3.28%`, composite `3.1340`
+  - fixed-parameter `70/30` walk-forward still passed:
+    - train `R$11,245`, `PF 1.5236`, `DD 3.28%`
+    - test `R$3,175`, `PF 1.3662`, `DD 4.29%`
 - The regime readout says trend days are the quality engine:
   - trend-day production slice: `PF 1.9183`, `DD 3.38%`
   - range-day production slice: `PF 1.3153`, `DD 4.95%`
