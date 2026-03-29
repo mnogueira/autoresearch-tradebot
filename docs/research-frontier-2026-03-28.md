@@ -29,6 +29,11 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - Tier 2 on range days + the stronger Tier 2A local horizon variant on trend days:
     - `R$15,085`, `PF 1.4930`, `DD 3.22%`, composite `3.2534`
     - interpretation: the always-on ATR10/lookback2 Tier 2A still wins, so the regime switch remains unnecessary
+  - the ultra-local neighborhood check found a tiny in-sample edge at `ATR10/lookback1`:
+    - `R$15,875`, `PF 1.4978`, `DD 3.19%`, composite `3.3320`
+    - but the same variant was slightly weaker on the `70/30` test than the promoted Tier 2A:
+      - test `R$3,825`, `PF 1.4271`, `DD 3.27%`, composite `3.4293`
+    - interpretation: keep `ATR10/lookback2` as the Monday-facing promotion; `lookback1` is interesting in-sample but not strong enough out of sample to dislodge it yet
 
 ## Final Ranking Follow-up
 
