@@ -108,6 +108,11 @@ This remains the safest paper-trading candidate because it is the best strategy 
       - boosting quiet long days did not help either:
         - add `1.10x` size on low-ATR long days: composite `3.6883`
         - add `1.25x` size on low-ATR long days: composite `3.6005`
+      - simple side-wide sizing also failed to beat the advanced reference:
+        - trim all shorts to `0.90x`: composite `3.3635`
+        - trim all shorts to `0.80x`: composite `3.3143`
+        - boost all longs to `1.10x`: composite `3.3688`
+      - interpretation: the weakness is concentrated in high-volatility shorts, not in the short sleeve globally
     - interpretation: the advanced branch’s high-volatility pain is concentrated more on the short sleeve than the long sleeve, but this is still a research-only sizing result rather than a Monday-ready preset
   - a practical portfolio sleeve between the Tier 1 exact analog and strengthened Tier 2A also fell short:
     - `R$16,392.50`, `PF 1.4572`, `DD 3.91%`, composite `3.0592`
