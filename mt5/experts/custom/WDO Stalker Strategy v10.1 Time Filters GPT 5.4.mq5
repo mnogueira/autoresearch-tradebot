@@ -87,6 +87,7 @@ input bool ApplyTrendEfficiencyFilterToLongs = false;         // Apply direction
 input bool ApplyTrendEfficiencyFilterToShorts = false;        // Apply directional trend efficiency filter to shorts
 input double MinDirectionalTrendEfficiency15m = 0.0;          // Minimum directional trend efficiency
 input bool UseROCAgreementFilter = false;                     // Require ROC sign to agree with entry direction
+input bool UseROCAgreementOnlyOnTrendDays = false;            // Require ROC agreement only when prior-day ADX is above the threshold
 input int ROCAgreementBars = 5;                               // Directional ROC lookback in M1 bars
 input int VolumeWindowMinutes = 15;                           // Rolling signal-volume lookback in minutes
 input bool ApplyVolumeFilterToLongs = false;                  // Apply signal-volume filter to longs
@@ -137,7 +138,8 @@ int OnInit()
    ArraySetAsSeries(DailyADX, true);
 
    hATR = iATR(ContinuousSeriesSymbol, ATRTimeFrame, ATR_Length);
-   if(UsePriorDayADXFilter)
+   const bool needsPriorDayADXHandle = (UsePriorDayADXFilter || (UseROCAgreementFilter && UseROCAgreementOnlyOnTrendDays));
+   if(needsPriorDayADXHandle)
       hDailyADX = iADX(ContinuousSeriesSymbol, PERIOD_D1, PriorDayADXPeriod);
 
    hDynamicRetracements = iCustom(
@@ -158,7 +160,7 @@ int OnInit()
    if(hATR == INVALID_HANDLE
       || hDynamicRetracements == INVALID_HANDLE
       || hContractRangeFilter == INVALID_HANDLE
-      || (UsePriorDayADXFilter && hDailyADX == INVALID_HANDLE))
+      || (needsPriorDayADXHandle && hDailyADX == INVALID_HANDLE))
    {
       Print(sTimeCurrentBrazil, " Error creating indicator handles. Error: ", GetLastError());
       return(INIT_FAILED);
@@ -315,7 +317,7 @@ void OnTick()
          const double takeProfit = Round2Ticksize(basePrice + (atrValue * TP_ATRMultiplier));
 
          if(PassesDirectionalTrendEfficiency(1, hasTrendEfficiencyRaw, trendEfficiencyRaw)
-         && PassesDirectionalROCAgreement(1, hasRocAgreementRaw, rocAgreementRaw)
+         && PassesDirectionalROCAgreement(1, hasRocAgreementRaw, rocAgreementRaw, priorDayADXValue)
          && PassesSignalVolume(1, hasSignalVolumeSum, signalVolumeSum)
          && PassesRelativeVolume(1, hasRelativeVolumeAtTime, relativeVolumeAtTime))
          {
@@ -336,7 +338,7 @@ void OnTick()
 
          if(IsDirectionAllowed(-1, TimeCurrentBrazil)
          && PassesDirectionalTrendEfficiency(-1, hasTrendEfficiencyRaw, trendEfficiencyRaw)
-         && PassesDirectionalROCAgreement(-1, hasRocAgreementRaw, rocAgreementRaw)
+         && PassesDirectionalROCAgreement(-1, hasRocAgreementRaw, rocAgreementRaw, priorDayADXValue)
          && PassesSignalVolume(-1, hasSignalVolumeSum, signalVolumeSum)
          && PassesRelativeVolume(-1, hasRelativeVolumeAtTime, relativeVolumeAtTime))
          {
@@ -429,10 +431,19 @@ bool PassesDirectionalTrendEfficiency(const int direction, const bool hasValue, 
    return(directionalValue >= MinDirectionalTrendEfficiency15m);
 }
 
-bool PassesDirectionalROCAgreement(const int direction, const bool hasValue, const double rawValue)
+bool PassesDirectionalROCAgreement(const int direction, const bool hasValue, const double rawValue, const double priorDayADXValue)
 {
    if(!UseROCAgreementFilter)
       return(true);
+
+   if(UseROCAgreementOnlyOnTrendDays)
+   {
+      if(!MathIsValidNumber(priorDayADXValue))
+         return(false);
+
+      if(priorDayADXValue <= MinPriorDayADX)
+         return(true);
+   }
 
    if(!hasValue || !MathIsValidNumber(rawValue))
       return(false);
@@ -473,7 +484,8 @@ bool PassesPriorDayADXFilter(double &priorDayADXValue)
 {
    priorDayADXValue = 0.0;
 
-   if(!UsePriorDayADXFilter)
+   const bool needsPriorDayADXValue = (UsePriorDayADXFilter || (UseROCAgreementFilter && UseROCAgreementOnlyOnTrendDays));
+   if(!needsPriorDayADXValue)
       return(true);
 
    if(hDailyADX == INVALID_HANDLE)
@@ -488,6 +500,9 @@ bool PassesPriorDayADXFilter(double &priorDayADXValue)
    priorDayADXValue = DailyADX[0];
    if(!MathIsValidNumber(priorDayADXValue))
       return(false);
+
+   if(!UsePriorDayADXFilter)
+      return(true);
 
    return(priorDayADXValue > MinPriorDayADX);
 }

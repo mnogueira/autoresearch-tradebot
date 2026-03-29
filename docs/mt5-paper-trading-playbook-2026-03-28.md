@@ -104,6 +104,24 @@ Ceiling note:
   - it is also the strongest out-of-sample post-Monday upgrade in the final exact `70/30` robustness pass:
     - test `R$3,440`, `PF 1.4086`, `DD 4.21%`
 
+### Regime-aware ROC follow-up
+
+- This is the strongest exact research line so far:
+  - use plain Tier 2 on prior-day `ADX <= 25` range days
+  - require `ROC(5)` agreement only on prior-day `ADX > 25` trend days
+- Preset:
+  - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m ROC5 TrendSwitch ADX25 GPT 5.4.set`
+- Exact result:
+  - `R$14,765`, `PF 1.4951`, `DD 3.28%`, composite `3.1964`
+- Exact `70/30` walk-forward:
+  - train `R$11,420`, `PF 1.5356`, `DD 3.28%`
+  - test `R$3,345`, `PF 1.3935`, `DD 4.23%`
+- Recent `60`-trading-day check:
+  - `R$30`, `PF 1.0157`, `DD 5.62%`
+- Operational note:
+  - this is the new strongest exact research preset overall
+  - it is still not the first post-Monday validation target because the recent regime did not distinguish it from the simpler Tier 2 / Tier 2A lines
+
 ### Maximum-quality preset
 
 - Use this if the desk prefers cleaner tape over raw net profit:
@@ -137,6 +155,9 @@ Ceiling note:
     - session winner + `25m` cooldown + `ROC(5)` agreement
     - use this after the plain Tier 2 validation if the desk wants the simplest ROC-enhanced upgrade path
     - among the tested agreement windows, `ROC(5)` beat `ROC(10)` and `ROC(20)` on the Tier 2 line
+- Tier 2B, regime-aware ROC:
+    - session winner + `25m` cooldown, but only require `ROC(5)` on prior-day `ADX > 25` trend days
+    - use this after Tier 2A if the desk wants the strongest exact research line without stepping into max-hold logic yet
 - Tier 3, aggressive:
     - session winner + `25m` cooldown + `150` M1 max hold
     - use this only after the simpler cooldown-only refinement looks sane in MT5
@@ -144,8 +165,9 @@ Ceiling note:
     - out-of-sample it did not beat Tier 2A:
       - test `R$3,175`, `PF 1.3662`, `DD 4.29%`
 - Tier 4, research-only:
-  - equal-weight blend of Tier 3 and the time-widened stop variant
-  - this slightly improved the research composite through portfolio smoothing, but it is not a Monday live preset
+  - equal-weight blend of Tier 2 and Tier 2A
+  - `R$14,455`, `PF 1.4824`, `DD 3.30%`, composite `3.1372`
+  - this is the cleanest research-only portfolio sleeve, but it still does not beat Tier 2A itself
 
 ## Recommended Rollout Cadence
 
@@ -157,6 +179,7 @@ Ceiling note:
   - realized behavior is directionally consistent with the saved artifacts
 - Consider Tier 3 only after another week of clean paper behavior:
   - the max-hold layer is a real refinement, but it is still the more complex operator choice
+  - if the desk wants a non-max-hold refinement first, Tier 2B is the cleaner regime-aware step between Tier 2A and Tier 3
 
 ## Monday Setup Steps
 
@@ -301,8 +324,9 @@ Ceiling note:
   - this remains attractive because it already passed the exact `70/30` walk-forward and matched the max-hold stack in the recent weak tape
 - Next aggressive upgrade to validate on the host: the `Cooldown 25m + MaxHold150m` preset
 - Tier 4, research blend for later study only:
-  - equal-weight blend of Tier 3 and the time-widened stop variant
-  - use only if the desk explicitly wants to run two near-identical variants side by side and average the risk
+  - equal-weight blend of Tier 2 and Tier 2A
+  - use only if the desk explicitly wants to run two similar sleeves side by side and average the risk
+  - it did not beat Tier 2A on the full sample, on the recent `60`-trading-day tape, or by contract-month win count
 - Fallback refinement if the newer cooldown winner misbehaves in MT5: stay on the plain `Cooldown 30m` preset
 - Simplest high-fidelity fallback:
   - the cooldown-only exact variant kept `99.65%` of the max-hold leader's net profit and `99.82%` of its PF

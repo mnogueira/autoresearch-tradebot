@@ -30,11 +30,12 @@ The safest live-paper anchor is still the MT5 `Every Tick` validation, not the e
 
 That is why the Monday recommendation stays conservative:
 - Safest deployment preset: the MT5-validated base preset.
-- Best next MT5 validation target: the exact `25m + 150m` max-hold leader.
+- Best next staged MT5 validation target: the exact `25m` cooldown-only Tier 2 line.
+- Strongest advanced research target after that: the regime-aware Tier 2 / Tier 2A switch.
 
 ## Final Frontier Readout
 
-- Best exact research candidate: session filter + `25m` cooldown + `150` M1 max hold.
+- Best exact research candidate: session filter + `25m` cooldown, using plain Tier 2 on range days and requiring `ROC(5)` only on prior-day `ADX > 25` trend days.
 - Biggest remaining risk: transaction-cost sensitivity. Under `3x` spread stress the max-hold leader breaks.
 - Best exploratory but unpromoted niche: month-adaptive session hours.
   - `R$14,355`, `PF 1.5991`, `DD 3.50%`

@@ -27,11 +27,13 @@
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
 6. Aggressive exact refinement preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold150m GPT 5.4.set`
-7. Quality-biased preset:
+7. Regime-aware ROC research preset:
+   - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m ROC5 TrendSwitch ADX25 GPT 5.4.set`
+8. Quality-biased preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Maximum Quality v2 Cooldown 30m MaxHold120m GPT 5.4.set`
-8. Optional trend-day quality preset:
+9. Optional trend-day quality preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Trend Day ADX25 Cooldown 30m MaxHold120m GPT 5.4.set`
-9. Optional live spread-guard preset:
+10. Optional live spread-guard preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m SpreadGuard1t GPT 5.4.set`
 
 ## Preset Order
@@ -44,9 +46,11 @@
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
 4. If that also looks sane, validate the aggressive max-hold refinement next:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold150m GPT 5.4.set`
-5. If the desk prefers the cleaner operator profile, validate the quality preset:
+5. If the desk wants the strongest regime-aware research follow-up before max-hold logic, validate:
+   - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m ROC5 TrendSwitch ADX25 GPT 5.4.set`
+6. If the desk prefers the cleaner operator profile, validate the quality preset:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Maximum Quality v2 Cooldown 30m MaxHold120m GPT 5.4.set`
-6. If the desk wants the EA itself to stand down in weaker daily regimes, validate the optional ADX-gated preset:
+7. If the desk wants the EA itself to stand down in weaker daily regimes, validate the optional ADX-gated preset:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Trend Day ADX25 Cooldown 30m MaxHold120m GPT 5.4.set`
 
 ## Sanity Checks
@@ -58,6 +62,12 @@
    - `MaxMinutesInTrade 150` for the aggressive refinement preset
    - `SL 0.84`
    - `TP 0.30`
+   - if using the regime-aware ROC preset, confirm:
+     - `UseROCAgreementFilter=true`
+     - `UseROCAgreementOnlyOnTrendDays=true`
+     - `ROCAgreementBars=5`
+     - `UsePriorDayADXFilter=false`
+     - `MinPriorDayADX=25`
    - if using the trend-day preset, confirm `UsePriorDayADXFilter=true`, `PriorDayADXPeriod=14`, `MinPriorDayADX=25`
 2. Confirm the spread is realistic for the current session.
    - The historical exact tape was effectively a `0-1` tick spread world, so repeated live spreads above `1` tick are a real warning sign, not noise.

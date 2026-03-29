@@ -111,6 +111,16 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - Tier 2A aligned with prior-day close-vs-open sign: `R$6,195`, `PF 1.4037`, `DD 3.71%`, composite `1.5696`
     - interpretation: daily directional bias was even more over-pruning than the opening-bias filter and is not a useful addition
   - interpretation: the best new idea is not a new signal family; it is a light momentum agreement layer on top of the existing one. `ROC(5)` was the best tested agreement window, and the simpler Tier 2 + `ROC(5)` variant is now the cleaner post-Monday validation target.
+- Regime-aware ROC refinement:
+  - artifact: `artifacts/outputs/stalker_v10_1_regime_roc_fine_followups_20260329/summary.json`
+  - Tier 2 on prior-day `ADX <= 25` range days, Tier 2A `ROC(5)` on prior-day `ADX > 25` trend days:
+    - `R$14,765`, `PF 1.4951`, `DD 3.28%`, composite `3.1964`
+  - exact `70/30` walk-forward still passed:
+    - train `R$11,420`, `PF 1.5356`, `DD 3.28%`, composite `3.6921`
+    - test `R$3,345`, `PF 1.3935`, `DD 4.23%`, composite `2.6566`
+  - recent `60`-trading-day check stayed soft and identical to Tier 2 / Tier 2A:
+    - `R$30`, `PF 1.0157`, `DD 5.62%`
+  - interpretation: this is now the strongest exact research line overall, but it is still one step too complex to replace the simpler Tier 2 or Tier 2A in the Monday rollout order
 
 ## Near-Term Caution
 

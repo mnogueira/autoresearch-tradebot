@@ -8,7 +8,7 @@
   - Tier 1, the validated MT5 `Every Tick` base preset
 - First upgrade after clean paper behavior:
   - Tier 2, session winner + `25m` cooldown only
-  - keep this as the upgrade even though the new `ROC(5)` agreement line scored better in Python, because Tier 2 is still the simpler path and the ROC-enhanced preset has not yet had host-side MT5 validation
+  - keep this as the first upgrade even though the new regime-aware ROC line scored better in Python, because Tier 2 is still the simplest path and the regime-aware preset has not yet had host-side MT5 validation
 
 ## Best Metrics
 
@@ -19,11 +19,15 @@
 - Tier 3 exact refinement:
   - `R$14,420`, `PF 1.4784`, `DD 3.28%`, composite `3.1340`
 - Best exact research line, now packaged for MT5 follow-up validation:
-  - Tier 3 + `ROC(5)` agreement
-  - `R$14,630`, `PF 1.4935`, `DD 3.28%`, composite `3.1676`
+  - Tier 2 on range days + Tier 2A `ROC(5)` on prior-day `ADX > 25` trend days
+  - `R$14,765`, `PF 1.4951`, `DD 3.28%`, composite `3.1964`
 - Best simpler ROC follow-up, also packaged:
   - Tier 2 + `ROC(5)` agreement
   - `R$14,560`, `PF 1.4900`, `DD 3.30%`, composite `3.1493`
+- Best research-only portfolio sleeve:
+  - equal-weight blend of Tier 2 and Tier 2A
+  - `R$14,455`, `PF 1.4824`, `DD 3.30%`, composite `3.1372`
+  - interpretation: smoother than plain Tier 2, but still not better than Tier 2A itself
 - Ceiling assessment:
   - the current signal family appears to top out around composite `3.15` to `3.17`
   - remaining upside is more likely to come from execution quality than from another simple hard filter
@@ -47,8 +51,15 @@
   - Tier 2
 - After Tier 2 behaves cleanly:
   - Tier 2A, `25m` cooldown + `ROC(5)` agreement
+- After Tier 2A behaves cleanly:
+  - Tier 2B, regime-aware switch:
+    - Tier 2 on prior-day `ADX <= 25` range days
+    - Tier 2A `ROC(5)` on prior-day `ADX > 25` trend days
 - After another clean week:
   - Tier 3
+- Tier 4 remains research-only:
+  - equal-weight blend of Tier 2 and Tier 2A
+  - this did not beat Tier 2A on the full sample, on the recent `60`-day tape, or by contract-month win count
 - Best next ROC validation after the plain Tier 2 line:
   - Tier 2 + `ROC(5)` agreement, because it keeps the simpler cooldown-only structure while still improving the composite
   - it is also now the strongest out-of-sample post-Monday upgrade:
@@ -101,7 +112,8 @@
   - Tier 2 test: `R$3,175`, `PF 1.3662`, `DD 4.29%`
   - Tier 2A test: `R$3,440`, `PF 1.4086`, `DD 4.21%`
   - Tier 3 test: `R$3,175`, `PF 1.3662`, `DD 4.29%`
-  - interpretation: among the post-Monday upgrades, Tier 2A is now the strongest out-of-sample line
+  - Tier 2B test: `R$3,345`, `PF 1.3935`, `DD 4.23%`
+  - interpretation: among the post-Monday upgrades, Tier 2A remains the cleanest simpler out-of-sample line, while Tier 2B is now the strongest regime-aware research line
 - Two-bar trend confirmation:
   - clearly negative, rejected
 - Volume-weighted entry sizing:
@@ -140,7 +152,25 @@
     - test `R$3,440`, `PF 1.4086`, `DD 4.21%`
   - but the last `60` trading days were still soft:
     - `R$30`, `PF 1.0157`, `DD 5.62%`
-  - interpretation: this is the new best exact research candidate, but not the new Monday preset because it still needs host-side MT5 validation
+  - interpretation: this remains a strong exact research candidate, but it has now been edged out by the simpler regime-aware Tier 2 / Tier 2A switch and is still not the Monday preset because it needs host-side MT5 validation
+- Portfolio sleeve follow-up:
+  - equal-weight blend of Tier 2 and Tier 2A:
+    - `R$14,455`, `PF 1.4824`, `DD 3.30%`, composite `3.1372`
+  - exact `70/30` walk-forward test:
+    - `R$3,307.50`, `PF 1.3871`, `DD 4.25%`, composite `2.6224`
+  - contract-month behavior:
+    - Tier 2A beat Tier 2 in `9` of `61` contract months
+    - the portfolio blend beat both in `0` of `61`
+  - interpretation: the blend is a valid research smoother, but not strong enough to change the upgrade order
+- Regime-aware ROC follow-up:
+  - Tier 2 on range days + Tier 2A `ROC(5)` on trend days:
+    - `R$14,765`, `PF 1.4951`, `DD 3.28%`, composite `3.1964`
+  - exact `70/30` walk-forward still passed:
+    - train `R$11,420`, `PF 1.5356`, `DD 3.28%`
+    - test `R$3,345`, `PF 1.3935`, `DD 4.23%`
+  - recent `60`-trading-day check stayed soft and identical to Tier 2 / Tier 2A:
+    - `R$30`, `PF 1.0157`, `DD 5.62%`
+  - interpretation: this is now the strongest exact research line overall, but it is still one step too complex to jump ahead of Tier 2 or Tier 2A in the Monday rollout order
 - ATR-adaptive target scaling:
   - exact daily-ATR-scaled TP on Tier 3 was worse than the fixed `0.30 ATR` target
   - interpretation: the target already seems tuned tightly enough for this tape
