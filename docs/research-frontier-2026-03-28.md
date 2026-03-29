@@ -270,6 +270,8 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - MT5 preset now prepared:
     - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold120m GPT 5.4.set`
   - interpretation: this is now the best deployable exact composite score in the sprint, slightly ahead of both the `25m` cooldown-only line and the older `30m + max-hold` line
+  - recent weak-tape caveat:
+    - in the last `30` trading days, it was identical to the older `30m + max-hold` line at `R$40`, `PF 1.0357`, `DD 4.67%`
 - Operationally preferred exact refinement for Monday:
   - validate the plain cooldown-only variant before the max-hold variant
   - artifact: `artifacts/outputs/stalker_v10_1_recent_tiers_followup_20260328/summary.json`
