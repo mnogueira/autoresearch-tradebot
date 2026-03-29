@@ -19,6 +19,7 @@ from autoresearch_tradebot.strategies.stalker_v10_1_session_execution_refinement
     profit_lock_stop_tick,
     recent_trade_pnl_allows_entry,
     resolve_spread_ticks,
+    should_exit_on_trend_flip,
     widened_stop_tick,
 )
 
@@ -35,6 +36,13 @@ class SessionExecutionRefinementTests(unittest.TestCase):
     def test_max_trade_age_uses_entry_index_offset(self) -> None:
         self.assertFalse(has_reached_max_trade_age(214, 95, 120))
         self.assertTrue(has_reached_max_trade_age(215, 95, 120))
+
+    def test_trend_flip_exit_only_triggers_soon_after_entry_and_on_true_flip(self) -> None:
+        self.assertFalse(should_exit_on_trend_flip(1, 0.1, 5, 5, 5))
+        self.assertFalse(should_exit_on_trend_flip(1, 0.1, 6, 5, 5))
+        self.assertTrue(should_exit_on_trend_flip(1, -0.1, 6, 5, 5))
+        self.assertTrue(should_exit_on_trend_flip(-1, 0.1, 7, 5, 5))
+        self.assertFalse(should_exit_on_trend_flip(1, -0.1, 11, 5, 5))
 
     def test_daily_profit_cap_is_disabled_when_missing_or_non_positive(self) -> None:
         self.assertFalse(has_reached_daily_profit_cap(100.0, None))

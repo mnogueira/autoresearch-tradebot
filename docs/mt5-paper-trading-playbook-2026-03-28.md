@@ -60,6 +60,9 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 - Operational note:
   - the EA now exposes `MaxMinutesInTrade`, so the remaining work is just one clean MT5 `Every tick` validation run
   - recent weak-tape check says this extra max-hold layer added nothing over the cooldown-only version in the last `30` trading days
+  - fixed-parameter `70/30` walk-forward still passed:
+    - train `R$11,225`, `PF 1.5222`, `DD 3.29%`
+    - test `R$3,175`, `PF 1.3662`, `DD 4.29%`
 
 ### Maximum-quality preset
 

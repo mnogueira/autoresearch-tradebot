@@ -267,6 +267,9 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - `SL 0.84 / TP 0.30`
   - artifact: `artifacts/outputs/stalker_v10_1_momentum_maxhold_followups_20260328/summary.json`
   - metrics: `R$14,400`, `PF 1.4774`, `DD 3.29%`, `OnTester 4379.016393`, composite `3.1303`
+  - fixed-parameter `70/30` walk-forward:
+    - train `R$11,225`, `PF 1.5222`, `DD 3.29%`, composite `3.6406`
+    - test `R$3,175`, `PF 1.3662`, `DD 4.29%`, composite `2.5061`
   - MT5 preset now prepared:
     - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold120m GPT 5.4.set`
   - interpretation: this is now the best deployable exact composite score in the sprint, slightly ahead of both the `25m` cooldown-only line and the older `30m + max-hold` line

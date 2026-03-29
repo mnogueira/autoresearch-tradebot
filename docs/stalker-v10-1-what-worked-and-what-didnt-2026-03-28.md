@@ -73,6 +73,7 @@
 | ATR trailing stop after 50% target | exact tie with Tier 2 at `R$14,085`, `PF 1.4825`, `DD 3.30%` | This added no value over the simpler cooldown-only line. |
 | Bollinger squeeze gate | Bottom-quartile squeeze: `R$2,595`, `PF 1.4428`, `DD 5.24%`; bottom-third squeeze: `R$2,670`, `PF 1.3160`, `DD 8.27%` | Volatility compression did not improve this signal family; it mostly just removed too many trades. |
 | Signal-momentum gate | Require trend-efficiency to be strictly increasing across the last `2` bars: `R$12,200`, `PF 1.4324`, `DD 3.36%`; across the last `3` bars: `R$8,885`, `PF 1.4104`, `DD 5.45%` | The signal already encodes enough trend state; forcing an acceleration pattern over-pruned the good trades and never beat the plain cooldown lines. |
+| Early exit on reversal | Exit immediately if trend-efficiency flips sign within `5` bars of entry: `R$2,445`, `PF 1.1498`, `DD 4.82%`, composite `0.8932` | Cutting the trade at the first sign flip sounded defensive, but it chopped winners too aggressively and destroyed the edge. |
 
 ## The Real Risks
 

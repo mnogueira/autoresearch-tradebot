@@ -81,6 +81,7 @@ class ManagementConfig:
     widen_stop_after_bars: int | None = None
     widened_sl_atr_mult: float | None = None
     atr_trailing_distance_mult: float | None = None
+    trend_flip_exit_bars: int | None = None
 
 
 def session_winner_params() -> V101Params:
@@ -156,6 +157,23 @@ def has_reached_max_trade_age(
     if max_bars_in_trade is None or max_bars_in_trade <= 0:
         return False
     return (current_index - entry_bar_index) >= int(max_bars_in_trade)
+
+
+def should_exit_on_trend_flip(
+    position: int,
+    trend_efficiency_value: float,
+    current_index: int,
+    entry_bar_index: int,
+    trend_flip_exit_bars: int | None,
+) -> bool:
+    if position == 0 or trend_flip_exit_bars is None or trend_flip_exit_bars <= 0:
+        return False
+    if not np.isfinite(trend_efficiency_value):
+        return False
+    bars_held = int(current_index - entry_bar_index)
+    if bars_held <= 0 or bars_held > int(trend_flip_exit_bars):
+        return False
+    return (float(position) * float(trend_efficiency_value)) < 0.0
 
 
 def has_reached_daily_profit_cap(
@@ -723,6 +741,7 @@ def run_backtest_with_management(
         bid_open_tick = int(open_ticks[index])
         current_spread_ticks = int(spread_ticks[index])
         ask_open_tick = bid_open_tick + current_spread_ticks
+        trend_efficiency_value = float(trend_efficiency_slice[index]) if pd.notna(trend_efficiency_slice[index]) else np.nan
 
         if current_date is None or session_date != current_date:
             if position != 0 and not management.keep_profitable_overnight:
@@ -743,6 +762,22 @@ def run_backtest_with_management(
             realized_pnl_brl_today = 0.0
 
         if position != 0:
+            if should_exit_on_trend_flip(
+                position=position,
+                trend_efficiency_value=trend_efficiency_value,
+                current_index=index,
+                entry_bar_index=entry_bar_index,
+                trend_flip_exit_bars=management.trend_flip_exit_bars,
+            ):
+                exit_tick = bid_open_tick if position == 1 else ask_open_tick
+                append_trade(
+                    session_date,
+                    timestamp,
+                    exit_tick,
+                    f"trend_flip_exit_{int(management.trend_flip_exit_bars)}bars",
+                )
+                reset_position_state()
+                continue
             update_time_widened_stop(index)
             update_profit_time_stop(index, bid_open_tick, ask_open_tick)
             update_trailing_stop(bid_open_tick, ask_open_tick)
@@ -914,7 +949,6 @@ def run_backtest_with_management(
         current_day_range = current_day_high - current_day_low
         contract_range_filter_value = float(signal_range_slice[index])
         atr_value = float(atr_open_slice[index]) if pd.notna(atr_open_slice[index]) else np.nan
-        trend_efficiency_value = float(trend_efficiency_slice[index]) if pd.notna(trend_efficiency_slice[index]) else np.nan
         signal_volume_value = float(signal_volume_slice[index]) if pd.notna(signal_volume_slice[index]) else np.nan
         relative_volume_value = float(relative_volume_slice[index]) if pd.notna(relative_volume_slice[index]) else np.nan
 

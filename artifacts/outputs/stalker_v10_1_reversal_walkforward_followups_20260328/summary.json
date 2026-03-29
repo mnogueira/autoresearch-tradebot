@@ -1,0 +1,111 @@
+{
+  "leader_reference_25m_maxhold120": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1615,
+      "win_rate": 0.805,
+      "net_profit_brl": 14400.0,
+      "avg_profit_brl": 8.92,
+      "avg_win_brl": 34.28,
+      "avg_loss_brl": -95.76,
+      "profit_factor": 1.4774,
+      "max_drawdown_pct": 3.29,
+      "expected_payoff": 8.92,
+      "on_tester_value": 4379.016393
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 2.0072,
+      "calmar_ratio": 6.0068,
+      "omega_ratio": 1.6231,
+      "annual_return_pct": 19.75,
+      "max_drawdown_frac": 0.032884
+    },
+    "sortino_weighted_composite": 3.1303,
+    "note": "Current best deployable exact composite candidate."
+  },
+  "leader_70_30_walkforward": {
+    "train": {
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2024-09-16",
+        "trading_days": 872,
+        "total_trades": 1131,
+        "win_rate": 0.8099,
+        "net_profit_brl": 11225.0,
+        "avg_profit_brl": 9.92,
+        "avg_win_brl": 35.72,
+        "avg_loss_brl": -99.98,
+        "profit_factor": 1.5222,
+        "max_drawdown_pct": 3.29,
+        "expected_payoff": 9.92,
+        "on_tester_value": 3413.504098
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.1714,
+        "calmar_ratio": 7.3883,
+        "omega_ratio": 1.692,
+        "annual_return_pct": 24.3,
+        "max_drawdown_frac": 0.032884
+      },
+      "sortino_weighted_composite": 3.6406
+    },
+    "test": {
+      "metrics": {
+        "start_date": "2024-09-17",
+        "end_date": "2026-03-20",
+        "trading_days": 375,
+        "total_trades": 484,
+        "win_rate": 0.7934,
+        "net_profit_brl": 3175.0,
+        "avg_profit_brl": 6.56,
+        "avg_win_brl": 30.85,
+        "avg_loss_brl": -86.7,
+        "profit_factor": 1.3662,
+        "max_drawdown_pct": 4.29,
+        "expected_payoff": 6.56,
+        "on_tester_value": 740.276316
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.58,
+        "calmar_ratio": 4.7465,
+        "omega_ratio": 1.4608,
+        "annual_return_pct": 20.36,
+        "max_drawdown_frac": 0.042889
+      },
+      "sortino_weighted_composite": 2.5061
+    },
+    "note": "Fixed-parameter 70/30 chronological walk-forward on the 25-minute cooldown plus max-hold leader."
+  },
+  "early_exit_on_trend_flip_5bars": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1615,
+      "win_rate": 0.4731,
+      "net_profit_brl": 2445.0,
+      "avg_profit_brl": 1.51,
+      "avg_win_brl": 24.56,
+      "avg_loss_brl": -24.04,
+      "profit_factor": 1.1498,
+      "max_drawdown_pct": 4.82,
+      "expected_payoff": 1.51,
+      "on_tester_value": 507.393578
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 0.7446,
+      "calmar_ratio": 0.9379,
+      "omega_ratio": 1.1977,
+      "annual_return_pct": 4.52,
+      "max_drawdown_frac": 0.048187
+    },
+    "sortino_weighted_composite": 0.8932,
+    "note": "Exit immediately at the next open if directional trend-efficiency flips sign within 5 bars of entry."
+  },
+  "notes": [
+    "The walk-forward is chronological and uses the current 25-minute cooldown plus 120-minute max-hold line without re-optimizing parameters.",
+    "The reversal exit is tested as a pure risk-control overlay on the same line."
+  ]
+}
