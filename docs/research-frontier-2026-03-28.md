@@ -208,6 +208,42 @@ Corrected rerun:
   - the balanced static branch still wins on total score
   - but the next meaningful corrected-cost research direction is clearly side-specific rather than another confirmation filter
 
+## Corrected-Cost Direction-Aware TP Routing
+
+- Research-only directional TP routing did help the sleeve, but not enough to replace the balanced branch:
+  - best hybrid: long `TP 0.42`, short `TP 0.48`
+  - full sample: `R$2,744`, `PF 1.0900`, `DD 10.14%`, composite `0.5073`
+  - `70/30` test: `R$692`, `PF 1.0849`, `DD 5.36%`
+  - recent `60d`: `R$77`, `PF 1.0545`
+- Interpretation:
+  - longs seem to want slightly tighter profit-taking than shorts under corrected costs
+  - but the improvement only works in research-style sleeve routing and still does not beat the plain balanced branch
+
+## Corrected-Cost Short-Side Ceiling
+
+- The short-only honest sleeve still peaks at `TP 0.48`:
+  - `TP 0.48`: `R$2,168`, `PF 1.1458`, `DD 12.10%`
+  - `TP 0.54`: `R$1,473`, `PF 1.0855`, `DD 15.94%`
+  - `TP 0.42`: `R$1,078`, `PF 1.0785`, `DD 13.46%`
+  - `TP 0.60`: `R$938`, `PF 1.0486`, `DD 20.28%`
+- The short-only sleeve also still peaks at `SL 1.0`:
+  - `SL 1.0`: `R$2,168`, `PF 1.1458`, `DD 12.10%`
+  - `SL 1.2`: `R$2,223`, `PF 1.1439`, `DD 10.99%`
+  - `SL 1.5`: `R$1,828`, `PF 1.1115`, `DD 14.32%`
+- Interpretation:
+  - wider short stops increase win rate, but not enough Sortino-weighted value to beat `SL 1.0`
+  - the short sleeve remains the stronger honest sub-strategy, but not the stronger static portfolio
+
+## Corrected-Cost Rolling Walk-Forward
+
+- The best balanced corrected-cost branch was positive but unstable on a rolling walk-forward:
+  - `252d` train / `126d` test / `126d` step
+  - `7` folds
+  - only `3/7` test folds passed with positive net and `PF > 1.0`
+- Interpretation:
+  - the corrected-cost survivor is real
+  - but it is still regime-sensitive enough that it should be treated as a post-Monday MT5 validation target, not an automatic promotion
+
 ## What Survived Conceptually
 
 - `ROC(5)` still appears to be the only lightweight agreement family with repeatable incremental value inside the old pre-correction research space.
