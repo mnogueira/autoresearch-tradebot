@@ -48,6 +48,29 @@ Corrected rerun:
   - `150m` max-hold is a small local improvement on the first Friday-off survivor
   - it does not change the Monday plan or the core conclusion that realistic costs leave only a thin corrected edge
 
+## Current Best Static Corrected-Cost Survivor
+
+- The stronger local refinement is:
+  - strengthened Tier 2A geometry
+  - `TP 0.48`
+  - `60m` cooldown
+  - `AllowFriday=false`
+  - skip last `1` contract day
+- Full sample:
+  - `R$2,543`, `PF 1.0853`, `DD 9.60%`, composite `0.5131`
+- `70/30` test:
+  - `R$879`, `PF 1.1142`, `DD 8.77%`, composite `0.6114`
+- Recent windows:
+  - `60d`: `R$312`, `PF 1.2708`
+  - `30d`: `R$363`, `PF 1.6722`
+  - `10d`: `R$231`, `PF 2.2419`
+- Artifact:
+  - [summary.json](/c:/Dev/autoresearch-tradebot/artifacts/outputs/stalker_v10_1_corrected_cost_survivor_skip_last1_20260329/summary.json)
+- Honest read:
+  - contract-cycle pruning helps more than max-hold on the corrected-cost survivor branch
+  - this is the first corrected-cost static variant with clearly positive full sample, positive holdout, and controlled drawdown
+  - it is still not a Monday promotion until MT5 host-side validation exists
+
 ## What Survived Conceptually
 
 - `ROC(5)` still appears to be the only lightweight agreement family with repeatable incremental value inside the old pre-correction research space.
