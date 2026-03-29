@@ -25,6 +25,10 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - Tier 2 on range days + the stronger Tier 2A horizon variant on trend days:
     - `R$14,580`, `PF 1.4786`, `DD 3.29%`, composite `3.1478`
     - interpretation: once the stronger ATR10/lookback2 Tier 2A exists, the extra ADX regime switch is just unnecessary complexity
+  - the local follow-up confirmed the same simplification again:
+    - Tier 2 on range days + the stronger Tier 2A local horizon variant on trend days:
+    - `R$15,085`, `PF 1.4930`, `DD 3.22%`, composite `3.2534`
+    - interpretation: the always-on ATR10/lookback2 Tier 2A still wins, so the regime switch remains unnecessary
 
 ## Final Ranking Follow-up
 
@@ -844,8 +848,10 @@ But cost sensitivity is real:
   - session winner with hours `10:00, 11:00, 12:00, 14:00`
   - keep `SkipShortWednesday=true`
   - keep `SkipShortHour13=true`
-  - require at least `30 minutes` between filled entries
-  - close any position older than `120` M1 bars
+  - require at least `25 minutes` between filled entries
+  - require `ROC(5)` directional agreement
+  - use `ATR_Length 10`
+  - use contract-range lookback `2`
   - keep `SL 0.84 / TP 0.30`
 - Known risks:
   - the edge weakens sharply under higher transaction costs; `2x` spread is still positive, `3x` spread is not
@@ -856,6 +862,8 @@ But cost sensitivity is real:
   - run the validated MT5 preset first
   - validate the plain cooldown preset in MT5 `Every tick` next:
     - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m GPT 5.4.set`
+  - validate the promoted Tier 2A preset after that:
+    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m ROC5 Agreement ATR10 Lookback2 GPT 5.4.set`
   - validate the max-hold leader only after that:
     - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold150m GPT 5.4.set`
   - keep the older `30m` cooldown line only as the safer exact fallback because it already has the earlier separate walk-forward pass

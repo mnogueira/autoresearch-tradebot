@@ -215,4 +215,4 @@
 - The strategy is mature.
 - Monday should be a cautious paper-validation launch, not a scale-up day.
 - The best live-ready answer is still the validated MT5 base, with Tier 2 as the cleanest next upgrade.
-- The new `150m` Tier 3 is the strongest exact full-sample line, but the current `60`-day tape did not reward it over Tier 2.
+- The promoted ATR10/lookback2 Tier 2A is now the strongest exact post-Tier-2 line, and the follow-up regime switch did not beat it.
