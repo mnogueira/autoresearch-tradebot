@@ -19,6 +19,18 @@ Corrected rerun:
 - Research-only sizing overlays:
   - still the strongest remaining upside
   - especially ATR-based de-risking on hot-volatility days
+- Wider TP plus fewer trades:
+  - the first corrected-cost static survivor was:
+    - strengthened Tier 2A geometry
+    - `TP 0.48`
+    - `60m` cooldown
+    - `R$2,285`, `PF 1.0545`, `DD 17.15%`
+  - but it is only a near-survivor on the holdout:
+    - `70/30` test `R$-68`, `PF 0.9941`
+  - so it is promising, not promoted
+- Corrected-cost static survival:
+  - Tier 2A geometry with `TP 0.48` and `60m` cooldown is the first positive full-sample survivor
+  - that means fewer trades plus wider targets are the first credible path through realistic costs
 
 ## What Did Not Hold Up
 
@@ -57,3 +69,6 @@ Corrected rerun:
   - fewer trades
   - wider reward structures
   - or truly different signal families
+- Current best cost-aware lead:
+  - `TP 0.48` + `60m` cooldown on Tier 2A geometry
+  - promising, but not robust enough yet to promote

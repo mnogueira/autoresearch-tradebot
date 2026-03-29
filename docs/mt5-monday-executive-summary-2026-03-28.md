@@ -43,6 +43,24 @@ Corrected production rerun artifact:
 - The ROC agreement family still looks like the only uniquely helpful lightweight confirmation family.
 - But none of the static Python upgrade tiers currently justify promotion for Monday after the corrected rerun.
 
+## First Static Cost Survivor
+
+- The first corrected-cost static survivor is now:
+  - Tier 2A geometry
+  - `TP 0.48`
+  - `60m` cooldown
+- Full sample:
+  - `R$2,285`, `PF 1.0545`, `DD 17.15%`
+- But the `70/30` test was only near-flat:
+  - `R$-68`, `PF 0.9941`, `DD 15.16%`
+- Recent windows were better:
+  - recent `60d`: `R$259`, `PF 1.1516`
+  - recent `30d`: `R$413`, `PF 1.4870`
+- Read:
+  - this is the first real corrected-cost survivor
+  - it is promising enough for continued research
+  - it is still not strong enough to replace Monday Tier 1
+
 ## Monday Recommendation
 
 1. Run Tier 1 only.

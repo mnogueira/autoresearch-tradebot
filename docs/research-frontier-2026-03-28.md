@@ -19,6 +19,20 @@ Corrected rerun:
 - Best corrected exact line was Tier 2A, and it was still negative:
   - `R$-2,951`, `PF 0.9147`, `DD 46.08%`
 
+## First Cost Survivor
+
+- The first static corrected-cost survivor has now appeared:
+  - strengthened Tier 2A geometry
+  - `TP 0.48`
+  - `60m` cooldown
+  - full sample: `R$2,285`, `PF 1.0545`, `DD 17.15%`, composite `0.4154`
+- But it is not yet a promotion:
+  - `70/30` test was only near-flat at `R$-68`, `PF 0.9941`, `DD 15.16%`
+  - artifact: [summary.json](/c:/Dev/autoresearch-tradebot/artifacts/outputs/stalker_v10_1_corrected_cost_survival_followups_20260329/summary.json)
+- Honest read:
+  - wider targets and fewer trades can rescue the edge
+  - but the survivor is not yet robust enough to replace Monday Tier 1
+
 ## What Survived Conceptually
 
 - `ROC(5)` still appears to be the only lightweight agreement family with repeatable incremental value inside the old pre-correction research space.
@@ -36,6 +50,24 @@ It is:
 1. find a static variant that survives corrected costs
 2. or prove a host-side MT5 upgrade survives real costs
 3. or accept that Tier 1 is the ceiling for now
+
+## First Cost-Surviving Static Variant
+
+- The first static variant to survive the corrected cost model is:
+  - Tier 2A geometry
+  - `TP 0.48`
+  - `60m` cooldown
+- Full sample:
+  - `R$2,285`, `PF 1.0545`, `DD 17.15%`, composite `0.4154`
+- `70/30` test:
+  - `R$-68`, `PF 0.9941`, `DD 15.16%`
+- Recent windows:
+  - `60d`: `R$259`, `PF 1.1516`
+  - `30d`: `R$413`, `PF 1.4870`
+  - `10d`: `R$398`, `PF 3.1398`
+- Interpretation:
+  - wider targets plus materially fewer trades can survive the flat-fee correction
+  - but this first survivor is still too weak out of sample to change the Monday plan
 
 ## Promising Directions To Test
 

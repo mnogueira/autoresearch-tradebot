@@ -76,6 +76,18 @@ Only revisit Tier 2 / Tier 2A / Tier 3 if:
 1. a corrected-cost variant turns positive and robust
 2. or host-side MT5 validation proves a specific upgrade survives real execution costs
 
+## Corrected-Cost Survivor Watchlist
+
+- First static survivor found after the correction:
+  - Tier 2A geometry with `TP 0.48` and `60m` cooldown
+  - `R$2,285`, `PF 1.0545`, `DD 17.15%`
+- Holdout quality is not strong enough yet:
+  - `70/30` test `R$-68`, `PF 0.9941`, `DD 15.16%`
+- That means:
+  - keep it in research
+  - do not treat it as a Monday preset
+  - use it as the first corrected-cost candidate to refine further
+
 ## Monday Recommendation
 
 - Paper-trading default:

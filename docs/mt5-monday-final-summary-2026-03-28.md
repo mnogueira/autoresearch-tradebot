@@ -39,3 +39,7 @@ That is still negative.
   - materially fewer trades
   - wider take-profit structures
   - or a genuinely different signal family
+- First promising corrected-cost survivor so far:
+  - Tier 2A geometry with `TP 0.48` and `60m` cooldown
+  - full sample `R$2,285`, `PF 1.0545`, `DD 17.15%`
+  - holdout still too weak for promotion: test `R$-68`, `PF 0.9941`
