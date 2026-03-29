@@ -121,9 +121,13 @@ Corrected rerun:
   - full sample: `R$3,024`, `PF 1.0966`, `DD 7.06%`, composite `0.6049`
   - `70/30` test: `R$887`, `PF 1.1091`, `DD 7.91%`, composite `0.6052`
   - recent `60d`: `R$241`, `PF 1.1911`
+- Pushing that same simplified branch to `SL 1.20` went too far:
+  - full sample: `R$3,409`, `PF 1.1055`, `DD 9.93%`, composite `0.5526`
+  - `70/30` test: `R$227`, `PF 1.0253`, `DD 10.66%`
 - Interpretation:
   - this is now the strongest balanced corrected-cost static branch
   - it gives up some holdout net versus the pure no-ROC/no-max-hold branch, but materially improves full-sample quality and drawdown while keeping the holdout positive
+  - `SL 1.0` is the local peak on the simplified branch; `1.2` gives back too much holdout quality
   - it is the best candidate so far for future host-side MT5 validation, though still not a Monday promotion
 
 ## Current Best Static Corrected-Cost Survivor
