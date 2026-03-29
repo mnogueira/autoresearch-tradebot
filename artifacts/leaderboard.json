@@ -9847,6 +9847,60 @@
     "rank": 350
   },
   {
+    "name": "opening_range_breakout_exact_sl0p84_tp0p42_cd25",
+    "family": "opening_range_breakout_exact",
+    "screening_method": "exact_every_tick_opening_range_breakout",
+    "comparison_tier": "exact",
+    "mt5_ready": false,
+    "params": {
+      "sl_atr_mult": 0.84,
+      "tp_atr_mult": 0.42,
+      "entry_hours": [
+        10,
+        11,
+        12,
+        14
+      ],
+      "cooldown_minutes": 25
+    },
+    "test_total_trades": 4298,
+    "test_net_profit_brl": -20935.0,
+    "test_profit_factor": 0.8562,
+    "test_on_tester_value": -99.592259,
+    "test_max_drawdown_pct": 210.21,
+    "test_win_rate": 0.6331,
+    "notes": "Exact opening-range breakout using the 09:00-10:00 range and the same cooldown/session windows as the production ladder.",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\wdo_opening_range_breakout_exact_20260329\\summary.json",
+    "rank": 351
+  },
+  {
+    "name": "opening_range_breakout_exact_sl0p84_tp0p30_cd25",
+    "family": "opening_range_breakout_exact",
+    "screening_method": "exact_every_tick_opening_range_breakout",
+    "comparison_tier": "exact",
+    "mt5_ready": false,
+    "params": {
+      "sl_atr_mult": 0.84,
+      "tp_atr_mult": 0.3,
+      "entry_hours": [
+        10,
+        11,
+        12,
+        14
+      ],
+      "cooldown_minutes": 25
+    },
+    "test_total_trades": 4597,
+    "test_net_profit_brl": -18380.0,
+    "test_profit_factor": 0.8525,
+    "test_on_tester_value": -99.607742,
+    "test_max_drawdown_pct": 184.52,
+    "test_win_rate": 0.705,
+    "notes": "Exact opening-range breakout using the 09:00-10:00 range and the same cooldown/session windows as the production ladder.",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\wdo_opening_range_breakout_exact_20260329\\summary.json",
+    "rank": 352
+  },
+  {
     "name": "ema_3_13_exact_sl0p84_tp0p42",
     "family": "ema_crossover_exact",
     "screening_method": "exact_every_tick_market_entry",
@@ -9872,7 +9926,7 @@
     "test_win_rate": 0.6309,
     "notes": "Exact every-tick EMA crossover market-entry variant with session filter.",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\wdo_ema_crossover_exact_20260328\\summary.json",
-    "rank": 351
+    "rank": 353
   },
   {
     "name": "session_winner_cooldown30_maxhold120_fixed_spread_5ticks",
@@ -9893,7 +9947,7 @@
       "min_minutes_between_entries": 30,
       "max_bars_in_trade": 120
     },
-    "rank": 352
+    "rank": 354
   },
   {
     "name": "session_winner_cooldown30_maxhold120_fixed_spread_5_ticks",
@@ -9914,7 +9968,7 @@
       "min_minutes_between_entries": 30,
       "max_bars_in_trade": 120
     },
-    "rank": 353
+    "rank": 355
   },
   {
     "name": "tier2_cooldown_only_fixed_spread_5ticks",
@@ -9935,7 +9989,7 @@
       "min_minutes_between_entries": 30,
       "max_bars_in_trade": null
     },
-    "rank": 354
+    "rank": 356
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_timewidened_confidence_overlay",
@@ -9967,7 +10021,7 @@
     "calmar_ratio": 6.303,
     "omega_ratio": 1.6315,
     "sortino_weighted_composite": 3.1377,
-    "rank": 355
+    "rank": 357
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_sl0p84_tp0p30_confidence_overlay",
@@ -9999,7 +10053,7 @@
     "calmar_ratio": 6.2356,
     "omega_ratio": 1.6255,
     "sortino_weighted_composite": 3.1301,
-    "rank": 356
+    "rank": 358
   },
   {
     "name": "tier3_confidence_weighted_overlay",
@@ -10025,7 +10079,7 @@
     "calmar_ratio": 5.945,
     "omega_ratio": 1.6245,
     "sortino_weighted_composite": 3.0623,
-    "rank": 357
+    "rank": 359
   },
   {
     "name": "tier3_trend_strength_overlay",
@@ -10088,7 +10142,7 @@
     "calmar_ratio": 5.945,
     "omega_ratio": 1.6245,
     "sortino_weighted_composite": 3.0623,
-    "rank": 358
+    "rank": 360
   },
   {
     "name": "tier2a_trend_strength_overlay",
@@ -10152,7 +10206,7 @@
     "calmar_ratio": 5.9289,
     "omega_ratio": 1.628,
     "sortino_weighted_composite": 3.0554,
-    "rank": 359
+    "rank": 361
   },
   {
     "name": "session_winner_equal_weight_ensemble_maxhold_timewidened",
@@ -10182,7 +10236,7 @@
     "calmar_ratio": 5.9735,
     "omega_ratio": 1.6178,
     "sortino_weighted_composite": 3.0724,
-    "rank": 360
+    "rank": 362
   },
   {
     "name": "session_winner_cooldown_30m_recent_entry_density_sizing_60m",
@@ -10204,7 +10258,7 @@
       "min_size_multiplier": 0.5,
       "max_size_multiplier": 1.0
     },
-    "rank": 361
+    "rank": 363
   },
   {
     "name": "tier2a_vwap_distance_overlay",
@@ -10227,7 +10281,7 @@
     "calmar_ratio": 5.2814,
     "omega_ratio": 1.634,
     "sortino_weighted_composite": 2.8228,
-    "rank": 362
+    "rank": 364
   },
   {
     "name": "tier3_time_widened_confidence_overlay",
@@ -10293,7 +10347,7 @@
     "calmar_ratio": 4.9081,
     "omega_ratio": 1.6195,
     "sortino_weighted_composite": 2.7203,
-    "rank": 363
+    "rank": 365
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_mon_wed_thu_only_confidence_overlay",
@@ -10325,7 +10379,7 @@
     "calmar_ratio": 4.312,
     "omega_ratio": 1.7735,
     "sortino_weighted_composite": 2.239,
-    "rank": 364
+    "rank": 366
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_mon_wed_thu_timewidened_confidence_overlay",
@@ -10357,7 +10411,7 @@
     "calmar_ratio": 4.1715,
     "omega_ratio": 1.8028,
     "sortino_weighted_composite": 2.2019,
-    "rank": 365
+    "rank": 367
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_logistic_confidence_overlay",
@@ -10381,7 +10435,7 @@
     "calmar_ratio": 3.6733,
     "omega_ratio": 1.5354,
     "sortino_weighted_composite": 2.0685,
-    "rank": 366
+    "rank": 368
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_random_forest_confidence_overlay",
@@ -10405,7 +10459,7 @@
     "calmar_ratio": 3.6515,
     "omega_ratio": 1.5492,
     "sortino_weighted_composite": 2.1265,
-    "rank": 367
+    "rank": 369
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_logistic_core_confidence_overlay",
@@ -10429,7 +10483,7 @@
     "calmar_ratio": 3.6486,
     "omega_ratio": 1.5488,
     "sortino_weighted_composite": 2.1251,
-    "rank": 368
+    "rank": 370
   },
   {
     "name": "session_winner_cooldown_30m_hourly_open_proxy",
@@ -10456,7 +10510,7 @@
         14
       ]
     },
-    "rank": 369
+    "rank": 371
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_random_forest_gate_0p55",
@@ -10480,7 +10534,7 @@
     "calmar_ratio": 0.0,
     "omega_ratio": 0.0,
     "sortino_weighted_composite": 0.0,
-    "rank": 370
+    "rank": 372
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_logistic_gate_0p55",
@@ -10504,6 +10558,6 @@
     "calmar_ratio": -0.078,
     "omega_ratio": 0.7013,
     "sortino_weighted_composite": 0.112,
-    "rank": 371
+    "rank": 373
   }
 ]

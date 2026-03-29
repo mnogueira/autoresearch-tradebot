@@ -1,0 +1,78 @@
+{
+  "notes": [
+    "Exact opening-range breakout based on the 09:00-10:00 session range.",
+    "Session filter kept to 10:00, 11:00, 12:00, and 14:00 and cooldown fixed at 25 minutes to stay comparable with the production ladder."
+  ],
+  "results": [
+    {
+      "name": "opening_range_breakout_exact_sl0p84_tp0p30_cd25",
+      "params": {
+        "sl_atr_mult": 0.84,
+        "tp_atr_mult": 0.3,
+        "atr_length": 20,
+        "cooldown_minutes": 25,
+        "entry_hours": [
+          10,
+          11,
+          12,
+          14
+        ],
+        "opening_range_start_hour": 9,
+        "opening_range_end_hour": 10,
+        "market_close_hour": 18,
+        "market_close_minute": 0,
+        "minutes_before_close": 5
+      },
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 4597,
+        "win_rate": 0.705,
+        "net_profit_brl": -18380.0,
+        "avg_profit_brl": -4.0,
+        "avg_win_brl": 32.79,
+        "avg_loss_brl": -91.92,
+        "profit_factor": 0.8525,
+        "max_drawdown_pct": 184.52,
+        "expected_payoff": -4.0,
+        "on_tester_value": -99.607742
+      }
+    },
+    {
+      "name": "opening_range_breakout_exact_sl0p84_tp0p42_cd25",
+      "params": {
+        "sl_atr_mult": 0.84,
+        "tp_atr_mult": 0.42,
+        "atr_length": 20,
+        "cooldown_minutes": 25,
+        "entry_hours": [
+          10,
+          11,
+          12,
+          14
+        ],
+        "opening_range_start_hour": 9,
+        "opening_range_end_hour": 10,
+        "market_close_hour": 18,
+        "market_close_minute": 0,
+        "minutes_before_close": 5
+      },
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 4298,
+        "win_rate": 0.6331,
+        "net_profit_brl": -20935.0,
+        "avg_profit_brl": -4.87,
+        "avg_win_brl": 45.81,
+        "avg_loss_brl": -92.31,
+        "profit_factor": 0.8562,
+        "max_drawdown_pct": 210.21,
+        "expected_payoff": -4.87,
+        "on_tester_value": -99.592259
+      }
+    }
+  ]
+}

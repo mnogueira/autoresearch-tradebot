@@ -772,6 +772,7 @@ But cost sensitivity is real:
 11. Session high/low breakout is not a promising replacement family for this tape. It lost money badly with the same session hours and cooldown, so the current retracement/trend family still dominates the simple breakout alternative.
 12. Trend-strength sizing remains the one meaningful research-only upside. It lifts gross net on Tier 2A and Tier 3, but not enough to beat the best exact deployable variant on composite once the extra drawdown is counted.
 13. Opposite-regime session VWAP mean reversion also failed badly. Fading 2x ATR extensions away from session VWAP did not produce a viable complementary edge.
+14. Opening-range breakout is also a dead end. The exact 09:00-10:00 breakout family was even worse than the broader session-breakout prototype, so the current strategy family is still dominating the obvious breakout alternatives.
 
 ## Production Recommendation
 
