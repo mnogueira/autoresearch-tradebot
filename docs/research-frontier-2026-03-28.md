@@ -199,6 +199,11 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - Tier 2 `25m` cooldown-only: `R$30`, `PF 1.0157`, `DD 5.62%`, `90` trades
   - Tier 3 `25m + 150m` max-hold: identical
   - interpretation: the newer Tier 3 line still wins full-sample composite, but the current regime is not rewarding it over the simpler Tier 2 upgrade
+- Compact current-regime tier snapshot:
+  - artifact: `artifacts/outputs/stalker_v10_1_current_regime_snapshot_20260329/summary.json`
+  - Tier 2, Tier 2A, Tier 2B, Tier 3, and the advanced regime-aware Tier 3 stack all converge to the same recent `60`-day readout:
+    - `R$30`, `PF 1.0157`, `DD 5.62%`
+  - interpretation: the current tape is soft enough that the full-sample ranking differences are not showing up in the latest regime, which is exactly why the Monday rollout order stays conservative
 - Mean-reversion / volume / skip-hour follow-up:
   - artifact: `artifacts/outputs/stalker_v10_1_meanrev_volume_hour_followups_20260329/summary.json`
   - RSI(14) mean-reversion prototype: `R$-11,755`, `PF 0.8236`, `DD 119.38%`
@@ -830,9 +835,10 @@ But cost sensitivity is real:
 - Next paper-trading step:
   - run the validated MT5 preset first
   - validate the plain cooldown preset in MT5 `Every tick` next:
-    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
+    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m GPT 5.4.set`
   - validate the max-hold leader only after that:
-    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m MaxHold120m GPT 5.4.set`
+    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold150m GPT 5.4.set`
+  - keep the older `30m` cooldown line only as the safer exact fallback because it already has the earlier separate walk-forward pass
   - monitor real slippage/spread conditions closely before promoting the exact refinements
 - Operational guide:
   - `docs/mt5-paper-trading-playbook-2026-03-28.md`
