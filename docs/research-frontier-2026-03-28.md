@@ -103,6 +103,9 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - best-of-breed stack test:
     - Tier 2A + skip last `3` contract days: `R$13,390`, `PF 1.5374`, `DD 3.43%`, composite `2.9118`
     - interpretation: PF improved, but the combo over-pruned and still lost to plain Tier 2A on the full risk-adjusted score
+  - opening-bias follow-up:
+    - Tier 2A aligned with the 09:00-10:00 opening-hour return sign: `R$9,260`, `PF 1.5139`, `DD 3.63%`, composite `2.1527`
+    - interpretation: aligning with the first-hour tape cleaned up PF a bit, but it cut too many trades and was nowhere near the existing Tier 2A composite
   - interpretation: the best new idea is not a new signal family; it is a light momentum agreement layer on top of the existing one. `ROC(5)` was the best tested agreement window, and the simpler Tier 2 + `ROC(5)` variant is now the cleaner post-Monday validation target.
 
 ## Near-Term Caution
