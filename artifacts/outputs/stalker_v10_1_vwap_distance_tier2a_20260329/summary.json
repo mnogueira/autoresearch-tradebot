@@ -1,0 +1,145 @@
+{
+  "ranked_variants": [
+    {
+      "name": "tier2a_reference",
+      "rule": "Tier 2A reference: session hours + 25m cooldown + ROC(5) agreement.",
+      "comparison_tier": "exact",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1598,
+        "win_rate": 0.8066,
+        "net_profit_brl": 14560.0,
+        "avg_profit_brl": 9.11,
+        "avg_win_brl": 34.35,
+        "avg_loss_brl": -96.17,
+        "profit_factor": 1.49,
+        "max_drawdown_pct": 3.3,
+        "expected_payoff": 9.11,
+        "on_tester_value": 4416.931148
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.0201,
+        "calmar_ratio": 6.0402,
+        "omega_ratio": 1.6362,
+        "annual_return_pct": 19.91,
+        "max_drawdown_frac": 0.032964
+      },
+      "sortino_weighted_composite": 3.1493,
+      "params": {
+        "management": "25m cooldown",
+        "roc_agreement_bars": 5
+      },
+      "batch_rank": 1
+    },
+    {
+      "name": "tier2a_vwap_distance_overlay",
+      "rule": "Research-only sizing overlay: scale size by absolute prior-close distance from session VWAP at the signal timestamp.",
+      "comparison_tier": "research",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1598,
+        "win_rate": 0.8066,
+        "net_profit_brl": 15959.09,
+        "avg_profit_brl": 9.99,
+        "avg_win_brl": 37.14,
+        "avg_loss_brl": -103.28,
+        "profit_factor": 1.5001,
+        "max_drawdown_pct": 4.03,
+        "expected_payoff": 9.99,
+        "on_tester_value": 3964.333524
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.8232,
+        "calmar_ratio": 5.2814,
+        "omega_ratio": 1.634,
+        "annual_return_pct": 21.26,
+        "max_drawdown_frac": 0.040257
+      },
+      "sortino_weighted_composite": 2.8228,
+      "params": {
+        "overlay": "clip(abs(prev_close - session_vwap) / median_distance, 0.5, 1.5)"
+      },
+      "overlay_stats": {
+        "median_distance_ticks": 39.2039,
+        "avg_size_multiplier": 1.0144,
+        "p25_size_multiplier": 0.7105,
+        "p75_size_multiplier": 1.3452
+      },
+      "batch_rank": 2
+    },
+    {
+      "name": "tier2a_vwap_distance_top_half",
+      "rule": "Require the signal timestamp to be at or above the median absolute distance from session VWAP among executed Tier 2A signals.",
+      "comparison_tier": "exact",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 865,
+        "win_rate": 0.8127,
+        "net_profit_brl": 9470.0,
+        "avg_profit_brl": 10.95,
+        "avg_win_brl": 39.35,
+        "avg_loss_brl": -112.28,
+        "profit_factor": 1.5206,
+        "max_drawdown_pct": 4.14,
+        "expected_payoff": 10.95,
+        "on_tester_value": 2288.934074
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.1084,
+        "calmar_ratio": 3.4837,
+        "omega_ratio": 1.6049,
+        "annual_return_pct": 14.41,
+        "max_drawdown_frac": 0.041373
+      },
+      "sortino_weighted_composite": 1.9203,
+      "params": {
+        "vwap_distance_threshold_ticks": 39.2039,
+        "threshold_quantile": 0.5
+      },
+      "batch_rank": 3
+    },
+    {
+      "name": "tier2a_vwap_distance_top_quartile",
+      "rule": "Require the signal timestamp to be at or above the 75th percentile absolute distance from session VWAP among executed Tier 2A signals.",
+      "comparison_tier": "exact",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 442,
+        "win_rate": 0.8122,
+        "net_profit_brl": 5535.0,
+        "avg_profit_brl": 12.52,
+        "avg_win_brl": 43.16,
+        "avg_loss_brl": -120.0,
+        "profit_factor": 1.5557,
+        "max_drawdown_pct": 5.83,
+        "expected_payoff": 12.52,
+        "on_tester_value": 948.764118
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 0.6074,
+        "calmar_ratio": 1.5959,
+        "omega_ratio": 1.6226,
+        "annual_return_pct": 9.31,
+        "max_drawdown_frac": 0.058339
+      },
+      "sortino_weighted_composite": 1.107,
+      "params": {
+        "vwap_distance_threshold_ticks": 52.7364,
+        "threshold_quantile": 0.75
+      },
+      "batch_rank": 4
+    }
+  ],
+  "notes": [
+    "Tier 2A is the reference line because it is the cleaner post-Monday upgrade path.",
+    "VWAP-distance sizing is research-only because it assumes fractional sizing."
+  ]
+}

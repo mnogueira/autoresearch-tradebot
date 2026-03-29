@@ -1,0 +1,112 @@
+{
+  "ranked_variants": [
+    {
+      "name": "tier2a_reference",
+      "rule": "Tier 2A reference: session hours + 25m cooldown + ROC(5) agreement.",
+      "comparison_tier": "exact",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1598,
+        "win_rate": 0.8066,
+        "net_profit_brl": 14560.0,
+        "avg_profit_brl": 9.11,
+        "avg_win_brl": 34.35,
+        "avg_loss_brl": -96.17,
+        "profit_factor": 1.49,
+        "max_drawdown_pct": 3.3,
+        "expected_payoff": 9.11,
+        "on_tester_value": 4416.931148
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.0201,
+        "calmar_ratio": 6.0402,
+        "omega_ratio": 1.6362,
+        "annual_return_pct": 19.91,
+        "max_drawdown_frac": 0.032964
+      },
+      "sortino_weighted_composite": 3.1493,
+      "params": {
+        "management": "25m cooldown",
+        "roc_agreement_bars": 5
+      },
+      "batch_rank": 1
+    },
+    {
+      "name": "tier2a_exclude_high_atr_regime",
+      "rule": "Run Tier 2A only on low and medium prior-day ATR14 regimes; exclude the top 33% ATR days.",
+      "comparison_tier": "exact",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1104,
+        "win_rate": 0.808,
+        "net_profit_brl": 9800.0,
+        "avg_profit_brl": 8.88,
+        "avg_win_brl": 31.95,
+        "avg_loss_brl": -88.18,
+        "profit_factor": 1.5242,
+        "max_drawdown_pct": 2.81,
+        "expected_payoff": 8.88,
+        "on_tester_value": 3487.076923
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.5572,
+        "calmar_ratio": 5.2671,
+        "omega_ratio": 1.6988,
+        "annual_return_pct": 14.8,
+        "max_drawdown_frac": 0.028104
+      },
+      "sortino_weighted_composite": 2.6985,
+      "params": {
+        "atr_regimes": [
+          "low",
+          "medium"
+        ],
+        "atr_percentile_window_days": 60
+      },
+      "batch_rank": 2
+    },
+    {
+      "name": "tier2a_low_atr_only",
+      "rule": "Run Tier 2A only on the bottom 33% of prior-day ATR14 regimes.",
+      "comparison_tier": "exact",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 760,
+        "win_rate": 0.8079,
+        "net_profit_brl": 6285.0,
+        "avg_profit_brl": 8.27,
+        "avg_win_brl": 30.45,
+        "avg_loss_brl": -85.0,
+        "profit_factor": 1.5064,
+        "max_drawdown_pct": 3.33,
+        "expected_payoff": 8.27,
+        "on_tester_value": 1887.443814
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 0.9958,
+        "calmar_ratio": 3.1102,
+        "omega_ratio": 1.6592,
+        "annual_return_pct": 10.36,
+        "max_drawdown_frac": 0.033299
+      },
+      "sortino_weighted_composite": 1.7628,
+      "params": {
+        "atr_regimes": [
+          "low"
+        ],
+        "atr_percentile_window_days": 60
+      },
+      "batch_rank": 3
+    }
+  ],
+  "notes": [
+    "Tier 2A is the reference line because it is the cleaner post-Monday upgrade path.",
+    "ATR regime gates use prior-day ATR14 percentile over a trailing 60-session distribution."
+  ]
+}

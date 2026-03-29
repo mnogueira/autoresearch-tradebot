@@ -210,8 +210,8 @@
   },
   {
     "name": "tier2a_reference",
-    "family": "stalker_v10_1_vwap_frontier",
-    "screening_method": "vwap_distance_followup",
+    "family": "stalker_v10_1_atr_frontier",
+    "screening_method": "atr_exclusion_followup",
     "comparison_tier": "exact",
     "mt5_ready": false,
     "test_total_trades": 1598,
@@ -221,7 +221,7 @@
     "test_max_drawdown_pct": 3.3,
     "test_win_rate": 0.8066,
     "notes": "Tier 2A reference: session hours + 25m cooldown + ROC(5) agreement.",
-    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_vwap_distance_tier2a_20260329\\summary.json",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_atr_exclusion_tier2a_20260329\\summary.json",
     "params": {
       "management": "25m cooldown",
       "roc_agreement_bars": 5
@@ -2689,8 +2689,8 @@
   },
   {
     "name": "tier2a_exclude_high_atr_regime",
-    "family": "stalker_v10_1_vwap_atr_frontier",
-    "screening_method": "vwap_atr_frontier_followup",
+    "family": "stalker_v10_1_atr_frontier",
+    "screening_method": "atr_exclusion_followup",
     "comparison_tier": "exact",
     "mt5_ready": false,
     "test_total_trades": 1104,
@@ -2700,7 +2700,7 @@
     "test_max_drawdown_pct": 2.81,
     "test_win_rate": 0.808,
     "notes": "Run Tier 2A only on low and medium prior-day ATR14 regimes; exclude the top 33% ATR days.",
-    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_vwap_atr_frontier_followups_20260329\\summary.json",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_atr_exclusion_tier2a_20260329\\summary.json",
     "params": {
       "atr_regimes": [
         "low",
@@ -4332,8 +4332,8 @@
   },
   {
     "name": "tier2a_low_atr_only",
-    "family": "stalker_v10_1_vwap_atr_frontier",
-    "screening_method": "vwap_atr_frontier_followup",
+    "family": "stalker_v10_1_atr_frontier",
+    "screening_method": "atr_exclusion_followup",
     "comparison_tier": "exact",
     "mt5_ready": false,
     "test_total_trades": 760,
@@ -4343,7 +4343,7 @@
     "test_max_drawdown_pct": 3.33,
     "test_win_rate": 0.8079,
     "notes": "Run Tier 2A only on the bottom 33% of prior-day ATR14 regimes.",
-    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_vwap_atr_frontier_followups_20260329\\summary.json",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_atr_exclusion_tier2a_20260329\\summary.json",
     "params": {
       "atr_regimes": [
         "low"
