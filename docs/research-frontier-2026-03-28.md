@@ -82,6 +82,17 @@ Corrected rerun:
   - a slightly wider stop can look better in sample, but the out-of-sample edge does not strengthen
   - `SL 0.84` remains the more trustworthy static setting for the corrected-cost survivor branch
 
+## Corrected-Cost TP Ceiling
+
+- Pushing the corrected-cost survivor from `TP 0.48` to `TP 0.54` hurt:
+  - full sample: `R$1,378`, `PF 1.0407`, `DD 13.81%`, composite `0.3459`
+  - `70/30` test: `R$624`, `PF 1.0712`, `DD 7.14%`
+  - recent `60d`: `R$7`, `PF 1.0046`
+  - recent `10d`: `R$-124`, `PF 0.7322`
+- Interpretation:
+  - the corrected-cost survivor still wants `TP 0.48`
+  - wider reward targets quickly give back too much realized edge, even if the holdout does not fully collapse
+
 ## Current Best Static Corrected-Cost Survivor
 
 - The stronger local refinement is:

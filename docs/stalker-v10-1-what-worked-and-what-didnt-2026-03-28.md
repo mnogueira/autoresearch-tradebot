@@ -54,6 +54,8 @@ Corrected rerun:
 - overly wide stops on the corrected-cost survivor:
   - `SL 1.0` looked better in sample but had a weaker holdout
   - `SL 1.2` failed the holdout outright
+- overly wide profit targets on the corrected-cost survivor:
+  - `TP 0.54` weakened the full sample and flipped the recent `10d` window negative
 
 ## What Clearly Did Not Work
 
