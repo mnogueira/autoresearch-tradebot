@@ -175,6 +175,14 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - adaptive cooldown (`30m` on trend days, `15m` on range days): `R$14,770`, `PF 1.4670`, `DD 3.75%`
   - regime switch (`session only` on range days, `session + cooldown + max-hold` on trend days): `R$15,020`, `PF 1.4482`, `DD 4.13%`
   - both improved gross net versus the current exact leader, but neither improved the balanced `PF/DD/OnTester` profile enough to replace it as the main recommendation
+- Final regime-aware refinement:
+  - artifact: `artifacts/outputs/stalker_v10_1_regime_adaptive_hour_followups_20260329/summary.json`
+  - Tier 2 on range days + Tier 3 on trend days: exact tie with Tier 3 itself at `R$14,420`, `PF 1.4784`, `DD 3.28%`, composite `3.1340`
+  - interpretation: once the cooldown moved to `25m` and the max hold moved to `150` M1 bars, the trend-day/range-day switch stopped adding anything beyond just using Tier 3 directly
+- Dynamic session-hour overlay:
+  - artifact: `artifacts/outputs/stalker_v10_1_regime_adaptive_hour_followups_20260329/summary.json`
+  - skip any hour whose prior `10`-trading-day Tier 2 PnL is negative: `R$10,795`, `PF 1.4950`, `DD 5.79%`, composite `1.8765`
+  - interpretation: this kind of adaptive hour pruning is too reactive on this tape; it improves PF slightly but gives up too much net and drawdown control
 
 ## 2025 Stability Split
 

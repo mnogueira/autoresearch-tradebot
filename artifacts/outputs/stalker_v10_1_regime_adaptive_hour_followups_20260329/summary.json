@@ -1,0 +1,117 @@
+{
+  "reference_tier2_cooldown_25m": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1615,
+      "win_rate": 0.805,
+      "net_profit_brl": 14350.0,
+      "avg_profit_brl": 8.89,
+      "avg_win_brl": 34.28,
+      "avg_loss_brl": -95.92,
+      "profit_factor": 1.4749,
+      "max_drawdown_pct": 3.3,
+      "expected_payoff": 8.89,
+      "on_tester_value": 4352.04918
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.9984,
+      "calmar_ratio": 5.9756,
+      "omega_ratio": 1.6196,
+      "annual_return_pct": 19.7,
+      "max_drawdown_frac": 0.032973
+    },
+    "sortino_weighted_composite": 3.1158
+  },
+  "reference_tier3_cooldown_25m_maxhold_150m1": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1615,
+      "win_rate": 0.805,
+      "net_profit_brl": 14420.0,
+      "avg_profit_brl": 8.93,
+      "avg_win_brl": 34.28,
+      "avg_loss_brl": -95.7,
+      "profit_factor": 1.4784,
+      "max_drawdown_pct": 3.28,
+      "expected_payoff": 8.93,
+      "on_tester_value": 4389.82623
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 2.0067,
+      "calmar_ratio": 6.0193,
+      "omega_ratio": 1.6245,
+      "annual_return_pct": 19.77,
+      "max_drawdown_frac": 0.032849
+    },
+    "sortino_weighted_composite": 3.134
+  },
+  "regime_switch_tier2_range_tier3_trend": {
+    "rule": "Use Tier 2 on prior-day ADX <= 25 days and Tier 3 on prior-day ADX > 25 days.",
+    "trend_day_count": 393,
+    "range_day_count": 854,
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1615,
+      "win_rate": 0.805,
+      "net_profit_brl": 14420.0,
+      "avg_profit_brl": 8.93,
+      "avg_win_brl": 34.28,
+      "avg_loss_brl": -95.7,
+      "profit_factor": 1.4784,
+      "max_drawdown_pct": 3.28,
+      "expected_payoff": 8.93,
+      "on_tester_value": 4389.82623
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 2.0067,
+      "calmar_ratio": 6.0193,
+      "omega_ratio": 1.6245,
+      "annual_return_pct": 19.77,
+      "max_drawdown_frac": 0.032849
+    },
+    "sortino_weighted_composite": 3.134
+  },
+  "dynamic_session_hours_from_trailing_10d_hour_pnl": {
+    "rule": "Start from hours 10/11/12/14, then skip any hour whose prior 10-trading-day Tier 2 PnL is negative.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1152,
+      "win_rate": 0.8056,
+      "net_profit_brl": 10795.0,
+      "avg_profit_brl": 9.37,
+      "avg_win_brl": 35.13,
+      "avg_loss_brl": -97.37,
+      "profit_factor": 1.495,
+      "max_drawdown_pct": 5.79,
+      "expected_payoff": 9.37,
+      "on_tester_value": 1864.386458
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.4567,
+      "calmar_ratio": 2.754,
+      "omega_ratio": 1.6097,
+      "annual_return_pct": 15.95,
+      "max_drawdown_frac": 0.057901
+    },
+    "sortino_weighted_composite": 1.8765,
+    "adaptive_hour_stats": {
+      "lookback_days": 10,
+      "average_allowed_hours_per_day": 2.988,
+      "days_with_any_skip": 854,
+      "days_forced_back_to_base": 1
+    }
+  },
+  "notes": [
+    "The regime switch is exact at the day level because positions are flattened by session end, so Tier 2 and Tier 3 can be combined safely across disjoint day sets.",
+    "The adaptive hour schedule is an exact rerun under a precomputed day-by-day hour map derived from the baseline Tier 2 trade tape.",
+    "That adaptive hour overlay should be treated as a research follow-up, not as a Monday default, because its schedule is keyed off prior realized hour PnL from the baseline strategy."
+  ]
+}
