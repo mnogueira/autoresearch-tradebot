@@ -4,6 +4,7 @@ import argparse
 import datetime as dt
 import json
 import math
+import warnings
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
@@ -16,8 +17,11 @@ from ..common.paths import DEFAULT_EXTERNAL_WDO_BAR_DIR, DATA_DIR, artifact_outp
 from ..common.wdo_data import exported_m1_history_csv
 
 TICK_SIZE = 0.5
+# The MT5-exported `Spread` column in this repo is in 0.001 price units.
+# Example: `500` means `0.500` BRL, which is exactly one WDO tick.
+SPREAD_POINT_SIZE = 0.001
 POINT_VALUE_BRL = 10.0
-ROUND_TRIP_COST_BRL = 0.0
+ROUND_TRIP_COST_BRL = 11.0
 BIG_NUMBER = 9_999_999.0
 CONTINUOUS_SERIES_SYMBOL = "WDO$N"
 DEFAULT_OUTPUT_DIR = artifact_output_dir("stalker_v10_python")
@@ -124,6 +128,34 @@ def load_m1_data(path_override: Path | None = None) -> pd.DataFrame:
     frame.attrs["source_path"] = str(path)
     optional = [column for column in ("Spread", "RealVolume") if column in frame.columns]
     return frame[required + optional].copy()
+
+
+def spread_points_to_ticks(spread_points: np.ndarray, tick_size: float) -> np.ndarray:
+    raw = np.asarray(spread_points, dtype=float)
+    finite = raw[np.isfinite(raw)]
+    if finite.size > 0:
+        zero_count = int(np.count_nonzero(finite == 0.0))
+        if zero_count > 0:
+            warnings.warn(
+                (
+                    f"Spread column contains {zero_count} zero-spread bars. "
+                    "Treat this as historical-data compression, not live executable spread."
+                ),
+                RuntimeWarning,
+                stacklevel=2,
+            )
+        nonzero = finite[finite != 0.0]
+        if nonzero.size > 0 and np.nanmax(nonzero) >= 100.0:
+            if not np.all(np.isclose(np.mod(nonzero, 500.0), 0.0)):
+                warnings.warn(
+                    (
+                        "Spread column contains large nonzero values that are not multiples of 500. "
+                        "Verify whether SPREAD_POINT_SIZE should still be 0.001 for this dataset."
+                    ),
+                    RuntimeWarning,
+                    stacklevel=2,
+                )
+    return np.rint((raw * SPREAD_POINT_SIZE) / float(tick_size)).astype(np.int16)
 
 
 def date_only(value: pd.Timestamp) -> pd.Timestamp:

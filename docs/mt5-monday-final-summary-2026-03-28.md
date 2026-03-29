@@ -1,71 +1,41 @@
 # MT5 Monday Final Summary - 2026-03-28
 
-## Bottom Line
+## Final Answer
 
-- Monday default remains Tier 1: the validated MT5 `Every Tick` base preset.
-- Best new exact cooldown-sweep refinement is Tier 2: session winner + `25m` cooldown only.
-- Best stronger post-Tier-2 research validation target is now Tier 2A: session winner + `28m` cooldown + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`.
-- The older `30m` cooldown line remains the safer fallback because it already has the exact `70/30` walk-forward pass.
-- Tier 3 is now the stronger aggressive branch: session winner + `25m` cooldown + `150m` max-hold + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`.
-- That Tier 3 line is the strongest exact research score overall, but it still comes after Tier 2A operationally because Tier 2A is the cleaner first upgrade.
+- Monday stays on Tier 1:
+  - the validated MT5 base preset
+- The old Python upgrade ladder is superseded.
+- After the corrected rerun, Tier 2 / Tier 2A / Tier 3 are no longer trustworthy promotion candidates on their old numbers.
 
-## What We Learned
+## Why
 
-- The current deployable signal family is probably near its ceiling on this data.
-- No live-ready exact variant beat the current exact leader by a meaningful margin on the Sortino-weighted composite.
-- The only higher composite scores came from research-only overlays:
-  - ATR-regime sizing on strengthened Tier 2A
-  - direction-specific ATR-regime sizing on the advanced weekday-aware directional branch
-  - confidence-weighted sizing
-  - confidence-weighted sizing + time-widened stop
-  - weighted advanced research-only sleeve blends
-- The strongest raw research-only ceiling is now:
-  - `0.70x` size on top-ATR days for short trades only on the advanced directional branch
-  - `R$15,618`, `PF 1.5304`, `DD 2.65%`, composite `3.7481`
+The corrected rerun fixed four material issues:
 
-## Current Ranking
+1. flat round-trip cost was missing
+2. ROC agreement had lookahead
+3. ATR sizing used current-bar ATR instead of open-bar ATR
+4. cooldown state did not reset cleanly at session boundaries
 
-| Tier | Variant | Why |
-| --- | --- | --- |
-| Tier 1 | MT5 validated base preset | Safest Monday choice because it is already validated in MT5 `Every Tick`. |
-| Tier 2 | Session winner + `25m` cooldown | Best deployable exact composite in the cooldown sweep. |
-| Tier 2A | Session winner + `28m` cooldown + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2` | Strongest simpler exact post-Monday upgrade and best out-of-sample post-Monday line. |
-| Tier 3 | Session winner + `25m` cooldown + `150m` max-hold + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2` | Strongest aggressive exact research line, but still a later rollout step than Tier 2A. |
-| Tier 4 | Research-only advanced sleeves and sizing overlays | Highest raw ceiling now comes from trimming top-ATR days on the short sleeve of the advanced directional branch, but it is still not Monday-deployable as a static preset. |
+Corrected rerun artifact:
+- [summary.json](/c:/Dev/autoresearch-tradebot/artifacts/outputs/stalker_v10_1_corrected_production_rerun_20260329/summary.json)
 
-## Recent Tape
+Best corrected Python line:
+- Tier 2A
+- `R$-2,951`, `PF 0.9147`, `DD 46.08%`
 
-- Last `30` trading days were soft:
-  - `R$40`, `PF 1.0357`, `DD 4.67%`
-- Last `10` trading days recovered sharply:
-  - `R$455`, `PF 4.25`, `DD 0.81%`
-- Last `5` trading days were also solid:
-  - `R$110`, `PF 1.7857`, `DD 0.84%`
-- Interpretation:
-  - the edge did soften in the recent range-bound tape
-  - but the latest `10` days and latest `5` days do not look broken
-  - Monday should still be treated as cautious paper validation, not scale-up
+That is still negative.
 
-## Main Risks
+## Operational Message
 
-- Transaction-cost sensitivity remains the number-one risk.
-- Exact spread break-even for the main deployable tiers is `2` ticks. Do not trade when spread is above `2` ticks.
-- Range-bound, low-ADX tape remains the main underperformance regime.
-- The last `3` contract days before rollover are structurally weaker.
-- A true fixed `5`-tick spread tape is fatal to the edge.
-- MT5 tester stability is still imperfect, so live paper monitoring matters more than backtest polish now.
+- Tier 1 validated MT5 base is the only Monday-ready paper-trading configuration.
+- Tier 2 / Tier 2A / Tier 3 move back to research-only status until revalidated.
+- Spread guardrail remains critical:
+  - do not trade above `2` ticks
 
-## What Not To Chase On Monday
+## Honest Conclusion
 
-- Do not switch to the research-only confidence overlays yet.
-- Do not hard-skip Tuesday/Friday by default.
-- Do not promote ATR trailing, dynamic `TP 1.0 ATR`, ML gates, or ML overlays.
-
-## Best Next Upgrade Path
-
-1. Run Tier 1 for the first paper week.
-2. If the first `5` paper sessions are clean, move to Tier 2.
-3. If Tier 2 behaves cleanly, validate Tier 2A next.
-4. Only after that, test Tier 3.
-5. Keep Tier 4 as a research-only blend, not a live preset.
-6. Keep the ADX gate and rollover caution as operator context, not default hard filters.
+- The strategy may not have enough static edge in Python exact form to cover conservative retail WDO costs.
+- Any remaining viable upside is more likely to come from:
+  - materially fewer trades
+  - wider take-profit structures
+  - or a genuinely different signal family

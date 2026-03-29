@@ -386,7 +386,7 @@ def run_backtest_with_management(
         params.FilterAsPercOfContractMARange,
         params.NumDaysToConsiderPreviousContractMARange,
     )
-    atr_open = dataset.get_atr_current(params.ATR_Length)
+    atr_open = dataset.get_atr_open(params.ATR_Length)
 
     timestamps = pd.DatetimeIndex(cache["timestamps"][start:stop])
     session_dates = cache["session_dates"][start:stop]
@@ -751,6 +751,7 @@ def run_backtest_with_management(
                 append_trade(current_date, timestamp, exit_tick, "forced_day_change")
                 reset_position_state()
             current_date = session_date
+            next_entry_allowed_time = None
             iso_week = pd.Timestamp(session_date).isocalendar()
             week_key = (int(iso_week.year), int(iso_week.week))
             if current_week_key != week_key:

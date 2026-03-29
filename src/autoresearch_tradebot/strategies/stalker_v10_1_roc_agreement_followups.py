@@ -88,7 +88,9 @@ def _make_roc_filter(dataset: V10Dataset, window_bars: int) -> Callable[[dict[st
     bars = dataset.bars_m1
     session_key = bars["session_date"]
     close_values = bars["Close"]
-    roc_values = close_values.groupby(session_key).transform(lambda series: series.pct_change(int(window_bars)))
+    roc_values = close_values.groupby(session_key).transform(
+        lambda series: series.pct_change(int(window_bars)).shift(1)
+    )
     roc_array = roc_values.to_numpy(dtype=float)
 
     def _allow(context: dict[str, Any]) -> bool:
@@ -111,7 +113,7 @@ def _daily_atr_tp_scale(
 ) -> np.ndarray:
     bars = dataset.bars_m1
     session_dates = pd.to_datetime(bars["session_date"]).dt.normalize()
-    atr_series = pd.Series(dataset.get_atr_current(int(atr_length)), index=bars.index, dtype=float)
+    atr_series = pd.Series(dataset.get_atr_open(int(atr_length)), index=bars.index, dtype=float)
     daily_atr = atr_series.groupby(session_dates).first().astype(float)
     daily_reference = daily_atr.shift(1).rolling(int(lookback_sessions), min_periods=5).mean()
     daily_scale = (daily_atr / daily_reference).replace([np.inf, -np.inf], np.nan).clip(float(min_scale), float(max_scale))

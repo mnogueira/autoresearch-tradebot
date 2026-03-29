@@ -155,7 +155,7 @@ def _daily_atr_tp_scale(
 ) -> tuple[np.ndarray, dict[str, float]]:
     bars = dataset.bars_m1
     session_dates = pd.to_datetime(bars["session_date"]).dt.normalize()
-    atr_series = pd.Series(dataset.get_atr_current(int(atr_length)), index=bars.index, dtype=float)
+    atr_series = pd.Series(dataset.get_atr_open(int(atr_length)), index=bars.index, dtype=float)
     daily_atr = atr_series.groupby(session_dates).first().astype(float)
     daily_reference = daily_atr.shift(1).rolling(int(lookback_sessions), min_periods=5).mean()
     daily_scale = (daily_atr / daily_reference).replace([np.inf, -np.inf], np.nan).clip(float(min_scale), float(max_scale))

@@ -201,7 +201,7 @@ def run_backtest_with_breakeven(
         params.FilterAsPercOfContractMARange,
         params.NumDaysToConsiderPreviousContractMARange,
     )
-    atr_open = dataset.get_atr_current(params.ATR_Length)
+    atr_open = dataset.get_atr_open(params.ATR_Length)
 
     timestamps = pd.DatetimeIndex(cache["timestamps"][start:stop])
     session_dates = cache["session_dates"][start:stop]

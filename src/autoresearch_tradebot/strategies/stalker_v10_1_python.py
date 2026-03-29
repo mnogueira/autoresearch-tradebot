@@ -22,11 +22,13 @@ from .stalker_v10_python import (
     CONTINUOUS_SERIES_SYMBOL,
     POINT_VALUE_BRL,
     ROUND_TRIP_COST_BRL,
+    SPREAD_POINT_SIZE,
     TradeRecord,
     V10Dataset,
     calculate_metrics,
     locate_data_file,
     round_to_tick,
+    spread_points_to_ticks,
     split_dates,
 )
 
@@ -35,7 +37,6 @@ TIME_SLOT_STEP_MINUTES = 5
 ENTRY_WINDOW_START_MINUTES = 9 * 60
 ENTRY_WINDOW_END_MINUTES = 15 * 60
 PRICE_TICK_SIZE = 0.5
-SPREAD_POINT_SIZE = 0.001
 
 
 @dataclass(frozen=True)
@@ -191,7 +192,7 @@ def _ensure_every_tick_cache(dataset: V10Dataset) -> dict[str, np.ndarray]:
         "low_ticks": np.rint(bars["Low"].to_numpy(dtype=float) / PRICE_TICK_SIZE).astype(np.int32),
         "close_ticks": np.rint(bars["Close"].to_numpy(dtype=float) / PRICE_TICK_SIZE).astype(np.int32),
         "volume": bars["Volume"].to_numpy(dtype=np.int32),
-        "spread_ticks": np.rint((spread_points * SPREAD_POINT_SIZE) / PRICE_TICK_SIZE).astype(np.int16),
+        "spread_ticks": spread_points_to_ticks(spread_points, PRICE_TICK_SIZE),
         "day_high_current_ticks": np.rint(
             bars["day_high_current"].to_numpy(dtype=float) / PRICE_TICK_SIZE
         ).astype(np.int32),
@@ -387,7 +388,7 @@ def run_backtest(
         params.FilterAsPercOfContractMARange,
         params.NumDaysToConsiderPreviousContractMARange,
     )
-    atr_open = dataset.get_atr_current(params.ATR_Length)
+    atr_open = dataset.get_atr_open(params.ATR_Length)
 
     timestamps = pd.DatetimeIndex(cache["timestamps"][start:stop])
     session_dates = cache["session_dates"][start:stop]
