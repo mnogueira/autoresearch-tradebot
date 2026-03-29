@@ -73,6 +73,22 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - confidence-weighted sizing overlay on Tier 3: `R$18,231.63`, `PF 1.4765`, `DD 3.93%`, composite `3.0623`
     - confidence-weighted sizing + time-widened stop: `R$18,381.52`, `PF 1.4787`, `DD 4.78%`, composite `2.7203`
   - interpretation: the deployable frontier still prefers the original trend-efficiency signal family; the remaining upside continues to come from research-only sizing overlays, not a cleaner replacement signal
+- ROC agreement / tighter adaptive TP follow-up:
+  - artifact: `artifacts/outputs/stalker_v10_1_roc_agreement_followups_20260329/summary.json`
+  - adding `ROC(5)` as an agreement filter on top of the existing trend-efficiency signal did produce a real exact improvement:
+    - Tier 3 + `ROC(5)` agreement: `R$14,630`, `PF 1.4935`, `DD 3.28%`, composite `3.1676`
+    - Tier 2 + `ROC(5)` agreement: `R$14,560`, `PF 1.4900`, `DD 3.30%`, composite `3.1493`
+  - exact `70/30` walk-forward on the Tier 3 + `ROC(5)` agreement line still passed:
+    - train `R$11,190`, `PF 1.5272`, `DD 3.28%`, composite `3.6242`
+    - test `R$3,440`, `PF 1.4086`, `DD 4.21%`, composite `2.7331`
+  - recent-regime reality check was still soft:
+    - last `60` trading days: `R$30`, `PF 1.0157`, `DD 5.62%`
+  - tighter ATR-scaled TP clips still did not help:
+    - `0.90x` to `1.20x`: `R$13,985`, `PF 1.4488`, `DD 3.45%`, composite `2.9315`
+    - `0.85x` to `1.30x`: `R$13,235`, `PF 1.4192`, `DD 3.57%`, composite `2.7479`
+  - combining `ROC(5)` agreement with the tighter adaptive TP also stayed worse than the plain `ROC(5)` agreement:
+    - `R$13,845`, `PF 1.4477`, `DD 3.45%`, composite `2.9088`
+  - interpretation: the best new idea is not a new signal family; it is a light momentum agreement layer on top of the existing one. That is now the strongest exact research line, but it is not yet a Monday promotion because the MQ5 side still lacks ROC-agreement support.
 
 ## Near-Term Caution
 

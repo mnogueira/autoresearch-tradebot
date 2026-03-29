@@ -8,6 +8,7 @@
   - Tier 1, the validated MT5 `Every Tick` base preset
 - First upgrade after clean paper behavior:
   - Tier 2, session winner + `25m` cooldown only
+  - keep this as the upgrade even though the new `ROC(5)` agreement line scored better in Python, because Tier 2 is still the simpler path and the ROC-enhanced preset has not yet had host-side MT5 validation
 
 ## Best Metrics
 
@@ -17,6 +18,9 @@
   - `R$14,350`, `PF 1.4749`, `DD 3.30%`, composite `3.1158`
 - Tier 3 exact refinement:
   - `R$14,420`, `PF 1.4784`, `DD 3.28%`, composite `3.1340`
+- Best exact research line, now packaged for MT5 follow-up validation:
+  - Tier 3 + `ROC(5)` agreement
+  - `R$14,630`, `PF 1.4935`, `DD 3.28%`, composite `3.1676`
 
 ## Key Risks
 
@@ -108,6 +112,16 @@
   - `ROC(5)` was the closest simpler signal, but still worse than the current Tier 3 on the composite
   - `ROC(10)` and `ROC(20)` were weaker still
   - interpretation: the current trend-efficiency signal remains the better production signal family
+- ROC agreement follow-up:
+  - keeping trend-efficiency and adding `ROC(5)` directional agreement on top of Tier 3 was the first exact post-Tier-3 improvement
+  - exact result:
+    - `R$14,630`, `PF 1.4935`, `DD 3.28%`, composite `3.1676`
+  - exact `70/30` walk-forward still passed:
+    - train `R$11,190`, `PF 1.5272`, `DD 3.28%`
+    - test `R$3,440`, `PF 1.4086`, `DD 4.21%`
+  - but the last `60` trading days were still soft:
+    - `R$30`, `PF 1.0157`, `DD 5.62%`
+  - interpretation: this is the new best exact research candidate, but not the new Monday preset because it still needs host-side MT5 validation
 - ATR-adaptive target scaling:
   - exact daily-ATR-scaled TP on Tier 3 was worse than the fixed `0.30 ATR` target
   - interpretation: the target already seems tuned tightly enough for this tape

@@ -66,6 +66,22 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
     - train `R$11,245`, `PF 1.5236`, `DD 3.28%`
     - test `R$3,175`, `PF 1.3662`, `DD 4.29%`
 
+### New best exact research line now packaged for MT5 follow-up
+
+- This is the strongest exact Python result so far, and it is now packaged in the EA/preset flow, but it is still not the Monday preset because it has not yet had host-side MT5 validation:
+  - session winner + `25m` cooldown + `150` M1 max hold + `ROC(5)` directional agreement
+- Preset:
+  - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold150m ROC5 Agreement GPT 5.4.set`
+- Exact result:
+  - `R$14,630`, `PF 1.4935`, `DD 3.28%`, composite `3.1676`
+- Exact `70/30` walk-forward:
+  - train `R$11,190`, `PF 1.5272`, `DD 3.28%`
+  - test `R$3,440`, `PF 1.4086`, `DD 4.21%`
+- Recent `60`-trading-day check:
+  - `R$30`, `PF 1.0157`, `DD 5.62%`
+- Operational note:
+  - if the desk wants to pursue one more post-Monday improvement path, this ROC(5)-agreement preset is now the clearest host-side MT5 validation candidate
+
 ### Maximum-quality preset
 
 - Use this if the desk prefers cleaner tape over raw net profit:

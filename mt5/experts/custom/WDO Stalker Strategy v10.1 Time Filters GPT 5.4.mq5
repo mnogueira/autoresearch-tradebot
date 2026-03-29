@@ -86,6 +86,8 @@ input int TrendEfficiencyWindowMinutes = 15;                  // Trend efficienc
 input bool ApplyTrendEfficiencyFilterToLongs = false;         // Apply directional trend efficiency filter to longs
 input bool ApplyTrendEfficiencyFilterToShorts = false;        // Apply directional trend efficiency filter to shorts
 input double MinDirectionalTrendEfficiency15m = 0.0;          // Minimum directional trend efficiency
+input bool UseROCAgreementFilter = false;                     // Require ROC sign to agree with entry direction
+input int ROCAgreementBars = 5;                               // Directional ROC lookback in M1 bars
 input int VolumeWindowMinutes = 15;                           // Rolling signal-volume lookback in minutes
 input bool ApplyVolumeFilterToLongs = false;                  // Apply signal-volume filter to longs
 input bool ApplyVolumeFilterToShorts = false;                 // Apply signal-volume filter to shorts
@@ -286,9 +288,11 @@ void OnTick()
    const double currentDayLow = DayLow[0];
    const double currentDayRange = currentDayHigh - currentDayLow;
    double trendEfficiencyRaw = 0.0;
+   double rocAgreementRaw = 0.0;
    double signalVolumeSum = 0.0;
    double relativeVolumeAtTime = 0.0;
    const bool hasTrendEfficiencyRaw = TryGetDirectionalTrendEfficiencyRaw(TrendEfficiencyWindowMinutes, trendEfficiencyRaw);
+   const bool hasRocAgreementRaw = TryGetDirectionalROCRaw(ROCAgreementBars, rocAgreementRaw);
    const bool hasSignalVolumeSum = TryGetSignalVolumeSum(VolumeWindowMinutes, signalVolumeSum);
    const bool hasRelativeVolumeAtTime = TryGetRelativeVolumeAtTime(
       VolumeWindowMinutes,
@@ -311,6 +315,7 @@ void OnTick()
          const double takeProfit = Round2Ticksize(basePrice + (atrValue * TP_ATRMultiplier));
 
          if(PassesDirectionalTrendEfficiency(1, hasTrendEfficiencyRaw, trendEfficiencyRaw)
+         && PassesDirectionalROCAgreement(1, hasRocAgreementRaw, rocAgreementRaw)
          && PassesSignalVolume(1, hasSignalVolumeSum, signalVolumeSum)
          && PassesRelativeVolume(1, hasRelativeVolumeAtTime, relativeVolumeAtTime))
          {
@@ -331,6 +336,7 @@ void OnTick()
 
          if(IsDirectionAllowed(-1, TimeCurrentBrazil)
          && PassesDirectionalTrendEfficiency(-1, hasTrendEfficiencyRaw, trendEfficiencyRaw)
+         && PassesDirectionalROCAgreement(-1, hasRocAgreementRaw, rocAgreementRaw)
          && PassesSignalVolume(-1, hasSignalVolumeSum, signalVolumeSum)
          && PassesRelativeVolume(-1, hasRelativeVolumeAtTime, relativeVolumeAtTime))
          {
@@ -421,6 +427,18 @@ bool PassesDirectionalTrendEfficiency(const int direction, const bool hasValue, 
 
    const double directionalValue = (direction == 1) ? rawValue : -rawValue;
    return(directionalValue >= MinDirectionalTrendEfficiency15m);
+}
+
+bool PassesDirectionalROCAgreement(const int direction, const bool hasValue, const double rawValue)
+{
+   if(!UseROCAgreementFilter)
+      return(true);
+
+   if(!hasValue || !MathIsValidNumber(rawValue))
+      return(false);
+
+   const double directionalValue = (direction == 1) ? rawValue : -rawValue;
+   return(directionalValue > 0.0);
 }
 
 bool PassesSignalVolume(const int direction, const bool hasValue, const double rawValue)
@@ -529,6 +547,31 @@ bool TryGetDirectionalTrendEfficiencyRaw(const int windowMinutes, double &rawVal
       return(false);
 
    rawValue = (previousClose - closeNBarsAgo) / realizedAbs;
+   return(MathIsValidNumber(rawValue));
+}
+
+bool TryGetDirectionalROCRaw(const int barsLookback, double &rawValue)
+{
+   rawValue = 0.0;
+   if(barsLookback <= 0)
+      return(false);
+
+   const datetime currentBarTime = iTime(ContinuousSeriesSymbol, PERIOD_M1, 0);
+   if(currentBarTime <= 0)
+      return(false);
+
+   const datetime sessionDate = DateOnly(currentBarTime);
+   const int lookbackShift = barsLookback + 1;
+   const datetime lookbackBarTime = iTime(ContinuousSeriesSymbol, PERIOD_M1, lookbackShift);
+   if(lookbackBarTime <= 0 || DateOnly(lookbackBarTime) != sessionDate)
+      return(false);
+
+   const double previousClose = iClose(ContinuousSeriesSymbol, PERIOD_M1, 1);
+   const double closeNBarsAgo = iClose(ContinuousSeriesSymbol, PERIOD_M1, lookbackShift);
+   if(!MathIsValidNumber(previousClose) || !MathIsValidNumber(closeNBarsAgo) || closeNBarsAgo <= 0.0)
+      return(false);
+
+   rawValue = (previousClose - closeNBarsAgo) / closeNBarsAgo;
    return(MathIsValidNumber(rawValue));
 }
 
