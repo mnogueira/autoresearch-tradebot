@@ -59,6 +59,10 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - a practical portfolio sleeve between the Tier 1 exact analog and strengthened Tier 2A also fell short:
     - `R$16,392.50`, `PF 1.4572`, `DD 3.91%`, composite `3.0592`
     - interpretation: adding the validated base sleeve dilutes the stronger local-geometry edge more than it helps, so the clean post-Monday path is still just Tier 2 -> Tier 2A
+  - RSI directional confirmation did not add anything on top of the strengthened Tier 2A line:
+    - best case was just `RSI(14) >= 50` / `<= 50`, which was effectively an exact tie with the reference at composite `3.3121`
+    - tighter thresholds (`55`, `60`) were worse on both RSI windows
+    - interpretation: ROC agreement looks genuinely informative here; generic oscillator agreement does not
   - a contract-cycle-aware switch improved the research frontier again:
     - use strengthened Tier 2A on the last `1` contract day and strengthened Tier 3 on all other days
     - `R$16,080`, `PF 1.5081`, `DD 3.19%`, composite `3.3578`
