@@ -95,7 +95,9 @@
   - equal-weight blend of the strengthened Tier 2A and strengthened Tier 3 local-geometry branches
   - this slightly beats the best single exact research line on full-sample composite, but it is still not a live preset because it assumes running two sleeves side by side
 - strongest exact research-only branch after Tier 3:
-  - strengthened Tier 2A on the last `1` contract day and strengthened Tier 3 on all other days
+  - strengthened Tier 2A on the last `1` contract day and the directional hybrid otherwise
+  - `R$16,185`, `PF 1.5163`, `DD 3.18%`, composite `3.3704`
+  - `70/30` test stayed positive and the recent `60`-day readout improved to `R$480`, `PF 1.2783`, `DD 3.23%`
   - keep this as a next-week engineering candidate, not a Monday promotion
 - Best next ROC validation after the plain Tier 2 line:
   - Tier 2 + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`, refined to `28m` cooldown
