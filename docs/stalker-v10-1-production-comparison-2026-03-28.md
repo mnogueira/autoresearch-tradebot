@@ -18,6 +18,7 @@ Source:
 | Variant | Full Net | PF | DD | 70/30 Test Net | Test PF | Test DD | Recent 60d Net | Recent 60d PF | Status |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
 | MT5 validated Tier 1 base | `R$14,330` | `1.36` | `3.94%` | n/a | n/a | n/a | n/a | n/a | Monday default |
+| Tier 2A corrected `TP 0.48` + `60m` cooldown + Friday off + skip last `1` contract day + `150m` max-hold, no ROC | `R$2,114` | `1.0692` | `10.64%` | `R$1,007` | `1.1305` | `7.23%` | `R$331` | `1.2873` | best corrected-cost holdout branch, research only |
 | Tier 2A corrected `TP 0.48` + `60m` cooldown + Friday off + skip last `1` contract day + `150m` max-hold | `R$2,553` | `1.0858` | `9.65%` | `R$879` | `1.1142` | `8.77%` | `R$312` | `1.2708` | best corrected-cost local peak, research only |
 | Tier 2A corrected `TP 0.48` + `60m` cooldown + Friday off + skip last `1` contract day | `R$2,543` | `1.0853` | `9.60%` | `R$879` | `1.1142` | `8.77%` | `R$312` | `1.2708` | best corrected-cost static survivor, research only |
 | Tier 2A corrected `TP 0.48` + `60m` cooldown + Friday off + `150m` max-hold | `R$2,153` | `1.0679` | `11.68%` | `R$623` | `1.0754` | `9.53%` | `R$312` | `1.2708` | best corrected-cost local refinement, research only |

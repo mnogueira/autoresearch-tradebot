@@ -93,6 +93,18 @@ Corrected rerun:
   - the corrected-cost survivor still wants `TP 0.48`
   - wider reward targets quickly give back too much realized edge, even if the holdout does not fully collapse
 
+## Corrected-Cost ROC Simplification Check
+
+- Removing `ROC(5)` from the corrected-cost local peak lowered the full sample but improved the holdout and recent windows:
+  - full sample: `R$2,114`, `PF 1.0692`, `DD 10.64%`, composite `0.4499`
+  - `70/30` test: `R$1,007`, `PF 1.1305`, `DD 7.23%`, composite `0.7206`
+  - recent `60d`: `R$331`, `PF 1.2873`
+  - recent `30d`: `R$368`, `PF 1.6815`
+- Interpretation:
+  - `ROC(5)` still helps the full-sample corrected-cost frontier
+  - but the simplified no-ROC branch may be the more robust corrected-cost candidate
+  - that makes the corrected-cost story more nuanced than the pre-correction frontier, where ROC was clearly unique
+
 ## Current Best Static Corrected-Cost Survivor
 
 - The stronger local refinement is:

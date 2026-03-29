@@ -16,6 +16,7 @@ Corrected rerun:
   - `>2` ticks remains a no-trade condition
 - `ROC(5)` as a research signal:
   - still the uniquely useful lightweight agreement family in the old frontier
+  - but after the cost correction, the best holdout survivor no longer clearly requires it
 - Research-only sizing overlays:
   - still the strongest remaining upside
   - especially ATR-based de-risking on hot-volatility days
@@ -29,6 +30,9 @@ Corrected rerun:
     - skip last `1` contract day
     - `150m` max-hold
     - `R$2,553`, `PF 1.0858`, `DD 9.65%`
+  - the best holdout refinement is now the simpler no-ROC branch:
+    - `R$2,114`, `PF 1.0692`, `DD 10.64%`
+    - `70/30` test `R$1,007`, `PF 1.1305`, `DD 7.23%`
   - it also stayed positive on the holdout:
     - `70/30` test `R$879`, `PF 1.1142`, `DD 8.77%`
   - and on the recent windows:
@@ -84,5 +88,8 @@ Corrected rerun:
   - wider reward structures
   - or truly different signal families
 - Current best cost-aware lead:
-  - `TP 0.48` + `60m` cooldown + Friday off + skip last `1` contract day + `150m` max-hold on Tier 2A geometry
+  - strongest full-sample branch:
+    - `TP 0.48` + `60m` cooldown + Friday off + skip last `1` contract day + `150m` max-hold on Tier 2A geometry
+  - strongest holdout branch:
+    - same branch, but without ROC agreement
   - promising, but not robust enough yet to promote
