@@ -67,6 +67,13 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - `macd_line_sign`: `R$15,940`, `PF 1.5135`, `DD 3.23%`, composite `3.3076`
     - `macd_hist_sign`: `R$15,010`, `PF 1.5018`, `DD 3.13%`, composite `3.2223`
     - interpretation: this reinforces the same ceiling read as RSI; ROC adds real signal agreement value here, but generic oscillator or MACD confirmation does not
+  - stochastic directional confirmation was the first other agreement family to beat the strengthened Tier 2A line in-sample, but it still failed the robustness bar:
+    - best case `stoch_d_centerline`: `R$16,210`, `PF 1.5274`, `DD 2.98%`, composite `3.5140`
+    - `70/30` test weakened versus the strengthened Tier 2A reference:
+      - candidate test `R$3,805`, `PF 1.4341`, `DD 2.82%`, composite `3.7353`
+      - reference test `R$3,935`, `PF 1.4489`, `DD 2.80%`, composite `3.9009`
+    - recent `60/30/10` day windows were identical to the reference, so it did not create a cleaner current-regime edge
+    - interpretation: stochastic D centerline looks like a real in-sample improvement, but not a robust enough one to dislodge the existing ROC-based Tier 2A promotion
   - a contract-cycle-aware switch improved the research frontier again:
     - use strengthened Tier 2A on the last `1` contract day and strengthened Tier 3 on all other days
     - `R$16,080`, `PF 1.5081`, `DD 3.19%`, composite `3.3578`

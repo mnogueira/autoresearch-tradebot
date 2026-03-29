@@ -10062,8 +10062,8 @@
   },
   {
     "name": "tier2a_stoch_d_centerline",
-    "family": "stalker_v10_1_stochastic_agreement_followup",
-    "screening_method": "stochastic_agreement_followup",
+    "family": "stalker_v10_1_stochastic_ceiling_followup",
+    "screening_method": "stochastic_ceiling_followup",
     "comparison_tier": "research_exact",
     "mt5_ready": false,
     "test_total_trades": 1567,
@@ -10073,7 +10073,7 @@
     "test_max_drawdown_pct": 2.98,
     "test_win_rate": 0.8111,
     "notes": "Strengthened Tier 2A with stoch_d_centerline directional confirmation.",
-    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_stochastic_agreement_followups_20260329\\summary.json",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_stochastic_ceiling_followups_20260329\\summary.json",
     "params": {
       "stochastic_variant": "stoch_d_centerline",
       "stochastic_window": 14,
