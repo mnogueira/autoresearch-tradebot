@@ -86,6 +86,11 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - a simpler asymmetric low/high ATR test also failed to beat it:
       - `1.25x` on low-ATR days and `0.50x` on high-ATR days: `R$15,940`, `PF 1.5560`, `DD 3.26%`, composite `3.3666`
     - interpretation: the remaining sizing edge is mostly about trimming the highest-volatility days, not boosting low-volatility ones
+    - weekday-aware sizing was another strong near-miss on that same advanced branch:
+      - `0.75x` size on Thursdays and Fridays: `R$14,903.75`, `PF 1.5496`, `DD 2.72%`, composite `3.6625`
+      - `70/30` test: `R$3,422.50`, `PF 1.4371`, `DD 2.85%`, composite `3.5278`
+      - recent `60` trading days: `R$487.50`, `PF 1.3377`, `DD 2.43%`, composite `3.8066`
+    - interpretation: de-risking the softer weekday tape is directionally helpful, but the ATR trim still beats it on the full-sample ceiling score
   - a practical portfolio sleeve between the Tier 1 exact analog and strengthened Tier 2A also fell short:
     - `R$16,392.50`, `PF 1.4572`, `DD 3.91%`, composite `3.0592`
     - interpretation: adding the validated base sleeve dilutes the stronger local-geometry edge more than it helps, so the clean post-Monday path is still just Tier 2 -> Tier 2A
