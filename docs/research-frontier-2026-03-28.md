@@ -115,6 +115,14 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - `45m`: `R$13,405`, `PF 1.5009`, `DD 3.46%`, composite `2.8604`
     - `60m`: `R$11,930`, `PF 1.4759`, `DD 3.49%`, composite `2.5844`
   - interpretation: the strategy ceiling still looks driven by spread control and signal quality, not by slower entry pacing or delayed confirmation
+- Seasonality follow-up:
+  - artifact: `artifacts/outputs/stalker_v10_1_seasonality_followups_20260328/summary.json`
+  - pooled quarter read on Tier 2:
+    - `Q1`: `R$4,040`, `PF 1.6418`, `DD 4.26%`, composite `4.4541`
+    - `Q2`: `R$4,495`, `PF 1.6538`, `DD 2.68%`, composite `7.2037`
+    - `Q3`: `R$3,200`, `PF 1.3958`, `DD 3.32%`, composite `4.1836`
+    - `Q4`: `R$2,350`, `PF 1.2962`, `DD 6.63%`, composite `2.0236`
+  - interpretation: Q2 has been strongest and Q4 weakest, but the seasonality is not clean enough to justify a hard calendar filter
 
 ## Regime Readout
 

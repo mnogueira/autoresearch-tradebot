@@ -163,7 +163,7 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 - Pause if MT5 logs repeated order-close or order-modify errors.
 - Strongly consider pausing in the last `3` contract days if the tape is also low-ADX and spread-heavy.
 
-## Risks And Caveats
+## Appendix - Known Limitations And Caveats
 
 - Recent softness:
   - over the most recent `30` trading days (`2026-02-05` to `2026-03-20`), the exact max-hold leader was only marginally positive at `R$40`, `PF 1.0357`, `DD 4.67%`
@@ -200,6 +200,12 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
   - second half of `2025`: `R$655`, `PF 1.2652`, `DD 3.02%`
   - prior-day `ADX > 25` share dropped from `13.93%` in the first half to `3.91%` in the second half
   - interpretation: the strategy stayed positive, but the weaker half-year also looked less trending
+- Seasonal tilt on the Tier 2 exact line:
+  - pooled `Q2`: `R$4,495`, `PF 1.6538`, `DD 2.68%`
+  - pooled `Q4`: `R$2,350`, `PF 1.2962`, `DD 6.63%`
+  - pooled `Q1+Q3` composite: `3.8252`
+  - pooled `Q2+Q4` composite: `3.5570`
+  - interpretation: there is some calendar texture, but not enough to justify a hard seasonal on/off rule
 - Cost sensitivity:
   - the exact max-hold leader still fails badly under `3x` spread stress
   - the historical exact tape was effectively a `0-1` tick spread world, so repeated live spreads above `1` tick are a meaningful warning signal

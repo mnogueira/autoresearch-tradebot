@@ -23,6 +23,8 @@
 - Spread is the main operational risk.
   - Main strategy break-even is `2` ticks.
   - Do not trade when spread is above `2` ticks.
+- Flat commission is not modeled separately in the exact Python harness.
+  - Treat spread/slippage as the real live cost risk.
 - Low-ADX, range-bound tape is the main underperformance regime.
 - The last `3` contract days before rollover are materially weaker.
 - MT5 tester stability is imperfect, so paper-trade monitoring matters.
@@ -57,6 +59,19 @@
   - `R$455`, `PF 4.25`, `DD 0.81%`
 - Last `5` trading days: still solid
   - `R$110`, `PF 1.7857`, `DD 0.84%`
+- Seasonal context on the Tier 2 exact line:
+  - `Q2` has been the strongest pooled quarter
+  - `Q4` has been the weakest pooled quarter
+  - not strong enough to justify a hard calendar filter
+
+## Latest Experiments
+
+- Smart-entry micro-pullbacks `1-2` ticks in `3` bars:
+  - both worse than Tier 2
+- Two-bar trend confirmation:
+  - clearly negative, rejected
+- Volume-weighted entry sizing:
+  - research-only and weaker than Tier 2
 
 ## Bottom Line
 

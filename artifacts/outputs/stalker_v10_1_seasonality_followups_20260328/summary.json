@@ -1,0 +1,739 @@
+{
+  "reference_tier2_cooldown_only": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 14085.0,
+      "avg_profit_brl": 8.98,
+      "avg_win_brl": 34.26,
+      "avg_loss_brl": -95.7,
+      "profit_factor": 1.4825,
+      "max_drawdown_pct": 3.3,
+      "expected_payoff": 8.98,
+      "on_tester_value": 4263.59877
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.9306,
+      "calmar_ratio": 5.8842,
+      "omega_ratio": 1.6115,
+      "annual_return_pct": 19.44,
+      "max_drawdown_frac": 0.033035
+    },
+    "sortino_weighted_composite": 3.0529
+  },
+  "quarter_breakdown": [
+    {
+      "label": "Q1",
+      "metrics": {
+        "start_date": "2021-03-30",
+        "end_date": "2026-03-20",
+        "trading_days": 255,
+        "total_trades": 402,
+        "win_rate": 0.8234,
+        "net_profit_brl": 4040.0,
+        "avg_profit_brl": 10.05,
+        "avg_win_brl": 31.22,
+        "avg_loss_brl": -88.66,
+        "profit_factor": 1.6418,
+        "max_drawdown_pct": 4.26,
+        "expected_payoff": 10.05,
+        "on_tester_value": 947.563636
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.594,
+        "calmar_ratio": 9.3444,
+        "omega_ratio": 1.7688,
+        "annual_return_pct": 39.84,
+        "max_drawdown_frac": 0.042636
+      },
+      "sortino_weighted_composite": 4.4541
+    },
+    {
+      "label": "Q2",
+      "metrics": {
+        "start_date": "2021-04-01",
+        "end_date": "2025-06-30",
+        "trading_days": 250,
+        "total_trades": 396,
+        "win_rate": 0.8182,
+        "net_profit_brl": 4495.0,
+        "avg_profit_brl": 11.35,
+        "avg_win_brl": 35.09,
+        "avg_loss_brl": -95.49,
+        "profit_factor": 1.6538,
+        "max_drawdown_pct": 2.68,
+        "expected_payoff": 11.35,
+        "on_tester_value": 1678.62459
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 3.4854,
+        "calmar_ratio": 16.9472,
+        "omega_ratio": 1.884,
+        "annual_return_pct": 45.38,
+        "max_drawdown_frac": 0.026778
+      },
+      "sortino_weighted_composite": 7.2037
+    },
+    {
+      "label": "Q3",
+      "metrics": {
+        "start_date": "2021-07-01",
+        "end_date": "2025-09-30",
+        "trading_days": 265,
+        "total_trades": 400,
+        "win_rate": 0.79,
+        "net_profit_brl": 3200.0,
+        "avg_profit_brl": 8.0,
+        "avg_win_brl": 35.71,
+        "avg_loss_brl": -96.25,
+        "profit_factor": 1.3958,
+        "max_drawdown_pct": 3.32,
+        "expected_payoff": 8.0,
+        "on_tester_value": 963.388235
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.3022,
+        "calmar_ratio": 9.0963,
+        "omega_ratio": 1.5178,
+        "annual_return_pct": 30.21,
+        "max_drawdown_frac": 0.033216
+      },
+      "sortino_weighted_composite": 4.1836
+    },
+    {
+      "label": "Q4",
+      "metrics": {
+        "start_date": "2021-10-01",
+        "end_date": "2025-12-29",
+        "trading_days": 251,
+        "total_trades": 370,
+        "win_rate": 0.7892,
+        "net_profit_brl": 2350.0,
+        "avg_profit_brl": 6.35,
+        "avg_win_brl": 35.22,
+        "avg_loss_brl": -101.73,
+        "profit_factor": 1.2962,
+        "max_drawdown_pct": 6.63,
+        "expected_payoff": 6.35,
+        "on_tester_value": 354.270548
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.3679,
+        "calmar_ratio": 3.5584,
+        "omega_ratio": 1.3607,
+        "annual_return_pct": 23.6,
+        "max_drawdown_frac": 0.066333
+      },
+      "sortino_weighted_composite": 2.0236
+    }
+  ],
+  "seasonal_pairs": {
+    "q1_q3_combined": {
+      "label": "Q1_Q3",
+      "metrics": {
+        "start_date": "2021-03-30",
+        "end_date": "2026-03-20",
+        "trading_days": 520,
+        "total_trades": 802,
+        "win_rate": 0.8067,
+        "net_profit_brl": 7240.0,
+        "avg_profit_brl": 9.03,
+        "avg_win_brl": 33.42,
+        "avg_loss_brl": -92.77,
+        "profit_factor": 1.5035,
+        "max_drawdown_pct": 4.0,
+        "expected_payoff": 9.03,
+        "on_tester_value": 1808.448571
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.4703,
+        "calmar_ratio": 7.5449,
+        "omega_ratio": 1.6331,
+        "annual_return_pct": 30.21,
+        "max_drawdown_frac": 0.040034
+      },
+      "sortino_weighted_composite": 3.8252
+    },
+    "q2_q4_combined": {
+      "label": "Q2_Q4",
+      "metrics": {
+        "start_date": "2021-04-01",
+        "end_date": "2025-12-29",
+        "trading_days": 501,
+        "total_trades": 766,
+        "win_rate": 0.8042,
+        "net_profit_brl": 6845.0,
+        "avg_profit_brl": 8.94,
+        "avg_win_brl": 35.15,
+        "avg_loss_brl": -98.73,
+        "profit_factor": 1.4622,
+        "max_drawdown_pct": 4.26,
+        "expected_payoff": 8.94,
+        "on_tester_value": 1607.452869
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.2522,
+        "calmar_ratio": 7.043,
+        "omega_ratio": 1.5901,
+        "annual_return_pct": 29.99,
+        "max_drawdown_frac": 0.042583
+      },
+      "sortino_weighted_composite": 3.557
+    }
+  },
+  "year_quarter_breakdown": [
+    {
+      "label": "2021-Q1",
+      "metrics": {
+        "start_date": "2021-03-30",
+        "end_date": "2021-03-30",
+        "trading_days": 1,
+        "total_trades": 2,
+        "win_rate": 1.0,
+        "net_profit_brl": 105.0,
+        "avg_profit_brl": 52.5,
+        "avg_win_brl": 52.5,
+        "avg_loss_brl": 0.0,
+        "profit_factor": Infinity,
+        "max_drawdown_pct": 0.0,
+        "expected_payoff": 52.5,
+        "on_tester_value": 0.0
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": Infinity,
+        "calmar_ratio": Infinity,
+        "omega_ratio": Infinity,
+        "annual_return_pct": 1290.44,
+        "max_drawdown_frac": 0.0
+      },
+      "sortino_weighted_composite": Infinity
+    },
+    {
+      "label": "2021-Q2",
+      "metrics": {
+        "start_date": "2021-04-01",
+        "end_date": "2021-06-30",
+        "trading_days": 55,
+        "total_trades": 89,
+        "win_rate": 0.8652,
+        "net_profit_brl": 1745.0,
+        "avg_profit_brl": 19.61,
+        "avg_win_brl": 39.87,
+        "avg_loss_brl": -110.42,
+        "profit_factor": 2.317,
+        "max_drawdown_pct": 2.68,
+        "expected_payoff": 19.61,
+        "on_tester_value": 651.657377
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 5.9068,
+        "calmar_ratio": 40.6886,
+        "omega_ratio": 3.1152,
+        "annual_return_pct": 108.96,
+        "max_drawdown_frac": 0.026778
+      },
+      "sortino_weighted_composite": 15.783
+    },
+    {
+      "label": "2021-Q3",
+      "metrics": {
+        "start_date": "2021-07-01",
+        "end_date": "2021-09-30",
+        "trading_days": 59,
+        "total_trades": 102,
+        "win_rate": 0.7941,
+        "net_profit_brl": 1055.0,
+        "avg_profit_brl": 10.34,
+        "avg_win_brl": 43.7,
+        "avg_loss_brl": -118.33,
+        "profit_factor": 1.4245,
+        "max_drawdown_pct": 2.86,
+        "expected_payoff": 10.34,
+        "on_tester_value": 369.412308
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 3.1881,
+        "calmar_ratio": 18.7257,
+        "omega_ratio": 1.6261,
+        "annual_return_pct": 53.48,
+        "max_drawdown_frac": 0.028559
+      },
+      "sortino_weighted_composite": 7.537
+    },
+    {
+      "label": "2021-Q4",
+      "metrics": {
+        "start_date": "2021-10-01",
+        "end_date": "2021-12-30",
+        "trading_days": 55,
+        "total_trades": 85,
+        "win_rate": 0.8,
+        "net_profit_brl": 815.0,
+        "avg_profit_brl": 9.59,
+        "avg_win_brl": 39.04,
+        "avg_loss_brl": -108.24,
+        "profit_factor": 1.4429,
+        "max_drawdown_pct": 4.05,
+        "expected_payoff": 9.59,
+        "on_tester_value": 201.22069
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.4093,
+        "calmar_ratio": 10.6627,
+        "omega_ratio": 1.564,
+        "annual_return_pct": 43.19,
+        "max_drawdown_frac": 0.040503
+      },
+      "sortino_weighted_composite": 4.7163
+    },
+    {
+      "label": "2022-Q1",
+      "metrics": {
+        "start_date": "2022-01-03",
+        "end_date": "2022-03-31",
+        "trading_days": 54,
+        "total_trades": 79,
+        "win_rate": 0.8734,
+        "net_profit_brl": 1490.0,
+        "avg_profit_brl": 18.86,
+        "avg_win_brl": 36.96,
+        "avg_loss_brl": -106.0,
+        "profit_factor": 2.4057,
+        "max_drawdown_pct": 1.86,
+        "expected_payoff": 18.86,
+        "on_tester_value": 799.278571
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 4.6365,
+        "calmar_ratio": 48.9236,
+        "omega_ratio": 2.6742,
+        "annual_return_pct": 91.2,
+        "max_drawdown_frac": 0.018642
+      },
+      "sortino_weighted_composite": 17.5302
+    },
+    {
+      "label": "2022-Q2",
+      "metrics": {
+        "start_date": "2022-04-04",
+        "end_date": "2022-06-30",
+        "trading_days": 52,
+        "total_trades": 86,
+        "win_rate": 0.8488,
+        "net_profit_brl": 1695.0,
+        "avg_profit_brl": 19.71,
+        "avg_win_brl": 44.04,
+        "avg_loss_brl": -116.92,
+        "profit_factor": 2.1151,
+        "max_drawdown_pct": 1.97,
+        "expected_payoff": 19.71,
+        "on_tester_value": 858.931395
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 5.8582,
+        "calmar_ratio": 57.5508,
+        "omega_ratio": 2.7035,
+        "annual_return_pct": 113.57,
+        "max_drawdown_frac": 0.019734
+      },
+      "sortino_weighted_composite": 20.735
+    },
+    {
+      "label": "2022-Q3",
+      "metrics": {
+        "start_date": "2022-07-01",
+        "end_date": "2022-09-30",
+        "trading_days": 56,
+        "total_trades": 85,
+        "win_rate": 0.8588,
+        "net_profit_brl": 1490.0,
+        "avg_profit_brl": 17.53,
+        "avg_win_brl": 40.89,
+        "avg_loss_brl": -124.58,
+        "profit_factor": 1.9967,
+        "max_drawdown_pct": 1.88,
+        "expected_payoff": 17.53,
+        "on_tester_value": 791.77907
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 4.2264,
+        "calmar_ratio": 46.1396,
+        "omega_ratio": 2.307,
+        "annual_return_pct": 86.83,
+        "max_drawdown_frac": 0.018818
+      },
+      "sortino_weighted_composite": 16.4165
+    },
+    {
+      "label": "2022-Q4",
+      "metrics": {
+        "start_date": "2022-10-03",
+        "end_date": "2022-12-29",
+        "trading_days": 51,
+        "total_trades": 71,
+        "win_rate": 0.7324,
+        "net_profit_brl": -5.0,
+        "avg_profit_brl": -0.07,
+        "avg_win_brl": 50.58,
+        "avg_loss_brl": -138.68,
+        "profit_factor": 0.9981,
+        "max_drawdown_pct": 6.06,
+        "expected_payoff": -0.07,
+        "on_tester_value": -0.82541
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": -0.0099,
+        "calmar_ratio": -0.0407,
+        "omega_ratio": 0.9978,
+        "annual_return_pct": -0.25,
+        "max_drawdown_frac": 0.060576
+      },
+      "sortino_weighted_composite": 0.1824
+    },
+    {
+      "label": "2023-Q1",
+      "metrics": {
+        "start_date": "2023-01-02",
+        "end_date": "2023-03-31",
+        "trading_days": 51,
+        "total_trades": 79,
+        "win_rate": 0.7722,
+        "net_profit_brl": 280.0,
+        "avg_profit_brl": 3.54,
+        "avg_win_brl": 36.56,
+        "avg_loss_brl": -108.33,
+        "profit_factor": 1.1436,
+        "max_drawdown_pct": 4.15,
+        "expected_payoff": 3.54,
+        "on_tester_value": 67.395349
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 0.6711,
+        "calmar_ratio": 3.519,
+        "omega_ratio": 1.1591,
+        "annual_return_pct": 14.62,
+        "max_drawdown_frac": 0.041546
+      },
+      "sortino_weighted_composite": 1.6231
+    },
+    {
+      "label": "2023-Q2",
+      "metrics": {
+        "start_date": "2023-04-03",
+        "end_date": "2023-06-30",
+        "trading_days": 47,
+        "total_trades": 73,
+        "win_rate": 0.8219,
+        "net_profit_brl": 690.0,
+        "avg_profit_brl": 9.45,
+        "avg_win_brl": 29.0,
+        "avg_loss_brl": -80.77,
+        "profit_factor": 1.6571,
+        "max_drawdown_pct": 2.49,
+        "expected_payoff": 9.45,
+        "on_tester_value": 277.104
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 3.55,
+        "calmar_ratio": 17.2733,
+        "omega_ratio": 1.879,
+        "annual_return_pct": 43.01,
+        "max_drawdown_frac": 0.0249
+      },
+      "sortino_weighted_composite": 7.3328
+    },
+    {
+      "label": "2023-Q3",
+      "metrics": {
+        "start_date": "2023-07-10",
+        "end_date": "2023-09-29",
+        "trading_days": 46,
+        "total_trades": 65,
+        "win_rate": 0.7385,
+        "net_profit_brl": -5.0,
+        "avg_profit_brl": -0.08,
+        "avg_win_brl": 26.35,
+        "avg_loss_brl": -74.71,
+        "profit_factor": 0.9961,
+        "max_drawdown_pct": 2.63,
+        "expected_payoff": -0.08,
+        "on_tester_value": -1.898148
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": -0.0264,
+        "calmar_ratio": -0.1039,
+        "omega_ratio": 0.9951,
+        "annual_return_pct": -0.27,
+        "max_drawdown_frac": 0.026341
+      },
+      "sortino_weighted_composite": 0.1547
+    },
+    {
+      "label": "2023-Q4",
+      "metrics": {
+        "start_date": "2023-10-02",
+        "end_date": "2023-12-28",
+        "trading_days": 51,
+        "total_trades": 72,
+        "win_rate": 0.7917,
+        "net_profit_brl": 380.0,
+        "avg_profit_brl": 5.28,
+        "avg_win_brl": 25.26,
+        "avg_loss_brl": -70.67,
+        "profit_factor": 1.3585,
+        "max_drawdown_pct": 2.1,
+        "expected_payoff": 5.28,
+        "on_tester_value": 181.363636
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.5026,
+        "calmar_ratio": 9.658,
+        "omega_ratio": 1.4368,
+        "annual_return_pct": 20.24,
+        "max_drawdown_frac": 0.020952
+      },
+      "sortino_weighted_composite": 3.9361
+    },
+    {
+      "label": "2024-Q1",
+      "metrics": {
+        "start_date": "2024-01-02",
+        "end_date": "2024-03-28",
+        "trading_days": 49,
+        "total_trades": 80,
+        "win_rate": 0.85,
+        "net_profit_brl": 695.0,
+        "avg_profit_brl": 8.69,
+        "avg_win_brl": 19.56,
+        "avg_loss_brl": -52.92,
+        "profit_factor": 2.0945,
+        "max_drawdown_pct": 1.13,
+        "expected_payoff": 8.69,
+        "on_tester_value": 612.808696
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 4.4352,
+        "calmar_ratio": 36.3959,
+        "omega_ratio": 2.5109,
+        "annual_return_pct": 41.28,
+        "max_drawdown_frac": 0.011341
+      },
+      "sortino_weighted_composite": 13.6385
+    },
+    {
+      "label": "2024-Q2",
+      "metrics": {
+        "start_date": "2024-04-02",
+        "end_date": "2024-06-28",
+        "trading_days": 47,
+        "total_trades": 72,
+        "win_rate": 0.7778,
+        "net_profit_brl": 315.0,
+        "avg_profit_brl": 4.38,
+        "avg_win_brl": 25.0,
+        "avg_loss_brl": -67.81,
+        "profit_factor": 1.2903,
+        "max_drawdown_pct": 2.13,
+        "expected_payoff": 4.38,
+        "on_tester_value": 147.903488
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.6753,
+        "calmar_ratio": 8.4945,
+        "omega_ratio": 1.358,
+        "annual_return_pct": 18.09,
+        "max_drawdown_frac": 0.021298
+      },
+      "sortino_weighted_composite": 3.6576
+    },
+    {
+      "label": "2024-Q3",
+      "metrics": {
+        "start_date": "2024-07-01",
+        "end_date": "2024-09-30",
+        "trading_days": 49,
+        "total_trades": 67,
+        "win_rate": 0.791,
+        "net_profit_brl": 430.0,
+        "avg_profit_brl": 6.42,
+        "avg_win_brl": 35.38,
+        "avg_loss_brl": -103.21,
+        "profit_factor": 1.2976,
+        "max_drawdown_pct": 3.53,
+        "expected_payoff": 6.42,
+        "on_tester_value": 121.952778
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.3188,
+        "calmar_ratio": 6.8563,
+        "omega_ratio": 1.3413,
+        "annual_return_pct": 24.17,
+        "max_drawdown_frac": 0.03526
+      },
+      "sortino_weighted_composite": 2.9846
+    },
+    {
+      "label": "2024-Q4",
+      "metrics": {
+        "start_date": "2024-10-02",
+        "end_date": "2024-12-30",
+        "trading_days": 42,
+        "total_trades": 64,
+        "win_rate": 0.8125,
+        "net_profit_brl": 735.0,
+        "avg_profit_brl": 11.48,
+        "avg_win_brl": 39.52,
+        "avg_loss_brl": -110.0,
+        "profit_factor": 1.5568,
+        "max_drawdown_pct": 3.64,
+        "expected_payoff": 11.48,
+        "on_tester_value": 202.033125
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.2298,
+        "calmar_ratio": 14.5801,
+        "omega_ratio": 1.6255,
+        "annual_return_pct": 53.04,
+        "max_drawdown_frac": 0.03638
+      },
+      "sortino_weighted_composite": 5.814
+    },
+    {
+      "label": "2025-Q1",
+      "metrics": {
+        "start_date": "2025-01-03",
+        "end_date": "2025-03-31",
+        "trading_days": 50,
+        "total_trades": 81,
+        "win_rate": 0.8765,
+        "net_profit_brl": 1505.0,
+        "avg_profit_brl": 18.58,
+        "avg_win_brl": 33.59,
+        "avg_loss_brl": -88.0,
+        "profit_factor": 2.7102,
+        "max_drawdown_pct": 1.38,
+        "expected_payoff": 18.58,
+        "on_tester_value": 1090.654687
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 6.7659,
+        "calmar_ratio": 74.4304,
+        "omega_ratio": 3.2296,
+        "annual_return_pct": 102.71,
+        "max_drawdown_frac": 0.013799
+      },
+      "sortino_weighted_composite": 26.358
+    },
+    {
+      "label": "2025-Q2",
+      "metrics": {
+        "start_date": "2025-04-01",
+        "end_date": "2025-06-30",
+        "trading_days": 49,
+        "total_trades": 76,
+        "win_rate": 0.7632,
+        "net_profit_brl": 50.0,
+        "avg_profit_brl": 0.66,
+        "avg_win_brl": 33.53,
+        "avg_loss_brl": -105.28,
+        "profit_factor": 1.0264,
+        "max_drawdown_pct": 3.4,
+        "expected_payoff": 0.66,
+        "on_tester_value": 14.714286
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 0.1654,
+        "calmar_ratio": 0.7646,
+        "omega_ratio": 1.0313,
+        "annual_return_pct": 2.6,
+        "max_drawdown_frac": 0.033981
+      },
+      "sortino_weighted_composite": 0.5183
+    },
+    {
+      "label": "2025-Q3",
+      "metrics": {
+        "start_date": "2025-07-01",
+        "end_date": "2025-09-30",
+        "trading_days": 55,
+        "total_trades": 81,
+        "win_rate": 0.7531,
+        "net_profit_brl": 230.0,
+        "avg_profit_brl": 2.84,
+        "avg_win_brl": 26.56,
+        "avg_loss_brl": -69.5,
+        "profit_factor": 1.1655,
+        "max_drawdown_pct": 3.02,
+        "expected_payoff": 2.84,
+        "on_tester_value": 76.228571
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.1302,
+        "calmar_ratio": 3.6394,
+        "omega_ratio": 1.213,
+        "annual_return_pct": 10.98,
+        "max_drawdown_frac": 0.030172
+      },
+      "sortino_weighted_composite": 1.8995
+    },
+    {
+      "label": "2025-Q4",
+      "metrics": {
+        "start_date": "2025-10-01",
+        "end_date": "2025-12-29",
+        "trading_days": 52,
+        "total_trades": 78,
+        "win_rate": 0.8077,
+        "net_profit_brl": 425.0,
+        "avg_profit_brl": 5.45,
+        "avg_win_brl": 23.89,
+        "avg_loss_brl": -72.0,
+        "profit_factor": 1.3935,
+        "max_drawdown_pct": 1.38,
+        "expected_payoff": 5.45,
+        "on_tester_value": 307.973214
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.3278,
+        "calmar_ratio": 16.1948,
+        "omega_ratio": 1.538,
+        "annual_return_pct": 22.35,
+        "max_drawdown_frac": 0.0138
+      },
+      "sortino_weighted_composite": 6.3299
+    },
+    {
+      "label": "2026-Q1",
+      "metrics": {
+        "start_date": "2026-01-02",
+        "end_date": "2026-03-20",
+        "trading_days": 50,
+        "total_trades": 81,
+        "win_rate": 0.7407,
+        "net_profit_brl": -35.0,
+        "avg_profit_brl": -0.43,
+        "avg_win_brl": 28.92,
+        "avg_loss_brl": -84.29,
+        "profit_factor": 0.9802,
+        "max_drawdown_pct": 5.98,
+        "expected_payoff": -0.43,
+        "on_tester_value": -5.851653
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": -0.1106,
+        "calmar_ratio": -0.2928,
+        "omega_ratio": 0.9762,
+        "annual_return_pct": -1.75,
+        "max_drawdown_frac": 0.059812
+      },
+      "sortino_weighted_composite": 0.0521
+    }
+  ],
+  "notes": [
+    "Seasonality is evaluated on the Tier 2 exact production candidate: session hours 10/11/12/14 with a 30-minute cooldown.",
+    "Quarter subsets are pooled across all years in the backtest window."
+  ]
+}
