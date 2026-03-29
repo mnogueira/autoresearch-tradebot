@@ -1,0 +1,131 @@
+{
+  "reference_tier2a": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1571,
+      "win_rate": 0.8097,
+      "net_profit_brl": 15970.0,
+      "avg_profit_brl": 10.17,
+      "avg_win_brl": 36.96,
+      "avg_loss_brl": -103.81,
+      "profit_factor": 1.5145,
+      "max_drawdown_pct": 3.23,
+      "expected_payoff": 10.17,
+      "on_tester_value": 4947.19011
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 2.0094,
+      "calmar_ratio": 6.5895,
+      "omega_ratio": 1.6541,
+      "annual_return_pct": 21.27,
+      "max_drawdown_frac": 0.032281
+    },
+    "sortino_weighted_composite": 3.3124
+  },
+  "variants": [
+    {
+      "name": "tier2a_williams_r_centerline",
+      "rule": "Strengthened Tier 2A with williams_r_centerline directional confirmation.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1570,
+        "win_rate": 0.8096,
+        "net_profit_brl": 15940.0,
+        "avg_profit_brl": 10.15,
+        "avg_win_brl": 36.97,
+        "avg_loss_brl": -103.83,
+        "profit_factor": 1.5134,
+        "max_drawdown_pct": 3.23,
+        "expected_payoff": 10.15,
+        "on_tester_value": 4937.896703
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.0052,
+        "calmar_ratio": 6.5807,
+        "omega_ratio": 1.6527,
+        "annual_return_pct": 21.24,
+        "max_drawdown_frac": 0.032281
+      },
+      "sortino_weighted_composite": 3.3074,
+      "params": {
+        "agreement_variant": "williams_r_centerline",
+        "roc_agreement_bars": 5,
+        "ATR_Length": 10,
+        "NumDaysToConsiderPreviousContractMARange": 2,
+        "min_minutes_between_entries": 28
+      }
+    },
+    {
+      "name": "tier2a_mfi_centerline",
+      "rule": "Strengthened Tier 2A with mfi_centerline directional confirmation.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1555,
+        "win_rate": 0.8103,
+        "net_profit_brl": 15705.0,
+        "avg_profit_brl": 10.1,
+        "avg_win_brl": 36.92,
+        "avg_loss_brl": -104.47,
+        "profit_factor": 1.5096,
+        "max_drawdown_pct": 3.24,
+        "expected_payoff": 10.1,
+        "on_tester_value": 4851.291758
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.9709,
+        "calmar_ratio": 6.4932,
+        "omega_ratio": 1.6466,
+        "annual_return_pct": 21.02,
+        "max_drawdown_frac": 0.032373
+      },
+      "sortino_weighted_composite": 3.2627,
+      "params": {
+        "agreement_variant": "mfi_centerline",
+        "roc_agreement_bars": 5,
+        "ATR_Length": 10,
+        "NumDaysToConsiderPreviousContractMARange": 2,
+        "min_minutes_between_entries": 28
+      }
+    }
+  ],
+  "best_variant": {
+    "name": "tier2a_williams_r_centerline",
+    "rule": "Strengthened Tier 2A with williams_r_centerline directional confirmation.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1570,
+      "win_rate": 0.8096,
+      "net_profit_brl": 15940.0,
+      "avg_profit_brl": 10.15,
+      "avg_win_brl": 36.97,
+      "avg_loss_brl": -103.83,
+      "profit_factor": 1.5134,
+      "max_drawdown_pct": 3.23,
+      "expected_payoff": 10.15,
+      "on_tester_value": 4937.896703
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 2.0052,
+      "calmar_ratio": 6.5807,
+      "omega_ratio": 1.6527,
+      "annual_return_pct": 21.24,
+      "max_drawdown_frac": 0.032281
+    },
+    "sortino_weighted_composite": 3.3074,
+    "params": {
+      "agreement_variant": "williams_r_centerline",
+      "roc_agreement_bars": 5,
+      "ATR_Length": 10,
+      "NumDaysToConsiderPreviousContractMARange": 2,
+      "min_minutes_between_entries": 28
+    }
+  }
+}

@@ -82,6 +82,10 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - `CCI` centerline: `R$15,955`, `PF 1.5139`, `DD 3.23%`, composite `3.3098`
     - `Aroon` dominance: `R$15,230`, `PF 1.4926`, `DD 3.26%`, composite `3.1694`
     - interpretation: even more trend-native proxies continue to land as near-ties or degradations, which keeps the useful-agreement story centered on `ROC(5)` alone
+  - Williams %R and MFI directional confirmation also stayed below the strengthened Tier 2A line:
+    - `Williams %R` centerline: `R$15,940`, `PF 1.5134`, `DD 3.23%`, composite `3.3074`
+    - `MFI` centerline: `R$15,705`, `PF 1.5096`, `DD 3.24%`, composite `3.2627`
+    - interpretation: one more price oscillator and one volume-aware oscillator both came back as near-ties or degradations, which keeps `ROC(5)` looking like the only lightweight agreement family with repeatable incremental value
   - stochastic directional confirmation was the first other agreement family to beat the strengthened Tier 2A line in-sample, but it still failed the robustness bar:
     - best case `stoch_d_centerline`: `R$16,210`, `PF 1.5274`, `DD 2.98%`, composite `3.5140`
     - `70/30` test weakened versus the strengthened Tier 2A reference:
