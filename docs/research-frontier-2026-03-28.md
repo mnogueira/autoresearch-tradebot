@@ -106,6 +106,10 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - opening-bias follow-up:
     - Tier 2A aligned with the 09:00-10:00 opening-hour return sign: `R$9,260`, `PF 1.5139`, `DD 3.63%`, composite `2.1527`
     - interpretation: aligning with the first-hour tape cleaned up PF a bit, but it cut too many trades and was nowhere near the existing Tier 2A composite
+  - prior-day bias follow-up:
+    - Tier 2 aligned with prior-day close-vs-open sign: `R$6,390`, `PF 1.4163`, `DD 3.67%`, composite `1.6186`
+    - Tier 2A aligned with prior-day close-vs-open sign: `R$6,195`, `PF 1.4037`, `DD 3.71%`, composite `1.5696`
+    - interpretation: daily directional bias was even more over-pruning than the opening-bias filter and is not a useful addition
   - interpretation: the best new idea is not a new signal family; it is a light momentum agreement layer on top of the existing one. `ROC(5)` was the best tested agreement window, and the simpler Tier 2 + `ROC(5)` variant is now the cleaner post-Monday validation target.
 
 ## Near-Term Caution

@@ -42,6 +42,7 @@
 | Alternate ratio on the plain session winner | `SL 0.60 / TP 0.42`: `R$13,025`, `PF 1.2851`, `DD 4.45%`, `Sortino 2.1894` | Better downside-adjusted return than many variants, but too weak on PF and win rate to replace the production line. |
 | Micro-pullback smart entry | `1` tick in `3` bars: `R$2,220`, `PF 1.5139`, `DD 3.92%` | Cleaner PF on a much smaller trade set, but it over-pruned too hard and gave up far too much net and composite. |
 | Opening-bias confirmation | Align later entries with the `09:00-10:00` opening-hour return sign: best case `R$9,260`, `PF 1.5139`, `DD 3.63%`, composite `2.1527` | The first-hour tape contained some directional information, but using it as a hard gate over-pruned the strategy and left it well below Tier 2A. |
+| Prior-day bias confirmation | Align entries with the previous session's close-vs-open sign: best case `R$6,390`, `PF 1.4163`, `DD 3.67%`, composite `1.6186` | The daily directional tape was even less useful as a hard gate than the opening-hour bias and clearly weakened the strategy. |
 
 ## What Did Not Work
 
