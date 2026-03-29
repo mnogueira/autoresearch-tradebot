@@ -78,6 +78,10 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - `EMA(50)` slope sign reproduced the strengthened Tier 2A reference exactly at composite `3.3124`
     - `EMA(20)` slope sign was a hair worse at composite `3.3121`
     - interpretation: a smoothed ROC-style confirmation still did not improve on plain `ROC(5)`, so the extra value appears to be specific to the simple ROC agreement rather than any generic smoothed trend proxy
+  - CCI and Aroon directional confirmation also failed to beat the strengthened Tier 2A line:
+    - `CCI` centerline: `R$15,955`, `PF 1.5139`, `DD 3.23%`, composite `3.3098`
+    - `Aroon` dominance: `R$15,230`, `PF 1.4926`, `DD 3.26%`, composite `3.1694`
+    - interpretation: even more trend-native proxies continue to land as near-ties or degradations, which keeps the useful-agreement story centered on `ROC(5)` alone
   - stochastic directional confirmation was the first other agreement family to beat the strengthened Tier 2A line in-sample, but it still failed the robustness bar:
     - best case `stoch_d_centerline`: `R$16,210`, `PF 1.5274`, `DD 2.98%`, composite `3.5140`
     - `70/30` test weakened versus the strengthened Tier 2A reference:
