@@ -1,0 +1,135 @@
+{
+  "reference_tier2_cooldown_only": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 14085.0,
+      "avg_profit_brl": 8.98,
+      "avg_win_brl": 34.26,
+      "avg_loss_brl": -95.7,
+      "profit_factor": 1.4825,
+      "max_drawdown_pct": 3.3,
+      "expected_payoff": 8.98,
+      "on_tester_value": 4263.59877
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.9306,
+      "calmar_ratio": 5.8842,
+      "omega_ratio": 1.6115,
+      "annual_return_pct": 19.44,
+      "max_drawdown_frac": 0.033035
+    },
+    "sortino_weighted_composite": 3.0529
+  },
+  "one_tick_better_fill_proxy": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 21925.0,
+      "avg_profit_brl": 13.98,
+      "avg_win_brl": 39.26,
+      "avg_loss_brl": -90.7,
+      "profit_factor": 1.7925,
+      "max_drawdown_pct": 2.64,
+      "expected_payoff": 13.98,
+      "on_tester_value": 8294.958333
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 3.2102,
+      "calmar_ratio": 10.0023,
+      "omega_ratio": 2.0617,
+      "annual_return_pct": 26.44,
+      "max_drawdown_frac": 0.026432
+    },
+    "sortino_weighted_composite": 5.0181,
+    "per_trade_improvement_brl": 5.0,
+    "assumption": "Research-only fill-quality proxy: every executed trade improves by exactly one WDO tick."
+  },
+  "lot_size_scaling": {
+    "contracts_1": {
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1568,
+        "win_rate": 0.8055,
+        "net_profit_brl": 14085.0,
+        "avg_profit_brl": 8.98,
+        "avg_win_brl": 34.26,
+        "avg_loss_brl": -95.7,
+        "profit_factor": 1.4825,
+        "max_drawdown_pct": 3.3,
+        "expected_payoff": 8.98,
+        "on_tester_value": 4263.59877
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.9306,
+        "calmar_ratio": 5.8842,
+        "omega_ratio": 1.6115,
+        "annual_return_pct": 19.44,
+        "max_drawdown_frac": 0.033035
+      },
+      "sortino_weighted_composite": 3.0529
+    },
+    "contracts_2": {
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1568,
+        "win_rate": 0.8055,
+        "net_profit_brl": 28170.0,
+        "avg_profit_brl": 17.97,
+        "avg_win_brl": 68.53,
+        "avg_loss_brl": -191.41,
+        "profit_factor": 1.4825,
+        "max_drawdown_pct": 5.03,
+        "expected_payoff": 17.97,
+        "on_tester_value": 5598.382759
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.9306,
+        "calmar_ratio": 6.178,
+        "omega_ratio": 1.6115,
+        "annual_return_pct": 31.09,
+        "max_drawdown_frac": 0.050318
+      },
+      "sortino_weighted_composite": 3.141
+    },
+    "contracts_5": {
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1568,
+        "win_rate": 0.8055,
+        "net_profit_brl": 70425.0,
+        "avg_profit_brl": 44.91,
+        "avg_win_brl": 171.32,
+        "avg_loss_brl": -478.52,
+        "profit_factor": 1.4825,
+        "max_drawdown_pct": 8.73,
+        "expected_payoff": 44.91,
+        "on_tester_value": 8070.012295
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.9306,
+        "calmar_ratio": 6.0038,
+        "omega_ratio": 1.6115,
+        "annual_return_pct": 52.39,
+        "max_drawdown_frac": 0.087268
+      },
+      "sortino_weighted_composite": 3.0887
+    }
+  },
+  "notes": [
+    "The one-tick-better-fill study is research-only. It assumes every filled trade improves by one WDO tick without changing fill probability.",
+    "The lot-size grid is an exact-engine rerun with different ContractsPerTrade values and no additional slippage model."
+  ]
+}

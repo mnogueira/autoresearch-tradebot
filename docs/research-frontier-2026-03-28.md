@@ -123,6 +123,11 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - `Q3`: `R$3,200`, `PF 1.3958`, `DD 3.32%`, composite `4.1836`
     - `Q4`: `R$2,350`, `PF 1.2962`, `DD 6.63%`, composite `2.0236`
   - interpretation: Q2 has been strongest and Q4 weakest, but the seasonality is not clean enough to justify a hard calendar filter
+- Microstructure follow-up:
+  - artifact: `artifacts/outputs/stalker_v10_1_microstructure_followups_20260328/summary.json`
+  - research-only one-tick better fill proxy was extremely strong:
+    - `R$21,925`, `PF 1.7925`, `DD 2.64%`, composite `5.0181`
+  - interpretation: execution quality is likely the cleanest remaining frontier, but this is not a live-ready alpha claim because it assumes every trade gets one extra tick without affecting fill probability
 
 ## Regime Readout
 

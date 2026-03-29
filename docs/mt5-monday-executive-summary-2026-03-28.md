@@ -72,6 +72,10 @@
   - clearly negative, rejected
 - Volume-weighted entry sizing:
   - research-only and weaker than Tier 2
+- One-tick better fill proxy:
+  - very strong research-only upside
+  - `R$21,925`, `PF 1.7925`, `DD 2.64%`
+  - interpretation: execution quality matters a lot
 
 ## Bottom Line
 
