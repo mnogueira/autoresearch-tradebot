@@ -43,9 +43,9 @@
   - Tier 2 + `ROC(5)` agreement
   - `R$14,560`, `PF 1.4900`, `DD 3.30%`, composite `3.1493`
 - Best research-only portfolio sleeve:
-  - equal-weight blend of Tier 2 and Tier 2A
-  - `R$14,455`, `PF 1.4824`, `DD 3.30%`, composite `3.1372`
-  - interpretation: smoother than plain Tier 2, but still not better than Tier 2A itself
+  - equal-weight blend of the strengthened Tier 2A and strengthened Tier 3 local-geometry branches
+  - `R$15,927.50`, `PF 1.5068`, `DD 3.22%`, composite `3.3209`
+  - interpretation: this is now the strongest research-only smoothing sleeve, but it still remains a later portfolio idea rather than a Monday deployment path
 - Ceiling assessment:
   - the current signal family appears to top out around composite `3.21` to `3.31`
   - remaining upside is more likely to come from execution quality than from another simple hard filter
@@ -75,8 +75,8 @@
   - regime-aware Tier 2 / Tier 2A switch
   - advanced regime-aware Tier 3 + `ROC(5)` + `150m` max-hold stack
 - Tier 4 remains research-only:
-  - equal-weight blend of Tier 2 and Tier 2A
-  - this did not beat Tier 2A on the full sample, on the recent `60`-day tape, or by contract-month win count
+  - equal-weight blend of the strengthened Tier 2A and strengthened Tier 3 local-geometry branches
+  - this slightly beats the best single exact research line on full-sample composite, but it is still not a live preset because it assumes running two sleeves side by side
 - Best next ROC validation after the plain Tier 2 line:
   - Tier 2 + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`, refined to `28m` cooldown
   - it is now the strongest out-of-sample post-Monday upgrade:
@@ -178,14 +178,17 @@
     - `R$450`, `PF 1.2609`, `DD 3.24%`
   - interpretation: this is now the strongest aggressive exact research branch, but it is still not the Monday preset because the simpler Tier 2A line remains the cleaner first upgrade
 - Portfolio sleeve follow-up:
-  - equal-weight blend of Tier 2 and Tier 2A:
+  - earlier equal-weight blend of Tier 2 and Tier 2A:
     - `R$14,455`, `PF 1.4824`, `DD 3.30%`, composite `3.1372`
+    - useful as the first proof that portfolio smoothing helps, but no longer the best research-only sleeve
+  - new equal-weight blend of strengthened Tier 2A and strengthened Tier 3 local-geometry:
+    - `R$15,927.50`, `PF 1.5068`, `DD 3.22%`, composite `3.3209`
   - exact `70/30` walk-forward test:
-    - `R$3,307.50`, `PF 1.3871`, `DD 4.25%`, composite `2.6224`
-  - contract-month behavior:
-    - Tier 2A beat Tier 2 in `9` of `61` contract months
-    - the portfolio blend beat both in `0` of `61`
-  - interpretation: the blend is a valid research smoother, but not strong enough to change the upgrade order
+    - train `R$12,027.50`, `PF 1.5330`, `DD 3.22%`, composite `3.7755`
+    - test `R$3,900`, `PF 1.4402`, `DD 2.89%`, composite `3.7950`
+  - recent `60`-trading-day check:
+    - `R$442.50`, `PF 1.2565`, `DD 3.24%`
+  - interpretation: portfolio smoothing still helps, but this remains a research-only sleeve because it requires running both stronger branches together
 - Regime-aware ROC follow-up:
   - Tier 2 on range days + Tier 2A `ROC(5)` on trend days:
     - `R$14,765`, `PF 1.4951`, `DD 3.28%`, composite `3.1964`

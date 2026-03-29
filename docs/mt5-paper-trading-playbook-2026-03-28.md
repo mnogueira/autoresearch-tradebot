@@ -204,9 +204,9 @@ Ceiling note:
     - advanced regime-aware ROC + max-hold variants
     - these remain interesting, but the always-on ATR10/lookback2 Tier 2A is now the cleaner stronger path
 - Tier 4, research-only:
-  - equal-weight blend of Tier 2 and Tier 2A
-  - `R$14,455`, `PF 1.4824`, `DD 3.30%`, composite `3.1372`
-  - this is the cleanest research-only portfolio sleeve, but it still does not beat Tier 2A itself
+  - equal-weight blend of strengthened Tier 2A and strengthened Tier 3 local-geometry
+  - `R$15,927.50`, `PF 1.5068`, `DD 3.22%`, composite `3.3209`
+  - this is now the strongest research-only portfolio sleeve, but it still requires running two sleeves side by side and is not a Monday preset
 
 ## Recommended Rollout Cadence
 
@@ -367,9 +367,9 @@ Ceiling note:
 - Next aggressive upgrade to validate on the host:
   - `Cooldown 25m + MaxHold150m + ROC(5) + ATR_Length 10 + contract lookback 2`
 - Tier 4, research blend for later study only:
-  - equal-weight blend of Tier 2 and Tier 2A
-  - use only if the desk explicitly wants to run two similar sleeves side by side and average the risk
-  - it did not beat Tier 2A on the full sample, on the recent `60`-trading-day tape, or by contract-month win count
+  - equal-weight blend of strengthened Tier 2A and strengthened Tier 3 local-geometry
+  - use only if the desk explicitly wants to run two stronger sleeves side by side and average the risk
+  - it slightly beat the best single exact research line on full-sample composite, but it is still a research-only portfolio construct
 - Fallback refinement if the newer cooldown winner misbehaves in MT5: stay on the plain `Cooldown 30m` preset
 - Simplest high-fidelity fallback:
   - the cooldown-only exact variant kept `99.65%` of the max-hold leader's net profit and `99.82%` of its PF

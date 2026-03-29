@@ -48,6 +48,11 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - `70/30` test: `R$3,865`, `PF 1.4316`, `DD 3.26%`, composite `3.4742`
     - recent `60` trading days: `R$450`, `PF 1.2609`, `DD 3.24%`
     - interpretation: this is now the strongest aggressive exact research branch, but the rollout order still stays conservative because the simpler Tier 2A line remains the cleaner first upgrade
+  - equal-weight blending those two strengthened local-geometry sleeves nudged the research frontier again:
+    - `R$15,927.50`, `PF 1.5068`, `DD 3.22%`, composite `3.3209`
+    - `70/30` test: `R$3,900`, `PF 1.4402`, `DD 2.89%`, composite `3.7950`
+    - recent `60` trading days: `R$442.50`, `PF 1.2565`, `DD 3.24%`
+    - interpretation: the single-strategy family is probably at its ceiling, but portfolio smoothing between the two strongest local-geometry sleeves still helps a little in research-only form
 
 ## Final Ranking Follow-up
 

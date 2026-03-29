@@ -26,7 +26,7 @@
 | Tier 2 | Session winner + `25m` cooldown | Best deployable exact composite in the cooldown sweep. |
 | Tier 2A | Session winner + `28m` cooldown + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2` | Strongest simpler exact post-Monday upgrade and best out-of-sample post-Monday line. |
 | Tier 3 | Session winner + `25m` cooldown + `150m` max-hold + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2` | Strongest aggressive exact research line, but still a later rollout step than Tier 2A. |
-| Tier 4 | Research Blend: equal-weight average of Tier 3 + time-widened stop | Slightly better research composite via smoothing, but not a Monday deployment preset. |
+| Tier 4 | Research Blend: equal-weight average of strengthened Tier 2A + strengthened Tier 3 | Strongest research-only smoothing sleeve, but not a Monday deployment preset. |
 
 ## Recent Tape
 
