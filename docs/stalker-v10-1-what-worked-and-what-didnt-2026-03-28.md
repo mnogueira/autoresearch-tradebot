@@ -78,6 +78,9 @@ Corrected rerun:
 - excluding the top ATR tercile on the balanced branch:
   - improved PF and drawdown
   - but over-pruned enough to lose the total score and even produced `0` trades in the recent `10d`
+- trimming top-ATR days to `0.75x` on the balanced branch:
+  - came much closer than hard exclusion
+  - but still stayed just below the plain balanced branch, so it remains research-only sizing upside
 - overly wide profit targets on the corrected-cost survivor:
   - `TP 0.54` weakened the full sample and flipped the recent `60d` and `10d` windows negative
   - `TP 0.60` was worse again and nearly flatlined the full-sample edge

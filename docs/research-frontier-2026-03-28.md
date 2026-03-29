@@ -156,9 +156,14 @@ Corrected rerun:
   - full sample: `R$2,030`, `PF 1.1014`, `DD 8.60%`, composite `0.4634`
   - `70/30` test: `R$590`, `PF 1.1186`, `DD 7.13%`
   - recent `10d`: `0` trades
+- Trimming the top ATR tercile to `0.75x` size was much better than hard exclusion, but still a near-miss:
+  - full sample: `R$2,775.5`, `PF 1.0974`, `DD 7.07%`, composite `0.5891`
+  - `70/30` test: `R$812.75`, `PF 1.1107`, `DD 7.38%`
+  - recent `30d`: `R$319`, `PF 1.6827`
 - Interpretation:
   - static regime pruning can improve certain windows
-  - but neither late-week exclusion nor hard ATR exclusion beat the balanced `SL 1.00 / TP 0.48 / 60m / Friday off / skip last1` branch on total score
+  - but neither late-week exclusion nor ATR-based pruning beat the balanced `SL 1.00 / TP 0.48 / 60m / Friday off / skip last1` branch on total score
+  - partial ATR trimming is clearly better than hard ATR exclusion, which is useful ceiling evidence for future sizing work
 
 ## Current Best Static Corrected-Cost Survivor
 
