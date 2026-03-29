@@ -361,5 +361,7 @@ Ceiling note:
   - `docs/mt5-monday-morning-checklist-2026-03-30.md`
 - Week 1 monitoring template:
   - `docs/mt5-week-1-monitoring-template-2026-03-28.md`
+- Session-health assessor:
+  - `python -m autoresearch_tradebot.mt5.assess_paper_session --snapshot <monitoring_snapshot.json> --max-spread-ticks <observed_max> --completed-sessions <count> --current-tier "Tier 1"`
 - Post-Monday roadmap:
   - `docs/mt5-next-steps-after-monday-2026-03-28.md`

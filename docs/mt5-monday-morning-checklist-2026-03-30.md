@@ -170,5 +170,7 @@ Recent context:
      - `docs/stalker-v10-1-strategy-health-dashboard-2026-03-28.md`
 8. Start the paper-week worksheet before the first live session:
    - `docs/mt5-week-1-monitoring-template-2026-03-28.md`
-9. Do not try to improve fills by intentionally waiting one extra minute after the signal.
+9. After each session, assess the paper-session health from the monitoring snapshot:
+   - `python -m autoresearch_tradebot.mt5.assess_paper_session --snapshot <monitoring_snapshot.json> --max-spread-ticks <observed_max> --completed-sessions <count> --current-tier "Tier 1"`
+10. Do not try to improve fills by intentionally waiting one extra minute after the signal.
    - the next-open patience and one-tick-better next-open entry overlays were both strongly negative in research
