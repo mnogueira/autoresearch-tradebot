@@ -5,6 +5,7 @@
 | Variant | Net | PF | DD | Win Rate | Trades | Trades/Day | Sortino | Calmar | Omega | Composite | Rank |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Strengthened Tier 2A on last 1 contract day, strengthened Tier 3 otherwise, exact research candidate | `R$16,080` | `1.5081` | `3.19%` | `80.94%` | 1595 | `1.2791` | `2.0349` | `6.6967` | `1.6566` | `3.3578` | research exact |
+| Strengthened Tier 2A longs + strengthened Tier 3 shorts, research-only directional sleeve | `R$16,075` | `1.5115` | `3.19%` | `80.96%` | 1591 | `1.2759` | `2.0109` | `6.6906` | `1.6533` | `3.3433` | research |
 | Equal-weight blend of strengthened Tier 2A + strengthened Tier 3 local-geometry, research-only | `R$15,927.50` | `1.5068` | `3.22%` | `80.90%` | 3168 | `2.5405` | `2.0223` | `6.5957` | `1.6553` | `3.3209` | research |
 | Cooldown `25m` + max-hold `150m` + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`, exact research candidate | `R$15,885` | `1.4993` | `3.21%` | `80.84%` | 1597 | `1.2815` | `2.0170` | `6.6019` | `1.6474` | `3.3186` | research exact |
 | Cooldown `28m` + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`, exact research candidate | `R$15,970` | `1.5145` | `3.23%` | `80.97%` | 1571 | `1.2606` | `2.0094` | `6.5895` | `1.6541` | `3.3124` | research exact |
@@ -75,6 +76,15 @@
     - `2d` and `3d`: composite `3.3430`
     - `5d`: composite `3.3295`
   - this is still a research-only branch because the contract-cycle switching rule is not yet part of the Monday MT5 deployment path
+- Strongest static research-only sleeve:
+  - strengthened Tier 2A longs plus strengthened Tier 3 shorts
+  - `R$16,075`, `PF 1.5115`, `DD 3.19%`, composite `3.3433`
+  - `70/30` test stayed positive:
+    - train `PF 1.5385`
+    - test `PF 1.4424`
+  - recent `60`-day slice also stayed positive:
+    - `R$450`, `PF 1.2609`, `DD 3.24%`
+  - this is still research-only because it needs direction-specific sleeve routing rather than one static preset
 - Strongest simpler post-Monday follow-up now packaged for MQ5:
   - session winner + `28m` cooldown + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`
   - `R$15,970`, `PF 1.5145`, `DD 3.23%`, composite `3.3124`
@@ -139,7 +149,8 @@
   - Tier 4, research-only: equal-weight blend of Tier 2 and Tier 2A
 - Risk-adjusted ranking by the Sortino-weighted composite:
   - strongest exact research line overall: strengthened Tier 2A on the last `1` contract day and strengthened Tier 3 otherwise at `3.3578`
-  - strongest research-only sleeve: equal-weight blend of strengthened Tier 2A and strengthened Tier 3 local-geometry at `3.3209`
+- strongest research-only sleeve: strengthened Tier 2A longs plus strengthened Tier 3 shorts at `3.3433`
+- next strongest research-only sleeve: equal-weight blend of strengthened Tier 2A and strengthened Tier 3 local-geometry at `3.3209`
   - best exact research line: cooldown `25m` + max-hold `150m` + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2` at `3.3186`
   - next exact research line: cooldown `28m` + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2` at `3.3124`
   - next exact research line: cooldown `25m` range mode + Tier 3 `ROC(5)` + `150m` max-hold on prior-day `ADX > 25` trend days at `3.2148`

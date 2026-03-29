@@ -926,7 +926,7 @@ But cost sensitivity is real:
 14. Opening-range breakout is also a dead end. The exact 09:00-10:00 breakout family was even worse than the broader session-breakout prototype, so the current strategy family is still dominating the obvious breakout alternatives.
 15. H1 is not the hidden missing timeframe. A bar-based H1 translation of the retracement family lost heavily, so there is no evidence that moving the same logic to H1 improves the edge.
 16. The core geometry still has tiny in-sample room, but not enough robust room. On Tier 2A, lowering `FilterAsPercOfContractMARange` from `0.30` to `0.25` improved the full-sample composite to `3.1932`, but the last `60` trading days turned negative (`R$-225`, `PF 0.8941`), so it is not a Monday promotion.
-17. The one remaining unexplored angle is directional asymmetry across the strengthened Tier 2A and Tier 3 lines. A full long/short split scout timed out in the sandbox and is queued for follow-up via smaller split passes rather than a single monolithic run.
+17. Directional asymmetry is real, but it is still a research-only sleeve, not a Monday preset. The best split was strengthened Tier 2A longs plus strengthened Tier 3 shorts at `R$16,075`, `PF 1.5115`, `DD 3.19%`, composite `3.3433`; it also stayed positive on the `70/30` test (`R$3,920`, `PF 1.4424`, `DD 3.26%`) and on the recent `60`-day window (`R$450`, `PF 1.2609`, `DD 3.24%`). It is useful ceiling evidence, but it depends on direction-specific sleeve routing rather than one static production preset.
 
 ## Production Recommendation
 
