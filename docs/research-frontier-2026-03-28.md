@@ -67,6 +67,9 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - `macd_line_sign`: `R$15,940`, `PF 1.5135`, `DD 3.23%`, composite `3.3076`
     - `macd_hist_sign`: `R$15,010`, `PF 1.5018`, `DD 3.13%`, composite `3.2223`
     - interpretation: this reinforces the same ceiling read as RSI; ROC adds real signal agreement value here, but generic oscillator or MACD confirmation does not
+  - intraday `+DI/-DI` directional agreement was also a slight degradation:
+    - `R$15,885`, `PF 1.5117`, `DD 3.23%`, composite `3.2986`
+    - interpretation: another trend-aligned confirmation still failed to beat the strengthened Tier 2A reference, so ROC remains the only lightweight agreement layer with clear incremental value
   - stochastic directional confirmation was the first other agreement family to beat the strengthened Tier 2A line in-sample, but it still failed the robustness bar:
     - best case `stoch_d_centerline`: `R$16,210`, `PF 1.5274`, `DD 2.98%`, composite `3.5140`
     - `70/30` test weakened versus the strengthened Tier 2A reference:

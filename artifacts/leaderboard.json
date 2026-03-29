@@ -11111,6 +11111,33 @@
     "rank": 372
   },
   {
+    "name": "tier2a_di_sign",
+    "family": "stalker_v10_1_di_agreement_followup",
+    "screening_method": "di_agreement_followup",
+    "comparison_tier": "research_exact",
+    "mt5_ready": false,
+    "test_total_trades": 1568,
+    "test_net_profit_brl": 15885.0,
+    "test_profit_factor": 1.5117,
+    "test_on_tester_value": 4920.858791,
+    "test_max_drawdown_pct": 3.23,
+    "test_win_rate": 0.8093,
+    "notes": "Strengthened Tier 2A with +DI/-DI directional agreement.",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_di_agreement_followups_20260329\\summary.json",
+    "params": {
+      "di_window": 14,
+      "roc_agreement_bars": 5,
+      "ATR_Length": 10,
+      "NumDaysToConsiderPreviousContractMARange": 2,
+      "min_minutes_between_entries": 28
+    },
+    "sortino_ratio": 1.9983,
+    "calmar_ratio": 6.5646,
+    "omega_ratio": 1.6505,
+    "sortino_weighted_composite": 3.2986,
+    "rank": 373
+  },
+  {
     "name": "session_winner_cooldown_30m_maxhold120_sl0p84_tp0p30_confidence_overlay",
     "family": "stalker_v10_1_session_execution",
     "screening_method": "max_quality_followup",
@@ -11140,7 +11167,7 @@
     "calmar_ratio": 6.2356,
     "omega_ratio": 1.6255,
     "sortino_weighted_composite": 3.1301,
-    "rank": 373
+    "rank": 374
   },
   {
     "name": "tier2a_roc5_atr10_contractlookback2_cooldown30",
@@ -11207,7 +11234,7 @@
     "calmar_ratio": 6.4453,
     "omega_ratio": 1.6359,
     "sortino_weighted_composite": 3.2331,
-    "rank": 374
+    "rank": 375
   },
   {
     "name": "tier2a_roc5_atr14_contractlookback3",
@@ -11274,7 +11301,7 @@
     "calmar_ratio": 6.4674,
     "omega_ratio": 1.6336,
     "sortino_weighted_composite": 3.2811,
-    "rank": 375
+    "rank": 376
   },
   {
     "name": "tier2a_horizon_reference",
@@ -11345,7 +11372,7 @@
     "calmar_ratio": 6.4674,
     "omega_ratio": 1.6336,
     "sortino_weighted_composite": 3.2811,
-    "rank": 376
+    "rank": 377
   },
   {
     "name": "tier2_range_tier2a_local_trend_switch",
@@ -11413,7 +11440,7 @@
     "calmar_ratio": 6.3333,
     "omega_ratio": 1.6407,
     "sortino_weighted_composite": 3.2534,
-    "rank": 377
+    "rank": 378
   },
   {
     "name": "tier3_confidence_weighted_overlay",
@@ -11439,7 +11466,7 @@
     "calmar_ratio": 5.945,
     "omega_ratio": 1.6245,
     "sortino_weighted_composite": 3.0623,
-    "rank": 378
+    "rank": 379
   },
   {
     "name": "tier3_trend_strength_overlay",
@@ -11502,7 +11529,7 @@
     "calmar_ratio": 5.945,
     "omega_ratio": 1.6245,
     "sortino_weighted_composite": 3.0623,
-    "rank": 379
+    "rank": 380
   },
   {
     "name": "tier2a_trend_strength_overlay",
@@ -11566,7 +11593,7 @@
     "calmar_ratio": 5.9289,
     "omega_ratio": 1.628,
     "sortino_weighted_composite": 3.0554,
-    "rank": 380
+    "rank": 381
   },
   {
     "name": "tier2a_local_geometry_reference_two_tier_0p75_1p25",
@@ -11636,7 +11663,7 @@
     "calmar_ratio": 6.0945,
     "omega_ratio": 1.6477,
     "sortino_weighted_composite": 3.0948,
-    "rank": 381
+    "rank": 382
   },
   {
     "name": "tier2_range_tier3_roc5_trend_switch",
@@ -11742,7 +11769,7 @@
     "calmar_ratio": 6.1735,
     "omega_ratio": 1.6501,
     "sortino_weighted_composite": 3.2148,
-    "rank": 382
+    "rank": 383
   },
   {
     "name": "tier2_range_tier3_roc5_trend_switch_adx_25p0",
@@ -11848,7 +11875,7 @@
     "calmar_ratio": 6.1735,
     "omega_ratio": 1.6501,
     "sortino_weighted_composite": 3.2148,
-    "rank": 383
+    "rank": 384
   },
   {
     "name": "tier2_range_tier3_roc5_trend_switch_adx_30p0",
@@ -11954,7 +11981,7 @@
     "calmar_ratio": 6.1651,
     "omega_ratio": 1.6459,
     "sortino_weighted_composite": 3.2056,
-    "rank": 384
+    "rank": 385
   },
   {
     "name": "tier2_range_tier3_roc5_trend_switch_adx_27p5",
@@ -12060,7 +12087,7 @@
     "calmar_ratio": 6.1494,
     "omega_ratio": 1.6448,
     "sortino_weighted_composite": 3.1989,
-    "rank": 385
+    "rank": 386
   },
   {
     "name": "tier3_local_geometry_reference_two_tier_0p75_1p25",
@@ -12130,7 +12157,7 @@
     "calmar_ratio": 6.0379,
     "omega_ratio": 1.6273,
     "sortino_weighted_composite": 3.0604,
-    "rank": 386
+    "rank": 387
   },
   {
     "name": "tier2a_contractrange_0p25",
@@ -12195,7 +12222,7 @@
     "calmar_ratio": 6.139,
     "omega_ratio": 1.6477,
     "sortino_weighted_composite": 3.1932,
-    "rank": 387
+    "rank": 388
   },
   {
     "name": "tier2_range_tier2a_trend_switch",
@@ -12260,7 +12287,7 @@
     "calmar_ratio": 6.1294,
     "omega_ratio": 1.645,
     "sortino_weighted_composite": 3.1964,
-    "rank": 388
+    "rank": 389
   },
   {
     "name": "tier2_range_tier3_roc5_trend_switch_adx_22p5",
@@ -12366,7 +12393,7 @@
     "calmar_ratio": 6.1007,
     "omega_ratio": 1.6426,
     "sortino_weighted_composite": 3.1801,
-    "rank": 389
+    "rank": 390
   },
   {
     "name": "tier2_range_tier3_roc5_trend_switch_adx_20p0",
@@ -12472,7 +12499,7 @@
     "calmar_ratio": 6.0781,
     "omega_ratio": 1.6394,
     "sortino_weighted_composite": 3.1676,
-    "rank": 390
+    "rank": 391
   },
   {
     "name": "tier2_range_tier3_roc7_trend_switch",
@@ -12578,7 +12605,7 @@
     "calmar_ratio": 6.0664,
     "omega_ratio": 1.6377,
     "sortino_weighted_composite": 3.169,
-    "rank": 391
+    "rank": 392
   },
   {
     "name": "tier2_range_tier3_roc8_trend_switch",
@@ -12684,7 +12711,7 @@
     "calmar_ratio": 6.0632,
     "omega_ratio": 1.6377,
     "sortino_weighted_composite": 3.1677,
-    "rank": 392
+    "rank": 393
   },
   {
     "name": "tier2_range_tier2a_horizon_trend_switch",
@@ -12752,7 +12779,7 @@
     "calmar_ratio": 6.0528,
     "omega_ratio": 1.6236,
     "sortino_weighted_composite": 3.1478,
-    "rank": 393
+    "rank": 394
   },
   {
     "name": "tier2_roc5_agreement",
@@ -12821,7 +12848,7 @@
     "calmar_ratio": 6.0402,
     "omega_ratio": 1.6362,
     "sortino_weighted_composite": 3.1493,
-    "rank": 394
+    "rank": 395
   },
   {
     "name": "tier2a_baseline",
@@ -12886,7 +12913,7 @@
     "calmar_ratio": 6.0402,
     "omega_ratio": 1.6362,
     "sortino_weighted_composite": 3.1493,
-    "rank": 395
+    "rank": 396
   },
   {
     "name": "tier2_range_tier3_roc10_trend_switch",
@@ -12992,7 +13019,7 @@
     "calmar_ratio": 6.0309,
     "omega_ratio": 1.6346,
     "sortino_weighted_composite": 3.1526,
-    "rank": 396
+    "rank": 397
   },
   {
     "name": "portfolio_equal_weight_t2_t2a",
@@ -13022,7 +13049,7 @@
     "calmar_ratio": 6.0079,
     "omega_ratio": 1.6315,
     "sortino_weighted_composite": 3.1372,
-    "rank": 397
+    "rank": 398
   },
   {
     "name": "tier2_range_tier3_roc3_trend_switch",
@@ -13128,7 +13155,7 @@
     "calmar_ratio": 5.9653,
     "omega_ratio": 1.6343,
     "sortino_weighted_composite": 3.1248,
-    "rank": 398
+    "rank": 399
   },
   {
     "name": "tier2_reference",
@@ -13196,7 +13223,7 @@
     "calmar_ratio": 5.9756,
     "omega_ratio": 1.6196,
     "sortino_weighted_composite": 3.1158,
-    "rank": 399
+    "rank": 400
   },
   {
     "name": "session_winner_equal_weight_ensemble_maxhold_timewidened",
@@ -13226,7 +13253,7 @@
     "calmar_ratio": 5.9735,
     "omega_ratio": 1.6178,
     "sortino_weighted_composite": 3.0724,
-    "rank": 400
+    "rank": 401
   },
   {
     "name": "tier2_roc8_agreement",
@@ -13295,7 +13322,7 @@
     "calmar_ratio": 5.944,
     "omega_ratio": 1.6272,
     "sortino_weighted_composite": 3.1205,
-    "rank": 401
+    "rank": 402
   },
   {
     "name": "session_winner_cooldown_30m_recent_entry_density_sizing_60m",
@@ -13317,7 +13344,7 @@
       "min_size_multiplier": 0.5,
       "max_size_multiplier": 1.0
     },
-    "rank": 402
+    "rank": 403
   },
   {
     "name": "tier2_roc7_agreement",
@@ -13386,7 +13413,7 @@
     "calmar_ratio": 5.9475,
     "omega_ratio": 1.6197,
     "sortino_weighted_composite": 3.1088,
-    "rank": 403
+    "rank": 404
   },
   {
     "name": "tier2_roc3_agreement",
@@ -13455,7 +13482,7 @@
     "calmar_ratio": 5.852,
     "omega_ratio": 1.6138,
     "sortino_weighted_composite": 3.0667,
-    "rank": 404
+    "rank": 405
   },
   {
     "name": "portfolio_equal_weight_tier1_tier2a",
@@ -13564,7 +13591,7 @@
     "calmar_ratio": 5.5409,
     "omega_ratio": 1.6499,
     "sortino_weighted_composite": 3.0592,
-    "rank": 405
+    "rank": 406
   },
   {
     "name": "tier2a_local_geometry_reference_two_tier_0p5_1p5",
@@ -13634,7 +13661,7 @@
     "calmar_ratio": 5.481,
     "omega_ratio": 1.6297,
     "sortino_weighted_composite": 2.7627,
-    "rank": 406
+    "rank": 407
   },
   {
     "name": "tier2a_contractrange_0p35",
@@ -13699,7 +13726,7 @@
     "calmar_ratio": 5.5647,
     "omega_ratio": 1.6027,
     "sortino_weighted_composite": 2.9386,
-    "rank": 407
+    "rank": 408
   },
   {
     "name": "tier2a_vwap_distance_overlay",
@@ -13722,7 +13749,7 @@
     "calmar_ratio": 5.2814,
     "omega_ratio": 1.634,
     "sortino_weighted_composite": 2.8228,
-    "rank": 408
+    "rank": 409
   },
   {
     "name": "tier2a_roc5_atr10_contractlookback2_cooldown20",
@@ -13789,7 +13816,7 @@
     "calmar_ratio": 5.2332,
     "omega_ratio": 1.6252,
     "sortino_weighted_composite": 2.8956,
-    "rank": 409
+    "rank": 410
   },
   {
     "name": "tier3_time_widened_confidence_overlay",
@@ -13855,7 +13882,7 @@
     "calmar_ratio": 4.9081,
     "omega_ratio": 1.6195,
     "sortino_weighted_composite": 2.7203,
-    "rank": 410
+    "rank": 411
   },
   {
     "name": "tier2a_roc5_atr10_contractlookback2_cooldown22",
@@ -13922,7 +13949,7 @@
     "calmar_ratio": 5.1425,
     "omega_ratio": 1.625,
     "sortino_weighted_composite": 2.8648,
-    "rank": 411
+    "rank": 412
   },
   {
     "name": "tier3_local_geometry_reference_two_tier_0p5_1p5",
@@ -13992,7 +14019,7 @@
     "calmar_ratio": 4.3845,
     "omega_ratio": 1.596,
     "sortino_weighted_composite": 2.4026,
-    "rank": 412
+    "rank": 413
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_mon_wed_thu_only_confidence_overlay",
@@ -14024,7 +14051,7 @@
     "calmar_ratio": 4.312,
     "omega_ratio": 1.7735,
     "sortino_weighted_composite": 2.239,
-    "rank": 413
+    "rank": 414
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_mon_wed_thu_timewidened_confidence_overlay",
@@ -14056,7 +14083,7 @@
     "calmar_ratio": 4.1715,
     "omega_ratio": 1.8028,
     "sortino_weighted_composite": 2.2019,
-    "rank": 414
+    "rank": 415
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_logistic_confidence_overlay",
@@ -14080,7 +14107,7 @@
     "calmar_ratio": 3.6733,
     "omega_ratio": 1.5354,
     "sortino_weighted_composite": 2.0685,
-    "rank": 415
+    "rank": 416
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_random_forest_confidence_overlay",
@@ -14104,7 +14131,7 @@
     "calmar_ratio": 3.6515,
     "omega_ratio": 1.5492,
     "sortino_weighted_composite": 2.1265,
-    "rank": 416
+    "rank": 417
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_logistic_core_confidence_overlay",
@@ -14128,7 +14155,7 @@
     "calmar_ratio": 3.6486,
     "omega_ratio": 1.5488,
     "sortino_weighted_composite": 2.1251,
-    "rank": 417
+    "rank": 418
   },
   {
     "name": "tier2a_retracement_0p20_contractrange_0p25",
@@ -14193,7 +14220,7 @@
     "calmar_ratio": 3.0064,
     "omega_ratio": 1.4249,
     "sortino_weighted_composite": 1.9741,
-    "rank": 418
+    "rank": 419
   },
   {
     "name": "tier2a_retracement_0p20",
@@ -14258,7 +14285,7 @@
     "calmar_ratio": 2.907,
     "omega_ratio": 1.4071,
     "sortino_weighted_composite": 1.9115,
-    "rank": 419
+    "rank": 420
   },
   {
     "name": "tier2a_retracement_0p30",
@@ -14323,7 +14350,7 @@
     "calmar_ratio": 2.7963,
     "omega_ratio": 1.3844,
     "sortino_weighted_composite": 1.7189,
-    "rank": 420
+    "rank": 421
   },
   {
     "name": "tier2a_retracement_0p30_contractrange_0p35",
@@ -14388,7 +14415,7 @@
     "calmar_ratio": 2.1882,
     "omega_ratio": 1.3288,
     "sortino_weighted_composite": 1.4394,
-    "rank": 421
+    "rank": 422
   },
   {
     "name": "session_winner_cooldown_30m_hourly_open_proxy",
@@ -14415,7 +14442,7 @@
         14
       ]
     },
-    "rank": 422
+    "rank": 423
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_random_forest_gate_0p55",
@@ -14439,7 +14466,7 @@
     "calmar_ratio": 0.0,
     "omega_ratio": 0.0,
     "sortino_weighted_composite": 0.0,
-    "rank": 423
+    "rank": 424
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_logistic_gate_0p55",
@@ -14463,6 +14490,6 @@
     "calmar_ratio": -0.078,
     "omega_ratio": 0.7013,
     "sortino_weighted_composite": 0.112,
-    "rank": 424
+    "rank": 425
   }
 ]
