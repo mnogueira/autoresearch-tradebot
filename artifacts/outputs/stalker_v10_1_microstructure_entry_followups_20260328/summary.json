@@ -24,6 +24,35 @@
     },
     "sortino_weighted_composite": 3.0529
   },
+  "next_open_entry_proxy": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.0325,
+      "net_profit_brl": -130870.0,
+      "avg_profit_brl": -83.46,
+      "avg_win_brl": 13.43,
+      "avg_loss_brl": -88.06,
+      "profit_factor": 0.0052,
+      "max_drawdown_pct": 1308.7,
+      "expected_payoff": -83.46,
+      "on_tester_value": -100.0
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": -10.1247,
+      "calmar_ratio": 0.0,
+      "omega_ratio": 0.0017,
+      "annual_return_pct": 0.0,
+      "max_drawdown_frac": 13.087
+    },
+    "sortino_weighted_composite": -5.062,
+    "kept_trades": 1568,
+    "skipped_trades": 0,
+    "keep_rate": 1.0,
+    "assumption": "Research-only overlay: always wait for the next M1 open and enter there, regardless of whether the gap is favorable."
+  },
   "next_open_patience_filter": {
     "metrics": {
       "start_date": "2021-03-23",

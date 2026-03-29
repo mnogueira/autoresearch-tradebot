@@ -66,8 +66,10 @@
 | Two-bar trend confirmation | `R$-1,485`, `PF 0.7564`, `DD 18.63%` | Waiting for two consecutive M15 closes in the signal direction destroyed the fast-continuation edge. |
 | Volume-weighted entry sizing by relative volume | `R$10,340`, `PF 1.4388`, `DD 3.70%`, composite `2.3424` | Lowering size on lower-relative-volume signals reduced risk, but it also gave up too much net and composite to justify promotion. |
 | Next-open patience entry | `R$-99,785`, `PF 0.0060`, `DD 997.85%` | The strategy already extracts its edge from fast retracement fills; delaying to the next minute was catastrophic. |
+| Plain next-open entry proxy | `R$-130,870`, `PF 0.0052`, `DD 1308.7%` | Converting the execution model into a wait-for-next-minute entry completely destroyed the edge. |
 | Next-open one-tick-better limit proxy | `R$-29,100`, `PF 0.0058`, `DD 291.0%` | A passive next-open fill requirement starved the system of the good fast entries and did not work as a live improvement path. |
 | ATR trailing stop after 50% target | exact tie with Tier 2 at `R$14,085`, `PF 1.4825`, `DD 3.30%` | This added no value over the simpler cooldown-only line. |
+| Bollinger squeeze gate | Bottom-quartile squeeze: `R$2,595`, `PF 1.4428`, `DD 5.24%`; bottom-third squeeze: `R$2,670`, `PF 1.3160`, `DD 8.27%` | Volatility compression did not improve this signal family; it mostly just removed too many trades. |
 
 ## The Real Risks
 

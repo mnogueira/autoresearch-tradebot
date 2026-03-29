@@ -130,9 +130,15 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - interpretation: execution quality is likely the cleanest remaining frontier, but this is not a live-ready alpha claim because it assumes every trade gets one extra tick without affecting fill probability
 - Microstructure entry follow-up:
   - artifact: `artifacts/outputs/stalker_v10_1_microstructure_entry_followups_20260328/summary.json`
+  - plain next-M1-open entry proxy was the worst of the group
   - waiting for the next M1 open only when it was no worse than the signal close was decisively negative
   - requiring the next M1 open to already be one full WDO tick better than the signal close was also decisively negative
   - interpretation: the strategy wants fast retracement execution, not delayed confirmation at the next minute
+- Bollinger squeeze follow-up:
+  - artifact: `artifacts/outputs/stalker_v10_1_bollinger_squeeze_followups_20260328/summary.json`
+  - bottom-quartile squeeze gate: `R$2,595`, `PF 1.4428`, `DD 5.24%`, composite `0.7348`
+  - bottom-third squeeze gate: `R$2,670`, `PF 1.3160`, `DD 8.27%`, composite `0.6195`
+  - interpretation: the squeeze gate strips out too much of the strategy's opportunity set and is not a viable promotion path
 - ATR trailing-stop follow-up:
   - artifact: `artifacts/outputs/stalker_v10_1_trailing_stop_followups_20260328/summary.json`
   - trailing by `2.0 x ATR` after the trade reached `50%` of target was an exact tie with Tier 2

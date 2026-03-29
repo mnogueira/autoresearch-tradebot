@@ -137,6 +137,16 @@ def main() -> None:
             "otherwise skip the trade."
         ),
     )
+    next_open_block = _variant_block(
+        trades=trades,
+        trade_dates=trade_dates,
+        kept_mask=valid_next_open,
+        new_entry_prices=next_open,
+        new_entry_times=next_open_time,
+        assumption=(
+            "Research-only overlay: always wait for the next M1 open and enter there, regardless of whether the gap is favorable."
+        ),
+    )
     limit_block = _variant_block(
         trades=trades,
         trade_dates=trade_dates,
@@ -163,6 +173,7 @@ def main() -> None:
             "metrics": reference_metrics,
             **_risk_block(trades, trade_dates),
         },
+        "next_open_entry_proxy": next_open_block,
         "next_open_patience_filter": patience_block,
         "next_open_one_tick_limit_proxy": limit_block,
         "diagnostics": diagnostics,

@@ -79,6 +79,12 @@
 - Next-bar patience / better-next-open entry overlays:
   - both decisively negative
   - interpretation: the current exact strategy already benefits from fast retracement fills, so delaying to the next minute destroys edge rather than improving it
+- Plain next-open entry proxy:
+  - even worse than the patience filter
+  - interpretation: the strategy should not be converted into a wait-for-next-minute execution workflow
+- Bollinger squeeze gate on Tier 2:
+  - strongly worse than baseline
+  - interpretation: low-volatility compression is not the right additional gate for this signal family
 
 ## Bottom Line
 
