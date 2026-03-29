@@ -85,6 +85,7 @@ Corrected rerun:
   - long-only failed badly on holdout
   - short-only held up much better and is clearly the stronger corrected-cost sleeve
   - but the combined balanced branch still wins as the cleaner static default
+  - even on the stronger short sleeve, shortening cooldown to `45m` made the branch worse again
 - overly wide profit targets on the corrected-cost survivor:
   - `TP 0.54` weakened the full sample and flipped the recent `60d` and `10d` windows negative
   - `TP 0.60` was worse again and nearly flatlined the full-sample edge
