@@ -34,6 +34,12 @@ Corrected rerun:
     - `R$2,104`, `PF 1.0687`, `DD 10.58%`
     - `70/30` test `R$1,007`, `PF 1.1305`, `DD 7.23%`
     - removing max-hold did not change the out-of-sample readout
+  - the best balanced refinement so far is:
+    - no ROC
+    - no max-hold
+    - `SL 1.0`
+    - `R$3,024`, `PF 1.0966`, `DD 7.06%`
+    - `70/30` test `R$887`, `PF 1.1091`, `DD 7.91%`
   - it also stayed positive on the holdout:
     - `70/30` test `R$879`, `PF 1.1142`, `DD 8.77%`
   - and on the recent windows:
@@ -59,6 +65,9 @@ Corrected rerun:
 - overly wide stops on the corrected-cost survivor:
   - `SL 1.0` looked better in sample but had a weaker holdout
   - `SL 1.2` failed the holdout outright
+- but on the simplified corrected-cost branch:
+  - `SL 1.0` is actually the best balanced result so far
+  - so stop-width interacts with branch complexity
 - overly wide profit targets on the corrected-cost survivor:
   - `TP 0.54` weakened the full sample and flipped the recent `10d` window negative
 
@@ -93,4 +102,6 @@ Corrected rerun:
     - `TP 0.48` + `60m` cooldown + Friday off + skip last `1` contract day + `150m` max-hold on Tier 2A geometry
   - strongest holdout branch:
     - same branch, but without ROC agreement or max-hold
+  - strongest balanced branch:
+    - same simplified branch, but with `SL 1.0`
   - promising, but not robust enough yet to promote

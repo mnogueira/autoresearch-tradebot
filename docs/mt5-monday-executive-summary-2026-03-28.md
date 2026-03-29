@@ -76,10 +76,15 @@ Corrected production rerun artifact:
   - the edge can survive the corrected flat-cost model, but only after much wider targets and much lower trade frequency
   - skipping the final contract day helps much more than adding max-hold
   - adding `150m` max-hold on top improves the corrected-cost survivor only marginally
-  - the simpler no-ROC branch is now the best corrected-cost holdout branch:
+  - the simpler no-ROC branch is still the best pure holdout readout:
     - full sample `R$2,104`, `PF 1.0687`, `DD 10.58%`
     - `70/30` test `R$1,007`, `PF 1.1305`, `DD 7.23%`
-    - removing max-hold did not change the out-of-sample readout
+  - the new balanced corrected-cost leader is:
+    - no ROC
+    - no max-hold
+    - `SL 1.0`
+    - full sample `R$3,024`, `PF 1.0966`, `DD 7.06%`
+    - `70/30` test `R$887`, `PF 1.1091`, `DD 7.91%`
   - it is still research-only until host-side MT5 validation exists
 
 ## Monday Recommendation

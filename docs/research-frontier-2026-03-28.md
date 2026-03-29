@@ -115,6 +115,17 @@ Corrected rerun:
   - on the corrected-cost validation branch, max-hold is effectively a no-op
   - the simpler no-ROC, no-max-hold version is now the cleaner corrected-cost candidate to validate next
 
+## Corrected-Cost Simplified Stop Improvement
+
+- Widening the simplified no-ROC, no-max-hold branch to `SL 1.00` materially improved it:
+  - full sample: `R$3,024`, `PF 1.0966`, `DD 7.06%`, composite `0.6049`
+  - `70/30` test: `R$887`, `PF 1.1091`, `DD 7.91%`, composite `0.6052`
+  - recent `60d`: `R$241`, `PF 1.1911`
+- Interpretation:
+  - this is now the strongest balanced corrected-cost static branch
+  - it gives up some holdout net versus the pure no-ROC/no-max-hold branch, but materially improves full-sample quality and drawdown while keeping the holdout positive
+  - it is the best candidate so far for future host-side MT5 validation, though still not a Monday promotion
+
 ## Current Best Static Corrected-Cost Survivor
 
 - The stronger local refinement is:
