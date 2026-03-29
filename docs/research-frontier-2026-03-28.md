@@ -9,6 +9,19 @@
 
 This remains the safest paper-trading candidate because it is the best strategy validated in MT5 `Every tick` mode.
 
+## New Tier 2A Upgrade
+
+- The remaining core-horizon sweep found a stronger exact post-Tier-2 upgrade than the earlier plain ROC filter:
+  - Tier 2 + `ROC(5)` agreement + `ATR_Length 14` + `NumDaysToConsiderPreviousContractMARange 3`
+  - full sample: `R$15,000`, `PF 1.4873`, `DD 3.15%`, composite `3.2811`
+- Validation also held up:
+  - `70/30` test: `R$3,640`, `PF 1.4213`, `DD 3.51%`, composite `3.1807`
+  - recent `60` trading days: `R$200`, `PF 1.1087`, `DD 4.69%`
+  - recent `10` trading days: `R$440`, `PF 3.75`, `DD 1.00%`
+- Interpretation:
+  - this is now the strongest exact post-Tier-2 upgrade and the new Tier 2A research validation target
+  - it still does not change the Monday rollout order because it lacks host-side MT5 validation
+
 ## Final Ranking Follow-up
 
 - No live-ready exact variant broke the target of `Sortino > 2.5` while keeping `DD < 5%`.

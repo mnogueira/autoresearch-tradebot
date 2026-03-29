@@ -4,6 +4,7 @@
 
 | Variant | Net | PF | DD | Win Rate | Trades | Trades/Day | Sortino | Calmar | Omega | Composite | Rank |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Cooldown `25m` + `ROC(5)` agreement + `ATR_Length 14` + contract lookback `3`, exact research candidate | `R$15,000` | `1.4873` | `3.15%` | `80.61%` | 1599 | `1.2823` | `2.0283` | `6.4674` | `1.6336` | `3.2811` | research exact |
 | Cooldown `25m` range mode + Tier 3 `ROC(5)` + `150m` max-hold on prior-day `ADX > 25` trend days, exact research candidate | `R$14,835` | `1.4987` | `3.27%` | `80.70%` | 1611 | `1.2927` | `2.0655` | `6.1735` | `1.6501` | `3.2148` | research exact |
 | Cooldown `25m` + conditional `ROC(5)` on prior-day `ADX > 25` trend days, exact research candidate | `R$14,765` | `1.4951` | `3.28%` | `80.70%` | 1611 | `1.2927` | `2.0572` | `6.1294` | `1.6450` | `3.1964` | research exact |
 | Cooldown `25m` + max-hold `150m` + `ROC(5)` agreement, exact research candidate | `R$14,630` | `1.4935` | `3.28%` | `80.66%` | 1598 | `1.2815` | `2.0283` | `6.0841` | `1.6412` | `3.1676` | research exact |
@@ -65,6 +66,15 @@
   - recent `60`-trading-day check stayed soft and identical to Tier 2 / Tier 2A:
     - `R$30`, `PF 1.0157`, `DD 5.62%`
   - this is not the new Monday default only because it adds regime logic and has not yet had host-side MT5 validation
+- New best exact post-Tier-2 upgrade:
+  - session winner + `25m` cooldown + `ROC(5)` agreement + `ATR_Length 14` + contract lookback `3`
+  - `R$15,000`, `PF 1.4873`, `DD 3.15%`, composite `3.2811`
+  - exact `70/30` walk-forward:
+    - train `PF 1.5131`
+    - test `PF 1.4213`
+  - recent `60`-trading-day check improved versus the earlier Tier 2A line:
+    - `R$200`, `PF 1.1087`, `DD 4.69%`
+  - this is now the cleanest stronger post-Tier-2 research validation target, but it still needs host-side MT5 confirmation before it changes the Monday rollout order
 - Best max-hold ROC research candidate:
   - session winner + `25m` cooldown + `150` M1 max-hold + `ROC(5)` agreement
   - `R$14,630`, `PF 1.4935`, `DD 3.28%`, composite `3.1676`
@@ -94,7 +104,7 @@
 - Recommended configuration tiers:
   - Tier 1, safest: MT5-validated `sl0p84 / tp0p30`
   - Tier 2, moderate: session winner + `25m` cooldown only
-  - Tier 2A, next research validation: session winner + `25m` cooldown + `ROC(5)` agreement
+  - Tier 2A, next research validation: session winner + `25m` cooldown + `ROC(5)` agreement + `ATR_Length 14` + contract lookback `3`
   - Tier 2B, regime-aware ROC: session winner + `25m` cooldown, but only require `ROC(5)` on prior-day `ADX > 25` trend days
   - advanced research preset: session winner + `25m` cooldown, but switch to Tier 3 `ROC(5)` + `150m` max-hold on prior-day `ADX > 25` trend days
   - Tier 3, aggressive: session winner + `25m` cooldown + `150` M1 max hold

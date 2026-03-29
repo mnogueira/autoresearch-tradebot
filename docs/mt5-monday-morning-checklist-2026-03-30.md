@@ -23,19 +23,21 @@
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 GPT 5.4.set`
 4. Moderate exact refinement preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m GPT 5.4.set`
-5. Walk-forward-validated cooldown fallback preset:
+5. Strongest ROC-enhanced exact follow-up preset:
+   - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m ROC5 Agreement ATR14 Lookback3 GPT 5.4.set`
+6. Walk-forward-validated cooldown fallback preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
-6. Aggressive exact refinement preset:
+7. Aggressive exact refinement preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold150m GPT 5.4.set`
-7. Regime-aware ROC research preset:
+8. Regime-aware ROC research preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m ROC5 TrendSwitch ADX25 GPT 5.4.set`
-8. Advanced regime-aware ROC + max-hold research preset:
+9. Advanced regime-aware ROC + max-hold research preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold150m ROC5 TrendSwitch ADX25 GPT 5.4.set`
-9. Quality-biased preset:
+10. Quality-biased preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Maximum Quality v2 Cooldown 30m MaxHold120m GPT 5.4.set`
-10. Optional trend-day quality preset:
+11. Optional trend-day quality preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Trend Day ADX25 Cooldown 30m MaxHold120m GPT 5.4.set`
-11. Optional live spread-guard preset:
+12. Optional live spread-guard preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m SpreadGuard1t GPT 5.4.set`
 
 ## Preset Order
@@ -44,17 +46,19 @@
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 GPT 5.4.set`
 2. If that report looks sane, validate the new cooldown-sweep winner next:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m GPT 5.4.set`
-3. If the desk wants the more validated cooldown setting first, use this instead:
+3. If that also looks sane, validate the strongest ROC-enhanced exact follow-up next:
+   - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m ROC5 Agreement ATR14 Lookback3 GPT 5.4.set`
+4. If the desk wants the more validated cooldown setting first, use this instead:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
-4. If that also looks sane, validate the aggressive max-hold refinement next:
+5. If that also looks sane, validate the aggressive max-hold refinement next:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold150m GPT 5.4.set`
-5. If the desk wants the strongest regime-aware research follow-up before max-hold logic, validate:
+6. If the desk wants the strongest regime-aware research follow-up before max-hold logic, validate:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m ROC5 TrendSwitch ADX25 GPT 5.4.set`
-6. If the desk wants the strongest advanced regime-aware stack after that, validate:
+7. If the desk wants the strongest advanced regime-aware stack after that, validate:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold150m ROC5 TrendSwitch ADX25 GPT 5.4.set`
-7. If the desk prefers the cleaner operator profile, validate the quality preset:
+8. If the desk prefers the cleaner operator profile, validate the quality preset:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Maximum Quality v2 Cooldown 30m MaxHold120m GPT 5.4.set`
-8. If the desk wants the EA itself to stand down in weaker daily regimes, validate the optional ADX-gated preset:
+9. If the desk wants the EA itself to stand down in weaker daily regimes, validate the optional ADX-gated preset:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Trend Day ADX25 Cooldown 30m MaxHold120m GPT 5.4.set`
 
 ## Sanity Checks
@@ -63,6 +67,7 @@
    - `EntryStart 10:00`
    - `LastEntry 14:30`
    - `MinMinutesBetweenEntries 25` for the new cooldown-sweep winner and the new max-hold refinement, or `30` for the older validated cooldown fallback
+   - `ATR_Length 14` and `NumDaysToConsiderPreviousContractMARange 3` if using the upgraded Tier 2A ROC preset
    - `MaxMinutesInTrade 150` for the aggressive refinement preset
    - `SL 0.84`
    - `TP 0.30`

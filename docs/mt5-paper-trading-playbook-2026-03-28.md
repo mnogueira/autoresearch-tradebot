@@ -104,6 +104,21 @@ Ceiling note:
   - it is also the strongest out-of-sample post-Monday upgrade in the final exact `70/30` robustness pass:
     - test `R$3,440`, `PF 1.4086`, `DD 4.21%`
 
+### Upgraded ROC geometry follow-up
+
+- This is now the strongest exact post-Tier-2 upgrade and the new Tier 2A candidate:
+  - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m ROC5 Agreement ATR14 Lookback3 GPT 5.4.set`
+- Exact result:
+  - `R$15,000`, `PF 1.4873`, `DD 3.15%`, composite `3.2811`
+- Exact `70/30` walk-forward:
+  - train `R$11,360`, `PF 1.5131`, `DD 3.15%`
+  - test `R$3,640`, `PF 1.4213`, `DD 3.51%`
+- Recent `60`-trading-day check:
+  - `R$200`, `PF 1.1087`, `DD 4.69%`
+- Operational note:
+  - this is the cleanest stronger ROC-based post-Monday validation target now
+  - it beat the plain Tier 2 + `ROC(5)` line on the full sample, on the `70/30` test, and on the recent `60`-day readout
+
 ### Regime-aware ROC follow-up
 
 - This is the strongest simpler regime-aware research line so far:
@@ -172,11 +187,11 @@ Ceiling note:
     - use this as the first new exact refinement to validate because it is now the best deployable full-sample exact composite score
     - operational expectation: about `1.30` trades per day in the exact engine
 - Tier 2A, ROC follow-up:
-    - session winner + `25m` cooldown + `ROC(5)` agreement
-    - use this after the plain Tier 2 validation if the desk wants the simplest ROC-enhanced upgrade path
-    - among the tested agreement windows, `ROC(5)` beat `ROC(10)` and `ROC(20)` on the Tier 2 line
+    - session winner + `25m` cooldown + `ROC(5)` agreement + `ATR_Length 14` + contract lookback `3`
+    - use this after the plain Tier 2 validation if the desk wants the strongest simpler ROC-enhanced upgrade path
+    - the core-horizon follow-up beat the plain Tier 2 + `ROC(5)` line on the full sample, on the `70/30` test, and on the recent `60`-day readout
 - Tier 2B, regime-aware ROC:
-    - session winner + `25m` cooldown, but only require `ROC(5)` on prior-day `ADX > 25` trend days
+    - session winner + `25m` cooldown, but only require the Tier 2A geometry variant on prior-day `ADX > 25` trend days
     - use this after Tier 2A if the desk wants the strongest exact research line without stepping into max-hold logic yet
 - Advanced research preset:
     - session winner + `25m` cooldown, but switch to Tier 3 `ROC(5)` + `150m` max-hold on prior-day `ADX > 25` trend days

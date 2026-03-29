@@ -26,6 +26,14 @@
   - `R$14,835`, `PF 1.4987`, `DD 3.27%`, composite `3.2148`
   - finer window sweep confirmed `ROC(5)` stayed optimal over `ROC(3)`, `ROC(7)`, `ROC(8)`, and `ROC(10)`
   - ADX-threshold sweep also confirmed `25` stayed optimal over `20`, `22.5`, `27.5`, and `30`
+- Best exact post-Tier-2 upgrade, now packaged:
+  - Tier 2 + `ROC(5)` agreement + `ATR_Length 14` + contract-range lookback `3`
+  - `R$15,000`, `PF 1.4873`, `DD 3.15%`, composite `3.2811`
+  - exact `70/30` walk-forward:
+    - train `R$11,360`, `PF 1.5131`, `DD 3.15%`
+    - test `R$3,640`, `PF 1.4213`, `DD 3.51%`
+  - recent `60`-trading-day check:
+    - `R$200`, `PF 1.1087`, `DD 4.69%`
 - Best simpler ROC follow-up, also packaged:
   - Tier 2 + `ROC(5)` agreement
   - `R$14,560`, `PF 1.4900`, `DD 3.30%`, composite `3.1493`
@@ -55,11 +63,11 @@
 - After `5` clean paper sessions:
   - Tier 2
 - After Tier 2 behaves cleanly:
-  - Tier 2A, `25m` cooldown + `ROC(5)` agreement
+  - Tier 2A, `25m` cooldown + `ROC(5)` agreement + `ATR_Length 14` + contract lookback `3`
 - After Tier 2A behaves cleanly:
   - Tier 2B, regime-aware switch:
     - Tier 2 on prior-day `ADX <= 25` range days
-    - Tier 2A `ROC(5)` on prior-day `ADX > 25` trend days
+    - Tier 2A geometry variant on prior-day `ADX > 25` trend days
 - Advanced research preset after that:
   - Tier 2 on prior-day `ADX <= 25` range days
   - Tier 3 `ROC(5)` + `150m` max-hold on prior-day `ADX > 25` trend days
@@ -69,9 +77,9 @@
   - equal-weight blend of Tier 2 and Tier 2A
   - this did not beat Tier 2A on the full sample, on the recent `60`-day tape, or by contract-month win count
 - Best next ROC validation after the plain Tier 2 line:
-  - Tier 2 + `ROC(5)` agreement, because it keeps the simpler cooldown-only structure while still improving the composite
-  - it is also now the strongest out-of-sample post-Monday upgrade:
-    - test `R$3,440`, `PF 1.4086`, `DD 4.21%`
+  - Tier 2 + `ROC(5)` agreement + `ATR_Length 14` + contract lookback `3`
+  - it is now the strongest out-of-sample post-Monday upgrade:
+    - test `R$3,640`, `PF 1.4213`, `DD 3.51%`
 
 ## Deployment Steps
 
@@ -200,6 +208,13 @@
   - but the same variant was worse in the current regime:
     - last `60` trading days: `R$-225`, `PF 0.8941`, `DD 5.62%`
   - interpretation: good research signal, not a Monday promotion
+- Core horizon sweep on Tier 2A:
+  - `ATR_Length 14` + contract-range lookback `3` produced the strongest exact post-Tier-2 result so far:
+    - `R$15,000`, `PF 1.4873`, `DD 3.15%`, composite `3.2811`
+  - the validation also held up:
+    - test `R$3,640`, `PF 1.4213`, `DD 3.51%`
+    - recent `60` trading days: `R$200`, `PF 1.1087`, `DD 4.69%`
+  - interpretation: this is the new Tier 2A geometry upgrade, but it still needs host-side MT5 validation before it can affect the Monday rollout order
 
 ## Bottom Line
 
