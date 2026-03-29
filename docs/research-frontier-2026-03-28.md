@@ -80,15 +80,16 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - Tier 2 + `ROC(5)` agreement: `R$14,560`, `PF 1.4900`, `DD 3.30%`, composite `3.1493`
   - exact `70/30` walk-forward on the Tier 3 + `ROC(5)` agreement line still passed:
     - train `R$11,190`, `PF 1.5272`, `DD 3.28%`, composite `3.6242`
-    - test `R$3,440`, `PF 1.4086`, `DD 4.21%`, composite `2.7331`
+  - test `R$3,440`, `PF 1.4086`, `DD 4.21%`, composite `2.7331`
   - recent-regime reality check was still soft:
     - last `60` trading days: `R$30`, `PF 1.0157`, `DD 5.62%`
+  - the simpler Tier 2 + `ROC(5)` agreement line also held the same recent `60`-day readout while keeping the simpler cooldown-only structure
   - tighter ATR-scaled TP clips still did not help:
     - `0.90x` to `1.20x`: `R$13,985`, `PF 1.4488`, `DD 3.45%`, composite `2.9315`
     - `0.85x` to `1.30x`: `R$13,235`, `PF 1.4192`, `DD 3.57%`, composite `2.7479`
   - combining `ROC(5)` agreement with the tighter adaptive TP also stayed worse than the plain `ROC(5)` agreement:
     - `R$13,845`, `PF 1.4477`, `DD 3.45%`, composite `2.9088`
-  - interpretation: the best new idea is not a new signal family; it is a light momentum agreement layer on top of the existing one. That is now the strongest exact research line, but it is not yet a Monday promotion because the MQ5 side still lacks ROC-agreement support.
+  - interpretation: the best new idea is not a new signal family; it is a light momentum agreement layer on top of the existing one. That is now the strongest exact research line, and the simpler Tier 2 + `ROC(5)` variant is the cleaner post-Monday validation target.
 
 ## Near-Term Caution
 

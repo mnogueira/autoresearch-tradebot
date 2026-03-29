@@ -5,6 +5,7 @@
 | Variant | Net | PF | DD | Win Rate | Trades | Trades/Day | Sortino | Calmar | Omega | Composite | Rank |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Cooldown `25m` + max-hold `150m` + `ROC(5)` agreement, exact research candidate | `R$14,630` | `1.4935` | `3.28%` | `80.66%` | 1598 | `1.2815` | `2.0283` | `6.0841` | `1.6412` | `3.1676` | research exact |
+| Cooldown `25m` + `ROC(5)` agreement, exact research candidate | `R$14,560` | `1.4900` | `3.30%` | `80.66%` | 1598 | `1.2815` | `2.0201` | `6.0402` | `1.6362` | `3.1493` | research exact |
 | Confidence-weighted + time-widened stop overlay, research-only fractional sizing | `R$18,359.32` | `1.4993` | `3.72%` | `80.87%` | 1568 | `1.2574` | `1.8410` | `6.3030` | `1.6315` | `3.1377` | research |
 | Cooldown `25m` + max-hold `150m` | `R$14,420` | `1.4784` | `3.28%` | `80.50%` | 1615 | `1.2951` | `2.0067` | `6.0193` | `1.6245` | `3.1340` | 1 |
 | Cooldown `25m` + max-hold `120m` | `R$14,400` | `1.4774` | `3.29%` | `80.50%` | 1615 | `1.2951` | `2.0072` | `6.0068` | `1.6231` | `3.1303` | 2 |
@@ -50,6 +51,15 @@
     - train `PF 1.5272`
     - test `PF 1.4086`
   - this is not the new Monday default only because it has not yet had host-side MT5 validation
+- Simpler ROC agreement alternative:
+  - session winner + `25m` cooldown + `ROC(5)` agreement
+  - `R$14,560`, `PF 1.4900`, `DD 3.30%`, composite `3.1493`
+  - exact `70/30` walk-forward still passed:
+    - train `PF 1.5272`
+    - test `PF 1.4086`
+  - recent `60`-trading-day check stayed soft but stable:
+    - `R$30`, `PF 1.0157`, `DD 5.62%`
+  - this is now the clearest simpler ROC-based host-side MT5 validation target
 - Best exact cooldown sweep winner: session winner + `25m` cooldown only.
   - `R$14,350`, `PF 1.4749`, `DD 3.30%`, composite `3.1158`
   - this is now the best deployable exact cooldown-only composite score in the full-sample sweep

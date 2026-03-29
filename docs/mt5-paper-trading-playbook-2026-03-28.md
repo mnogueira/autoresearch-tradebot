@@ -82,6 +82,20 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 - Operational note:
   - if the desk wants to pursue one more post-Monday improvement path, this ROC(5)-agreement preset is now the clearest host-side MT5 validation candidate
 
+### Simpler ROC agreement follow-up
+
+- This is the same ROC(5) confirmation idea on top of the simpler cooldown-only line:
+  - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m ROC5 Agreement GPT 5.4.set`
+- Exact result:
+  - `R$14,560`, `PF 1.4900`, `DD 3.30%`, composite `3.1493`
+- Exact `70/30` walk-forward:
+  - train `R$11,190`, `PF 1.5272`, `DD 3.28%`
+  - test `R$3,440`, `PF 1.4086`, `DD 4.21%`
+- Recent `60`-trading-day check:
+  - `R$30`, `PF 1.0157`, `DD 5.62%`
+- Operational note:
+  - this is the cleaner ROC-based post-Monday validation target if the desk prefers to stay closer to Tier 2 than Tier 3
+
 ### Maximum-quality preset
 
 - Use this if the desk prefers cleaner tape over raw net profit:

@@ -21,6 +21,9 @@
 - Best exact research line, now packaged for MT5 follow-up validation:
   - Tier 3 + `ROC(5)` agreement
   - `R$14,630`, `PF 1.4935`, `DD 3.28%`, composite `3.1676`
+- Best simpler ROC follow-up, also packaged:
+  - Tier 2 + `ROC(5)` agreement
+  - `R$14,560`, `PF 1.4900`, `DD 3.30%`, composite `3.1493`
 
 ## Key Risks
 
@@ -41,6 +44,8 @@
   - Tier 2
 - After another clean week:
   - Tier 3
+- Best next ROC validation after the plain Tier 2 line:
+  - Tier 2 + `ROC(5)` agreement, because it keeps the simpler cooldown-only structure while still improving the composite
 
 ## Deployment Steps
 

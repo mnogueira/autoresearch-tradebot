@@ -1,0 +1,154 @@
+{
+  "variant_name": "tier2_trend_efficiency_plus_roc5_agreement",
+  "full_sample": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1598,
+      "win_rate": 0.8066,
+      "net_profit_brl": 14560.0,
+      "avg_profit_brl": 9.11,
+      "avg_win_brl": 34.35,
+      "avg_loss_brl": -96.17,
+      "profit_factor": 1.49,
+      "max_drawdown_pct": 3.3,
+      "expected_payoff": 9.11,
+      "on_tester_value": 4416.931148
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 2.0201,
+      "calmar_ratio": 6.0402,
+      "omega_ratio": 1.6362,
+      "annual_return_pct": 19.91,
+      "max_drawdown_frac": 0.032964
+    },
+    "sortino_weighted_composite": 3.1493
+  },
+  "walkforward_70_30": {
+    "train_metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2024-09-16",
+      "trading_days": 872,
+      "total_trades": 1117,
+      "win_rate": 0.8102,
+      "net_profit_brl": 11120.0,
+      "avg_profit_brl": 9.96,
+      "avg_win_brl": 35.82,
+      "avg_loss_brl": -100.45,
+      "profit_factor": 1.5222,
+      "max_drawdown_pct": 3.3,
+      "expected_payoff": 9.96,
+      "on_tester_value": 3373.370492
+    },
+    "train_risk": {
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.1321,
+        "calmar_ratio": 7.3163,
+        "omega_ratio": 1.6858,
+        "annual_return_pct": 24.12,
+        "max_drawdown_frac": 0.032964
+      },
+      "sortino_weighted_composite": 3.5981
+    },
+    "test_metrics": {
+      "start_date": "2024-09-17",
+      "end_date": "2026-03-20",
+      "trading_days": 375,
+      "total_trades": 481,
+      "win_rate": 0.7983,
+      "net_profit_brl": 3440.0,
+      "avg_profit_brl": 7.15,
+      "avg_win_brl": 30.89,
+      "avg_loss_brl": -86.8,
+      "profit_factor": 1.4086,
+      "max_drawdown_pct": 4.21,
+      "expected_payoff": 7.15,
+      "on_tester_value": 818.05614
+    },
+    "test_risk": {
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.724,
+        "calmar_ratio": 5.2267,
+        "omega_ratio": 1.5157,
+        "annual_return_pct": 21.98,
+        "max_drawdown_frac": 0.042051
+      },
+      "sortino_weighted_composite": 2.7331
+    }
+  },
+  "recent_60d": {
+    "metrics": {
+      "start_date": "2025-12-19",
+      "end_date": "2026-03-20",
+      "trading_days": 60,
+      "total_trades": 90,
+      "win_rate": 0.7444,
+      "net_profit_brl": 30.0,
+      "avg_profit_brl": 0.33,
+      "avg_win_brl": 28.96,
+      "avg_loss_brl": -83.04,
+      "profit_factor": 1.0157,
+      "max_drawdown_pct": 5.62,
+      "expected_payoff": 0.33,
+      "on_tester_value": 5.339474
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 0.0836,
+      "calmar_ratio": 0.2253,
+      "omega_ratio": 1.0197,
+      "annual_return_pct": 1.27,
+      "max_drawdown_frac": 0.056185
+    },
+    "sortino_weighted_composite": 0.3133
+  },
+  "params": {
+    "management": {
+      "max_bars_in_trade": null,
+      "partial_profit_enabled": false,
+      "partial_fraction": 0.5,
+      "round_trip_cost_multiplier": 1.0,
+      "spread_multiplier": 1.0,
+      "fixed_spread_ticks": null,
+      "max_entry_spread_ticks": null,
+      "min_minutes_between_entries": 25,
+      "max_daily_profit_brl": null,
+      "max_weekly_profit_brl": null,
+      "max_consecutive_losses_per_day": null,
+      "recent_trade_pnl_lookback": null,
+      "min_recent_trade_pnl_brl": null,
+      "cooldown_after_win_minutes": null,
+      "cooldown_after_loss_minutes": null,
+      "loss_exit_atr_mult": null,
+      "trail_after_target_fraction": null,
+      "trail_lock_target_fraction": null,
+      "atr_trailing_activation_fraction": null,
+      "profitable_trail_start_bars": null,
+      "profitable_trail_step_bars": 1,
+      "profitable_trail_step_ticks": 0,
+      "keep_profitable_overnight": false,
+      "win_streak_threshold": null,
+      "tp_scale_after_win_streak": null,
+      "patience_pullback_fraction": null,
+      "patience_max_wait_bars": null,
+      "micro_pullback_ticks": null,
+      "micro_pullback_max_wait_bars": null,
+      "confirmation_candle_required": false,
+      "confirmation_wait_bars": 1,
+      "confirmation_consecutive_bars": 1,
+      "profit_lock_activation_fraction": null,
+      "profit_lock_target_fraction": null,
+      "widen_stop_after_bars": null,
+      "widened_sl_atr_mult": null,
+      "atr_trailing_distance_mult": null,
+      "trend_flip_exit_bars": null
+    },
+    "roc_agreement_bars": 5,
+    "entry_hours": [
+      10,
+      11,
+      12,
+      14
+    ]
+  }
+}
