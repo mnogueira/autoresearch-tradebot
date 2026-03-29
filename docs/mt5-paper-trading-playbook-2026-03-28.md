@@ -122,13 +122,17 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
   - use this as the Monday default because it is the best strategy already validated in MT5 `Every Tick`
   - operational expectation: about `1.96` trades per day on the validated MT5 report
 - Tier 2, moderate:
-  - session winner + `25m` cooldown only
-  - use this as the first new exact refinement to validate because it is now the best deployable full-sample exact composite score
-  - operational expectation: about `1.30` trades per day in the exact engine
+    - session winner + `25m` cooldown only
+    - use this as the first new exact refinement to validate because it is now the best deployable full-sample exact composite score
+    - operational expectation: about `1.30` trades per day in the exact engine
+- Tier 2A, ROC follow-up:
+    - session winner + `25m` cooldown + `ROC(5)` agreement
+    - use this after the plain Tier 2 validation if the desk wants the simplest ROC-enhanced upgrade path
+    - among the tested agreement windows, `ROC(5)` beat `ROC(10)` and `ROC(20)` on the Tier 2 line
 - Tier 3, aggressive:
-  - session winner + `25m` cooldown + `150` M1 max hold
-  - use this only after the simpler cooldown-only refinement looks sane in MT5
-  - operational expectation: about `1.30` trades per day in the exact engine
+    - session winner + `25m` cooldown + `150` M1 max hold
+    - use this only after the simpler cooldown-only refinement looks sane in MT5
+    - operational expectation: about `1.30` trades per day in the exact engine
 - Tier 4, research-only:
   - equal-weight blend of Tier 3 and the time-widened stop variant
   - this slightly improved the research composite through portfolio smoothing, but it is not a Monday live preset

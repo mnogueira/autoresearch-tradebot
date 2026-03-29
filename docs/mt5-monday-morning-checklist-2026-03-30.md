@@ -122,8 +122,9 @@ Recent context:
 2. Watch the first two sessions closely around `10:00`, `11:00`, `12:00`, and `14:00`.
 3. Record actual spread and fill behavior for each trade.
    - baseline expectation for Tier 1 is about `1.96` trades per day from the validated MT5 report
-  - if you later promote to Tier 2, the exact-engine expectation is about `1.30` trades per day
-  - if you later promote to Tier 3, the exact-engine expectation is about `1.30` trades per day
+   - if you later promote to Tier 2, the exact-engine expectation is about `1.30` trades per day
+   - if you later promote to Tier 2A with `ROC(5)` agreement, the exact-engine expectation is about `1.28` trades per day
+   - if you later promote to Tier 3, the exact-engine expectation is about `1.30` trades per day
 4. Keep the `Experts` and `Journal` tabs open and watch for:
    - unexpected entries outside the intended windows
    - repeated close-order rejections

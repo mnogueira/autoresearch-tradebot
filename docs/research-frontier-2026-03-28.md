@@ -84,12 +84,16 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - recent-regime reality check was still soft:
     - last `60` trading days: `R$30`, `PF 1.0157`, `DD 5.62%`
   - the simpler Tier 2 + `ROC(5)` agreement line also held the same recent `60`-day readout while keeping the simpler cooldown-only structure
+  - tested agreement windows on Tier 2 ranked cleanly:
+    - `ROC(5)`: `R$14,560`, `PF 1.4900`, `DD 3.30%`, composite `3.1493`
+    - `ROC(20)`: `R$14,350`, `PF 1.4760`, `DD 3.30%`, composite `3.1117`
+    - `ROC(10)`: `R$14,295`, `PF 1.4756`, `DD 3.33%`, composite `3.0872`
   - tighter ATR-scaled TP clips still did not help:
     - `0.90x` to `1.20x`: `R$13,985`, `PF 1.4488`, `DD 3.45%`, composite `2.9315`
     - `0.85x` to `1.30x`: `R$13,235`, `PF 1.4192`, `DD 3.57%`, composite `2.7479`
   - combining `ROC(5)` agreement with the tighter adaptive TP also stayed worse than the plain `ROC(5)` agreement:
     - `R$13,845`, `PF 1.4477`, `DD 3.45%`, composite `2.9088`
-  - interpretation: the best new idea is not a new signal family; it is a light momentum agreement layer on top of the existing one. That is now the strongest exact research line, and the simpler Tier 2 + `ROC(5)` variant is the cleaner post-Monday validation target.
+  - interpretation: the best new idea is not a new signal family; it is a light momentum agreement layer on top of the existing one. `ROC(5)` was the best tested agreement window, and the simpler Tier 2 + `ROC(5)` variant is now the cleaner post-Monday validation target.
 
 ## Near-Term Caution
 
