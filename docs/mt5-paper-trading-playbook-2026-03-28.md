@@ -223,6 +223,10 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
   - the opposite experiment was also revealing:
     - a research-only one-tick better fill on every trade would lift Tier 2 to `R$21,925`, `PF 1.7925`, `DD 2.64%`
     - operational interpretation: execution quality is a first-order driver of this strategy's edge
+  - but the follow-up entry-timing overlays were strongly negative:
+    - waiting for the next M1 open only when it was no worse than the signal close turned the strategy decisively negative
+    - requiring the next M1 open to already be one tick better than the signal close was even more restrictive and also decisively negative
+    - practical interpretation: the edge is in the current fast retracement entry logic plus good execution, not in delaying the trade by another minute
 - MT5 tester instability:
   - MT5 `Every Tick` produced the usable validation runs
   - multiple `real ticks` and main-terminal attempts stalled or produced incomplete artifacts
@@ -247,5 +251,7 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
   - reduce size or skip trading in the last `3` trading days before the monthly WDO contract rollover if the tape also looks low-ADX or spread-heavy
 - Monday runbook:
   - `docs/mt5-monday-morning-checklist-2026-03-30.md`
+- Week 1 monitoring template:
+  - `docs/mt5-week-1-monitoring-template-2026-03-28.md`
 - Post-Monday roadmap:
   - `docs/mt5-next-steps-after-monday-2026-03-28.md`

@@ -76,6 +76,9 @@
   - very strong research-only upside
   - `R$21,925`, `PF 1.7925`, `DD 2.64%`
   - interpretation: execution quality matters a lot
+- Next-bar patience / better-next-open entry overlays:
+  - both decisively negative
+  - interpretation: the current exact strategy already benefits from fast retracement fills, so delaying to the next minute destroys edge rather than improving it
 
 ## Bottom Line
 

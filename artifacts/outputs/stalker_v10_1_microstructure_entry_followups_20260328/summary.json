@@ -1,0 +1,98 @@
+{
+  "reference_tier2_cooldown_only": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 14085.0,
+      "avg_profit_brl": 8.98,
+      "avg_win_brl": 34.26,
+      "avg_loss_brl": -95.7,
+      "profit_factor": 1.4825,
+      "max_drawdown_pct": 3.3,
+      "expected_payoff": 8.98,
+      "on_tester_value": 4263.59877
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.9306,
+      "calmar_ratio": 5.8842,
+      "omega_ratio": 1.6115,
+      "annual_return_pct": 19.44,
+      "max_drawdown_frac": 0.033035
+    },
+    "sortino_weighted_composite": 3.0529
+  },
+  "next_open_patience_filter": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1218,
+      "win_rate": 0.0361,
+      "net_profit_brl": -99785.0,
+      "avg_profit_brl": -81.93,
+      "avg_win_brl": 13.75,
+      "avg_loss_brl": -86.84,
+      "profit_factor": 0.006,
+      "max_drawdown_pct": 997.85,
+      "expected_payoff": -81.93,
+      "on_tester_value": -100.0
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": -8.4525,
+      "calmar_ratio": 0.0,
+      "omega_ratio": 0.0034,
+      "annual_return_pct": 0.0,
+      "max_drawdown_frac": 9.9785
+    },
+    "sortino_weighted_composite": -4.2256,
+    "kept_trades": 1218,
+    "skipped_trades": 350,
+    "keep_rate": 0.7768,
+    "assumption": "Research-only overlay: if the next M1 open is no worse than the signal bar close, wait and enter there; otherwise skip the trade."
+  },
+  "next_open_one_tick_limit_proxy": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 358,
+      "win_rate": 0.0335,
+      "net_profit_brl": -29100.0,
+      "avg_profit_brl": -81.28,
+      "avg_win_brl": 14.17,
+      "avg_loss_brl": -85.09,
+      "profit_factor": 0.0058,
+      "max_drawdown_pct": 291.0,
+      "expected_payoff": -81.28,
+      "on_tester_value": -100.0
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": -3.2268,
+      "calmar_ratio": 0.0,
+      "omega_ratio": 0.0055,
+      "annual_return_pct": 0.0,
+      "max_drawdown_frac": 2.91
+    },
+    "sortino_weighted_composite": -1.6123,
+    "kept_trades": 358,
+    "skipped_trades": 1210,
+    "keep_rate": 0.2283,
+    "assumption": "Research-only overlay: place a limit one WDO tick better than the signal bar close and only keep trades where the next M1 open is already at or beyond that improved price."
+  },
+  "diagnostics": {
+    "reference_trade_count": 1568,
+    "share_with_observed_next_open": 1.0,
+    "share_next_open_non_worse_than_signal_close": 0.7768,
+    "share_next_open_one_tick_better_than_signal_close": 0.2283,
+    "mean_next_open_improvement_ticks": 0.0051,
+    "median_next_open_improvement_ticks": 0.0
+  },
+  "notes": [
+    "These are post-trade microstructure overlays on top of the exact Tier 2 trade tape, not a full exact-engine rerun with changed stop/target paths.",
+    "The patience filter measures whether waiting one minute without paying up would have improved entry quality.",
+    "The one-tick limit proxy is deliberately conservative: it only counts trades where the next M1 open is already at or beyond the improved limit price."
+  ]
+}
