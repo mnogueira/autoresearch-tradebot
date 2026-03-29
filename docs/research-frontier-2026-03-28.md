@@ -101,6 +101,19 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - `R$14,085`, `PF 1.4825`, `DD 3.30%`, composite `3.0529`
   - ATR-expansion volatility breakout produced `0` trades in this implementation
   - interpretation: the live-ready strategy did not change; the latest week looks healthier, and the new filters either added nothing or hurt
+- Recent `60`-trading-day Tier 2 vs Tier 3 comparison:
+  - artifact: `artifacts/outputs/stalker_v10_1_recent_60d_t2_t3_20260329/summary.json`
+  - Tier 2 `25m` cooldown-only: `R$30`, `PF 1.0157`, `DD 5.62%`, `90` trades
+  - Tier 3 `25m + 150m` max-hold: identical
+  - interpretation: the newer Tier 3 line still wins full-sample composite, but the current regime is not rewarding it over the simpler Tier 2 upgrade
+- Mean-reversion / volume / skip-hour follow-up:
+  - artifact: `artifacts/outputs/stalker_v10_1_meanrev_volume_hour_followups_20260329/summary.json`
+  - RSI(14) mean-reversion prototype: `R$-11,755`, `PF 0.8236`, `DD 119.38%`
+  - signal-bar volume above rolling `20`-bar average: `R$13,405`, `PF 1.4456`, `DD 3.41%`
+  - skip `12h`: `R$11,905`, `PF 1.4755`, `DD 4.12%`
+  - skip `14h`: `R$14,245`, `PF 1.4784`, `DD 3.42%`
+  - skip `15h`: exact no-op versus Tier 2
+  - interpretation: the fundamentally different RSI family did not work, and the extra volume/hour pruning did not improve the current deployable frontier
 - Entry/cost follow-up:
   - artifact: `artifacts/outputs/stalker_v10_1_entry_cost_followups_20260328/summary.json`
   - smart-entry micro-pullback within `3` bars was not good enough:

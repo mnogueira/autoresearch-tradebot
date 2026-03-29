@@ -1,0 +1,198 @@
+{
+  "reference_tier2_cooldown_25m": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1615,
+      "win_rate": 0.805,
+      "net_profit_brl": 14350.0,
+      "avg_profit_brl": 8.89,
+      "avg_win_brl": 34.28,
+      "avg_loss_brl": -95.92,
+      "profit_factor": 1.4749,
+      "max_drawdown_pct": 3.3,
+      "expected_payoff": 8.89,
+      "on_tester_value": 4352.04918
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.9984,
+      "calmar_ratio": 5.9756,
+      "omega_ratio": 1.6196,
+      "annual_return_pct": 19.7,
+      "max_drawdown_frac": 0.032973
+    },
+    "sortino_weighted_composite": 3.1158,
+    "note": "Current exact Tier 2 candidate: session winner with 25-minute cooldown."
+  },
+  "signal_bar_volume_above_20bar_average": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1583,
+      "win_rate": 0.8023,
+      "net_profit_brl": 13405.0,
+      "avg_profit_brl": 8.47,
+      "avg_win_brl": 34.24,
+      "avg_loss_brl": -96.12,
+      "profit_factor": 1.4456,
+      "max_drawdown_pct": 3.41,
+      "expected_payoff": 8.47,
+      "on_tester_value": 3934.313008
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.8597,
+      "calmar_ratio": 5.5029,
+      "omega_ratio": 1.5753,
+      "annual_return_pct": 18.75,
+      "max_drawdown_frac": 0.034072
+    },
+    "sortino_weighted_composite": 2.8958,
+    "note": "Exact follow-up: only allow entries when current M1 signal-bar volume exceeds the rolling 20-bar average."
+  },
+  "skip_hour_sweep": [
+    {
+      "name": "skip_12h",
+      "allowed_hours": [
+        10,
+        11,
+        14
+      ],
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1351,
+        "win_rate": 0.8068,
+        "net_profit_brl": 11905.0,
+        "avg_profit_brl": 8.81,
+        "avg_win_brl": 33.89,
+        "avg_loss_brl": -95.92,
+        "profit_factor": 1.4755,
+        "max_drawdown_pct": 4.12,
+        "expected_payoff": 8.81,
+        "on_tester_value": 2887.812857
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.6072,
+        "calmar_ratio": 4.1651,
+        "omega_ratio": 1.5728,
+        "annual_return_pct": 17.17,
+        "max_drawdown_frac": 0.041225
+      },
+      "sortino_weighted_composite": 2.3677,
+      "note": "Remove 12:00 entries from the current 10/11/12/14 session filter."
+    },
+    {
+      "name": "skip_14h",
+      "allowed_hours": [
+        10,
+        11,
+        12
+      ],
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1596,
+        "win_rate": 0.8058,
+        "net_profit_brl": 14245.0,
+        "avg_profit_brl": 8.93,
+        "avg_win_brl": 34.23,
+        "avg_loss_brl": -96.05,
+        "profit_factor": 1.4784,
+        "max_drawdown_pct": 3.42,
+        "expected_payoff": 8.93,
+        "on_tester_value": 4169.488889
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.9892,
+        "calmar_ratio": 5.7365,
+        "omega_ratio": 1.6203,
+        "annual_return_pct": 19.6,
+        "max_drawdown_frac": 0.034165
+      },
+      "sortino_weighted_composite": 3.0396,
+      "note": "Remove 14:00 entries from the current 10/11/12/14 session filter."
+    },
+    {
+      "name": "skip_15h",
+      "allowed_hours": [
+        10,
+        11,
+        12,
+        14
+      ],
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1615,
+        "win_rate": 0.805,
+        "net_profit_brl": 14350.0,
+        "avg_profit_brl": 8.89,
+        "avg_win_brl": 34.28,
+        "avg_loss_brl": -95.92,
+        "profit_factor": 1.4749,
+        "max_drawdown_pct": 3.3,
+        "expected_payoff": 8.89,
+        "on_tester_value": 4352.04918
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.9984,
+        "calmar_ratio": 5.9756,
+        "omega_ratio": 1.6196,
+        "annual_return_pct": 19.7,
+        "max_drawdown_frac": 0.032973
+      },
+      "sortino_weighted_composite": 3.1158,
+      "note": "Structural no-op in the current exact harness because 15:00 entries are already excluded."
+    }
+  ],
+  "rsi14_mean_reversion_prototype": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1599,
+      "win_rate": 0.6023,
+      "net_profit_brl": -11755.0,
+      "avg_profit_brl": -7.35,
+      "avg_win_brl": 57.0,
+      "avg_loss_brl": -104.8,
+      "profit_factor": 0.8236,
+      "max_drawdown_pct": 119.38,
+      "expected_payoff": -7.35,
+      "on_tester_value": -98.467513
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": -0.7428,
+      "calmar_ratio": 0.0,
+      "omega_ratio": 0.6936,
+      "annual_return_pct": 0.0,
+      "max_drawdown_frac": 1.193795
+    },
+    "sortino_weighted_composite": -0.2327,
+    "note": "Prototype family, not MT5 parity: use M15 RSI(14) signals, enter at the next M15 open during session hours with the same 25-minute cooldown and ATR-based SL/TP.",
+    "parameters": {
+      "rsi_period": 14,
+      "oversold_threshold": 30,
+      "overbought_threshold": 70,
+      "allowed_hours": [
+        10,
+        11,
+        12,
+        14
+      ],
+      "cooldown_minutes": 25,
+      "sl_atr_mult": 0.84,
+      "tp_atr_mult": 0.3
+    }
+  },
+  "notes": [
+    "The skip-hour and volume-gate variants are exact reruns on the live Tier 2 line.",
+    "The RSI mean-reversion family is a separate prototype screen so we do not overstate parity with the Stalker exact engine.",
+    "Skip-15h is included because it was requested, but it is structurally a no-op under the current 10/11/12/14 session schedule."
+  ]
+}

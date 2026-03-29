@@ -96,6 +96,14 @@
 - Bollinger squeeze gate on Tier 2:
   - strongly worse than baseline
   - interpretation: low-volatility compression is not the right additional gate for this signal family
+- RSI mean-reversion family:
+  - decisively negative in the prototype screen
+  - interpretation: a fundamentally different mean-reversion edge did not complement this WDO tape
+- Volume and extra skip-hour pruning:
+  - signal-bar volume gate hurt
+  - skip `12h` hurt
+  - skip `14h` was nearly flat but still worse than Tier 2
+  - skip `15h` was a structural no-op
 
 ## Bottom Line
 
