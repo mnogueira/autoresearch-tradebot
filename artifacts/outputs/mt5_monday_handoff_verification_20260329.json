@@ -1,0 +1,78 @@
+{
+  "repo_root": "C:\\Dev\\autoresearch-tradebot",
+  "checks": {
+    "ea_source": {
+      "path": "C:\\Dev\\autoresearch-tradebot\\mt5\\experts\\custom\\WDO Stalker Strategy v10.1 Time Filters GPT 5.4.mq5",
+      "exists": true
+    },
+    "tier1_preset": {
+      "path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 GPT 5.4.set",
+      "exists": true
+    },
+    "tier2_preset": {
+      "path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m GPT 5.4.set",
+      "exists": true
+    },
+    "tier2a_preset": {
+      "path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 28m ROC5 Agreement ATR10 Lookback2 GPT 5.4.set",
+      "exists": true
+    },
+    "tier2b_preset": {
+      "path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m ROC5 TrendSwitch ADX25 GPT 5.4.set",
+      "exists": true
+    },
+    "advanced_regime_preset": {
+      "path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold150m ROC5 TrendSwitch ADX25 GPT 5.4.set",
+      "exists": true
+    },
+    "tier3_preset": {
+      "path": "C:\\Dev\\autoresearch-tradebot\\mt5\\profiles\\tester\\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold150m ROC5 Agreement ATR10 Lookback2 GPT 5.4.set",
+      "exists": true
+    },
+    "executive_summary": {
+      "path": "C:\\Dev\\autoresearch-tradebot\\docs\\mt5-monday-executive-summary-2026-03-28.md",
+      "exists": true
+    },
+    "monday_checklist": {
+      "path": "C:\\Dev\\autoresearch-tradebot\\docs\\mt5-monday-morning-checklist-2026-03-30.md",
+      "exists": true
+    },
+    "paper_playbook": {
+      "path": "C:\\Dev\\autoresearch-tradebot\\docs\\mt5-paper-trading-playbook-2026-03-28.md",
+      "exists": true
+    },
+    "comparison_doc": {
+      "path": "C:\\Dev\\autoresearch-tradebot\\docs\\stalker-v10-1-production-comparison-2026-03-28.md",
+      "exists": true
+    },
+    "frontier_doc": {
+      "path": "C:\\Dev\\autoresearch-tradebot\\docs\\research-frontier-2026-03-28.md",
+      "exists": true
+    },
+    "tier1_artifact": {
+      "path": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328\\summary.json",
+      "exists": true
+    },
+    "tier2_artifact": {
+      "path": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_vwap_risk_cooldown_followups_20260328\\summary.json",
+      "exists": true
+    },
+    "tier2a_artifact": {
+      "path": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_tier2a_cooldown_validation_20260329\\summary.json",
+      "exists": true
+    },
+    "tier2b_artifact": {
+      "path": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_regime_roc_fine_followups_20260329\\summary.json",
+      "exists": true
+    },
+    "advanced_regime_artifact": {
+      "path": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_regime_tier3_roc_followups_20260329\\summary.json",
+      "exists": true
+    },
+    "tier3_artifact": {
+      "path": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_tier3_local_geometry_validation_20260329\\summary.json",
+      "exists": true
+    }
+  },
+  "all_exist": true
+}
