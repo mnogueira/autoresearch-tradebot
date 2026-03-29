@@ -79,6 +79,7 @@
 - Strongest static research-only sleeve:
   - strengthened Tier 2A longs plus strengthened Tier 3 shorts
   - `R$16,075`, `PF 1.5115`, `DD 3.19%`, composite `3.3433`
+  - local directional sweep confirmed the original `28m` long branch and `150m` short branch were already the true peak over nearby settings
   - `70/30` test stayed positive:
     - train `PF 1.5385`
     - test `PF 1.4424`
