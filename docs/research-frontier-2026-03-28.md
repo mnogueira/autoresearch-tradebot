@@ -37,11 +37,15 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - interpretation: keep `ATR10/lookback2` as the Monday-facing promotion; `lookback1` is interesting in-sample but not strong enough out of sample to dislodge it yet
   - the ROC-window follow-up on top of the promoted ATR10/lookback2 geometry also stayed stable:
     - `ROC(5)`: `R$15,840`, `PF 1.4967`, `DD 3.21%`, composite `3.3117`
+    - ultra-local check around that winner also held:
+      - `ROC(4)`: `R$15,685`, `PF 1.5076`, `DD 3.26%`, composite `3.2384`
+      - `ROC(5)`: `R$15,970`, `PF 1.5145`, `DD 3.23%`, composite `3.3124`
+      - `ROC(6)`: `R$15,175`, `PF 1.4783`, `DD 3.44%`, composite `3.0522`
     - `ROC(8)`: `R$15,650`, `PF 1.4850`, `DD 3.26%`, composite `3.2355`
     - `ROC(7)`: `R$15,345`, `PF 1.4733`, `DD 3.23%`, composite `3.2005`
     - `ROC(10)`: `R$15,460`, `PF 1.4782`, `DD 3.27%`, composite `3.1939`
     - `ROC(3)`: `R$15,630`, `PF 1.4963`, `DD 3.49%`, composite `3.1260`
-    - interpretation: `ROC(5)` is still the local optimum even after the Tier 2A geometry promotion
+    - interpretation: `ROC(5)` is still the local optimum even after the Tier 2A geometry promotion, including its immediate neighbors
   - the same stronger geometry also lifted the aggressive Tier 3 line:
     - Tier 3 + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`
     - `R$15,885`, `PF 1.4993`, `DD 3.21%`, composite `3.3186`
