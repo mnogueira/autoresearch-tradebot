@@ -200,6 +200,9 @@ Corrected rerun:
 - But shortening that short sleeve to `45m` cooldown weakened it:
   - full sample: `R$1,998`, `PF 1.1221`, `DD 13.64%`, composite `0.4127`
   - `70/30` test: `R$1,486`, `PF 1.3828`, `DD 4.21%`
+- Tightening the short sleeve back to `SL 0.84` also stayed below the `SL 1.0` version:
+  - full sample: `R$1,798`, `PF 1.1242`, `DD 11.08%`, composite `0.4257`
+  - `70/30` test: `R$1,270`, `PF 1.3533`, `DD 3.97%`
 - Interpretation:
   - under corrected costs, the short sleeve is carrying much more of the robust edge
   - the balanced static branch still wins on total score
