@@ -52,11 +52,17 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - `70/30` test: `R$3,865`, `PF 1.4316`, `DD 3.26%`, composite `3.4742`
     - recent `60` trading days: `R$450`, `PF 1.2609`, `DD 3.24%`
     - interpretation: this is now the strongest aggressive exact research branch, but the rollout order still stays conservative because the simpler Tier 2A line remains the cleaner first upgrade
-  - equal-weight blending those two strengthened local-geometry sleeves nudged the research frontier again:
+  - the local-geometry sleeve blend still helped in research-only form:
+    - equal-weight strengthened Tier 2A + strengthened Tier 3 local-geometry:
     - `R$15,927.50`, `PF 1.5068`, `DD 3.22%`, composite `3.3209`
     - `70/30` test: `R$3,900`, `PF 1.4402`, `DD 2.89%`, composite `3.7950`
     - recent `60` trading days: `R$442.50`, `PF 1.2565`, `DD 3.24%`
-    - interpretation: the single-strategy family is probably at its ceiling, but portfolio smoothing between the two strongest local-geometry sleeves still helps a little in research-only form
+  - after the weekday-aware directional promotion, a weighted sleeve improved that research-only smoothing result:
+    - `25%` strengthened Tier 2A + `75%` advanced weekday-aware directional branch:
+    - `R$16,243.75`, `PF 1.5219`, `DD 3.19%`, composite `3.3821`
+    - `70/30` test: `R$3,931.25`, `PF 1.4449`, `DD 3.08%`, composite `3.6611`
+    - recent `60` trading days: `R$468.75`, `PF 1.2717`, `DD 3.24%`
+    - interpretation: portfolio smoothing still helps in research-only form, but even the weighted sleeve does not beat the strongest single advanced branch, so the ceiling still looks like an execution/sizing problem rather than a missing portfolio mix
   - a simpler discrete two-tier sizing approximation did not capture the same upside:
     - best case on strengthened Tier 2A, `0.75x/1.25x` around the median signal-strength split: `R$16,025`, `PF 1.5098`, `DD 3.50%`, composite `3.0948`
     - interpretation: the sizing frontier still looks smoother than a simple binary strong-vs-normal rule

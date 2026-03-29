@@ -203,8 +203,8 @@ Ceiling note:
     - these remain interesting, but the always-on ATR10/lookback2 Tier 2A is still the cleaner stronger path
 - Tier 4, research-only:
   - equal-weight blend of strengthened Tier 2A and strengthened Tier 3 local-geometry
-  - `R$15,927.50`, `PF 1.5068`, `DD 3.22%`, composite `3.3209`
-  - this is still the strongest research-only portfolio sleeve, but it no longer beats the best single exact research line
+- `25%` strengthened Tier 2A + `75%` advanced weekday-aware directional branch: `R$16,243.75`, `PF 1.5219`, `DD 3.19%`, composite `3.3821`
+- this is now the strongest research-only portfolio sleeve, but it still does not beat the best single exact research line
   - it still requires running two sleeves side by side and is not a Monday preset
 
 ## Recommended Rollout Cadence

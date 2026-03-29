@@ -68,8 +68,8 @@
   - Tier 2 + `ROC(5)` agreement
   - `R$14,560`, `PF 1.4900`, `DD 3.30%`, composite `3.1493`
 - Best research-only portfolio sleeve:
-  - equal-weight blend of the strengthened Tier 2A and strengthened Tier 3 local-geometry branches
-  - `R$15,927.50`, `PF 1.5068`, `DD 3.22%`, composite `3.3209`
+  - `25%` strengthened Tier 2A + `75%` advanced weekday-aware directional branch
+  - `R$16,243.75`, `PF 1.5219`, `DD 3.19%`, composite `3.3821`
   - interpretation: this is now the strongest research-only smoothing sleeve, but it still remains a later portfolio idea rather than a Monday deployment path
 - Ceiling assessment:
   - the current signal family appears to top out around composite `3.21` to `3.31`
@@ -102,8 +102,9 @@
   - regime-aware Tier 2 / Tier 2A switch
   - advanced regime-aware Tier 3 + `ROC(5)` + `150m` max-hold stack
 - Tier 4 remains research-only:
-  - equal-weight blend of the strengthened Tier 2A and strengthened Tier 3 local-geometry branches
-  - this slightly beats the best single exact research line on full-sample composite, but it is still not a live preset because it assumes running two sleeves side by side
+  - best current sleeve is `25%` strengthened Tier 2A + `75%` advanced weekday-aware directional branch
+  - `R$16,243.75`, `PF 1.5219`, `DD 3.19%`, composite `3.3821`
+  - it still does not beat the best single exact research line on full-sample composite, and it is not a live preset because it assumes running multiple sleeves side by side
 - strongest exact research-only branch after Tier 3:
   - strengthened Tier 2A on the last `1` contract day and on Fridays, directional hybrid otherwise
   - `R$16,335`, `PF 1.5244`, `DD 3.18%`, composite `3.4017`
@@ -217,14 +218,15 @@
   - earlier equal-weight blend of Tier 2 and Tier 2A:
     - `R$14,455`, `PF 1.4824`, `DD 3.30%`, composite `3.1372`
     - useful as the first proof that portfolio smoothing helps, but no longer the best research-only sleeve
-  - new equal-weight blend of strengthened Tier 2A and strengthened Tier 3 local-geometry:
-    - `R$15,927.50`, `PF 1.5068`, `DD 3.22%`, composite `3.3209`
+  - stronger advanced sleeve weighting after the Friday-aware directional promotion:
+    - `25%` strengthened Tier 2A + `75%` advanced weekday-aware directional branch:
+    - `R$16,243.75`, `PF 1.5219`, `DD 3.19%`, composite `3.3821`
   - exact `70/30` walk-forward test:
-    - train `R$12,027.50`, `PF 1.5330`, `DD 3.22%`, composite `3.7755`
-    - test `R$3,900`, `PF 1.4402`, `DD 2.89%`, composite `3.7950`
+    - train `R$12,312.50`, `PF 1.5525`, `DD 3.19%`, composite `3.8615`
+    - test `R$3,931.25`, `PF 1.4449`, `DD 3.08%`, composite `3.6611`
   - recent `60`-trading-day check:
-    - `R$442.50`, `PF 1.2565`, `DD 3.24%`
-  - interpretation: portfolio smoothing still helps, but this remains a research-only sleeve because it requires running both stronger branches together
+    - `R$468.75`, `PF 1.2717`, `DD 3.24%`
+  - interpretation: portfolio smoothing still helps in research-only form, but even the weighted sleeve does not beat the strongest single advanced branch, so it stays a later portfolio idea rather than a Monday path
 - Regime-aware ROC follow-up:
   - Tier 2 on range days + Tier 2A `ROC(5)` on trend days:
     - `R$14,765`, `PF 1.4951`, `DD 3.28%`, composite `3.1964`
