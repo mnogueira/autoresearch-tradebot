@@ -1,0 +1,110 @@
+{
+  "cooldown_25_reference": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1615,
+      "win_rate": 0.805,
+      "net_profit_brl": 14350.0,
+      "avg_profit_brl": 8.89,
+      "avg_win_brl": 34.28,
+      "avg_loss_brl": -95.92,
+      "profit_factor": 1.4749,
+      "max_drawdown_pct": 3.3,
+      "expected_payoff": 8.89,
+      "on_tester_value": 4352.04918
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.9984,
+      "calmar_ratio": 5.9756,
+      "omega_ratio": 1.6196,
+      "annual_return_pct": 19.7,
+      "max_drawdown_frac": 0.032973
+    },
+    "sortino_weighted_composite": 3.1158,
+    "note": "Session winner with the new 25-minute cooldown sweep winner."
+  },
+  "cooldown_25_plus_maxhold120": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1615,
+      "win_rate": 0.805,
+      "net_profit_brl": 14400.0,
+      "avg_profit_brl": 8.92,
+      "avg_win_brl": 34.28,
+      "avg_loss_brl": -95.76,
+      "profit_factor": 1.4774,
+      "max_drawdown_pct": 3.29,
+      "expected_payoff": 8.92,
+      "on_tester_value": 4379.016393
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 2.0072,
+      "calmar_ratio": 6.0068,
+      "omega_ratio": 1.6231,
+      "annual_return_pct": 19.75,
+      "max_drawdown_frac": 0.032884
+    },
+    "sortino_weighted_composite": 3.1303,
+    "note": "Same exact line, but with the 120-minute max-hold layered onto the 25-minute cooldown."
+  },
+  "cooldown_30_plus_maxhold120_reference": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 14135.0,
+      "avg_profit_brl": 9.01,
+      "avg_win_brl": 34.26,
+      "avg_loss_brl": -95.54,
+      "profit_factor": 1.4851,
+      "max_drawdown_pct": 3.29,
+      "expected_payoff": 9.01,
+      "on_tester_value": 4290.320082
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.9392,
+      "calmar_ratio": 5.9153,
+      "omega_ratio": 1.615,
+      "annual_return_pct": 19.49,
+      "max_drawdown_frac": 0.032946
+    },
+    "sortino_weighted_composite": 3.0672,
+    "note": "Prior exact Tier 3 reference using the 30-minute cooldown and 120-minute max-hold."
+  },
+  "signal_momentum_last_3_bars": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1112,
+      "win_rate": 0.7914,
+      "net_profit_brl": 8915.0,
+      "avg_profit_brl": 8.02,
+      "avg_win_brl": 34.74,
+      "avg_loss_brl": -93.36,
+      "profit_factor": 1.4116,
+      "max_drawdown_pct": 5.44,
+      "expected_payoff": 8.02,
+      "on_tester_value": 1639.276869
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.2273,
+      "calmar_ratio": 2.5277,
+      "omega_ratio": 1.4835,
+      "annual_return_pct": 13.75,
+      "max_drawdown_frac": 0.054384
+    },
+    "sortino_weighted_composite": 1.6687,
+    "note": "Require the directional trend-efficiency value to be strictly increasing across the last three bars."
+  },
+  "notes": [
+    "The 20-minute cooldown was already evaluated in the earlier sweep and came back below the 25-minute winner.",
+    "Signal momentum is tested as a binary gate on top of the new 25-minute cooldown winner."
+  ]
+}

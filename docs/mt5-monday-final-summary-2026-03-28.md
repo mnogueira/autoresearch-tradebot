@@ -5,7 +5,7 @@
 - Monday default remains Tier 1: the validated MT5 `Every Tick` base preset.
 - Best new exact cooldown-sweep refinement is Tier 2: session winner + `25m` cooldown only.
 - The older `30m` cooldown line remains the safer fallback because it already has the exact `70/30` walk-forward pass.
-- Tier 3, the max-hold variant, is still strong, but the operational upside versus the cooldown-only lines is tiny.
+- Tier 3, the `25m + max-hold` variant, is now the best deployable exact composite, but the operational upside versus the cooldown-only lines is still tiny.
 
 ## What We Learned
 
@@ -22,7 +22,7 @@
 | --- | --- | --- |
 | Tier 1 | MT5 validated base preset | Safest Monday choice because it is already validated in MT5 `Every Tick`. |
 | Tier 2 | Session winner + `25m` cooldown | Best deployable exact composite in the cooldown sweep. |
-| Tier 3 | Session winner + `30m` cooldown + `120` M1-bar max hold | Best exact single-strategy composite, but only by a hair. |
+| Tier 3 | Session winner + `25m` cooldown + `120` M1-bar max hold | Best exact single-strategy composite, but only by a hair. |
 | Tier 4 | Research Blend: equal-weight average of Tier 3 + time-widened stop | Slightly better research composite via smoothing, but not a Monday deployment preset. |
 
 ## Recent Tape

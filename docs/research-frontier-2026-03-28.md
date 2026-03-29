@@ -262,22 +262,21 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - exact hours: `10:00, 11:00, 12:00, 14:00`
   - keep `SkipShortWednesday=true`
   - skip the full `13:00` hour
-  - require at least `30 minutes` between filled entries
+  - require at least `25 minutes` between filled entries
   - close any position older than `120` M1 bars
   - `SL 0.84 / TP 0.30`
-  - artifact: `artifacts/outputs/stalker_v10_1_session_maxhold_followups_20260328/summary.json`
-  - metrics: `R$14,135`, `PF 1.4851`, `DD 3.29%`, `OnTester 4290.320082`
-  - walk-forward `70/30`: train `R$11,045`, `PF 1.5332`, `DD 3.29%`; test `R$3,090`, `PF 1.3668`, `DD 4.57%`
+  - artifact: `artifacts/outputs/stalker_v10_1_momentum_maxhold_followups_20260328/summary.json`
+  - metrics: `R$14,400`, `PF 1.4774`, `DD 3.29%`, `OnTester 4379.016393`, composite `3.1303`
   - MT5 preset now prepared:
-    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m MaxHold120m GPT 5.4.set`
-  - interpretation: this is the first exact overlay that improves the cooldown winner on net profit, PF, drawdown, and OnTester together while staying positive on the held-out last 30%
+    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold120m GPT 5.4.set`
+  - interpretation: this is now the best deployable exact composite score in the sprint, slightly ahead of both the `25m` cooldown-only line and the older `30m + max-hold` line
 - Operationally preferred exact refinement for Monday:
   - validate the plain cooldown-only variant before the max-hold variant
   - artifact: `artifacts/outputs/stalker_v10_1_recent_tiers_followup_20260328/summary.json`
   - recent weak-tape tie:
     - cooldown only: `R$40`, `PF 1.0357`, `DD 4.67%`
     - cooldown + max-hold: `R$40`, `PF 1.0357`, `DD 4.67%`
-  - interpretation: the max-hold leader is still the best exact alpha line by a hair, but the cooldown-only variant is the cleaner first deployment step because it keeps `99.65%` of the net and `99.82%` of the PF with less moving logic
+  - interpretation: even though the new `25m + max-hold` line is the best exact alpha line by a hair, the cooldown-only variants remain the cleaner first deployment step because the recent weak tape did not reward the extra max-hold layer
 
 - Optional trend-day quality preset:
   - session winner + `30-minute cooldown` + `120` M1-bar max hold + prior-day daily `ADX(14) > 25`

@@ -26,7 +26,7 @@
 5. Walk-forward-validated cooldown fallback preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
 6. Aggressive exact refinement preset:
-   - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m MaxHold120m GPT 5.4.set`
+   - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold120m GPT 5.4.set`
 7. Quality-biased preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Maximum Quality v2 Cooldown 30m MaxHold120m GPT 5.4.set`
 8. Optional trend-day quality preset:
@@ -43,7 +43,7 @@
 3. If the desk wants the more validated cooldown setting first, use this instead:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
 4. If that also looks sane, validate the aggressive max-hold refinement next:
-   - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m MaxHold120m GPT 5.4.set`
+   - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold120m GPT 5.4.set`
 5. If the desk prefers the cleaner operator profile, validate the quality preset:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Maximum Quality v2 Cooldown 30m MaxHold120m GPT 5.4.set`
 6. If the desk wants the EA itself to stand down in weaker daily regimes, validate the optional ADX-gated preset:
@@ -54,7 +54,7 @@
 1. Verify the loaded preset values in the tester:
    - `EntryStart 10:00`
    - `LastEntry 14:30`
-   - `MinMinutesBetweenEntries 25` for the new cooldown-sweep winner, or `30` for the older validated cooldown and max-hold presets
+   - `MinMinutesBetweenEntries 25` for the new cooldown-sweep winner and the new max-hold refinement, or `30` for the older validated cooldown fallback
    - `MaxMinutesInTrade 120` for the new refinement presets
    - `SL 0.84`
    - `TP 0.30`
@@ -118,7 +118,7 @@ Recent context:
 3. Record actual spread and fill behavior for each trade.
    - baseline expectation for Tier 1 is about `1.96` trades per day from the validated MT5 report
   - if you later promote to Tier 2, the exact-engine expectation is about `1.30` trades per day
-  - if you later promote to Tier 3, the exact-engine expectation is about `1.26` trades per day
+  - if you later promote to Tier 3, the exact-engine expectation is about `1.30` trades per day
 4. Keep the `Experts` and `Journal` tabs open and watch for:
    - unexpected entries outside the intended windows
    - repeated close-order rejections

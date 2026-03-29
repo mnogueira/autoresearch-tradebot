@@ -16,7 +16,7 @@
 - Tier 2 exact refinement:
   - `R$14,350`, `PF 1.4749`, `DD 3.30%`, composite `3.1158`
 - Tier 3 exact refinement:
-  - `R$14,135`, `PF 1.4851`, `DD 3.29%`, composite `3.0672`
+  - `R$14,400`, `PF 1.4774`, `DD 3.29%`, composite `3.1303`
 
 ## Key Risks
 
@@ -72,6 +72,8 @@
   - `25m` is the new best deployable exact composite score
   - `40m` is the cleaner PF/DD runner-up
   - the older `30m` line still matters because it already passed the exact `70/30` walk-forward
+- `25m + max-hold` follow-up:
+  - this now edges past the older `30m + max-hold` line and becomes the new best deployable exact composite overall
 - Two-bar trend confirmation:
   - clearly negative, rejected
 - Volume-weighted entry sizing:

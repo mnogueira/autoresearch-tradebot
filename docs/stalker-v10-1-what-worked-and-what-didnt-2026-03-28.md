@@ -7,7 +7,7 @@
 | `SL/TP` optimization | `SL 0.84 / TP 0.30` improved the surgical baseline to `R$16,025`, `PF 1.4280`, `DD 4.62%` | This was the first major quality jump and became the anchor for everything that followed. |
 | Session filter | `10:00, 11:00, 12:00, 14:00` produced `R$15,965`, `PF 1.4438`, `DD 4.04%` | Narrowing to the best hours improved quality without killing the edge. |
 | Trade cooldown | `25m` cooldown produced `R$14,350`, `PF 1.4749`, `DD 3.30%`, composite `3.1158` | This was the key cost-control breakthrough, and the final sweep nudged the best exact cooldown setting from `30m` to `25m`. |
-| Max hold | `120` M1 bars on top of cooldown produced `R$14,135`, `PF 1.4851`, `DD 3.29%` | Small but real improvement on all major exact metrics. |
+| Max hold | `120` M1 bars on top of the new `25m` cooldown produced `R$14,400`, `PF 1.4774`, `DD 3.29%`, composite `3.1303` | Small but real improvement on the new cooldown winner and the best deployable exact composite in the sprint. |
 | Simplification test | Cooldown-only variant kept `99.65%` of net and `99.82%` of PF versus the max-hold leader | This tells us the strategy is not over-dependent on the max-hold timer. |
 | Walk-forward validation | `70/30` holdout on the max-hold leader: train `PF 1.5332`, test `PF 1.3668` | The core strategy held up out of sample. |
 | Regime awareness | Trend-day production slice: `R$7,535`, `PF 1.9183`, `DD 3.38%` | Most of the quality edge comes from trend days. |
@@ -72,6 +72,7 @@
 | Next-open one-tick-better limit proxy | `R$-29,100`, `PF 0.0058`, `DD 291.0%` | A passive next-open fill requirement starved the system of the good fast entries and did not work as a live improvement path. |
 | ATR trailing stop after 50% target | exact tie with Tier 2 at `R$14,085`, `PF 1.4825`, `DD 3.30%` | This added no value over the simpler cooldown-only line. |
 | Bollinger squeeze gate | Bottom-quartile squeeze: `R$2,595`, `PF 1.4428`, `DD 5.24%`; bottom-third squeeze: `R$2,670`, `PF 1.3160`, `DD 8.27%` | Volatility compression did not improve this signal family; it mostly just removed too many trades. |
+| Signal-momentum gate | Require trend-efficiency to be strictly increasing across the last `3` bars: `R$8,915`, `PF 1.4116`, `DD 5.44%`, composite `1.6687` | The signal already encodes enough trend state; forcing an acceleration pattern over-pruned the good trades and worsened drawdown. |
 
 ## The Real Risks
 
