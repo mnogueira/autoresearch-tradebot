@@ -69,6 +69,9 @@ Corrected rerun:
   - `SL 1.0` is actually the best balanced result so far
   - `SL 1.2` gives back too much holdout quality
   - so stop-width interacts with branch complexity
+- shortening the simplified corrected-cost cooldown to `45m`:
+  - raised full-sample and holdout net
+  - but gave back too much drawdown, so `60m` stays the balanced setting
 - overly wide profit targets on the corrected-cost survivor:
   - `TP 0.54` weakened the full sample and flipped the recent `60d` and `10d` windows negative
   - `TP 0.60` was worse again and nearly flatlined the full-sample edge

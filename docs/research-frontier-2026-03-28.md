@@ -136,6 +136,16 @@ Corrected rerun:
   - `SL 1.0` is the local peak on the simplified branch; `1.2` gives back too much holdout quality
   - it is the best candidate so far for future host-side MT5 validation, though still not a Monday promotion
 
+## Corrected-Cost Simplified Cooldown Check
+
+- Shortening the balanced simplified branch from `60m` to `45m` raised net but weakened the quality balance:
+  - full sample: `R$3,169`, `PF 1.0942`, `DD 11.44%`, composite `0.5331`
+  - `70/30` test: `R$1,018`, `PF 1.1184`, `DD 7.90%`
+  - recent `60d`: `R$345`, `PF 1.2552`
+- Interpretation:
+  - `45m` improves gross net and even the holdout net
+  - but `60m` is still the more balanced corrected-cost setting because it keeps drawdown materially lower and preserves the stronger composite
+
 ## Current Best Static Corrected-Cost Survivor
 
 - The stronger local refinement is:
