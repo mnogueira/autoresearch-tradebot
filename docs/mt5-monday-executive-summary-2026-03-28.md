@@ -60,7 +60,7 @@
 - After `5` clean paper sessions:
   - Tier 2
 - After Tier 2 behaves cleanly:
-  - Tier 2A, `25m` cooldown + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`
+  - Tier 2A, `28m` cooldown + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`
 - After another clean week:
   - Tier 3
 - Secondary research branches after Tier 3:
@@ -70,9 +70,9 @@
   - equal-weight blend of Tier 2 and Tier 2A
   - this did not beat Tier 2A on the full sample, on the recent `60`-day tape, or by contract-month win count
 - Best next ROC validation after the plain Tier 2 line:
-  - Tier 2 + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`
+  - Tier 2 + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`, refined to `28m` cooldown
   - it is now the strongest out-of-sample post-Monday upgrade:
-    - test `R$3,895`, `PF 1.4350`, `DD 3.26%`
+    - test `R$3,935`, `PF 1.4489`, `DD 2.80%`
 
 ## Deployment Steps
 
@@ -208,11 +208,22 @@
   - the validation also held up:
     - test `R$3,895`, `PF 1.4350`, `DD 3.26%`
     - recent `60` trading days: `R$480`, `PF 1.2783`, `DD 3.23%`
-  - interpretation: this is the new Tier 2A geometry/horizon upgrade and the strongest exact post-Tier-2 line so far, but it still needs host-side MT5 validation before it can affect the Monday rollout order
+  - interpretation: this established the stronger ATR10/lookback2 Tier 2A geometry, but it was then refined one more step by the local cooldown sweep
+- Tier 2A local cooldown refinement:
+  - `28m` cooldown on top of the promoted `ATR10/lookback2 + ROC(5)` line:
+    - `R$15,970`, `PF 1.5145`, `DD 3.23%`, composite `3.3124`
+  - exact `70/30` walk-forward:
+    - train `R$12,035`, `PF 1.5403`, `DD 3.23%`
+    - test `R$3,935`, `PF 1.4489`, `DD 2.80%`
+  - recent `60`-trading-day check:
+    - `R$435`, `PF 1.2522`, `DD 3.25%`
+  - interpretation:
+    - this is now the promoted Tier 2A preset
+    - the improvement over `25m` is small, but it held up on the holdout and kept the recent tape positive
 
 ## Bottom Line
 
 - The strategy is mature.
 - Monday should be a cautious paper-validation launch, not a scale-up day.
 - The best live-ready answer is still the validated MT5 base, with Tier 2 as the cleanest next upgrade.
-- The promoted ATR10/lookback2 Tier 2A is now the strongest exact post-Tier-2 line, and the follow-up regime switch did not beat it.
+- The promoted ATR10/lookback2 Tier 2A with the local `28m` cooldown refinement is now the strongest exact post-Tier-2 line, and the follow-up regime switch still did not beat it.

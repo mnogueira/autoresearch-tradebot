@@ -9,9 +9,9 @@ The current signal family looks close to its local ceiling on the available WDO 
   - `R$14,630`, `PF 1.4935`, `DD 3.28%`
   - Sortino-weighted composite `3.1676`
 - Best simpler exact upgrade path:
-  - Tier 2A, `25m` cooldown + `ROC(5)` agreement
-  - `R$14,560`, `PF 1.4900`, `DD 3.30%`
-  - composite `3.1493`
+  - Tier 2A, `28m` cooldown + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`
+  - `R$15,970`, `PF 1.5145`, `DD 3.23%`
+  - composite `3.3124`
 - Best MT5-validated line remains lower because it is the only host-side-validated production anchor:
   - Tier 1 MT5 base preset
 
@@ -32,7 +32,7 @@ That is where the strategy now appears to be.
 ### 1. Exact deployable improvements are now small
 
 - Tier 2: `R$14,350`, `PF 1.4749`, `DD 3.30%`, composite `3.1158`
-- Tier 2A: `R$14,560`, `PF 1.4900`, `DD 3.30%`, composite `3.1493`
+- Tier 2A: `R$15,970`, `PF 1.5145`, `DD 3.23%`, composite `3.3124`
 - Tier 3: `R$14,420`, `PF 1.4784`, `DD 3.28%`, composite `3.1340`
 - Tier 3 + `ROC(5)`: `R$14,630`, `PF 1.4935`, `DD 3.28%`, composite `3.1676`
 
@@ -44,7 +44,7 @@ All main tiers passed the chronological `70/30` split.
 
 - Tier 1 exact analog: test composite `2.6668`
 - Tier 2: test composite `2.5061`
-- Tier 2A: test composite `2.7331`
+- Tier 2A: test composite `3.9009`
 - Tier 3: test composite `2.5061`
 - Tier 3 + `ROC(5)` also held up through its own follow-up validation
 

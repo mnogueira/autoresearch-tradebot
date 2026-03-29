@@ -107,17 +107,18 @@ Ceiling note:
 ### Upgraded ROC geometry follow-up
 
 - This is now the strongest exact post-Tier-2 upgrade and the new Tier 2A candidate:
-  - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m ROC5 Agreement ATR10 Lookback2 GPT 5.4.set`
+  - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 28m ROC5 Agreement ATR10 Lookback2 GPT 5.4.set`
 - Exact result:
-  - `R$15,840`, `PF 1.4967`, `DD 3.21%`, composite `3.3117`
+  - `R$15,970`, `PF 1.5145`, `DD 3.23%`, composite `3.3124`
 - Exact `70/30` walk-forward:
-  - train `R$11,945`, `PF 1.5208`, `DD 3.21%`
-  - test `R$3,895`, `PF 1.4350`, `DD 3.26%`
+  - train `R$12,035`, `PF 1.5403`, `DD 3.23%`
+  - test `R$3,935`, `PF 1.4489`, `DD 2.80%`
 - Recent `60`-trading-day check:
-  - `R$480`, `PF 1.2783`, `DD 3.23%`
+  - `R$435`, `PF 1.2522`, `DD 3.25%`
 - Operational note:
   - this is the cleanest stronger ROC-based post-Monday validation target now
-  - it beat the prior ATR14/lookback3 horizon variant, the plain Tier 2 + `ROC(5)` line, and the regime-switch scout on the full sample, on the `70/30` test, and on the recent `60`-day readout
+  - the local cooldown sweep nudged the promoted preset from `25m` to `28m`
+  - it beat the prior ATR14/lookback3 horizon variant, the plain Tier 2 + `ROC(5)` line, and the regime-switch scout on the full sample and on the `70/30` test while keeping the recent `60`-day tape positive
 
 ### Regime-aware ROC follow-up
 
@@ -357,7 +358,7 @@ Ceiling note:
 - First upgrade to validate on the host: the plain `Cooldown 25m` preset
   - this is now the best deployable exact composite score from the cooldown sweep
 - Next stronger post-Monday upgrade to validate on the host:
-  - `Cooldown 25m + ROC(5) agreement + ATR_Length 10 + contract lookback 2`
+  - `Cooldown 28m + ROC(5) agreement + ATR_Length 10 + contract lookback 2`
   - this is now the strongest exact post-Tier-2 line and the promoted Tier 2A candidate
 - More validated fallback if the desk wants the safer exact step first: the plain `Cooldown 30m` preset
   - this remains attractive because it already passed the exact `70/30` walk-forward and matched the max-hold stack in the recent weak tape

@@ -4,6 +4,7 @@
 
 - Monday default remains Tier 1: the validated MT5 `Every Tick` base preset.
 - Best new exact cooldown-sweep refinement is Tier 2: session winner + `25m` cooldown only.
+- Best stronger post-Tier-2 research validation target is now Tier 2A: session winner + `28m` cooldown + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`.
 - The older `30m` cooldown line remains the safer fallback because it already has the exact `70/30` walk-forward pass.
 - Tier 3, the `25m + max-hold` variant, is now the best deployable exact composite, but the operational upside versus the cooldown-only lines is still tiny.
 

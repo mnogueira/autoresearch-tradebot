@@ -13,10 +13,11 @@ This remains the safest paper-trading candidate because it is the best strategy 
 
 - The remaining core-horizon sweep found a stronger exact post-Tier-2 upgrade than the earlier plain ROC filter:
   - Tier 2 + `ROC(5)` agreement + `ATR_Length 10` + `NumDaysToConsiderPreviousContractMARange 2`
-  - full sample: `R$15,840`, `PF 1.4967`, `DD 3.21%`, composite `3.3117`
+  - the local cooldown sweep then promoted the same geometry from `25m` to `28m`
+  - full sample: `R$15,970`, `PF 1.5145`, `DD 3.23%`, composite `3.3124`
 - Validation also held up:
-  - `70/30` test: `R$3,895`, `PF 1.4350`, `DD 3.26%`, composite `3.4988`
-  - recent `60` trading days: `R$480`, `PF 1.2783`, `DD 3.23%`
+  - `70/30` test: `R$3,935`, `PF 1.4489`, `DD 2.80%`, composite `3.9009`
+  - recent `60` trading days: `R$435`, `PF 1.2522`, `DD 3.25%`
   - recent `10` trading days: `R$450`, `PF 3.50`, `DD 1.15%`
 - Interpretation:
   - this is now the strongest exact post-Tier-2 upgrade and the new Tier 2A research validation target
@@ -875,7 +876,7 @@ But cost sensitivity is real:
   - validate the plain cooldown preset in MT5 `Every tick` next:
     - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m GPT 5.4.set`
   - validate the promoted Tier 2A preset after that:
-    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m ROC5 Agreement ATR10 Lookback2 GPT 5.4.set`
+     - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 28m ROC5 Agreement ATR10 Lookback2 GPT 5.4.set`
   - validate the max-hold leader only after that:
     - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold150m GPT 5.4.set`
   - keep the older `30m` cooldown line only as the safer exact fallback because it already has the earlier separate walk-forward pass
