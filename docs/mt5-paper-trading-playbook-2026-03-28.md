@@ -107,17 +107,17 @@ Ceiling note:
 ### Upgraded ROC geometry follow-up
 
 - This is now the strongest exact post-Tier-2 upgrade and the new Tier 2A candidate:
-  - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m ROC5 Agreement ATR14 Lookback3 GPT 5.4.set`
+  - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m ROC5 Agreement ATR10 Lookback2 GPT 5.4.set`
 - Exact result:
-  - `R$15,000`, `PF 1.4873`, `DD 3.15%`, composite `3.2811`
+  - `R$15,840`, `PF 1.4967`, `DD 3.21%`, composite `3.3117`
 - Exact `70/30` walk-forward:
-  - train `R$11,360`, `PF 1.5131`, `DD 3.15%`
-  - test `R$3,640`, `PF 1.4213`, `DD 3.51%`
+  - train `R$11,945`, `PF 1.5208`, `DD 3.21%`
+  - test `R$3,895`, `PF 1.4350`, `DD 3.26%`
 - Recent `60`-trading-day check:
-  - `R$200`, `PF 1.1087`, `DD 4.69%`
+  - `R$480`, `PF 1.2783`, `DD 3.23%`
 - Operational note:
   - this is the cleanest stronger ROC-based post-Monday validation target now
-  - it beat the plain Tier 2 + `ROC(5)` line on the full sample, on the `70/30` test, and on the recent `60`-day readout
+  - it beat the prior ATR14/lookback3 horizon variant, the plain Tier 2 + `ROC(5)` line, and the regime-switch scout on the full sample, on the `70/30` test, and on the recent `60`-day readout
 
 ### Regime-aware ROC follow-up
 
@@ -187,21 +187,19 @@ Ceiling note:
     - use this as the first new exact refinement to validate because it is now the best deployable full-sample exact composite score
     - operational expectation: about `1.30` trades per day in the exact engine
 - Tier 2A, ROC follow-up:
-    - session winner + `25m` cooldown + `ROC(5)` agreement + `ATR_Length 14` + contract lookback `3`
+    - session winner + `25m` cooldown + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`
     - use this after the plain Tier 2 validation if the desk wants the strongest simpler ROC-enhanced upgrade path
-    - the core-horizon follow-up beat the plain Tier 2 + `ROC(5)` line on the full sample, on the `70/30` test, and on the recent `60`-day readout
-- Tier 2B, regime-aware ROC:
-    - session winner + `25m` cooldown, but only require the Tier 2A geometry variant on prior-day `ADX > 25` trend days
-    - use this after Tier 2A if the desk wants the strongest exact research line without stepping into max-hold logic yet
-- Advanced research preset:
-    - session winner + `25m` cooldown, but switch to Tier 3 `ROC(5)` + `150m` max-hold on prior-day `ADX > 25` trend days
-    - use this only after Tier 2B if the desk wants the strongest exact research stack, not the simplest operator path
+    - this local horizon refinement beat the prior ATR14/lookback3 Tier 2A on the full sample, on the `70/30` test, and on the recent `60`-day readout
 - Tier 3, aggressive:
     - session winner + `25m` cooldown + `150` M1 max hold
     - use this only after the simpler cooldown-only refinement looks sane in MT5
     - operational expectation: about `1.30` trades per day in the exact engine
     - out-of-sample it did not beat Tier 2A:
       - test `R$3,175`, `PF 1.3662`, `DD 4.29%`
+- Secondary research branches after Tier 3:
+    - regime-aware ROC variants
+    - advanced regime-aware ROC + max-hold variants
+    - these remain interesting, but the always-on ATR10/lookback2 Tier 2A is now the cleaner stronger path
 - Tier 4, research-only:
   - equal-weight blend of Tier 2 and Tier 2A
   - `R$14,455`, `PF 1.4824`, `DD 3.30%`, composite `3.1372`
@@ -217,7 +215,7 @@ Ceiling note:
   - realized behavior is directionally consistent with the saved artifacts
 - Consider Tier 3 only after another week of clean paper behavior:
   - the max-hold layer is a real refinement, but it is still the more complex operator choice
-  - if the desk wants a non-max-hold refinement first, Tier 2B is the cleaner regime-aware step between Tier 2A and Tier 3
+  - the prior regime-aware Tier 2B branch is no longer the cleaner intermediate step because the always-on ATR10/lookback2 Tier 2A beat it
 
 ## Monday Setup Steps
 
@@ -358,6 +356,9 @@ Ceiling note:
 - Paper-trading default: the validated MT5 preset `sl0p84 / tp0p3`
 - First upgrade to validate on the host: the plain `Cooldown 25m` preset
   - this is now the best deployable exact composite score from the cooldown sweep
+- Next stronger post-Monday upgrade to validate on the host:
+  - `Cooldown 25m + ROC(5) agreement + ATR_Length 10 + contract lookback 2`
+  - this is now the strongest exact post-Tier-2 line and the promoted Tier 2A candidate
 - More validated fallback if the desk wants the safer exact step first: the plain `Cooldown 30m` preset
   - this remains attractive because it already passed the exact `70/30` walk-forward and matched the max-hold stack in the recent weak tape
 - Next aggressive upgrade to validate on the host: the `Cooldown 25m + MaxHold150m` preset

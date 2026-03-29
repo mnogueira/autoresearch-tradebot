@@ -24,7 +24,7 @@
 4. Moderate exact refinement preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m GPT 5.4.set`
 5. Strongest ROC-enhanced exact follow-up preset:
-   - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m ROC5 Agreement ATR14 Lookback3 GPT 5.4.set`
+   - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m ROC5 Agreement ATR10 Lookback2 GPT 5.4.set`
 6. Walk-forward-validated cooldown fallback preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
 7. Aggressive exact refinement preset:
@@ -47,7 +47,7 @@
 2. If that report looks sane, validate the new cooldown-sweep winner next:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m GPT 5.4.set`
 3. If that also looks sane, validate the strongest ROC-enhanced exact follow-up next:
-   - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m ROC5 Agreement ATR14 Lookback3 GPT 5.4.set`
+   - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m ROC5 Agreement ATR10 Lookback2 GPT 5.4.set`
 4. If the desk wants the more validated cooldown setting first, use this instead:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
 5. If that also looks sane, validate the aggressive max-hold refinement next:
@@ -67,7 +67,7 @@
    - `EntryStart 10:00`
    - `LastEntry 14:30`
    - `MinMinutesBetweenEntries 25` for the new cooldown-sweep winner and the new max-hold refinement, or `30` for the older validated cooldown fallback
-   - `ATR_Length 14` and `NumDaysToConsiderPreviousContractMARange 3` if using the upgraded Tier 2A ROC preset
+   - `ATR_Length 10` and `NumDaysToConsiderPreviousContractMARange 2` if using the upgraded Tier 2A ROC preset
    - `MaxMinutesInTrade 150` for the aggressive refinement preset
    - `SL 0.84`
    - `TP 0.30`

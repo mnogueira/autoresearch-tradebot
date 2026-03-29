@@ -8,7 +8,7 @@
   - Tier 1, the validated MT5 `Every Tick` base preset
 - First upgrade after clean paper behavior:
   - Tier 2, session winner + `25m` cooldown only
-  - keep this as the first upgrade even though the new regime-aware ROC line scored better in Python, because Tier 2 is still the simplest path and the regime-aware preset has not yet had host-side MT5 validation
+  - keep this as the first upgrade even though the new ATR10/lookback2 Tier 2A scored better in Python, because Tier 2 is still the simplest path and the stronger ROC preset has not yet had host-side MT5 validation
 
 ## Best Metrics
 
@@ -19,21 +19,18 @@
 - Tier 3 exact refinement:
   - `R$14,420`, `PF 1.4784`, `DD 3.28%`, composite `3.1340`
 - Best exact research line, now packaged for MT5 follow-up validation:
-  - Tier 2 on range days + Tier 2A `ROC(5)` on prior-day `ADX > 25` trend days
-  - `R$14,765`, `PF 1.4951`, `DD 3.28%`, composite `3.1964`
+  - Tier 2 + `ROC(5)` agreement + `ATR_Length 10` + contract-range lookback `2`
+  - `R$15,840`, `PF 1.4967`, `DD 3.21%`, composite `3.3117`
+  - exact `70/30` walk-forward:
+    - train `R$11,945`, `PF 1.5208`, `DD 3.21%`
+    - test `R$3,895`, `PF 1.4350`, `DD 3.26%`
+  - recent `60`-trading-day check:
+    - `R$480`, `PF 1.2783`, `DD 3.23%`
 - Best advanced exact research line:
   - Tier 2 on range days + Tier 3 `ROC(5)` + `150m` max-hold on prior-day `ADX > 25` trend days
   - `R$14,835`, `PF 1.4987`, `DD 3.27%`, composite `3.2148`
   - finer window sweep confirmed `ROC(5)` stayed optimal over `ROC(3)`, `ROC(7)`, `ROC(8)`, and `ROC(10)`
   - ADX-threshold sweep also confirmed `25` stayed optimal over `20`, `22.5`, `27.5`, and `30`
-- Best exact post-Tier-2 upgrade, now packaged:
-  - Tier 2 + `ROC(5)` agreement + `ATR_Length 14` + contract-range lookback `3`
-  - `R$15,000`, `PF 1.4873`, `DD 3.15%`, composite `3.2811`
-  - exact `70/30` walk-forward:
-    - train `R$11,360`, `PF 1.5131`, `DD 3.15%`
-    - test `R$3,640`, `PF 1.4213`, `DD 3.51%`
-  - recent `60`-trading-day check:
-    - `R$200`, `PF 1.1087`, `DD 4.69%`
 - Best simpler ROC follow-up, also packaged:
   - Tier 2 + `ROC(5)` agreement
   - `R$14,560`, `PF 1.4900`, `DD 3.30%`, composite `3.1493`
@@ -42,7 +39,7 @@
   - `R$14,455`, `PF 1.4824`, `DD 3.30%`, composite `3.1372`
   - interpretation: smoother than plain Tier 2, but still not better than Tier 2A itself
 - Ceiling assessment:
-  - the current signal family appears to top out around composite `3.15` to `3.17`
+  - the current signal family appears to top out around composite `3.21` to `3.31`
   - remaining upside is more likely to come from execution quality than from another simple hard filter
 
 ## Key Risks
@@ -63,23 +60,19 @@
 - After `5` clean paper sessions:
   - Tier 2
 - After Tier 2 behaves cleanly:
-  - Tier 2A, `25m` cooldown + `ROC(5)` agreement + `ATR_Length 14` + contract lookback `3`
-- After Tier 2A behaves cleanly:
-  - Tier 2B, regime-aware switch:
-    - Tier 2 on prior-day `ADX <= 25` range days
-    - Tier 2A geometry variant on prior-day `ADX > 25` trend days
-- Advanced research preset after that:
-  - Tier 2 on prior-day `ADX <= 25` range days
-  - Tier 3 `ROC(5)` + `150m` max-hold on prior-day `ADX > 25` trend days
+  - Tier 2A, `25m` cooldown + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`
 - After another clean week:
   - Tier 3
+- Secondary research branches after Tier 3:
+  - regime-aware Tier 2 / Tier 2A switch
+  - advanced regime-aware Tier 3 + `ROC(5)` + `150m` max-hold stack
 - Tier 4 remains research-only:
   - equal-weight blend of Tier 2 and Tier 2A
   - this did not beat Tier 2A on the full sample, on the recent `60`-day tape, or by contract-month win count
 - Best next ROC validation after the plain Tier 2 line:
-  - Tier 2 + `ROC(5)` agreement + `ATR_Length 14` + contract lookback `3`
+  - Tier 2 + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`
   - it is now the strongest out-of-sample post-Monday upgrade:
-    - test `R$3,640`, `PF 1.4213`, `DD 3.51%`
+    - test `R$3,895`, `PF 1.4350`, `DD 3.26%`
 
 ## Deployment Steps
 
@@ -209,12 +202,13 @@
     - last `60` trading days: `R$-225`, `PF 0.8941`, `DD 5.62%`
   - interpretation: good research signal, not a Monday promotion
 - Core horizon sweep on Tier 2A:
-  - `ATR_Length 14` + contract-range lookback `3` produced the strongest exact post-Tier-2 result so far:
-    - `R$15,000`, `PF 1.4873`, `DD 3.15%`, composite `3.2811`
+  - the local refinement around the first horizon winner moved the frontier again:
+    - `ATR_Length 10` + contract-range lookback `2`
+    - `R$15,840`, `PF 1.4967`, `DD 3.21%`, composite `3.3117`
   - the validation also held up:
-    - test `R$3,640`, `PF 1.4213`, `DD 3.51%`
-    - recent `60` trading days: `R$200`, `PF 1.1087`, `DD 4.69%`
-  - interpretation: this is the new Tier 2A geometry upgrade, but it still needs host-side MT5 validation before it can affect the Monday rollout order
+    - test `R$3,895`, `PF 1.4350`, `DD 3.26%`
+    - recent `60` trading days: `R$480`, `PF 1.2783`, `DD 3.23%`
+  - interpretation: this is the new Tier 2A geometry/horizon upgrade and the strongest exact post-Tier-2 line so far, but it still needs host-side MT5 validation before it can affect the Monday rollout order
 
 ## Bottom Line
 
