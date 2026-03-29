@@ -40,11 +40,11 @@
   - finer window sweep confirmed `ROC(5)` stayed optimal over `ROC(3)`, `ROC(7)`, `ROC(8)`, and `ROC(10)`
   - ADX-threshold sweep also confirmed `25` stayed optimal over `20`, `22.5`, `27.5`, and `30`
 - Best exact research line overall:
-  - use strengthened Tier 2A on the last `1` contract day and strengthened Tier 3 on all other days
-  - `R$16,080`, `PF 1.5081`, `DD 3.19%`, composite `3.3578`
+  - use strengthened Tier 2A on the last `1` contract day and on Fridays, with the directional hybrid on all other days
+  - `R$16,335`, `PF 1.5244`, `DD 3.18%`, composite `3.4017`
   - exact `70/30` walk-forward:
-    - train `R$12,185`, `PF 1.5369`, `DD 3.19%`
-    - test `R$3,895`, `PF 1.4350`, `DD 3.26%`
+    - train `R$12,405`, `PF 1.5565`, `DD 3.18%`
+    - test `R$3,930`, `PF 1.4436`, `DD 3.26%`
   - recent `60`-trading-day check:
     - `R$480`, `PF 1.2783`, `DD 3.23%`
   - recent `30`-trading-day check:
@@ -52,8 +52,8 @@
   - recent `10`-trading-day check:
     - `R$450`, `PF 3.50`, `DD 1.15%`
   - interpretation:
-    - this is now the strongest exact research line, but it is still not the Monday upgrade path because it needs contract-cycle switching logic that has not been packaged into the MQ5 rollout
-    - the corrected rollover-tail sweep showed `last 1` contract day is the actual local optimum
+    - this is now the strongest exact research line, but it is still not the Monday upgrade path because it needs contract-cycle switching, weekday-aware routing, and directional sleeve logic that have not been packaged into the MQ5 rollout
+    - the corrected rollover-tail sweep still showed `last 1` contract day is the actual local optimum; the new lift comes from routing Fridays back to strengthened Tier 2A
 - Best simpler ROC follow-up, also packaged:
   - Tier 2 + `ROC(5)` agreement
   - `R$14,560`, `PF 1.4900`, `DD 3.30%`, composite `3.1493`
@@ -95,8 +95,8 @@
   - equal-weight blend of the strengthened Tier 2A and strengthened Tier 3 local-geometry branches
   - this slightly beats the best single exact research line on full-sample composite, but it is still not a live preset because it assumes running two sleeves side by side
 - strongest exact research-only branch after Tier 3:
-  - strengthened Tier 2A on the last `1` contract day and the directional hybrid otherwise
-  - `R$16,185`, `PF 1.5163`, `DD 3.18%`, composite `3.3704`
+  - strengthened Tier 2A on the last `1` contract day and on Fridays, directional hybrid otherwise
+  - `R$16,335`, `PF 1.5244`, `DD 3.18%`, composite `3.4017`
   - `70/30` test stayed positive and the recent `60`-day readout improved to `R$480`, `PF 1.2783`, `DD 3.23%`
   - keep this as a next-week engineering candidate, not a Monday promotion
 - Best next ROC validation after the plain Tier 2 line:

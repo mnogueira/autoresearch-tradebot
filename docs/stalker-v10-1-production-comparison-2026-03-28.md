@@ -4,6 +4,7 @@
 
 | Variant | Net | PF | DD | Win Rate | Trades | Trades/Day | Sortino | Calmar | Omega | Composite | Rank |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Strengthened Tier 2A on last 1 contract day and Fridays, directional hybrid otherwise, exact research candidate | `R$16,335` | `1.5244` | `3.18%` | `81.08%` | 1586 | `1.2727` | `2.0526` | `6.8048` | `1.6699` | `3.4017` | research exact |
 | Strengthened Tier 2A on last 1 contract day, directional hybrid otherwise, exact research candidate | `R$16,185` | `1.5163` | `3.18%` | `81.01%` | 1590 | `1.2783` | `2.0211` | `6.7607` | `1.6583` | `3.3704` | research exact |
 | Strengthened Tier 2A on last 1 contract day, strengthened Tier 3 otherwise, exact research candidate | `R$16,080` | `1.5081` | `3.19%` | `80.94%` | 1595 | `1.2791` | `2.0349` | `6.6967` | `1.6566` | `3.3578` | research exact |
 | Strengthened Tier 2A longs + strengthened Tier 3 shorts, research-only directional sleeve | `R$16,075` | `1.5115` | `3.19%` | `80.96%` | 1591 | `1.2759` | `2.0109` | `6.6906` | `1.6533` | `3.3433` | research |
@@ -65,6 +66,15 @@
   - unlike the strengthened always-on Tier 2A and Tier 3 local-geometry lines, it did not stay positive on the recent `60`-day readout
   - this is still not the Monday default because it adds both regime and max-hold logic
 - Strongest exact research line overall:
+  - strengthened Tier 2A on the last `1` contract day and Fridays, directional hybrid otherwise
+  - `R$16,335`, `PF 1.5244`, `DD 3.18%`, composite `3.4017`
+  - exact `70/30` walk-forward still passed:
+    - train `PF 1.5565`
+    - test `PF 1.4436`
+  - recent `60`-trading-day check stayed positive:
+    - `R$480`, `PF 1.2783`, `DD 3.23%`
+  - this is still a research-only branch because it combines contract-cycle switching, weekday-aware routing, and direction-specific sleeve routing
+- Next exact research line overall:
   - strengthened Tier 2A on the last `1` contract day, directional hybrid otherwise
   - `R$16,185`, `PF 1.5163`, `DD 3.18%`, composite `3.3704`
   - exact `70/30` walk-forward still passed:
@@ -73,7 +83,7 @@
   - recent `60`-trading-day check stayed positive:
     - `R$480`, `PF 1.2783`, `DD 3.23%`
   - this is still a research-only branch because it combines both contract-cycle switching and direction-specific sleeve routing
-- Next exact research line overall:
+- Next exact research line after that:
   - strengthened Tier 2A on the last `1` contract day, strengthened Tier 3 on all other days
   - `R$16,080`, `PF 1.5081`, `DD 3.19%`, composite `3.3578`
   - exact `70/30` walk-forward still passed:
@@ -159,8 +169,9 @@
   - Tier 3, aggressive: session winner + `25m` cooldown + `150m` max-hold + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`
   - Tier 4, research-only: equal-weight blend of Tier 2 and Tier 2A
 - Risk-adjusted ranking by the Sortino-weighted composite:
-- strongest exact research line overall: strengthened Tier 2A on the last `1` contract day and the directional hybrid otherwise at `3.3704`
-- next exact research line overall: strengthened Tier 2A on the last `1` contract day and strengthened Tier 3 otherwise at `3.3578`
+- strongest exact research line overall: strengthened Tier 2A on the last `1` contract day and Fridays, directional hybrid otherwise at `3.4017`
+- next exact research line overall: strengthened Tier 2A on the last `1` contract day and the directional hybrid otherwise at `3.3704`
+- next exact research line after that: strengthened Tier 2A on the last `1` contract day and strengthened Tier 3 otherwise at `3.3578`
 - strongest research-only sleeve: strengthened Tier 2A longs plus strengthened Tier 3 shorts at `3.3433`
 - next strongest research-only sleeve: equal-weight blend of strengthened Tier 2A and strengthened Tier 3 local-geometry at `3.3209`
   - best exact research line: cooldown `25m` + max-hold `150m` + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2` at `3.3186`
