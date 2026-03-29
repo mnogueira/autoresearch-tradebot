@@ -120,7 +120,17 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - test `R$3,345`, `PF 1.3935`, `DD 4.23%`, composite `2.6566`
   - recent `60`-trading-day check stayed soft and identical to Tier 2 / Tier 2A:
     - `R$30`, `PF 1.0157`, `DD 5.62%`
-  - interpretation: this is now the strongest exact research line overall, but it is still one step too complex to replace the simpler Tier 2 or Tier 2A in the Monday rollout order
+  - interpretation: this is now the strongest simpler regime-aware research line, but it is still one step too complex to replace the simpler Tier 2 or Tier 2A in the Monday rollout order
+- Advanced regime-aware Tier 3 + ROC refinement:
+  - artifact: `artifacts/outputs/stalker_v10_1_regime_tier3_roc_followups_20260329/summary.json`
+  - plain Tier 2 on prior-day `ADX <= 25` range days, Tier 3 `ROC(5)` + `150m` max-hold on prior-day `ADX > 25` trend days:
+    - `R$14,835`, `PF 1.4987`, `DD 3.27%`, composite `3.2148`
+  - exact `70/30` walk-forward still passed:
+    - train `R$11,490`, `PF 1.5407`, `DD 3.27%`, composite `3.7184`
+    - test `R$3,345`, `PF 1.3935`, `DD 4.23%`, composite `2.6566`
+  - recent `60`-trading-day check stayed soft and identical to the simpler tiers:
+    - `R$30`, `PF 1.0157`, `DD 5.62%`
+  - interpretation: this is now the strongest exact research line of the whole sprint, but it is clearly an advanced follow-up, not a Monday rollout change
 
 ## Near-Term Caution
 

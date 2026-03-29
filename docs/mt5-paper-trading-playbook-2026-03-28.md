@@ -106,7 +106,7 @@ Ceiling note:
 
 ### Regime-aware ROC follow-up
 
-- This is the strongest exact research line so far:
+- This is the strongest simpler regime-aware research line so far:
   - use plain Tier 2 on prior-day `ADX <= 25` range days
   - require `ROC(5)` agreement only on prior-day `ADX > 25` trend days
 - Preset:
@@ -119,8 +119,26 @@ Ceiling note:
 - Recent `60`-trading-day check:
   - `R$30`, `PF 1.0157`, `DD 5.62%`
 - Operational note:
-  - this is the new strongest exact research preset overall
+  - this is the new strongest simpler regime-aware research preset
   - it is still not the first post-Monday validation target because the recent regime did not distinguish it from the simpler Tier 2 / Tier 2A lines
+
+### Advanced regime-aware ROC + max-hold follow-up
+
+- This is the current strongest exact research line overall:
+  - use plain Tier 2 on prior-day `ADX <= 25` range days
+  - use Tier 3 `ROC(5)` + `150m` max-hold on prior-day `ADX > 25` trend days
+- Preset:
+  - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold150m ROC5 TrendSwitch ADX25 GPT 5.4.set`
+- Exact result:
+  - `R$14,835`, `PF 1.4987`, `DD 3.27%`, composite `3.2148`
+- Exact `70/30` walk-forward:
+  - train `R$11,490`, `PF 1.5407`, `DD 3.27%`
+  - test `R$3,345`, `PF 1.3935`, `DD 4.23%`
+- Recent `60`-trading-day check:
+  - `R$30`, `PF 1.0157`, `DD 5.62%`
+- Operational note:
+  - this is an advanced research preset, not the Monday rollout change
+  - use it only after the simpler Tier 2 and Tier 2A host-side validations are clean
 
 ### Maximum-quality preset
 
@@ -158,6 +176,9 @@ Ceiling note:
 - Tier 2B, regime-aware ROC:
     - session winner + `25m` cooldown, but only require `ROC(5)` on prior-day `ADX > 25` trend days
     - use this after Tier 2A if the desk wants the strongest exact research line without stepping into max-hold logic yet
+- Advanced research preset:
+    - session winner + `25m` cooldown, but switch to Tier 3 `ROC(5)` + `150m` max-hold on prior-day `ADX > 25` trend days
+    - use this only after Tier 2B if the desk wants the strongest exact research stack, not the simplest operator path
 - Tier 3, aggressive:
     - session winner + `25m` cooldown + `150` M1 max hold
     - use this only after the simpler cooldown-only refinement looks sane in MT5

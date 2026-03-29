@@ -4,6 +4,7 @@
 
 | Variant | Net | PF | DD | Win Rate | Trades | Trades/Day | Sortino | Calmar | Omega | Composite | Rank |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Cooldown `25m` range mode + Tier 3 `ROC(5)` + `150m` max-hold on prior-day `ADX > 25` trend days, exact research candidate | `R$14,835` | `1.4987` | `3.27%` | `80.70%` | 1611 | `1.2927` | `2.0655` | `6.1735` | `1.6501` | `3.2148` | research exact |
 | Cooldown `25m` + conditional `ROC(5)` on prior-day `ADX > 25` trend days, exact research candidate | `R$14,765` | `1.4951` | `3.28%` | `80.70%` | 1611 | `1.2927` | `2.0572` | `6.1294` | `1.6450` | `3.1964` | research exact |
 | Cooldown `25m` + max-hold `150m` + `ROC(5)` agreement, exact research candidate | `R$14,630` | `1.4935` | `3.28%` | `80.66%` | 1598 | `1.2815` | `2.0283` | `6.0841` | `1.6412` | `3.1676` | research exact |
 | Cooldown `25m` + `ROC(5)` agreement, exact research candidate | `R$14,560` | `1.4900` | `3.30%` | `80.66%` | 1598 | `1.2815` | `2.0201` | `6.0402` | `1.6362` | `3.1493` | research exact |
@@ -46,6 +47,15 @@
 
 - Safest paper-trading choice today: the MT5-validated base preset.
 - Best exact research candidate: session winner + `25m` cooldown, using plain Tier 2 on range days and requiring `ROC(5)` only on prior-day `ADX > 25` trend days.
+- Strongest exact research candidate now packaged for MT5 follow-up:
+  - session winner + `25m` cooldown, using plain Tier 2 on range days and switching to Tier 3 `ROC(5)` + `150m` max-hold on prior-day `ADX > 25` trend days
+  - `R$14,835`, `PF 1.4987`, `DD 3.27%`, composite `3.2148`
+  - exact `70/30` walk-forward still passed:
+    - train `PF 1.5407`
+    - test `PF 1.3935`
+  - recent `60`-trading-day check stayed soft and identical to Tier 2 / Tier 2A / Tier 3:
+    - `R$30`, `PF 1.0157`, `DD 5.62%`
+  - this is still not the Monday default because it adds both regime and max-hold logic
 - New best exact research candidate now packaged for MQ5 follow-up:
   - session winner + `25m` cooldown, using plain Tier 2 on range days and requiring `ROC(5)` only on prior-day `ADX > 25` trend days
   - `R$14,765`, `PF 1.4951`, `DD 3.28%`, composite `3.1964`
@@ -86,10 +96,12 @@
   - Tier 2, moderate: session winner + `25m` cooldown only
   - Tier 2A, next research validation: session winner + `25m` cooldown + `ROC(5)` agreement
   - Tier 2B, regime-aware ROC: session winner + `25m` cooldown, but only require `ROC(5)` on prior-day `ADX > 25` trend days
+  - advanced research preset: session winner + `25m` cooldown, but switch to Tier 3 `ROC(5)` + `150m` max-hold on prior-day `ADX > 25` trend days
   - Tier 3, aggressive: session winner + `25m` cooldown + `150` M1 max hold
   - Tier 4, research-only: equal-weight blend of Tier 2 and Tier 2A
 - Risk-adjusted ranking by the Sortino-weighted composite:
-  - best exact research line: cooldown `25m` + conditional `ROC(5)` on prior-day `ADX > 25` trend days at `3.1964`
+  - best exact research line: cooldown `25m` range mode + Tier 3 `ROC(5)` + `150m` max-hold on prior-day `ADX > 25` trend days at `3.2148`
+  - next exact research line: cooldown `25m` + conditional `ROC(5)` on prior-day `ADX > 25` trend days at `3.1964`
   - next exact research line: cooldown `25m` + max-hold `150m` + `ROC(5)` agreement at `3.1676`
   - next exact research line: cooldown `25m` + `ROC(5)` agreement at `3.1493`
   - research-only leader: confidence overlay + time-widened stop at `3.1377`

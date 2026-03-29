@@ -21,6 +21,9 @@
 - Best exact research line, now packaged for MT5 follow-up validation:
   - Tier 2 on range days + Tier 2A `ROC(5)` on prior-day `ADX > 25` trend days
   - `R$14,765`, `PF 1.4951`, `DD 3.28%`, composite `3.1964`
+- Best advanced exact research line:
+  - Tier 2 on range days + Tier 3 `ROC(5)` + `150m` max-hold on prior-day `ADX > 25` trend days
+  - `R$14,835`, `PF 1.4987`, `DD 3.27%`, composite `3.2148`
 - Best simpler ROC follow-up, also packaged:
   - Tier 2 + `ROC(5)` agreement
   - `R$14,560`, `PF 1.4900`, `DD 3.30%`, composite `3.1493`
@@ -55,6 +58,9 @@
   - Tier 2B, regime-aware switch:
     - Tier 2 on prior-day `ADX <= 25` range days
     - Tier 2A `ROC(5)` on prior-day `ADX > 25` trend days
+- Advanced research preset after that:
+  - Tier 2 on prior-day `ADX <= 25` range days
+  - Tier 3 `ROC(5)` + `150m` max-hold on prior-day `ADX > 25` trend days
 - After another clean week:
   - Tier 3
 - Tier 4 remains research-only:
@@ -113,7 +119,8 @@
   - Tier 2A test: `R$3,440`, `PF 1.4086`, `DD 4.21%`
   - Tier 3 test: `R$3,175`, `PF 1.3662`, `DD 4.29%`
   - Tier 2B test: `R$3,345`, `PF 1.3935`, `DD 4.23%`
-  - interpretation: among the post-Monday upgrades, Tier 2A remains the cleanest simpler out-of-sample line, while Tier 2B is now the strongest regime-aware research line
+  - advanced regime-aware Tier 3 test: `R$3,345`, `PF 1.3935`, `DD 4.23%`
+  - interpretation: among the post-Monday upgrades, Tier 2A remains the cleanest simpler out-of-sample line, while the advanced regime-aware Tier 3 stack is now the strongest overall exact research line
 - Two-bar trend confirmation:
   - clearly negative, rejected
 - Volume-weighted entry sizing:
@@ -170,7 +177,7 @@
     - test `R$3,345`, `PF 1.3935`, `DD 4.23%`
   - recent `60`-trading-day check stayed soft and identical to Tier 2 / Tier 2A:
     - `R$30`, `PF 1.0157`, `DD 5.62%`
-  - interpretation: this is now the strongest exact research line overall, but it is still one step too complex to jump ahead of Tier 2 or Tier 2A in the Monday rollout order
+  - interpretation: this is now the strongest simpler regime-aware research line, but it is still one step too complex to jump ahead of Tier 2 or Tier 2A in the Monday rollout order
 - ATR-adaptive target scaling:
   - exact daily-ATR-scaled TP on Tier 3 was worse than the fixed `0.30 ATR` target
   - interpretation: the target already seems tuned tightly enough for this tape
