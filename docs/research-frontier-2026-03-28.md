@@ -140,6 +140,15 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - `ROC(10)`: `R$14,545`, `PF 1.4864`, `DD 3.30%`, composite `3.1526`
     - `ROC(3)`: `R$14,440`, `PF 1.4850`, `DD 3.32%`, composite `3.1248`
   - interpretation: the earlier `ROC(5)` win was not a fluke; it still looks like the local optimum even inside the stronger regime-aware max-hold stack
+- Advanced regime-threshold sweep:
+  - artifact: `artifacts/outputs/stalker_v10_1_regime_threshold_followups_20260329/summary.json`
+  - `ADX 25` remained optimal inside the stronger regime-aware Tier 3 + `ROC(5)` stack:
+    - `ADX 25`: `R$14,835`, `PF 1.4987`, `DD 3.27%`, composite `3.2148`
+    - `ADX 30`: `R$14,785`, `PF 1.4958`, `DD 3.27%`, composite `3.2056`
+    - `ADX 27.5`: `R$14,760`, `PF 1.4950`, `DD 3.27%`, composite `3.1989`
+    - `ADX 22.5`: `R$14,680`, `PF 1.4930`, `DD 3.28%`, composite `3.1801`
+    - `ADX 20`: `R$14,610`, `PF 1.4906`, `DD 3.28%`, composite `3.1676`
+  - interpretation: the current advanced preset was already using the right threshold; there is no reason to complicate the Monday docs with another ADX setting
 
 ## Near-Term Caution
 
