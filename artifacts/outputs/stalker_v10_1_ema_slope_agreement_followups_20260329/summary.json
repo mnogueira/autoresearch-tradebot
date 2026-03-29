@@ -1,0 +1,131 @@
+{
+  "reference_tier2a": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1571,
+      "win_rate": 0.8097,
+      "net_profit_brl": 15970.0,
+      "avg_profit_brl": 10.17,
+      "avg_win_brl": 36.96,
+      "avg_loss_brl": -103.81,
+      "profit_factor": 1.5145,
+      "max_drawdown_pct": 3.23,
+      "expected_payoff": 10.17,
+      "on_tester_value": 4947.19011
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 2.0094,
+      "calmar_ratio": 6.5895,
+      "omega_ratio": 1.6541,
+      "annual_return_pct": 21.27,
+      "max_drawdown_frac": 0.032281
+    },
+    "sortino_weighted_composite": 3.3124
+  },
+  "variants": [
+    {
+      "name": "tier2a_ema20_slope_sign",
+      "rule": "Strengthened Tier 2A with EMA(20) slope directional confirmation.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1571,
+        "win_rate": 0.8097,
+        "net_profit_brl": 15970.0,
+        "avg_profit_brl": 10.17,
+        "avg_win_brl": 36.96,
+        "avg_loss_brl": -103.83,
+        "profit_factor": 1.5144,
+        "max_drawdown_pct": 3.23,
+        "expected_payoff": 10.17,
+        "on_tester_value": 4947.19011
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.009,
+        "calmar_ratio": 6.5895,
+        "omega_ratio": 1.654,
+        "annual_return_pct": 21.27,
+        "max_drawdown_frac": 0.032281
+      },
+      "sortino_weighted_composite": 3.3121,
+      "params": {
+        "ema_window": 20,
+        "roc_agreement_bars": 5,
+        "ATR_Length": 10,
+        "NumDaysToConsiderPreviousContractMARange": 2,
+        "min_minutes_between_entries": 28
+      }
+    },
+    {
+      "name": "tier2a_ema50_slope_sign",
+      "rule": "Strengthened Tier 2A with EMA(50) slope directional confirmation.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1571,
+        "win_rate": 0.8097,
+        "net_profit_brl": 15970.0,
+        "avg_profit_brl": 10.17,
+        "avg_win_brl": 36.96,
+        "avg_loss_brl": -103.81,
+        "profit_factor": 1.5145,
+        "max_drawdown_pct": 3.23,
+        "expected_payoff": 10.17,
+        "on_tester_value": 4947.19011
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.0094,
+        "calmar_ratio": 6.5895,
+        "omega_ratio": 1.6541,
+        "annual_return_pct": 21.27,
+        "max_drawdown_frac": 0.032281
+      },
+      "sortino_weighted_composite": 3.3124,
+      "params": {
+        "ema_window": 50,
+        "roc_agreement_bars": 5,
+        "ATR_Length": 10,
+        "NumDaysToConsiderPreviousContractMARange": 2,
+        "min_minutes_between_entries": 28
+      }
+    }
+  ],
+  "best_variant": {
+    "name": "tier2a_ema50_slope_sign",
+    "rule": "Strengthened Tier 2A with EMA(50) slope directional confirmation.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1571,
+      "win_rate": 0.8097,
+      "net_profit_brl": 15970.0,
+      "avg_profit_brl": 10.17,
+      "avg_win_brl": 36.96,
+      "avg_loss_brl": -103.81,
+      "profit_factor": 1.5145,
+      "max_drawdown_pct": 3.23,
+      "expected_payoff": 10.17,
+      "on_tester_value": 4947.19011
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 2.0094,
+      "calmar_ratio": 6.5895,
+      "omega_ratio": 1.6541,
+      "annual_return_pct": 21.27,
+      "max_drawdown_frac": 0.032281
+    },
+    "sortino_weighted_composite": 3.3124,
+    "params": {
+      "ema_window": 50,
+      "roc_agreement_bars": 5,
+      "ATR_Length": 10,
+      "NumDaysToConsiderPreviousContractMARange": 2,
+      "min_minutes_between_entries": 28
+    }
+  }
+}
