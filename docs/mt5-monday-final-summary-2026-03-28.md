@@ -6,7 +6,8 @@
 - Best new exact cooldown-sweep refinement is Tier 2: session winner + `25m` cooldown only.
 - Best stronger post-Tier-2 research validation target is now Tier 2A: session winner + `28m` cooldown + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`.
 - The older `30m` cooldown line remains the safer fallback because it already has the exact `70/30` walk-forward pass.
-- Tier 3, the `25m + max-hold` variant, is now the best deployable exact composite, but the operational upside versus the cooldown-only lines is still tiny.
+- Tier 3 is now the stronger aggressive branch: session winner + `25m` cooldown + `150m` max-hold + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`.
+- That Tier 3 line is the strongest exact research score overall, but it still comes after Tier 2A operationally because Tier 2A is the cleaner first upgrade.
 
 ## What We Learned
 
@@ -23,7 +24,8 @@
 | --- | --- | --- |
 | Tier 1 | MT5 validated base preset | Safest Monday choice because it is already validated in MT5 `Every Tick`. |
 | Tier 2 | Session winner + `25m` cooldown | Best deployable exact composite in the cooldown sweep. |
-| Tier 3 | Session winner + `25m` cooldown + `150` M1-bar max hold | Best exact single-strategy composite, but only by a hair. |
+| Tier 2A | Session winner + `28m` cooldown + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2` | Strongest simpler exact post-Monday upgrade and best out-of-sample post-Monday line. |
+| Tier 3 | Session winner + `25m` cooldown + `150m` max-hold + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2` | Strongest aggressive exact research line, but still a later rollout step than Tier 2A. |
 | Tier 4 | Research Blend: equal-weight average of Tier 3 + time-widened stop | Slightly better research composite via smoothing, but not a Monday deployment preset. |
 
 ## Recent Tape
@@ -58,6 +60,7 @@
 
 1. Run Tier 1 for the first paper week.
 2. If the first `5` paper sessions are clean, move to Tier 2.
-3. Only after another clean week, test Tier 3.
-4. Keep Tier 4 as a research-only blend, not a live preset.
-5. Keep the ADX gate and rollover caution as operator context, not default hard filters.
+3. If Tier 2 behaves cleanly, validate Tier 2A next.
+4. Only after that, test Tier 3.
+5. Keep Tier 4 as a research-only blend, not a live preset.
+6. Keep the ADX gate and rollover caution as operator context, not default hard filters.

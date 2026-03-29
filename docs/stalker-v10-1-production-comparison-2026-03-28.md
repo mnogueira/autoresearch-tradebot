@@ -4,6 +4,7 @@
 
 | Variant | Net | PF | DD | Win Rate | Trades | Trades/Day | Sortino | Calmar | Omega | Composite | Rank |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Cooldown `25m` + max-hold `150m` + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`, exact research candidate | `R$15,885` | `1.4993` | `3.21%` | `80.84%` | 1597 | `1.2815` | `2.0170` | `6.6019` | `1.6474` | `3.3186` | research exact |
 | Cooldown `28m` + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`, exact research candidate | `R$15,970` | `1.5145` | `3.23%` | `80.97%` | 1571 | `1.2606` | `2.0094` | `6.5895` | `1.6541` | `3.3124` | research exact |
 | Cooldown `25m` + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`, prior exact research candidate | `R$15,840` | `1.4967` | `3.21%` | `80.84%` | 1597 | `1.2815` | `2.0128` | `6.5886` | `1.6436` | `3.3117` | research exact |
 | Cooldown `25m` range mode + Tier 3 `ROC(5)` + `150m` max-hold on prior-day `ADX > 25` trend days, exact research candidate | `R$14,835` | `1.4987` | `3.27%` | `80.70%` | 1611 | `1.2927` | `2.0655` | `6.1735` | `1.6501` | `3.2148` | research exact |
@@ -48,15 +49,16 @@
 ## Readout
 
 - Safest paper-trading choice today: the MT5-validated base preset.
-- Best exact research candidate: session winner + `28m` cooldown + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`.
-- Strongest exact research candidate now packaged for MT5 follow-up:
+- Best exact research candidate overall: session winner + `25m` cooldown + `150m` max-hold + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`.
+- Strongest regime-aware exact research candidate now packaged for MT5 follow-up:
   - session winner + `25m` cooldown, using plain Tier 2 on range days and switching to Tier 3 `ROC(5)` + `150m` max-hold on prior-day `ADX > 25` trend days
   - `R$14,835`, `PF 1.4987`, `DD 3.27%`, composite `3.2148`
   - exact `70/30` walk-forward still passed:
     - train `PF 1.5407`
     - test `PF 1.3935`
-  - recent `60`-trading-day check stayed soft and identical to Tier 2 / Tier 2A / Tier 3:
+  - recent `60`-trading-day check stayed soft:
     - `R$30`, `PF 1.0157`, `DD 5.62%`
+  - unlike the strengthened always-on Tier 2A and Tier 3 local-geometry lines, it did not stay positive on the recent `60`-day readout
   - this is still not the Monday default because it adds both regime and max-hold logic
 - Strongest simpler post-Monday follow-up now packaged for MQ5:
   - session winner + `28m` cooldown + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`
@@ -67,21 +69,32 @@
   - recent `60`-trading-day check stayed positive:
     - `R$435`, `PF 1.2522`, `DD 3.25%`
   - this is now the strongest exact post-Tier-2 line, but it still waits on host-side MT5 validation before it changes the Monday rollout order
-- New best exact post-Tier-2 upgrade:
-  - session winner + `25m` cooldown + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`
-  - `R$15,840`, `PF 1.4967`, `DD 3.21%`, composite `3.3117`
-  - exact `70/30` walk-forward:
-    - train `PF 1.5208`
-    - test `PF 1.4350`
-  - recent `60`-trading-day check improved versus the earlier Tier 2A line:
-    - `R$480`, `PF 1.2783`, `DD 3.23%`
-  - this is now the cleanest stronger post-Tier-2 research validation target, and it beat the prior ATR14/lookback3 Tier 2A as well
-- Best max-hold ROC research candidate:
-  - session winner + `25m` cooldown + `150` M1 max-hold + `ROC(5)` agreement
-  - `R$14,630`, `PF 1.4935`, `DD 3.28%`, composite `3.1676`
+- Strongest aggressive post-Monday follow-up now packaged for MQ5:
+  - session winner + `25m` cooldown + `150m` max-hold + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`
+  - `R$15,885`, `PF 1.4993`, `DD 3.21%`, composite `3.3186`
   - exact `70/30` walk-forward still passed:
-    - train `PF 1.5272`
-    - test `PF 1.4086`
+    - train `PF 1.5258`
+    - test `PF 1.4316`
+  - recent `60`-trading-day check stayed positive:
+    - `R$450`, `PF 1.2609`, `DD 3.24%`
+  - this is now the strongest aggressive exact research line, but it should still come after the simpler Tier 2A path operationally
+- New best exact post-Tier-2 upgrade:
+  - session winner + `28m` cooldown + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`
+  - `R$15,970`, `PF 1.5145`, `DD 3.23%`, composite `3.3124`
+  - exact `70/30` walk-forward:
+    - train `PF 1.5403`
+    - test `PF 1.4489`
+  - recent `60`-trading-day check stayed positive:
+    - `R$435`, `PF 1.2522`, `DD 3.25%`
+  - this is now the cleanest stronger post-Tier-2 research validation target, and it beat the earlier `25m` ROC geometry variant on full sample and holdout
+- Best max-hold ROC research candidate:
+  - session winner + `25m` cooldown + `150` M1 max-hold + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`
+  - `R$15,885`, `PF 1.4993`, `DD 3.21%`, composite `3.3186`
+  - exact `70/30` walk-forward still passed:
+    - train `PF 1.5258`
+    - test `PF 1.4316`
+  - recent `60`-trading-day check stayed positive:
+    - `R$450`, `PF 1.2609`, `DD 3.24%`
 - Simpler ROC agreement alternative:
   - session winner + `25m` cooldown + `ROC(5)` agreement
   - `R$14,560`, `PF 1.4900`, `DD 3.30%`, composite `3.1493`
@@ -107,13 +120,13 @@
   - Tier 2, moderate: session winner + `25m` cooldown only
   - Tier 2A, next research validation: session winner + `28m` cooldown + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`
   - secondary research branches after Tier 3: regime-aware ROC and advanced regime-aware ROC + max-hold
-  - Tier 3, aggressive: session winner + `25m` cooldown + `150` M1 max hold
+  - Tier 3, aggressive: session winner + `25m` cooldown + `150m` max-hold + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`
   - Tier 4, research-only: equal-weight blend of Tier 2 and Tier 2A
 - Risk-adjusted ranking by the Sortino-weighted composite:
-  - best exact research line: cooldown `28m` + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2` at `3.3124`
+  - best exact research line: cooldown `25m` + max-hold `150m` + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2` at `3.3186`
+  - next exact research line: cooldown `28m` + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2` at `3.3124`
   - next exact research line: cooldown `25m` range mode + Tier 3 `ROC(5)` + `150m` max-hold on prior-day `ADX > 25` trend days at `3.2148`
   - next exact research line: cooldown `25m` + conditional `ROC(5)` on prior-day `ADX > 25` trend days at `3.1964`
-  - next exact research line: cooldown `25m` + max-hold `150m` + `ROC(5)` agreement at `3.1676`
   - next exact research line: cooldown `25m` + `ROC(5)` agreement at `3.1493`
   - research-only leader: confidence overlay + time-widened stop at `3.1377`
   - next research-only: equal-weight blend of Tier 2 and Tier 2A at `3.1372`

@@ -5,9 +5,9 @@
 The current signal family looks close to its local ceiling on the available WDO tape.
 
 - Best exact deployable full-sample line so far:
-  - Tier 3 + `ROC(5)` agreement
-  - `R$14,630`, `PF 1.4935`, `DD 3.28%`
-  - Sortino-weighted composite `3.1676`
+  - Tier 3 + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`
+  - `R$15,885`, `PF 1.4993`, `DD 3.21%`
+  - Sortino-weighted composite `3.3186`
 - Best simpler exact upgrade path:
   - Tier 2A, `28m` cooldown + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`
   - `R$15,970`, `PF 1.5145`, `DD 3.23%`
@@ -34,7 +34,7 @@ That is where the strategy now appears to be.
 - Tier 2: `R$14,350`, `PF 1.4749`, `DD 3.30%`, composite `3.1158`
 - Tier 2A: `R$15,970`, `PF 1.5145`, `DD 3.23%`, composite `3.3124`
 - Tier 3: `R$14,420`, `PF 1.4784`, `DD 3.28%`, composite `3.1340`
-- Tier 3 + `ROC(5)`: `R$14,630`, `PF 1.4935`, `DD 3.28%`, composite `3.1676`
+- Tier 3 + `ROC(5)`: `R$15,885`, `PF 1.4993`, `DD 3.21%`, composite `3.3186`
 
 These are real improvements, but they are incremental, not transformational.
 

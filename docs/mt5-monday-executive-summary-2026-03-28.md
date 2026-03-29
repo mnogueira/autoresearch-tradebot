@@ -17,15 +17,23 @@
 - Tier 2 exact refinement:
   - `R$14,350`, `PF 1.4749`, `DD 3.30%`, composite `3.1158`
 - Tier 3 exact refinement:
-  - `R$14,420`, `PF 1.4784`, `DD 3.28%`, composite `3.1340`
-- Best exact research line, now packaged for MT5 follow-up validation:
-  - Tier 2 + `ROC(5)` agreement + `ATR_Length 10` + contract-range lookback `2`
-  - `R$15,840`, `PF 1.4967`, `DD 3.21%`, composite `3.3117`
+  - `R$15,885`, `PF 1.4993`, `DD 3.21%`, composite `3.3186`
+- Best exact research line overall, now packaged for MT5 follow-up validation:
+  - Tier 3 + `ROC(5)` agreement + `ATR_Length 10` + contract-range lookback `2`
+  - `R$15,885`, `PF 1.4993`, `DD 3.21%`, composite `3.3186`
   - exact `70/30` walk-forward:
-    - train `R$11,945`, `PF 1.5208`, `DD 3.21%`
-    - test `R$3,895`, `PF 1.4350`, `DD 3.26%`
+    - train `R$12,020`, `PF 1.5258`, `DD 3.21%`
+    - test `R$3,865`, `PF 1.4316`, `DD 3.26%`
   - recent `60`-trading-day check:
-    - `R$480`, `PF 1.2783`, `DD 3.23%`
+    - `R$450`, `PF 1.2609`, `DD 3.24%`
+- Best simpler exact research line:
+  - Tier 2 + `ROC(5)` agreement + `ATR_Length 10` + contract-range lookback `2`
+  - `R$15,970`, `PF 1.5145`, `DD 3.23%`, composite `3.3124`
+  - exact `70/30` walk-forward:
+    - train `R$12,035`, `PF 1.5403`, `DD 3.23%`
+    - test `R$3,935`, `PF 1.4489`, `DD 2.80%`
+  - recent `60`-trading-day check:
+    - `R$435`, `PF 1.2522`, `DD 3.25%`
 - Best advanced exact research line:
   - Tier 2 on range days + Tier 3 `ROC(5)` + `150m` max-hold on prior-day `ADX > 25` trend days
   - `R$14,835`, `PF 1.4987`, `DD 3.27%`, composite `3.2148`
@@ -92,7 +100,10 @@
 - Last `30` trading days: soft but still positive
   - `R$40`, `PF 1.0357`, `DD 4.67%`
 - Last `60` trading days: Tier 2 and Tier 3 were identical
-  - `R$30`, `PF 1.0157`, `DD 5.62%`
+  - legacy plain Tier 2 and plain Tier 3 max-hold both came in at `R$30`, `PF 1.0157`, `DD 5.62%`
+  - the strengthened Tier 2A / Tier 3 local-geometry branches stayed positive:
+    - Tier 2A: `R$435`, `PF 1.2522`, `DD 3.25%`
+    - Tier 3: `R$450`, `PF 1.2609`, `DD 3.24%`
 - Last `10` trading days: strong recovery
   - `R$455`, `PF 4.25`, `DD 0.81%`
   - Tier 2 and Tier 2A were identical in that latest `10`-day window
@@ -122,8 +133,8 @@
 - Final robustness pass:
   - Tier 1 exact analog test: `R$3,760`, `PF 1.3562`, `DD 4.94%`
   - Tier 2 test: `R$3,175`, `PF 1.3662`, `DD 4.29%`
-  - Tier 2A test: `R$3,440`, `PF 1.4086`, `DD 4.21%`
-  - Tier 3 test: `R$3,175`, `PF 1.3662`, `DD 4.29%`
+  - Tier 2A test: `R$3,935`, `PF 1.4489`, `DD 2.80%`
+  - Tier 3 test: `R$3,865`, `PF 1.4316`, `DD 3.26%`
   - Tier 2B test: `R$3,345`, `PF 1.3935`, `DD 4.23%`
   - advanced regime-aware Tier 3 test: `R$3,345`, `PF 1.3935`, `DD 4.23%`
   - interpretation: among the post-Monday upgrades, Tier 2A remains the cleanest simpler out-of-sample line, while the advanced regime-aware Tier 3 stack is now the strongest overall exact research line
@@ -159,13 +170,13 @@
 - ROC agreement follow-up:
   - keeping trend-efficiency and adding `ROC(5)` directional agreement on top of Tier 3 was the first exact post-Tier-3 improvement
   - exact result:
-    - `R$14,630`, `PF 1.4935`, `DD 3.28%`, composite `3.1676`
+    - `R$15,885`, `PF 1.4993`, `DD 3.21%`, composite `3.3186`
   - exact `70/30` walk-forward still passed:
-    - train `R$11,190`, `PF 1.5272`, `DD 3.28%`
-    - test `R$3,440`, `PF 1.4086`, `DD 4.21%`
-  - but the last `60` trading days were still soft:
-    - `R$30`, `PF 1.0157`, `DD 5.62%`
-  - interpretation: this remains a strong exact research candidate, but it has now been edged out by the simpler regime-aware Tier 2 / Tier 2A switch and is still not the Monday preset because it needs host-side MT5 validation
+    - train `R$12,020`, `PF 1.5258`, `DD 3.21%`
+    - test `R$3,865`, `PF 1.4316`, `DD 3.26%`
+  - recent `60` trading days stayed positive:
+    - `R$450`, `PF 1.2609`, `DD 3.24%`
+  - interpretation: this is now the strongest aggressive exact research branch, but it is still not the Monday preset because the simpler Tier 2A line remains the cleaner first upgrade
 - Portfolio sleeve follow-up:
   - equal-weight blend of Tier 2 and Tier 2A:
     - `R$14,455`, `PF 1.4824`, `DD 3.30%`, composite `3.1372`
@@ -220,6 +231,17 @@
   - interpretation:
     - this is now the promoted Tier 2A preset
     - the improvement over `25m` is small, but it held up on the holdout and kept the recent tape positive
+- Tier 3 local-geometry refinement:
+  - carrying the same `ATR10/lookback2` geometry into the aggressive ROC/max-hold branch improved that line too:
+    - `R$15,885`, `PF 1.4993`, `DD 3.21%`, composite `3.3186`
+  - exact `70/30` walk-forward:
+    - train `R$12,020`, `PF 1.5258`, `DD 3.21%`
+    - test `R$3,865`, `PF 1.4316`, `DD 3.26%`
+  - recent `60`-trading-day check:
+    - `R$450`, `PF 1.2609`, `DD 3.24%`
+  - interpretation:
+    - this is now the promoted aggressive Tier 3 research branch
+    - it edges Tier 2A on full-sample composite, but Tier 2A remains the cleaner first upgrade because it is simpler and slightly stronger on the out-of-sample test
 
 ## Bottom Line
 

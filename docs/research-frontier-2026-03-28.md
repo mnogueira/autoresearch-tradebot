@@ -42,6 +42,12 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - `ROC(10)`: `R$15,460`, `PF 1.4782`, `DD 3.27%`, composite `3.1939`
     - `ROC(3)`: `R$15,630`, `PF 1.4963`, `DD 3.49%`, composite `3.1260`
     - interpretation: `ROC(5)` is still the local optimum even after the Tier 2A geometry promotion
+  - the same stronger geometry also lifted the aggressive Tier 3 line:
+    - Tier 3 + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`
+    - `R$15,885`, `PF 1.4993`, `DD 3.21%`, composite `3.3186`
+    - `70/30` test: `R$3,865`, `PF 1.4316`, `DD 3.26%`, composite `3.4742`
+    - recent `60` trading days: `R$450`, `PF 1.2609`, `DD 3.24%`
+    - interpretation: this is now the strongest aggressive exact research branch, but the rollout order still stays conservative because the simpler Tier 2A line remains the cleaner first upgrade
 
 ## Final Ranking Follow-up
 
@@ -110,14 +116,14 @@ This remains the safest paper-trading candidate because it is the best strategy 
 - ROC agreement / tighter adaptive TP follow-up:
   - artifact: `artifacts/outputs/stalker_v10_1_roc_agreement_followups_20260329/summary.json`
   - adding `ROC(5)` as an agreement filter on top of the existing trend-efficiency signal did produce a real exact improvement:
-    - Tier 3 + `ROC(5)` agreement: `R$14,630`, `PF 1.4935`, `DD 3.28%`, composite `3.1676`
-    - Tier 2 + `ROC(5)` agreement: `R$14,560`, `PF 1.4900`, `DD 3.30%`, composite `3.1493`
-  - exact `70/30` walk-forward on the Tier 3 + `ROC(5)` agreement line still passed:
-    - train `R$11,190`, `PF 1.5272`, `DD 3.28%`, composite `3.6242`
-  - test `R$3,440`, `PF 1.4086`, `DD 4.21%`, composite `2.7331`
-  - recent-regime reality check was still soft:
-    - last `60` trading days: `R$30`, `PF 1.0157`, `DD 5.62%`
-  - the simpler Tier 2 + `ROC(5)` agreement line also held the same recent `60`-day readout while keeping the simpler cooldown-only structure
+    - strengthened Tier 3 + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`: `R$15,885`, `PF 1.4993`, `DD 3.21%`, composite `3.3186`
+    - strengthened Tier 2 + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`: `R$15,970`, `PF 1.5145`, `DD 3.23%`, composite `3.3124`
+  - exact `70/30` walk-forward on the strengthened aggressive Tier 3 line still passed:
+    - train `R$12,020`, `PF 1.5258`, `DD 3.21%`, composite `3.7808`
+  - test `R$3,865`, `PF 1.4316`, `DD 3.26%`, composite `3.4742`
+  - recent-regime reality check stayed positive:
+    - last `60` trading days: `R$450`, `PF 1.2609`, `DD 3.24%`
+  - the simpler Tier 2A line still remains the cleaner first upgrade because it is less complex and held an even stronger test composite
   - the latest `10`-trading-day window also failed to separate Tier 2 from Tier 2 + `ROC(5)`:
     - both `R$455`, `PF 4.25`, `DD 0.81%`
   - tested agreement windows on Tier 2 ranked cleanly:
@@ -235,9 +241,12 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - interpretation: the newer Tier 3 line still wins full-sample composite, but the current regime is not rewarding it over the simpler Tier 2 upgrade
 - Compact current-regime tier snapshot:
   - artifact: `artifacts/outputs/stalker_v10_1_current_regime_snapshot_20260329/summary.json`
-  - Tier 2, Tier 2A, Tier 2B, Tier 3, and the advanced regime-aware Tier 3 stack all converge to the same recent `60`-day readout:
+  - the older pre-geometry exact tiers and regime scouts all converged to the same recent `60`-day readout:
     - `R$30`, `PF 1.0157`, `DD 5.62%`
-  - interpretation: the current tape is soft enough that the full-sample ranking differences are not showing up in the latest regime, which is exactly why the Monday rollout order stays conservative
+  - the later local-geometry refinements improved that picture:
+    - strengthened Tier 2A recent `60d`: `R$435`, `PF 1.2522`, `DD 3.25%`
+    - strengthened Tier 3 recent `60d`: `R$450`, `PF 1.2609`, `DD 3.24%`
+  - interpretation: the current tape is still soft, but the strengthened local-geometry branches stayed positive enough to justify keeping them as the next research upgrades after Tier 2
 - Mean-reversion / volume / skip-hour follow-up:
   - artifact: `artifacts/outputs/stalker_v10_1_meanrev_volume_hour_followups_20260329/summary.json`
   - RSI(14) mean-reversion prototype: `R$-11,755`, `PF 0.8236`, `DD 119.38%`

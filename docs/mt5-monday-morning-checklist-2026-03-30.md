@@ -28,7 +28,7 @@
 6. Walk-forward-validated cooldown fallback preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
 7. Aggressive exact refinement preset:
-   - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold150m GPT 5.4.set`
+   - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold150m ROC5 Agreement ATR10 Lookback2 GPT 5.4.set`
 8. Regime-aware ROC research preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m ROC5 TrendSwitch ADX25 GPT 5.4.set`
 9. Advanced regime-aware ROC + max-hold research preset:
@@ -51,7 +51,7 @@
 4. If the desk wants the more validated cooldown setting first, use this instead:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
 5. If that also looks sane, validate the aggressive max-hold refinement next:
-   - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold150m GPT 5.4.set`
+   - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold150m ROC5 Agreement ATR10 Lookback2 GPT 5.4.set`
 6. If the desk wants the strongest regime-aware research follow-up before max-hold logic, validate:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m ROC5 TrendSwitch ADX25 GPT 5.4.set`
 7. If the desk wants the strongest advanced regime-aware stack after that, validate:
@@ -67,10 +67,13 @@
    - `EntryStart 10:00`
    - `LastEntry 14:30`
    - `MinMinutesBetweenEntries 25` for the plain cooldown winner and the new max-hold refinement, `28` for the upgraded Tier 2A ROC preset, or `30` for the older validated cooldown fallback
-   - `ATR_Length 10` and `NumDaysToConsiderPreviousContractMARange 2` if using the upgraded Tier 2A ROC preset
+   - `ATR_Length 10` and `NumDaysToConsiderPreviousContractMARange 2` if using the upgraded Tier 2A ROC preset or the aggressive Tier 3 preset
    - `MaxMinutesInTrade 150` for the aggressive refinement preset
    - `SL 0.84`
    - `TP 0.30`
+   - if using Tier 2A or Tier 3 ROC-enhanced presets, confirm:
+     - `UseROCAgreementFilter=true`
+     - `ROCAgreementBars=5`
    - if using the regime-aware ROC preset, confirm:
      - `UseROCAgreementFilter=true`
      - `UseROCAgreementOnlyOnTrendDays=true`
@@ -125,6 +128,13 @@ Recent context:
   - fixed-parameter `70/30` walk-forward still passed:
     - train `R$11,245`, `PF 1.5236`, `DD 3.28%`
     - test `R$3,175`, `PF 1.3662`, `DD 4.29%`
+- The stronger aggressive Tier 3 branch now packaged for later host-side validation is:
+  - `25m` cooldown + `150m` max-hold + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`
+  - `R$15,885`, `PF 1.4993`, `DD 3.21%`, composite `3.3186`
+  - exact `70/30` walk-forward still passed:
+    - train `R$12,020`, `PF 1.5258`, `DD 3.21%`
+    - test `R$3,865`, `PF 1.4316`, `DD 3.26%`
+  - use this only after Tier 2A, not before
 - The regime readout says trend days are the quality engine:
   - trend-day production slice: `PF 1.9183`, `DD 3.38%`
   - range-day production slice: `PF 1.3153`, `DD 4.95%`
@@ -145,7 +155,7 @@ Recent context:
    - baseline expectation for Tier 1 is about `1.96` trades per day from the validated MT5 report
    - if you later promote to Tier 2, the exact-engine expectation is about `1.30` trades per day
    - if you later promote to Tier 2A with `ROC(5)` agreement, the exact-engine expectation is about `1.28` trades per day
-   - if you later promote to Tier 3, the exact-engine expectation is about `1.30` trades per day
+  - if you later promote to Tier 3, the exact-engine expectation is about `1.28` trades per day
 4. Keep the `Experts` and `Journal` tabs open and watch for:
    - unexpected entries outside the intended windows
    - repeated close-order rejections
