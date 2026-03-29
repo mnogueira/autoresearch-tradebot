@@ -47,6 +47,10 @@
     - test `R$3,895`, `PF 1.4350`, `DD 3.26%`
   - recent `60`-trading-day check:
     - `R$480`, `PF 1.2783`, `DD 3.23%`
+  - recent `30`-trading-day check:
+    - `R$375`, `PF 1.3886`, `DD 3.27%`
+  - recent `10`-trading-day check:
+    - `R$450`, `PF 3.50`, `DD 1.15%`
   - interpretation:
     - this is now the strongest exact research line, but it is still not the Monday upgrade path because it needs contract-cycle switching logic that has not been packaged into the MQ5 rollout
     - the corrected rollover-tail sweep showed `last 1` contract day is the actual local optimum

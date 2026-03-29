@@ -62,6 +62,8 @@ def main() -> None:
     trade_dates = dataset.trade_dates
     train_dates, test_dates = split_dates(trade_dates, 0.7)
     recent_60 = trade_dates[-60:]
+    recent_30 = trade_dates[-30:]
+    recent_10 = trade_dates[-10:]
 
     params = replace(
         session_winner_params(),
@@ -115,6 +117,14 @@ def main() -> None:
             "recent_60d": {
                 "metrics": calculate_metrics(filter_trades_to_dates(combined_trades, recent_60), recent_60),
                 **_risk_block(filter_trades_to_dates(combined_trades, recent_60), recent_60),
+            },
+            "recent_30d": {
+                "metrics": calculate_metrics(filter_trades_to_dates(combined_trades, recent_30), recent_30),
+                **_risk_block(filter_trades_to_dates(combined_trades, recent_30), recent_30),
+            },
+            "recent_10d": {
+                "metrics": calculate_metrics(filter_trades_to_dates(combined_trades, recent_10), recent_10),
+                **_risk_block(filter_trades_to_dates(combined_trades, recent_10), recent_10),
             },
             "walkforward_70_30": {
                 "train_metrics": calculate_metrics(filter_trades_to_dates(combined_trades, train_dates), train_dates),

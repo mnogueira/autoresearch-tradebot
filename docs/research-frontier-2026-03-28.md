@@ -64,6 +64,8 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - `R$16,080`, `PF 1.5081`, `DD 3.19%`, composite `3.3578`
     - `70/30` test: `R$3,895`, `PF 1.4350`, `DD 3.26%`, composite `3.4988`
     - recent `60` trading days: `R$480`, `PF 1.2783`, `DD 3.23%`
+    - recent `30` trading days: `R$375`, `PF 1.3886`, `DD 3.27%`
+    - recent `10` trading days: `R$450`, `PF 3.50`, `DD 1.15%`
     - corrected cutoff sweep around the rollover tail showed `last 1` is actually best:
       - `1d`: composite `3.3578`
       - `2d` and `3d`: composite `3.3430`
