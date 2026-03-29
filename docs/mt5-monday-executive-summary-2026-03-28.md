@@ -18,7 +18,7 @@
   - `R$14,350`, `PF 1.4749`, `DD 3.30%`, composite `3.1158`
 - Tier 3 exact refinement:
   - `R$15,885`, `PF 1.4993`, `DD 3.21%`, composite `3.3186`
-- Best exact research line overall, now packaged for MT5 follow-up validation:
+- Best exact static preset-ready research line:
   - Tier 3 + `ROC(5)` agreement + `ATR_Length 10` + contract-range lookback `2`
   - `R$15,885`, `PF 1.4993`, `DD 3.21%`, composite `3.3186`
   - exact `70/30` walk-forward:
@@ -52,8 +52,18 @@
   - recent `10`-trading-day check:
     - `R$450`, `PF 3.50`, `DD 1.15%`
   - interpretation:
-    - this is now the strongest exact research line, but it is still not the Monday upgrade path because it needs contract-cycle switching, weekday-aware routing, and directional sleeve logic that have not been packaged into the MQ5 rollout
+    - this is now the strongest exact research line overall, but it is still not the Monday upgrade path because it needs contract-cycle switching, weekday-aware routing, and directional sleeve logic that have not been packaged into the MQ5 rollout
     - the corrected rollover-tail sweep still showed `last 1` contract day is the actual local optimum; the new lift comes from routing Fridays back to strengthened Tier 2A
+- Best simpler advanced research-only branch:
+  - strengthened Tier 2A on Fridays, directional hybrid otherwise
+  - `R$16,255`, `PF 1.5205`, `DD 3.19%`, composite `3.3793`
+  - exact `70/30` walk-forward:
+    - train `R$12,325`, `PF 1.5510`, `DD 3.19%`
+    - test `R$3,930`, `PF 1.4436`, `DD 3.26%`
+  - recent `60`-trading-day check:
+    - `R$480`, `PF 1.2783`, `DD 3.23%`
+  - interpretation:
+    - this is the cleanest next-week engineering target if we want to implement a simpler advanced routing branch before tackling the full last-contract-day plus Friday version
 - Best simpler ROC follow-up, also packaged:
   - Tier 2 + `ROC(5)` agreement
   - `R$14,560`, `PF 1.4900`, `DD 3.30%`, composite `3.1493`
@@ -99,6 +109,10 @@
   - `R$16,335`, `PF 1.5244`, `DD 3.18%`, composite `3.4017`
   - `70/30` test stayed positive and the recent `60`-day readout improved to `R$480`, `PF 1.2783`, `DD 3.23%`
   - keep this as a next-week engineering candidate, not a Monday promotion
+- cleanest simpler advanced routing candidate after Tier 3:
+  - strengthened Tier 2A on Fridays, directional hybrid otherwise
+  - `R$16,255`, `PF 1.5205`, `DD 3.19%`, composite `3.3793`
+  - use this if we want the easiest advanced next-week implementation target before adding contract-cycle logic
 - Best next ROC validation after the plain Tier 2 line:
   - Tier 2 + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`, refined to `28m` cooldown
   - it is now the strongest out-of-sample post-Monday upgrade:
