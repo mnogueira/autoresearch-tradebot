@@ -90,6 +90,17 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - session + cooldown only: `R$40`, `PF 1.0357`, `DD 4.67%`
     - session + cooldown + max-hold: `R$40`, `PF 1.0357`, `DD 4.67%`
   - interpretation: the recent softness looks much more like a weaker, less-trending tape than a lack of opportunities, and the cooldown specifically over-throttled the recent month; the max-hold layer added nothing on top of it there.
+- Fresh Monday-readiness follow-up:
+  - artifact: `artifacts/outputs/stalker_v10_1_monday_readiness_followups_20260328/summary.json`
+  - last `5` trading days (`2026-03-16` to `2026-03-20`) were actually solid:
+    - session + cooldown only: `R$110`, `PF 1.7857`, `DD 0.84%`
+    - session + cooldown + max-hold: identical
+  - first-trade-of-day throttling was clearly worse:
+    - `R$8,600`, `PF 1.4531`, `DD 3.82%`, composite `1.8909`
+  - EMA50 direction filter was an exact tie with the cooldown baseline:
+    - `R$14,085`, `PF 1.4825`, `DD 3.30%`, composite `3.0529`
+  - ATR-expansion volatility breakout produced `0` trades in this implementation
+  - interpretation: the live-ready strategy did not change; the latest week looks healthier, and the new filters either added nothing or hurt
 
 ## Regime Readout
 

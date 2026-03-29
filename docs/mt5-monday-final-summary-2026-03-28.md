@@ -30,9 +30,11 @@
   - `R$40`, `PF 1.0357`, `DD 4.67%`
 - Last `10` trading days recovered sharply:
   - `R$455`, `PF 4.25`, `DD 0.81%`
+- Last `5` trading days were also solid:
+  - `R$110`, `PF 1.7857`, `DD 0.84%`
 - Interpretation:
   - the edge did soften in the recent range-bound tape
-  - but the latest `10` days do not look broken
+  - but the latest `10` days and latest `5` days do not look broken
   - Monday should still be treated as cautious paper validation, not scale-up
 
 ## Main Risks

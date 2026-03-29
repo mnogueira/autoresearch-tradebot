@@ -57,7 +57,10 @@
 | Equal-risk/reward ratio | `SL 0.50 / TP 0.50`: `R$8,480`, `PF 1.1711`, `DD 6.46%` | A neat idea, but it weakened both quality and robustness. |
 | ATR trailing stop | `1.0x` ATR: `R$13,910`, `PF 1.4755`, `DD 3.28%`; `1.5x` and `2.0x` ATR were exact ties with the current leader | There is no real deployable upside here, so more ATR-trailing optimization is not worth the cycle budget. |
 | Dynamic ATR target | `TP 1.00x ATR`: `R$17,915`, `PF 1.2569`, `DD 6.13%` | Higher gross net, but materially worse risk-adjusted quality than the fixed `0.30 ATR` target. |
+| First trade of day only | `R$8,600`, `PF 1.4531`, `DD 3.82%` | Cleaner than some rejected ideas, but much too much net and composite giveback to promote. |
 | ML signal overlays | Logistic `AUC 0.5987`, random forest `AUC 0.5607`, but all trade overlays underperformed badly | There is a bit of predictive information in the features, but not enough to survive translation into a tradable overlay on the existing strategy. |
+| Volatility breakout ATR-expansion entry | `0` trades | Too restrictive in this implementation; no evidence of a usable replacement signal family. |
+| EMA50 direction filter | Identical to the cooldown baseline | The existing signal family is already directionally aligned enough that this filter adds no value. |
 
 ## The Real Risks
 

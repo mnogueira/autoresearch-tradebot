@@ -197,6 +197,15 @@
     - `1` tick: `1563` trades
   - all `305` historical losing trades also entered at `1` tick simply because the tape never exceeded `1`
   - interpretation: the spread guard is still worth having, but as a live risk-control rail rather than a backtest enhancer
+- Monday-readiness follow-up:
+  - last `5` trading days (`2026-03-16` to `2026-03-20`) were solid for both Tier 2 and Tier 3:
+    - `R$110`, `PF 1.7857`, `DD 0.84%`, `7` trades
+  - first-trade-of-day restriction underperformed badly:
+    - `R$8,600`, `PF 1.4531`, `DD 3.82%`, composite `1.8909`
+  - EMA50 direction filter was an exact tie with Tier 2:
+    - `R$14,085`, `PF 1.4825`, `DD 3.30%`, composite `3.0529`
+  - ATR-expansion volatility breakout was too restrictive and produced `0` trades
+  - interpretation: the current signal family still looks mature; the latest tape improved, but the new filters did not beat the existing tiers
 - Recent degradation check on the exact max-hold leader:
   - last `30` trading days (`2026-02-05` to `2026-03-20`): `R$40`, `PF 1.0357`, `DD 4.67%`, `48` trades
   - interpretation: still positive, but clearly softer than the full-sample profile, so Monday should be treated as validation-first.

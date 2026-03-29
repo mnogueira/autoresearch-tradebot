@@ -1,0 +1,176 @@
+{
+  "baseline_session_cooldown": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 14085.0,
+      "avg_profit_brl": 8.98,
+      "avg_win_brl": 34.26,
+      "avg_loss_brl": -95.7,
+      "profit_factor": 1.4825,
+      "max_drawdown_pct": 3.3,
+      "expected_payoff": 8.98,
+      "on_tester_value": 4263.59877
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.9306,
+      "calmar_ratio": 5.8842,
+      "omega_ratio": 1.6115,
+      "sortino_weighted_composite": 3.0529
+    }
+  },
+  "spread_guard_1tick_session_cooldown": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 14085.0,
+      "avg_profit_brl": 8.98,
+      "avg_win_brl": 34.26,
+      "avg_loss_brl": -95.7,
+      "profit_factor": 1.4825,
+      "max_drawdown_pct": 3.3,
+      "expected_payoff": 8.98,
+      "on_tester_value": 4263.59877
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.9306,
+      "calmar_ratio": 5.8842,
+      "omega_ratio": 1.6115,
+      "sortino_weighted_composite": 3.0529
+    },
+    "notes": [
+      "Historical spread never exceeded 1 tick at entry, so this is expected to tie the baseline."
+    ]
+  },
+  "volatility_breakout_session_cooldown": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 0,
+      "win_rate": 0.0,
+      "net_profit_brl": 0.0,
+      "avg_profit_brl": 0.0,
+      "avg_win_brl": 0.0,
+      "avg_loss_brl": 0.0,
+      "profit_factor": 0.0,
+      "max_drawdown_pct": 0.0,
+      "expected_payoff": 0.0,
+      "on_tester_value": 0.0
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 0.0,
+      "calmar_ratio": 0.0,
+      "omega_ratio": 0.0,
+      "sortino_weighted_composite": 0.0
+    },
+    "notes": [
+      "Replaces the trend-efficiency gate with ATR expansion > 1.5x its trailing 20-bar average."
+    ]
+  },
+  "first_trade_of_day_session_cooldown": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1021,
+      "win_rate": 0.8041,
+      "net_profit_brl": 8600.0,
+      "avg_profit_brl": 8.42,
+      "avg_win_brl": 33.59,
+      "avg_loss_brl": -94.9,
+      "profit_factor": 1.4531,
+      "max_drawdown_pct": 3.82,
+      "expected_payoff": 8.42,
+      "on_tester_value": 2251.248227
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.1019,
+      "calmar_ratio": 3.4976,
+      "omega_ratio": 1.4531,
+      "sortino_weighted_composite": 1.8909
+    }
+  },
+  "ema50_direction_filter_session_cooldown": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 14085.0,
+      "avg_profit_brl": 8.98,
+      "avg_win_brl": 34.26,
+      "avg_loss_brl": -95.7,
+      "profit_factor": 1.4825,
+      "max_drawdown_pct": 3.3,
+      "expected_payoff": 8.98,
+      "on_tester_value": 4263.59877
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.9306,
+      "calmar_ratio": 5.8842,
+      "omega_ratio": 1.6115,
+      "sortino_weighted_composite": 3.0529
+    },
+    "notes": [
+      "Only trade long above the lagged EMA50 and short below it."
+    ]
+  },
+  "recent_5d": {
+    "start_date": "2026-03-16",
+    "end_date": "2026-03-20",
+    "session_cooldown_only": {
+      "metrics": {
+        "start_date": "2026-03-16",
+        "end_date": "2026-03-20",
+        "trading_days": 5,
+        "total_trades": 7,
+        "win_rate": 0.8571,
+        "net_profit_brl": 110.0,
+        "avg_profit_brl": 15.71,
+        "avg_win_brl": 41.67,
+        "avg_loss_brl": -140.0,
+        "profit_factor": 1.7857,
+        "max_drawdown_pct": 0.84,
+        "expected_payoff": 15.71,
+        "on_tester_value": 130.770588
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 4.1087,
+        "calmar_ratio": 87.4539,
+        "omega_ratio": 2.2941,
+        "sortino_weighted_composite": 28.7493
+      }
+    },
+    "session_cooldown_maxhold120": {
+      "metrics": {
+        "start_date": "2026-03-16",
+        "end_date": "2026-03-20",
+        "trading_days": 5,
+        "total_trades": 7,
+        "win_rate": 0.8571,
+        "net_profit_brl": 110.0,
+        "avg_profit_brl": 15.71,
+        "avg_win_brl": 41.67,
+        "avg_loss_brl": -140.0,
+        "profit_factor": 1.7857,
+        "max_drawdown_pct": 0.84,
+        "expected_payoff": 15.71,
+        "on_tester_value": 130.770588
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 4.1087,
+        "calmar_ratio": 87.4539,
+        "omega_ratio": 2.2941,
+        "sortino_weighted_composite": 28.7493
+      }
+    }
+  }
+}
