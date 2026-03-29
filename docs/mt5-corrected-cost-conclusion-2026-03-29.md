@@ -45,6 +45,9 @@ Metrics:
 - cutting `Thu/Fri` entirely
 - hard ATR exclusion
 - partial ATR trim to `0.75x` on top ATR days
+- directional asymmetry did matter, but not enough to replace the balanced branch:
+  - long-only failed on holdout
+  - short-only was much healthier and is the stronger corrected-cost sleeve
 
 ## Monday Plan
 
@@ -62,3 +65,4 @@ Metrics:
   - host-side MT5 validation of the balanced branch
   - better execution
   - variable sizing overlays
+  - side-specific routing, where the short sleeve currently looks stronger than the long sleeve

@@ -188,6 +188,20 @@ Corrected rerun:
   - this is the first corrected-cost static variant with clearly positive full sample, positive holdout, and controlled drawdown
   - it is still not a Monday promotion until MT5 host-side validation exists
 
+## Corrected-Cost Direction Split
+
+- Long-only on the balanced branch was weak:
+  - full sample: `R$521`, `PF 1.0292`, `DD 11.54%`, composite `0.2582`
+  - `70/30` test: `R$-838`, `PF 0.8373`, `DD 13.06%`
+- Short-only was much healthier:
+  - full sample: `R$2,168`, `PF 1.1458`, `DD 12.10%`, composite `0.4395`
+  - `70/30` test: `R$1,610`, `PF 1.4601`, `DD 2.85%`
+  - recent `60d`: `R$185`, `PF 1.2955`
+- Interpretation:
+  - under corrected costs, the short sleeve is carrying much more of the robust edge
+  - the balanced static branch still wins on total score
+  - but the next meaningful corrected-cost research direction is clearly side-specific rather than another confirmation filter
+
 ## What Survived Conceptually
 
 - `ROC(5)` still appears to be the only lightweight agreement family with repeatable incremental value inside the old pre-correction research space.

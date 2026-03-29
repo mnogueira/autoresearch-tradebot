@@ -81,6 +81,10 @@ Corrected rerun:
 - trimming top-ATR days to `0.75x` on the balanced branch:
   - came much closer than hard exclusion
   - but still stayed just below the plain balanced branch, so it remains research-only sizing upside
+- splitting the balanced branch by direction:
+  - long-only failed badly on holdout
+  - short-only held up much better and is clearly the stronger corrected-cost sleeve
+  - but the combined balanced branch still wins as the cleaner static default
 - overly wide profit targets on the corrected-cost survivor:
   - `TP 0.54` weakened the full sample and flipped the recent `60d` and `10d` windows negative
   - `TP 0.60` was worse again and nearly flatlined the full-sample edge
