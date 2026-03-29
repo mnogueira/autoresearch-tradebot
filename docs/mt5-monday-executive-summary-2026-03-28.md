@@ -39,6 +39,18 @@
   - `R$14,835`, `PF 1.4987`, `DD 3.27%`, composite `3.2148`
   - finer window sweep confirmed `ROC(5)` stayed optimal over `ROC(3)`, `ROC(7)`, `ROC(8)`, and `ROC(10)`
   - ADX-threshold sweep also confirmed `25` stayed optimal over `20`, `22.5`, `27.5`, and `30`
+- Best exact research line overall:
+  - use strengthened Tier 2A on the last `3` contract days and strengthened Tier 3 on all other days
+  - `R$15,995`, `PF 1.5054`, `DD 3.19%`, composite `3.3430`
+  - exact `70/30` walk-forward:
+    - train `R$12,145`, `PF 1.5351`, `DD 3.19%`
+    - test `R$3,850`, `PF 1.4299`, `DD 3.26%`
+  - recent `60`-trading-day check:
+    - `R$435`, `PF 1.2522`, `DD 3.25%`
+  - interpretation:
+    - this is now the strongest exact research line, but it is still not the Monday upgrade path because it needs contract-cycle switching logic that has not been packaged into the MQ5 rollout
+    - the rollover-tail sweep confirmed that `3` contract days is the actual local optimum:
+      - `1d`, `2d`, `4d`, and `5d` were all exact ties with the always-on strengthened Tier 3 line
 - Best simpler ROC follow-up, also packaged:
   - Tier 2 + `ROC(5)` agreement
   - `R$14,560`, `PF 1.4900`, `DD 3.30%`, composite `3.1493`
@@ -77,6 +89,9 @@
 - Tier 4 remains research-only:
   - equal-weight blend of the strengthened Tier 2A and strengthened Tier 3 local-geometry branches
   - this slightly beats the best single exact research line on full-sample composite, but it is still not a live preset because it assumes running two sleeves side by side
+- strongest exact research-only branch after Tier 3:
+  - strengthened Tier 2A on the last `3` contract days and strengthened Tier 3 on all other days
+  - keep this as a next-week engineering candidate, not a Monday promotion
 - Best next ROC validation after the plain Tier 2 line:
   - Tier 2 + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`, refined to `28m` cooldown
   - it is now the strongest out-of-sample post-Monday upgrade:

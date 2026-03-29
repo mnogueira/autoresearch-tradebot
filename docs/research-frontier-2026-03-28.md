@@ -59,6 +59,15 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - a practical portfolio sleeve between the Tier 1 exact analog and strengthened Tier 2A also fell short:
     - `R$16,392.50`, `PF 1.4572`, `DD 3.91%`, composite `3.0592`
     - interpretation: adding the validated base sleeve dilutes the stronger local-geometry edge more than it helps, so the clean post-Monday path is still just Tier 2 -> Tier 2A
+  - a contract-cycle-aware switch did improve the research frontier again:
+    - use strengthened Tier 2A on the last `3` contract days and strengthened Tier 3 on all other days
+    - `R$15,995`, `PF 1.5054`, `DD 3.19%`, composite `3.3430`
+    - `70/30` test: `R$3,850`, `PF 1.4299`, `DD 3.26%`, composite `3.4581`
+    - recent `60` trading days: `R$435`, `PF 1.2522`, `DD 3.25%`
+    - cutoff sweep around the rollover tail confirmed `3` is the local optimum:
+      - `1d`, `2d`, `4d`, and `5d` were all exact ties with the always-on strengthened Tier 3 line at composite `3.3186`
+      - only `3d` improved the package, which points to a real last-three-days rollover effect rather than a generic late-cycle preference
+    - interpretation: this is now the strongest exact research line, but it remains research-only because the contract-cycle switch has not been packaged into the MQ5 deployment path
 
 ## Final Ranking Follow-up
 
