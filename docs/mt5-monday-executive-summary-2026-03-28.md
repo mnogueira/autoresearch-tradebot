@@ -63,8 +63,9 @@ Corrected production rerun artifact:
   - `60m` cooldown
   - `AllowFriday=false`
   - skip last `1` contract day
+  - `150m` max-hold
 - Full sample:
-  - `R$2,543`, `PF 1.0853`, `DD 9.60%`
+  - `R$2,553`, `PF 1.0858`, `DD 9.65%`
 - `70/30` test:
   - `R$879`, `PF 1.1142`, `DD 8.77%`
 - Recent windows:
@@ -73,7 +74,8 @@ Corrected production rerun artifact:
   - recent `10d`: `R$231`, `PF 2.2419`
 - Read:
   - the edge can survive the corrected flat-cost model, but only after much wider targets and much lower trade frequency
-  - skipping the final contract day helps more than adding max-hold
+  - skipping the final contract day helps much more than adding max-hold
+  - adding `150m` max-hold on top improves the corrected-cost survivor only marginally
   - it is still research-only until host-side MT5 validation exists
 
 ## Monday Recommendation

@@ -46,6 +46,9 @@ Corrected rerun:
   - `70/30` test: `R$879`, `PF 1.1142`, `DD 8.77%`
   - recent `60d`: `R$312`, `PF 1.2708`
   - artifact: [summary.json](/c:/Dev/autoresearch-tradebot/artifacts/outputs/stalker_v10_1_corrected_cost_survivor_skip_last1_20260329/summary.json)
+- Adding `150m` max-hold on top only nudged it further:
+  - `R$2,553`, `PF 1.0858`, `DD 9.65%`, composite `0.5140`
+  - artifact: [summary.json](/c:/Dev/autoresearch-tradebot/artifacts/outputs/stalker_v10_1_corrected_cost_survivor_skip_last1_maxhold150_20260329/summary.json)
 - Interpretation:
   - the best corrected-cost static branch so far is now:
     - strengthened Tier 2A geometry
@@ -53,6 +56,7 @@ Corrected rerun:
     - `60m` cooldown
     - `AllowFriday=false`
     - skip last `1` contract day
+    - `150m` max-hold
   - this is the first corrected-cost branch that is clearly positive full sample and clearly positive on the 70/30 holdout
   - it still does not change the Monday plan because it lacks host-side MT5 validation and remains a materially different operating profile
 
