@@ -76,24 +76,27 @@ Only revisit Tier 2 / Tier 2A / Tier 3 if:
 1. a corrected-cost variant turns positive and robust
 2. or host-side MT5 validation proves a specific upgrade survives real execution costs
 
-First corrected-cost research survivor:
-- strengthened Tier 2A geometry + `TP 0.48` + `60m` cooldown + `AllowFriday=false`
-- full sample `R$2,143`, `PF 1.0674`, `DD 11.61%`
-- `70/30` test `R$623`, `PF 1.0754`, `DD 9.53%`
-- recent `60d` `R$312`, `PF 1.2708`, `DD 2.55%`
+Best honest corrected-cost branch:
+- strengthened Tier 2A geometry
+- no ROC
+- no max-hold
+- `SL 1.0`
+- `TP 0.48`
+- `60m` cooldown
+- `AllowFriday=false`
+- skip the last contract day
+- full sample `R$3,024`, `PF 1.0966`, `DD 7.06%`
+- `70/30` test `R$887`, `PF 1.1091`, `DD 7.91%`
+- recent `60d` `R$241`, `PF 1.1911`
 - keep this in research status until it has host-side MT5 validation
 
 ## Corrected-Cost Survivor Watchlist
 
-- First static survivor found after the correction:
-  - Tier 2A geometry with `TP 0.48` and `60m` cooldown
-  - `R$2,285`, `PF 1.0545`, `DD 17.15%`
-- Holdout quality is not strong enough yet:
-  - `70/30` test `R$-68`, `PF 0.9941`, `DD 15.16%`
+- The corrected-cost watchlist leader is now the balanced simplified branch above.
 - That means:
   - keep it in research
   - do not treat it as a Monday preset
-  - use it as the first corrected-cost candidate to refine further
+  - use it as the first corrected-cost candidate for host-side MT5 validation
 
 ## Monday Recommendation
 

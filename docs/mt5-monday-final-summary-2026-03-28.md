@@ -35,11 +35,20 @@ That is still negative.
 ## Honest Conclusion
 
 - The strategy may not have enough static edge in Python exact form to cover conservative retail WDO costs.
-- Any remaining viable upside is more likely to come from:
-  - materially fewer trades
-  - wider take-profit structures
-  - or a genuinely different signal family
-- First promising corrected-cost survivor so far:
-  - Tier 2A geometry with `TP 0.48` and `60m` cooldown
-  - full sample `R$2,285`, `PF 1.0545`, `DD 17.15%`
-  - holdout still too weak for promotion: test `R$-68`, `PF 0.9941`
+- But the corrected-cost frontier is no longer empty:
+  - the best honest static branch is now the balanced simplified survivor
+  - strengthened Tier 2A geometry
+  - no ROC
+  - no max-hold
+  - `SL 1.0`
+  - `TP 0.48`
+  - `60m` cooldown
+  - Friday off
+  - skip last contract day
+- Real metrics for that branch:
+  - full sample `R$3,024`, `PF 1.0966`, `DD 7.06%`
+  - `70/30` test `R$887`, `PF 1.1091`, `DD 7.91%`
+- That makes it the best honest post-Monday validation target, not a Monday promotion.
+- Any remaining viable upside is now more likely to come from:
+  - host-side MT5 validation of that balanced branch
+  - or sizing / execution improvements rather than another small filter

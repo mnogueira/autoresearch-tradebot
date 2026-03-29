@@ -42,14 +42,18 @@ Corrected production rerun artifact:
 - The prior Python upgrade ladder was materially inflated by missing flat costs.
 - The ROC agreement family still looks like the only uniquely helpful lightweight confirmation family.
 - But none of the static Python upgrade tiers currently justify promotion for Monday after the corrected rerun.
-- The first corrected-cost survivor branch now exists, but it is still not a Monday promotion:
+- The best honest corrected-cost branch is now the balanced simplified survivor:
   - strengthened Tier 2A geometry
+  - no ROC
+  - no max-hold
+  - `SL 1.0`
   - `TP 0.48`
   - `60m` cooldown
   - `AllowFriday=false`
-  - local best refinement also skips the last `1` contract day
-  - full sample `R$2,543`, `PF 1.0853`, `DD 9.60%`
-  - `70/30` test `R$879`, `PF 1.1142`, `DD 8.77%`
+  - skip last `1` contract day
+  - full sample `R$3,024`, `PF 1.0966`, `DD 7.06%`
+  - `70/30` test `R$887`, `PF 1.1091`, `DD 7.91%`
+  - it is still research-only until host-side MT5 validation exists
 
 ## Corrected-Cost Survivor Frontier
 
@@ -57,34 +61,27 @@ Corrected production rerun artifact:
   - Tier 2A geometry
   - `TP 0.48`
   - `60m` cooldown
-- The local full-sample refinement that is currently best is:
+- The best honest corrected-cost branch is now the balanced simplified line:
   - Tier 2A geometry
+  - no ROC
+  - no max-hold
+  - `SL 1.0`
   - `TP 0.48`
   - `60m` cooldown
   - `AllowFriday=false`
   - skip last `1` contract day
-  - `150m` max-hold
 - Full sample:
-  - `R$2,553`, `PF 1.0858`, `DD 9.65%`
+  - `R$3,024`, `PF 1.0966`, `DD 7.06%`, composite `0.6049`
 - `70/30` test:
-  - `R$879`, `PF 1.1142`, `DD 8.77%`
+  - `R$887`, `PF 1.1091`, `DD 7.91%`, composite `0.6052`
 - Recent windows:
-  - recent `60d`: `R$312`, `PF 1.2708`
-  - recent `30d`: `R$363`, `PF 1.6722`
-  - recent `10d`: `R$231`, `PF 2.2419`
+  - recent `60d`: `R$241`, `PF 1.1911`
+  - recent `30d`: positive
+  - recent `10d`: positive
 - Read:
-  - the edge can survive the corrected flat-cost model, but only after much wider targets and much lower trade frequency
-  - skipping the final contract day helps much more than adding max-hold
-  - adding `150m` max-hold on top improves the corrected-cost survivor only marginally
-  - the simpler no-ROC branch is still the best pure holdout readout:
-    - full sample `R$2,104`, `PF 1.0687`, `DD 10.58%`
-    - `70/30` test `R$1,007`, `PF 1.1305`, `DD 7.23%`
-  - the new balanced corrected-cost leader is:
-    - no ROC
-    - no max-hold
-    - `SL 1.0`
-    - full sample `R$3,024`, `PF 1.0966`, `DD 7.06%`
-    - `70/30` test `R$887`, `PF 1.1091`, `DD 7.91%`
+  - the edge can survive the corrected flat-cost model, but only after wider targets, lower trade frequency, and a more conservative branch
+  - the simpler no-ROC/no-max-hold structure proved more robust than the flashier pre-correction variants
+  - hard pruning and extra overlays mostly became near-misses, not improvements
   - it is still research-only until host-side MT5 validation exists
 
 ## Monday Recommendation
