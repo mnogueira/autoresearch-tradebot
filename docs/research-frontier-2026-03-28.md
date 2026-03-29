@@ -21,17 +21,20 @@ Corrected rerun:
 
 ## First Cost Survivor
 
-- The first static corrected-cost survivor has now appeared:
+- The first corrected-cost robust survivor has now appeared:
   - strengthened Tier 2A geometry
   - `TP 0.48`
   - `60m` cooldown
-  - full sample: `R$2,285`, `PF 1.0545`, `DD 17.15%`, composite `0.4154`
-- But it is not yet a promotion:
-  - `70/30` test was only near-flat at `R$-68`, `PF 0.9941`, `DD 15.16%`
-  - artifact: [summary.json](/c:/Dev/autoresearch-tradebot/artifacts/outputs/stalker_v10_1_corrected_cost_survival_followups_20260329/summary.json)
+  - `AllowFriday=false`
+  - full sample: `R$2,143`, `PF 1.0674`, `DD 11.61%`, composite `0.4414`
+  - `70/30` test: `R$623`, `PF 1.0754`, `DD 9.53%`, composite `0.4718`
+  - recent `60d`: `R$312`, `PF 1.2708`, `DD 2.55%`
+  - recent `30d`: `R$363`, `PF 1.6722`, `DD 1.18%`
+- Artifact:
+  - [summary.json](/c:/Dev/autoresearch-tradebot/artifacts/outputs/stalker_v10_1_corrected_cost_survival_followups_20260329/summary.json)
 - Honest read:
-  - wider targets and fewer trades can rescue the edge
-  - but the survivor is not yet robust enough to replace Monday Tier 1
+  - wider targets and fewer trades can rescue the edge under corrected costs
+  - but this is still not a Monday promotion because it has not had host-side MT5 validation and materially changes the operating profile
 
 ## What Survived Conceptually
 

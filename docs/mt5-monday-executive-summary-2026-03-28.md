@@ -42,6 +42,13 @@ Corrected production rerun artifact:
 - The prior Python upgrade ladder was materially inflated by missing flat costs.
 - The ROC agreement family still looks like the only uniquely helpful lightweight confirmation family.
 - But none of the static Python upgrade tiers currently justify promotion for Monday after the corrected rerun.
+- The first corrected-cost survivor now exists, but it is still not a Monday promotion:
+  - strengthened Tier 2A geometry
+  - `TP 0.48`
+  - `60m` cooldown
+  - `AllowFriday=false`
+  - full sample `R$2,143`, `PF 1.0674`, `DD 11.61%`
+  - `70/30` test `R$623`, `PF 1.0754`, `DD 9.53%`
 
 ## First Static Cost Survivor
 

@@ -76,6 +76,13 @@ Only revisit Tier 2 / Tier 2A / Tier 3 if:
 1. a corrected-cost variant turns positive and robust
 2. or host-side MT5 validation proves a specific upgrade survives real execution costs
 
+First corrected-cost research survivor:
+- strengthened Tier 2A geometry + `TP 0.48` + `60m` cooldown + `AllowFriday=false`
+- full sample `R$2,143`, `PF 1.0674`, `DD 11.61%`
+- `70/30` test `R$623`, `PF 1.0754`, `DD 9.53%`
+- recent `60d` `R$312`, `PF 1.2708`, `DD 2.55%`
+- keep this in research status until it has host-side MT5 validation
+
 ## Corrected-Cost Survivor Watchlist
 
 - First static survivor found after the correction:

@@ -92,6 +92,12 @@ def main() -> None:
             ManagementConfig(min_minutes_between_entries=60),
         ),
         (
+            "tier2a_corrected_tp048_cd60_skipfriday",
+            "Corrected-cost Tier 2A with wider TP 0.48, reduced trade frequency via 60m cooldown, and Friday skipped.",
+            replace(base_params, TP_ATRMultiplier=0.48, AllowFriday=False),
+            ManagementConfig(min_minutes_between_entries=60),
+        ),
+        (
             "tier3_corrected_tp048_cd25_max150",
             "Corrected-cost Tier 3 with wider TP 0.48, 25m cooldown, and 150m max-hold.",
             replace(base_params, TP_ATRMultiplier=0.48),

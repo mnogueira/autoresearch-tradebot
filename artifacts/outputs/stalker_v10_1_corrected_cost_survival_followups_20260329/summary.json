@@ -1,6 +1,34 @@
 {
   "ranked_variants": [
     {
+      "name": "tier2a_corrected_tp048_cd60_skipfriday",
+      "rule": "Corrected-cost Tier 2A with TP 0.48, 60-minute cooldown, and Friday skipped.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1022,
+        "win_rate": 0.7153,
+        "net_profit_brl": 2143.0,
+        "avg_profit_brl": 2.1,
+        "avg_win_brl": 46.4,
+        "avg_loss_brl": -109.2,
+        "profit_factor": 1.0674,
+        "max_drawdown_pct": 11.61,
+        "expected_payoff": 2.1,
+        "on_tester_value": 184.524269
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 0.2446,
+        "calmar_ratio": 0.3446,
+        "omega_ratio": 1.0784,
+        "annual_return_pct": 4.0,
+        "max_drawdown_frac": 0.116136
+      },
+      "sortino_weighted_composite": 0.4414,
+      "batch_rank": 1
+    },
+    {
       "name": "tier2a_corrected_tp048_cd60",
       "rule": "Corrected-cost Tier 2A with TP 0.48 and 60-minute cooldown.",
       "metrics": {
@@ -26,7 +54,7 @@
         "max_drawdown_frac": 0.171532
       },
       "sortino_weighted_composite": 0.4154,
-      "batch_rank": 1
+      "batch_rank": 2
     },
     {
       "name": "tier3_corrected_tp048_cd25_max150",
@@ -54,7 +82,7 @@
         "max_drawdown_frac": 0.206294
       },
       "sortino_weighted_composite": 0.3739,
-      "batch_rank": 2
+      "batch_rank": 3
     },
     {
       "name": "tier2a_corrected_tp048_cd40",
@@ -82,7 +110,7 @@
         "max_drawdown_frac": 0.247361
       },
       "sortino_weighted_composite": 0.3477,
-      "batch_rank": 3
+      "batch_rank": 4
     },
     {
       "name": "tier2a_corrected_tp048_cd28",
@@ -110,7 +138,7 @@
         "max_drawdown_frac": 0.224269
       },
       "sortino_weighted_composite": 0.3426,
-      "batch_rank": 4
+      "batch_rank": 5
     },
     {
       "name": "tier2a_corrected_tp042_cd28",
@@ -138,7 +166,7 @@
         "max_drawdown_frac": 0.311811
       },
       "sortino_weighted_composite": 0.1849,
-      "batch_rank": 5
+      "batch_rank": 6
     },
     {
       "name": "tier2a_corrected_reference",
@@ -166,143 +194,143 @@
         "max_drawdown_frac": 0.460792
       },
       "sortino_weighted_composite": -0.0294,
-      "batch_rank": 6
+      "batch_rank": 7
     }
   ],
   "best_variant_walkforward_70_30": {
-    "variant_name": "tier2a_corrected_tp048_cd60",
+    "variant_name": "tier2a_corrected_tp048_cd60_skipfriday",
     "train": {
       "metrics": {
         "start_date": "2021-03-23",
         "end_date": "2024-09-16",
         "trading_days": 872,
-        "total_trades": 932,
-        "win_rate": 0.7157,
-        "net_profit_brl": 2353.0,
-        "avg_profit_brl": 2.52,
-        "avg_win_brl": 49.19,
-        "avg_loss_brl": -114.92,
-        "profit_factor": 1.0773,
-        "max_drawdown_pct": 15.69,
-        "expected_payoff": 2.52,
-        "on_tester_value": 149.933372
+        "total_trades": 720,
+        "win_rate": 0.7111,
+        "net_profit_brl": 1520.0,
+        "avg_profit_brl": 2.11,
+        "avg_win_brl": 48.9,
+        "avg_loss_brl": -113.07,
+        "profit_factor": 1.0646,
+        "max_drawdown_pct": 11.61,
+        "expected_payoff": 2.11,
+        "on_tester_value": 130.88049
       },
       "risk_adjusted_metrics": {
-        "sortino_ratio": 0.3734,
-        "calmar_ratio": 0.4013,
-        "omega_ratio": 1.0913,
-        "annual_return_pct": 6.3,
-        "max_drawdown_frac": 0.156936
+        "sortino_ratio": 0.2434,
+        "calmar_ratio": 0.3594,
+        "omega_ratio": 1.0761,
+        "annual_return_pct": 4.17,
+        "max_drawdown_frac": 0.116136
       },
-      "sortino_weighted_composite": 0.5253
+      "sortino_weighted_composite": 0.4447
     },
     "test": {
       "metrics": {
         "start_date": "2024-09-17",
         "end_date": "2026-03-20",
         "trading_days": 375,
-        "total_trades": 388,
-        "win_rate": 0.7139,
-        "net_profit_brl": -68.0,
-        "avg_profit_brl": -0.18,
-        "avg_win_brl": 41.18,
-        "avg_loss_brl": -103.39,
-        "profit_factor": 0.9941,
-        "max_drawdown_pct": 15.16,
-        "expected_payoff": -0.18,
-        "on_tester_value": -4.485392
+        "total_trades": 302,
+        "win_rate": 0.7252,
+        "net_profit_brl": 623.0,
+        "avg_profit_brl": 2.06,
+        "avg_win_brl": 40.55,
+        "avg_loss_brl": -99.49,
+        "profit_factor": 1.0754,
+        "max_drawdown_pct": 9.53,
+        "expected_payoff": 2.06,
+        "on_tester_value": 65.397467
       },
       "risk_adjusted_metrics": {
-        "sortino_ratio": -0.0263,
-        "calmar_ratio": -0.0302,
-        "omega_ratio": 0.9933,
-        "annual_return_pct": -0.46,
-        "max_drawdown_frac": 0.151603
+        "sortino_ratio": 0.2487,
+        "calmar_ratio": 0.4351,
+        "omega_ratio": 1.0847,
+        "annual_return_pct": 4.14,
+        "max_drawdown_frac": 0.095264
       },
-      "sortino_weighted_composite": 0.1764
+      "sortino_weighted_composite": 0.4718
     }
   },
   "best_variant_recent_windows": {
-    "variant_name": "tier2a_corrected_tp048_cd60",
+    "variant_name": "tier2a_corrected_tp048_cd60_skipfriday",
     "recent_60d": {
       "metrics": {
         "start_date": "2025-12-19",
         "end_date": "2026-03-20",
         "trading_days": 60,
-        "total_trades": 71,
-        "win_rate": 0.7465,
-        "net_profit_brl": 259.0,
-        "avg_profit_brl": 3.65,
-        "avg_win_brl": 37.11,
-        "avg_loss_brl": -94.89,
-        "profit_factor": 1.1516,
-        "max_drawdown_pct": 5.19,
-        "expected_payoff": 3.65,
-        "on_tester_value": 49.919924
+        "total_trades": 53,
+        "win_rate": 0.7736,
+        "net_profit_brl": 312.0,
+        "avg_profit_brl": 5.89,
+        "avg_win_brl": 35.71,
+        "avg_loss_brl": -96.0,
+        "profit_factor": 1.2708,
+        "max_drawdown_pct": 2.55,
+        "expected_payoff": 5.89,
+        "on_tester_value": 122.559382
       },
       "risk_adjusted_metrics": {
-        "sortino_ratio": 0.7562,
-        "calmar_ratio": 2.1852,
-        "omega_ratio": 1.1874,
-        "annual_return_pct": 11.34,
-        "max_drawdown_frac": 0.051883
+        "sortino_ratio": 1.0517,
+        "calmar_ratio": 5.4104,
+        "omega_ratio": 1.349,
+        "annual_return_pct": 13.77,
+        "max_drawdown_frac": 0.025457
       },
-      "sortino_weighted_composite": 1.2711
+      "sortino_weighted_composite": 2.4188
     },
     "recent_30d": {
       "metrics": {
         "start_date": "2026-02-05",
         "end_date": "2026-03-20",
         "trading_days": 30,
-        "total_trades": 37,
-        "win_rate": 0.7838,
-        "net_profit_brl": 413.0,
-        "avg_profit_brl": 11.16,
-        "avg_win_brl": 43.48,
-        "avg_loss_brl": -106.0,
-        "profit_factor": 1.487,
-        "max_drawdown_pct": 2.55,
-        "expected_payoff": 11.16,
-        "on_tester_value": 161.953852
+        "total_trades": 27,
+        "win_rate": 0.8148,
+        "net_profit_brl": 363.0,
+        "avg_profit_brl": 13.44,
+        "avg_win_brl": 41.05,
+        "avg_loss_brl": -108.0,
+        "profit_factor": 1.6722,
+        "max_drawdown_pct": 1.18,
+        "expected_payoff": 13.44,
+        "on_tester_value": 307.59
       },
       "risk_adjusted_metrics": {
-        "sortino_ratio": 2.0259,
-        "calmar_ratio": 15.8767,
-        "omega_ratio": 1.6239,
-        "annual_return_pct": 40.49,
-        "max_drawdown_frac": 0.025501
+        "sortino_ratio": 2.2843,
+        "calmar_ratio": 29.5901,
+        "omega_ratio": 1.9121,
+        "annual_return_pct": 34.92,
+        "max_drawdown_frac": 0.011801
       },
-      "sortino_weighted_composite": 6.1007
+      "sortino_weighted_composite": 10.4016
     },
     "recent_10d": {
       "metrics": {
         "start_date": "2026-03-09",
         "end_date": "2026-03-20",
         "trading_days": 10,
-        "total_trades": 12,
-        "win_rate": 0.9167,
-        "net_profit_brl": 398.0,
-        "avg_profit_brl": 33.17,
-        "avg_win_brl": 53.09,
+        "total_trades": 9,
+        "win_rate": 0.8889,
+        "net_profit_brl": 231.0,
+        "avg_profit_brl": 25.67,
+        "avg_win_brl": 52.12,
         "avg_loss_brl": -186.0,
-        "profit_factor": 3.1398,
-        "max_drawdown_pct": 0.98,
-        "expected_payoff": 33.17,
-        "on_tester_value": 407.403725
+        "profit_factor": 2.2419,
+        "max_drawdown_pct": 0.99,
+        "expected_payoff": 25.67,
+        "on_tester_value": 234.012059
       },
       "risk_adjusted_metrics": {
-        "sortino_ratio": 6.1942,
-        "calmar_ratio": 171.3388,
-        "omega_ratio": 4.902,
-        "annual_return_pct": 167.38,
-        "max_drawdown_frac": 0.009769
+        "sortino_ratio": 3.5951,
+        "calmar_ratio": 78.8161,
+        "omega_ratio": 3.2647,
+        "annual_return_pct": 77.8,
+        "max_drawdown_frac": 0.009871
       },
-      "sortino_weighted_composite": 55.4791
+      "sortino_weighted_composite": 26.0953
     }
   },
   "notes": [
     "First corrected-cost survival sweep focused on the stronger Tier 2A geometry because the original corrected ladder was negative across the board.",
     "Wider TP 0.48 was the first static improvement that turned the corrected full-sample result positive.",
-    "The 60-minute cooldown gave the best corrected full-sample composite in this batch, but the 70/30 test remained only near-flat."
+    "Adding a 60-minute cooldown and skipping Friday produced the first corrected-cost variant that stayed positive full-sample, on the 70/30 test, and across the recent 60/30/10 day windows."
   ]
 }
