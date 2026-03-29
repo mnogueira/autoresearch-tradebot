@@ -95,6 +95,14 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - `0.85x` to `1.30x`: `R$13,235`, `PF 1.4192`, `DD 3.57%`, composite `2.7479`
   - combining `ROC(5)` agreement with the tighter adaptive TP also stayed worse than the plain `ROC(5)` agreement:
     - `R$13,845`, `PF 1.4477`, `DD 3.45%`, composite `2.9088`
+  - final `70/30` tier robustness pass:
+    - Tier 1 exact analog test: `R$3,760`, `PF 1.3562`, `DD 4.94%`
+    - Tier 2 test: `R$3,175`, `PF 1.3662`, `DD 4.29%`
+    - Tier 2A test: `R$3,440`, `PF 1.4086`, `DD 4.21%`
+    - Tier 3 test: `R$3,175`, `PF 1.3662`, `DD 4.29%`
+  - best-of-breed stack test:
+    - Tier 2A + skip last `3` contract days: `R$13,390`, `PF 1.5374`, `DD 3.43%`, composite `2.9118`
+    - interpretation: PF improved, but the combo over-pruned and still lost to plain Tier 2A on the full risk-adjusted score
   - interpretation: the best new idea is not a new signal family; it is a light momentum agreement layer on top of the existing one. `ROC(5)` was the best tested agreement window, and the simpler Tier 2 + `ROC(5)` variant is now the cleaner post-Monday validation target.
 
 ## Near-Term Caution

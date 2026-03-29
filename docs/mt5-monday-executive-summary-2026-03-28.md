@@ -48,6 +48,8 @@
   - Tier 3
 - Best next ROC validation after the plain Tier 2 line:
   - Tier 2 + `ROC(5)` agreement, because it keeps the simpler cooldown-only structure while still improving the composite
+  - it is also now the strongest out-of-sample post-Monday upgrade:
+    - test `R$3,440`, `PF 1.4086`, `DD 4.21%`
 
 ## Deployment Steps
 
@@ -91,6 +93,12 @@
   - fixed-parameter `70/30` walk-forward on the `150m` line still passed:
     - train `R$11,245`, `PF 1.5236`, `DD 3.28%`
     - test `R$3,175`, `PF 1.3662`, `DD 4.29%`
+- Final robustness pass:
+  - Tier 1 exact analog test: `R$3,760`, `PF 1.3562`, `DD 4.94%`
+  - Tier 2 test: `R$3,175`, `PF 1.3662`, `DD 4.29%`
+  - Tier 2A test: `R$3,440`, `PF 1.4086`, `DD 4.21%`
+  - Tier 3 test: `R$3,175`, `PF 1.3662`, `DD 4.29%`
+  - interpretation: among the post-Monday upgrades, Tier 2A is now the strongest out-of-sample line
 - Two-bar trend confirmation:
   - clearly negative, rejected
 - Volume-weighted entry sizing:

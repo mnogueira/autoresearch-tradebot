@@ -63,69 +63,6 @@
     "rank": 1
   },
   {
-    "name": "tier2_trend_efficiency_plus_roc5_agreement",
-    "family": "stalker_v10_1_roc_agreement",
-    "screening_method": "roc_agreement_followup",
-    "comparison_tier": "exact",
-    "mt5_ready": true,
-    "test_total_trades": 1598,
-    "test_net_profit_brl": 14560.0,
-    "test_profit_factor": 1.49,
-    "test_on_tester_value": 4416.931148,
-    "test_max_drawdown_pct": 3.3,
-    "test_win_rate": 0.8066,
-    "notes": "Keep the existing trend-efficiency signal family and add ROC(5) directional agreement as an extra confirmation gate on Tier 2.",
-    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_roc_agreement_followups_20260329\\summary.json",
-    "params": {
-      "management": {
-        "max_bars_in_trade": null,
-        "partial_profit_enabled": false,
-        "partial_fraction": 0.5,
-        "round_trip_cost_multiplier": 1.0,
-        "spread_multiplier": 1.0,
-        "fixed_spread_ticks": null,
-        "max_entry_spread_ticks": null,
-        "min_minutes_between_entries": 25,
-        "max_daily_profit_brl": null,
-        "max_weekly_profit_brl": null,
-        "max_consecutive_losses_per_day": null,
-        "recent_trade_pnl_lookback": null,
-        "min_recent_trade_pnl_brl": null,
-        "cooldown_after_win_minutes": null,
-        "cooldown_after_loss_minutes": null,
-        "loss_exit_atr_mult": null,
-        "trail_after_target_fraction": null,
-        "trail_lock_target_fraction": null,
-        "atr_trailing_activation_fraction": null,
-        "profitable_trail_start_bars": null,
-        "profitable_trail_step_bars": 1,
-        "profitable_trail_step_ticks": 0,
-        "keep_profitable_overnight": false,
-        "win_streak_threshold": null,
-        "tp_scale_after_win_streak": null,
-        "patience_pullback_fraction": null,
-        "patience_max_wait_bars": null,
-        "micro_pullback_ticks": null,
-        "micro_pullback_max_wait_bars": null,
-        "confirmation_candle_required": false,
-        "confirmation_wait_bars": 1,
-        "confirmation_consecutive_bars": 1,
-        "profit_lock_activation_fraction": null,
-        "profit_lock_target_fraction": null,
-        "widen_stop_after_bars": null,
-        "widened_sl_atr_mult": null,
-        "atr_trailing_distance_mult": null,
-        "trend_flip_exit_bars": null
-      },
-      "roc_agreement_bars": 5
-    },
-    "sortino_ratio": 2.0201,
-    "calmar_ratio": 6.0402,
-    "omega_ratio": 1.6362,
-    "sortino_weighted_composite": 3.1493,
-    "rank": 2
-  },
-  {
     "name": "tier3_time_widened_stop",
     "family": "stalker_v10_1_roc_tp_combo",
     "screening_method": "roc_tp_combo_followup",
@@ -207,6 +144,69 @@
       "tp_atr_mult": 0.5
     },
     "rank": 3
+  },
+  {
+    "name": "tier2_trend_efficiency_plus_roc5_agreement",
+    "family": "stalker_v10_1_roc_agreement",
+    "screening_method": "roc_agreement_followup",
+    "comparison_tier": "exact",
+    "mt5_ready": true,
+    "test_total_trades": 1598,
+    "test_net_profit_brl": 14560.0,
+    "test_profit_factor": 1.49,
+    "test_on_tester_value": 4416.931148,
+    "test_max_drawdown_pct": 3.3,
+    "test_win_rate": 0.8066,
+    "notes": "Keep the existing trend-efficiency signal family and add ROC(5) directional agreement as an extra confirmation gate on Tier 2.",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_roc_agreement_followups_20260329\\summary.json",
+    "params": {
+      "management": {
+        "max_bars_in_trade": null,
+        "partial_profit_enabled": false,
+        "partial_fraction": 0.5,
+        "round_trip_cost_multiplier": 1.0,
+        "spread_multiplier": 1.0,
+        "fixed_spread_ticks": null,
+        "max_entry_spread_ticks": null,
+        "min_minutes_between_entries": 25,
+        "max_daily_profit_brl": null,
+        "max_weekly_profit_brl": null,
+        "max_consecutive_losses_per_day": null,
+        "recent_trade_pnl_lookback": null,
+        "min_recent_trade_pnl_brl": null,
+        "cooldown_after_win_minutes": null,
+        "cooldown_after_loss_minutes": null,
+        "loss_exit_atr_mult": null,
+        "trail_after_target_fraction": null,
+        "trail_lock_target_fraction": null,
+        "atr_trailing_activation_fraction": null,
+        "profitable_trail_start_bars": null,
+        "profitable_trail_step_bars": 1,
+        "profitable_trail_step_ticks": 0,
+        "keep_profitable_overnight": false,
+        "win_streak_threshold": null,
+        "tp_scale_after_win_streak": null,
+        "patience_pullback_fraction": null,
+        "patience_max_wait_bars": null,
+        "micro_pullback_ticks": null,
+        "micro_pullback_max_wait_bars": null,
+        "confirmation_candle_required": false,
+        "confirmation_wait_bars": 1,
+        "confirmation_consecutive_bars": 1,
+        "profit_lock_activation_fraction": null,
+        "profit_lock_target_fraction": null,
+        "widen_stop_after_bars": null,
+        "widened_sl_atr_mult": null,
+        "atr_trailing_distance_mult": null,
+        "trend_flip_exit_bars": null
+      },
+      "roc_agreement_bars": 5
+    },
+    "sortino_ratio": 2.0201,
+    "calmar_ratio": 6.0402,
+    "omega_ratio": 1.6362,
+    "sortino_weighted_composite": 3.1493,
+    "rank": 4
   },
   {
     "name": "tier3_cooldown_25m_maxhold150_reference",
@@ -8832,6 +8832,70 @@
     "rank": 317
   },
   {
+    "name": "tier2a_cooldown25_roc5_skip_last3_contractdays",
+    "family": "stalker_v10_1_final_robustness",
+    "screening_method": "session_winner_execution_refinement",
+    "comparison_tier": "exact",
+    "mt5_ready": false,
+    "test_total_trades": 1373,
+    "test_net_profit_brl": 13390.0,
+    "test_profit_factor": 1.5374,
+    "test_on_tester_value": 3902.855738,
+    "test_max_drawdown_pct": 3.43,
+    "test_win_rate": 0.8128,
+    "notes": "Session + 25m cooldown + ROC(5) agreement + skip the last 3 contract days of each contract month proxy.",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_final_robustness_followups_20260329\\summary.json",
+    "params": {
+      "management": {
+        "max_bars_in_trade": null,
+        "partial_profit_enabled": false,
+        "partial_fraction": 0.5,
+        "round_trip_cost_multiplier": 1.0,
+        "spread_multiplier": 1.0,
+        "fixed_spread_ticks": null,
+        "max_entry_spread_ticks": null,
+        "min_minutes_between_entries": 25,
+        "max_daily_profit_brl": null,
+        "max_weekly_profit_brl": null,
+        "max_consecutive_losses_per_day": null,
+        "recent_trade_pnl_lookback": null,
+        "min_recent_trade_pnl_brl": null,
+        "cooldown_after_win_minutes": null,
+        "cooldown_after_loss_minutes": null,
+        "loss_exit_atr_mult": null,
+        "trail_after_target_fraction": null,
+        "trail_lock_target_fraction": null,
+        "atr_trailing_activation_fraction": null,
+        "profitable_trail_start_bars": null,
+        "profitable_trail_step_bars": 1,
+        "profitable_trail_step_ticks": 0,
+        "keep_profitable_overnight": false,
+        "win_streak_threshold": null,
+        "tp_scale_after_win_streak": null,
+        "patience_pullback_fraction": null,
+        "patience_max_wait_bars": null,
+        "micro_pullback_ticks": null,
+        "micro_pullback_max_wait_bars": null,
+        "confirmation_candle_required": false,
+        "confirmation_wait_bars": 1,
+        "confirmation_consecutive_bars": 1,
+        "profit_lock_activation_fraction": null,
+        "profit_lock_target_fraction": null,
+        "widen_stop_after_bars": null,
+        "widened_sl_atr_mult": null,
+        "atr_trailing_distance_mult": null,
+        "trend_flip_exit_bars": null
+      },
+      "roc_agreement_bars": 5,
+      "skip_last_contract_days": 3
+    },
+    "rank": 318,
+    "sortino_ratio": 1.8624,
+    "calmar_ratio": 5.4605,
+    "omega_ratio": 1.7122,
+    "sortino_weighted_composite": 2.9118
+  },
+  {
     "family": "rsi_divergence",
     "name": "rsi_div_proxy_lb10_ge_0.405459",
     "screening_method": "trade_mask_prescreen",
@@ -8845,7 +8909,7 @@
     "test_max_drawdown_pct": 8.51,
     "test_win_rate": 0.7011,
     "notes": "RSI divergence proxy prescreen using RSI-vs-price disagreement",
-    "rank": 318,
+    "rank": 319,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -8867,7 +8931,7 @@
     "test_max_drawdown_pct": 6.91,
     "test_win_rate": 0.6902,
     "notes": "RSI divergence proxy prescreen using RSI-vs-price disagreement",
-    "rank": 319,
+    "rank": 320,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -8901,7 +8965,7 @@
     "test_win_rate": 0.6578,
     "notes": "Exact every-tick EMA crossover market-entry variant with session filter.",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\wdo_ema_crossover_exact_20260328\\summary.json",
-    "rank": 320
+    "rank": 321
   },
   {
     "name": "session_winner_cooldown_30m_dxy_corr_gt_0p7",
@@ -8922,7 +8986,7 @@
       "correlation_threshold": 0.7,
       "min_minutes_between_entries": 30
     },
-    "rank": 321
+    "rank": 322
   },
   {
     "name": "ema_8_34_exact_sl0p84_tp0p42",
@@ -8950,7 +9014,7 @@
     "test_win_rate": 0.6516,
     "notes": "Exact every-tick EMA crossover market-entry variant with session filter.",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\wdo_ema_crossover_exact_20260328\\summary.json",
-    "rank": 322
+    "rank": 323
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_spread_3x",
@@ -8971,7 +9035,7 @@
       "max_bars_in_trade": 120,
       "min_minutes_between_entries": 30
     },
-    "rank": 323
+    "rank": 324
   },
   {
     "name": "session_cooldown_confirmation_2bars",
@@ -8992,7 +9056,7 @@
       "confirmation_consecutive_bars": 2,
       "min_minutes_between_entries": 30
     },
-    "rank": 324
+    "rank": 325
   },
   {
     "name": "session_winner_spread_3x0",
@@ -9011,7 +9075,7 @@
     "params": {
       "spread_multiplier": 3.0
     },
-    "rank": 325
+    "rank": 326
   },
   {
     "name": "session_winner_spread_3x",
@@ -9030,7 +9094,7 @@
     "params": {
       "spread_multiplier": 3.0
     },
-    "rank": 326
+    "rank": 327
   },
   {
     "name": "inside_bar_breakout_exact_sl0p84_tp0p30",
@@ -9056,7 +9120,7 @@
     "test_win_rate": 0.7019,
     "notes": "Exact M15 inside-bar breakout, entered on next M1 open, with session filter.",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\wdo_inside_bar_breakout_exact_20260328\\summary.json",
-    "rank": 327
+    "rank": 328
   },
   {
     "name": "ema_5_21_exact_sl0p84_tp0p30",
@@ -9084,7 +9148,7 @@
     "test_win_rate": 0.7121,
     "notes": "Exact every-tick EMA crossover market-entry variant with session filter.",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\wdo_ema_crossover_exact_20260328\\summary.json",
-    "rank": 328
+    "rank": 329
   },
   {
     "name": "inside_bar_breakout_exact_sl0p84_tp0p48",
@@ -9110,7 +9174,7 @@
     "test_win_rate": 0.5964,
     "notes": "Exact M15 inside-bar breakout, entered on next M1 open, with session filter.",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\wdo_inside_bar_breakout_exact_20260328\\summary.json",
-    "rank": 329
+    "rank": 330
   },
   {
     "family": "time_of_day",
@@ -9126,7 +9190,7 @@
     "test_max_drawdown_pct": 6.4,
     "test_win_rate": 0.5405,
     "notes": "Contiguous entry-window optimization on top of the robust combo",
-    "rank": 330,
+    "rank": 331,
     "analysis_notes": [
       "Weekday edge: best=Monday PF 1.327, worst=Wednesday PF 1.043",
       "Entry-hour edge: best=12:00 PF 1.291, worst=13:00 PF 1.064",
@@ -9151,7 +9215,7 @@
     "params": {
       "confirmation_wait_bars": 1
     },
-    "rank": 331
+    "rank": 332
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_confirmation_profit_lock",
@@ -9172,7 +9236,7 @@
       "profit_lock_activation_fraction": 0.75,
       "profit_lock_target_fraction": 0.25
     },
-    "rank": 332
+    "rank": 333
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_patience_0p4_3bars",
@@ -9192,7 +9256,7 @@
       "patience_pullback_fraction": 0.4,
       "patience_max_wait_bars": 3
     },
-    "rank": 333
+    "rank": 334
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_patience_0p5_3bars",
@@ -9212,7 +9276,7 @@
       "patience_pullback_fraction": 0.5,
       "patience_max_wait_bars": 3
     },
-    "rank": 334
+    "rank": 335
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_patience_0p3_3bars",
@@ -9232,7 +9296,7 @@
       "patience_pullback_fraction": 0.3,
       "patience_max_wait_bars": 3
     },
-    "rank": 335
+    "rank": 336
   },
   {
     "name": "ema_3_13_exact_sl0p84_tp0p42",
@@ -9260,7 +9324,7 @@
     "test_win_rate": 0.6309,
     "notes": "Exact every-tick EMA crossover market-entry variant with session filter.",
     "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\wdo_ema_crossover_exact_20260328\\summary.json",
-    "rank": 336
+    "rank": 337
   },
   {
     "name": "session_winner_cooldown30_maxhold120_fixed_spread_5ticks",
@@ -9281,7 +9345,7 @@
       "min_minutes_between_entries": 30,
       "max_bars_in_trade": 120
     },
-    "rank": 337
+    "rank": 338
   },
   {
     "name": "session_winner_cooldown30_maxhold120_fixed_spread_5_ticks",
@@ -9302,7 +9366,7 @@
       "min_minutes_between_entries": 30,
       "max_bars_in_trade": 120
     },
-    "rank": 338
+    "rank": 339
   },
   {
     "name": "tier2_cooldown_only_fixed_spread_5ticks",
@@ -9323,7 +9387,7 @@
       "min_minutes_between_entries": 30,
       "max_bars_in_trade": null
     },
-    "rank": 339
+    "rank": 340
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_timewidened_confidence_overlay",
@@ -9355,7 +9419,7 @@
     "calmar_ratio": 6.303,
     "omega_ratio": 1.6315,
     "sortino_weighted_composite": 3.1377,
-    "rank": 340
+    "rank": 341
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_sl0p84_tp0p30_confidence_overlay",
@@ -9387,7 +9451,7 @@
     "calmar_ratio": 6.2356,
     "omega_ratio": 1.6255,
     "sortino_weighted_composite": 3.1301,
-    "rank": 341
+    "rank": 342
   },
   {
     "name": "tier3_confidence_weighted_overlay",
@@ -9413,7 +9477,7 @@
     "calmar_ratio": 5.945,
     "omega_ratio": 1.6245,
     "sortino_weighted_composite": 3.0623,
-    "rank": 342
+    "rank": 343
   },
   {
     "name": "session_winner_equal_weight_ensemble_maxhold_timewidened",
@@ -9443,7 +9507,7 @@
     "calmar_ratio": 5.9735,
     "omega_ratio": 1.6178,
     "sortino_weighted_composite": 3.0724,
-    "rank": 343
+    "rank": 344
   },
   {
     "name": "session_winner_cooldown_30m_recent_entry_density_sizing_60m",
@@ -9465,7 +9529,7 @@
       "min_size_multiplier": 0.5,
       "max_size_multiplier": 1.0
     },
-    "rank": 344
+    "rank": 345
   },
   {
     "name": "tier3_time_widened_confidence_overlay",
@@ -9531,7 +9595,7 @@
     "calmar_ratio": 4.9081,
     "omega_ratio": 1.6195,
     "sortino_weighted_composite": 2.7203,
-    "rank": 345
+    "rank": 346
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_mon_wed_thu_only_confidence_overlay",
@@ -9563,7 +9627,7 @@
     "calmar_ratio": 4.312,
     "omega_ratio": 1.7735,
     "sortino_weighted_composite": 2.239,
-    "rank": 346
+    "rank": 347
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_mon_wed_thu_timewidened_confidence_overlay",
@@ -9595,7 +9659,7 @@
     "calmar_ratio": 4.1715,
     "omega_ratio": 1.8028,
     "sortino_weighted_composite": 2.2019,
-    "rank": 347
+    "rank": 348
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_logistic_confidence_overlay",
@@ -9619,7 +9683,7 @@
     "calmar_ratio": 3.6733,
     "omega_ratio": 1.5354,
     "sortino_weighted_composite": 2.0685,
-    "rank": 348
+    "rank": 349
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_random_forest_confidence_overlay",
@@ -9643,7 +9707,7 @@
     "calmar_ratio": 3.6515,
     "omega_ratio": 1.5492,
     "sortino_weighted_composite": 2.1265,
-    "rank": 349
+    "rank": 350
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_logistic_core_confidence_overlay",
@@ -9667,7 +9731,7 @@
     "calmar_ratio": 3.6486,
     "omega_ratio": 1.5488,
     "sortino_weighted_composite": 2.1251,
-    "rank": 350
+    "rank": 351
   },
   {
     "name": "session_winner_cooldown_30m_hourly_open_proxy",
@@ -9694,7 +9758,7 @@
         14
       ]
     },
-    "rank": 351
+    "rank": 352
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_random_forest_gate_0p55",
@@ -9718,7 +9782,7 @@
     "calmar_ratio": 0.0,
     "omega_ratio": 0.0,
     "sortino_weighted_composite": 0.0,
-    "rank": 352
+    "rank": 353
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_logistic_gate_0p55",
@@ -9742,6 +9806,6 @@
     "calmar_ratio": -0.078,
     "omega_ratio": 0.7013,
     "sortino_weighted_composite": 0.112,
-    "rank": 353
+    "rank": 354
   }
 ]

@@ -97,6 +97,8 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
   - exact tie with plain Tier 2 at `R$455`, `PF 4.25`, `DD 0.81%`
 - Operational note:
   - this is the cleaner ROC-based post-Monday validation target if the desk prefers to stay closer to Tier 2 than Tier 3
+  - it is also the strongest out-of-sample post-Monday upgrade in the final exact `70/30` robustness pass:
+    - test `R$3,440`, `PF 1.4086`, `DD 4.21%`
 
 ### Maximum-quality preset
 
@@ -135,6 +137,8 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
     - session winner + `25m` cooldown + `150` M1 max hold
     - use this only after the simpler cooldown-only refinement looks sane in MT5
     - operational expectation: about `1.30` trades per day in the exact engine
+    - out-of-sample it did not beat Tier 2A:
+      - test `R$3,175`, `PF 1.3662`, `DD 4.29%`
 - Tier 4, research-only:
   - equal-weight blend of Tier 3 and the time-widened stop variant
   - this slightly improved the research composite through portfolio smoothing, but it is not a Monday live preset
