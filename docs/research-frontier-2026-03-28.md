@@ -21,6 +21,10 @@ This remains the safest paper-trading candidate because it is the best strategy 
 - Interpretation:
   - this is now the strongest exact post-Tier-2 upgrade and the new Tier 2A research validation target
   - it still does not change the Monday rollout order because it lacks host-side MT5 validation
+  - the follow-up regime scout was worse, not better:
+    - Tier 2 on range days + the stronger Tier 2A horizon variant on trend days:
+    - `R$14,580`, `PF 1.4786`, `DD 3.29%`, composite `3.1478`
+    - interpretation: once the stronger ATR14/lookback3 Tier 2A exists, the extra ADX regime switch is just unnecessary complexity
 
 ## Final Ranking Follow-up
 
