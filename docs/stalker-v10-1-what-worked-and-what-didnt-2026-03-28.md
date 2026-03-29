@@ -51,6 +51,9 @@ Corrected rerun:
   - no longer justified for Monday
 - over-throttling the corrected-cost survivor:
   - pushing the improved branch to `75m` cooldown hurt both full-sample net and holdout quality
+- overly wide stops on the corrected-cost survivor:
+  - `SL 1.0` looked better in sample but had a weaker holdout
+  - `SL 1.2` failed the holdout outright
 
 ## What Clearly Did Not Work
 

@@ -70,6 +70,18 @@ Corrected rerun:
   - around the corrected-cost survivor branch, `60m` is still the local cooldown peak
   - further trade suppression gave back too much net and holdout quality
 
+## Corrected-Cost Stop-Width Ceiling
+
+- `SL 1.00` improved the full sample but weakened the holdout:
+  - full sample: `R$2,693`, `PF 1.0872`, `DD 8.47%`, composite `0.5294`
+  - `70/30` test: `R$534`, `PF 1.0647`, `DD 9.78%`
+- `SL 1.20` failed the holdout:
+  - full sample: `R$2,713`, `PF 1.0847`, `DD 9.86%`, composite `0.4869`
+  - `70/30` test: `R$-71`, `PF 0.9921`, `DD 12.20%`
+- Interpretation:
+  - a slightly wider stop can look better in sample, but the out-of-sample edge does not strengthen
+  - `SL 0.84` remains the more trustworthy static setting for the corrected-cost survivor branch
+
 ## Current Best Static Corrected-Cost Survivor
 
 - The stronger local refinement is:
