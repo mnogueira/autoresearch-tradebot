@@ -817,6 +817,7 @@ But cost sensitivity is real:
 13. Opposite-regime session VWAP mean reversion also failed badly. Fading 2x ATR extensions away from session VWAP did not produce a viable complementary edge.
 14. Opening-range breakout is also a dead end. The exact 09:00-10:00 breakout family was even worse than the broader session-breakout prototype, so the current strategy family is still dominating the obvious breakout alternatives.
 15. H1 is not the hidden missing timeframe. A bar-based H1 translation of the retracement family lost heavily, so there is no evidence that moving the same logic to H1 improves the edge.
+16. The core geometry still has tiny in-sample room, but not enough robust room. On Tier 2A, lowering `FilterAsPercOfContractMARange` from `0.30` to `0.25` improved the full-sample composite to `3.1932`, but the last `60` trading days turned negative (`R$-225`, `PF 0.8941`), so it is not a Monday promotion.
 
 ## Production Recommendation
 

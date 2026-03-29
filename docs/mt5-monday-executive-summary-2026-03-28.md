@@ -194,6 +194,12 @@
   - core proxy: `R$-31,120`, `PF 0.4899`, `DD 310.91%`
   - max-hold `3` H1 bars: `R$-31,280`, `PF 0.4804`, `DD 311.55%`
   - interpretation: there is no reason to pivot the strategy family to H1 for Monday or as a near-term research branch
+- Core geometry sweep on Tier 2A:
+  - lowering `FilterAsPercOfContractMARange` from `0.30` to `0.25` improved the long-sample score:
+    - `R$14,775`, `PF 1.4944`, `DD 3.28%`, composite `3.1932`
+  - but the same variant was worse in the current regime:
+    - last `60` trading days: `R$-225`, `PF 0.8941`, `DD 5.62%`
+  - interpretation: good research signal, not a Monday promotion
 
 ## Bottom Line
 
