@@ -97,6 +97,9 @@
   - Tier 2 and Tier 2A were identical in that latest `10`-day window
 - Last `5` trading days: still solid
   - `R$110`, `PF 1.7857`, `DD 0.84%`
+- Exact last `5` realized trades on the Monday default analog:
+  - `4` winners, `1` loser, net `R$35`, `PF 1.25`
+  - interpretation: still positive and broadly in-family, but softer than the long-sample average
 - Seasonal context on the Tier 2 exact line:
   - `Q2` has been the strongest pooled quarter
   - `Q4` has been the weakest pooled quarter
@@ -186,6 +189,11 @@
 - Combined promising overlays:
   - confidence-weighted sizing still looked strongest in research-only form
   - but it remains non-deployable because it assumes fractional contract scaling
+- H1 proxy sanity check:
+  - bar-based H1 translation of the retracement family was decisively negative
+  - core proxy: `R$-31,120`, `PF 0.4899`, `DD 310.91%`
+  - max-hold `3` H1 bars: `R$-31,280`, `PF 0.4804`, `DD 311.55%`
+  - interpretation: there is no reason to pivot the strategy family to H1 for Monday or as a near-term research branch
 
 ## Bottom Line
 

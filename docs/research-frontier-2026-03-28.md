@@ -816,6 +816,7 @@ But cost sensitivity is real:
 12. Trend-strength sizing remains the one meaningful research-only upside. It lifts gross net on Tier 2A and Tier 3, but not enough to beat the best exact deployable variant on composite once the extra drawdown is counted.
 13. Opposite-regime session VWAP mean reversion also failed badly. Fading 2x ATR extensions away from session VWAP did not produce a viable complementary edge.
 14. Opening-range breakout is also a dead end. The exact 09:00-10:00 breakout family was even worse than the broader session-breakout prototype, so the current strategy family is still dominating the obvious breakout alternatives.
+15. H1 is not the hidden missing timeframe. A bar-based H1 translation of the retracement family lost heavily, so there is no evidence that moving the same logic to H1 improves the edge.
 
 ## Production Recommendation
 
@@ -832,6 +833,7 @@ But cost sensitivity is real:
   - the edge weakens sharply under higher transaction costs; `2x` spread is still positive, `3x` spread is not
   - the edge is materially weaker in low-ADX, range-bound tape; the recent softness and the second half of 2025 both support that read
   - MT5 tester instability means the best exact refinements still need one clean host-side validation
+  - the latest exact last-5-trades readout was still positive, but softer than the long-sample average, so Monday should remain validation-first rather than scale-first
 - Next paper-trading step:
   - run the validated MT5 preset first
   - validate the plain cooldown preset in MT5 `Every tick` next:

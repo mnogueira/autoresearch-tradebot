@@ -1,0 +1,262 @@
+{
+  "paper_forward_last_5_trades": {
+    "tier1_exact_analog_monday_default": {
+      "name": "tier1_exact_analog_monday_default",
+      "last_5_trades": [
+        {
+          "session_date": "2026-03-18",
+          "signal_time": "2026-03-18 10:00:00",
+          "entry_time": "2026-03-18 10:20:00",
+          "exit_time": "2026-03-18 10:21:00",
+          "direction": "long",
+          "entry_price": 5236.5,
+          "exit_price": 5239.5,
+          "pnl_brl": 30.0,
+          "fill_reason": "limit_touch",
+          "exit_reason": "take_profit"
+        },
+        {
+          "session_date": "2026-03-19",
+          "signal_time": "2026-03-19 10:12:00",
+          "entry_time": "2026-03-19 10:16:00",
+          "exit_time": "2026-03-19 10:19:00",
+          "direction": "long",
+          "entry_price": 5311.5,
+          "exit_price": 5297.5,
+          "pnl_brl": -140.0,
+          "fill_reason": "limit_touch",
+          "exit_reason": "stop_loss"
+        },
+        {
+          "session_date": "2026-03-19",
+          "signal_time": "2026-03-19 12:17:00",
+          "entry_time": "2026-03-19 12:27:00",
+          "exit_time": "2026-03-19 12:56:00",
+          "direction": "short",
+          "entry_price": 5268.0,
+          "exit_price": 5262.5,
+          "pnl_brl": 55.0,
+          "fill_reason": "limit_touch",
+          "exit_reason": "take_profit"
+        },
+        {
+          "session_date": "2026-03-20",
+          "signal_time": "2026-03-20 10:35:00",
+          "entry_time": "2026-03-20 10:43:00",
+          "exit_time": "2026-03-20 10:49:00",
+          "direction": "long",
+          "entry_price": 5283.0,
+          "exit_price": 5287.5,
+          "pnl_brl": 45.0,
+          "fill_reason": "limit_touch",
+          "exit_reason": "take_profit"
+        },
+        {
+          "session_date": "2026-03-20",
+          "signal_time": "2026-03-20 11:20:00",
+          "entry_time": "2026-03-20 12:00:00",
+          "exit_time": "2026-03-20 12:02:00",
+          "direction": "long",
+          "entry_price": 5304.5,
+          "exit_price": 5309.0,
+          "pnl_brl": 45.0,
+          "fill_reason": "limit_touch",
+          "exit_reason": "take_profit"
+        }
+      ],
+      "recent_5_trade_metrics": {
+        "start_date": "2026-03-18",
+        "end_date": "2026-03-20",
+        "trading_days": 3,
+        "total_trades": 5,
+        "win_rate": 0.8,
+        "net_profit_brl": 35.0,
+        "avg_profit_brl": 7.0,
+        "avg_win_brl": 43.75,
+        "avg_loss_brl": -140.0,
+        "profit_factor": 1.25,
+        "max_drawdown_pct": 0.85,
+        "expected_payoff": 7.0,
+        "on_tester_value": 41.3
+      },
+      "full_sample_metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1960,
+        "win_rate": 0.8,
+        "net_profit_brl": 16025.0,
+        "avg_profit_brl": 8.18,
+        "avg_win_brl": 34.1,
+        "avg_loss_brl": -95.52,
+        "profit_factor": 1.428,
+        "max_drawdown_pct": 4.62,
+        "expected_payoff": 8.18,
+        "on_tester_value": 3469.048295
+      },
+      "deltas_vs_full_sample": {
+        "win_rate_delta": 0.0,
+        "avg_profit_brl_delta": -1.18,
+        "profit_factor_delta": -0.178
+      }
+    },
+    "tier2a_exact_upgrade_candidate": {
+      "name": "tier2a_exact_upgrade_candidate",
+      "last_5_trades": [
+        {
+          "session_date": "2026-03-18",
+          "signal_time": "2026-03-18 10:00:00",
+          "entry_time": "2026-03-18 10:20:00",
+          "exit_time": "2026-03-18 10:21:00",
+          "direction": "long",
+          "entry_price": 5236.5,
+          "exit_price": 5239.5,
+          "pnl_brl": 30.0,
+          "fill_reason": "limit_touch",
+          "exit_reason": "take_profit"
+        },
+        {
+          "session_date": "2026-03-19",
+          "signal_time": "2026-03-19 10:12:00",
+          "entry_time": "2026-03-19 10:16:00",
+          "exit_time": "2026-03-19 10:19:00",
+          "direction": "long",
+          "entry_price": 5311.5,
+          "exit_price": 5297.5,
+          "pnl_brl": -140.0,
+          "fill_reason": "limit_touch",
+          "exit_reason": "stop_loss"
+        },
+        {
+          "session_date": "2026-03-19",
+          "signal_time": "2026-03-19 12:17:00",
+          "entry_time": "2026-03-19 12:27:00",
+          "exit_time": "2026-03-19 12:56:00",
+          "direction": "short",
+          "entry_price": 5268.0,
+          "exit_price": 5262.5,
+          "pnl_brl": 55.0,
+          "fill_reason": "limit_touch",
+          "exit_reason": "take_profit"
+        },
+        {
+          "session_date": "2026-03-20",
+          "signal_time": "2026-03-20 10:35:00",
+          "entry_time": "2026-03-20 10:43:00",
+          "exit_time": "2026-03-20 10:49:00",
+          "direction": "long",
+          "entry_price": 5283.0,
+          "exit_price": 5287.5,
+          "pnl_brl": 45.0,
+          "fill_reason": "limit_touch",
+          "exit_reason": "take_profit"
+        },
+        {
+          "session_date": "2026-03-20",
+          "signal_time": "2026-03-20 11:20:00",
+          "entry_time": "2026-03-20 12:00:00",
+          "exit_time": "2026-03-20 12:02:00",
+          "direction": "long",
+          "entry_price": 5304.5,
+          "exit_price": 5309.0,
+          "pnl_brl": 45.0,
+          "fill_reason": "limit_touch",
+          "exit_reason": "take_profit"
+        }
+      ],
+      "recent_5_trade_metrics": {
+        "start_date": "2026-03-18",
+        "end_date": "2026-03-20",
+        "trading_days": 3,
+        "total_trades": 5,
+        "win_rate": 0.8,
+        "net_profit_brl": 35.0,
+        "avg_profit_brl": 7.0,
+        "avg_win_brl": 43.75,
+        "avg_loss_brl": -140.0,
+        "profit_factor": 1.25,
+        "max_drawdown_pct": 0.85,
+        "expected_payoff": 7.0,
+        "on_tester_value": 41.3
+      },
+      "full_sample_metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1598,
+        "win_rate": 0.8066,
+        "net_profit_brl": 14560.0,
+        "avg_profit_brl": 9.11,
+        "avg_win_brl": 34.35,
+        "avg_loss_brl": -96.17,
+        "profit_factor": 1.49,
+        "max_drawdown_pct": 3.3,
+        "expected_payoff": 9.11,
+        "on_tester_value": 4416.931148
+      },
+      "deltas_vs_full_sample": {
+        "win_rate_delta": -0.0066,
+        "avg_profit_brl_delta": -2.11,
+        "profit_factor_delta": -0.24
+      }
+    }
+  },
+  "h1_proxy_variants": {
+    "h1_core_proxy": {
+      "metrics": {
+        "start_date": "2021-03-22",
+        "end_date": "2026-03-20",
+        "trading_days": 1248,
+        "total_trades": 750,
+        "win_rate": 0.556,
+        "net_profit_brl": -31120.0,
+        "avg_profit_brl": -41.49,
+        "avg_win_brl": 71.68,
+        "avg_loss_brl": -183.21,
+        "profit_factor": 0.4899,
+        "max_drawdown_pct": 310.91,
+        "expected_payoff": -41.49,
+        "on_tester_value": -100.093856
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": -2.0371,
+        "calmar_ratio": 0.0,
+        "omega_ratio": 0.4899,
+        "annual_return_pct": 0.0,
+        "max_drawdown_frac": 3.109082
+      },
+      "sortino_weighted_composite": -0.9206,
+      "notes": "Bar-based H1 proxy of the v10.1 retracement family using H1 bars, 4-bar H1 trend efficiency, 5-bar H1 ATR, session hours, and the same 0.25 retracement logic."
+    },
+    "h1_core_proxy_maxhold3bars": {
+      "metrics": {
+        "start_date": "2021-03-22",
+        "end_date": "2026-03-20",
+        "trading_days": 1248,
+        "total_trades": 750,
+        "win_rate": 0.5427,
+        "net_profit_brl": -31280.0,
+        "avg_profit_brl": -41.71,
+        "avg_win_brl": 71.07,
+        "avg_loss_brl": -176.04,
+        "profit_factor": 0.4804,
+        "max_drawdown_pct": 311.55,
+        "expected_payoff": -41.71,
+        "on_tester_value": -100.401267
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": -2.0996,
+        "calmar_ratio": 0.0,
+        "omega_ratio": 0.4804,
+        "annual_return_pct": 0.0,
+        "max_drawdown_frac": 3.115499
+      },
+      "sortino_weighted_composite": -0.9537,
+      "notes": "Same H1 proxy with a 3-bar max-hold to mimic the 150-minute hold cap in the current Tier 3 line."
+    }
+  },
+  "notes": [
+    "The H1 section is a bar-based proxy, not an exact every-tick translation. It is meant to answer whether the signal family is even directionally viable on a slower timeframe.",
+    "The paper-forward section uses the exact M1 engine and simply reports the most recent five realized trades from the selected lines."
+  ]
+}
