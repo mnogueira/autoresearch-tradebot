@@ -75,6 +75,8 @@
   - the current signal family appears to top out around composite `3.21` to `3.31`
   - RSI and MACD directional confirmation both failed to improve the strengthened Tier 2A reference, which is more evidence that `ROC(5)` is the uniquely useful lightweight agreement layer found so far
   - stochastic D centerline did beat the strengthened Tier 2A reference in-sample, but it lost that edge on the `70/30` test and was identical on the recent windows, so it is not a Monday promotion
+  - the strongest raw research-only ceiling now comes from trimming top-ATR days on the short sleeve of the advanced directional branch:
+    - `R$15,737.50`, `PF 1.5294`, `DD 2.69%`, composite `3.7197`
   - remaining upside is more likely to come from execution quality than from another simple hard filter
 
 ## Key Risks

@@ -1,0 +1,298 @@
+{
+  "ranked_variants": [
+    {
+      "name": "advanced_high_atr_short_0p75",
+      "rule": "Advanced branch with 0.75x size on top-ATR days for short trades only.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1586,
+        "win_rate": 0.8108,
+        "net_profit_brl": 15737.5,
+        "avg_profit_brl": 9.92,
+        "avg_win_brl": 35.35,
+        "avg_loss_brl": -99.1,
+        "profit_factor": 1.5294,
+        "max_drawdown_pct": 2.69,
+        "expected_payoff": 9.92,
+        "on_tester_value": 5846.302994
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.0769,
+        "calmar_ratio": 7.8203,
+        "omega_ratio": 1.6759,
+        "annual_return_pct": 21.05,
+        "max_drawdown_frac": 0.026919
+      },
+      "sortino_weighted_composite": 3.7197,
+      "params": {
+        "directional_atr_target": "short",
+        "high_weight": 0.75
+      },
+      "batch_rank": 1
+    },
+    {
+      "name": "advanced_high_atr_all_0p75",
+      "rule": "Advanced branch with 0.75x size on top-ATR days for both directions.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1586,
+        "win_rate": 0.8108,
+        "net_profit_brl": 15210.0,
+        "avg_profit_brl": 9.59,
+        "avg_win_brl": 33.85,
+        "avg_loss_brl": -94.39,
+        "profit_factor": 1.5371,
+        "max_drawdown_pct": 2.7,
+        "expected_payoff": 9.59,
+        "on_tester_value": 5626.715534
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.131,
+        "calmar_ratio": 7.6006,
+        "omega_ratio": 1.6879,
+        "annual_return_pct": 20.55,
+        "max_drawdown_frac": 0.027032
+      },
+      "sortino_weighted_composite": 3.6833,
+      "params": {
+        "directional_atr_target": "both",
+        "high_weight": 0.75
+      },
+      "batch_rank": 2
+    },
+    {
+      "name": "advanced_reference",
+      "rule": "Advanced weekday-aware directional branch reference.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1586,
+        "win_rate": 0.8108,
+        "net_profit_brl": 16335.0,
+        "avg_profit_brl": 10.3,
+        "avg_win_brl": 36.92,
+        "avg_loss_brl": -103.83,
+        "profit_factor": 1.5244,
+        "max_drawdown_pct": 3.18,
+        "expected_payoff": 10.3,
+        "on_tester_value": 5142.832418
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.0526,
+        "calmar_ratio": 6.8048,
+        "omega_ratio": 1.6699,
+        "annual_return_pct": 21.61,
+        "max_drawdown_frac": 0.031763
+      },
+      "sortino_weighted_composite": 3.4017,
+      "params": {
+        "tier2a_management": {
+          "max_bars_in_trade": null,
+          "partial_profit_enabled": false,
+          "partial_fraction": 0.5,
+          "round_trip_cost_multiplier": 1.0,
+          "spread_multiplier": 1.0,
+          "fixed_spread_ticks": null,
+          "max_entry_spread_ticks": null,
+          "min_minutes_between_entries": 28,
+          "max_daily_profit_brl": null,
+          "max_weekly_profit_brl": null,
+          "max_consecutive_losses_per_day": null,
+          "recent_trade_pnl_lookback": null,
+          "min_recent_trade_pnl_brl": null,
+          "cooldown_after_win_minutes": null,
+          "cooldown_after_loss_minutes": null,
+          "loss_exit_atr_mult": null,
+          "trail_after_target_fraction": null,
+          "trail_lock_target_fraction": null,
+          "atr_trailing_activation_fraction": null,
+          "profitable_trail_start_bars": null,
+          "profitable_trail_step_bars": 1,
+          "profitable_trail_step_ticks": 0,
+          "keep_profitable_overnight": false,
+          "win_streak_threshold": null,
+          "tp_scale_after_win_streak": null,
+          "patience_pullback_fraction": null,
+          "patience_max_wait_bars": null,
+          "micro_pullback_ticks": null,
+          "micro_pullback_max_wait_bars": null,
+          "confirmation_candle_required": false,
+          "confirmation_wait_bars": 1,
+          "confirmation_consecutive_bars": 1,
+          "profit_lock_activation_fraction": null,
+          "profit_lock_target_fraction": null,
+          "widen_stop_after_bars": null,
+          "widened_sl_atr_mult": null,
+          "atr_trailing_distance_mult": null,
+          "trend_flip_exit_bars": null
+        },
+        "tier3_short_management": {
+          "max_bars_in_trade": 150,
+          "partial_profit_enabled": false,
+          "partial_fraction": 0.5,
+          "round_trip_cost_multiplier": 1.0,
+          "spread_multiplier": 1.0,
+          "fixed_spread_ticks": null,
+          "max_entry_spread_ticks": null,
+          "min_minutes_between_entries": 25,
+          "max_daily_profit_brl": null,
+          "max_weekly_profit_brl": null,
+          "max_consecutive_losses_per_day": null,
+          "recent_trade_pnl_lookback": null,
+          "min_recent_trade_pnl_brl": null,
+          "cooldown_after_win_minutes": null,
+          "cooldown_after_loss_minutes": null,
+          "loss_exit_atr_mult": null,
+          "trail_after_target_fraction": null,
+          "trail_lock_target_fraction": null,
+          "atr_trailing_activation_fraction": null,
+          "profitable_trail_start_bars": null,
+          "profitable_trail_step_bars": 1,
+          "profitable_trail_step_ticks": 0,
+          "keep_profitable_overnight": false,
+          "win_streak_threshold": null,
+          "tp_scale_after_win_streak": null,
+          "patience_pullback_fraction": null,
+          "patience_max_wait_bars": null,
+          "micro_pullback_ticks": null,
+          "micro_pullback_max_wait_bars": null,
+          "confirmation_candle_required": false,
+          "confirmation_wait_bars": 1,
+          "confirmation_consecutive_bars": 1,
+          "profit_lock_activation_fraction": null,
+          "profit_lock_target_fraction": null,
+          "widen_stop_after_bars": null,
+          "widened_sl_atr_mult": null,
+          "atr_trailing_distance_mult": null,
+          "trend_flip_exit_bars": null
+        },
+        "switch_dates": {
+          "last_contract_day": true,
+          "friday": true
+        },
+        "roc_agreement_bars": 5,
+        "ATR_Length": 10,
+        "NumDaysToConsiderPreviousContractMARange": 2
+      },
+      "batch_rank": 3
+    },
+    {
+      "name": "advanced_high_atr_long_0p75",
+      "rule": "Advanced branch with 0.75x size on top-ATR days for long trades only.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1586,
+        "win_rate": 0.8108,
+        "net_profit_brl": 15807.5,
+        "avg_profit_brl": 9.97,
+        "avg_win_brl": 35.42,
+        "avg_loss_brl": -99.12,
+        "profit_factor": 1.5316,
+        "max_drawdown_pct": 3.19,
+        "expected_payoff": 9.97,
+        "on_tester_value": 4955.911813
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.0839,
+        "calmar_ratio": 6.6208,
+        "omega_ratio": 1.6802,
+        "annual_return_pct": 21.12,
+        "max_drawdown_frac": 0.031896
+      },
+      "sortino_weighted_composite": 3.3642,
+      "params": {
+        "directional_atr_target": "long",
+        "high_weight": 0.75
+      },
+      "batch_rank": 4
+    }
+  ],
+  "walkforward_70_30_best": {
+    "train_metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2024-09-16",
+      "trading_days": 872,
+      "total_trades": 1110,
+      "win_rate": 0.8135,
+      "net_profit_brl": 12073.75,
+      "avg_profit_brl": 10.88,
+      "avg_win_brl": 36.86,
+      "avg_loss_brl": -102.45,
+      "profit_factor": 1.5693,
+      "max_drawdown_pct": 2.69,
+      "expected_payoff": 10.88,
+      "on_tester_value": 4485.261367
+    },
+    "train_risk": {
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.1948,
+        "calmar_ratio": 9.5517,
+        "omega_ratio": 1.7309,
+        "annual_return_pct": 25.71,
+        "max_drawdown_frac": 0.026919
+      },
+      "sortino_weighted_composite": 4.3091
+    },
+    "test_metrics": {
+      "start_date": "2024-09-17",
+      "end_date": "2026-03-20",
+      "trading_days": 375,
+      "total_trades": 476,
+      "win_rate": 0.8046,
+      "net_profit_brl": 3663.75,
+      "avg_profit_brl": 7.7,
+      "avg_win_brl": 31.81,
+      "avg_loss_brl": -91.63,
+      "profit_factor": 1.43,
+      "max_drawdown_pct": 2.97,
+      "expected_payoff": 7.7,
+      "on_tester_value": 1235.241805
+    },
+    "test_risk": {
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.7609,
+        "calmar_ratio": 7.869,
+        "omega_ratio": 1.5418,
+        "annual_return_pct": 23.34,
+        "max_drawdown_frac": 0.02966
+      },
+      "sortino_weighted_composite": 3.5495
+    }
+  },
+  "recent_60d_best": {
+    "metrics": {
+      "start_date": "2025-12-19",
+      "end_date": "2026-03-20",
+      "trading_days": 60,
+      "total_trades": 90,
+      "win_rate": 0.7889,
+      "net_profit_brl": 358.75,
+      "avg_profit_brl": 3.99,
+      "avg_win_brl": 28.29,
+      "avg_loss_brl": -86.84,
+      "profit_factor": 1.2174,
+      "max_drawdown_pct": 3.08,
+      "expected_payoff": 3.99,
+      "on_tester_value": 116.367766
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 0.9806,
+      "calmar_ratio": 5.1754,
+      "omega_ratio": 1.2797,
+      "annual_return_pct": 15.96,
+      "max_drawdown_frac": 0.030829
+    },
+    "sortino_weighted_composite": 2.2989
+  },
+  "notes": [
+    "Research-only directional ATR sizing overlay on the strongest advanced weekday-aware directional branch.",
+    "Purpose: check whether the high-ATR trim belongs mostly on the long sleeve, the short sleeve, or both."
+  ]
+}

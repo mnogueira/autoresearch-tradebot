@@ -15,7 +15,7 @@
 - No live-ready exact variant beat the current exact leader by a meaningful margin on the Sortino-weighted composite.
 - The only higher composite scores came from research-only overlays:
   - ATR-regime sizing on strengthened Tier 2A
-  - ATR-regime sizing on the advanced weekday-aware directional branch
+  - direction-specific ATR-regime sizing on the advanced weekday-aware directional branch
   - confidence-weighted sizing
   - confidence-weighted sizing + time-widened stop
   - weighted advanced research-only sleeve blends
@@ -28,7 +28,7 @@
 | Tier 2 | Session winner + `25m` cooldown | Best deployable exact composite in the cooldown sweep. |
 | Tier 2A | Session winner + `28m` cooldown + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2` | Strongest simpler exact post-Monday upgrade and best out-of-sample post-Monday line. |
 | Tier 3 | Session winner + `25m` cooldown + `150m` max-hold + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2` | Strongest aggressive exact research line, but still a later rollout step than Tier 2A. |
-| Tier 4 | Research-only advanced sleeves and sizing overlays | Highest raw ceiling comes from ATR-regime sizing and advanced directional sleeves, but neither is Monday-deployable as a static preset. |
+| Tier 4 | Research-only advanced sleeves and sizing overlays | Highest raw ceiling now comes from trimming top-ATR days on the short sleeve of the advanced directional branch, but it is still not Monday-deployable as a static preset. |
 
 ## Recent Tape
 
