@@ -368,6 +368,7 @@ def run_backtest_with_management(
     management: ManagementConfig,
     range_high_ticks_override: np.ndarray | None = None,
     range_low_ticks_override: np.ndarray | None = None,
+    tp_scale_override: np.ndarray | None = None,
 ) -> tuple[pd.DataFrame, dict[str, Any]]:
     start, stop = _trade_slice_bounds(dataset, trade_dates)
     if start >= stop:
@@ -405,6 +406,7 @@ def run_backtest_with_management(
         if range_low_ticks_override is not None
         else cache["day_low_current_ticks"][start:stop]
     )
+    tp_scale_slice = tp_scale_override[start:stop] if tp_scale_override is not None else None
     signal_range_slice = signal_range[start:stop]
     atr_open_slice = atr_open[start:stop]
     trend_efficiency_slice = strength_cache["trend_efficiency_raw"][start:stop]
@@ -983,11 +985,16 @@ def run_backtest_with_management(
                 if management.micro_pullback_ticks is not None and int(management.micro_pullback_ticks) > 0:
                     entry_limit_tick = int(entry_limit_tick) - int(management.micro_pullback_ticks)
                 base_price = ticks_to_price(entry_limit_tick, PRICE_TICK_SIZE)
+                tp_scale = 1.0
+                if tp_scale_slice is not None:
+                    raw_tp_scale = float(tp_scale_slice[index])
+                    if np.isfinite(raw_tp_scale) and raw_tp_scale > 0.0:
+                        tp_scale = raw_tp_scale
                 active_tp_multiplier = scaled_tp_multiplier(
                     float(params.TP_ATRMultiplier),
                     consecutive_wins_total,
                     management,
-                )
+                ) * float(tp_scale)
                 candidate_order = {
                     "direction": 1,
                     "limit_tick": entry_limit_tick,
@@ -1053,11 +1060,16 @@ def run_backtest_with_management(
                 if management.micro_pullback_ticks is not None and int(management.micro_pullback_ticks) > 0:
                     entry_limit_tick = int(entry_limit_tick) + int(management.micro_pullback_ticks)
                 base_price = ticks_to_price(entry_limit_tick, PRICE_TICK_SIZE)
+                tp_scale = 1.0
+                if tp_scale_slice is not None:
+                    raw_tp_scale = float(tp_scale_slice[index])
+                    if np.isfinite(raw_tp_scale) and raw_tp_scale > 0.0:
+                        tp_scale = raw_tp_scale
                 active_tp_multiplier = scaled_tp_multiplier(
                     float(params.TP_ATRMultiplier),
                     consecutive_wins_total,
                     management,
-                )
+                ) * float(tp_scale)
                 candidate_order = {
                     "direction": -1,
                     "limit_tick": entry_limit_tick,

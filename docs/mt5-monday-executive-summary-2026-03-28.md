@@ -104,6 +104,16 @@
   - skip `12h` hurt
   - skip `14h` was nearly flat but still worse than Tier 2
   - skip `15h` was a structural no-op
+- ROC family replacement:
+  - `ROC(5)` was the closest simpler signal, but still worse than the current Tier 3 on the composite
+  - `ROC(10)` and `ROC(20)` were weaker still
+  - interpretation: the current trend-efficiency signal remains the better production signal family
+- ATR-adaptive target scaling:
+  - exact daily-ATR-scaled TP on Tier 3 was worse than the fixed `0.30 ATR` target
+  - interpretation: the target already seems tuned tightly enough for this tape
+- Combined promising overlays:
+  - confidence-weighted sizing still looked strongest in research-only form
+  - but it remains non-deployable because it assumes fractional contract scaling
 
 ## Bottom Line
 

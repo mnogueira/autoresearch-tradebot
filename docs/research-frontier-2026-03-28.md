@@ -56,6 +56,23 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - core-feature logistic overlay: `R$5,270.14`, composite `2.1251`
     - random-forest overlay: `R$5,273.39`, composite `2.1265`
   - interpretation: the current signal family is probably close to its ceiling on this data; there is some directional information in the features, but not enough to improve the existing strategy once costs and path dependence are respected
+- ROC / adaptive TP follow-up:
+  - artifact: `artifacts/outputs/stalker_v10_1_roc_tp_combo_followups_20260329/summary.json`
+  - the current Tier 3 exact line still ranked first:
+    - `R$14,420`, `PF 1.4784`, `DD 3.28%`, composite `3.1340`
+  - the closest simpler signal family was directional `ROC(5)`:
+    - Tier 3 `ROC(5)`: `R$14,930`, `PF 1.4441`, `DD 3.80%`, composite `2.9572`
+    - interpretation: ROC is the closest simpler substitute, but it still gives up too much quality to replace trend-efficiency
+  - longer-horizon ROC stayed weaker:
+    - Tier 3 `ROC(10)`: `R$14,735`, `PF 1.4343`, `DD 3.83%`, composite `2.9145`
+    - Tier 3 `ROC(20)`: `R$14,445`, `PF 1.4221`, `DD 3.85%`, composite `2.8633`
+  - exact ATR-adaptive target scaling also underperformed:
+    - Tier 3 with `TP = 0.30 * (current daily ATR / prior 20-session average ATR)`, clipped `0.75x` to `1.50x`:
+    - `R$13,650`, `PF 1.4369`, `DD 3.62%`, composite `2.7777`
+  - combining the most promising overlays on the new Tier 3 line remained research-only:
+    - confidence-weighted sizing overlay on Tier 3: `R$18,231.63`, `PF 1.4765`, `DD 3.93%`, composite `3.0623`
+    - confidence-weighted sizing + time-widened stop: `R$18,381.52`, `PF 1.4787`, `DD 4.78%`, composite `2.7203`
+  - interpretation: the deployable frontier still prefers the original trend-efficiency signal family; the remaining upside continues to come from research-only sizing overlays, not a cleaner replacement signal
 
 ## Near-Term Caution
 
