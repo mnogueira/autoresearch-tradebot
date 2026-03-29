@@ -767,6 +767,7 @@ But cost sensitivity is real:
 6. Do not spend more time on Bollinger mean reversion, inside-bar breakout, or the current EMA crossover family unless the entry/exit mechanics are materially redesigned.
 7. Do not spend time on `WIN`, `WDO/WIN spread`, or news-filter backtests until the required external datasets are added.
 8. If further experimentation continues inside the current family, prioritize only ideas that reduce transaction-cost sensitivity without materially giving up net profit. The current exact winners already look close to a local optimum.
+9. Do not spend more time on hard VWAP-distance gates. They can lift PF slightly, but they over-prune and lose too much composite. If VWAP distance is revisited, it should only be as a research sizing overlay.
 
 ## Production Recommendation
 
