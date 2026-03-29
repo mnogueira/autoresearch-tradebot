@@ -96,6 +96,10 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - `OBV` slope sign: `R$15,150`, `PF 1.5074`, `DD 3.49%`, composite `3.0310`
     - `CMF` centerline: `R$14,970`, `PF 1.5030`, `DD 3.14%`, composite `3.1984`
     - interpretation: even the volume/trend proxy corner stays below the strengthened Tier 2A reference, which closes another remaining path for cheap confirmation filters
+  - Ultimate Oscillator and TSI confirmation also stayed below the strengthened Tier 2A line:
+    - `Ultimate Oscillator` centerline: `R$14,970`, `PF 1.4853`, `DD 3.29%`, composite `3.1107`
+    - `TSI` centerline: `R$15,940`, `PF 1.5135`, `DD 3.23%`, composite `3.3076`
+    - interpretation: even the last obvious momentum/oscillator pair came back as a degradation or near-tie, which makes the `ROC(5)` agreement edge look genuinely unique rather than part of a broader indicator family
   - stochastic directional confirmation was the first other agreement family to beat the strengthened Tier 2A line in-sample, but it still failed the robustness bar:
     - best case `stoch_d_centerline`: `R$16,210`, `PF 1.5274`, `DD 2.98%`, composite `3.5140`
     - `70/30` test weakened versus the strengthened Tier 2A reference:

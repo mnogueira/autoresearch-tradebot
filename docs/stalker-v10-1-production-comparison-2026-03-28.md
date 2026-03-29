@@ -5,6 +5,7 @@
 | Variant | Net | PF | DD | Win Rate | Trades | Trades/Day | Sortino | Calmar | Omega | Composite | Rank |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Strengthened Tier 2A on last 1 contract day and Fridays, directional hybrid otherwise, exact research candidate | `R$16,335` | `1.5244` | `3.18%` | `81.08%` | 1586 | `1.2727` | `2.0526` | `6.8048` | `1.6699` | `3.4017` | research exact |
+| `25%` strengthened Tier 2A + `75%` advanced weekday-aware directional branch, research-only weighted sleeve | `R$16,243.75` | `1.5219` | `3.19%` | `81.03%` | 3157 | `2.5325` | `2.0469` | `6.7508` | `1.6672` | `3.3821` | research |
 | Strengthened Tier 2A on last 1 contract day, directional hybrid otherwise, exact research candidate | `R$16,185` | `1.5163` | `3.18%` | `81.01%` | 1590 | `1.2783` | `2.0211` | `6.7607` | `1.6583` | `3.3704` | research exact |
 | Strengthened Tier 2A on last 1 contract day, strengthened Tier 3 otherwise, exact research candidate | `R$16,080` | `1.5081` | `3.19%` | `80.94%` | 1595 | `1.2791` | `2.0349` | `6.6967` | `1.6566` | `3.3578` | research exact |
 | Strengthened Tier 2A longs + strengthened Tier 3 shorts, research-only directional sleeve | `R$16,075` | `1.5115` | `3.19%` | `80.96%` | 1591 | `1.2759` | `2.0109` | `6.6906` | `1.6533` | `3.3433` | research |
@@ -96,6 +97,16 @@
     - `2d` and `3d`: composite `3.3430`
     - `5d`: composite `3.3295`
   - this is still a research-only branch because the contract-cycle switching rule is not yet part of the Monday MT5 deployment path
+- Strongest research-only sleeve:
+  - `25%` strengthened Tier 2A + `75%` advanced weekday-aware directional branch
+  - `R$16,243.75`, `PF 1.5219`, `DD 3.19%`, composite `3.3821`
+  - weighted portfolio sweep confirmed this was the best blend over `67/33`, `50/50`, `33/67`, and `25/75` alternatives
+  - exact `70/30` walk-forward still passed:
+    - train `PF 1.5525`
+    - test `PF 1.4449`
+  - recent `60`-trading-day check stayed positive:
+    - `R$468.75`, `PF 1.2717`, `DD 3.24%`
+  - this is still research-only because it needs multi-sleeve portfolio routing rather than one MT5 preset
 - Strongest static research-only sleeve:
   - strengthened Tier 2A longs plus strengthened Tier 3 shorts
   - `R$16,075`, `PF 1.5115`, `DD 3.19%`, composite `3.3433`
@@ -172,8 +183,9 @@
 - strongest exact research line overall: strengthened Tier 2A on the last `1` contract day and Fridays, directional hybrid otherwise at `3.4017`
 - next exact research line overall: strengthened Tier 2A on the last `1` contract day and the directional hybrid otherwise at `3.3704`
 - next exact research line after that: strengthened Tier 2A on the last `1` contract day and strengthened Tier 3 otherwise at `3.3578`
-- strongest research-only sleeve: strengthened Tier 2A longs plus strengthened Tier 3 shorts at `3.3433`
-- next strongest research-only sleeve: equal-weight blend of strengthened Tier 2A and strengthened Tier 3 local-geometry at `3.3209`
+- strongest research-only sleeve: `25%` strengthened Tier 2A + `75%` advanced weekday-aware directional branch at `3.3821`
+- next strongest research-only sleeve: strengthened Tier 2A longs plus strengthened Tier 3 shorts at `3.3433`
+- next strongest research-only sleeve after that: equal-weight blend of strengthened Tier 2A and strengthened Tier 3 local-geometry at `3.3209`
   - best exact research line: cooldown `25m` + max-hold `150m` + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2` at `3.3186`
   - next exact research line: cooldown `28m` + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2` at `3.3124`
   - next exact research line: cooldown `25m` range mode + Tier 3 `ROC(5)` + `150m` max-hold on prior-day `ADX > 25` trend days at `3.2148`
