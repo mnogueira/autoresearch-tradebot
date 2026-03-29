@@ -56,6 +56,9 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - a simpler discrete two-tier sizing approximation did not capture the same upside:
     - best case on strengthened Tier 2A, `0.75x/1.25x` around the median signal-strength split: `R$16,025`, `PF 1.5098`, `DD 3.50%`, composite `3.0948`
     - interpretation: the sizing frontier still looks smoother than a simple binary strong-vs-normal rule
+  - a practical portfolio sleeve between the Tier 1 exact analog and strengthened Tier 2A also fell short:
+    - `R$16,392.50`, `PF 1.4572`, `DD 3.91%`, composite `3.0592`
+    - interpretation: adding the validated base sleeve dilutes the stronger local-geometry edge more than it helps, so the clean post-Monday path is still just Tier 2 -> Tier 2A
 
 ## Final Ranking Follow-up
 

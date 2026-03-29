@@ -1,0 +1,243 @@
+{
+  "tier1_reference": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1959,
+      "win_rate": 0.7994,
+      "net_profit_brl": 16815.0,
+      "avg_profit_brl": 8.58,
+      "avg_win_brl": 36.7,
+      "avg_loss_brl": -103.47,
+      "profit_factor": 1.4135,
+      "max_drawdown_pct": 4.62,
+      "expected_payoff": 8.58,
+      "on_tester_value": 3641.976136
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 2.0577,
+      "calmar_ratio": 4.7777,
+      "omega_ratio": 1.5972,
+      "annual_return_pct": 22.06,
+      "max_drawdown_frac": 0.04617
+    },
+    "sortino_weighted_composite": 2.7816
+  },
+  "tier2a_reference": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1571,
+      "win_rate": 0.8097,
+      "net_profit_brl": 15970.0,
+      "avg_profit_brl": 10.17,
+      "avg_win_brl": 36.96,
+      "avg_loss_brl": -103.81,
+      "profit_factor": 1.5145,
+      "max_drawdown_pct": 3.23,
+      "expected_payoff": 10.17,
+      "on_tester_value": 4947.19011
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 2.0094,
+      "calmar_ratio": 6.5895,
+      "omega_ratio": 1.6541,
+      "annual_return_pct": 21.27,
+      "max_drawdown_frac": 0.032281
+    },
+    "sortino_weighted_composite": 3.3124
+  },
+  "portfolio_equal_weight_tier1_tier2a": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 3530,
+      "win_rate": 0.804,
+      "net_profit_brl": 16392.5,
+      "avg_profit_brl": 4.64,
+      "avg_win_brl": 18.41,
+      "avg_loss_brl": -51.81,
+      "profit_factor": 1.4572,
+      "max_drawdown_pct": 3.91,
+      "expected_payoff": 4.64,
+      "on_tester_value": 4191.901914
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 2.1339,
+      "calmar_ratio": 5.5409,
+      "omega_ratio": 1.6499,
+      "annual_return_pct": 21.67,
+      "max_drawdown_frac": 0.039105
+    },
+    "sortino_weighted_composite": 3.0592
+  },
+  "walkforward_70_30": {
+    "train_metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2024-09-16",
+      "trading_days": 872,
+      "total_trades": 2471,
+      "win_rate": 0.8057,
+      "net_profit_brl": 12397.5,
+      "avg_profit_brl": 5.02,
+      "avg_win_brl": 19.17,
+      "avg_loss_brl": -53.67,
+      "profit_factor": 1.4812,
+      "max_drawdown_pct": 3.91,
+      "expected_payoff": 5.02,
+      "on_tester_value": 3170.297635
+    },
+    "train_risk": {
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.2217,
+        "calmar_ratio": 6.7107,
+        "omega_ratio": 1.6918,
+        "annual_return_pct": 26.24,
+        "max_drawdown_frac": 0.039105
+      },
+      "sortino_weighted_composite": 3.4624
+    },
+    "test_metrics": {
+      "start_date": "2024-09-17",
+      "end_date": "2026-03-20",
+      "trading_days": 375,
+      "total_trades": 1059,
+      "win_rate": 0.7998,
+      "net_profit_brl": 3995.0,
+      "avg_profit_brl": 3.77,
+      "avg_win_brl": 16.63,
+      "avg_loss_brl": -47.59,
+      "profit_factor": 1.3959,
+      "max_drawdown_pct": 3.83,
+      "expected_payoff": 3.77,
+      "on_tester_value": 1042.078856
+    },
+    "test_risk": {
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.8949,
+        "calmar_ratio": 6.6101,
+        "omega_ratio": 1.5471,
+        "annual_return_pct": 25.34,
+        "max_drawdown_frac": 0.038337
+      },
+      "sortino_weighted_composite": 3.2399
+    }
+  },
+  "recent_60d": {
+    "metrics": {
+      "start_date": "2025-12-19",
+      "end_date": "2026-03-20",
+      "trading_days": 60,
+      "total_trades": 202,
+      "win_rate": 0.7822,
+      "net_profit_brl": 445.0,
+      "avg_profit_brl": 2.2,
+      "avg_win_brl": 15.51,
+      "avg_loss_brl": -45.57,
+      "profit_factor": 1.2219,
+      "max_drawdown_pct": 3.61,
+      "expected_payoff": 2.2,
+      "on_tester_value": 123.324333
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.06,
+      "calmar_ratio": 5.5606,
+      "omega_ratio": 1.3053,
+      "annual_return_pct": 20.06,
+      "max_drawdown_frac": 0.036084
+    },
+    "sortino_weighted_composite": 2.4592
+  },
+  "params": {
+    "tier1_management": {
+      "max_bars_in_trade": null,
+      "partial_profit_enabled": false,
+      "partial_fraction": 0.5,
+      "round_trip_cost_multiplier": 1.0,
+      "spread_multiplier": 1.0,
+      "fixed_spread_ticks": null,
+      "max_entry_spread_ticks": null,
+      "min_minutes_between_entries": null,
+      "max_daily_profit_brl": null,
+      "max_weekly_profit_brl": null,
+      "max_consecutive_losses_per_day": null,
+      "recent_trade_pnl_lookback": null,
+      "min_recent_trade_pnl_brl": null,
+      "cooldown_after_win_minutes": null,
+      "cooldown_after_loss_minutes": null,
+      "loss_exit_atr_mult": null,
+      "trail_after_target_fraction": null,
+      "trail_lock_target_fraction": null,
+      "atr_trailing_activation_fraction": null,
+      "profitable_trail_start_bars": null,
+      "profitable_trail_step_bars": 1,
+      "profitable_trail_step_ticks": 0,
+      "keep_profitable_overnight": false,
+      "win_streak_threshold": null,
+      "tp_scale_after_win_streak": null,
+      "patience_pullback_fraction": null,
+      "patience_max_wait_bars": null,
+      "micro_pullback_ticks": null,
+      "micro_pullback_max_wait_bars": null,
+      "confirmation_candle_required": false,
+      "confirmation_wait_bars": 1,
+      "confirmation_consecutive_bars": 1,
+      "profit_lock_activation_fraction": null,
+      "profit_lock_target_fraction": null,
+      "widen_stop_after_bars": null,
+      "widened_sl_atr_mult": null,
+      "atr_trailing_distance_mult": null,
+      "trend_flip_exit_bars": null
+    },
+    "tier2a_management": {
+      "max_bars_in_trade": null,
+      "partial_profit_enabled": false,
+      "partial_fraction": 0.5,
+      "round_trip_cost_multiplier": 1.0,
+      "spread_multiplier": 1.0,
+      "fixed_spread_ticks": null,
+      "max_entry_spread_ticks": null,
+      "min_minutes_between_entries": 28,
+      "max_daily_profit_brl": null,
+      "max_weekly_profit_brl": null,
+      "max_consecutive_losses_per_day": null,
+      "recent_trade_pnl_lookback": null,
+      "min_recent_trade_pnl_brl": null,
+      "cooldown_after_win_minutes": null,
+      "cooldown_after_loss_minutes": null,
+      "loss_exit_atr_mult": null,
+      "trail_after_target_fraction": null,
+      "trail_lock_target_fraction": null,
+      "atr_trailing_activation_fraction": null,
+      "profitable_trail_start_bars": null,
+      "profitable_trail_step_bars": 1,
+      "profitable_trail_step_ticks": 0,
+      "keep_profitable_overnight": false,
+      "win_streak_threshold": null,
+      "tp_scale_after_win_streak": null,
+      "patience_pullback_fraction": null,
+      "patience_max_wait_bars": null,
+      "micro_pullback_ticks": null,
+      "micro_pullback_max_wait_bars": null,
+      "confirmation_candle_required": false,
+      "confirmation_wait_bars": 1,
+      "confirmation_consecutive_bars": 1,
+      "profit_lock_activation_fraction": null,
+      "profit_lock_target_fraction": null,
+      "widen_stop_after_bars": null,
+      "widened_sl_atr_mult": null,
+      "atr_trailing_distance_mult": null,
+      "trend_flip_exit_bars": null
+    },
+    "roc_agreement_bars": 5,
+    "ATR_Length": 10,
+    "NumDaysToConsiderPreviousContractMARange": 2,
+    "weights": {
+      "tier1": 0.5,
+      "tier2a": 0.5
+    }
+  }
+}
