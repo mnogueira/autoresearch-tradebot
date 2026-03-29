@@ -1,0 +1,277 @@
+{
+  "ranked_variants": [
+    {
+      "name": "advanced_high_atr_short_0p7",
+      "rule": "Advanced branch with 0.7x size on top-ATR days for short trades only.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1586,
+        "win_rate": 0.8108,
+        "net_profit_brl": 15618.0,
+        "avg_profit_brl": 9.85,
+        "avg_win_brl": 35.04,
+        "avg_loss_brl": -98.15,
+        "profit_factor": 1.5304,
+        "max_drawdown_pct": 2.65,
+        "expected_payoff": 9.85,
+        "on_tester_value": 5900.877048
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.079,
+        "calmar_ratio": 7.9107,
+        "omega_ratio": 1.6771,
+        "annual_return_pct": 20.94,
+        "max_drawdown_frac": 0.026467
+      },
+      "sortino_weighted_composite": 3.7481,
+      "params": {
+        "directional_atr_target": "short",
+        "high_weight": 0.7
+      },
+      "batch_rank": 1
+    },
+    {
+      "name": "advanced_high_atr_short_0p65",
+      "rule": "Advanced branch with 0.65x size on top-ATR days for short trades only.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1586,
+        "win_rate": 0.8108,
+        "net_profit_brl": 15498.5,
+        "avg_profit_brl": 9.77,
+        "avg_win_brl": 34.73,
+        "avg_loss_brl": -97.2,
+        "profit_factor": 1.5315,
+        "max_drawdown_pct": 2.65,
+        "expected_payoff": 9.77,
+        "on_tester_value": 5854.619877
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.0798,
+        "calmar_ratio": 7.8661,
+        "omega_ratio": 1.6783,
+        "annual_return_pct": 20.82,
+        "max_drawdown_frac": 0.026472
+      },
+      "sortino_weighted_composite": 3.7354,
+      "params": {
+        "directional_atr_target": "short",
+        "high_weight": 0.65
+      },
+      "batch_rank": 2
+    },
+    {
+      "name": "advanced_high_atr_short_0p75",
+      "rule": "Advanced branch with 0.75x size on top-ATR days for short trades only.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1586,
+        "win_rate": 0.8108,
+        "net_profit_brl": 15737.5,
+        "avg_profit_brl": 9.92,
+        "avg_win_brl": 35.35,
+        "avg_loss_brl": -99.1,
+        "profit_factor": 1.5294,
+        "max_drawdown_pct": 2.69,
+        "expected_payoff": 9.92,
+        "on_tester_value": 5846.302994
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.0769,
+        "calmar_ratio": 7.8203,
+        "omega_ratio": 1.6759,
+        "annual_return_pct": 21.05,
+        "max_drawdown_frac": 0.026919
+      },
+      "sortino_weighted_composite": 3.7197,
+      "params": {
+        "directional_atr_target": "short",
+        "high_weight": 0.75
+      },
+      "batch_rank": 3
+    },
+    {
+      "name": "advanced_high_atr_short_0p8",
+      "rule": "Advanced branch with 0.8x size on top-ATR days for short trades only.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1586,
+        "win_rate": 0.8108,
+        "net_profit_brl": 15857.0,
+        "avg_profit_brl": 10.0,
+        "avg_win_brl": 35.67,
+        "avg_loss_brl": -100.04,
+        "profit_factor": 1.5283,
+        "max_drawdown_pct": 2.79,
+        "expected_payoff": 10.0,
+        "on_tester_value": 5686.3202
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.0736,
+        "calmar_ratio": 7.5896,
+        "omega_ratio": 1.6748,
+        "annual_return_pct": 21.16,
+        "max_drawdown_frac": 0.027886
+      },
+      "sortino_weighted_composite": 3.6486,
+      "params": {
+        "directional_atr_target": "short",
+        "high_weight": 0.8
+      },
+      "batch_rank": 4
+    },
+    {
+      "name": "advanced_high_atr_short_0p85",
+      "rule": "Advanced branch with 0.85x size on top-ATR days for short trades only.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1586,
+        "win_rate": 0.8108,
+        "net_profit_brl": 15976.5,
+        "avg_profit_brl": 10.07,
+        "avg_win_brl": 35.98,
+        "avg_loss_brl": -100.99,
+        "profit_factor": 1.5273,
+        "max_drawdown_pct": 2.89,
+        "expected_payoff": 10.07,
+        "on_tester_value": 5536.943266
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.0727,
+        "calmar_ratio": 7.3741,
+        "omega_ratio": 1.6736,
+        "annual_return_pct": 21.28,
+        "max_drawdown_frac": 0.028854
+      },
+      "sortino_weighted_composite": 3.5833,
+      "params": {
+        "directional_atr_target": "short",
+        "high_weight": 0.85
+      },
+      "batch_rank": 5
+    },
+    {
+      "name": "advanced_reference",
+      "rule": "Advanced weekday-aware directional branch reference.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1586,
+        "win_rate": 0.8108,
+        "net_profit_brl": 16335.0,
+        "avg_profit_brl": 10.3,
+        "avg_win_brl": 36.92,
+        "avg_loss_brl": -103.83,
+        "profit_factor": 1.5244,
+        "max_drawdown_pct": 3.18,
+        "expected_payoff": 10.3,
+        "on_tester_value": 5142.832418
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.0526,
+        "calmar_ratio": 6.8048,
+        "omega_ratio": 1.6699,
+        "annual_return_pct": 21.61,
+        "max_drawdown_frac": 0.031763
+      },
+      "sortino_weighted_composite": 3.4017,
+      "params": {
+        "directional_atr_target": "none",
+        "high_weight": 1.0
+      },
+      "batch_rank": 6
+    }
+  ],
+  "walkforward_70_30_best": {
+    "train_metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2024-09-16",
+      "trading_days": 872,
+      "total_trades": 1110,
+      "win_rate": 0.8135,
+      "net_profit_brl": 12007.5,
+      "avg_profit_brl": 10.82,
+      "avg_win_brl": 36.54,
+      "avg_loss_brl": -101.41,
+      "profit_factor": 1.572,
+      "max_drawdown_pct": 2.65,
+      "expected_payoff": 10.82,
+      "on_tester_value": 4536.738452
+    },
+    "train_risk": {
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.2042,
+        "calmar_ratio": 9.6734,
+        "omega_ratio": 1.7345,
+        "annual_return_pct": 25.6,
+        "max_drawdown_frac": 0.026467
+      },
+      "sortino_weighted_composite": 4.351
+    },
+    "test_metrics": {
+      "start_date": "2024-09-17",
+      "end_date": "2026-03-20",
+      "trading_days": 375,
+      "total_trades": 476,
+      "win_rate": 0.8046,
+      "net_profit_brl": 3610.5,
+      "avg_profit_brl": 7.59,
+      "avg_win_brl": 31.5,
+      "avg_loss_brl": -90.9,
+      "profit_factor": 1.4271,
+      "max_drawdown_pct": 2.91,
+      "expected_payoff": 7.59,
+      "on_tester_value": 1242.148984
+    },
+    "test_risk": {
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.7449,
+        "calmar_ratio": 7.9186,
+        "omega_ratio": 1.5374,
+        "annual_return_pct": 23.02,
+        "max_drawdown_frac": 0.029067
+      },
+      "sortino_weighted_composite": 3.5555
+    }
+  },
+  "recent_60d_best": {
+    "metrics": {
+      "start_date": "2025-12-19",
+      "end_date": "2026-03-20",
+      "trading_days": 60,
+      "total_trades": 90,
+      "win_rate": 0.7889,
+      "net_profit_brl": 334.5,
+      "avg_profit_brl": 3.72,
+      "avg_win_brl": 27.74,
+      "avg_loss_brl": -86.05,
+      "profit_factor": 1.2046,
+      "max_drawdown_pct": 3.05,
+      "expected_payoff": 3.72,
+      "on_tester_value": 109.570056
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 0.9234,
+      "calmar_ratio": 4.8543,
+      "omega_ratio": 1.2628,
+      "annual_return_pct": 14.82,
+      "max_drawdown_frac": 0.030528
+    },
+    "sortino_weighted_composite": 2.1705
+  },
+  "notes": [
+    "Local refinement around the strongest directional ATR sizing result.",
+    "Purpose: verify whether 0.75x on top-ATR short days is the true local optimum on the advanced branch."
+  ]
+}

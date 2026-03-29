@@ -96,11 +96,12 @@ This remains the safest paper-trading candidate because it is the best strategy 
       - stronger Thu/Fri trims were worse still
     - interpretation: the two edges appear to overlap more than they compound, so the cleanest sizing ceiling is still just the high-ATR trim
     - direction-specific ATR sizing pushed the research ceiling a bit higher again:
-      - `0.75x` on top-ATR days for short trades only: `R$15,737.50`, `PF 1.5294`, `DD 2.69%`, composite `3.7197`
-      - all-sides `0.75x` trim remained second at composite `3.6833`
-      - long-only trim was worse at composite `3.3642`
-      - `70/30` test on the short-only trim: `R$3,663.75`, `PF 1.4300`, `DD 2.97%`, composite `3.5495`
-      - recent `60` trading days: `R$358.75`, `PF 1.2174`, `DD 3.08%`
+      - `0.70x` on top-ATR days for short trades only: `R$15,618`, `PF 1.5304`, `DD 2.65%`, composite `3.7481`
+      - `0.65x` short-only trim was the next-nearest result at composite `3.7354`
+      - `0.75x` short-only trim slipped to third at composite `3.7197`
+      - all-sides `0.75x` trim remained the strongest non-directional version at composite `3.6833`
+      - `70/30` test on the `0.70x` short-only trim: `R$3,610.50`, `PF 1.4271`, `DD 2.91%`, composite `3.5555`
+      - recent `60` trading days: `R$334.50`, `PF 1.2046`, `DD 3.05%`
     - interpretation: the advanced branch’s high-volatility pain is concentrated more on the short sleeve than the long sleeve, but this is still a research-only sizing result rather than a Monday-ready preset
   - a practical portfolio sleeve between the Tier 1 exact analog and strengthened Tier 2A also fell short:
     - `R$16,392.50`, `PF 1.4572`, `DD 3.91%`, composite `3.0592`

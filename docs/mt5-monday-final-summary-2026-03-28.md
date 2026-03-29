@@ -19,6 +19,9 @@
   - confidence-weighted sizing
   - confidence-weighted sizing + time-widened stop
   - weighted advanced research-only sleeve blends
+- The strongest raw research-only ceiling is now:
+  - `0.70x` size on top-ATR days for short trades only on the advanced directional branch
+  - `R$15,618`, `PF 1.5304`, `DD 2.65%`, composite `3.7481`
 
 ## Current Ranking
 
