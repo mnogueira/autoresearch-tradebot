@@ -140,25 +140,23 @@ Ceiling note:
   - this is the new strongest simpler regime-aware research preset
   - it is still not the first post-Monday validation target because the recent regime did not distinguish it from the simpler Tier 2 / Tier 2A lines
 
-### Advanced regime-aware ROC + max-hold follow-up
+### Advanced contract-cycle switch follow-up
 
 - This is the current strongest exact research line overall:
-  - use plain Tier 2 on prior-day `ADX <= 25` range days
-  - use Tier 3 `ROC(5)` + `150m` max-hold on prior-day `ADX > 25` trend days
-- Preset:
-  - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m MaxHold150m ROC5 TrendSwitch ADX25 GPT 5.4.set`
+  - use strengthened Tier 2A on the last `1` contract day
+  - use strengthened Tier 3 on all other days
 - Exact result:
-  - `R$14,835`, `PF 1.4987`, `DD 3.27%`, composite `3.2148`
+  - `R$16,080`, `PF 1.5081`, `DD 3.19%`, composite `3.3578`
 - Exact `70/30` walk-forward:
-  - train `R$11,490`, `PF 1.5407`, `DD 3.27%`
-  - test `R$3,345`, `PF 1.3935`, `DD 4.23%`
+  - train `R$12,185`, `PF 1.5369`, `DD 3.19%`
+  - test `R$3,895`, `PF 1.4350`, `DD 3.26%`
 - Recent `60`-trading-day check:
-  - `R$30`, `PF 1.0157`, `DD 5.62%`
+  - `R$480`, `PF 1.2783`, `DD 3.23%`
 - Operational note:
-  - this is an advanced research preset, not the Monday rollout change
-  - use it only after the simpler Tier 2 and Tier 2A host-side validations are clean
-  - finer follow-up confirmed `ROC(5)` remained the best tested trend-day agreement window inside this stronger stack
-  - the follow-up ADX sweep also confirmed `25` remained the best regime threshold inside this stronger stack
+  - this is an advanced research workflow, not the Monday rollout change
+  - the corrected cutoff sweep showed `last 1` contract day is the best tail switch
+  - contract-bucket comparison showed Tier 2A is stronger in the first `3` and last `3` contract days, while Tier 3 is stronger in the middle of the contract
+  - even so, the best practical switch was still `last 1` only, not `first 3 + last 1`
 
 ### Maximum-quality preset
 
@@ -200,13 +198,14 @@ Ceiling note:
     - out-of-sample it still passed, but Tier 2A remained the cleaner first upgrade:
       - test `R$3,865`, `PF 1.4316`, `DD 3.26%`
 - Secondary research branches after Tier 3:
+    - contract-cycle switches between strengthened Tier 2A and strengthened Tier 3
     - regime-aware ROC variants
-    - advanced regime-aware ROC + max-hold variants
-    - these remain interesting, but the always-on ATR10/lookback2 Tier 2A is now the cleaner stronger path
+    - these remain interesting, but the always-on ATR10/lookback2 Tier 2A is still the cleaner stronger path
 - Tier 4, research-only:
   - equal-weight blend of strengthened Tier 2A and strengthened Tier 3 local-geometry
   - `R$15,927.50`, `PF 1.5068`, `DD 3.22%`, composite `3.3209`
-  - this is now the strongest research-only portfolio sleeve, but it still requires running two sleeves side by side and is not a Monday preset
+  - this is still the strongest research-only portfolio sleeve, but it no longer beats the best single exact research line
+  - it still requires running two sleeves side by side and is not a Monday preset
 
 ## Recommended Rollout Cadence
 

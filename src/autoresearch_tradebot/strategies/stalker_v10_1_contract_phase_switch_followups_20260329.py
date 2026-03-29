@@ -18,7 +18,7 @@ from .stalker_v10_1_session_execution_refinement import (
 from .stalker_v10_1_structural_ablation_rollover import contract_rollover_buckets, filter_trades_to_dates
 from .stalker_v10_python import V10Dataset, calculate_metrics, locate_data_file, split_dates
 
-DEFAULT_OUTPUT_DIR = artifact_output_dir("stalker_v10_1_rollover_window_sweep_followups_20260329")
+DEFAULT_OUTPUT_DIR = artifact_output_dir("stalker_v10_1_contract_phase_switch_followups_20260329")
 
 
 def _combine_filters(*filters):
@@ -75,49 +75,58 @@ def main() -> None:
     entry_filter = _combine_filters(base_filter, roc5_filter)
 
     rollover_daily = contract_rollover_buckets(dataset)
+    first3_dates = pd.Index(rollover_daily.index[rollover_daily["contract_day_number"] <= 3])
+    last1_dates = pd.Index(rollover_daily.index[rollover_daily["contract_days_to_end"] <= 0])
+    last3_dates = pd.Index(rollover_daily.index[rollover_daily["contract_days_to_end"] <= 2])
+
+    candidates = [
+        ("tier2a_first3_else_tier3", "Use strengthened Tier 2A in the first 3 contract days and strengthened Tier 3 otherwise.", first3_dates),
+        ("tier2a_last1_else_tier3", "Use strengthened Tier 2A in the last 1 contract day and strengthened Tier 3 otherwise.", last1_dates),
+        ("tier2a_first3_last1_else_tier3", "Use strengthened Tier 2A in the first 3 and last 1 contract days and strengthened Tier 3 otherwise.", first3_dates.union(last1_dates)),
+        ("tier2a_first3_last3_else_tier3", "Use strengthened Tier 2A in the first 3 and last 3 contract days and strengthened Tier 3 otherwise.", first3_dates.union(last3_dates)),
+    ]
+
     variants: list[dict] = []
     best_variant: dict | None = None
     best_trades = pd.DataFrame()
 
-    for window in (1, 2, 3, 4, 5):
-        rollover_dates = pd.Index(rollover_daily.index[rollover_daily["contract_days_to_end"] <= (window - 1)])
-        normal_dates = pd.Index(rollover_daily.index[rollover_daily["contract_days_to_end"] > (window - 1)])
-
-        tier2a_rollover_trades, _ = run_backtest_with_management(
+    for name, rule, tier2a_dates in candidates:
+        tier3_dates = pd.Index(trade_dates.difference(tier2a_dates))
+        tier2a_branch, _ = run_backtest_with_management(
             dataset=dataset,
             params=params,
             trade_dates=trade_dates,
-            entry_filter=_combine_filters(entry_filter, _date_filter(_date_set(rollover_dates))),
+            entry_filter=_combine_filters(entry_filter, _date_filter(_date_set(tier2a_dates))),
             management=tier2a_management,
         )
-        tier3_normal_trades, _ = run_backtest_with_management(
+        tier3_branch, _ = run_backtest_with_management(
             dataset=dataset,
             params=params,
             trade_dates=trade_dates,
-            entry_filter=_combine_filters(entry_filter, _date_filter(_date_set(normal_dates))),
+            entry_filter=_combine_filters(entry_filter, _date_filter(_date_set(tier3_dates))),
             management=tier3_management,
         )
-        switched_trades, switched_metrics = _combine_runs([tier2a_rollover_trades, tier3_normal_trades], trade_dates)
+        combined_trades, combined_metrics = _combine_runs([tier2a_branch, tier3_branch], trade_dates)
         variant = {
-            "window_contract_days": window,
-            "rule": f"Use strengthened Tier 2A in the last {window} contract days and strengthened Tier 3 on all other days.",
-            "metrics": switched_metrics,
-            **_risk_block(switched_trades, trade_dates),
+            "name": name,
+            "rule": rule,
+            "metrics": combined_metrics,
+            **_risk_block(combined_trades, trade_dates),
             "recent_60d": {
-                "metrics": calculate_metrics(filter_trades_to_dates(switched_trades, recent_60), recent_60),
-                **_risk_block(filter_trades_to_dates(switched_trades, recent_60), recent_60),
+                "metrics": calculate_metrics(filter_trades_to_dates(combined_trades, recent_60), recent_60),
+                **_risk_block(filter_trades_to_dates(combined_trades, recent_60), recent_60),
             },
             "walkforward_70_30": {
-                "train_metrics": calculate_metrics(filter_trades_to_dates(switched_trades, train_dates), train_dates),
-                "train_risk": _risk_block(filter_trades_to_dates(switched_trades, train_dates), train_dates),
-                "test_metrics": calculate_metrics(filter_trades_to_dates(switched_trades, test_dates), test_dates),
-                "test_risk": _risk_block(filter_trades_to_dates(switched_trades, test_dates), test_dates),
+                "train_metrics": calculate_metrics(filter_trades_to_dates(combined_trades, train_dates), train_dates),
+                "train_risk": _risk_block(filter_trades_to_dates(combined_trades, train_dates), train_dates),
+                "test_metrics": calculate_metrics(filter_trades_to_dates(combined_trades, test_dates), test_dates),
+                "test_risk": _risk_block(filter_trades_to_dates(combined_trades, test_dates), test_dates),
             },
         }
         variants.append(variant)
         if best_variant is None or float(variant["sortino_weighted_composite"]) > float(best_variant["sortino_weighted_composite"]):
             best_variant = variant
-            best_trades = switched_trades
+            best_trades = combined_trades
 
     assert best_variant is not None
 
@@ -136,19 +145,16 @@ def main() -> None:
     summary_path.write_text(json.dumps(summary, indent=2), encoding="utf-8")
 
     leaderboard_variant = {
-        "name": f"tier2a_rollover_tail_{best_variant['window_contract_days']}d_else_tier3_local_geometry",
+        "name": best_variant["name"],
         "rule": best_variant["rule"],
         "metrics": best_variant["metrics"],
         "risk_adjusted_metrics": best_variant["risk_adjusted_metrics"],
         "sortino_weighted_composite": best_variant["sortino_weighted_composite"],
-        "params": {
-            **summary["params"],
-            "switch_rule": f"tier2a_on_last{best_variant['window_contract_days']}_contract_days_else_tier3",
-        },
+        "params": summary["params"],
     }
     row = _leaderboard_row(leaderboard_variant, summary_path)
-    row["family"] = "stalker_v10_1_rollover_window_sweep_followup"
-    row["screening_method"] = "rollover_window_sweep_followup"
+    row["family"] = "stalker_v10_1_contract_phase_switch_followup"
+    row["screening_method"] = "contract_phase_switch_followup"
     row["comparison_tier"] = "research_exact"
     update_leaderboard(DEFAULT_LEADERBOARD_PATH, [row])
 

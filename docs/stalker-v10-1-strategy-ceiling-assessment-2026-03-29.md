@@ -4,6 +4,10 @@
 
 The current signal family looks close to its local ceiling on the available WDO tape.
 
+- Best exact research line so far:
+  - strengthened Tier 2A on the last `1` contract day and strengthened Tier 3 on all other days
+  - `R$16,080`, `PF 1.5081`, `DD 3.19%`
+  - Sortino-weighted composite `3.3578`
 - Best exact deployable full-sample line so far:
   - Tier 3 + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`
   - `R$15,885`, `PF 1.4993`, `DD 3.21%`
@@ -31,6 +35,7 @@ That is where the strategy now appears to be.
 
 ### 1. Exact deployable improvements are now small
 
+- Contract-cycle switch, last `1` day: `R$16,080`, `PF 1.5081`, `DD 3.19%`, composite `3.3578`
 - Tier 2: `R$14,350`, `PF 1.4749`, `DD 3.30%`, composite `3.1158`
 - Tier 2A: `R$15,970`, `PF 1.5145`, `DD 3.23%`, composite `3.3124`
 - Tier 3: `R$14,420`, `PF 1.4784`, `DD 3.28%`, composite `3.1340`
