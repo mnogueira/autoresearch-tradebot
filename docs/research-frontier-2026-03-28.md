@@ -101,6 +101,20 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - `R$14,085`, `PF 1.4825`, `DD 3.30%`, composite `3.0529`
   - ATR-expansion volatility breakout produced `0` trades in this implementation
   - interpretation: the live-ready strategy did not change; the latest week looks healthier, and the new filters either added nothing or hurt
+- Entry/cost follow-up:
+  - artifact: `artifacts/outputs/stalker_v10_1_entry_cost_followups_20260328/summary.json`
+  - smart-entry micro-pullback within `3` bars was not good enough:
+    - `1` tick: `R$2,220`, `PF 1.5139`, `DD 3.92%`
+    - `2` ticks: `R$1,550`, `PF 1.3944`, `DD 3.73%`
+  - two-bar directional confirmation was decisively bad:
+    - `R$-1,485`, `PF 0.7564`, `DD 18.63%`
+  - volume-weighted relative-volume sizing overlay stayed research-only and weaker than the baseline:
+    - `R$10,340`, `PF 1.4388`, `DD 3.70%`, composite `2.3424`
+  - the flat commission proxy had no effect because the exact harness still uses `ROUND_TRIP_COST_BRL = 0.0`
+  - longer cooldowns did not help enough:
+    - `45m`: `R$13,405`, `PF 1.5009`, `DD 3.46%`, composite `2.8604`
+    - `60m`: `R$11,930`, `PF 1.4759`, `DD 3.49%`, composite `2.5844`
+  - interpretation: the strategy ceiling still looks driven by spread control and signal quality, not by slower entry pacing or delayed confirmation
 
 ## Regime Readout
 

@@ -8,6 +8,7 @@ from autoresearch_tradebot.strategies.stalker_v10_1_session_execution_refinement
     ManagementConfig,
     atr_trailing_stop_tick,
     confirmation_candle_passed,
+    confirmation_sequence_passed,
     entry_spread_allows_trade,
     has_reached_daily_profit_cap,
     has_reached_max_trade_age,
@@ -70,6 +71,28 @@ class SessionExecutionRefinementTests(unittest.TestCase):
         self.assertFalse(confirmation_candle_passed(1, 100, 100))
         self.assertTrue(confirmation_candle_passed(-1, 100, 99))
         self.assertFalse(confirmation_candle_passed(-1, 100, 101))
+
+    def test_confirmation_sequence_requires_all_bars_in_direction(self) -> None:
+        open_ticks = np.array([100, 101, 102, 103], dtype=np.int32)
+        close_ticks = np.array([101, 102, 101, 104], dtype=np.int32)
+        self.assertTrue(
+            confirmation_sequence_passed(
+                direction=1,
+                open_ticks=open_ticks,
+                close_ticks=close_ticks,
+                start_index=0,
+                consecutive_bars=2,
+            )
+        )
+        self.assertFalse(
+            confirmation_sequence_passed(
+                direction=1,
+                open_ticks=open_ticks,
+                close_ticks=close_ticks,
+                start_index=1,
+                consecutive_bars=2,
+            )
+        )
 
     def test_profit_lock_stop_tick_locks_fraction_of_target_once_activated(self) -> None:
         self.assertIsNone(

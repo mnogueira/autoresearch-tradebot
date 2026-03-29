@@ -47,6 +47,7 @@ class ManagementConfig:
     max_bars_in_trade: int | None = None
     partial_profit_enabled: bool = False
     partial_fraction: float = 0.5
+    round_trip_cost_multiplier: float = 1.0
     spread_multiplier: float = 1.0
     fixed_spread_ticks: int | None = None
     max_entry_spread_ticks: int | None = None
@@ -69,8 +70,11 @@ class ManagementConfig:
     tp_scale_after_win_streak: float | None = None
     patience_pullback_fraction: float | None = None
     patience_max_wait_bars: int | None = None
+    micro_pullback_ticks: int | None = None
+    micro_pullback_max_wait_bars: int | None = None
     confirmation_candle_required: bool = False
     confirmation_wait_bars: int = 1
+    confirmation_consecutive_bars: int = 1
     profit_lock_activation_fraction: float | None = None
     profit_lock_target_fraction: float | None = None
     widen_stop_after_bars: int | None = None
@@ -209,6 +213,28 @@ def confirmation_candle_passed(direction: int, open_tick: int, close_tick: int) 
     if direction == -1:
         return int(close_tick) < int(open_tick)
     return False
+
+
+def confirmation_sequence_passed(
+    direction: int,
+    open_ticks: np.ndarray,
+    close_ticks: np.ndarray,
+    start_index: int,
+    consecutive_bars: int,
+) -> bool:
+    if consecutive_bars <= 0:
+        return True
+    end_index = int(start_index) + int(consecutive_bars)
+    if int(start_index) < 0 or end_index > len(open_ticks):
+        return False
+    for confirm_index in range(int(start_index), end_index):
+        if not confirmation_candle_passed(
+            direction=direction,
+            open_tick=int(open_ticks[confirm_index]),
+            close_tick=int(close_ticks[confirm_index]),
+        ):
+            return False
+    return True
 
 
 def profit_lock_stop_tick(
@@ -442,7 +468,7 @@ def run_backtest_with_management(
         pnl_brl = (
             realized_partial_pnl_brl
             + (final_points * POINT_VALUE_BRL * params.ContractsPerTrade)
-            - ROUND_TRIP_COST_BRL
+            - (ROUND_TRIP_COST_BRL * float(management.round_trip_cost_multiplier))
         )
         trades.append(
             TradeRecord(
@@ -811,11 +837,14 @@ def run_backtest_with_management(
             activate_index = int(confirmation_signal["activate_index"])
             if index >= activate_index:
                 if index == activate_index and can_enter_new_trades:
-                    confirm_index = int(confirmation_signal["confirm_index"])
-                    if confirmation_candle_passed(
+                    confirm_start_index = int(confirmation_signal["confirm_start_index"])
+                    confirmation_consecutive_bars = int(confirmation_signal["confirmation_consecutive_bars"])
+                    if confirmation_sequence_passed(
                         direction=int(confirmation_signal["direction"]),
-                        open_tick=int(open_ticks[confirm_index]),
-                        close_tick=int(close_ticks[confirm_index]),
+                        open_ticks=open_ticks,
+                        close_ticks=close_ticks,
+                        start_index=confirm_start_index,
+                        consecutive_bars=confirmation_consecutive_bars,
                     ):
                         position = int(confirmation_signal["direction"])
                         entry_tick = ask_open_tick if position == 1 else bid_open_tick
@@ -886,6 +915,8 @@ def run_backtest_with_management(
                         int(round(signal_bar_range_ticks * float(management.patience_pullback_fraction))),
                     )
                     entry_limit_tick = int(high_ticks[index]) - retrace_ticks
+                if management.micro_pullback_ticks is not None and int(management.micro_pullback_ticks) > 0:
+                    entry_limit_tick = int(entry_limit_tick) - int(management.micro_pullback_ticks)
                 base_price = ticks_to_price(entry_limit_tick, PRICE_TICK_SIZE)
                 active_tp_multiplier = scaled_tp_multiplier(
                     float(params.TP_ATRMultiplier),
@@ -902,14 +933,22 @@ def run_backtest_with_management(
                 confirmation_candidate = {
                     "direction": 1,
                     "signal_time": timestamp,
-                    "confirm_index": int(index + int(management.confirmation_wait_bars)),
-                    "activate_index": int(index + int(management.confirmation_wait_bars) + 1),
+                    "confirm_start_index": int(index + int(management.confirmation_wait_bars)),
+                    "confirmation_consecutive_bars": max(1, int(management.confirmation_consecutive_bars)),
+                    "activate_index": int(
+                        index
+                        + int(management.confirmation_wait_bars)
+                        + max(1, int(management.confirmation_consecutive_bars))
+                    ),
                     "stop_offset_ticks": max(1, abs(int(candidate_order["stop_tick"]) - entry_limit_tick)),
                     "target_offset_ticks": max(1, abs(int(candidate_order["target_tick"]) - entry_limit_tick)),
                 }
                 if management.patience_pullback_fraction is not None and management.patience_max_wait_bars is not None:
                     candidate_order["min_fill_index"] = int(index + 1)
                     candidate_order["expiry_index"] = int(index + int(management.patience_max_wait_bars))
+                if management.micro_pullback_ticks is not None and management.micro_pullback_max_wait_bars is not None:
+                    candidate_order["min_fill_index"] = int(index + 1)
+                    candidate_order["expiry_index"] = int(index + int(management.micro_pullback_max_wait_bars))
                 if allows_entry_direction(timestamp, 1, params) and _is_valid_pending_order(
                     direction=1,
                     limit_tick=entry_limit_tick,
@@ -946,6 +985,8 @@ def run_backtest_with_management(
                         int(round(signal_bar_range_ticks * float(management.patience_pullback_fraction))),
                     )
                     entry_limit_tick = int(low_ticks[index]) + retrace_ticks
+                if management.micro_pullback_ticks is not None and int(management.micro_pullback_ticks) > 0:
+                    entry_limit_tick = int(entry_limit_tick) + int(management.micro_pullback_ticks)
                 base_price = ticks_to_price(entry_limit_tick, PRICE_TICK_SIZE)
                 active_tp_multiplier = scaled_tp_multiplier(
                     float(params.TP_ATRMultiplier),
@@ -962,14 +1003,22 @@ def run_backtest_with_management(
                 confirmation_candidate = {
                     "direction": -1,
                     "signal_time": timestamp,
-                    "confirm_index": int(index + int(management.confirmation_wait_bars)),
-                    "activate_index": int(index + int(management.confirmation_wait_bars) + 1),
+                    "confirm_start_index": int(index + int(management.confirmation_wait_bars)),
+                    "confirmation_consecutive_bars": max(1, int(management.confirmation_consecutive_bars)),
+                    "activate_index": int(
+                        index
+                        + int(management.confirmation_wait_bars)
+                        + max(1, int(management.confirmation_consecutive_bars))
+                    ),
                     "stop_offset_ticks": max(1, abs(int(candidate_order["stop_tick"]) - entry_limit_tick)),
                     "target_offset_ticks": max(1, abs(int(candidate_order["target_tick"]) - entry_limit_tick)),
                 }
                 if management.patience_pullback_fraction is not None and management.patience_max_wait_bars is not None:
                     candidate_order["min_fill_index"] = int(index + 1)
                     candidate_order["expiry_index"] = int(index + int(management.patience_max_wait_bars))
+                if management.micro_pullback_ticks is not None and management.micro_pullback_max_wait_bars is not None:
+                    candidate_order["min_fill_index"] = int(index + 1)
+                    candidate_order["expiry_index"] = int(index + int(management.micro_pullback_max_wait_bars))
                 if allows_entry_direction(timestamp, -1, params) and _is_valid_pending_order(
                     direction=-1,
                     limit_tick=entry_limit_tick,

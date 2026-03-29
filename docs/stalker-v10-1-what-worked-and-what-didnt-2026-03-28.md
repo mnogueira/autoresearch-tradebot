@@ -34,6 +34,7 @@
 | Weekday selectivity | Skip Tuesday and Friday: `R$9,200`, `PF 1.6261`, `DD 2.97%` | Cleaner on PF/DD, but it throws away too much net to become the default. |
 | Weekday selectivity + time-widened stop | Mon/Wed/Thu only plus time-widened stop: `R$9,500`, `PF 1.6525`, `DD 3.19%`, composite `2.3232` | Quality improved, but the net giveback was still too large for promotion. |
 | Alternate ratio on the plain session winner | `SL 0.60 / TP 0.42`: `R$13,025`, `PF 1.2851`, `DD 4.45%`, `Sortino 2.1894` | Better downside-adjusted return than many variants, but too weak on PF and win rate to replace the production line. |
+| Micro-pullback smart entry | `1` tick in `3` bars: `R$2,220`, `PF 1.5139`, `DD 3.92%` | Cleaner PF on a much smaller trade set, but it over-pruned too hard and gave up far too much net and composite. |
 
 ## What Did Not Work
 
@@ -61,6 +62,9 @@
 | ML signal overlays | Logistic `AUC 0.5987`, random forest `AUC 0.5607`, but all trade overlays underperformed badly | There is a bit of predictive information in the features, but not enough to survive translation into a tradable overlay on the existing strategy. |
 | Volatility breakout ATR-expansion entry | `0` trades | Too restrictive in this implementation; no evidence of a usable replacement signal family. |
 | EMA50 direction filter | Identical to the cooldown baseline | The existing signal family is already directionally aligned enough that this filter adds no value. |
+| Bigger micro-pullback smart entry | `2` ticks in `3` bars: `R$1,550`, `PF 1.3944`, `DD 3.73%` | Pushing the better-entry idea harder just starved the strategy of too many fills. |
+| Two-bar trend confirmation | `R$-1,485`, `PF 0.7564`, `DD 18.63%` | Waiting for two consecutive M15 closes in the signal direction destroyed the fast-continuation edge. |
+| Volume-weighted entry sizing by relative volume | `R$10,340`, `PF 1.4388`, `DD 3.70%`, composite `2.3424` | Lowering size on lower-relative-volume signals reduced risk, but it also gave up too much net and composite to justify promotion. |
 
 ## The Real Risks
 
@@ -68,6 +72,9 @@
   - `2x` spread stress stayed positive at `R$4,790`, `PF 1.11`, `DD 12.48%`
   - `3x` spread stress failed at `R$-3,300`, `PF 0.9198`, `DD 46.44%`
   - fixed `5`-tick spread stress was catastrophic at `R$-16,975`, `PF 0.6614`, `DD 168.02%`
+- Flat commission is not the main modeled cost in the exact harness.
+  - the exact engine still carries `ROUND_TRIP_COST_BRL = 0.0`, so doubling the flat-cost proxy had no effect
+  - operationally, the trustworthy live cost control is still the spread guardrail, not the flat-fee proxy
 - Recent softness is real.
   - Last `30` trading days: `R$40`, `PF 1.0357`, `DD 4.67%`
 - The regime explanation is coherent:

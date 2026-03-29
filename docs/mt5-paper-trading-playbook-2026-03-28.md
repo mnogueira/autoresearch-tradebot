@@ -208,6 +208,8 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
     - Tier 3 cooldown+max-hold at `2` ticks: `R$4,795`, `PF 1.1351`, `DD 9.54%`
     - both turn negative at `3` ticks
   - a true fixed `5`-tick spread environment was catastrophic: `R$-16,975`, `PF 0.6614`, `DD 168.02%`
+  - the exact Python harness still uses `ROUND_TRIP_COST_BRL = 0.0`, so flat commission doubling inside the research harness had no effect
+  - practical interpretation: treat spread/slippage as the real live cost risk until an explicit broker/B3 fee model is added
   - spread-diagnostic artifact:
     - `artifacts/outputs/stalker_v10_1_spread_entry_diagnostics_20260328/summary.json`
   - interpretation:
