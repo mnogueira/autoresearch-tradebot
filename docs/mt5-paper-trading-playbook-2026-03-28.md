@@ -139,6 +139,7 @@ Ceiling note:
 - Operational note:
   - this is an advanced research preset, not the Monday rollout change
   - use it only after the simpler Tier 2 and Tier 2A host-side validations are clean
+  - finer follow-up confirmed `ROC(5)` remained the best tested trend-day agreement window inside this stronger stack
 
 ### Maximum-quality preset
 

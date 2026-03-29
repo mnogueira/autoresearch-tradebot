@@ -131,6 +131,15 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - recent `60`-trading-day check stayed soft and identical to the simpler tiers:
     - `R$30`, `PF 1.0157`, `DD 5.62%`
   - interpretation: this is now the strongest exact research line of the whole sprint, but it is clearly an advanced follow-up, not a Monday rollout change
+- Advanced regime-aware ROC window sweep:
+  - artifact: `artifacts/outputs/stalker_v10_1_regime_tier3_roc_window_followups_20260329/summary.json`
+  - `ROC(5)` remained optimal inside the stronger regime-aware Tier 3 stack:
+    - `ROC(5)`: `R$14,835`, `PF 1.4987`, `DD 3.27%`, composite `3.2148`
+    - `ROC(7)`: `R$14,620`, `PF 1.4888`, `DD 3.29%`, composite `3.1690`
+    - `ROC(8)`: `R$14,615`, `PF 1.4887`, `DD 3.29%`, composite `3.1677`
+    - `ROC(10)`: `R$14,545`, `PF 1.4864`, `DD 3.30%`, composite `3.1526`
+    - `ROC(3)`: `R$14,440`, `PF 1.4850`, `DD 3.32%`, composite `3.1248`
+  - interpretation: the earlier `ROC(5)` win was not a fluke; it still looks like the local optimum even inside the stronger regime-aware max-hold stack
 
 ## Near-Term Caution
 

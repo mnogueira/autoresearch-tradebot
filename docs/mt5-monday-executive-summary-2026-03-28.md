@@ -24,6 +24,7 @@
 - Best advanced exact research line:
   - Tier 2 on range days + Tier 3 `ROC(5)` + `150m` max-hold on prior-day `ADX > 25` trend days
   - `R$14,835`, `PF 1.4987`, `DD 3.27%`, composite `3.2148`
+  - finer window sweep confirmed `ROC(5)` stayed optimal over `ROC(3)`, `ROC(7)`, `ROC(8)`, and `ROC(10)`
 - Best simpler ROC follow-up, also packaged:
   - Tier 2 + `ROC(5)` agreement
   - `R$14,560`, `PF 1.4900`, `DD 3.30%`, composite `3.1493`
