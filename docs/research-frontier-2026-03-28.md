@@ -71,6 +71,12 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - `R$14,808.75`, `PF 1.5239`, `DD 2.75%`, composite `3.5722`
     - stronger cuts on top-ATR days (`0.5x`) raised PF further but gave up too much net, while boosting low-ATR days as well was weaker on balance
     - interpretation: the evidence now points even more strongly toward execution and sizing as the remaining upside, not another signal-family tweak
+  - that same sizing idea generalized to the strongest advanced branch and pushed the ceiling higher again:
+    - advanced weekday-aware directional branch with `0.75x` size on top-ATR days:
+    - `R$15,210`, `PF 1.5371`, `DD 2.70%`, composite `3.6833`
+    - `70/30` test: `R$3,748.75`, `PF 1.4704`, `DD 2.64%`, composite `4.0240`
+    - recent `60` trading days: `R$402.50`, `PF 1.2733`, `DD 2.55%`
+    - interpretation: the sizing edge does look portable across the stronger research branches, which further reinforces that the remaining frontier is mostly sizing and execution, not new signal families
   - a practical portfolio sleeve between the Tier 1 exact analog and strengthened Tier 2A also fell short:
     - `R$16,392.50`, `PF 1.4572`, `DD 3.91%`, composite `3.0592`
     - interpretation: adding the validated base sleeve dilutes the stronger local-geometry edge more than it helps, so the clean post-Monday path is still just Tier 2 -> Tier 2A

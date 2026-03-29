@@ -4,6 +4,7 @@
 
 | Variant | Net | PF | DD | Win Rate | Trades | Trades/Day | Sortino | Calmar | Omega | Composite | Rank |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Advanced weekday-aware directional branch with `0.75x` size on top-ATR days, research-only sizing overlay | `R$15,210` | `1.5371` | `2.70%` | `81.08%` | 1586 | `1.2727` | `2.1310` | `7.6006` | `1.6879` | `3.6833` | research |
 | Strengthened Tier 2A with `0.75x` size on top-ATR days, research-only sizing overlay | `R$14,808.75` | `1.5239` | `2.75%` | `80.97%` | 1571 | `1.2606` | `2.0755` | `7.3362` | `1.6679` | `3.5722` | research |
 | Strengthened Tier 2A on last 1 contract day and Fridays, directional hybrid otherwise, exact research candidate | `R$16,335` | `1.5244` | `3.18%` | `81.08%` | 1586 | `1.2727` | `2.0526` | `6.8048` | `1.6699` | `3.4017` | research exact |
 | `25%` strengthened Tier 2A + `75%` advanced weekday-aware directional branch, research-only weighted sleeve | `R$16,243.75` | `1.5219` | `3.19%` | `81.03%` | 3157 | `2.5325` | `2.0469` | `6.7508` | `1.6672` | `3.3821` | research |
@@ -99,8 +100,10 @@
     - `5d`: composite `3.3295`
   - this is still a research-only branch because the contract-cycle switching rule is not yet part of the Monday MT5 deployment path
 - Strongest research-only result overall:
-  - strengthened Tier 2A with `0.75x` size only on top-ATR days
-  - `R$14,808.75`, `PF 1.5239`, `DD 2.75%`, composite `3.5722`
+  - advanced weekday-aware directional branch with `0.75x` size only on top-ATR days
+  - `R$15,210`, `PF 1.5371`, `DD 2.70%`, composite `3.6833`
+  - the same idea on strengthened Tier 2A alone was still strong but slightly weaker:
+    - `R$14,808.75`, `PF 1.5239`, `DD 2.75%`, composite `3.5722`
   - interpretation: the remaining upside is looking even more like sizing and execution quality rather than another signal or filter
   - this is still research-only because it depends on variable sizing instead of a static MT5 preset
 - Strongest research-only sleeve:
@@ -186,7 +189,7 @@
   - Tier 3, aggressive: session winner + `25m` cooldown + `150m` max-hold + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2`
   - Tier 4, research-only: equal-weight blend of Tier 2 and Tier 2A
 - Risk-adjusted ranking by the Sortino-weighted composite:
-- strongest research-only result overall: strengthened Tier 2A with `0.75x` size on top-ATR days at `3.5722`
+- strongest research-only result overall: advanced weekday-aware directional branch with `0.75x` size on top-ATR days at `3.6833`
 - strongest exact research line overall: strengthened Tier 2A on the last `1` contract day and Fridays, directional hybrid otherwise at `3.4017`
 - next exact research line overall: strengthened Tier 2A on the last `1` contract day and the directional hybrid otherwise at `3.3704`
 - next exact research line after that: strengthened Tier 2A on the last `1` contract day and strengthened Tier 3 otherwise at `3.3578`

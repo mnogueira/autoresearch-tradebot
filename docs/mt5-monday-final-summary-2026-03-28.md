@@ -15,6 +15,7 @@
 - No live-ready exact variant beat the current exact leader by a meaningful margin on the Sortino-weighted composite.
 - The only higher composite scores came from research-only overlays:
   - ATR-regime sizing on strengthened Tier 2A
+  - ATR-regime sizing on the advanced weekday-aware directional branch
   - confidence-weighted sizing
   - confidence-weighted sizing + time-widened stop
   - weighted advanced research-only sleeve blends
