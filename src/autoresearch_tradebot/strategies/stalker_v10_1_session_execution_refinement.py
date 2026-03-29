@@ -62,6 +62,7 @@ class ManagementConfig:
     loss_exit_atr_mult: float | None = None
     trail_after_target_fraction: float | None = None
     trail_lock_target_fraction: float | None = None
+    atr_trailing_activation_fraction: float | None = None
     profitable_trail_start_bars: int | None = None
     profitable_trail_step_bars: int = 1
     profitable_trail_step_ticks: int = 0
@@ -306,6 +307,27 @@ def atr_trailing_stop_tick(
     if desired_stop_tick >= int(current_stop_tick):
         return None
     return desired_stop_tick
+
+
+def atr_trailing_has_activated(
+    position: int,
+    entry_tick: int,
+    initial_target_tick: int,
+    best_bid_tick: int,
+    best_ask_tick: int,
+    activation_fraction: float | None,
+) -> bool:
+    if position == 0:
+        return False
+    if activation_fraction is None:
+        return True
+    target_distance_ticks = abs(int(initial_target_tick) - int(entry_tick))
+    if target_distance_ticks <= 0:
+        return False
+    activation_ticks = max(1, int(round(target_distance_ticks * float(activation_fraction))))
+    if position == 1:
+        return int(best_bid_tick) >= int(entry_tick) + activation_ticks
+    return int(best_ask_tick) <= int(entry_tick) - activation_ticks
 
 
 def scaled_tp_multiplier(
@@ -665,6 +687,15 @@ def run_backtest_with_management(
             best_bid_tick = max(best_bid_tick, current_bid_tick)
         else:
             best_ask_tick = min(best_ask_tick, current_ask_tick)
+        if not atr_trailing_has_activated(
+            position=position,
+            entry_tick=entry_tick,
+            initial_target_tick=initial_target_tick,
+            best_bid_tick=best_bid_tick,
+            best_ask_tick=best_ask_tick,
+            activation_fraction=management.atr_trailing_activation_fraction,
+        ):
+            return
         desired_stop_tick = atr_trailing_stop_tick(
             position=position,
             current_stop_tick=stop_tick,

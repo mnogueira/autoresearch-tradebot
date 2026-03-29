@@ -128,6 +128,15 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - research-only one-tick better fill proxy was extremely strong:
     - `R$21,925`, `PF 1.7925`, `DD 2.64%`, composite `5.0181`
   - interpretation: execution quality is likely the cleanest remaining frontier, but this is not a live-ready alpha claim because it assumes every trade gets one extra tick without affecting fill probability
+- Microstructure entry follow-up:
+  - artifact: `artifacts/outputs/stalker_v10_1_microstructure_entry_followups_20260328/summary.json`
+  - waiting for the next M1 open only when it was no worse than the signal close was decisively negative
+  - requiring the next M1 open to already be one full WDO tick better than the signal close was also decisively negative
+  - interpretation: the strategy wants fast retracement execution, not delayed confirmation at the next minute
+- ATR trailing-stop follow-up:
+  - artifact: `artifacts/outputs/stalker_v10_1_trailing_stop_followups_20260328/summary.json`
+  - trailing by `2.0 x ATR` after the trade reached `50%` of target was an exact tie with Tier 2
+  - interpretation: this trailing-stop variant adds complexity without improving the result
 
 ## Regime Readout
 

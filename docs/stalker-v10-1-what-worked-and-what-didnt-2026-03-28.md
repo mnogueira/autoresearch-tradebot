@@ -65,6 +65,9 @@
 | Bigger micro-pullback smart entry | `2` ticks in `3` bars: `R$1,550`, `PF 1.3944`, `DD 3.73%` | Pushing the better-entry idea harder just starved the strategy of too many fills. |
 | Two-bar trend confirmation | `R$-1,485`, `PF 0.7564`, `DD 18.63%` | Waiting for two consecutive M15 closes in the signal direction destroyed the fast-continuation edge. |
 | Volume-weighted entry sizing by relative volume | `R$10,340`, `PF 1.4388`, `DD 3.70%`, composite `2.3424` | Lowering size on lower-relative-volume signals reduced risk, but it also gave up too much net and composite to justify promotion. |
+| Next-open patience entry | `R$-99,785`, `PF 0.0060`, `DD 997.85%` | The strategy already extracts its edge from fast retracement fills; delaying to the next minute was catastrophic. |
+| Next-open one-tick-better limit proxy | `R$-29,100`, `PF 0.0058`, `DD 291.0%` | A passive next-open fill requirement starved the system of the good fast entries and did not work as a live improvement path. |
+| ATR trailing stop after 50% target | exact tie with Tier 2 at `R$14,085`, `PF 1.4825`, `DD 3.30%` | This added no value over the simpler cooldown-only line. |
 
 ## The Real Risks
 

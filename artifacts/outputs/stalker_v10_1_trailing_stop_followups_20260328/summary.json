@@ -1,0 +1,57 @@
+{
+  "reference_tier2_cooldown_only": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 14085.0,
+      "avg_profit_brl": 8.98,
+      "avg_win_brl": 34.26,
+      "avg_loss_brl": -95.7,
+      "profit_factor": 1.4825,
+      "max_drawdown_pct": 3.3,
+      "expected_payoff": 8.98,
+      "on_tester_value": 4263.59877
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.9306,
+      "calmar_ratio": 5.8842,
+      "omega_ratio": 1.6115,
+      "annual_return_pct": 19.44,
+      "max_drawdown_frac": 0.033035
+    },
+    "sortino_weighted_composite": 3.0529
+  },
+  "atr_trailing_after_half_target_2x_atr": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 14085.0,
+      "avg_profit_brl": 8.98,
+      "avg_win_brl": 34.26,
+      "avg_loss_brl": -95.7,
+      "profit_factor": 1.4825,
+      "max_drawdown_pct": 3.3,
+      "expected_payoff": 8.98,
+      "on_tester_value": 4263.59877
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.9306,
+      "calmar_ratio": 5.8842,
+      "omega_ratio": 1.6115,
+      "annual_return_pct": 19.44,
+      "max_drawdown_frac": 0.033035
+    },
+    "sortino_weighted_composite": 3.0529,
+    "rule": "After price reaches 50% of TP distance, trail the stop by 2.0 x entry ATR14."
+  },
+  "notes": [
+    "This is an exact every-tick rerun of Tier 2 with an ATR-based trailing stop that stays inactive until half the target has been reached.",
+    "The baseline remains the plain session winner plus 30-minute cooldown only."
+  ]
+}

@@ -6,6 +6,7 @@ import numpy as np
 
 from autoresearch_tradebot.strategies.stalker_v10_1_session_execution_refinement import (
     ManagementConfig,
+    atr_trailing_has_activated,
     atr_trailing_stop_tick,
     confirmation_candle_passed,
     confirmation_sequence_passed,
@@ -205,6 +206,38 @@ class SessionExecutionRefinementTests(unittest.TestCase):
                 best_ask_tick=1041,
                 entry_atr_value=21.0,
                 atr_trailing_distance_mult=1.0,
+            )
+        )
+
+    def test_atr_trailing_activation_fraction_requires_half_target_excursion(self) -> None:
+        self.assertFalse(
+            atr_trailing_has_activated(
+                position=1,
+                entry_tick=1000,
+                initial_target_tick=1080,
+                best_bid_tick=1039,
+                best_ask_tick=1040,
+                activation_fraction=0.5,
+            )
+        )
+        self.assertTrue(
+            atr_trailing_has_activated(
+                position=1,
+                entry_tick=1000,
+                initial_target_tick=1080,
+                best_bid_tick=1040,
+                best_ask_tick=1041,
+                activation_fraction=0.5,
+            )
+        )
+        self.assertTrue(
+            atr_trailing_has_activated(
+                position=-1,
+                entry_tick=1000,
+                initial_target_tick=920,
+                best_bid_tick=959,
+                best_ask_tick=960,
+                activation_fraction=0.5,
             )
         )
         self.assertIsNone(
