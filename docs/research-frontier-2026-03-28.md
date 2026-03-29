@@ -63,6 +63,10 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - best case was just `RSI(14) >= 50` / `<= 50`, which was effectively an exact tie with the reference at composite `3.3121`
     - tighter thresholds (`55`, `60`) were worse on both RSI windows
     - interpretation: ROC agreement looks genuinely informative here; generic oscillator agreement does not
+  - MACD directional confirmation also failed to improve the strengthened Tier 2A line:
+    - `macd_line_sign`: `R$15,940`, `PF 1.5135`, `DD 3.23%`, composite `3.3076`
+    - `macd_hist_sign`: `R$15,010`, `PF 1.5018`, `DD 3.13%`, composite `3.2223`
+    - interpretation: this reinforces the same ceiling read as RSI; ROC adds real signal agreement value here, but generic oscillator or MACD confirmation does not
   - a contract-cycle-aware switch improved the research frontier again:
     - use strengthened Tier 2A on the last `1` contract day and strengthened Tier 3 on all other days
     - `R$16,080`, `PF 1.5081`, `DD 3.19%`, composite `3.3578`

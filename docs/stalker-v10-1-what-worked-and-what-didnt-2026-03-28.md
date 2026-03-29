@@ -46,6 +46,8 @@
 | Opening-bias confirmation | Align later entries with the `09:00-10:00` opening-hour return sign: best case `R$9,260`, `PF 1.5139`, `DD 3.63%`, composite `2.1527` | The first-hour tape contained some directional information, but using it as a hard gate over-pruned the strategy and left it well below Tier 2A. |
 | Prior-day bias confirmation | Align entries with the previous session's close-vs-open sign: best case `R$6,390`, `PF 1.4163`, `DD 3.67%`, composite `1.6186` | The daily directional tape was even less useful as a hard gate than the opening-hour bias and clearly weakened the strategy. |
 | RSI directional confirmation on strengthened Tier 2A | Best case `RSI(14) >= 50` / `<= 50`: effectively an exact tie with the reference, composite `3.3121`; tighter thresholds were worse | This is good ceiling evidence: ROC agreement adds real information, but generic oscillator agreement does not. |
+| MACD directional confirmation on strengthened Tier 2A | `macd_line_sign`: `R$15,940`, `PF 1.5135`, `DD 3.23%`, composite `3.3076`; `macd_hist_sign` was worse | This reinforced the RSI result: MACD-style directional confirmation still did not beat the strengthened Tier 2A reference, so ROC remains the only agreement layer that has shown clear incremental value. |
+| MACD directional confirmation on strengthened Tier 2A | Best case `macd_line_sign`: `R$15,940`, `PF 1.5135`, `DD 3.23%`, composite `3.3076`; histogram sign was worse | More ceiling evidence in the same direction: generic momentum confirmation is basically a no-op here, while `ROC(5)` is still the only lightweight agreement filter that adds real value. |
 
 ## What Did Not Work
 

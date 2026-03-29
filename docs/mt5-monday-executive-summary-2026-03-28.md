@@ -63,6 +63,7 @@
   - interpretation: this is now the strongest research-only smoothing sleeve, but it still remains a later portfolio idea rather than a Monday deployment path
 - Ceiling assessment:
   - the current signal family appears to top out around composite `3.21` to `3.31`
+  - RSI and MACD directional confirmation both failed to improve the strengthened Tier 2A reference, which is more evidence that `ROC(5)` is the uniquely useful lightweight agreement layer found so far
   - remaining upside is more likely to come from execution quality than from another simple hard filter
 
 ## Key Risks
