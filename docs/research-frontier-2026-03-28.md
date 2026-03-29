@@ -105,6 +105,16 @@ Corrected rerun:
   - but the simplified no-ROC branch may be the more robust corrected-cost candidate
   - that makes the corrected-cost story more nuanced than the pre-correction frontier, where ROC was clearly unique
 
+## Corrected-Cost Max-Hold Simplification Check
+
+- Removing max-hold from the no-ROC corrected-cost branch barely changed the result:
+  - full sample: `R$2,104`, `PF 1.0687`, `DD 10.58%`, composite `0.4491`
+  - `70/30` test: `R$1,007`, `PF 1.1305`, `DD 7.23%`
+  - recent `60d`: `R$331`, `PF 1.2873`
+- Interpretation:
+  - on the corrected-cost validation branch, max-hold is effectively a no-op
+  - the simpler no-ROC, no-max-hold version is now the cleaner corrected-cost candidate to validate next
+
 ## Current Best Static Corrected-Cost Survivor
 
 - The stronger local refinement is:
