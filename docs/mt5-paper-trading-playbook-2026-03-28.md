@@ -363,5 +363,9 @@ Ceiling note:
   - `docs/mt5-week-1-monitoring-template-2026-03-28.md`
 - Session-health assessor:
   - `python -m autoresearch_tradebot.mt5.assess_paper_session --snapshot <monitoring_snapshot.json> --max-spread-ticks <observed_max> --completed-sessions <count> --current-tier "Tier 1"`
+  - installed CLI: `tradebot-mt5-paper-health`
+- Monday handoff verifier:
+  - `python -m autoresearch_tradebot.mt5.verify_monday_handoff`
+  - installed CLI: `tradebot-mt5-verify-handoff`
 - Post-Monday roadmap:
   - `docs/mt5-next-steps-after-monday-2026-03-28.md`

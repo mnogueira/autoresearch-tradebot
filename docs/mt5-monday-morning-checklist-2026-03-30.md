@@ -172,5 +172,6 @@ Recent context:
    - `docs/mt5-week-1-monitoring-template-2026-03-28.md`
 9. After each session, assess the paper-session health from the monitoring snapshot:
    - `python -m autoresearch_tradebot.mt5.assess_paper_session --snapshot <monitoring_snapshot.json> --max-spread-ticks <observed_max> --completed-sessions <count> --current-tier "Tier 1"`
+   - installed CLI: `tradebot-mt5-paper-health`
 10. Do not try to improve fills by intentionally waiting one extra minute after the signal.
    - the next-open patience and one-tick-better next-open entry overlays were both strongly negative in research

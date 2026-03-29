@@ -8,7 +8,7 @@ def _repo_root() -> Path:
     return Path(__file__).resolve().parents[3]
 
 
-def main() -> None:
+def build_handoff_report() -> dict:
     root = _repo_root()
     checks = {
         "ea_source": root / "mt5/experts/custom/WDO Stalker Strategy v10.1 Time Filters GPT 5.4.mq5",
@@ -42,6 +42,11 @@ def main() -> None:
         },
     }
     results["all_exist"] = all(item["exists"] for item in results["checks"].values())
+    return results
+
+
+def main() -> None:
+    results = build_handoff_report()
     print(json.dumps(results, indent=2))
 
 

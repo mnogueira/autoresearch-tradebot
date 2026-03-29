@@ -40,6 +40,8 @@ tradebot-mt5-stalker-test = "autoresearch_tradebot.mt5.run_mt5_stalker_v10_test:
 tradebot-mt5-calibrate = "autoresearch_tradebot.mt5.calibrate_stalker_v10_mt5:main"
 tradebot-mt5-real-ticks = "autoresearch_tradebot.mt5.export_mt5_real_ticks:main"
 tradebot-mt5-monitoring-snapshot = "autoresearch_tradebot.mt5.build_monitoring_snapshot:main"
+tradebot-mt5-paper-health = "autoresearch_tradebot.mt5.assess_paper_session:main"
+tradebot-mt5-verify-handoff = "autoresearch_tradebot.mt5.verify_monday_handoff:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

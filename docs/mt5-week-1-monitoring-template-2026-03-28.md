@@ -29,8 +29,10 @@ Use one row per paper-trading session.
    - `python -m autoresearch_tradebot.mt5.export_tester_trade_log --report artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/mt5_model_0_report.html --trades-out artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/trade_log.csv --daily-out artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/daily_pnl.csv`
 2. Build the monitoring snapshot JSON:
    - `python -m autoresearch_tradebot.mt5.build_monitoring_snapshot --trade-log artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/trade_log.csv --session-date 2026-03-19 --out artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/monitoring_snapshot.json`
+   - installed CLI: `tradebot-mt5-monitoring-snapshot`
 3. Build the session-health JSON:
    - `python -m autoresearch_tradebot.mt5.assess_paper_session --snapshot artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/monitoring_snapshot.json --max-spread-ticks 1 --completed-sessions 5 --current-tier "Tier 1" --out artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/session_health.json`
+   - installed CLI: `tradebot-mt5-paper-health`
 
 ## Green / Yellow / Red Thresholds
 
