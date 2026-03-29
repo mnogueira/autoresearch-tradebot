@@ -1,0 +1,59 @@
+{
+  "period": {
+    "start_date": "2025-12-19",
+    "end_date": "2026-03-20",
+    "trading_days": 60
+  },
+  "variants": {
+    "tier2_cooldown_25m": {
+      "metrics": {
+        "start_date": "2025-12-19",
+        "end_date": "2026-03-20",
+        "trading_days": 60,
+        "total_trades": 90,
+        "win_rate": 0.7444,
+        "net_profit_brl": 30.0,
+        "avg_profit_brl": 0.33,
+        "avg_win_brl": 28.96,
+        "avg_loss_brl": -83.04,
+        "profit_factor": 1.0157,
+        "max_drawdown_pct": 5.62,
+        "expected_payoff": 0.33,
+        "on_tester_value": 5.339474
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 0.0836,
+        "calmar_ratio": 0.2253,
+        "omega_ratio": 1.0197,
+        "annual_return_pct": 1.27,
+        "max_drawdown_frac": 0.056185
+      },
+      "sortino_weighted_composite": 0.3133
+    },
+    "tier3_cooldown_25m_maxhold150": {
+      "metrics": {
+        "start_date": "2025-12-19",
+        "end_date": "2026-03-20",
+        "trading_days": 60,
+        "total_trades": 90,
+        "win_rate": 0.7444,
+        "net_profit_brl": 30.0,
+        "avg_profit_brl": 0.33,
+        "avg_win_brl": 28.96,
+        "avg_loss_brl": -83.04,
+        "profit_factor": 1.0157,
+        "max_drawdown_pct": 5.62,
+        "expected_payoff": 0.33,
+        "on_tester_value": 5.339474
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 0.0836,
+        "calmar_ratio": 0.2253,
+        "omega_ratio": 1.0197,
+        "annual_return_pct": 1.27,
+        "max_drawdown_frac": 0.056185
+      },
+      "sortino_weighted_composite": 0.3133
+    }
+  }
+}

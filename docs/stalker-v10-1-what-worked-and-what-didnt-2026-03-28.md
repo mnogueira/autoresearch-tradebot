@@ -7,7 +7,7 @@
 | `SL/TP` optimization | `SL 0.84 / TP 0.30` improved the surgical baseline to `R$16,025`, `PF 1.4280`, `DD 4.62%` | This was the first major quality jump and became the anchor for everything that followed. |
 | Session filter | `10:00, 11:00, 12:00, 14:00` produced `R$15,965`, `PF 1.4438`, `DD 4.04%` | Narrowing to the best hours improved quality without killing the edge. |
 | Trade cooldown | `25m` cooldown produced `R$14,350`, `PF 1.4749`, `DD 3.30%`, composite `3.1158` | This was the key cost-control breakthrough, and the final sweep nudged the best exact cooldown setting from `30m` to `25m`. |
-| Max hold | `120` M1 bars on top of the new `25m` cooldown produced `R$14,400`, `PF 1.4774`, `DD 3.29%`, composite `3.1303` | Small but real improvement on the new cooldown winner and the best deployable exact composite in the sprint. |
+| Max hold | `150` M1 bars on top of the new `25m` cooldown produced `R$14,420`, `PF 1.4784`, `DD 3.28%`, composite `3.1340` | Small but real improvement on the new cooldown winner and the best deployable exact composite in the sprint, though the recent `60`-day tape did not reward it over Tier 2. |
 | Simplification test | Cooldown-only variant kept `99.65%` of net and `99.82%` of PF versus the max-hold leader | This tells us the strategy is not over-dependent on the max-hold timer. |
 | Walk-forward validation | `70/30` holdout on the max-hold leader: train `PF 1.5332`, test `PF 1.3668` | The core strategy held up out of sample. |
 | Regime awareness | Trend-day production slice: `R$7,535`, `PF 1.9183`, `DD 3.38%` | Most of the quality edge comes from trend days. |

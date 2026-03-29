@@ -55,6 +55,8 @@
 
 - Last `30` trading days: soft but still positive
   - `R$40`, `PF 1.0357`, `DD 4.67%`
+- Last `60` trading days: Tier 2 and Tier 3 were identical
+  - `R$30`, `PF 1.0157`, `DD 5.62%`
 - Last `10` trading days: strong recovery
   - `R$455`, `PF 4.25`, `DD 0.81%`
 - Last `5` trading days: still solid
@@ -100,3 +102,4 @@
 - The strategy is mature.
 - Monday should be a cautious paper-validation launch, not a scale-up day.
 - The best live-ready answer is still the validated MT5 base, with Tier 2 as the cleanest next upgrade.
+- The new `150m` Tier 3 is the strongest exact full-sample line, but the current `60`-day tape did not reward it over Tier 2.
