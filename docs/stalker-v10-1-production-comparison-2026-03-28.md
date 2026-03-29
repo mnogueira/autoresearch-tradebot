@@ -37,8 +37,8 @@ Source:
   - do not trade above `2` ticks
 - Recent corrected `10d` windows were still positive, so the setup is not obviously dead intraday
 - A widened-target, lower-frequency corrected survivor does exist now:
-  - Tier 2A geometry with `TP 0.48` and `60m` cooldown
-  - but its holdout is too weak to promote yet
+  - strongest version so far is Tier 2A geometry with `TP 0.48`, `60m` cooldown, Friday off, and skip last `1` contract day
+  - but it is still research-only until host-side MT5 validation exists
 - But the corrected full-sample and holdout profiles are not strong enough to justify automatic promotion beyond Tier 1
 
 ## Historical Note

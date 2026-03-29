@@ -40,13 +40,21 @@ Corrected rerun:
 
 - Adding a `150m` max-hold to the Friday-off corrected survivor improved it only marginally:
   - `R$2,153`, `PF 1.0679`, `DD 11.68%`, composite `0.4422`
-  - `70/30` test: `R$623`, `PF 1.0754`, `DD 9.53%`
+  - artifact: [summary.json](/c:/Dev/autoresearch-tradebot/artifacts/outputs/stalker_v10_1_corrected_cost_survivor_maxhold150_20260329/summary.json)
+- Skipping the last contract day helped more:
+  - `R$2,543`, `PF 1.0853`, `DD 9.60%`, composite `0.5131`
+  - `70/30` test: `R$879`, `PF 1.1142`, `DD 8.77%`
   - recent `60d`: `R$312`, `PF 1.2708`
-- Artifact:
-  - [summary.json](/c:/Dev/autoresearch-tradebot/artifacts/outputs/stalker_v10_1_corrected_cost_survivor_maxhold150_20260329/summary.json)
+  - artifact: [summary.json](/c:/Dev/autoresearch-tradebot/artifacts/outputs/stalker_v10_1_corrected_cost_survivor_skip_last1_20260329/summary.json)
 - Interpretation:
-  - `150m` max-hold is a small local improvement on the first Friday-off survivor
-  - it does not change the Monday plan or the core conclusion that realistic costs leave only a thin corrected edge
+  - the best corrected-cost static branch so far is now:
+    - strengthened Tier 2A geometry
+    - `TP 0.48`
+    - `60m` cooldown
+    - `AllowFriday=false`
+    - skip last `1` contract day
+  - this is the first corrected-cost branch that is clearly positive full sample and clearly positive on the 70/30 holdout
+  - it still does not change the Monday plan because it lacks host-side MT5 validation and remains a materially different operating profile
 
 ## Current Best Static Corrected-Cost Survivor
 
