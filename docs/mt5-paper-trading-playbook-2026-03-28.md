@@ -93,6 +93,8 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
   - test `R$3,440`, `PF 1.4086`, `DD 4.21%`
 - Recent `60`-trading-day check:
   - `R$30`, `PF 1.0157`, `DD 5.62%`
+- Recent `10`-trading-day check:
+  - exact tie with plain Tier 2 at `R$455`, `PF 4.25`, `DD 0.81%`
 - Operational note:
   - this is the cleaner ROC-based post-Monday validation target if the desk prefers to stay closer to Tier 2 than Tier 3
 

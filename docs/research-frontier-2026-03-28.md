@@ -84,6 +84,8 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - recent-regime reality check was still soft:
     - last `60` trading days: `R$30`, `PF 1.0157`, `DD 5.62%`
   - the simpler Tier 2 + `ROC(5)` agreement line also held the same recent `60`-day readout while keeping the simpler cooldown-only structure
+  - the latest `10`-trading-day window also failed to separate Tier 2 from Tier 2 + `ROC(5)`:
+    - both `R$455`, `PF 4.25`, `DD 0.81%`
   - tested agreement windows on Tier 2 ranked cleanly:
     - `ROC(5)`: `R$14,560`, `PF 1.4900`, `DD 3.30%`, composite `3.1493`
     - `ROC(20)`: `R$14,350`, `PF 1.4760`, `DD 3.30%`, composite `3.1117`

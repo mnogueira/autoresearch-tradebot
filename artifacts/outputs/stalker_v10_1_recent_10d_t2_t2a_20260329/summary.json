@@ -1,0 +1,56 @@
+{
+  "tier2_recent10": {
+    "metrics": {
+      "start_date": "2026-03-09",
+      "end_date": "2026-03-20",
+      "trading_days": 10,
+      "total_trades": 16,
+      "win_rate": 0.9375,
+      "net_profit_brl": 455.0,
+      "avg_profit_brl": 28.44,
+      "avg_win_brl": 39.67,
+      "avg_loss_brl": -140.0,
+      "profit_factor": 4.25,
+      "max_drawdown_pct": 0.81,
+      "expected_payoff": 28.44,
+      "on_tester_value": 559.382353
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 8.4975,
+      "calmar_ratio": 254.3382,
+      "omega_ratio": 6.3529,
+      "annual_return_pct": 206.88,
+      "max_drawdown_frac": 0.008134
+    },
+    "sortino_weighted_composite": 81.8208
+  },
+  "tier2_roc5_recent10": {
+    "metrics": {
+      "start_date": "2026-03-09",
+      "end_date": "2026-03-20",
+      "trading_days": 10,
+      "total_trades": 16,
+      "win_rate": 0.9375,
+      "net_profit_brl": 455.0,
+      "avg_profit_brl": 28.44,
+      "avg_win_brl": 39.67,
+      "avg_loss_brl": -140.0,
+      "profit_factor": 4.25,
+      "max_drawdown_pct": 0.81,
+      "expected_payoff": 28.44,
+      "on_tester_value": 559.382353
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 8.4975,
+      "calmar_ratio": 254.3382,
+      "omega_ratio": 6.3529,
+      "annual_return_pct": 206.88,
+      "max_drawdown_frac": 0.008134
+    },
+    "sortino_weighted_composite": 81.8208
+  },
+  "notes": [
+    "The latest 10-trading-day window did not separate Tier 2 from Tier 2A.",
+    "That keeps the upgrade order conservative: plain Tier 2 first, ROC Tier 2A second."
+  ]
+}

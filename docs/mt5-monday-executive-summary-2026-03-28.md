@@ -42,6 +42,8 @@
   - Tier 1 only
 - After `5` clean paper sessions:
   - Tier 2
+- After Tier 2 behaves cleanly:
+  - Tier 2A, `25m` cooldown + `ROC(5)` agreement
 - After another clean week:
   - Tier 3
 - Best next ROC validation after the plain Tier 2 line:
@@ -68,6 +70,7 @@
   - `R$30`, `PF 1.0157`, `DD 5.62%`
 - Last `10` trading days: strong recovery
   - `R$455`, `PF 4.25`, `DD 0.81%`
+  - Tier 2 and Tier 2A were identical in that latest `10`-day window
 - Last `5` trading days: still solid
   - `R$110`, `PF 1.7857`, `DD 0.84%`
 - Seasonal context on the Tier 2 exact line:
