@@ -66,6 +66,11 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - a simpler discrete two-tier sizing approximation did not capture the same upside:
     - best case on strengthened Tier 2A, `0.75x/1.25x` around the median signal-strength split: `R$16,025`, `PF 1.5098`, `DD 3.50%`, composite `3.0948`
     - interpretation: the sizing frontier still looks smoother than a simple binary strong-vs-normal rule
+  - a volatility-aware sizing overlay did produce a stronger research-only ceiling:
+    - strengthened Tier 2A with `0.75x` size on top-ATR days and full size otherwise:
+    - `R$14,808.75`, `PF 1.5239`, `DD 2.75%`, composite `3.5722`
+    - stronger cuts on top-ATR days (`0.5x`) raised PF further but gave up too much net, while boosting low-ATR days as well was weaker on balance
+    - interpretation: the evidence now points even more strongly toward execution and sizing as the remaining upside, not another signal-family tweak
   - a practical portfolio sleeve between the Tier 1 exact analog and strengthened Tier 2A also fell short:
     - `R$16,392.50`, `PF 1.4572`, `DD 3.91%`, composite `3.0592`
     - interpretation: adding the validated base sleeve dilutes the stronger local-geometry edge more than it helps, so the clean post-Monday path is still just Tier 2 -> Tier 2A
@@ -152,7 +157,7 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - Monday/Wednesday/Thursday only stayed secondary even with the time-widened stop: `R$9,500`, `PF 1.6525`, `DD 3.19%`, composite `2.3232`
   - interpretation: plain ATR trailing and a wider ATR target do not improve the deployable frontier enough to justify more tuning right now
 - Final maximum-quality composite pass:
-  - adding the confidence-weighted research overlay on top of the time-widened stop produced the strongest raw composite of the whole sprint:
+  - adding the confidence-weighted research overlay on top of the time-widened stop produced the earlier strongest raw research-only composite before the ATR-regime sizing overlay:
     - `R$18,359.32`, `PF 1.4993`, `DD 3.72%`, composite `3.1377`
   - a simpler research-only equal-weight blend of the top two exact strategies also nudged past the best single exact variant:
     - `R$14,202.50`, `PF 1.4885`, `DD 3.27%`, composite `3.0724`

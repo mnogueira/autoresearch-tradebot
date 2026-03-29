@@ -10090,6 +10090,77 @@
     "rank": 358
   },
   {
+    "name": "tier2a_high_atr_three_quarter",
+    "family": "stalker_v10_1_atr_regime_sizing_followup",
+    "screening_method": "atr_regime_sizing_followup",
+    "comparison_tier": "research_sizing",
+    "mt5_ready": false,
+    "test_total_trades": 1571,
+    "test_net_profit_brl": 14808.75,
+    "test_profit_factor": 1.5239,
+    "test_on_tester_value": 5390.097451,
+    "test_max_drawdown_pct": 2.75,
+    "test_win_rate": 0.8097,
+    "notes": "Strengthened Tier 2A with ATR-regime sizing overlay (1.0x low, 1.0x medium, 0.75x high ATR).",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_atr_regime_sizing_followups_20260329\\summary.json",
+    "params": {
+      "management": {
+        "max_bars_in_trade": null,
+        "partial_profit_enabled": false,
+        "partial_fraction": 0.5,
+        "round_trip_cost_multiplier": 1.0,
+        "spread_multiplier": 1.0,
+        "fixed_spread_ticks": null,
+        "max_entry_spread_ticks": null,
+        "min_minutes_between_entries": 28,
+        "max_daily_profit_brl": null,
+        "max_weekly_profit_brl": null,
+        "max_consecutive_losses_per_day": null,
+        "recent_trade_pnl_lookback": null,
+        "min_recent_trade_pnl_brl": null,
+        "cooldown_after_win_minutes": null,
+        "cooldown_after_loss_minutes": null,
+        "loss_exit_atr_mult": null,
+        "trail_after_target_fraction": null,
+        "trail_lock_target_fraction": null,
+        "atr_trailing_activation_fraction": null,
+        "profitable_trail_start_bars": null,
+        "profitable_trail_step_bars": 1,
+        "profitable_trail_step_ticks": 0,
+        "keep_profitable_overnight": false,
+        "win_streak_threshold": null,
+        "tp_scale_after_win_streak": null,
+        "patience_pullback_fraction": null,
+        "patience_max_wait_bars": null,
+        "micro_pullback_ticks": null,
+        "micro_pullback_max_wait_bars": null,
+        "confirmation_candle_required": false,
+        "confirmation_wait_bars": 1,
+        "confirmation_consecutive_bars": 1,
+        "profit_lock_activation_fraction": null,
+        "profit_lock_target_fraction": null,
+        "widen_stop_after_bars": null,
+        "widened_sl_atr_mult": null,
+        "atr_trailing_distance_mult": null,
+        "trend_flip_exit_bars": null
+      },
+      "roc_agreement_bars": 5,
+      "ATR_Length": 10,
+      "NumDaysToConsiderPreviousContractMARange": 2,
+      "atr_regime_sizing": {
+        "lookback_days": 60,
+        "low_weight": 1.0,
+        "medium_weight": 1.0,
+        "high_weight": 0.75
+      }
+    },
+    "sortino_ratio": 2.0755,
+    "calmar_ratio": 7.3362,
+    "omega_ratio": 1.6679,
+    "sortino_weighted_composite": 3.5722,
+    "rank": 359
+  },
+  {
     "name": "tier2a_rollover_tail_1d_else_tier3_local_geometry",
     "family": "stalker_v10_1_rollover_window_sweep_followup",
     "screening_method": "rollover_window_sweep_followup",
@@ -10193,7 +10264,7 @@
     "calmar_ratio": 6.6967,
     "omega_ratio": 1.6566,
     "sortino_weighted_composite": 3.3578,
-    "rank": 359
+    "rank": 360
   },
   {
     "name": "tier2a_last1_else_tier3",
@@ -10298,7 +10369,7 @@
     "calmar_ratio": 6.6967,
     "omega_ratio": 1.6566,
     "sortino_weighted_composite": 3.3578,
-    "rank": 360
+    "rank": 361
   },
   {
     "name": "tier2a_rollover_tail_else_tier3_local_geometry",
@@ -10404,7 +10475,7 @@
     "calmar_ratio": 6.6717,
     "omega_ratio": 1.6519,
     "sortino_weighted_composite": 3.343,
-    "rank": 361
+    "rank": 362
   },
   {
     "name": "tier2a_rollover_tail_3d_else_tier3_local_geometry",
@@ -10510,7 +10581,149 @@
     "calmar_ratio": 6.6717,
     "omega_ratio": 1.6519,
     "sortino_weighted_composite": 3.343,
-    "rank": 362
+    "rank": 363
+  },
+  {
+    "name": "tier2a_low_up_high_three_quarter",
+    "family": "stalker_v10_1_atr_regime_sizing_followup",
+    "screening_method": "atr_regime_sizing_followup",
+    "comparison_tier": "research_sizing",
+    "mt5_ready": false,
+    "test_total_trades": 1571,
+    "test_net_profit_brl": 16573.75,
+    "test_profit_factor": 1.5264,
+    "test_on_tester_value": 5009.481706,
+    "test_max_drawdown_pct": 3.31,
+    "test_win_rate": 0.8097,
+    "notes": "Strengthened Tier 2A with ATR-regime sizing overlay (1.25x low, 1.0x medium, 0.75x high ATR).",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_atr_regime_sizing_followups_20260329\\summary.json",
+    "params": {
+      "management": {
+        "max_bars_in_trade": null,
+        "partial_profit_enabled": false,
+        "partial_fraction": 0.5,
+        "round_trip_cost_multiplier": 1.0,
+        "spread_multiplier": 1.0,
+        "fixed_spread_ticks": null,
+        "max_entry_spread_ticks": null,
+        "min_minutes_between_entries": 28,
+        "max_daily_profit_brl": null,
+        "max_weekly_profit_brl": null,
+        "max_consecutive_losses_per_day": null,
+        "recent_trade_pnl_lookback": null,
+        "min_recent_trade_pnl_brl": null,
+        "cooldown_after_win_minutes": null,
+        "cooldown_after_loss_minutes": null,
+        "loss_exit_atr_mult": null,
+        "trail_after_target_fraction": null,
+        "trail_lock_target_fraction": null,
+        "atr_trailing_activation_fraction": null,
+        "profitable_trail_start_bars": null,
+        "profitable_trail_step_bars": 1,
+        "profitable_trail_step_ticks": 0,
+        "keep_profitable_overnight": false,
+        "win_streak_threshold": null,
+        "tp_scale_after_win_streak": null,
+        "patience_pullback_fraction": null,
+        "patience_max_wait_bars": null,
+        "micro_pullback_ticks": null,
+        "micro_pullback_max_wait_bars": null,
+        "confirmation_candle_required": false,
+        "confirmation_wait_bars": 1,
+        "confirmation_consecutive_bars": 1,
+        "profit_lock_activation_fraction": null,
+        "profit_lock_target_fraction": null,
+        "widen_stop_after_bars": null,
+        "widened_sl_atr_mult": null,
+        "atr_trailing_distance_mult": null,
+        "trend_flip_exit_bars": null
+      },
+      "roc_agreement_bars": 5,
+      "ATR_Length": 10,
+      "NumDaysToConsiderPreviousContractMARange": 2,
+      "atr_regime_sizing": {
+        "lookback_days": 60,
+        "low_weight": 1.25,
+        "medium_weight": 1.0,
+        "high_weight": 0.75
+      }
+    },
+    "sortino_ratio": 2.0645,
+    "calmar_ratio": 6.6,
+    "omega_ratio": 1.67,
+    "sortino_weighted_composite": 3.3462,
+    "rank": 364
+  },
+  {
+    "name": "tier2a_high_atr_half",
+    "family": "stalker_v10_1_atr_regime_sizing_followup",
+    "screening_method": "atr_regime_sizing_followup",
+    "comparison_tier": "research_sizing",
+    "mt5_ready": false,
+    "test_total_trades": 1571,
+    "test_net_profit_brl": 13647.5,
+    "test_profit_factor": 1.5354,
+    "test_on_tester_value": 5008.908207,
+    "test_max_drawdown_pct": 2.72,
+    "test_win_rate": 0.8097,
+    "notes": "Strengthened Tier 2A with ATR-regime sizing overlay (1.0x low, 1.0x medium, 0.5x high ATR).",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_atr_regime_sizing_followups_20260329\\summary.json",
+    "params": {
+      "management": {
+        "max_bars_in_trade": null,
+        "partial_profit_enabled": false,
+        "partial_fraction": 0.5,
+        "round_trip_cost_multiplier": 1.0,
+        "spread_multiplier": 1.0,
+        "fixed_spread_ticks": null,
+        "max_entry_spread_ticks": null,
+        "min_minutes_between_entries": 28,
+        "max_daily_profit_brl": null,
+        "max_weekly_profit_brl": null,
+        "max_consecutive_losses_per_day": null,
+        "recent_trade_pnl_lookback": null,
+        "min_recent_trade_pnl_brl": null,
+        "cooldown_after_win_minutes": null,
+        "cooldown_after_loss_minutes": null,
+        "loss_exit_atr_mult": null,
+        "trail_after_target_fraction": null,
+        "trail_lock_target_fraction": null,
+        "atr_trailing_activation_fraction": null,
+        "profitable_trail_start_bars": null,
+        "profitable_trail_step_bars": 1,
+        "profitable_trail_step_ticks": 0,
+        "keep_profitable_overnight": false,
+        "win_streak_threshold": null,
+        "tp_scale_after_win_streak": null,
+        "patience_pullback_fraction": null,
+        "patience_max_wait_bars": null,
+        "micro_pullback_ticks": null,
+        "micro_pullback_max_wait_bars": null,
+        "confirmation_candle_required": false,
+        "confirmation_wait_bars": 1,
+        "confirmation_consecutive_bars": 1,
+        "profit_lock_activation_fraction": null,
+        "profit_lock_target_fraction": null,
+        "widen_stop_after_bars": null,
+        "widened_sl_atr_mult": null,
+        "atr_trailing_distance_mult": null,
+        "trend_flip_exit_bars": null
+      },
+      "roc_agreement_bars": 5,
+      "ATR_Length": 10,
+      "NumDaysToConsiderPreviousContractMARange": 2,
+      "atr_regime_sizing": {
+        "lookback_days": 60,
+        "low_weight": 1.0,
+        "medium_weight": 1.0,
+        "high_weight": 0.5
+      }
+    },
+    "sortino_ratio": 2.1019,
+    "calmar_ratio": 6.9723,
+    "omega_ratio": 1.6849,
+    "sortino_weighted_composite": 3.4796,
+    "rank": 365
   },
   {
     "name": "tier3_local_geometry_reference",
@@ -10575,7 +10788,7 @@
     "calmar_ratio": 6.6019,
     "omega_ratio": 1.6474,
     "sortino_weighted_composite": 3.3186,
-    "rank": 363
+    "rank": 366
   },
   {
     "name": "portfolio_equal_weight_t2a_t3_local_geometry",
@@ -10684,7 +10897,7 @@
     "calmar_ratio": 6.5957,
     "omega_ratio": 1.6553,
     "sortino_weighted_composite": 3.3209,
-    "rank": 364
+    "rank": 367
   },
   {
     "name": "tier2a_roc5_atr10_contractlookback2_cooldown28",
@@ -10751,7 +10964,7 @@
     "calmar_ratio": 6.5895,
     "omega_ratio": 1.6541,
     "sortino_weighted_composite": 3.3124,
-    "rank": 365
+    "rank": 368
   },
   {
     "name": "tier2a_local_geometry_reference",
@@ -10816,7 +11029,7 @@
     "calmar_ratio": 6.5895,
     "omega_ratio": 1.6541,
     "sortino_weighted_composite": 3.3124,
-    "rank": 366
+    "rank": 369
   },
   {
     "name": "tier2a_rsi14_confirm_50",
@@ -10844,7 +11057,7 @@
     "calmar_ratio": 6.5895,
     "omega_ratio": 1.654,
     "sortino_weighted_composite": 3.3121,
-    "rank": 367
+    "rank": 370
   },
   {
     "name": "tier2a_ema50_slope_sign",
@@ -10871,7 +11084,7 @@
     "calmar_ratio": 6.5895,
     "omega_ratio": 1.6541,
     "sortino_weighted_composite": 3.3124,
-    "rank": 368
+    "rank": 371
   },
   {
     "name": "tier2a_atr10_lookback2_roc5_cooldown28",
@@ -10936,7 +11149,7 @@
     "calmar_ratio": 6.5895,
     "omega_ratio": 1.6541,
     "sortino_weighted_composite": 3.3124,
-    "rank": 369
+    "rank": 372
   },
   {
     "name": "tier2a_cci_centerline",
@@ -10963,7 +11176,7 @@
     "calmar_ratio": 6.5851,
     "omega_ratio": 1.6534,
     "sortino_weighted_composite": 3.3098,
-    "rank": 370
+    "rank": 373
   },
   {
     "name": "tier2a_macd_line_sign",
@@ -10990,7 +11203,7 @@
     "calmar_ratio": 6.5807,
     "omega_ratio": 1.6529,
     "sortino_weighted_composite": 3.3076,
-    "rank": 371
+    "rank": 374
   },
   {
     "name": "tier2a_williams_r_centerline",
@@ -11017,7 +11230,7 @@
     "calmar_ratio": 6.5807,
     "omega_ratio": 1.6527,
     "sortino_weighted_composite": 3.3074,
-    "rank": 372
+    "rank": 375
   },
   {
     "name": "tier2a_tsi_centerline",
@@ -11044,7 +11257,7 @@
     "calmar_ratio": 6.5807,
     "omega_ratio": 1.6529,
     "sortino_weighted_composite": 3.3076,
-    "rank": 373
+    "rank": 376
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_timewidened_confidence_overlay",
@@ -11076,7 +11289,7 @@
     "calmar_ratio": 6.303,
     "omega_ratio": 1.6315,
     "sortino_weighted_composite": 3.1377,
-    "rank": 374
+    "rank": 377
   },
   {
     "name": "tier2a_roc5_atr10_contractlookback2",
@@ -11143,7 +11356,7 @@
     "calmar_ratio": 6.5886,
     "omega_ratio": 1.6436,
     "sortino_weighted_composite": 3.3117,
-    "rank": 375
+    "rank": 378
   },
   {
     "name": "tier2a_local_reference",
@@ -11214,7 +11427,7 @@
     "calmar_ratio": 6.5886,
     "omega_ratio": 1.6436,
     "sortino_weighted_composite": 3.3117,
-    "rank": 376
+    "rank": 379
   },
   {
     "name": "tier2a_roc5_atr10_contractlookback2_cooldown25",
@@ -11281,7 +11494,7 @@
     "calmar_ratio": 6.5886,
     "omega_ratio": 1.6436,
     "sortino_weighted_composite": 3.3117,
-    "rank": 377
+    "rank": 380
   },
   {
     "name": "tier2a_di_sign",
@@ -11308,7 +11521,7 @@
     "calmar_ratio": 6.5646,
     "omega_ratio": 1.6505,
     "sortino_weighted_composite": 3.2986,
-    "rank": 378
+    "rank": 381
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_sl0p84_tp0p30_confidence_overlay",
@@ -11340,7 +11553,7 @@
     "calmar_ratio": 6.2356,
     "omega_ratio": 1.6255,
     "sortino_weighted_composite": 3.1301,
-    "rank": 379
+    "rank": 382
   },
   {
     "name": "tier2a_roc5_atr10_contractlookback2_cooldown30",
@@ -11407,7 +11620,7 @@
     "calmar_ratio": 6.4453,
     "omega_ratio": 1.6359,
     "sortino_weighted_composite": 3.2331,
-    "rank": 380
+    "rank": 383
   },
   {
     "name": "tier2a_cmf_centerline",
@@ -11434,7 +11647,7 @@
     "calmar_ratio": 6.4722,
     "omega_ratio": 1.6308,
     "sortino_weighted_composite": 3.1984,
-    "rank": 381
+    "rank": 384
   },
   {
     "name": "tier2a_roc5_atr14_contractlookback3",
@@ -11501,7 +11714,7 @@
     "calmar_ratio": 6.4674,
     "omega_ratio": 1.6336,
     "sortino_weighted_composite": 3.2811,
-    "rank": 382
+    "rank": 385
   },
   {
     "name": "tier2a_horizon_reference",
@@ -11572,7 +11785,7 @@
     "calmar_ratio": 6.4674,
     "omega_ratio": 1.6336,
     "sortino_weighted_composite": 3.2811,
-    "rank": 383
+    "rank": 386
   },
   {
     "name": "tier2_range_tier2a_local_trend_switch",
@@ -11640,7 +11853,7 @@
     "calmar_ratio": 6.3333,
     "omega_ratio": 1.6407,
     "sortino_weighted_composite": 3.2534,
-    "rank": 384
+    "rank": 387
   },
   {
     "name": "tier3_confidence_weighted_overlay",
@@ -11666,7 +11879,7 @@
     "calmar_ratio": 5.945,
     "omega_ratio": 1.6245,
     "sortino_weighted_composite": 3.0623,
-    "rank": 385
+    "rank": 388
   },
   {
     "name": "tier3_trend_strength_overlay",
@@ -11729,7 +11942,78 @@
     "calmar_ratio": 5.945,
     "omega_ratio": 1.6245,
     "sortino_weighted_composite": 3.0623,
-    "rank": 386
+    "rank": 389
+  },
+  {
+    "name": "tier2a_low_up_high_down",
+    "family": "stalker_v10_1_atr_regime_sizing_followup",
+    "screening_method": "atr_regime_sizing_followup",
+    "comparison_tier": "research_sizing",
+    "mt5_ready": false,
+    "test_total_trades": 1571,
+    "test_net_profit_brl": 15412.5,
+    "test_profit_factor": 1.5369,
+    "test_on_tester_value": 4640.875,
+    "test_max_drawdown_pct": 3.32,
+    "test_win_rate": 0.8097,
+    "notes": "Strengthened Tier 2A with ATR-regime sizing overlay (1.25x low, 1.0x medium, 0.5x high ATR).",
+    "source_artifact": "C:\\Dev\\autoresearch-tradebot\\artifacts\\outputs\\stalker_v10_1_atr_regime_sizing_followups_20260329\\summary.json",
+    "params": {
+      "management": {
+        "max_bars_in_trade": null,
+        "partial_profit_enabled": false,
+        "partial_fraction": 0.5,
+        "round_trip_cost_multiplier": 1.0,
+        "spread_multiplier": 1.0,
+        "fixed_spread_ticks": null,
+        "max_entry_spread_ticks": null,
+        "min_minutes_between_entries": 28,
+        "max_daily_profit_brl": null,
+        "max_weekly_profit_brl": null,
+        "max_consecutive_losses_per_day": null,
+        "recent_trade_pnl_lookback": null,
+        "min_recent_trade_pnl_brl": null,
+        "cooldown_after_win_minutes": null,
+        "cooldown_after_loss_minutes": null,
+        "loss_exit_atr_mult": null,
+        "trail_after_target_fraction": null,
+        "trail_lock_target_fraction": null,
+        "atr_trailing_activation_fraction": null,
+        "profitable_trail_start_bars": null,
+        "profitable_trail_step_bars": 1,
+        "profitable_trail_step_ticks": 0,
+        "keep_profitable_overnight": false,
+        "win_streak_threshold": null,
+        "tp_scale_after_win_streak": null,
+        "patience_pullback_fraction": null,
+        "patience_max_wait_bars": null,
+        "micro_pullback_ticks": null,
+        "micro_pullback_max_wait_bars": null,
+        "confirmation_candle_required": false,
+        "confirmation_wait_bars": 1,
+        "confirmation_consecutive_bars": 1,
+        "profit_lock_activation_fraction": null,
+        "profit_lock_target_fraction": null,
+        "widen_stop_after_bars": null,
+        "widened_sl_atr_mult": null,
+        "atr_trailing_distance_mult": null,
+        "trend_flip_exit_bars": null
+      },
+      "roc_agreement_bars": 5,
+      "ATR_Length": 10,
+      "NumDaysToConsiderPreviousContractMARange": 2,
+      "atr_regime_sizing": {
+        "lookback_days": 60,
+        "low_weight": 1.25,
+        "medium_weight": 1.0,
+        "high_weight": 0.5
+      }
+    },
+    "sortino_ratio": 2.0652,
+    "calmar_ratio": 6.2453,
+    "omega_ratio": 1.6852,
+    "sortino_weighted_composite": 3.2432,
+    "rank": 390
   },
   {
     "name": "tier2a_trend_strength_overlay",
@@ -11793,7 +12077,7 @@
     "calmar_ratio": 5.9289,
     "omega_ratio": 1.628,
     "sortino_weighted_composite": 3.0554,
-    "rank": 387
+    "rank": 391
   },
   {
     "name": "tier2a_local_geometry_reference_two_tier_0p75_1p25",
@@ -11863,7 +12147,7 @@
     "calmar_ratio": 6.0945,
     "omega_ratio": 1.6477,
     "sortino_weighted_composite": 3.0948,
-    "rank": 388
+    "rank": 392
   },
   {
     "name": "tier2_range_tier3_roc5_trend_switch",
@@ -11969,7 +12253,7 @@
     "calmar_ratio": 6.1735,
     "omega_ratio": 1.6501,
     "sortino_weighted_composite": 3.2148,
-    "rank": 389
+    "rank": 393
   },
   {
     "name": "tier2_range_tier3_roc5_trend_switch_adx_25p0",
@@ -12075,7 +12359,7 @@
     "calmar_ratio": 6.1735,
     "omega_ratio": 1.6501,
     "sortino_weighted_composite": 3.2148,
-    "rank": 390
+    "rank": 394
   },
   {
     "name": "tier2_range_tier3_roc5_trend_switch_adx_30p0",
@@ -12181,7 +12465,7 @@
     "calmar_ratio": 6.1651,
     "omega_ratio": 1.6459,
     "sortino_weighted_composite": 3.2056,
-    "rank": 391
+    "rank": 395
   },
   {
     "name": "tier2_range_tier3_roc5_trend_switch_adx_27p5",
@@ -12287,7 +12571,7 @@
     "calmar_ratio": 6.1494,
     "omega_ratio": 1.6448,
     "sortino_weighted_composite": 3.1989,
-    "rank": 392
+    "rank": 396
   },
   {
     "name": "tier3_local_geometry_reference_two_tier_0p75_1p25",
@@ -12357,7 +12641,7 @@
     "calmar_ratio": 6.0379,
     "omega_ratio": 1.6273,
     "sortino_weighted_composite": 3.0604,
-    "rank": 393
+    "rank": 397
   },
   {
     "name": "tier2a_contractrange_0p25",
@@ -12422,7 +12706,7 @@
     "calmar_ratio": 6.139,
     "omega_ratio": 1.6477,
     "sortino_weighted_composite": 3.1932,
-    "rank": 394
+    "rank": 398
   },
   {
     "name": "tier2_range_tier2a_trend_switch",
@@ -12487,7 +12771,7 @@
     "calmar_ratio": 6.1294,
     "omega_ratio": 1.645,
     "sortino_weighted_composite": 3.1964,
-    "rank": 395
+    "rank": 399
   },
   {
     "name": "tier2_range_tier3_roc5_trend_switch_adx_22p5",
@@ -12593,7 +12877,7 @@
     "calmar_ratio": 6.1007,
     "omega_ratio": 1.6426,
     "sortino_weighted_composite": 3.1801,
-    "rank": 396
+    "rank": 400
   },
   {
     "name": "tier2_range_tier3_roc5_trend_switch_adx_20p0",
@@ -12699,7 +12983,7 @@
     "calmar_ratio": 6.0781,
     "omega_ratio": 1.6394,
     "sortino_weighted_composite": 3.1676,
-    "rank": 397
+    "rank": 401
   },
   {
     "name": "tier2_range_tier3_roc7_trend_switch",
@@ -12805,7 +13089,7 @@
     "calmar_ratio": 6.0664,
     "omega_ratio": 1.6377,
     "sortino_weighted_composite": 3.169,
-    "rank": 398
+    "rank": 402
   },
   {
     "name": "tier2_range_tier3_roc8_trend_switch",
@@ -12911,7 +13195,7 @@
     "calmar_ratio": 6.0632,
     "omega_ratio": 1.6377,
     "sortino_weighted_composite": 3.1677,
-    "rank": 399
+    "rank": 403
   },
   {
     "name": "tier2_range_tier2a_horizon_trend_switch",
@@ -12979,7 +13263,7 @@
     "calmar_ratio": 6.0528,
     "omega_ratio": 1.6236,
     "sortino_weighted_composite": 3.1478,
-    "rank": 400
+    "rank": 404
   },
   {
     "name": "tier2_roc5_agreement",
@@ -13048,7 +13332,7 @@
     "calmar_ratio": 6.0402,
     "omega_ratio": 1.6362,
     "sortino_weighted_composite": 3.1493,
-    "rank": 401
+    "rank": 405
   },
   {
     "name": "tier2a_baseline",
@@ -13113,7 +13397,7 @@
     "calmar_ratio": 6.0402,
     "omega_ratio": 1.6362,
     "sortino_weighted_composite": 3.1493,
-    "rank": 402
+    "rank": 406
   },
   {
     "name": "tier2_range_tier3_roc10_trend_switch",
@@ -13219,7 +13503,7 @@
     "calmar_ratio": 6.0309,
     "omega_ratio": 1.6346,
     "sortino_weighted_composite": 3.1526,
-    "rank": 403
+    "rank": 407
   },
   {
     "name": "portfolio_equal_weight_t2_t2a",
@@ -13249,7 +13533,7 @@
     "calmar_ratio": 6.0079,
     "omega_ratio": 1.6315,
     "sortino_weighted_composite": 3.1372,
-    "rank": 404
+    "rank": 408
   },
   {
     "name": "tier2_range_tier3_roc3_trend_switch",
@@ -13355,7 +13639,7 @@
     "calmar_ratio": 5.9653,
     "omega_ratio": 1.6343,
     "sortino_weighted_composite": 3.1248,
-    "rank": 405
+    "rank": 409
   },
   {
     "name": "tier2_reference",
@@ -13423,7 +13707,7 @@
     "calmar_ratio": 5.9756,
     "omega_ratio": 1.6196,
     "sortino_weighted_composite": 3.1158,
-    "rank": 406
+    "rank": 410
   },
   {
     "name": "session_winner_equal_weight_ensemble_maxhold_timewidened",
@@ -13453,7 +13737,7 @@
     "calmar_ratio": 5.9735,
     "omega_ratio": 1.6178,
     "sortino_weighted_composite": 3.0724,
-    "rank": 407
+    "rank": 411
   },
   {
     "name": "tier2_roc8_agreement",
@@ -13522,7 +13806,7 @@
     "calmar_ratio": 5.944,
     "omega_ratio": 1.6272,
     "sortino_weighted_composite": 3.1205,
-    "rank": 408
+    "rank": 412
   },
   {
     "name": "session_winner_cooldown_30m_recent_entry_density_sizing_60m",
@@ -13544,7 +13828,7 @@
       "min_size_multiplier": 0.5,
       "max_size_multiplier": 1.0
     },
-    "rank": 409
+    "rank": 413
   },
   {
     "name": "tier2_roc7_agreement",
@@ -13613,7 +13897,7 @@
     "calmar_ratio": 5.9475,
     "omega_ratio": 1.6197,
     "sortino_weighted_composite": 3.1088,
-    "rank": 410
+    "rank": 414
   },
   {
     "name": "tier2_roc3_agreement",
@@ -13682,7 +13966,7 @@
     "calmar_ratio": 5.852,
     "omega_ratio": 1.6138,
     "sortino_weighted_composite": 3.0667,
-    "rank": 411
+    "rank": 415
   },
   {
     "name": "portfolio_equal_weight_tier1_tier2a",
@@ -13791,7 +14075,7 @@
     "calmar_ratio": 5.5409,
     "omega_ratio": 1.6499,
     "sortino_weighted_composite": 3.0592,
-    "rank": 412
+    "rank": 416
   },
   {
     "name": "tier2a_local_geometry_reference_two_tier_0p5_1p5",
@@ -13861,7 +14145,7 @@
     "calmar_ratio": 5.481,
     "omega_ratio": 1.6297,
     "sortino_weighted_composite": 2.7627,
-    "rank": 413
+    "rank": 417
   },
   {
     "name": "tier2a_contractrange_0p35",
@@ -13926,7 +14210,7 @@
     "calmar_ratio": 5.5647,
     "omega_ratio": 1.6027,
     "sortino_weighted_composite": 2.9386,
-    "rank": 414
+    "rank": 418
   },
   {
     "name": "tier2a_vwap_distance_overlay",
@@ -13949,7 +14233,7 @@
     "calmar_ratio": 5.2814,
     "omega_ratio": 1.634,
     "sortino_weighted_composite": 2.8228,
-    "rank": 415
+    "rank": 419
   },
   {
     "name": "tier2a_roc5_atr10_contractlookback2_cooldown20",
@@ -14016,7 +14300,7 @@
     "calmar_ratio": 5.2332,
     "omega_ratio": 1.6252,
     "sortino_weighted_composite": 2.8956,
-    "rank": 416
+    "rank": 420
   },
   {
     "name": "tier3_time_widened_confidence_overlay",
@@ -14082,7 +14366,7 @@
     "calmar_ratio": 4.9081,
     "omega_ratio": 1.6195,
     "sortino_weighted_composite": 2.7203,
-    "rank": 417
+    "rank": 421
   },
   {
     "name": "tier2a_roc5_atr10_contractlookback2_cooldown22",
@@ -14149,7 +14433,7 @@
     "calmar_ratio": 5.1425,
     "omega_ratio": 1.625,
     "sortino_weighted_composite": 2.8648,
-    "rank": 418
+    "rank": 422
   },
   {
     "name": "tier3_local_geometry_reference_two_tier_0p5_1p5",
@@ -14219,7 +14503,7 @@
     "calmar_ratio": 4.3845,
     "omega_ratio": 1.596,
     "sortino_weighted_composite": 2.4026,
-    "rank": 419
+    "rank": 423
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_mon_wed_thu_only_confidence_overlay",
@@ -14251,7 +14535,7 @@
     "calmar_ratio": 4.312,
     "omega_ratio": 1.7735,
     "sortino_weighted_composite": 2.239,
-    "rank": 420
+    "rank": 424
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_mon_wed_thu_timewidened_confidence_overlay",
@@ -14283,7 +14567,7 @@
     "calmar_ratio": 4.1715,
     "omega_ratio": 1.8028,
     "sortino_weighted_composite": 2.2019,
-    "rank": 421
+    "rank": 425
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_logistic_confidence_overlay",
@@ -14307,7 +14591,7 @@
     "calmar_ratio": 3.6733,
     "omega_ratio": 1.5354,
     "sortino_weighted_composite": 2.0685,
-    "rank": 422
+    "rank": 426
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_random_forest_confidence_overlay",
@@ -14331,7 +14615,7 @@
     "calmar_ratio": 3.6515,
     "omega_ratio": 1.5492,
     "sortino_weighted_composite": 2.1265,
-    "rank": 423
+    "rank": 427
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_logistic_core_confidence_overlay",
@@ -14355,7 +14639,7 @@
     "calmar_ratio": 3.6486,
     "omega_ratio": 1.5488,
     "sortino_weighted_composite": 2.1251,
-    "rank": 424
+    "rank": 428
   },
   {
     "name": "tier2a_retracement_0p20_contractrange_0p25",
@@ -14420,7 +14704,7 @@
     "calmar_ratio": 3.0064,
     "omega_ratio": 1.4249,
     "sortino_weighted_composite": 1.9741,
-    "rank": 425
+    "rank": 429
   },
   {
     "name": "tier2a_retracement_0p20",
@@ -14485,7 +14769,7 @@
     "calmar_ratio": 2.907,
     "omega_ratio": 1.4071,
     "sortino_weighted_composite": 1.9115,
-    "rank": 426
+    "rank": 430
   },
   {
     "name": "tier2a_retracement_0p30",
@@ -14550,7 +14834,7 @@
     "calmar_ratio": 2.7963,
     "omega_ratio": 1.3844,
     "sortino_weighted_composite": 1.7189,
-    "rank": 427
+    "rank": 431
   },
   {
     "name": "tier2a_retracement_0p30_contractrange_0p35",
@@ -14615,7 +14899,7 @@
     "calmar_ratio": 2.1882,
     "omega_ratio": 1.3288,
     "sortino_weighted_composite": 1.4394,
-    "rank": 428
+    "rank": 432
   },
   {
     "name": "session_winner_cooldown_30m_hourly_open_proxy",
@@ -14642,7 +14926,7 @@
         14
       ]
     },
-    "rank": 429
+    "rank": 433
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_random_forest_gate_0p55",
@@ -14666,7 +14950,7 @@
     "calmar_ratio": 0.0,
     "omega_ratio": 0.0,
     "sortino_weighted_composite": 0.0,
-    "rank": 430
+    "rank": 434
   },
   {
     "name": "session_winner_cooldown_30m_maxhold120_logistic_gate_0p55",
@@ -14690,6 +14974,6 @@
     "calmar_ratio": -0.078,
     "omega_ratio": 0.7013,
     "sortino_weighted_composite": 0.112,
-    "rank": 431
+    "rank": 435
   }
 ]

@@ -14,9 +14,10 @@
 - The current deployable signal family is probably near its ceiling on this data.
 - No live-ready exact variant beat the current exact leader by a meaningful margin on the Sortino-weighted composite.
 - The only higher composite scores came from research-only overlays:
+  - ATR-regime sizing on strengthened Tier 2A
   - confidence-weighted sizing
   - confidence-weighted sizing + time-widened stop
-  - equal-weight blend of the top two exact strategies
+  - weighted advanced research-only sleeve blends
 
 ## Current Ranking
 
@@ -26,7 +27,7 @@
 | Tier 2 | Session winner + `25m` cooldown | Best deployable exact composite in the cooldown sweep. |
 | Tier 2A | Session winner + `28m` cooldown + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2` | Strongest simpler exact post-Monday upgrade and best out-of-sample post-Monday line. |
 | Tier 3 | Session winner + `25m` cooldown + `150m` max-hold + `ROC(5)` agreement + `ATR_Length 10` + contract lookback `2` | Strongest aggressive exact research line, but still a later rollout step than Tier 2A. |
-| Tier 4 | Research Blend: equal-weight average of strengthened Tier 2A + strengthened Tier 3 | Strongest research-only smoothing sleeve, but not a Monday deployment preset. |
+| Tier 4 | Research-only advanced sleeves and sizing overlays | Highest raw ceiling comes from ATR-regime sizing and advanced directional sleeves, but neither is Monday-deployable as a static preset. |
 
 ## Recent Tape
 
