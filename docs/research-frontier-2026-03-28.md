@@ -34,6 +34,13 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - but the same variant was slightly weaker on the `70/30` test than the promoted Tier 2A:
       - test `R$3,825`, `PF 1.4271`, `DD 3.27%`, composite `3.4293`
     - interpretation: keep `ATR10/lookback2` as the Monday-facing promotion; `lookback1` is interesting in-sample but not strong enough out of sample to dislodge it yet
+  - the ROC-window follow-up on top of the promoted ATR10/lookback2 geometry also stayed stable:
+    - `ROC(5)`: `R$15,840`, `PF 1.4967`, `DD 3.21%`, composite `3.3117`
+    - `ROC(8)`: `R$15,650`, `PF 1.4850`, `DD 3.26%`, composite `3.2355`
+    - `ROC(7)`: `R$15,345`, `PF 1.4733`, `DD 3.23%`, composite `3.2005`
+    - `ROC(10)`: `R$15,460`, `PF 1.4782`, `DD 3.27%`, composite `3.1939`
+    - `ROC(3)`: `R$15,630`, `PF 1.4963`, `DD 3.49%`, composite `3.1260`
+    - interpretation: `ROC(5)` is still the local optimum even after the Tier 2A geometry promotion
 
 ## Final Ranking Follow-up
 
