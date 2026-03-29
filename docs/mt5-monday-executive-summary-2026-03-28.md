@@ -50,23 +50,30 @@ Corrected production rerun artifact:
   - full sample `R$2,143`, `PF 1.0674`, `DD 11.61%`
   - `70/30` test `R$623`, `PF 1.0754`, `DD 9.53%`
 
-## First Static Cost Survivor
+## Corrected-Cost Survivor Frontier
 
-- The first corrected-cost static survivor is now:
+- The first corrected-cost static survivor was:
   - Tier 2A geometry
   - `TP 0.48`
   - `60m` cooldown
+- The local refinement that is currently best is:
+  - Tier 2A geometry
+  - `TP 0.48`
+  - `60m` cooldown
+  - `AllowFriday=false`
+  - `150m` max-hold
 - Full sample:
-  - `R$2,285`, `PF 1.0545`, `DD 17.15%`
-- But the `70/30` test was only near-flat:
-  - `R$-68`, `PF 0.9941`, `DD 15.16%`
-- Recent windows were better:
-  - recent `60d`: `R$259`, `PF 1.1516`
-  - recent `30d`: `R$413`, `PF 1.4870`
+  - `R$2,153`, `PF 1.0679`, `DD 11.68%`
+- `70/30` test:
+  - `R$623`, `PF 1.0754`, `DD 9.53%`
+- Recent windows:
+  - recent `60d`: `R$312`, `PF 1.2708`
+  - recent `30d`: `R$363`, `PF 1.6722`
+  - recent `10d`: `R$231`, `PF 2.2419`
 - Read:
-  - this is the first real corrected-cost survivor
-  - it is promising enough for continued research
-  - it is still not strong enough to replace Monday Tier 1
+  - the edge can survive the corrected flat-cost model, but only after much wider targets and much lower trade frequency
+  - the `150m` max-hold only improves the Friday-off survivor marginally
+  - it is still research-only until host-side MT5 validation exists
 
 ## Monday Recommendation
 

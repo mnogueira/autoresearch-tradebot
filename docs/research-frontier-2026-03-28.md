@@ -36,6 +36,18 @@ Corrected rerun:
   - wider targets and fewer trades can rescue the edge under corrected costs
   - but this is still not a Monday promotion because it has not had host-side MT5 validation and materially changes the operating profile
 
+## Cost-Survivor Local Refinement
+
+- Adding a `150m` max-hold to the Friday-off corrected survivor improved it only marginally:
+  - `R$2,153`, `PF 1.0679`, `DD 11.68%`, composite `0.4422`
+  - `70/30` test: `R$623`, `PF 1.0754`, `DD 9.53%`
+  - recent `60d`: `R$312`, `PF 1.2708`
+- Artifact:
+  - [summary.json](/c:/Dev/autoresearch-tradebot/artifacts/outputs/stalker_v10_1_corrected_cost_survivor_maxhold150_20260329/summary.json)
+- Interpretation:
+  - `150m` max-hold is a small local improvement on the first Friday-off survivor
+  - it does not change the Monday plan or the core conclusion that realistic costs leave only a thin corrected edge
+
 ## What Survived Conceptually
 
 - `ROC(5)` still appears to be the only lightweight agreement family with repeatable incremental value inside the old pre-correction research space.
