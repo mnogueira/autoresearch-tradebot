@@ -102,6 +102,9 @@ This remains the safest paper-trading candidate because it is the best strategy 
       - all-sides `0.75x` trim remained the strongest non-directional version at composite `3.6833`
       - `70/30` test on the `0.70x` short-only trim: `R$3,610.50`, `PF 1.4271`, `DD 2.91%`, composite `3.5555`
       - recent `60` trading days: `R$334.50`, `PF 1.2046`, `DD 3.05%`
+      - stacking that trim with extra short-side Thursday/Friday de-risking did not help:
+        - `0.70x` high-ATR shorts + `0.85x` Thu/Fri shorts: composite `3.6240`
+        - `0.70x` high-ATR shorts + `0.75x` Thu/Fri shorts: composite `3.5379`
     - interpretation: the advanced branch’s high-volatility pain is concentrated more on the short sleeve than the long sleeve, but this is still a research-only sizing result rather than a Monday-ready preset
   - a practical portfolio sleeve between the Tier 1 exact analog and strengthened Tier 2A also fell short:
     - `R$16,392.50`, `PF 1.4572`, `DD 3.91%`, composite `3.0592`
