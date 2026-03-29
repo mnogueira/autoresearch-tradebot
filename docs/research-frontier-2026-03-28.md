@@ -77,6 +77,15 @@ This remains the safest paper-trading candidate because it is the best strategy 
     - `70/30` test: `R$3,748.75`, `PF 1.4704`, `DD 2.64%`, composite `4.0240`
     - recent `60` trading days: `R$402.50`, `PF 1.2733`, `DD 2.55%`
     - interpretation: the sizing edge does look portable across the stronger research branches, which further reinforces that the remaining frontier is mostly sizing and execution, not new signal families
+    - a finer high-ATR sweep confirmed `0.75x` is the local optimum on that advanced branch:
+      - `0.60x`: composite `3.6640`
+      - `0.50x`: composite `3.5947`
+      - `0.85x`: composite `3.5629`
+      - `0.25x`: composite `3.3836`
+      - `0.00x`: composite `2.9618`
+    - a simpler asymmetric low/high ATR test also failed to beat it:
+      - `1.25x` on low-ATR days and `0.50x` on high-ATR days: `R$15,940`, `PF 1.5560`, `DD 3.26%`, composite `3.3666`
+    - interpretation: the remaining sizing edge is mostly about trimming the highest-volatility days, not boosting low-volatility ones
   - a practical portfolio sleeve between the Tier 1 exact analog and strengthened Tier 2A also fell short:
     - `R$16,392.50`, `PF 1.4572`, `DD 3.91%`, composite `3.0592`
     - interpretation: adding the validated base sleeve dilutes the stronger local-geometry edge more than it helps, so the clean post-Monday path is still just Tier 2 -> Tier 2A
