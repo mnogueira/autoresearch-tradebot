@@ -90,6 +90,12 @@ Corrected rerun:
   - widening the short-only stop to `1.2` or `1.5` also failed to beat the `SL 1.0` short branch
   - widening the short-only target to `0.54` or `0.60` also failed; the short sleeve still wants `TP 0.48`
   - a research-only long/short TP split did help slightly (`long TP 0.42`, `short TP 0.48`), but still did not beat the balanced branch
+  - the first side-specific static branch that really did beat the balanced branch was:
+    - prune only long entries on top-ATR tercile days
+    - `R$3,243`, `PF 1.1284`, `DD 7.79%`
+    - `70/30` test `R$1,629`, `PF 1.2696`, `DD 6.00%`
+  - best short-only timing was `10/11/12`, but that still did not beat the long-ATR-pruned balanced branch
+  - slowing only longs to `120m` while leaving shorts at `60m` also failed to beat it
 - overly wide profit targets on the corrected-cost survivor:
   - `TP 0.54` weakened the full sample and flipped the recent `60d` and `10d` windows negative
   - `TP 0.60` was worse again and nearly flatlined the full-sample edge
@@ -121,12 +127,9 @@ Corrected rerun:
   - wider reward structures
   - or truly different signal families
 - Current best cost-aware lead:
-  - strongest full-sample branch:
-    - `TP 0.48` + `60m` cooldown + Friday off + skip last `1` contract day + `150m` max-hold on Tier 2A geometry
-  - strongest holdout branch:
-    - same branch, but without ROC agreement or max-hold
-  - strongest balanced branch:
-    - same simplified branch, but with `SL 1.0`
+  - strongest static corrected-cost branch:
+    - balanced simplified branch with `SL 1.0`, `TP 0.48`, `60m`, Friday off, skip last `1`
+    - prune only long entries on top-ATR tercile days
   - strongest corrected-cost directional sleeve:
     - short-only, `SL 1.0`, `TP 0.48`, `60m`, Friday off, skip last `1`
   - promising, but not robust enough yet to promote

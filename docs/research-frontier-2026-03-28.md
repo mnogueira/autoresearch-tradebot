@@ -244,6 +244,30 @@ Corrected rerun:
   - the corrected-cost survivor is real
   - but it is still regime-sensitive enough that it should be treated as a post-Monday MT5 validation target, not an automatic promotion
 
+## Corrected-Cost Long-ATR Prune Promotion
+
+- The first direction-aware static corrected-cost improvement that genuinely beat the balanced branch is:
+  - balanced branch core
+  - prune only **long** entries on top-ATR tercile days
+  - full sample: `R$3,243`, `PF 1.1284`, `DD 7.79%`, composite `0.6201`
+  - `70/30` test: `R$1,629`, `PF 1.2696`, `DD 6.00%`
+  - recent `60d`: `R$348`, `PF 1.4203`
+- Interpretation:
+  - under corrected costs, long entries are the weaker sleeve specifically in hotter volatility regimes
+  - pruning only those longs is better than pruning both directions and better than pure short-only routing
+  - this is now the strongest static corrected-cost branch to validate next on MT5
+
+## Corrected-Cost Short-Side Timing And Cooldown Checks
+
+- The short sleeve is still strongest at `TP 0.48` and `SL 1.0`.
+- Best short-only timing was hours `10/11/12`:
+  - `R$2,242`, `PF 1.1549`, `DD 12.33%`
+  - slightly better than short-only `10/11/12/14`, but still below the long-ATR-pruned balanced branch
+- Slowing only longs to `120m` while keeping shorts at `60m` did not beat the leader:
+  - `R$2,585`, `PF 1.0839`, `DD 10.87%`
+- Interpretation:
+  - side-specific timing and cooldown asymmetry help less than simply pruning weak longs in the hottest ATR regime
+
 ## What Survived Conceptually
 
 - `ROC(5)` still appears to be the only lightweight agreement family with repeatable incremental value inside the old pre-correction research space.

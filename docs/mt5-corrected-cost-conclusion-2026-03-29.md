@@ -18,19 +18,20 @@ Configuration:
 - `60m` cooldown
 - Friday off
 - skip the last contract day
+- prune only **long** entries on top-ATR tercile days
 
 Metrics:
 
-- full sample: `R$3,024`
-- `PF 1.0966`
-- `DD 7.06%`
-- composite `0.6049`
-- `70/30` test: `R$887`, `PF 1.1091`, `DD 7.91%`
-- recent `60d`: `R$241`, `PF 1.1911`
+- full sample: `R$3,243`
+- `PF 1.1284`
+- `DD 7.79%`
+- composite `0.6201`
+- `70/30` test: `R$1,629`, `PF 1.2696`, `DD 6.00%`
+- recent `60d`: `R$348`, `PF 1.4203`
 
 ## Honest Interpretation
 
-- This is the first corrected-cost branch that is both positive and reasonably stable.
+- This is now the strongest static corrected-cost branch I have.
 - It is the best static corrected-cost candidate to validate next.
 - It is still **not** a Monday promotion, because it has no host-side MT5 confirmation yet.
 
@@ -69,6 +70,8 @@ Metrics:
   - long-only failed on holdout
   - short-only was much healthier and is the stronger corrected-cost sleeve
   - tighter long TP plus wider short TP improved the research sleeve, but still not enough to replace the balanced branch
+- slowing only longs to `120m` cooldown did not beat the new long-ATR-pruned branch
+- short-only hours `10/11/12` were the best short sleeve timing, but still not enough to replace the new long-ATR-pruned branch
 
 ## Monday Plan
 
@@ -77,7 +80,10 @@ Metrics:
    - prefer `0-1` tick
    - `2` ticks max
    - above `2` ticks: stand down
-3. Use the balanced corrected-cost branch as the next host-side MT5 validation target after Monday, not as Monday default.
+3. Use the long-ATR-pruned corrected-cost branch as the next host-side MT5 validation target after Monday, not as Monday default.
+4. That target is:
+   - balanced branch core
+   - prune long entries on top-ATR tercile days
 
 ## Next Research Direction
 
