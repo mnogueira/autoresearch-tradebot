@@ -22,27 +22,31 @@
 3. Safest validated preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 GPT 5.4.set`
 4. Moderate exact refinement preset:
+   - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m GPT 5.4.set`
+5. Walk-forward-validated cooldown fallback preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
-5. Aggressive exact refinement preset:
+6. Aggressive exact refinement preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m MaxHold120m GPT 5.4.set`
-6. Quality-biased preset:
+7. Quality-biased preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Maximum Quality v2 Cooldown 30m MaxHold120m GPT 5.4.set`
-7. Optional trend-day quality preset:
+8. Optional trend-day quality preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Trend Day ADX25 Cooldown 30m MaxHold120m GPT 5.4.set`
-8. Optional live spread-guard preset:
+9. Optional live spread-guard preset:
    - `C:\Dev\autoresearch-tradebot\mt5\profiles\tester\WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m SpreadGuard1t GPT 5.4.set`
 
 ## Preset Order
 
 1. Run the safest validated preset first:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 GPT 5.4.set`
-2. If that report looks sane, validate the simpler exact refinement next:
+2. If that report looks sane, validate the new cooldown-sweep winner next:
+   - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m GPT 5.4.set`
+3. If the desk wants the more validated cooldown setting first, use this instead:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
-3. If that also looks sane, validate the aggressive max-hold refinement next:
+4. If that also looks sane, validate the aggressive max-hold refinement next:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m MaxHold120m GPT 5.4.set`
-4. If the desk prefers the cleaner operator profile, validate the quality preset:
+5. If the desk prefers the cleaner operator profile, validate the quality preset:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Maximum Quality v2 Cooldown 30m MaxHold120m GPT 5.4.set`
-5. If the desk wants the EA itself to stand down in weaker daily regimes, validate the optional ADX-gated preset:
+6. If the desk wants the EA itself to stand down in weaker daily regimes, validate the optional ADX-gated preset:
    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Trend Day ADX25 Cooldown 30m MaxHold120m GPT 5.4.set`
 
 ## Sanity Checks
@@ -50,7 +54,7 @@
 1. Verify the loaded preset values in the tester:
    - `EntryStart 10:00`
    - `LastEntry 14:30`
-   - `MinMinutesBetweenEntries 30`
+   - `MinMinutesBetweenEntries 25` for the new cooldown-sweep winner, or `30` for the older validated cooldown and max-hold presets
    - `MaxMinutesInTrade 120` for the new refinement presets
    - `SL 0.84`
    - `TP 0.30`
@@ -91,7 +95,10 @@ Recent context:
 - That is a yellow light, not a red light: keep the first live-paper sessions observational and disciplined.
 - The simpler cooldown-only refinement behaved identically in that same weak tape:
   - `R$40`, `PF 1.0357`, `DD 4.67%`
-  - practical takeaway: use the simpler cooldown-only preset as the first exact refinement to validate before adding the max-hold timer
+  - practical takeaway: keep the cooldown-only preset as the first exact refinement to validate before adding the max-hold timer
+- The latest cooldown sweep found a slightly better full-sample setting at `25` minutes:
+  - `R$14,350`, `PF 1.4749`, `DD 3.30%`, composite `3.1158`
+  - use that as the first new exact candidate after Tier 1, while keeping the older `30m` line as the safer fallback because it already passed the exact `70/30` walk-forward
 - The regime readout says trend days are the quality engine:
   - trend-day production slice: `PF 1.9183`, `DD 3.38%`
   - range-day production slice: `PF 1.3153`, `DD 4.95%`
@@ -110,7 +117,8 @@ Recent context:
 2. Watch the first two sessions closely around `10:00`, `11:00`, `12:00`, and `14:00`.
 3. Record actual spread and fill behavior for each trade.
    - baseline expectation for Tier 1 is about `1.96` trades per day from the validated MT5 report
-   - if you later promote to Tier 2 or Tier 3, the exact-engine expectation is about `1.26` trades per day
+  - if you later promote to Tier 2, the exact-engine expectation is about `1.30` trades per day
+  - if you later promote to Tier 3, the exact-engine expectation is about `1.26` trades per day
 4. Keep the `Experts` and `Journal` tabs open and watch for:
    - unexpected entries outside the intended windows
    - repeated close-order rejections

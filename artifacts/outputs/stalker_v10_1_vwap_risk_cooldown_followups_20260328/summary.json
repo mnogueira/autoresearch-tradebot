@@ -1,0 +1,250 @@
+{
+  "reference_tier2_cooldown_only": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 14085.0,
+      "avg_profit_brl": 8.98,
+      "avg_win_brl": 34.26,
+      "avg_loss_brl": -95.7,
+      "profit_factor": 1.4825,
+      "max_drawdown_pct": 3.3,
+      "expected_payoff": 8.98,
+      "on_tester_value": 4263.59877
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.9306,
+      "calmar_ratio": 5.8842,
+      "omega_ratio": 1.6115,
+      "annual_return_pct": 19.44,
+      "max_drawdown_frac": 0.033035
+    },
+    "sortino_weighted_composite": 3.0529,
+    "note": "Session winner + 30-minute cooldown only."
+  },
+  "trend_efficiency_plus_vwap_confirmation": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 14085.0,
+      "avg_profit_brl": 8.98,
+      "avg_win_brl": 34.26,
+      "avg_loss_brl": -95.7,
+      "profit_factor": 1.4825,
+      "max_drawdown_pct": 3.3,
+      "expected_payoff": 8.98,
+      "on_tester_value": 4263.59877
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.9306,
+      "calmar_ratio": 5.8842,
+      "omega_ratio": 1.6115,
+      "annual_return_pct": 19.44,
+      "max_drawdown_frac": 0.033035
+    },
+    "sortino_weighted_composite": 3.0529,
+    "note": "Require the previous close to be above session VWAP for longs and below session VWAP for shorts."
+  },
+  "adaptive_recent_winrate_scaling": {
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 1568,
+      "win_rate": 0.8055,
+      "net_profit_brl": 9260.0,
+      "avg_profit_brl": 5.91,
+      "avg_win_brl": 24.26,
+      "avg_loss_brl": -70.08,
+      "profit_factor": 1.4332,
+      "max_drawdown_pct": 2.74,
+      "expected_payoff": 5.91,
+      "on_tester_value": 3385.347059
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.664,
+      "calmar_ratio": 5.1778,
+      "omega_ratio": 1.5443,
+      "annual_return_pct": 14.16,
+      "max_drawdown_frac": 0.027353
+    },
+    "sortino_weighted_composite": 2.6942,
+    "stats": {
+      "lookback_trades": 20,
+      "avg_size_multiplier": 0.7038,
+      "full_size_share": 0.4075,
+      "half_size_share": 0.5925,
+      "skip_share": 0.0
+    },
+    "note": "Research-only overlay: last 20 closed trades decide whether the next trade is full size, half size, or skipped."
+  },
+  "cooldown_duration_sweep": [
+    {
+      "cooldown_minutes": 25,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1615,
+        "win_rate": 0.805,
+        "net_profit_brl": 14350.0,
+        "avg_profit_brl": 8.89,
+        "avg_win_brl": 34.28,
+        "avg_loss_brl": -95.92,
+        "profit_factor": 1.4749,
+        "max_drawdown_pct": 3.3,
+        "expected_payoff": 8.89,
+        "on_tester_value": 4352.04918
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.9984,
+        "calmar_ratio": 5.9756,
+        "omega_ratio": 1.6196,
+        "annual_return_pct": 19.7,
+        "max_drawdown_frac": 0.032973
+      },
+      "sortino_weighted_composite": 3.1158
+    },
+    {
+      "cooldown_minutes": 40,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1483,
+        "win_rate": 0.8085,
+        "net_profit_brl": 13945.0,
+        "avg_profit_brl": 9.4,
+        "avg_win_brl": 34.36,
+        "avg_loss_brl": -95.97,
+        "profit_factor": 1.5116,
+        "max_drawdown_pct": 3.25,
+        "expected_payoff": 9.4,
+        "on_tester_value": 4284.481034
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.9115,
+        "calmar_ratio": 5.9292,
+        "omega_ratio": 1.6279,
+        "annual_return_pct": 19.3,
+        "max_drawdown_frac": 0.032548
+      },
+      "sortino_weighted_composite": 3.0601
+    },
+    {
+      "cooldown_minutes": 30,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1568,
+        "win_rate": 0.8055,
+        "net_profit_brl": 14085.0,
+        "avg_profit_brl": 8.98,
+        "avg_win_brl": 34.26,
+        "avg_loss_brl": -95.7,
+        "profit_factor": 1.4825,
+        "max_drawdown_pct": 3.3,
+        "expected_payoff": 8.98,
+        "on_tester_value": 4263.59877
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.9306,
+        "calmar_ratio": 5.8842,
+        "omega_ratio": 1.6115,
+        "annual_return_pct": 19.44,
+        "max_drawdown_frac": 0.033035
+      },
+      "sortino_weighted_composite": 3.0529
+    },
+    {
+      "cooldown_minutes": 35,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1526,
+        "win_rate": 0.8073,
+        "net_profit_brl": 14100.0,
+        "avg_profit_brl": 9.24,
+        "avg_win_brl": 34.34,
+        "avg_loss_brl": -95.94,
+        "profit_factor": 1.4999,
+        "max_drawdown_pct": 3.35,
+        "expected_payoff": 9.24,
+        "on_tester_value": 4213.819672
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 1.9244,
+        "calmar_ratio": 5.8138,
+        "omega_ratio": 1.6239,
+        "annual_return_pct": 19.45,
+        "max_drawdown_frac": 0.033461
+      },
+      "sortino_weighted_composite": 3.0311
+    },
+    {
+      "cooldown_minutes": 15,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1750,
+        "win_rate": 0.8034,
+        "net_profit_brl": 15055.0,
+        "avg_profit_brl": 8.6,
+        "avg_win_brl": 34.17,
+        "avg_loss_brl": -95.89,
+        "profit_factor": 1.4564,
+        "max_drawdown_pct": 4.07,
+        "expected_payoff": 8.6,
+        "on_tester_value": 3697.884375
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.0563,
+        "calmar_ratio": 5.0097,
+        "omega_ratio": 1.6176,
+        "annual_return_pct": 20.4,
+        "max_drawdown_frac": 0.040712
+      },
+      "sortino_weighted_composite": 2.8546
+    },
+    {
+      "cooldown_minutes": 20,
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 1676,
+        "win_rate": 0.8043,
+        "net_profit_brl": 14795.0,
+        "avg_profit_brl": 8.83,
+        "avg_win_brl": 34.26,
+        "avg_loss_brl": -95.7,
+        "profit_factor": 1.4713,
+        "max_drawdown_pct": 4.03,
+        "expected_payoff": 8.83,
+        "on_tester_value": 3672.330357
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 2.0256,
+        "calmar_ratio": 4.9995,
+        "omega_ratio": 1.6228,
+        "annual_return_pct": 20.14,
+        "max_drawdown_frac": 0.040288
+      },
+      "sortino_weighted_composite": 2.8372
+    }
+  ],
+  "notes": [
+    "VWAP confirmation is an exact every-tick rerun on top of the Tier 2 session winner.",
+    "Adaptive win-rate sizing is analysis-only because it assumes fractional down-scaling from a 1-contract baseline.",
+    "Cooldown durations are ranked by the same Sortino-weighted composite used across the rest of the sprint."
+  ]
+}

@@ -6,7 +6,7 @@
 | --- | --- | --- |
 | `SL/TP` optimization | `SL 0.84 / TP 0.30` improved the surgical baseline to `R$16,025`, `PF 1.4280`, `DD 4.62%` | This was the first major quality jump and became the anchor for everything that followed. |
 | Session filter | `10:00, 11:00, 12:00, 14:00` produced `R$15,965`, `PF 1.4438`, `DD 4.04%` | Narrowing to the best hours improved quality without killing the edge. |
-| Trade cooldown | `30m` cooldown produced `R$14,085`, `PF 1.4825`, `DD 3.30%` | This was the key cost-control breakthrough. |
+| Trade cooldown | `25m` cooldown produced `R$14,350`, `PF 1.4749`, `DD 3.30%`, composite `3.1158` | This was the key cost-control breakthrough, and the final sweep nudged the best exact cooldown setting from `30m` to `25m`. |
 | Max hold | `120` M1 bars on top of cooldown produced `R$14,135`, `PF 1.4851`, `DD 3.29%` | Small but real improvement on all major exact metrics. |
 | Simplification test | Cooldown-only variant kept `99.65%` of net and `99.82%` of PF versus the max-hold leader | This tells us the strategy is not over-dependent on the max-hold timer. |
 | Walk-forward validation | `70/30` holdout on the max-hold leader: train `PF 1.5332`, test `PF 1.3668` | The core strategy held up out of sample. |
@@ -30,6 +30,8 @@
 | Market-open avoidance analog | practical `10:15` start: `R$12,670`, `PF 1.5198`, `DD 4.34%` | The true `09:00-09:15` skip is already a no-op here because the production setup does not enter before `10:00`; delaying further improved PF but gave up too much net and drawdown. |
 | Confidence-weighted sizing | Research-only fractional sizing by trend-efficiency: `R$18,030.27`, `PF 1.4897`, `DD 3.71%`, composite `3.1301` | This is the clearest sign that stronger signals deserve more size, but it is not deployable until the MQ5 side supports realistic discrete sizing. |
 | Confidence-weighted sizing + time-widened stop | Research-only overlay on the `0.84 -> 1.20` ATR after `30` bars variant: `R$18,359.32`, `PF 1.4993`, `DD 3.72%`, composite `3.1377` | This became the strongest raw composite of the entire sprint, which reinforces the case for future graded sizing research rather than binary filters. |
+| Adaptive recent-win-rate sizing | Last `20` closed trades control full-size vs half-size: `R$9,260`, `PF 1.4332`, `DD 2.74%`, composite `2.6942` | Cleaner drawdown profile, but too much net and composite giveback to promote beyond research. |
+| Trend-efficiency + session VWAP confirmation | Exact tie with the `30m` cooldown baseline: `R$14,085`, `PF 1.4825`, `DD 3.30%` | Interesting because it is an independent confirmation layer, but in practice it added no incremental edge. |
 | Equal-weight blend of the top two exact strategies | `R$14,202.50`, `PF 1.4885`, `DD 3.27%`, composite `3.0724` | This is the cleanest sign that the single-strategy frontier is near its ceiling and that any further improvement will likely come from portfolio smoothing, not another small rule tweak. This is now documented as Tier 4, Research Blend. |
 | Weekday selectivity | Skip Tuesday and Friday: `R$9,200`, `PF 1.6261`, `DD 2.97%` | Cleaner on PF/DD, but it throws away too much net to become the default. |
 | Weekday selectivity + time-widened stop | Mon/Wed/Thu only plus time-widened stop: `R$9,500`, `PF 1.6525`, `DD 3.19%`, composite `2.3232` | Quality improved, but the net giveback was still too large for promotion. |

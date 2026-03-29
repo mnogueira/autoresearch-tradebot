@@ -7,14 +7,14 @@
 - Monday default:
   - Tier 1, the validated MT5 `Every Tick` base preset
 - First upgrade after clean paper behavior:
-  - Tier 2, session winner + `30m` cooldown only
+  - Tier 2, session winner + `25m` cooldown only
 
 ## Best Metrics
 
 - Tier 1 validated MT5 base:
   - `R$14,330`, `PF 1.36`, `DD 3.94%`, `WR 80.29%`
 - Tier 2 exact refinement:
-  - `R$14,085`, `PF 1.4825`, `DD 3.30%`, composite `3.0529`
+  - `R$14,350`, `PF 1.4749`, `DD 3.30%`, composite `3.1158`
 - Tier 3 exact refinement:
   - `R$14,135`, `PF 1.4851`, `DD 3.29%`, composite `3.0672`
 
@@ -68,6 +68,10 @@
 
 - Smart-entry micro-pullbacks `1-2` ticks in `3` bars:
   - both worse than Tier 2
+- Cooldown duration sweep:
+  - `25m` is the new best deployable exact composite score
+  - `40m` is the cleaner PF/DD runner-up
+  - the older `30m` line still matters because it already passed the exact `70/30` walk-forward
 - Two-bar trend confirmation:
   - clearly negative, rejected
 - Volume-weighted entry sizing:

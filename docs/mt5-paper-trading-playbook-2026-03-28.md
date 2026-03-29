@@ -15,11 +15,22 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 - Artifact:
   - `artifacts/outputs/mt5_stalker_v10_1_surgical_sltp_sl0p84_tp0p3_every_tick_20260328/summary.json`
 
-### Best exact Python candidate waiting on MT5 validation
+### Best exact cooldown-sweep winner waiting on MT5 validation
 
-- Use this next if host-side MT5 is stable enough to validate and you want the simplest exact refinement:
+- Use this next if host-side MT5 is stable enough to validate and you want the best full-sample exact cooldown-only line:
+  - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m GPT 5.4.set`
+- Exact every-tick cooldown-sweep result:
+  - `R$14,350`, `PF 1.4749`, `DD 3.30%`, composite `3.1158`
+- Artifact:
+  - `artifacts/outputs/stalker_v10_1_vwap_risk_cooldown_followups_20260328/summary.json`
+- Interpretation:
+  - this is the new best deployable exact composite score, but it has not yet had the same separate walk-forward and MT5 host validation pass as the older `30m` line
+
+### Walk-forward-validated cooldown fallback
+
+- Use this if the desk wants the more proven cooldown setting first:
   - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
-- Exact every-tick parity result:
+- Exact every-tick result:
   - `R$14,085`, `PF 1.4825`, `DD 3.30%`
 - Artifact:
   - `artifacts/outputs/stalker_v10_1_session_robustness_checks_20260328/summary.json`
@@ -76,10 +87,9 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
   - use this as the Monday default because it is the best strategy already validated in MT5 `Every Tick`
   - operational expectation: about `1.96` trades per day on the validated MT5 report
 - Tier 2, moderate:
-  - session winner + `30m` cooldown only
-  - use this as the first exact refinement to validate because it keeps `99.65%` of the max-hold leader's net and `99.82%` of its PF with less moving logic
-  - the risk-adjusted composite gap versus Tier 3 is only `0.0143`, and the recent weak tape was identical, so this is the better Monday follow-on choice
-  - operational expectation: about `1.26` trades per day in the exact engine
+  - session winner + `25m` cooldown only
+  - use this as the first new exact refinement to validate because it is now the best deployable full-sample exact composite score
+  - operational expectation: about `1.30` trades per day in the exact engine
 - Tier 3, aggressive:
   - session winner + `30m` cooldown + `120` M1 max hold
   - use this only after the simpler cooldown-only refinement looks sane in MT5
@@ -236,13 +246,15 @@ Enable the current WDO Stalker v10.1 leader safely in MetaTrader 5 paper trading
 ## Current Recommendation
 
 - Paper-trading default: the validated MT5 preset `sl0p84 / tp0p3`
-- First upgrade to validate on the host: the plain `Cooldown 30m` preset
-  - this remains the preferred next-week follow-on because it is simpler, it matched the max-hold stack in the recent weak tape, and its monthly consistency is marginally better
+- First upgrade to validate on the host: the plain `Cooldown 25m` preset
+  - this is now the best deployable exact composite score from the cooldown sweep
+- More validated fallback if the desk wants the safer exact step first: the plain `Cooldown 30m` preset
+  - this remains attractive because it already passed the exact `70/30` walk-forward and matched the max-hold stack in the recent weak tape
 - Next aggressive upgrade to validate on the host: the `Cooldown 30m + MaxHold120m` preset
 - Tier 4, research blend for later study only:
   - equal-weight blend of Tier 3 and the time-widened stop variant
   - use only if the desk explicitly wants to run two near-identical variants side by side and average the risk
-- Fallback refinement if the max-hold variant misbehaves in MT5: stay on the plain `Cooldown 30m` preset
+- Fallback refinement if the newer cooldown winner misbehaves in MT5: stay on the plain `Cooldown 30m` preset
 - Simplest high-fidelity fallback:
   - the cooldown-only exact variant kept `99.65%` of the max-hold leader's net profit and `99.82%` of its PF
 - Quality-only alternative: the `Maximum Quality v2 Cooldown 30m MaxHold120m` preset

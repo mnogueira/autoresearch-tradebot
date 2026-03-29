@@ -246,6 +246,18 @@ This remains the safest paper-trading candidate because it is the best strategy 
 
 ## Best Python Candidates Pending MT5
 
+- Best exact cooldown-sweep winner waiting on MT5 validation:
+  - exact hours: `10:00, 11:00, 12:00, 14:00`
+  - keep `SkipShortWednesday=true`
+  - skip the full `13:00` hour
+  - require at least `25 minutes` between filled entries
+  - `SL 0.84 / TP 0.30`
+  - artifact: `artifacts/outputs/stalker_v10_1_vwap_risk_cooldown_followups_20260328/summary.json`
+  - metrics: `R$14,350`, `PF 1.4749`, `DD 3.30%`, `OnTester 4352.04918`, composite `3.1158`
+  - MT5 preset now prepared:
+    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m GPT 5.4.set`
+  - interpretation: this is now the best deployable exact composite score from the cooldown sweep, but it still needs its own walk-forward and MT5 host validation pass
+
 - Best exact Python candidate waiting on MT5 validation:
   - exact hours: `10:00, 11:00, 12:00, 14:00`
   - keep `SkipShortWednesday=true`
@@ -286,7 +298,7 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - artifact: `artifacts/outputs/stalker_v10_1_session_robustness_checks_20260328/summary.json`
   - metrics: `R$14,085`, `PF 1.4825`, `DD 3.30%`, `OnTester 4263.59877`
   - interpretation: lower raw net than the unconstrained session winner, but materially better `PF`, `DD`, and `OnTester` while directly reducing trade frequency and transaction-cost exposure
-  - deployment note: this variant also beat the same cooldown applied without the session filter (`R$13,925`, `PF 1.4522`, `DD 3.93%`), so the exact hour scheduling still matters even after throttling entries
+  - deployment note: this older `30m` cooldown line is still the more proven fallback because it already passed the exact `70/30` walk-forward and matched the max-hold line in the recent weak tape
 
 - Best gross-net exact refinement:
   - exact hours: `10:00, 11:00, 12:00, 14:00`
@@ -303,6 +315,8 @@ This remains the safest paper-trading candidate because it is the best strategy 
   - metrics: `R$15,965`, `PF 1.4438`, `DD 4.04%`, `OnTester 3950.819156`
 
 - MT5 presets now prepared for the leading exact refinements:
+  - cooldown sweep winner:
+    - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 25m GPT 5.4.set`
   - cooldown leader:
     - `mt5/profiles/tester/WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 Skip Hour13 All Sides Cooldown 30m GPT 5.4.set`
   - max-hold leader:
