@@ -318,6 +318,26 @@ It is:
   - a simple cumulative session-VWAP crossover is not a viable replacement signal
   - the corrected-cost survivor still comes from the existing retracement family, not a crossover family
 
+## New Signal Family Check: Opening Range Breakout
+
+- A corrected-cost opening range breakout using the first `15m` of the session was even worse:
+  - `R$-41,375`, `PF 0.6569`, `DD 372.23%`
+  - `70/30` test: `R$-12,157`, `PF 0.6075`, `DD 121.23%`
+- Using the first `30m` as the opening range also failed:
+  - `R$-38,533`, `PF 0.6509`, `DD 346.16%`
+  - `70/30` test: `R$-12,065`, `PF 0.5787`, `DD 120.58%`
+- Interpretation:
+  - opening-range breakout is not a viable alternative corrected-cost signal family for WDO in this harness
+
+## VWAP As Confirmation Instead Of Replacement
+
+- VWAP crossover as a confirmation layer on top of the corrected-cost combo cleaned PF, but over-pruned too hard:
+  - full sample: `R$784`, `PF 2.1105`, `DD 1.70%`
+  - `70/30` test: `R$-37`, `PF 0.8021`, `DD 1.84%`
+  - recent `60d`: `R$-187`, `PF 0.0`
+- Interpretation:
+  - session VWAP crossover is bad as a replacement signal and still not robust enough as a confirmation layer
+
 ## First Cost-Surviving Static Variant
 
 - The first static variant to survive the corrected cost model is:

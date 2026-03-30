@@ -119,6 +119,8 @@ Corrected rerun:
 - most oscillator confirmations besides ROC
 - H1 translation of the same signal family
 - session VWAP crossover as a replacement signal family
+- corrected-cost opening-range breakout using the first `15m` or `30m`
+- session VWAP crossover as a confirmation layer on top of the corrected-cost combo
 
 ## Ceiling Read
 
