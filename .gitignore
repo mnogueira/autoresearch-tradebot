@@ -23,6 +23,7 @@ progress.png
 telegram_chat_id.txt
 
 # MT5 runtime churn
+runtime/
 runtime/mt5-portable/
 runtime/mt5-portable/Bases/
 runtime/mt5-portable/Tester/
