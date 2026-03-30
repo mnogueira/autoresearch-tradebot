@@ -35,6 +35,18 @@ This family also failed decisively on the longer offline sample:
 
 The useful conclusion is that M5 compression-breakout logic is not robust enough for WDO under corrected costs, even with M15 EMA confirmation and multiple squeeze thresholds. It joins VWAP mean reversion as a dead end, not a deployment candidate.
 
+### Opening range breakout on M5
+
+This family was a near-miss on profit, but still failed the acceptance bar because drawdown stayed too high:
+
+- best case `orb15_tp10_ema_on`: `R$1,331`, `PF 1.0374`, `DD 24.39%`, walk-forward `7/10`
+- `orb15_tp10_ema_off`: `R$774`, `PF 1.0165`, `DD 35.66%`, walk-forward `6/10`
+- `orb30_tp10_ema_on`: `R$388`, `PF 1.0099`, `DD 23.57%`, walk-forward `4/10`
+- `orb15_tp15_ema_on`: `R$-104`, `PF 0.9975`, `DD 41.09%`
+- `orb30_tp15_ema_on`: `R$-2,962`, `PF 0.9317`, `DD 47.19%`
+
+The useful conclusion is that simple ORB logic is more resilient than VWAP fade or Bollinger squeeze on this dataset, but it is still not strong enough under corrected costs. It does not clear `PF > 1.3` or `DD < 15%`, so it stays below the deployment bar.
+
 ## Data and cost model
 
 - Symbol: `WDO$N`
