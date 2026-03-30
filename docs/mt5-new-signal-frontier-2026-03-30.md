@@ -26,19 +26,29 @@ The profitable lead came from focusing Donchian breakout on high-volatility days
 
 ### New leader
 
-`donchian20_high_atr_10_12_tp10`
+`donchian20_high_atr_12_only_tp10_volume`
 
-- Full sample: `R$1,902`, `PF 1.5125`, `DD 2.09%`, `137` trades
-- Recent Jan-Mar 2026: `R$805`, `PF 1.5310`, `DD 1.86%`, `50` trades
+- Full sample: `R$1,076`, `PF 1.8915`, `DD 1.80%`, `56` trades
+- Recent Jan-Mar 2026: `R$462`, `PF 2.1000`, `DD 1.90%`, `17` trades
 - Walk-forward: `6/6` test months positive with `PF > 1.0`
+
+This is now the cleanest MT5-native corrected-cost branch:
+
+- daily ATR must be above its 20-day average
+- trade only at `12h`
+- require a `1.5x` volume spike versus the `20`-bar M1 average
+- Donchian-20 breakout aligned with the broader M15 trend
+- `SL 1.0 ATR`, `TP 1.0 ATR`
 
 ### Other refined variants
 
+- `donchian20_high_atr_10_12_tp10`: `R$1,902`, `PF 1.5125`, `DD 2.09%`, walk-forward `6/6`
 - `donchian20_high_atr_10_12_tp12`: `R$1,456`, `PF 1.3607`, `DD 2.75%`, walk-forward `6/6`
 - `donchian20_high_atr_10_12_m5_tp12`: `R$1,375`, `PF 1.3406`, `DD 2.75%`, walk-forward `6/6`
 - `donchian20_high_atr_10_12_volume_tp12`: `R$1,109`, `PF 1.3392`, `DD 2.48%`, walk-forward `5/6`
 - `ensemble_vol_regime_10_11_12_dynamic_tp`: `R$1,848`, `PF 1.3345`, `DD 3.74%`, recent Jan-Mar `R$1,075`, walk-forward `5/6`
 - `ensemble_vol_regime_10_11_12_volume`: `R$1,390`, `PF 1.3629`, `DD 5.17%`, recent Jan-Mar `R$853`, walk-forward `4/6`
+- `donchian20_high_atr_12_only_tp11_volume`: `R$1,154`, `PF 1.9217`, `DD 1.79%`, recent Jan-Mar `R$352`, walk-forward `6/6`
 
 ## Comparison versus the current M1 combo
 
@@ -48,27 +58,29 @@ Current combo reference, Jan-Mar 2026:
 
 New MT5 leader, Jan-Mar 2026:
 
-- `R$805`, `PF 1.5310`, `DD 1.86%`
+- `R$462`, `PF 2.1000`, `DD 1.90%`
 
 Interpretation:
 
-- The new Donchian leader clearly beats the combo on recent profit.
-- Drawdown is still very close to the combo.
-- Profit factor is slightly lower than the combo on the recent slice.
-- On the longer sample, the new leader is materially cleaner than the first MT5 scout ideas and much more robust in walk-forward.
+- The new MT5 leader beats the combo on recent profit factor and recent profit.
+- Drawdown remains very close to the combo.
+- On the longer sample, the new leader is dramatically cleaner than the first MT5 scout ideas and much more robust in walk-forward.
+- The broader `10h/12h` Donchian branch is still useful as a higher-throughput fallback, but the `12h` + volume version is the best balanced line.
 
 ## Honest conclusion
 
 The MT5-native exploration found a real new candidate:
 
 - high-ATR Donchian breakout
-- restricted to `10h` and `12h`
-- tighter `1.0 ATR` target
+- restricted to `12h`
+- filtered by `1.5x` M1 volume spike
+- `SL 1.0 ATR`, `TP 1.0 ATR`
 
-It does **not** hit the aspirational target of `PF > 2.0`, but it is the first new MT5 signal family to produce:
+It still does **not** clear the aspirational full-sample target of `PF > 2.0`, but it is the first new MT5 signal family to produce all of these at once:
 
 - positive full-sample PnL,
-- drawdown under `3%`,
-- and a clean `6/6` walk-forward pass rate.
+- drawdown under `2%`,
+- `6/6` walk-forward pass rate,
+- and a recent Jan-Mar regime readout with `PF > 2.0`.
 
-That makes it the current best new-signal branch for further refinement.
+That makes it the current best MT5-native new-signal branch for further refinement.
