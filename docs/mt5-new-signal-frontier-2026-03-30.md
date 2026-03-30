@@ -22,6 +22,19 @@ This entire family failed the new bar:
 
 The useful conclusion is that simple intraday VWAP fade logic is not robust enough on the longer WDO history, even after restricting it to low-volatility days and flatter M15 regimes. It is now documented as a dead end, not a deployment path.
 
+### Bollinger squeeze breakout on M5
+
+This family also failed decisively on the longer offline sample:
+
+- best case `bb30_q20_ema_on`: `R$-3,712`, `PF 0.8213`, `DD 37.73%`, walk-forward `2/10`
+- `bb30_q30_ema_off`: `R$-9,945`, `PF 0.8053`, `DD 102.33%`
+- `bb20_q30_ema_on`: `R$-9,248`, `PF 0.7333`, `DD 93.96%`
+- `bb20_q20_ema_off`: `R$-14,036`, `PF 0.7179`, `DD 144.15%`
+- `bb20_q20_ema_on`: `R$-8,258`, `PF 0.6953`, `DD 83.48%`
+- `bb20_q10_ema_on`: `R$-6,461`, `PF 0.6443`, `DD 66.66%`
+
+The useful conclusion is that M5 compression-breakout logic is not robust enough for WDO under corrected costs, even with M15 EMA confirmation and multiple squeeze thresholds. It joins VWAP mean reversion as a dead end, not a deployment candidate.
+
 ## Data and cost model
 
 - Symbol: `WDO$N`
