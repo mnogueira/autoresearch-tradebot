@@ -50,6 +50,23 @@ This is now the cleanest MT5-native corrected-cost branch:
 - `ensemble_vol_regime_10_11_12_volume`: `R$1,390`, `PF 1.3629`, `DD 5.17%`, recent Jan-Mar `R$853`, walk-forward `4/6`
 - `donchian20_high_atr_12_only_tp11_volume`: `R$1,154`, `PF 1.9217`, `DD 1.79%`, recent Jan-Mar `R$352`, walk-forward `6/6`
 
+## Late structural checks
+
+These answered the last open questions around the new winner:
+
+- Explicit `<= 1` tick spread gate was a complete no-op on the winner.
+- Adding M5 EMA agreement to the `12h` volume branch was also a no-op.
+- Old Stalker-style 15-bar directional efficiency confirmation hurt:
+  - `R$777`, `PF 1.7006`, `DD 2.20%`, recent Jan-Mar `R$176`, walk-forward `5/6`
+- A `10h + 12h` session ensemble improved recent profit, but weakened the long-sample profile:
+  - `R$1,861`, `PF 1.5672`, `DD 2.13%`, recent Jan-Mar `R$874`, walk-forward `5/6`
+
+So the clean conclusion is:
+
+- `12h` volume branch is still the best balanced leader
+- `10h + 12h` is the best recent-regime booster
+- trend-efficiency is not the right confirmation layer for this new Donchian family
+
 ## Comparison versus the current M1 combo
 
 Current combo reference, Jan-Mar 2026:
