@@ -2,6 +2,26 @@
 
 This note covers the MT5-native WDO signal exploration that started after the corrected-cost M1 combo plateaued at recent Jan-Mar 2026 results of `R$410`, `PF 1.5640`, `DD 1.75%`.
 
+## Offline 5-year extension
+
+Once the larger offline parquet files were available, I extended the search onto the longer `M5` / `M15` history:
+
+- `data/wdo_m5_2021_2026.parquet`: Sep 2022 to Mar 2026
+- `data/wdo_m15_2021_2026.parquet`: Mar 2021 to Mar 2026
+- cost model kept at `R$4.00` round-trip
+- walk-forward changed to `1y` train / `3m` test
+
+### VWAP z-score mean reversion
+
+This entire family failed the new bar:
+
+- best case `vwap_z12_late_z20`: `R$-519`, `PF 0.8999`, `DD 11.44%`, walk-forward `6/10`
+- `vwap_z24_afternoon_z25`: `R$-1,111`, `PF 0.8460`, `DD 22.82%`
+- `vwap_z24_afternoon_z20`: `R$-1,792`, `PF 0.7990`, `DD 25.28%`
+- `vwap_z12_afternoon_z20_noflat`: `R$-15,391`, `PF 0.7287`, `DD 159.63%`
+
+The useful conclusion is that simple intraday VWAP fade logic is not robust enough on the longer WDO history, even after restricting it to low-volatility days and flatter M15 regimes. It is now documented as a dead end, not a deployment path.
+
 ## Data and cost model
 
 - Symbol: `WDO$N`
