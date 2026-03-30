@@ -4,6 +4,8 @@
 
 - Monday live paper trading should still start with the validated MT5 Tier 1 base preset.
 - The corrected-cost stacked combo is the best exact post-Monday validation target, but it is **not** a one-click MT5 preset yet because three parts of the logic are not directly supported in the current EA.
+- Monday Tier 1 preset path:
+  - [WDO Stalker Strategy v10.1 Surgical SLTP sl0p84 tp0p3 GPT 5.4.set](/c:/Dev/autoresearch-tradebot/mt5/profiles/tester/WDO%20Stalker%20Strategy%20v10.1%20Surgical%20SLTP%20sl0p84%20tp0p3%20GPT%205.4.set)
 
 ## Best Corrected-Cost Leader
 
