@@ -279,6 +279,9 @@ Corrected rerun:
   - slightly better than short-only `10/11/12/14`, but still below the long-ATR-pruned balanced branch
 - Slowing only longs to `120m` while keeping shorts at `60m` did not beat the leader:
   - `R$2,585`, `PF 1.0839`, `DD 10.87%`
+- Slowing only longs to `120m` on top of the newer stacked combo also failed:
+  - `R$2,907`, `PF 1.1176`, `DD 12.06%`
+  - `70/30` test `R$1,270`, `PF 1.2071`, `DD 7.12%`
 - Interpretation:
   - side-specific timing and cooldown asymmetry help less than simply pruning weak longs in the hottest ATR regime
 

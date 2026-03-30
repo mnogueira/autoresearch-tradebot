@@ -100,6 +100,8 @@ Corrected rerun:
     - rolling walk-forward `4/7` test folds positive
   - best short-only timing was `10/11/12`, but that still did not beat the long-ATR-pruned balanced branch
   - slowing only longs to `120m` while leaving shorts at `60m` also failed to beat it
+  - even on top of the new combo leader, `long 120m / short 60m` failed again:
+    - `R$2,907`, `PF 1.1176`, `DD 12.06%`
 - overly wide profit targets on the corrected-cost survivor:
   - `TP 0.54` weakened the full sample and flipped the recent `60d` and `10d` windows negative
   - `TP 0.60` was worse again and nearly flatlined the full-sample edge
