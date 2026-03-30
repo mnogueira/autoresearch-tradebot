@@ -47,6 +47,16 @@ This family was a near-miss on profit, but still failed the acceptance bar becau
 
 The useful conclusion is that simple ORB logic is more resilient than VWAP fade or Bollinger squeeze on this dataset, but it is still not strong enough under corrected costs. It does not clear `PF > 1.3` or `DD < 15%`, so it stays below the deployment bar.
 
+### Simple M15 EMA crossover
+
+This fallback trend-following family was stronger than ORB on raw profit, but still failed the deployment bar because drawdown stayed too high:
+
+- best case `ema821_cross_dayflat`: `R$28,974`, `PF 1.4573`, `DD 30.38%`, walk-forward `12/16`
+- `ema821_cross_dayflat_long_only`: `R$9,264`, `PF 1.2591`, `DD 25.23%`, walk-forward `10/16`
+- `ema821_cross_atr10_tp15`: `R$-5,430`, `PF 0.9183`, `DD 77.22%`
+
+The useful conclusion is that a bare M15 trend-following signal does have edge in WDO, but it is too unstable in drawdown terms to qualify. It becomes another near-miss, not a deployment candidate.
+
 ## Data and cost model
 
 - Symbol: `WDO$N`
