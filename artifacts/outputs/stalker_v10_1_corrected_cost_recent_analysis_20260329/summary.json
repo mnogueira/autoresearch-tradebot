@@ -1,0 +1,606 @@
+{
+  "combo_reference": {
+    "name": "tier2a_corrected_no_roc_no_maxhold_sl1p0_tp0p48_cd60_skipfriday_skiplast1_prune_longs_topatr33_shorts_10_11_12",
+    "rule": "Corrected-cost stacked combo reference.",
+    "metrics": {
+      "start_date": "2021-03-23",
+      "end_date": "2026-03-20",
+      "trading_days": 1247,
+      "total_trades": 838,
+      "win_rate": 0.7578,
+      "net_profit_brl": 3317.0,
+      "avg_profit_brl": 3.96,
+      "avg_win_brl": 44.39,
+      "avg_loss_brl": -122.5,
+      "profit_factor": 1.1334,
+      "max_drawdown_pct": 8.07,
+      "expected_payoff": 3.96,
+      "on_tester_value": 411.132566
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 0.34,
+      "calmar_ratio": 0.7387,
+      "omega_ratio": 1.1513,
+      "annual_return_pct": 5.96,
+      "max_drawdown_frac": 0.08068
+    },
+    "sortino_weighted_composite": 0.6219,
+    "params": {
+      "params": {
+        "ContractsPerTrade": 1.0,
+        "FilterAsPercOfContractMARange": 0.3,
+        "NumDaysToConsiderPreviousContractMARange": 2,
+        "RetracementLevel": 0.25,
+        "EntryStart_Hour": 10,
+        "EntryStart_Minute": 0,
+        "LastEntry_Hour": 14,
+        "LastEntry_Minute": 30,
+        "SkipWednesday": false,
+        "SkipShortWednesday": true,
+        "SkipHour13": false,
+        "SkipShortHour13": true,
+        "SkipHour14": false,
+        "AllowMonday": true,
+        "AllowTuesday": true,
+        "AllowWednesday": true,
+        "AllowThursday": true,
+        "AllowFriday": false,
+        "TrendEfficiencyWindowMinutes": 15,
+        "ApplyTrendEfficiencyFilterToLongs": true,
+        "ApplyTrendEfficiencyFilterToShorts": false,
+        "MinDirectionalTrendEfficiency15m": 0.333333,
+        "VolumeWindowMinutes": 30,
+        "ApplyVolumeFilterToLongs": false,
+        "ApplyVolumeFilterToShorts": true,
+        "MinSignalVolumeWindowSum": 30000.0,
+        "RelativeVolumeLookbackDays": 20,
+        "ApplyRelativeVolumeFilterToLongs": false,
+        "ApplyRelativeVolumeFilterToShorts": false,
+        "MinRelativeVolumeAtTime": 0.0,
+        "SL_ATRMultiplier": 1.0,
+        "TP_ATRMultiplier": 0.48,
+        "ATRTimeFrame": 15,
+        "ATR_Length": 10,
+        "MarketClose_Hour": 18,
+        "MarketClose_Minute": 0,
+        "MinutesBeforeMarketCloseToClosePositions": 5
+      },
+      "management": {
+        "max_bars_in_trade": null,
+        "partial_profit_enabled": false,
+        "partial_fraction": 0.5,
+        "round_trip_cost_multiplier": 1.0,
+        "spread_multiplier": 1.0,
+        "fixed_spread_ticks": null,
+        "max_entry_spread_ticks": null,
+        "min_minutes_between_entries": 60,
+        "max_daily_profit_brl": null,
+        "max_weekly_profit_brl": null,
+        "max_consecutive_losses_per_day": null,
+        "recent_trade_pnl_lookback": null,
+        "min_recent_trade_pnl_brl": null,
+        "cooldown_after_win_minutes": null,
+        "cooldown_after_loss_minutes": null,
+        "loss_exit_atr_mult": null,
+        "trail_after_target_fraction": null,
+        "trail_lock_target_fraction": null,
+        "atr_trailing_activation_fraction": null,
+        "profitable_trail_start_bars": null,
+        "profitable_trail_step_bars": 1,
+        "profitable_trail_step_ticks": 0,
+        "keep_profitable_overnight": false,
+        "win_streak_threshold": null,
+        "tp_scale_after_win_streak": null,
+        "patience_pullback_fraction": null,
+        "patience_max_wait_bars": null,
+        "micro_pullback_ticks": null,
+        "micro_pullback_max_wait_bars": null,
+        "confirmation_candle_required": false,
+        "confirmation_wait_bars": 1,
+        "confirmation_consecutive_bars": 1,
+        "profit_lock_activation_fraction": null,
+        "profit_lock_target_fraction": null,
+        "widen_stop_after_bars": null,
+        "widened_sl_atr_mult": null,
+        "atr_trailing_distance_mult": null,
+        "trend_flip_exit_bars": null
+      }
+    }
+  },
+  "recent_3m_combo": {
+    "metrics": {
+      "start_date": "2026-01-02",
+      "end_date": "2026-03-20",
+      "trading_days": 54,
+      "total_trades": 40,
+      "win_rate": 0.825,
+      "net_profit_brl": 410.0,
+      "avg_profit_brl": 10.25,
+      "avg_win_brl": 34.45,
+      "avg_loss_brl": -103.86,
+      "profit_factor": 1.564,
+      "max_drawdown_pct": 1.75,
+      "expected_payoff": 10.25,
+      "on_tester_value": 234.598315
+    },
+    "risk_adjusted_metrics": {
+      "sortino_ratio": 1.2942,
+      "calmar_ratio": 11.8013,
+      "omega_ratio": 1.6656,
+      "annual_return_pct": 20.62,
+      "max_drawdown_frac": 0.017477
+    },
+    "sortino_weighted_composite": 4.5206,
+    "trade_breakdown": {
+      "overall": {
+        "total_trades": 40,
+        "net_profit_brl": 410.0,
+        "avg_profit_brl": 10.25,
+        "win_rate": 0.825,
+        "avg_duration_min": 9.5,
+        "median_duration_min": 7.0
+      },
+      "winners": {
+        "total_trades": 33,
+        "net_profit_brl": 1137.0,
+        "avg_profit_brl": 34.45454545454545,
+        "win_rate": 1.0,
+        "avg_duration_min": 9.76,
+        "median_duration_min": 7.0
+      },
+      "losers": {
+        "total_trades": 7,
+        "net_profit_brl": -727.0,
+        "avg_profit_brl": -103.85714285714286,
+        "win_rate": 0.0,
+        "avg_duration_min": 8.29,
+        "median_duration_min": 8.0
+      },
+      "by_direction": [
+        {
+          "direction": "long",
+          "total_trades": 12,
+          "net_profit_brl": 163.0,
+          "avg_profit_brl": 13.58,
+          "win_rate": 0.8333,
+          "avg_duration_min": 8.0
+        },
+        {
+          "direction": "short",
+          "total_trades": 28,
+          "net_profit_brl": 247.0,
+          "avg_profit_brl": 8.82,
+          "win_rate": 0.8214,
+          "avg_duration_min": 10.14
+        }
+      ],
+      "by_hour": [
+        {
+          "entry_hour": 10,
+          "total_trades": 15,
+          "net_profit_brl": 280.0,
+          "avg_profit_brl": 18.67,
+          "win_rate": 0.9333,
+          "avg_duration_min": 9.27
+        },
+        {
+          "entry_hour": 11,
+          "total_trades": 13,
+          "net_profit_brl": -43.0,
+          "avg_profit_brl": -3.31,
+          "win_rate": 0.6923,
+          "avg_duration_min": 7.46
+        },
+        {
+          "entry_hour": 12,
+          "total_trades": 11,
+          "net_profit_brl": 129.0,
+          "avg_profit_brl": 11.73,
+          "win_rate": 0.8182,
+          "avg_duration_min": 12.0
+        },
+        {
+          "entry_hour": 13,
+          "total_trades": 1,
+          "net_profit_brl": 44.0,
+          "avg_profit_brl": 44.0,
+          "win_rate": 1.0,
+          "avg_duration_min": 12.0
+        }
+      ],
+      "winner_hours": [
+        {
+          "entry_hour": 10,
+          "total_trades": 14,
+          "net_profit_brl": 376.0,
+          "avg_profit_brl": 26.86,
+          "win_rate": 1.0,
+          "avg_duration_min": 9.57
+        },
+        {
+          "entry_hour": 11,
+          "total_trades": 9,
+          "net_profit_brl": 331.0,
+          "avg_profit_brl": 36.78,
+          "win_rate": 1.0,
+          "avg_duration_min": 7.22
+        },
+        {
+          "entry_hour": 12,
+          "total_trades": 9,
+          "net_profit_brl": 386.0,
+          "avg_profit_brl": 42.89,
+          "win_rate": 1.0,
+          "avg_duration_min": 12.33
+        },
+        {
+          "entry_hour": 13,
+          "total_trades": 1,
+          "net_profit_brl": 44.0,
+          "avg_profit_brl": 44.0,
+          "win_rate": 1.0,
+          "avg_duration_min": 12.0
+        }
+      ],
+      "loser_hours": [
+        {
+          "entry_hour": 10,
+          "total_trades": 1,
+          "net_profit_brl": -96.0,
+          "avg_profit_brl": -96.0,
+          "win_rate": 0.0,
+          "avg_duration_min": 5.0
+        },
+        {
+          "entry_hour": 11,
+          "total_trades": 4,
+          "net_profit_brl": -374.0,
+          "avg_profit_brl": -93.5,
+          "win_rate": 0.0,
+          "avg_duration_min": 8.0
+        },
+        {
+          "entry_hour": 12,
+          "total_trades": 2,
+          "net_profit_brl": -257.0,
+          "avg_profit_brl": -128.5,
+          "win_rate": 0.0,
+          "avg_duration_min": 10.5
+        }
+      ],
+      "direction_hour_grid": [
+        {
+          "direction": "long",
+          "entry_hour": 10,
+          "total_trades": 6,
+          "net_profit_brl": 49.0,
+          "avg_profit_brl": 8.17,
+          "win_rate": 0.8333,
+          "avg_duration_min": 7.67
+        },
+        {
+          "direction": "long",
+          "entry_hour": 11,
+          "total_trades": 3,
+          "net_profit_brl": 92.0,
+          "avg_profit_brl": 30.67,
+          "win_rate": 1.0,
+          "avg_duration_min": 11.0
+        },
+        {
+          "direction": "long",
+          "entry_hour": 12,
+          "total_trades": 3,
+          "net_profit_brl": 22.0,
+          "avg_profit_brl": 7.33,
+          "win_rate": 0.6667,
+          "avg_duration_min": 5.67
+        },
+        {
+          "direction": "short",
+          "entry_hour": 10,
+          "total_trades": 9,
+          "net_profit_brl": 231.0,
+          "avg_profit_brl": 25.67,
+          "win_rate": 1.0,
+          "avg_duration_min": 10.33
+        },
+        {
+          "direction": "short",
+          "entry_hour": 11,
+          "total_trades": 10,
+          "net_profit_brl": -135.0,
+          "avg_profit_brl": -13.5,
+          "win_rate": 0.6,
+          "avg_duration_min": 6.4
+        },
+        {
+          "direction": "short",
+          "entry_hour": 12,
+          "total_trades": 8,
+          "net_profit_brl": 107.0,
+          "avg_profit_brl": 13.38,
+          "win_rate": 0.875,
+          "avg_duration_min": 14.38
+        },
+        {
+          "direction": "short",
+          "entry_hour": 13,
+          "total_trades": 1,
+          "net_profit_brl": 44.0,
+          "avg_profit_brl": 44.0,
+          "win_rate": 1.0,
+          "avg_duration_min": 12.0
+        }
+      ]
+    }
+  },
+  "m5_ema20_confirmation": {
+    "variant": {
+      "name": "tier2a_corrected_combo_m5_ema20_confirmation",
+      "rule": "Corrected-cost stacked combo plus prior completed M5 close above EMA20 for longs and below EMA20 for shorts.",
+      "metrics": {
+        "start_date": "2021-03-23",
+        "end_date": "2026-03-20",
+        "trading_days": 1247,
+        "total_trades": 828,
+        "win_rate": 0.7609,
+        "net_profit_brl": 3812.0,
+        "avg_profit_brl": 4.6,
+        "avg_win_brl": 44.44,
+        "avg_loss_brl": -122.16,
+        "profit_factor": 1.1576,
+        "max_drawdown_pct": 7.37,
+        "expected_payoff": 4.6,
+        "on_tester_value": 517.07872
+      },
+      "risk_adjusted_metrics": {
+        "sortino_ratio": 0.3986,
+        "calmar_ratio": 0.9148,
+        "omega_ratio": 1.179,
+        "annual_return_pct": 6.74,
+        "max_drawdown_frac": 0.073722
+      },
+      "sortino_weighted_composite": 0.7095,
+      "params": {
+        "params": {
+          "ContractsPerTrade": 1.0,
+          "FilterAsPercOfContractMARange": 0.3,
+          "NumDaysToConsiderPreviousContractMARange": 2,
+          "RetracementLevel": 0.25,
+          "EntryStart_Hour": 10,
+          "EntryStart_Minute": 0,
+          "LastEntry_Hour": 14,
+          "LastEntry_Minute": 30,
+          "SkipWednesday": false,
+          "SkipShortWednesday": true,
+          "SkipHour13": false,
+          "SkipShortHour13": true,
+          "SkipHour14": false,
+          "AllowMonday": true,
+          "AllowTuesday": true,
+          "AllowWednesday": true,
+          "AllowThursday": true,
+          "AllowFriday": false,
+          "TrendEfficiencyWindowMinutes": 15,
+          "ApplyTrendEfficiencyFilterToLongs": true,
+          "ApplyTrendEfficiencyFilterToShorts": false,
+          "MinDirectionalTrendEfficiency15m": 0.333333,
+          "VolumeWindowMinutes": 30,
+          "ApplyVolumeFilterToLongs": false,
+          "ApplyVolumeFilterToShorts": true,
+          "MinSignalVolumeWindowSum": 30000.0,
+          "RelativeVolumeLookbackDays": 20,
+          "ApplyRelativeVolumeFilterToLongs": false,
+          "ApplyRelativeVolumeFilterToShorts": false,
+          "MinRelativeVolumeAtTime": 0.0,
+          "SL_ATRMultiplier": 1.0,
+          "TP_ATRMultiplier": 0.48,
+          "ATRTimeFrame": 15,
+          "ATR_Length": 10,
+          "MarketClose_Hour": 18,
+          "MarketClose_Minute": 0,
+          "MinutesBeforeMarketCloseToClosePositions": 5
+        },
+        "management": {
+          "max_bars_in_trade": null,
+          "partial_profit_enabled": false,
+          "partial_fraction": 0.5,
+          "round_trip_cost_multiplier": 1.0,
+          "spread_multiplier": 1.0,
+          "fixed_spread_ticks": null,
+          "max_entry_spread_ticks": null,
+          "min_minutes_between_entries": 60,
+          "max_daily_profit_brl": null,
+          "max_weekly_profit_brl": null,
+          "max_consecutive_losses_per_day": null,
+          "recent_trade_pnl_lookback": null,
+          "min_recent_trade_pnl_brl": null,
+          "cooldown_after_win_minutes": null,
+          "cooldown_after_loss_minutes": null,
+          "loss_exit_atr_mult": null,
+          "trail_after_target_fraction": null,
+          "trail_lock_target_fraction": null,
+          "atr_trailing_activation_fraction": null,
+          "profitable_trail_start_bars": null,
+          "profitable_trail_step_bars": 1,
+          "profitable_trail_step_ticks": 0,
+          "keep_profitable_overnight": false,
+          "win_streak_threshold": null,
+          "tp_scale_after_win_streak": null,
+          "patience_pullback_fraction": null,
+          "patience_max_wait_bars": null,
+          "micro_pullback_ticks": null,
+          "micro_pullback_max_wait_bars": null,
+          "confirmation_candle_required": false,
+          "confirmation_wait_bars": 1,
+          "confirmation_consecutive_bars": 1,
+          "profit_lock_activation_fraction": null,
+          "profit_lock_target_fraction": null,
+          "widen_stop_after_bars": null,
+          "widened_sl_atr_mult": null,
+          "atr_trailing_distance_mult": null,
+          "trend_flip_exit_bars": null
+        }
+      }
+    },
+    "walkforward_70_30": {
+      "train": {
+        "metrics": {
+          "start_date": "2021-03-23",
+          "end_date": "2024-09-16",
+          "trading_days": 872,
+          "total_trades": 577,
+          "win_rate": 0.7539,
+          "net_profit_brl": 2278.0,
+          "avg_profit_brl": 3.95,
+          "avg_win_brl": 47.16,
+          "avg_loss_brl": -128.43,
+          "profit_factor": 1.1249,
+          "max_drawdown_pct": 7.37,
+          "expected_payoff": 3.95,
+          "on_tester_value": 308.999298
+        },
+        "risk_adjusted_metrics": {
+          "sortino_ratio": 0.3261,
+          "calmar_ratio": 0.8288,
+          "omega_ratio": 1.1429,
+          "annual_return_pct": 6.11,
+          "max_drawdown_frac": 0.073722
+        },
+        "sortino_weighted_composite": 0.6403
+      },
+      "test": {
+        "metrics": {
+          "start_date": "2024-09-17",
+          "end_date": "2026-03-20",
+          "trading_days": 375,
+          "total_trades": 251,
+          "win_rate": 0.7769,
+          "net_profit_brl": 1534.0,
+          "avg_profit_brl": 6.11,
+          "avg_win_brl": 38.38,
+          "avg_loss_brl": -106.27,
+          "profit_factor": 1.2578,
+          "max_drawdown_pct": 5.88,
+          "expected_payoff": 6.11,
+          "on_tester_value": 260.913198
+        },
+        "risk_adjusted_metrics": {
+          "sortino_ratio": 0.6065,
+          "calmar_ratio": 1.712,
+          "omega_ratio": 1.2865,
+          "annual_return_pct": 10.07,
+          "max_drawdown_frac": 0.058793
+        },
+        "sortino_weighted_composite": 1.0741
+      }
+    },
+    "recent_windows": {
+      "recent_3m": {
+        "metrics": {
+          "start_date": "2026-01-02",
+          "end_date": "2026-03-20",
+          "trading_days": 54,
+          "total_trades": 40,
+          "win_rate": 0.825,
+          "net_profit_brl": 410.0,
+          "avg_profit_brl": 10.25,
+          "avg_win_brl": 34.45,
+          "avg_loss_brl": -103.86,
+          "profit_factor": 1.564,
+          "max_drawdown_pct": 1.75,
+          "expected_payoff": 10.25,
+          "on_tester_value": 234.598315
+        },
+        "risk_adjusted_metrics": {
+          "sortino_ratio": 1.2942,
+          "calmar_ratio": 11.8013,
+          "omega_ratio": 1.6656,
+          "annual_return_pct": 20.62,
+          "max_drawdown_frac": 0.017477
+        },
+        "sortino_weighted_composite": 4.5206
+      },
+      "recent_60d": {
+        "metrics": {
+          "start_date": "2025-12-19",
+          "end_date": "2026-03-20",
+          "trading_days": 60,
+          "total_trades": 42,
+          "win_rate": 0.8095,
+          "net_profit_brl": 348.0,
+          "avg_profit_brl": 8.29,
+          "avg_win_brl": 34.59,
+          "avg_loss_brl": -103.5,
+          "profit_factor": 1.4203,
+          "max_drawdown_pct": 1.76,
+          "expected_payoff": 8.29,
+          "on_tester_value": 197.910337
+        },
+        "risk_adjusted_metrics": {
+          "sortino_ratio": 0.9779,
+          "calmar_ratio": 8.787,
+          "omega_ratio": 1.4854,
+          "annual_return_pct": 15.45,
+          "max_drawdown_frac": 0.017584
+        },
+        "sortino_weighted_composite": 3.4221
+      },
+      "recent_30d": {
+        "metrics": {
+          "start_date": "2026-02-05",
+          "end_date": "2026-03-20",
+          "trading_days": 30,
+          "total_trades": 22,
+          "win_rate": 0.8636,
+          "net_profit_brl": 403.0,
+          "avg_profit_brl": 18.32,
+          "avg_win_brl": 39.26,
+          "avg_loss_brl": -114.33,
+          "profit_factor": 2.1749,
+          "max_drawdown_pct": 1.47,
+          "expected_payoff": 18.32,
+          "on_tester_value": 274.200132
+        },
+        "risk_adjusted_metrics": {
+          "sortino_ratio": 2.0703,
+          "calmar_ratio": 26.7791,
+          "omega_ratio": 2.414,
+          "annual_return_pct": 39.36,
+          "max_drawdown_frac": 0.014697
+        },
+        "sortino_weighted_composite": 9.5517
+      },
+      "recent_10d": {
+        "metrics": {
+          "start_date": "2026-03-09",
+          "end_date": "2026-03-20",
+          "trading_days": 10,
+          "total_trades": 5,
+          "win_rate": 1.0,
+          "net_profit_brl": 280.0,
+          "avg_profit_brl": 56.0,
+          "avg_win_brl": 56.0,
+          "avg_loss_brl": 0.0,
+          "profit_factor": Infinity,
+          "max_drawdown_pct": 0.0,
+          "expected_payoff": 56.0,
+          "on_tester_value": 0.0
+        },
+        "risk_adjusted_metrics": {
+          "sortino_ratio": Infinity,
+          "calmar_ratio": Infinity,
+          "omega_ratio": Infinity,
+          "annual_return_pct": 100.55,
+          "max_drawdown_frac": 0.0
+        },
+        "sortino_weighted_composite": Infinity
+      }
+    }
+  },
+  "notes": [
+    "Recent-window anatomy for the corrected-cost stacked combo.",
+    "Also checks whether a lightweight M5 EMA20 confirmation layer improves the M1 combo."
+  ]
+}

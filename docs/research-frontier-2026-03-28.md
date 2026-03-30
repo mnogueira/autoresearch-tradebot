@@ -394,6 +394,10 @@ Those remain research branches only until they pass corrected-cost validation or
 
 ## Structural Follow-Ups Around The Corrected-Cost Combo
 
+- The strongest lightweight confirmation layer is now `M5 EMA20` on top of the M1 combo:
+  - full sample `R$3,812`, `PF 1.1576`, `DD 7.37%`
+  - `70/30` test `R$1,534`, `PF 1.2578`, `DD 5.88%`
+  - recent Jan-Mar `2026` stayed exactly tied with the combo at `R$410`, `PF 1.5640`
 - M5 proxy of the stacked combo was the strongest structural branch tested:
   - full sample `R$6,945`, `PF 1.3841`, `DD 5.18%`
   - `70/30` test `R$1,605`, `PF 1.3232`, `DD 7.43%`
@@ -409,6 +413,7 @@ Those remain research branches only until they pass corrected-cost validation or
 - Jan-Mar `2026` slice on the plain M1 stacked combo stayed positive:
   - `R$410`, `PF 1.5640`, `DD 1.75%`
 - Interpretation:
+  - `M5 EMA20` is the cleanest static overlay on the M1 combo, but not a current-regime improvement
   - M5 is the most interesting structural direction to pursue next
   - but the current regime still favors keeping the M1 stacked combo as the live corrected-cost reference
 

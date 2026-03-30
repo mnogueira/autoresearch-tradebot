@@ -25,11 +25,16 @@
 
 ## Structural Follow-Up Call
 
+- The strongest lightweight overlay on the M1 combo is now an `M5 EMA20` confirmation:
+  - full sample: `R$3,812`, `PF 1.1576`, `DD 7.37%`
+  - `70/30` test: `R$1,534`, `PF 1.2578`, `DD 5.88%`
+  - recent Jan-Mar `2026`: exactly tied with the base combo at `R$410`, `PF 1.5640`, `DD 1.75%`
 - The most promising structural alternative is an `M5` proxy of the same corrected-cost combo logic:
   - full sample: `R$6,945`, `PF 1.3841`, `DD 5.18%`, `725` trades
   - `70/30` test: `R$1,605`, `PF 1.3232`, `DD 7.43%`
   - recent Jan-Mar `2026`: `R$-9`, `PF 0.9900`, `DD 3.54%`
 - Honest read:
+  - the `M5 EMA20` overlay improves the long sample and holdout, but it does **not** improve the current regime
   - `M5` is the strongest longer-sample structural direction I tested
   - but it lost the recent three-month regime check while the current M1 stacked combo stayed positive
   - so it is **not** the new Monday deployment leader

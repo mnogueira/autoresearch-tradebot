@@ -38,6 +38,11 @@
 - EMA20 filter on top of the combo:
   - `R$3,206`, `PF 1.1486`, `DD 9.14%`
   - near-miss, but still worse once drawdown is counted
+- M5 EMA20 confirmation on top of the combo:
+  - full sample `R$3,812`, `PF 1.1576`, `DD 7.37%`
+  - `70/30` test `R$1,534`, `PF 1.2578`, `DD 5.88%`
+  - recent Jan-Mar `2026` stayed exactly tied with the combo at `R$410`, `PF 1.5640`, `DD 1.75%`
+  - strongest lightweight overlay, but not enough recent-regime separation to change Monday
 - Volume gate `1.5x` on top of the combo:
   - `R$-262`, `PF 0.9746`, `DD 12.36%`
   - over-pruned and failed holdout

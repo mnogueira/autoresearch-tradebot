@@ -151,6 +151,11 @@ Corrected rerun:
     - `70/30` test `R$1,605`, `PF 1.3232`, `DD 7.43%`
     - but recent Jan-Mar `2026` slipped to `R$-9`, `PF 0.9900`
     - so it is promising, not promotable
+  - strongest lightweight overlay:
+    - M5 EMA20 confirmation on top of the M1 combo
+    - full sample `R$3,812`, `PF 1.1576`, `DD 7.37%`
+    - `70/30` test `R$1,534`, `PF 1.2578`, `DD 5.88%`
+    - but recent Jan-Mar `2026` was exactly unchanged, so it helps the long sample more than the current tape
   - corrected-cost hour map on that branch:
     - `12h` is the main profit engine
     - `14h` is the only clearly losing hour
