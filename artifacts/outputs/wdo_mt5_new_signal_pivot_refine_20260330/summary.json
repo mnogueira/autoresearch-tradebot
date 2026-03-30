@@ -1,0 +1,1685 @@
+{
+  "symbol": "WDO$N",
+  "cost_model": {
+    "round_trip_cost_brl": 4.0,
+    "tick_size": 0.5,
+    "point_value_brl": 10.0
+  },
+  "ranked_variants": [
+    {
+      "name": "donchian20_high_atr_10_12_tp10",
+      "net_profit_brl": 1902.0,
+      "profit_factor": 1.5125,
+      "max_drawdown_pct": 2.09,
+      "total_trades": 137,
+      "recent_jan_mar_net_profit_brl": 805.0,
+      "wf_passed_folds": 6,
+      "wf_total_folds": 6
+    },
+    {
+      "name": "ensemble_vol_regime_10_11_12_volume",
+      "net_profit_brl": 1390.0,
+      "profit_factor": 1.3629,
+      "max_drawdown_pct": 5.17,
+      "total_trades": 130,
+      "recent_jan_mar_net_profit_brl": 853.0,
+      "wf_passed_folds": 4,
+      "wf_total_folds": 6
+    },
+    {
+      "name": "donchian20_high_atr_10_12_tp12",
+      "net_profit_brl": 1456.0,
+      "profit_factor": 1.3607,
+      "max_drawdown_pct": 2.75,
+      "total_trades": 126,
+      "recent_jan_mar_net_profit_brl": 627.0,
+      "wf_passed_folds": 6,
+      "wf_total_folds": 6
+    },
+    {
+      "name": "donchian20_high_atr_10_12_m5_tp12",
+      "net_profit_brl": 1375.0,
+      "profit_factor": 1.3406,
+      "max_drawdown_pct": 2.75,
+      "total_trades": 125,
+      "recent_jan_mar_net_profit_brl": 546.0,
+      "wf_passed_folds": 6,
+      "wf_total_folds": 6
+    },
+    {
+      "name": "donchian20_high_atr_10_12_volume_tp12",
+      "net_profit_brl": 1109.0,
+      "profit_factor": 1.3392,
+      "max_drawdown_pct": 2.48,
+      "total_trades": 104,
+      "recent_jan_mar_net_profit_brl": 132.0,
+      "wf_passed_folds": 5,
+      "wf_total_folds": 6
+    },
+    {
+      "name": "ensemble_vol_regime_10_11_12_dynamic_tp",
+      "net_profit_brl": 1848.0,
+      "profit_factor": 1.3345,
+      "max_drawdown_pct": 3.74,
+      "total_trades": 173,
+      "recent_jan_mar_net_profit_brl": 1075.0,
+      "wf_passed_folds": 5,
+      "wf_total_folds": 6
+    },
+    {
+      "name": "ensemble_vol_regime_10_11_12",
+      "net_profit_brl": 1007.0,
+      "profit_factor": 1.1702,
+      "max_drawdown_pct": 5.31,
+      "total_trades": 182,
+      "recent_jan_mar_net_profit_brl": 380.0,
+      "wf_passed_folds": 5,
+      "wf_total_folds": 6
+    }
+  ],
+  "variants": [
+    {
+      "name": "donchian20_high_atr_10_12_tp12",
+      "description": "High-ATR Donchian restricted to 10h and 12h.",
+      "params": {
+        "name": "donchian20_high_atr_10_12_tp12",
+        "description": "High-ATR Donchian restricted to 10h and 12h.",
+        "atr_col": "atr14_m5",
+        "entry_start_hour": 10,
+        "last_entry_hour": 12,
+        "last_entry_minute": 59,
+        "force_flat_hour": 17,
+        "force_flat_minute": 50,
+        "max_hold_bars": null
+      },
+      "metrics": {
+        "start_date": "2025-07-16",
+        "end_date": "2026-03-27",
+        "trading_days": 176,
+        "total_trades": 126,
+        "win_rate": 0.5397,
+        "net_profit_brl": 1456.0,
+        "profit_factor": 1.3607,
+        "max_drawdown_pct": 2.75,
+        "avg_profit_brl": 11.56
+      },
+      "walkforward_3m_train_1m_test_1m_step": {
+        "total_folds": 6,
+        "passed_folds": 6,
+        "folds": [
+          {
+            "train_months": [
+              "2025-07",
+              "2025-08",
+              "2025-09"
+            ],
+            "test_month": "2025-10",
+            "train_metrics": {
+              "start_date": "2025-07-16",
+              "end_date": "2025-09-30",
+              "trading_days": 55,
+              "total_trades": 5,
+              "win_rate": 0.4,
+              "net_profit_brl": -25.0,
+              "profit_factor": 0.8547,
+              "max_drawdown_pct": 0.49,
+              "avg_profit_brl": -5.0
+            },
+            "test_metrics": {
+              "start_date": "2025-10-01",
+              "end_date": "2025-10-31",
+              "trading_days": 23,
+              "total_trades": 32,
+              "win_rate": 0.4688,
+              "net_profit_brl": 187.0,
+              "profit_factor": 1.1819,
+              "max_drawdown_pct": 2.34,
+              "avg_profit_brl": 5.84
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-08",
+              "2025-09",
+              "2025-10"
+            ],
+            "test_month": "2025-11",
+            "train_metrics": {
+              "start_date": "2025-08-01",
+              "end_date": "2025-10-31",
+              "trading_days": 66,
+              "total_trades": 37,
+              "win_rate": 0.4595,
+              "net_profit_brl": 162.0,
+              "profit_factor": 1.135,
+              "max_drawdown_pct": 2.75,
+              "avg_profit_brl": 4.38
+            },
+            "test_metrics": {
+              "start_date": "2025-11-03",
+              "end_date": "2025-11-28",
+              "trading_days": 19,
+              "total_trades": 5,
+              "win_rate": 0.6,
+              "net_profit_brl": 40.0,
+              "profit_factor": 1.3883,
+              "max_drawdown_pct": 0.53,
+              "avg_profit_brl": 8.0
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-09",
+              "2025-10",
+              "2025-11"
+            ],
+            "test_month": "2025-12",
+            "train_metrics": {
+              "start_date": "2025-09-01",
+              "end_date": "2025-11-28",
+              "trading_days": 64,
+              "total_trades": 42,
+              "win_rate": 0.4762,
+              "net_profit_brl": 202.0,
+              "profit_factor": 1.155,
+              "max_drawdown_pct": 2.75,
+              "avg_profit_brl": 4.81
+            },
+            "test_metrics": {
+              "start_date": "2025-12-01",
+              "end_date": "2025-12-30",
+              "trading_days": 20,
+              "total_trades": 37,
+              "win_rate": 0.5946,
+              "net_profit_brl": 627.0,
+              "profit_factor": 1.5943,
+              "max_drawdown_pct": 1.36,
+              "avg_profit_brl": 16.95
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-10",
+              "2025-11",
+              "2025-12"
+            ],
+            "test_month": "2026-01",
+            "train_metrics": {
+              "start_date": "2025-10-01",
+              "end_date": "2025-12-30",
+              "trading_days": 62,
+              "total_trades": 74,
+              "win_rate": 0.5405,
+              "net_profit_brl": 854.0,
+              "profit_factor": 1.3907,
+              "max_drawdown_pct": 2.34,
+              "avg_profit_brl": 11.54
+            },
+            "test_metrics": {
+              "start_date": "2026-01-02",
+              "end_date": "2026-01-30",
+              "trading_days": 21,
+              "total_trades": 12,
+              "win_rate": 0.5,
+              "net_profit_brl": 47.0,
+              "profit_factor": 1.1224,
+              "max_drawdown_pct": 0.49,
+              "avg_profit_brl": 3.92
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-11",
+              "2025-12",
+              "2026-01"
+            ],
+            "test_month": "2026-02",
+            "train_metrics": {
+              "start_date": "2025-11-03",
+              "end_date": "2026-01-30",
+              "trading_days": 60,
+              "total_trades": 54,
+              "win_rate": 0.5741,
+              "net_profit_brl": 714.0,
+              "profit_factor": 1.463,
+              "max_drawdown_pct": 1.92,
+              "avg_profit_brl": 13.22
+            },
+            "test_metrics": {
+              "start_date": "2026-02-02",
+              "end_date": "2026-02-27",
+              "trading_days": 18,
+              "total_trades": 11,
+              "win_rate": 0.6364,
+              "net_profit_brl": 281.0,
+              "profit_factor": 2.0766,
+              "max_drawdown_pct": 0.53,
+              "avg_profit_brl": 25.55
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-12",
+              "2026-01",
+              "2026-02"
+            ],
+            "test_month": "2026-03",
+            "train_metrics": {
+              "start_date": "2025-12-01",
+              "end_date": "2026-02-27",
+              "trading_days": 59,
+              "total_trades": 60,
+              "win_rate": 0.5833,
+              "net_profit_brl": 955.0,
+              "profit_factor": 1.5618,
+              "max_drawdown_pct": 1.93,
+              "avg_profit_brl": 15.92
+            },
+            "test_metrics": {
+              "start_date": "2026-03-02",
+              "end_date": "2026-03-27",
+              "trading_days": 20,
+              "total_trades": 24,
+              "win_rate": 0.5417,
+              "net_profit_brl": 299.0,
+              "profit_factor": 1.2892,
+              "max_drawdown_pct": 1.95,
+              "avg_profit_brl": 12.46
+            },
+            "pass": true
+          }
+        ]
+      },
+      "recent_jan_mar_2026": {
+        "start_date": "2026-01-02",
+        "end_date": "2026-03-27",
+        "trading_days": 59,
+        "total_trades": 47,
+        "win_rate": 0.5532,
+        "net_profit_brl": 627.0,
+        "profit_factor": 1.3734,
+        "max_drawdown_pct": 1.89,
+        "avg_profit_brl": 13.34
+      }
+    },
+    {
+      "name": "donchian20_high_atr_10_12_tp10",
+      "description": "High-ATR Donchian 10h/12h with tighter 1.0 ATR target.",
+      "params": {
+        "name": "donchian20_high_atr_10_12_tp10",
+        "description": "High-ATR Donchian 10h/12h with tighter 1.0 ATR target.",
+        "atr_col": "atr14_m5",
+        "entry_start_hour": 10,
+        "last_entry_hour": 12,
+        "last_entry_minute": 59,
+        "force_flat_hour": 17,
+        "force_flat_minute": 50,
+        "max_hold_bars": null
+      },
+      "metrics": {
+        "start_date": "2025-07-16",
+        "end_date": "2026-03-27",
+        "trading_days": 176,
+        "total_trades": 137,
+        "win_rate": 0.6058,
+        "net_profit_brl": 1902.0,
+        "profit_factor": 1.5125,
+        "max_drawdown_pct": 2.09,
+        "avg_profit_brl": 13.88
+      },
+      "walkforward_3m_train_1m_test_1m_step": {
+        "total_folds": 6,
+        "passed_folds": 6,
+        "folds": [
+          {
+            "train_months": [
+              "2025-07",
+              "2025-08",
+              "2025-09"
+            ],
+            "test_month": "2025-10",
+            "train_metrics": {
+              "start_date": "2025-07-16",
+              "end_date": "2025-09-30",
+              "trading_days": 55,
+              "total_trades": 5,
+              "win_rate": 0.4,
+              "net_profit_brl": -50.0,
+              "profit_factor": 0.7093,
+              "max_drawdown_pct": 0.57,
+              "avg_profit_brl": -10.0
+            },
+            "test_metrics": {
+              "start_date": "2025-10-01",
+              "end_date": "2025-10-31",
+              "trading_days": 23,
+              "total_trades": 34,
+              "win_rate": 0.5294,
+              "net_profit_brl": 234.0,
+              "profit_factor": 1.2427,
+              "max_drawdown_pct": 2.08,
+              "avg_profit_brl": 6.88
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-08",
+              "2025-09",
+              "2025-10"
+            ],
+            "test_month": "2025-11",
+            "train_metrics": {
+              "start_date": "2025-08-01",
+              "end_date": "2025-10-31",
+              "trading_days": 66,
+              "total_trades": 39,
+              "win_rate": 0.5128,
+              "net_profit_brl": 184.0,
+              "profit_factor": 1.162,
+              "max_drawdown_pct": 2.09,
+              "avg_profit_brl": 4.72
+            },
+            "test_metrics": {
+              "start_date": "2025-11-03",
+              "end_date": "2025-11-28",
+              "trading_days": 19,
+              "total_trades": 6,
+              "win_rate": 0.6667,
+              "net_profit_brl": 46.0,
+              "profit_factor": 1.4466,
+              "max_drawdown_pct": 0.53,
+              "avg_profit_brl": 7.67
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-09",
+              "2025-10",
+              "2025-11"
+            ],
+            "test_month": "2025-12",
+            "train_metrics": {
+              "start_date": "2025-09-01",
+              "end_date": "2025-11-28",
+              "trading_days": 64,
+              "total_trades": 45,
+              "win_rate": 0.5333,
+              "net_profit_brl": 230.0,
+              "profit_factor": 1.1856,
+              "max_drawdown_pct": 2.09,
+              "avg_profit_brl": 5.11
+            },
+            "test_metrics": {
+              "start_date": "2025-12-01",
+              "end_date": "2025-12-30",
+              "trading_days": 20,
+              "total_trades": 42,
+              "win_rate": 0.6667,
+              "net_profit_brl": 867.0,
+              "profit_factor": 1.9069,
+              "max_drawdown_pct": 1.42,
+              "avg_profit_brl": 20.64
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-10",
+              "2025-11",
+              "2025-12"
+            ],
+            "test_month": "2026-01",
+            "train_metrics": {
+              "start_date": "2025-10-01",
+              "end_date": "2025-12-30",
+              "trading_days": 62,
+              "total_trades": 82,
+              "win_rate": 0.6098,
+              "net_profit_brl": 1147.0,
+              "profit_factor": 1.567,
+              "max_drawdown_pct": 2.08,
+              "avg_profit_brl": 13.99
+            },
+            "test_metrics": {
+              "start_date": "2026-01-02",
+              "end_date": "2026-01-30",
+              "trading_days": 21,
+              "total_trades": 12,
+              "win_rate": 0.5833,
+              "net_profit_brl": 97.0,
+              "profit_factor": 1.3031,
+              "max_drawdown_pct": 0.56,
+              "avg_profit_brl": 8.08
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-11",
+              "2025-12",
+              "2026-01"
+            ],
+            "test_month": "2026-02",
+            "train_metrics": {
+              "start_date": "2025-11-03",
+              "end_date": "2026-01-30",
+              "trading_days": 60,
+              "total_trades": 60,
+              "win_rate": 0.65,
+              "net_profit_brl": 1010.0,
+              "profit_factor": 1.7324,
+              "max_drawdown_pct": 2.01,
+              "avg_profit_brl": 16.83
+            },
+            "test_metrics": {
+              "start_date": "2026-02-02",
+              "end_date": "2026-02-27",
+              "trading_days": 18,
+              "total_trades": 11,
+              "win_rate": 0.6364,
+              "net_profit_brl": 186.0,
+              "profit_factor": 1.7126,
+              "max_drawdown_pct": 0.6,
+              "avg_profit_brl": 16.91
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-12",
+              "2026-01",
+              "2026-02"
+            ],
+            "test_month": "2026-03",
+            "train_metrics": {
+              "start_date": "2025-12-01",
+              "end_date": "2026-02-27",
+              "trading_days": 59,
+              "total_trades": 65,
+              "win_rate": 0.6462,
+              "net_profit_brl": 1150.0,
+              "profit_factor": 1.7482,
+              "max_drawdown_pct": 2.02,
+              "avg_profit_brl": 17.69
+            },
+            "test_metrics": {
+              "start_date": "2026-03-02",
+              "end_date": "2026-03-27",
+              "trading_days": 20,
+              "total_trades": 27,
+              "win_rate": 0.6296,
+              "net_profit_brl": 522.0,
+              "profit_factor": 1.5583,
+              "max_drawdown_pct": 1.91,
+              "avg_profit_brl": 19.33
+            },
+            "pass": true
+          }
+        ]
+      },
+      "recent_jan_mar_2026": {
+        "start_date": "2026-01-02",
+        "end_date": "2026-03-27",
+        "trading_days": 59,
+        "total_trades": 50,
+        "win_rate": 0.62,
+        "net_profit_brl": 805.0,
+        "profit_factor": 1.531,
+        "max_drawdown_pct": 1.86,
+        "avg_profit_brl": 16.1
+      }
+    },
+    {
+      "name": "donchian20_high_atr_10_12_m5_tp12",
+      "description": "High-ATR Donchian 10h/12h with M5 EMA agreement.",
+      "params": {
+        "name": "donchian20_high_atr_10_12_m5_tp12",
+        "description": "High-ATR Donchian 10h/12h with M5 EMA agreement.",
+        "atr_col": "atr14_m5",
+        "entry_start_hour": 10,
+        "last_entry_hour": 12,
+        "last_entry_minute": 59,
+        "force_flat_hour": 17,
+        "force_flat_minute": 50,
+        "max_hold_bars": null
+      },
+      "metrics": {
+        "start_date": "2025-07-16",
+        "end_date": "2026-03-27",
+        "trading_days": 176,
+        "total_trades": 125,
+        "win_rate": 0.536,
+        "net_profit_brl": 1375.0,
+        "profit_factor": 1.3406,
+        "max_drawdown_pct": 2.75,
+        "avg_profit_brl": 11.0
+      },
+      "walkforward_3m_train_1m_test_1m_step": {
+        "total_folds": 6,
+        "passed_folds": 6,
+        "folds": [
+          {
+            "train_months": [
+              "2025-07",
+              "2025-08",
+              "2025-09"
+            ],
+            "test_month": "2025-10",
+            "train_metrics": {
+              "start_date": "2025-07-16",
+              "end_date": "2025-09-30",
+              "trading_days": 55,
+              "total_trades": 5,
+              "win_rate": 0.4,
+              "net_profit_brl": -25.0,
+              "profit_factor": 0.8547,
+              "max_drawdown_pct": 0.49,
+              "avg_profit_brl": -5.0
+            },
+            "test_metrics": {
+              "start_date": "2025-10-01",
+              "end_date": "2025-10-31",
+              "trading_days": 23,
+              "total_trades": 32,
+              "win_rate": 0.4688,
+              "net_profit_brl": 187.0,
+              "profit_factor": 1.1819,
+              "max_drawdown_pct": 2.34,
+              "avg_profit_brl": 5.84
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-08",
+              "2025-09",
+              "2025-10"
+            ],
+            "test_month": "2025-11",
+            "train_metrics": {
+              "start_date": "2025-08-01",
+              "end_date": "2025-10-31",
+              "trading_days": 66,
+              "total_trades": 37,
+              "win_rate": 0.4595,
+              "net_profit_brl": 162.0,
+              "profit_factor": 1.135,
+              "max_drawdown_pct": 2.75,
+              "avg_profit_brl": 4.38
+            },
+            "test_metrics": {
+              "start_date": "2025-11-03",
+              "end_date": "2025-11-28",
+              "trading_days": 19,
+              "total_trades": 5,
+              "win_rate": 0.6,
+              "net_profit_brl": 40.0,
+              "profit_factor": 1.3883,
+              "max_drawdown_pct": 0.53,
+              "avg_profit_brl": 8.0
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-09",
+              "2025-10",
+              "2025-11"
+            ],
+            "test_month": "2025-12",
+            "train_metrics": {
+              "start_date": "2025-09-01",
+              "end_date": "2025-11-28",
+              "trading_days": 64,
+              "total_trades": 42,
+              "win_rate": 0.4762,
+              "net_profit_brl": 202.0,
+              "profit_factor": 1.155,
+              "max_drawdown_pct": 2.75,
+              "avg_profit_brl": 4.81
+            },
+            "test_metrics": {
+              "start_date": "2025-12-01",
+              "end_date": "2025-12-30",
+              "trading_days": 20,
+              "total_trades": 37,
+              "win_rate": 0.5946,
+              "net_profit_brl": 627.0,
+              "profit_factor": 1.5943,
+              "max_drawdown_pct": 1.36,
+              "avg_profit_brl": 16.95
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-10",
+              "2025-11",
+              "2025-12"
+            ],
+            "test_month": "2026-01",
+            "train_metrics": {
+              "start_date": "2025-10-01",
+              "end_date": "2025-12-30",
+              "trading_days": 62,
+              "total_trades": 74,
+              "win_rate": 0.5405,
+              "net_profit_brl": 854.0,
+              "profit_factor": 1.3907,
+              "max_drawdown_pct": 2.34,
+              "avg_profit_brl": 11.54
+            },
+            "test_metrics": {
+              "start_date": "2026-01-02",
+              "end_date": "2026-01-30",
+              "trading_days": 21,
+              "total_trades": 12,
+              "win_rate": 0.5,
+              "net_profit_brl": 47.0,
+              "profit_factor": 1.1224,
+              "max_drawdown_pct": 0.49,
+              "avg_profit_brl": 3.92
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-11",
+              "2025-12",
+              "2026-01"
+            ],
+            "test_month": "2026-02",
+            "train_metrics": {
+              "start_date": "2025-11-03",
+              "end_date": "2026-01-30",
+              "trading_days": 60,
+              "total_trades": 54,
+              "win_rate": 0.5741,
+              "net_profit_brl": 714.0,
+              "profit_factor": 1.463,
+              "max_drawdown_pct": 1.92,
+              "avg_profit_brl": 13.22
+            },
+            "test_metrics": {
+              "start_date": "2026-02-02",
+              "end_date": "2026-02-27",
+              "trading_days": 18,
+              "total_trades": 10,
+              "win_rate": 0.6,
+              "net_profit_brl": 200.0,
+              "profit_factor": 1.7663,
+              "max_drawdown_pct": 0.53,
+              "avg_profit_brl": 20.0
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-12",
+              "2026-01",
+              "2026-02"
+            ],
+            "test_month": "2026-03",
+            "train_metrics": {
+              "start_date": "2025-12-01",
+              "end_date": "2026-02-27",
+              "trading_days": 59,
+              "total_trades": 59,
+              "win_rate": 0.5763,
+              "net_profit_brl": 874.0,
+              "profit_factor": 1.5141,
+              "max_drawdown_pct": 1.93,
+              "avg_profit_brl": 14.81
+            },
+            "test_metrics": {
+              "start_date": "2026-03-02",
+              "end_date": "2026-03-27",
+              "trading_days": 20,
+              "total_trades": 24,
+              "win_rate": 0.5417,
+              "net_profit_brl": 299.0,
+              "profit_factor": 1.2892,
+              "max_drawdown_pct": 1.95,
+              "avg_profit_brl": 12.46
+            },
+            "pass": true
+          }
+        ]
+      },
+      "recent_jan_mar_2026": {
+        "start_date": "2026-01-02",
+        "end_date": "2026-03-27",
+        "trading_days": 59,
+        "total_trades": 46,
+        "win_rate": 0.5435,
+        "net_profit_brl": 546.0,
+        "profit_factor": 1.3252,
+        "max_drawdown_pct": 1.9,
+        "avg_profit_brl": 11.87
+      }
+    },
+    {
+      "name": "donchian20_high_atr_10_12_volume_tp12",
+      "description": "High-ATR Donchian 10h/12h with 1.5x volume gate.",
+      "params": {
+        "name": "donchian20_high_atr_10_12_volume_tp12",
+        "description": "High-ATR Donchian 10h/12h with 1.5x volume gate.",
+        "atr_col": "atr14_m5",
+        "entry_start_hour": 10,
+        "last_entry_hour": 12,
+        "last_entry_minute": 59,
+        "force_flat_hour": 17,
+        "force_flat_minute": 50,
+        "max_hold_bars": null
+      },
+      "metrics": {
+        "start_date": "2025-07-16",
+        "end_date": "2026-03-27",
+        "trading_days": 176,
+        "total_trades": 104,
+        "win_rate": 0.5577,
+        "net_profit_brl": 1109.0,
+        "profit_factor": 1.3392,
+        "max_drawdown_pct": 2.48,
+        "avg_profit_brl": 10.66
+      },
+      "walkforward_3m_train_1m_test_1m_step": {
+        "total_folds": 6,
+        "passed_folds": 5,
+        "folds": [
+          {
+            "train_months": [
+              "2025-07",
+              "2025-08",
+              "2025-09"
+            ],
+            "test_month": "2025-10",
+            "train_metrics": {
+              "start_date": "2025-07-16",
+              "end_date": "2025-09-30",
+              "trading_days": 55,
+              "total_trades": 5,
+              "win_rate": 0.4,
+              "net_profit_brl": -25.0,
+              "profit_factor": 0.8547,
+              "max_drawdown_pct": 0.49,
+              "avg_profit_brl": -5.0
+            },
+            "test_metrics": {
+              "start_date": "2025-10-01",
+              "end_date": "2025-10-31",
+              "trading_days": 23,
+              "total_trades": 25,
+              "win_rate": 0.56,
+              "net_profit_brl": 105.0,
+              "profit_factor": 1.1331,
+              "max_drawdown_pct": 2.21,
+              "avg_profit_brl": 4.2
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-08",
+              "2025-09",
+              "2025-10"
+            ],
+            "test_month": "2025-11",
+            "train_metrics": {
+              "start_date": "2025-08-01",
+              "end_date": "2025-10-31",
+              "trading_days": 66,
+              "total_trades": 30,
+              "win_rate": 0.5333,
+              "net_profit_brl": 80.0,
+              "profit_factor": 1.0832,
+              "max_drawdown_pct": 2.22,
+              "avg_profit_brl": 2.67
+            },
+            "test_metrics": {
+              "start_date": "2025-11-03",
+              "end_date": "2025-11-28",
+              "trading_days": 19,
+              "total_trades": 5,
+              "win_rate": 0.6,
+              "net_profit_brl": 40.0,
+              "profit_factor": 1.3883,
+              "max_drawdown_pct": 0.53,
+              "avg_profit_brl": 8.0
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-09",
+              "2025-10",
+              "2025-11"
+            ],
+            "test_month": "2025-12",
+            "train_metrics": {
+              "start_date": "2025-09-01",
+              "end_date": "2025-11-28",
+              "trading_days": 64,
+              "total_trades": 35,
+              "win_rate": 0.5429,
+              "net_profit_brl": 120.0,
+              "profit_factor": 1.1128,
+              "max_drawdown_pct": 2.22,
+              "avg_profit_brl": 3.43
+            },
+            "test_metrics": {
+              "start_date": "2025-12-01",
+              "end_date": "2025-12-30",
+              "trading_days": 20,
+              "total_trades": 32,
+              "win_rate": 0.6562,
+              "net_profit_brl": 857.0,
+              "profit_factor": 2.1366,
+              "max_drawdown_pct": 1.33,
+              "avg_profit_brl": 26.78
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-10",
+              "2025-11",
+              "2025-12"
+            ],
+            "test_month": "2026-01",
+            "train_metrics": {
+              "start_date": "2025-10-01",
+              "end_date": "2025-12-30",
+              "trading_days": 62,
+              "total_trades": 62,
+              "win_rate": 0.6129,
+              "net_profit_brl": 1002.0,
+              "profit_factor": 1.6087,
+              "max_drawdown_pct": 2.21,
+              "avg_profit_brl": 16.16
+            },
+            "test_metrics": {
+              "start_date": "2026-01-02",
+              "end_date": "2026-01-30",
+              "trading_days": 21,
+              "total_trades": 10,
+              "win_rate": 0.4,
+              "net_profit_brl": -105.0,
+              "profit_factor": 0.7266,
+              "max_drawdown_pct": 0.49,
+              "avg_profit_brl": -10.5
+            },
+            "pass": false
+          },
+          {
+            "train_months": [
+              "2025-11",
+              "2025-12",
+              "2026-01"
+            ],
+            "test_month": "2026-02",
+            "train_metrics": {
+              "start_date": "2025-11-03",
+              "end_date": "2026-01-30",
+              "trading_days": 60,
+              "total_trades": 47,
+              "win_rate": 0.5957,
+              "net_profit_brl": 792.0,
+              "profit_factor": 1.6382,
+              "max_drawdown_pct": 2.48,
+              "avg_profit_brl": 16.85
+            },
+            "test_metrics": {
+              "start_date": "2026-02-02",
+              "end_date": "2026-02-27",
+              "trading_days": 18,
+              "total_trades": 8,
+              "win_rate": 0.625,
+              "net_profit_brl": 213.0,
+              "profit_factor": 2.2034,
+              "max_drawdown_pct": 1.19,
+              "avg_profit_brl": 26.62
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-12",
+              "2026-01",
+              "2026-02"
+            ],
+            "test_month": "2026-03",
+            "train_metrics": {
+              "start_date": "2025-12-01",
+              "end_date": "2026-02-27",
+              "trading_days": 59,
+              "total_trades": 50,
+              "win_rate": 0.6,
+              "net_profit_brl": 965.0,
+              "profit_factor": 1.7338,
+              "max_drawdown_pct": 2.49,
+              "avg_profit_brl": 19.3
+            },
+            "test_metrics": {
+              "start_date": "2026-03-02",
+              "end_date": "2026-03-27",
+              "trading_days": 20,
+              "total_trades": 19,
+              "win_rate": 0.4737,
+              "net_profit_brl": 24.0,
+              "profit_factor": 1.027,
+              "max_drawdown_pct": 2.74,
+              "avg_profit_brl": 1.26
+            },
+            "pass": true
+          }
+        ]
+      },
+      "recent_jan_mar_2026": {
+        "start_date": "2026-01-02",
+        "end_date": "2026-03-27",
+        "trading_days": 59,
+        "total_trades": 37,
+        "win_rate": 0.4865,
+        "net_profit_brl": 132.0,
+        "profit_factor": 1.091,
+        "max_drawdown_pct": 2.71,
+        "avg_profit_brl": 3.57
+      }
+    },
+    {
+      "name": "ensemble_vol_regime_10_11_12",
+      "description": "Ensemble with 13h removed.",
+      "params": {
+        "name": "ensemble_vol_regime_10_11_12",
+        "description": "Ensemble with 13h removed.",
+        "atr_col": "atr14_m5",
+        "entry_start_hour": 10,
+        "last_entry_hour": 12,
+        "last_entry_minute": 59,
+        "force_flat_hour": 17,
+        "force_flat_minute": 50,
+        "max_hold_bars": 45
+      },
+      "metrics": {
+        "start_date": "2025-07-16",
+        "end_date": "2026-03-27",
+        "trading_days": 176,
+        "total_trades": 182,
+        "win_rate": 0.4945,
+        "net_profit_brl": 1007.0,
+        "profit_factor": 1.1702,
+        "max_drawdown_pct": 5.31,
+        "avg_profit_brl": 5.53
+      },
+      "walkforward_3m_train_1m_test_1m_step": {
+        "total_folds": 6,
+        "passed_folds": 5,
+        "folds": [
+          {
+            "train_months": [
+              "2025-07",
+              "2025-08",
+              "2025-09"
+            ],
+            "test_month": "2025-10",
+            "train_metrics": {
+              "start_date": "2025-07-16",
+              "end_date": "2025-09-30",
+              "trading_days": 55,
+              "total_trades": 34,
+              "win_rate": 0.4118,
+              "net_profit_brl": -206.0,
+              "profit_factor": 0.8177,
+              "max_drawdown_pct": 3.06,
+              "avg_profit_brl": -6.06
+            },
+            "test_metrics": {
+              "start_date": "2025-10-01",
+              "end_date": "2025-10-31",
+              "trading_days": 23,
+              "total_trades": 31,
+              "win_rate": 0.4516,
+              "net_profit_brl": 121.0,
+              "profit_factor": 1.1183,
+              "max_drawdown_pct": 2.34,
+              "avg_profit_brl": 3.9
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-08",
+              "2025-09",
+              "2025-10"
+            ],
+            "test_month": "2025-11",
+            "train_metrics": {
+              "start_date": "2025-08-01",
+              "end_date": "2025-10-31",
+              "trading_days": 66,
+              "total_trades": 50,
+              "win_rate": 0.4,
+              "net_profit_brl": -130.0,
+              "profit_factor": 0.9217,
+              "max_drawdown_pct": 4.93,
+              "avg_profit_brl": -2.6
+            },
+            "test_metrics": {
+              "start_date": "2025-11-03",
+              "end_date": "2025-11-28",
+              "trading_days": 19,
+              "total_trades": 15,
+              "win_rate": 0.6,
+              "net_profit_brl": 145.0,
+              "profit_factor": 1.477,
+              "max_drawdown_pct": 0.87,
+              "avg_profit_brl": 9.67
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-09",
+              "2025-10",
+              "2025-11"
+            ],
+            "test_month": "2025-12",
+            "train_metrics": {
+              "start_date": "2025-09-01",
+              "end_date": "2025-11-28",
+              "trading_days": 64,
+              "total_trades": 56,
+              "win_rate": 0.4643,
+              "net_profit_brl": 111.0,
+              "profit_factor": 1.0667,
+              "max_drawdown_pct": 3.37,
+              "avg_profit_brl": 1.98
+            },
+            "test_metrics": {
+              "start_date": "2025-12-01",
+              "end_date": "2025-12-30",
+              "trading_days": 20,
+              "total_trades": 32,
+              "win_rate": 0.5938,
+              "net_profit_brl": 567.0,
+              "profit_factor": 1.6392,
+              "max_drawdown_pct": 0.9,
+              "avg_profit_brl": 17.72
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-10",
+              "2025-11",
+              "2025-12"
+            ],
+            "test_month": "2026-01",
+            "train_metrics": {
+              "start_date": "2025-10-01",
+              "end_date": "2025-12-30",
+              "trading_days": 62,
+              "total_trades": 78,
+              "win_rate": 0.5385,
+              "net_profit_brl": 833.0,
+              "profit_factor": 1.3762,
+              "max_drawdown_pct": 2.34,
+              "avg_profit_brl": 10.68
+            },
+            "test_metrics": {
+              "start_date": "2026-01-02",
+              "end_date": "2026-01-30",
+              "trading_days": 21,
+              "total_trades": 17,
+              "win_rate": 0.3529,
+              "net_profit_brl": -183.0,
+              "profit_factor": 0.6893,
+              "max_drawdown_pct": 3.71,
+              "avg_profit_brl": -10.76
+            },
+            "pass": false
+          },
+          {
+            "train_months": [
+              "2025-11",
+              "2025-12",
+              "2026-01"
+            ],
+            "test_month": "2026-02",
+            "train_metrics": {
+              "start_date": "2025-11-03",
+              "end_date": "2026-01-30",
+              "trading_days": 60,
+              "total_trades": 64,
+              "win_rate": 0.5312,
+              "net_profit_brl": 529.0,
+              "profit_factor": 1.2972,
+              "max_drawdown_pct": 3.47,
+              "avg_profit_brl": 8.27
+            },
+            "test_metrics": {
+              "start_date": "2026-02-02",
+              "end_date": "2026-02-27",
+              "trading_days": 18,
+              "total_trades": 19,
+              "win_rate": 0.4737,
+              "net_profit_brl": 79.0,
+              "profit_factor": 1.1317,
+              "max_drawdown_pct": 1.77,
+              "avg_profit_brl": 4.16
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-12",
+              "2026-01",
+              "2026-02"
+            ],
+            "test_month": "2026-03",
+            "train_metrics": {
+              "start_date": "2025-12-01",
+              "end_date": "2026-02-27",
+              "trading_days": 59,
+              "total_trades": 68,
+              "win_rate": 0.5,
+              "net_profit_brl": 463.0,
+              "profit_factor": 1.223,
+              "max_drawdown_pct": 3.52,
+              "avg_profit_brl": 6.81
+            },
+            "test_metrics": {
+              "start_date": "2026-03-02",
+              "end_date": "2026-03-27",
+              "trading_days": 20,
+              "total_trades": 34,
+              "win_rate": 0.5588,
+              "net_profit_brl": 484.0,
+              "profit_factor": 1.3495,
+              "max_drawdown_pct": 1.84,
+              "avg_profit_brl": 14.24
+            },
+            "pass": true
+          }
+        ]
+      },
+      "recent_jan_mar_2026": {
+        "start_date": "2026-01-02",
+        "end_date": "2026-03-27",
+        "trading_days": 59,
+        "total_trades": 70,
+        "win_rate": 0.4857,
+        "net_profit_brl": 380.0,
+        "profit_factor": 1.1476,
+        "max_drawdown_pct": 4.36,
+        "avg_profit_brl": 5.43
+      }
+    },
+    {
+      "name": "ensemble_vol_regime_10_11_12_dynamic_tp",
+      "description": "13h removed ensemble with wider high-vol target.",
+      "params": {
+        "name": "ensemble_vol_regime_10_11_12_dynamic_tp",
+        "description": "13h removed ensemble with wider high-vol target.",
+        "atr_col": "atr14_m5",
+        "entry_start_hour": 10,
+        "last_entry_hour": 12,
+        "last_entry_minute": 59,
+        "force_flat_hour": 17,
+        "force_flat_minute": 50,
+        "max_hold_bars": 45
+      },
+      "metrics": {
+        "start_date": "2025-07-16",
+        "end_date": "2026-03-27",
+        "trading_days": 176,
+        "total_trades": 173,
+        "win_rate": 0.5029,
+        "net_profit_brl": 1848.0,
+        "profit_factor": 1.3345,
+        "max_drawdown_pct": 3.74,
+        "avg_profit_brl": 10.68
+      },
+      "walkforward_3m_train_1m_test_1m_step": {
+        "total_folds": 6,
+        "passed_folds": 5,
+        "folds": [
+          {
+            "train_months": [
+              "2025-07",
+              "2025-08",
+              "2025-09"
+            ],
+            "test_month": "2025-10",
+            "train_metrics": {
+              "start_date": "2025-07-16",
+              "end_date": "2025-09-30",
+              "trading_days": 55,
+              "total_trades": 34,
+              "win_rate": 0.4412,
+              "net_profit_brl": -196.0,
+              "profit_factor": 0.817,
+              "max_drawdown_pct": 2.82,
+              "avg_profit_brl": -5.76
+            },
+            "test_metrics": {
+              "start_date": "2025-10-01",
+              "end_date": "2025-10-31",
+              "trading_days": 23,
+              "total_trades": 30,
+              "win_rate": 0.4667,
+              "net_profit_brl": 365.0,
+              "profit_factor": 1.3767,
+              "max_drawdown_pct": 1.47,
+              "avg_profit_brl": 12.17
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-08",
+              "2025-09",
+              "2025-10"
+            ],
+            "test_month": "2025-11",
+            "train_metrics": {
+              "start_date": "2025-08-01",
+              "end_date": "2025-10-31",
+              "trading_days": 66,
+              "total_trades": 49,
+              "win_rate": 0.4082,
+              "net_profit_brl": 104.0,
+              "profit_factor": 1.0648,
+              "max_drawdown_pct": 3.74,
+              "avg_profit_brl": 2.12
+            },
+            "test_metrics": {
+              "start_date": "2025-11-03",
+              "end_date": "2025-11-28",
+              "trading_days": 19,
+              "total_trades": 15,
+              "win_rate": 0.5333,
+              "net_profit_brl": 75.0,
+              "profit_factor": 1.2322,
+              "max_drawdown_pct": 0.87,
+              "avg_profit_brl": 5.0
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-09",
+              "2025-10",
+              "2025-11"
+            ],
+            "test_month": "2025-12",
+            "train_metrics": {
+              "start_date": "2025-09-01",
+              "end_date": "2025-11-28",
+              "trading_days": 64,
+              "total_trades": 55,
+              "win_rate": 0.4545,
+              "net_profit_brl": 315.0,
+              "profit_factor": 1.1933,
+              "max_drawdown_pct": 1.87,
+              "avg_profit_brl": 5.73
+            },
+            "test_metrics": {
+              "start_date": "2025-12-01",
+              "end_date": "2025-12-30",
+              "trading_days": 20,
+              "total_trades": 29,
+              "win_rate": 0.5862,
+              "net_profit_brl": 529.0,
+              "profit_factor": 1.6428,
+              "max_drawdown_pct": 0.57,
+              "avg_profit_brl": 18.24
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-10",
+              "2025-11",
+              "2025-12"
+            ],
+            "test_month": "2026-01",
+            "train_metrics": {
+              "start_date": "2025-10-01",
+              "end_date": "2025-12-30",
+              "trading_days": 62,
+              "total_trades": 74,
+              "win_rate": 0.527,
+              "net_profit_brl": 969.0,
+              "profit_factor": 1.4582,
+              "max_drawdown_pct": 1.58,
+              "avg_profit_brl": 13.09
+            },
+            "test_metrics": {
+              "start_date": "2026-01-02",
+              "end_date": "2026-01-30",
+              "trading_days": 21,
+              "total_trades": 17,
+              "win_rate": 0.4118,
+              "net_profit_brl": -3.0,
+              "profit_factor": 0.9943,
+              "max_drawdown_pct": 3.21,
+              "avg_profit_brl": -0.18
+            },
+            "pass": false
+          },
+          {
+            "train_months": [
+              "2025-11",
+              "2025-12",
+              "2026-01"
+            ],
+            "test_month": "2026-02",
+            "train_metrics": {
+              "start_date": "2025-11-03",
+              "end_date": "2026-01-30",
+              "trading_days": 60,
+              "total_trades": 61,
+              "win_rate": 0.5246,
+              "net_profit_brl": 601.0,
+              "profit_factor": 1.3586,
+              "max_drawdown_pct": 3.03,
+              "avg_profit_brl": 9.85
+            },
+            "test_metrics": {
+              "start_date": "2026-02-02",
+              "end_date": "2026-02-27",
+              "trading_days": 18,
+              "total_trades": 19,
+              "win_rate": 0.4737,
+              "net_profit_brl": 134.0,
+              "profit_factor": 1.2,
+              "max_drawdown_pct": 1.42,
+              "avg_profit_brl": 7.05
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-12",
+              "2026-01",
+              "2026-02"
+            ],
+            "test_month": "2026-03",
+            "train_metrics": {
+              "start_date": "2025-12-01",
+              "end_date": "2026-02-27",
+              "trading_days": 59,
+              "total_trades": 65,
+              "win_rate": 0.5077,
+              "net_profit_brl": 660.0,
+              "profit_factor": 1.3262,
+              "max_drawdown_pct": 3.05,
+              "avg_profit_brl": 10.15
+            },
+            "test_metrics": {
+              "start_date": "2026-03-02",
+              "end_date": "2026-03-27",
+              "trading_days": 20,
+              "total_trades": 29,
+              "win_rate": 0.5862,
+              "net_profit_brl": 944.0,
+              "profit_factor": 1.8295,
+              "max_drawdown_pct": 0.62,
+              "avg_profit_brl": 32.55
+            },
+            "pass": true
+          }
+        ]
+      },
+      "recent_jan_mar_2026": {
+        "start_date": "2026-01-02",
+        "end_date": "2026-03-27",
+        "trading_days": 59,
+        "total_trades": 65,
+        "win_rate": 0.5077,
+        "net_profit_brl": 1075.0,
+        "profit_factor": 1.4598,
+        "max_drawdown_pct": 3.21,
+        "avg_profit_brl": 16.54
+      }
+    },
+    {
+      "name": "ensemble_vol_regime_10_11_12_volume",
+      "description": "13h removed ensemble plus 1.5x volume gate.",
+      "params": {
+        "name": "ensemble_vol_regime_10_11_12_volume",
+        "description": "13h removed ensemble plus 1.5x volume gate.",
+        "atr_col": "atr14_m5",
+        "entry_start_hour": 10,
+        "last_entry_hour": 12,
+        "last_entry_minute": 59,
+        "force_flat_hour": 17,
+        "force_flat_minute": 50,
+        "max_hold_bars": 45
+      },
+      "metrics": {
+        "start_date": "2025-07-16",
+        "end_date": "2026-03-27",
+        "trading_days": 176,
+        "total_trades": 130,
+        "win_rate": 0.5385,
+        "net_profit_brl": 1390.0,
+        "profit_factor": 1.3629,
+        "max_drawdown_pct": 5.17,
+        "avg_profit_brl": 10.69
+      },
+      "walkforward_3m_train_1m_test_1m_step": {
+        "total_folds": 6,
+        "passed_folds": 4,
+        "folds": [
+          {
+            "train_months": [
+              "2025-07",
+              "2025-08",
+              "2025-09"
+            ],
+            "test_month": "2025-10",
+            "train_metrics": {
+              "start_date": "2025-07-16",
+              "end_date": "2025-09-30",
+              "trading_days": 55,
+              "total_trades": 26,
+              "win_rate": 0.4231,
+              "net_profit_brl": -114.0,
+              "profit_factor": 0.8674,
+              "max_drawdown_pct": 2.42,
+              "avg_profit_brl": -4.38
+            },
+            "test_metrics": {
+              "start_date": "2025-10-01",
+              "end_date": "2025-10-31",
+              "trading_days": 23,
+              "total_trades": 23,
+              "win_rate": 0.4348,
+              "net_profit_brl": -277.0,
+              "profit_factor": 0.6996,
+              "max_drawdown_pct": 3.56,
+              "avg_profit_brl": -12.04
+            },
+            "pass": false
+          },
+          {
+            "train_months": [
+              "2025-08",
+              "2025-09",
+              "2025-10"
+            ],
+            "test_month": "2025-11",
+            "train_metrics": {
+              "start_date": "2025-08-01",
+              "end_date": "2025-10-31",
+              "trading_days": 66,
+              "total_trades": 37,
+              "win_rate": 0.4054,
+              "net_profit_brl": -388.0,
+              "profit_factor": 0.7143,
+              "max_drawdown_pct": 5.17,
+              "avg_profit_brl": -10.49
+            },
+            "test_metrics": {
+              "start_date": "2025-11-03",
+              "end_date": "2025-11-28",
+              "trading_days": 19,
+              "total_trades": 11,
+              "win_rate": 0.6364,
+              "net_profit_brl": 131.0,
+              "profit_factor": 1.6065,
+              "max_drawdown_pct": 0.61,
+              "avg_profit_brl": 11.91
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-09",
+              "2025-10",
+              "2025-11"
+            ],
+            "test_month": "2025-12",
+            "train_metrics": {
+              "start_date": "2025-09-01",
+              "end_date": "2025-11-28",
+              "trading_days": 64,
+              "total_trades": 42,
+              "win_rate": 0.4524,
+              "net_profit_brl": -318.0,
+              "profit_factor": 0.7779,
+              "max_drawdown_pct": 4.48,
+              "avg_profit_brl": -7.57
+            },
+            "test_metrics": {
+              "start_date": "2025-12-01",
+              "end_date": "2025-12-30",
+              "trading_days": 20,
+              "total_trades": 27,
+              "win_rate": 0.6667,
+              "net_profit_brl": 797.0,
+              "profit_factor": 2.3601,
+              "max_drawdown_pct": 0.9,
+              "avg_profit_brl": 29.52
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-10",
+              "2025-11",
+              "2025-12"
+            ],
+            "test_month": "2026-01",
+            "train_metrics": {
+              "start_date": "2025-10-01",
+              "end_date": "2025-12-30",
+              "trading_days": 62,
+              "total_trades": 61,
+              "win_rate": 0.5738,
+              "net_profit_brl": 651.0,
+              "profit_factor": 1.3776,
+              "max_drawdown_pct": 3.56,
+              "avg_profit_brl": 10.67
+            },
+            "test_metrics": {
+              "start_date": "2026-01-02",
+              "end_date": "2026-01-30",
+              "trading_days": 21,
+              "total_trades": 12,
+              "win_rate": 0.4167,
+              "net_profit_brl": -48.0,
+              "profit_factor": 0.8696,
+              "max_drawdown_pct": 1.7,
+              "avg_profit_brl": -4.0
+            },
+            "pass": false
+          },
+          {
+            "train_months": [
+              "2025-11",
+              "2025-12",
+              "2026-01"
+            ],
+            "test_month": "2026-02",
+            "train_metrics": {
+              "start_date": "2025-11-03",
+              "end_date": "2026-01-30",
+              "trading_days": 60,
+              "total_trades": 50,
+              "win_rate": 0.6,
+              "net_profit_brl": 880.0,
+              "profit_factor": 1.7521,
+              "max_drawdown_pct": 1.56,
+              "avg_profit_brl": 17.6
+            },
+            "test_metrics": {
+              "start_date": "2026-02-02",
+              "end_date": "2026-02-27",
+              "trading_days": 18,
+              "total_trades": 12,
+              "win_rate": 0.5,
+              "net_profit_brl": 142.0,
+              "profit_factor": 1.4451,
+              "max_drawdown_pct": 1.75,
+              "avg_profit_brl": 11.83
+            },
+            "pass": true
+          },
+          {
+            "train_months": [
+              "2025-12",
+              "2026-01",
+              "2026-02"
+            ],
+            "test_month": "2026-03",
+            "train_metrics": {
+              "start_date": "2025-12-01",
+              "end_date": "2026-02-27",
+              "trading_days": 59,
+              "total_trades": 51,
+              "win_rate": 0.5686,
+              "net_profit_brl": 891.0,
+              "profit_factor": 1.6999,
+              "max_drawdown_pct": 1.63,
+              "avg_profit_brl": 17.47
+            },
+            "test_metrics": {
+              "start_date": "2026-03-02",
+              "end_date": "2026-03-27",
+              "trading_days": 20,
+              "total_trades": 19,
+              "win_rate": 0.6842,
+              "net_profit_brl": 759.0,
+              "profit_factor": 2.3578,
+              "max_drawdown_pct": 0.08,
+              "avg_profit_brl": 39.95
+            },
+            "pass": true
+          }
+        ]
+      },
+      "recent_jan_mar_2026": {
+        "start_date": "2026-01-02",
+        "end_date": "2026-03-27",
+        "trading_days": 59,
+        "total_trades": 43,
+        "win_rate": 0.5581,
+        "net_profit_brl": 853.0,
+        "profit_factor": 1.6846,
+        "max_drawdown_pct": 2.63,
+        "avg_profit_brl": 19.84
+      }
+    }
+  ]
+}
