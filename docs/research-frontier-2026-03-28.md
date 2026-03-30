@@ -306,6 +306,18 @@ It is:
 2. or prove a host-side MT5 upgrade survives real costs
 3. or accept that Tier 1 is the ceiling for now
 
+## New Signal Family Check: Session VWAP Crossover
+
+- A genuinely different entry family, session VWAP crossover, failed decisively under corrected costs:
+  - `SL 1.0 / TP 0.48 / 60m`: `R$-14,102`, `PF 0.7173`, `DD 139.29%`
+  - `70/30` test: `R$-5,026`, `PF 0.6478`, `DD 50.43%`
+  - recent `60d`: `R$-725`, `PF 0.6983`
+- Wider target did not save it:
+  - `TP 0.60`: `R$-15,127`, `PF 0.7370`, `DD 146.15%`
+- Interpretation:
+  - a simple cumulative session-VWAP crossover is not a viable replacement signal
+  - the corrected-cost survivor still comes from the existing retracement family, not a crossover family
+
 ## First Cost-Surviving Static Variant
 
 - The first static variant to survive the corrected cost model is:

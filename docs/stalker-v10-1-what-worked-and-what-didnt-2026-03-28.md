@@ -118,6 +118,7 @@ Corrected rerun:
 - hard signal-strength gates
 - most oscillator confirmations besides ROC
 - H1 translation of the same signal family
+- session VWAP crossover as a replacement signal family
 
 ## Ceiling Read
 
