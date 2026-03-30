@@ -277,6 +277,9 @@ Corrected rerun:
 - Best short-only timing was hours `10/11/12`:
   - `R$2,242`, `PF 1.1549`, `DD 12.33%`
   - slightly better than short-only `10/11/12/14`, but still below the long-ATR-pruned balanced branch
+- Rolling walk-forward on the best short-only timing sleeve was weaker than the balanced combo:
+  - full sample `R$2,619`, `PF 1.1750`, `DD 12.33%`
+  - rolling walk-forward `3/7` test folds positive with `PF > 1.0`
 - Slowing only longs to `120m` while keeping shorts at `60m` did not beat the leader:
   - `R$2,585`, `PF 1.0839`, `DD 10.87%`
 - Slowing only longs to `120m` on top of the newer stacked combo also failed:

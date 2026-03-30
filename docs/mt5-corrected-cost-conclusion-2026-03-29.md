@@ -97,12 +97,16 @@ Metrics:
   - `70/30` test `R$1,610`, `PF 1.4601`, `DD 2.85%`
   - recent `60d` `R$185`, `PF 1.2955`
   - recent `30d` `R$280`, `PF 2.1814`
+- Best short-only timing sleeve is `10/11/12`:
+  - full sample `R$2,619`, `PF 1.1750`, `DD 12.33%`
+  - rolling walk-forward `3/7` test folds positive with `PF > 1.0`
 - Pure long-only is not viable under corrected costs:
   - full sample `R$521`, `PF 1.0292`, `DD 11.54%`
   - `70/30` test `R$-838`, `PF 0.8373`
 - Honest read:
   - the short sleeve carries more of the real-cost edge
   - but the best corrected-cost portfolio still comes from keeping both directions and pruning the weaker long sleeve selectively
+  - even the best short-only timing sleeve is less robust than the stacked combo
 
 ## Monday Plan
 
