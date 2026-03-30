@@ -60,12 +60,18 @@ These answered the last open questions around the new winner:
   - `R$777`, `PF 1.7006`, `DD 2.20%`, recent Jan-Mar `R$176`, walk-forward `5/6`
 - A `10h + 12h` session ensemble improved recent profit, but weakened the long-sample profile:
   - `R$1,861`, `PF 1.5672`, `DD 2.13%`, recent Jan-Mar `R$874`, walk-forward `5/6`
+- Tiny TP/SL nudges confirmed the full-sample ceiling is close but still below `2.0`:
+  - best full-sample setting: `SL 1.0 / TP 1.1` with volume gate
+  - `R$1,154`, `PF 1.9217`, `DD 1.79%`, recent Jan-Mar `R$352`, walk-forward `6/6`
+- Trailing-stop exits were dead ends for the long sample:
+  - best trailing variant: `R$469`, `PF 1.4911`, `DD 1.74%`, recent Jan-Mar `R$278`, walk-forward `4/6`
 
 So the clean conclusion is:
 
 - `12h` volume branch is still the best balanced leader
 - `10h + 12h` is the best recent-regime booster
 - trend-efficiency is not the right confirmation layer for this new Donchian family
+- a slightly wider target improves full-sample PF, but weakens the current regime too much to replace the `TP 1.0` leader
 
 ## Comparison versus the current M1 combo
 
