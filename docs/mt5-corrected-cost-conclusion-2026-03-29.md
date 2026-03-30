@@ -89,6 +89,9 @@ Metrics:
 - wider short-only SL (`1.2`, `1.5`)
 - wider short-only TP (`0.54`, `0.60`)
 - research-only long/short TP routing (`long TP 0.42 / short TP 0.48`)
+- removing long `14h` entries on top of the combo:
+  - `R$2,933`, `PF 1.1132`, `DD 11.17%`
+  - `70/30` test `R$1,350`, `PF 1.2106`, `DD 7.14%`
 
 ## Directional Sleeve Readout
 
