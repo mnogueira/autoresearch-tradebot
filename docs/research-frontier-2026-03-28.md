@@ -257,6 +257,20 @@ Corrected rerun:
   - pruning only those longs is better than pruning both directions and better than pure short-only routing
   - this is now the strongest static corrected-cost branch to validate next on MT5
 
+## Corrected-Cost Long-ATR Plus Short-Hours Stack
+
+- Stacking the next-best static short-side idea on top produced a small additional improvement:
+  - balanced branch core
+  - prune only **long** entries on top-ATR tercile days
+  - restrict **short** entries to `10/11/12`
+  - full sample: `R$3,317`, `PF 1.1334`, `DD 8.07%`, composite `0.6219`
+  - `70/30` test: `R$1,580`, `PF 1.2615`, `DD 6.02%`
+  - recent `60d`: `R$348`, `PF 1.4203`
+  - rolling walk-forward: `4/7` test folds positive with `PF > 1.0`
+- Interpretation:
+  - this is now the strongest static corrected-cost branch overall
+  - the improvement over long-ATR-prune-only is small, so the simpler branch remains a valid fallback if we want the least operational complexity for MT5 validation
+
 ## Corrected-Cost Short-Side Timing And Cooldown Checks
 
 - The short sleeve is still strongest at `TP 0.48` and `SL 1.0`.

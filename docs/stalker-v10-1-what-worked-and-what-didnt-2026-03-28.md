@@ -94,6 +94,10 @@ Corrected rerun:
     - prune only long entries on top-ATR tercile days
     - `R$3,243`, `PF 1.1284`, `DD 7.79%`
     - `70/30` test `R$1,629`, `PF 1.2696`, `DD 6.00%`
+  - stacking short-hours `10/11/12` on top improved it again, but only slightly:
+    - `R$3,317`, `PF 1.1334`, `DD 8.07%`
+    - `70/30` test `R$1,580`, `PF 1.2615`, `DD 6.02%`
+    - rolling walk-forward `4/7` test folds positive
   - best short-only timing was `10/11/12`, but that still did not beat the long-ATR-pruned balanced branch
   - slowing only longs to `120m` while leaving shorts at `60m` also failed to beat it
 - overly wide profit targets on the corrected-cost survivor:
@@ -130,6 +134,7 @@ Corrected rerun:
   - strongest static corrected-cost branch:
     - balanced simplified branch with `SL 1.0`, `TP 0.48`, `60m`, Friday off, skip last `1`
     - prune only long entries on top-ATR tercile days
+    - restrict shorts to `10/11/12`
   - strongest corrected-cost directional sleeve:
     - short-only, `SL 1.0`, `TP 0.48`, `60m`, Friday off, skip last `1`
   - promising, but not robust enough yet to promote

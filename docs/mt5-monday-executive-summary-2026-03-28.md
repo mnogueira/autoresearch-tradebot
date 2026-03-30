@@ -42,7 +42,7 @@ Corrected production rerun artifact:
 - The prior Python upgrade ladder was materially inflated by missing flat costs.
 - The ROC agreement family still looks like the only uniquely helpful lightweight confirmation family.
 - But none of the static Python upgrade tiers currently justify promotion for Monday after the corrected rerun.
-- The best honest corrected-cost branch is now the balanced simplified survivor:
+- The best honest corrected-cost branch is now the stacked side-specific survivor:
   - strengthened Tier 2A geometry
   - no ROC
   - no max-hold
@@ -51,8 +51,10 @@ Corrected production rerun artifact:
   - `60m` cooldown
   - `AllowFriday=false`
   - skip last `1` contract day
-  - full sample `R$3,024`, `PF 1.0966`, `DD 7.06%`
-  - `70/30` test `R$887`, `PF 1.1091`, `DD 7.91%`
+  - prune long entries on top-ATR tercile days
+  - restrict short entries to `10/11/12`
+  - full sample `R$3,317`, `PF 1.1334`, `DD 8.07%`
+  - `70/30` test `R$1,580`, `PF 1.2615`, `DD 6.02%`
   - it is still research-only until host-side MT5 validation exists
 
 ## Corrected-Cost Survivor Frontier
@@ -61,7 +63,7 @@ Corrected production rerun artifact:
   - Tier 2A geometry
   - `TP 0.48`
   - `60m` cooldown
-- The best honest corrected-cost branch is now the balanced simplified line:
+- The best honest corrected-cost branch is now the stacked side-specific line:
   - Tier 2A geometry
   - no ROC
   - no max-hold
@@ -70,18 +72,20 @@ Corrected production rerun artifact:
   - `60m` cooldown
   - `AllowFriday=false`
   - skip last `1` contract day
+  - prune long entries on top-ATR tercile days
+  - restrict short entries to `10/11/12`
 - Full sample:
-  - `R$3,024`, `PF 1.0966`, `DD 7.06%`, composite `0.6049`
+  - `R$3,317`, `PF 1.1334`, `DD 8.07%`, composite `0.6219`
 - `70/30` test:
-  - `R$887`, `PF 1.1091`, `DD 7.91%`, composite `0.6052`
+  - `R$1,580`, `PF 1.2615`, `DD 6.02%`, composite `1.0885`
 - Recent windows:
-  - recent `60d`: `R$241`, `PF 1.1911`
-  - recent `30d`: positive
-  - recent `10d`: positive
+  - recent `60d`: `R$348`, `PF 1.4203`
+  - recent `30d`: `R$403`, `PF 2.1749`
+  - recent `10d`: `R$280`, `PF inf`
 - Read:
   - the edge can survive the corrected flat-cost model, but only after wider targets, lower trade frequency, and a more conservative branch
-  - the simpler no-ROC/no-max-hold structure proved more robust than the flashier pre-correction variants
-  - hard pruning and extra overlays mostly became near-misses, not improvements
+  - the simpler no-ROC/no-max-hold structure plus side-specific pruning proved more robust than the flashier pre-correction variants
+  - the simpler long-ATR-pruned-only branch remains a valid fallback because it is very close and operationally cleaner
   - it is still research-only until host-side MT5 validation exists
 
 ## Monday Recommendation
