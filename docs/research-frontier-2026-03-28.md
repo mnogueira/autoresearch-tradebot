@@ -392,6 +392,26 @@ Those remain research branches only until they pass corrected-cost validation or
   - low-volume pruning hurts too much under corrected costs
   - EMA20 trend alignment mildly cleans the tape, but not enough to beat the current leader
 
+## Structural Follow-Ups Around The Corrected-Cost Combo
+
+- M5 proxy of the stacked combo was the strongest structural branch tested:
+  - full sample `R$6,945`, `PF 1.3841`, `DD 5.18%`
+  - `70/30` test `R$1,605`, `PF 1.3232`, `DD 7.43%`
+  - recent Jan-Mar `2026` `R$-9`, `PF 0.9900`, `DD 3.54%`
+- Dual-timeframe `M15 EMA20 + M1 entry` was a near-miss:
+  - full sample `R$3,206`, `PF 1.1486`, `DD 9.14%`
+  - `70/30` test `R$773`, `PF 1.1331`, `DD 9.97%`
+  - recent `60d` `R$271`, `PF 1.3273`
+- Daily ATR above rolling 20-day mean was the cleanest regime filter:
+  - full sample `R$2,903`, `PF 1.3106`, `DD 6.11%`
+  - `70/30` test `R$1,287`, `PF 1.5936`, `DD 2.72%`
+  - recent `30d` `R$267`, `PF 2.1266`
+- Jan-Mar `2026` slice on the plain M1 stacked combo stayed positive:
+  - `R$410`, `PF 1.5640`, `DD 1.75%`
+- Interpretation:
+  - M5 is the most interesting structural direction to pursue next
+  - but the current regime still favors keeping the M1 stacked combo as the live corrected-cost reference
+
 ## Corrected-Cost Hour Map
 
 - Hour-by-hour PnL on the corrected-cost stacked combo:

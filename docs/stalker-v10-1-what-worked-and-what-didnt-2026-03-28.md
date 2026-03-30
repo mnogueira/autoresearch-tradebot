@@ -145,6 +145,12 @@ Corrected rerun:
     - balanced simplified branch with `SL 1.0`, `TP 0.48`, `60m`, Friday off, skip last `1`
     - prune only long entries on top-ATR tercile days
     - restrict shorts to `10/11/12`
+  - strongest structural alternative:
+    - M5 proxy of that combo
+    - full sample `R$6,945`, `PF 1.3841`, `DD 5.18%`
+    - `70/30` test `R$1,605`, `PF 1.3232`, `DD 7.43%`
+    - but recent Jan-Mar `2026` slipped to `R$-9`, `PF 0.9900`
+    - so it is promising, not promotable
   - corrected-cost hour map on that branch:
     - `12h` is the main profit engine
     - `14h` is the only clearly losing hour

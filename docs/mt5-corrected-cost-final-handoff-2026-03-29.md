@@ -44,6 +44,19 @@
 - VWAP crossover:
   - `R$-14,102`, `PF 0.7173`, `DD 139.29%`
   - not viable as a replacement signal family
+- M5 proxy of the same combo logic:
+  - full sample `R$6,945`, `PF 1.3841`, `DD 5.18%`
+  - `70/30` test `R$1,605`, `PF 1.3232`, `DD 7.43%`
+  - but recent Jan-Mar `2026` slipped to `R$-9`, `PF 0.9900`
+  - strong structural lead, but not stable enough in the current regime to replace the M1 combo for Monday
+- Daily ATR above 20-day average regime gate:
+  - `R$2,903`, `PF 1.3106`, `DD 6.11%`
+  - `70/30` test `R$1,287`, `PF 1.5936`, `DD 2.72%`
+  - much cleaner, but too selective and still below the stacked combo on total score
+- Dual-timeframe M15 EMA20 confirmation:
+  - `R$3,206`, `PF 1.1486`, `DD 9.14%`
+  - `70/30` test `R$773`, `PF 1.1331`, `DD 9.97%`
+  - recent windows improved, but the total profile stayed below the combo
 - Opening-range breakout:
   - first `15m`: `R$-41,375`, `PF 0.6569`, `DD 372.23%`
   - first `30m`: `R$-38,533`, `PF 0.6509`, `DD 346.16%`
@@ -76,4 +89,5 @@
 
 - The strategy does survive corrected costs, but only in a narrower and more conservative form than the pre-correction frontier suggested.
 - The best remaining upside is still in careful trade selection and sizing, not in another replacement signal family.
+- The one structural branch that did stand out was the M5 proxy, but it weakened enough in Jan-Mar `2026` that it should stay a separate research track, not a Monday swap.
 - Monday should therefore be treated as validation-first, with the corrected-cost combo queued as the next serious MT5 candidate rather than an immediate switch.

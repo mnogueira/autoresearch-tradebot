@@ -23,6 +23,19 @@
   - `70/30` test: `R$1,580`, `PF 1.2615`, `DD 6.02%`
   - rolling walk-forward: `4/7` test folds passed
 
+## Structural Follow-Up Call
+
+- The most promising structural alternative is an `M5` proxy of the same corrected-cost combo logic:
+  - full sample: `R$6,945`, `PF 1.3841`, `DD 5.18%`, `725` trades
+  - `70/30` test: `R$1,605`, `PF 1.3232`, `DD 7.43%`
+  - recent Jan-Mar `2026`: `R$-9`, `PF 0.9900`, `DD 3.54%`
+- Honest read:
+  - `M5` is the strongest longer-sample structural direction I tested
+  - but it lost the recent three-month regime check while the current M1 stacked combo stayed positive
+  - so it is **not** the new Monday deployment leader
+- Structural artifact:
+  - [summary.json](/c:/Dev/autoresearch-tradebot/artifacts/outputs/stalker_v10_1_corrected_cost_structural_followups_20260329/summary.json)
+
 ## Python To MQ5 Parameter Map
 
 | Python logic | Value | MQ5 input | Status |
@@ -80,6 +93,9 @@
 3. Skip last contract day:
    - Python uses contract-cycle buckets and removes the final contract day.
    - The current EA has no contract-rollover calendar logic.
+4. M5 proxy deployment:
+   - The current EA and exact harness are both M1-native.
+   - A true M5 deployment path would need a dedicated M5 implementation or a carefully validated chart-timeframe translation.
 
 ## Python vs MQ5 Logic Discrepancies
 
@@ -126,6 +142,27 @@
   - `MaxAllowedEntrySpreadTicks=2`
 - But this is still only an approximation because the current EA cannot express the long ATR-prune, the short `14h` block, or the last-contract-day skip.
 
+## M5 Proxy Parameter Sheet
+
+- The `M5` proxy used the same corrected-cost combo logic and the same core parameter values:
+  - `ContractsPerTrade=1`
+  - `FilterAsPercOfContractMARange=0.30`
+  - `NumDaysToConsiderPreviousContractMARange=2`
+  - `RetracementLevel=0.25`
+  - `EntryStart_Hour=10`
+  - `LastEntry_Hour=14`
+  - `MinMinutesBetweenEntries=60`
+  - `AllowFriday=false`
+  - `SL_ATRMultiplier=1.0`
+  - `TP_ATRMultiplier=0.48`
+  - `ATRTimeFrame=PERIOD_M15`
+  - `ATR_Length=10`
+- The only structural difference is the execution bar set:
+  - Python resampled the base `M1` tape into `M5` bars and then ran the same logic on that lower-frequency stream
+- Deployment implication:
+  - this is **not** a parameter-only MT5 switch
+  - it would need a dedicated `M5` chart/test harness or a separately validated EA implementation
+
 ## Daily PnL Expectations Under Corrected Costs
 
 - Based on the exact corrected-cost stacked combo:
@@ -152,3 +189,5 @@
    - implement the missing routing logic, then validate the corrected-cost stacked combo
 3. If implementation simplicity matters more than the last edge gain:
    - validate the long-ATR-prune-only fallback first
+4. If we want the next structural research branch after that:
+   - validate the M5 proxy as a separate implementation, not as a quiet swap of the current M1 deployment
