@@ -376,3 +376,44 @@ It is:
 - Tier 3 as an automatic next promotion
 
 Those remain research branches only until they pass corrected-cost validation or host-side MT5 validation.
+
+## Corrected-Cost Combo Diagnostics
+
+- The current corrected-cost stacked combo reference remains:
+  - long ATR-prune + short hours `10/11/12`
+  - `R$3,317`, `PF 1.1334`, `DD 8.07%`, composite `0.6219`
+- A `1.5x` relative-volume gate on top of that combo failed:
+  - full sample `R$-262`, `PF 0.9746`, `DD 12.36%`
+  - `70/30` test `R$-571`, `PF 0.7721`, `DD 12.72%`
+- EMA20 trend agreement on top of the combo was a near-miss, but still weaker than the plain combo:
+  - full sample `R$3,206`, `PF 1.1486`, `DD 9.14%`, composite `0.5883`
+  - `70/30` test `R$773`, `PF 1.1331`, `DD 9.97%`
+- Interpretation:
+  - low-volume pruning hurts too much under corrected costs
+  - EMA20 trend alignment mildly cleans the tape, but not enough to beat the current leader
+
+## Corrected-Cost Hour Map
+
+- Hour-by-hour PnL on the corrected-cost stacked combo:
+  - `10h`: `395` trades, `R$365`, `PF 1.0304`
+  - `11h`: `216` trades, `R$309`, `PF 1.0440`
+  - `12h`: `135` trades, `R$2,300`, `PF 1.7749`
+  - `13h`: `69` trades, `R$466`, `PF 1.2316`
+  - `14h`: `23` trades, `R$-123`, `PF 0.8565`
+- Interpretation:
+  - `12h` is the real corrected-cost profit engine
+  - `14h` is the only clearly losing hour under the current static combo
+  - that makes hour-specific pruning the most credible remaining static lever to test next
+
+## New Signal Family Check: Donchian Breakout
+
+- A simpler trend-following Donchian breakout family also failed under corrected costs:
+  - `N=10`: `R$-19,237`, `PF 0.6546`, `DD 178.32%`
+  - `N=20`: `R$-13,232`, `PF 0.6774`, `DD 120.13%`
+  - `N=30`: `R$-11,965`, `PF 0.6690`, `DD 109.58%`
+- `70/30` tests stayed decisively negative for all three lookbacks:
+  - `N=10` test `R$-6,138`, `PF 0.5753`
+  - `N=20` test `R$-3,921`, `PF 0.6337`
+  - `N=30` test `R$-3,557`, `PF 0.6204`
+- Interpretation:
+  - a simple Donchian breakout is not a viable corrected-cost replacement signal family for WDO

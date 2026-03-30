@@ -121,6 +121,10 @@ Corrected rerun:
 - session VWAP crossover as a replacement signal family
 - corrected-cost opening-range breakout using the first `15m` or `30m`
 - session VWAP crossover as a confirmation layer on top of the corrected-cost combo
+- corrected-cost Donchian breakout using `N=10/20/30`
+- adding a `1.5x` relative-volume gate on top of the corrected-cost combo
+- adding EMA20 direction alignment on top of the corrected-cost combo:
+  - near-miss, but still worse than the plain combo once drawdown is counted
 
 ## Ceiling Read
 
@@ -140,6 +144,9 @@ Corrected rerun:
     - balanced simplified branch with `SL 1.0`, `TP 0.48`, `60m`, Friday off, skip last `1`
     - prune only long entries on top-ATR tercile days
     - restrict shorts to `10/11/12`
+  - corrected-cost hour map on that branch:
+    - `12h` is the main profit engine
+    - `14h` is the only clearly losing hour
   - strongest corrected-cost directional sleeve:
     - short-only, `SL 1.0`, `TP 0.48`, `60m`, Friday off, skip last `1`
   - promising, but not robust enough yet to promote
