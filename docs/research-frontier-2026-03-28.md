@@ -405,6 +405,28 @@ Those remain research branches only until they pass corrected-cost validation or
   - `14h` is the only clearly losing hour under the current static combo
   - that makes hour-specific pruning the most credible remaining static lever to test next
 
+## Corrected-Cost `14h` Prune Near-Miss
+
+- Removing `14h` entirely from the corrected-cost stacked combo helped the holdout and recent tape, but did not beat the leader:
+  - full sample: `R$2,472`, `PF 1.0938`, `DD 9.29%`, composite `0.4955`
+  - `70/30` test: `R$1,100`, `PF 1.1609`, `DD 7.87%`
+  - recent `60d`: `R$296`, `PF 1.3221`
+- Interpretation:
+  - the negative `14h` bucket is real
+  - but fully removing it strips too much overall edge to improve the total score
+  - this is useful diagnostic evidence, not a promotion
+
+## Corrected-Cost `14h` Prune Follow-Up
+
+- Removing `14h` entirely from the corrected-cost stacked combo did not beat the leader overall:
+  - full sample: `R$2,472`, `PF 1.0938`, `DD 9.29%`, composite `0.4955`
+  - `70/30` test: `R$1,100`, `PF 1.1609`, `DD 7.87%`
+  - recent `60d`: `R$296`, `PF 1.3221`
+- Interpretation:
+  - the losing `14h` bucket is real
+  - but removing it also strips out enough recovery trades that the full-sample score worsens
+  - this is a useful near-miss, not a promotion
+
 ## New Signal Family Check: Donchian Breakout
 
 - A simpler trend-following Donchian breakout family also failed under corrected costs:
