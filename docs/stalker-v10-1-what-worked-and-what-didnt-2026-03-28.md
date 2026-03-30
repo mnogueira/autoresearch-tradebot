@@ -122,6 +122,7 @@ Corrected rerun:
 - corrected-cost opening-range breakout using the first `15m` or `30m`
 - session VWAP crossover as a confirmation layer on top of the corrected-cost combo
 - corrected-cost Donchian breakout using `N=10/20/30`
+- corrected-cost momentum ignition continuation on M15 bars
 - adding a `1.5x` relative-volume gate on top of the corrected-cost combo
 - adding EMA20 direction alignment on top of the corrected-cost combo:
   - near-miss, but still worse than the plain combo once drawdown is counted

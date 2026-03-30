@@ -439,3 +439,15 @@ Those remain research branches only until they pass corrected-cost validation or
   - `N=30` test `R$-3,557`, `PF 0.6204`
 - Interpretation:
   - a simple Donchian breakout is not a viable corrected-cost replacement signal family for WDO
+
+## New Signal Family Check: Momentum Ignition
+
+- A genuinely new M15 momentum-ignition continuation family also failed under corrected costs:
+  - base target `TP 0.48`: `R$-9,831`, `PF 0.7073`, `DD 96.54%`
+  - `70/30` test: `R$-2,235`, `PF 0.7296`, `DD 26.96%`
+- A wider target reduced the damage, but still stayed clearly negative:
+  - `TP 0.60`: `R$-8,117`, `PF 0.7831`, `DD 82.31%`
+  - `70/30` test: `R$-2,190`, `PF 0.7718`, `DD 27.60%`
+- Interpretation:
+  - explosive directional bars with volume spikes do not convert into a corrected-cost continuation edge here
+  - this is less bad than Donchian breakout, but still nowhere near deployable
