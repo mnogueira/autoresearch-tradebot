@@ -142,3 +142,44 @@ So the new expansion conclusion is:
 - `10h` wants a different signal family than Donchian, and RSI divergence is the first one that helped at all
 - the afternoon session still does not justify a dedicated sleeve
 - an `80/20` blend of `12h` Donchian plus `10h` RSI is interesting as a research portfolio, but it does not replace the `12h` winner as the clean primary deployment line
+
+## Portfolio follow-up
+
+The next step was to formalize the only sleeve pairing that still looked alive:
+
+- `12h` high-ATR Donchian breakout with volume gate
+- `10h` high-ATR RSI divergence with `TP 0.8`
+
+This was tested as a daily-allocation portfolio, where the two sleeves run independently and capital is split between them.
+
+### Best portfolio candidate
+
+`70%` on the `12h` Donchian winner + `30%` on the `10h` RSI sleeve
+
+- full sample: `R$910.10`, `PF 2.4247`, `DD 1.29%`
+- recent Jan-Mar 2026: `R$534.60`, `PF 3.4168`, `DD 1.33%`
+- walk-forward: `6/6` passed
+
+Closest alternatives:
+
+- `75/25`: `R$937.75`, `PF 2.4219`, `DD 1.37%`, recent `R$522.50`, `PF 3.2377`, walk-forward `6/6`
+- `80/20`: `R$965.40`, `PF 2.4193`, `DD 1.46%`, recent `R$510.40`, `PF 3.0765`, walk-forward `6/6`
+- `60/40`: `R$854.80`, `PF 2.4134`, `DD 1.11%`, recent `R$558.80`, `PF 3.8423`, walk-forward `6/6`
+
+### Comparison
+
+Standalone `12h` winner:
+
+- full sample: `R$1,076`, `PF 1.8915`, `DD 1.80%`
+- recent Jan-Mar 2026: `R$462`, `PF 2.1000`, `DD 1.90%`
+
+Old corrected-cost M1 combo:
+
+- full sample: `R$3,317`, `PF 1.1334`, `DD 8.07%`
+- recent Jan-Mar 2026: `R$410`, `PF 1.5640`, `DD 1.75%`
+
+So the honest state of the frontier is now:
+
+- the best **single** MT5-native sleeve is still the `12h` Donchian volume winner
+- the best **portfolio** MT5-native deployment candidate is the `70/30` blend of `12h` Donchian + `10h` RSI divergence
+- this is the first MT5-native branch in the repo that clears the portfolio target of `PF > 2.0` and `DD < 3%` on the full sample while also staying strong in Jan-Mar 2026
