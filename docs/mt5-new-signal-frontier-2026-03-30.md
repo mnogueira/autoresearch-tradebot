@@ -107,3 +107,38 @@ It still does **not** clear the aspirational full-sample target of `PF > 2.0`, b
 - and a recent Jan-Mar regime readout with `PF > 2.0`.
 
 That makes it the current best MT5-native new-signal branch for further refinement.
+
+## Expansion batch
+
+I then pushed the search into genuinely different sleeves:
+
+- `10h` RSI divergence with M5/M15 trend confirmation
+- `14h-16h` low-volatility VWAP mean reversion
+- M5 Bollinger squeeze breakout
+- simple multi-sleeve portfolios mixing the new `10h` and `12h` branches
+
+Results:
+
+- `10h` RSI divergence was the only positive new sleeve:
+  - `R$468`, `PF 1.1150`, `DD 7.61%`, recent Jan-Mar `R$638`, `PF 1.5869`, walk-forward `4/6`
+- `10h` Donchian + volume did **not** work:
+  - `R$-44`, `PF 0.9770`, `DD 3.17%`, recent Jan-Mar `R$-160`, walk-forward `3/6`
+- afternoon VWAP mean reversion failed:
+  - `R$-512`, `PF 0.8582`, `DD 7.12%`, recent Jan-Mar `R$-319`, walk-forward `1/6`
+- M5 Bollinger squeeze breakout failed hard:
+  - `R$-768`, `PF 0.3600`, `DD 7.68%`, recent Jan-Mar `R$-62`, walk-forward `1/6`
+
+Portfolio checks:
+
+- equal-weight `10h RSI + 12h Donchian + afternoon reversion` was worse than the `12h` winner:
+  - `R$344`, `PF 1.2387`, `DD 2.52%`
+- best practical mix was `80%` on the `12h` Donchian winner and `20%` on the `10h` RSI sleeve:
+  - `R$954.40`, `PF 1.8795`, `DD 1.46%`
+  - recent Jan-Mar `R$497.20`, `PF 2.3881`, `DD 1.53%`
+
+So the new expansion conclusion is:
+
+- the `12h` Donchian volume winner still remains the single best branch
+- `10h` wants a different signal family than Donchian, and RSI divergence is the first one that helped at all
+- the afternoon session still does not justify a dedicated sleeve
+- an `80/20` blend of `12h` Donchian plus `10h` RSI is interesting as a research portfolio, but it does not replace the `12h` winner as the clean primary deployment line
